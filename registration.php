@@ -2,6 +2,8 @@
 <html>
 <body>
     <?php
+        include 'config/dbconfig.php';
+
         $firstname = (isset($_POST['firstname']) && !empty($_POST['firstname'])) ? $_POST['firstname'] : null;
         $lastname = (isset($_POST['lastname']) && !empty($_POST['lastname'])) ? $_POST['lastname'] : null;
         $email = (isset($_POST['email']) && !empty($_POST['email'])) ? $_POST['email'] : null;
@@ -37,8 +39,8 @@
 
             $participant_id = rand(1000, 9999);
 
-            $db = new SQLite3('registration.sq3');
-            $sql = "INSERT INTO participants (id, firstname, lastname, email, phone, position, experience, uid) VALUES (" . $participant_id . ", '" . $firstname . "', '" . $lastname . "', '" . $email . "', '" . $phone . "', '" . $position . "', '" . $experience . "', '0')";
+            $db = new SQLiDB();
+            $sql = "INSERT INTO participants (id, firstname, lastname, email, phone, position, experience) VALUES (" . $participant_id . ", '" . $firstname . "', '" . $lastname . "', '" . $email . "', '" . $phone . "', '" . $position . "', '" . $experience . "')";
             $db->exec($sql);
             unset($db);
 
@@ -80,7 +82,7 @@
         }
 
         if($username && $passwd){
-            $db = new SQLite3('registration.sq3');
+            $db = new SQLiDB('registration.sq3');
             $sql = "INSERT INTO users (username, passwd, team_id, participant_id) VALUES ('" . $username . "', '" . $passwd . "', 1, " . $participant_id . ")";
             $ret = $db->exec($sql);
             if(!$ret) {
@@ -101,7 +103,7 @@
     </form>
     <?php
         if(isset($_POST['delete'])){
-            $db = new SQLite3('registration.sq3');
+            $db = new SQLiDB('registration.sq3');
             $sql = "DELETE FROM participants";
             $db->exec($sql);
             unset($db);
@@ -111,7 +113,7 @@
 
         if(isset($_POST['dump'])){
 
-            $db = new SQLite3('registration.sq3');
+            $db = new SQLiDB('registration.sq3');
             $sql = "SELECT * FROM participants";
             $result = $db->query($sql);
             while ($row = $result->fetchArray(SQLITE3_ASSOC)){
