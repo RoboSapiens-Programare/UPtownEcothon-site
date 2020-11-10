@@ -1,27 +1,97 @@
 <!DOCTYPE html>
 <html>
 <body>
+    <?php
+        $firstname = (isset($_POST['firstname']) && !empty($_POST['firstname'])) ? $_POST['firstname'] : null;
+        $lastname = (isset($_POST['lastname']) && !empty($_POST['lastname'])) ? $_POST['lastname'] : null;
+        $email = (isset($_POST['email']) && !empty($_POST['email'])) ? $_POST['email'] : null;
+        $phone = (isset($_POST['phone']) && !empty($_POST['phone'])) ? $_POST['phone'] : null;
+        $position = (isset($_POST['position']) && !empty($_POST['position'])) ? $_POST['position'] : null;
+        $experience = (isset($_POST['experience']) && !empty($_POST['experience'])) ? $_POST['experience'] : null;
+    ?>
+
+    <h2>Register</h2>
 	<form method="post">
         <label for="firstname">First Name</label>
-        <input type="text" id="firstname" name="firstname" value=<?php if(isset($_POST['firstname'])) echo $_POST['firstname']; ?>><br>
+        <input type="text" id="firstname" name="firstname" value=<?php if($firstname) echo $firstname; ?>><br>
         <label for="lastname">Last Name</label>
-        <input type="text" id="lastname" name="lastname"><br>
+        <input type="text" id="lastname" name="lastname" value=<?php if($lastname) echo $lastname; ?>><br>
         <label for="email">E-Mail Adress</label>
-        <input type="text" id="email" name="email"><br>
-        <button type = "submit">Submit</button><br>
-    </form>
+        <input type="text" id="email" name="email" value=<?php if($email) echo $email; ?>><br>
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" value=<?php if($phone) echo $phone; ?>><br>
+        <label for="position">Position</label>
+        <select id="position" name="position">
+            <option value="elev">Elev</option>
+            <option value="student">Student</option>
+            <option value="angajat">Angajat</option>
+            <option value="l-intrep">Liber Intreprinzator</option>
+        </select><br>
+        <label for="experience">Experience</label>
+        <textarea type="text" id="experience" name="experience"><?php if($experience) echo $experience; ?></textarea><br>    
 
     <?php
+        $participant_ok = false;
 
-        if(isset($_POST['lastname']) && !empty( $_POST['lastname']) && isset($_POST['firstname']) && !empty( $_POST['firstname']) && isset($_POST['email']) && !empty( $_POST['email'])){
+        if($firstname && $lastname && $email && $phone && $position && $experience){
+
+            $participant_id = rand(1000, 9999);
+
             $db = new SQLite3('registration.sq3');
-            $sql = "INSERT INTO participants (firstname, lastname, email) VALUES ('".$_POST['firstname']."', '".$_POST['lastname']."', '".$_POST['email']."')";
-            $db->query($sql);
+            $sql = "INSERT INTO participants (id, firstname, lastname, email, phone, position, experience, uid) VALUES (" . $participant_id . ", '" . $firstname . "', '" . $lastname . "', '" . $email . "', '" . $phone . "', '" . $position . "', '" . $experience . "', '0')";
+            $db->exec($sql);
             unset($db);
+
+            $participant_ok = true;
         }
         else{
             echo "Complete all fields!";
         }
+    ?>
+
+    <?php
+        $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
+    ?>
+
+    <h2>Configure Account</h2>
+    
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value=<?php if($username) echo $username; ?>><br>
+        <label for="passwd">Password</label>
+        <input type="password" id="passwd" name="passwd"><br>
+        <label for="passwd">Confirm Password</label>
+        <input type="password" id="cpasswd" name="cpasswd"><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <?php
+        $passwd = null;
+        if(!$participant_ok){
+            echo "Complete participant registration first!";
+        }
+        else if(!(isset($_POST['passwd']) && isset($_POST['cpasswd']))){
+            echo "Complete all fields! <br>";
+        }
+        else if($_POST['passwd'] !== $_POST['cpasswd']){
+            echo "Passwords do not match!";
+        }
+        else{
+            $passwd = $_POST['passwd'];
+        }
+
+        if($username && $passwd){
+            $db = new SQLite3('registration.sq3');
+            $sql = "INSERT INTO users (username, passwd, team_id, participant_id) VALUES ('" . $username . "', '" . $passwd . "', 1, " . $participant_id . ")";
+            $ret = $db->exec($sql);
+            if(!$ret) {
+               echo $db->lastErrorMsg();
+            } else {
+               echo "Records created successfully\n";
+            }
+            $db->close();
+            unset($db);
+        }
+
     ?>
 
     <h2>Debug</h2>
@@ -33,7 +103,7 @@
         if(isset($_POST['delete'])){
             $db = new SQLite3('registration.sq3');
             $sql = "DELETE FROM participants";
-            $db->query($sql);
+            $db->exec($sql);
             unset($db);
 
             echo "Table records deleted!";
@@ -45,7 +115,10 @@
             $sql = "SELECT * FROM participants";
             $result = $db->query($sql);
             while ($row = $result->fetchArray(SQLITE3_ASSOC)){
-                echo $row['firstname'] . ' : ' . $row['lastname'] . ' : ' . $row['email'] . '<br/>';
+                foreach($row as $a){
+                    echo $a . " : ";
+                }
+                echo "<br>";
             }
             unset($db);
         }
