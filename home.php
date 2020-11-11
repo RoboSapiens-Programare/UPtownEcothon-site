@@ -23,15 +23,15 @@
 						</script> -->
 
 						<div id="sageata-meniu-TOP">
-							<img src="css/1sageataUTE.png" alt="logo arrow" style="width: inherit; height:inherit">
+							<img src="pictures/1sageataUTE.png" alt="logo arrow" style="width: inherit; height:inherit">
 						</div>
 
 						<div id="town-TOP">
-							<img src="css/1townUTE.png" alt="logo town" style="width: inherit; height:inherit">
+							<img src="pictures/1townUTE.png" alt="logo town" style="width: inherit; height:inherit">
 						</div>
 
 						<div id="cothon-TOP">
-							<img src="css/1cothonUTE.png" alt="logo cothon" style="width: inherit; height:inherit">
+							<img src="pictures/1cothonUTE.png" alt="logo cothon" style="width: inherit; height:inherit">
 						</div>
 
 					</div>
