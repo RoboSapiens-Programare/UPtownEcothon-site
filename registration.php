@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <body>
+
+    <a href="home.php">Home</a>
+
     <?php
         include 'config/dbconfig.php';
 

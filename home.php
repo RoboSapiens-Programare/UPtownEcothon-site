@@ -73,11 +73,11 @@
 			<div id="desc2" class="column" style="flex: 30vh; background-color: #AA3151; height: 100vh">Descriere al doilea content</div>
 		</div> 
 
-		<!-- <?php
-			// for ($x = 0; $x < 2; $x++){
-			// 	echo "<div id="content1">Content 1</div>";
-			// }
-		?> -->
+		<div id="bottom">
+			<a href="registration.php">Registration</a>
+
+		</div>
+
 
 	</body>
 
