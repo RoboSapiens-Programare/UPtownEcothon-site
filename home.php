@@ -10,43 +10,26 @@
 	<body style="background-color:beige">
 
 		<div class="meniu-full">
-		
-			<div class="cerc-meniu-TOP">
-				
-				<div  id="logo-meniu-TOP" >
-
-					<div id="logo-full">
-
-						<!-- <script> 
-							el=document.getElementById('logo-meniu-TOP') 
-							el.style.height=el.offsetWidth/2+"px"
-						</script> -->
-
-						<div id="sageata-meniu-TOP">
-							<img src="pictures/1sageataUTE.png" alt="logo arrow" style="width: inherit; height:inherit">
-						</div>
-
-						<div id="town-TOP">
-							<img src="pictures/1townUTE.png" alt="logo town" style="width: inherit; height:inherit">
-						</div>
-
-						<div id="cothon-TOP">
-							<img src="pictures/1cothonUTE.png" alt="logo cothon" style="width: inherit; height:inherit">
-						</div>
-
+			<div id="cerc-meniu-full">
+				<div  id="logo-meniu-full" >
+					<div id="sageata-meniu-TOP" z-index="3">
+						<img src="pictures/1sageataUTE.png" alt="logo arrow" style="width: inherit; height:inherit">
 					</div>
-
+					<div id="town-TOP">
+						<img src="pictures/1townUTE.png" alt="logo town" style="width: inherit; height:inherit">
+					</div>
+					<div id="cothon-TOP">
+						<img src="pictures/1cothonUTE.png" alt="logo cothon" style="width: inherit; height:inherit">
+					</div>
 				</div>
-				
 			</div>
-
 		</div>
 
 		<div class="meniu-scroll">
-			<div class="cerc-sageata">
-				<!-- <div class="sageata-meniu-scroll">
-					<img class="sageata" src="css/1sageataUTE.png" alt="logo arrow">
-				</div> -->
+			<div id="cerc-sageata-scroll">
+				<div id="sageata-meniu-scroll">
+					<img class="sageata" src="pictures/1sageataUTE.png" alt="logo arrow" style="height:100%">
+				</div>
 			</div>
 		</div>
 
