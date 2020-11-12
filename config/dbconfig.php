@@ -4,10 +4,11 @@
 
     //---------
 
-    class SQLiDB extends SQLite3 {
+    class SQLiDB extends PDO {
         function __construct(){
-            $this->open($GLOBALS['db_name']);
+            parent::__construct('sqlite:' . $GLOBALS['db_name']);
 
+            $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->exec("PRAGMA foreign_keys = ON");
         }
     }
