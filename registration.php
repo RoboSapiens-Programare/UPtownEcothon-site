@@ -18,34 +18,128 @@
         $participant_id = null;
     ?>
 
-    <h2>Register</h2>
-	<form method="post">
-        <label for="firstname">First Name</label>
-        <input type="text" id="firstname" name="firstname" value=<?php if($firstname) echo $firstname; ?>><br>
-        <label for="lastname">Last Name</label>
-        <input type="text" id="lastname" name="lastname" value=<?php if($lastname) echo $lastname; ?>><br>
-        <label for="email">E-Mail Adress</label>
-        <input type="text" id="email" name="email" value=<?php if($email) echo $email; ?>><br>
-        <label for="phone">Phone</label>
-        <input type="text" id="phone" name="phone" value=<?php if($phone) echo $phone; ?>><br>
-        <label for="position">Position</label>
-        <select id="position" name="position">
-            <option value="elev">Elev</option>
-            <option value="student">Student</option>
-            <option value="angajat">Angajat</option>
-            <option value="l-intrep">Liber Intreprinzator</option>
-        </select><br>
-        <label for="experience">Experience</label>
-        <textarea type="text" id="experience" name="experience"><?php if($experience) echo $experience; ?></textarea><br>    
+
+
+    <div id="registerParticipant">
+        <h2>Register</h2>
+        <form method="post">
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname" name="firstname" value=<?php if($firstname) echo $firstname; ?>><br>
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="lastname" value=<?php if($lastname) echo $lastname; ?>><br>
+            <label for="email">E-Mail Adress</label>
+            <input type="text" id="email" name="email" value=<?php if($email) echo $email; ?>><br>
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" value=<?php if($phone) echo $phone; ?>><br>
+            <label for="position">Position</label>
+            <select id="position" name="position">
+                <option value="elev">Elev</option>
+                <option value="student">Student</option>
+                <option value="angajat">Angajat</option>
+                <option value="l-intrep">Liber Intreprinzator</option>
+            </select><br>
+            <label for="experience">Experience</label>
+            <textarea type="text" id="experience" name="experience"><?php if($experience) echo $experience; ?></textarea><br>    
+    </div>
+    
+
+    <div id="teamDetails">
+        <h2>Team Details</h2>
+            <?php
+                $teamCreateName = (isset($_POST['teamcreatename']) && !empty($_POST)) ? $_POST['teamcreatename'] : null;
+                $teamName = (isset($_POST['teamname']) && !empty($_POST)) ? $_POST['teamname'] : null;
+
+                if($teamCreateName){
+                    try{
+                        $db = new SQLiDB();
+
+                        $sql = "SELECT * FROM teams WHERE name = :name";
+                        $stmt = $db->prepare($sql);
+
+                        $stmt->bindParam(':name', $teamCreateName);
+                        
+                        $stmt->execute();
+
+                        if($stmt->rowCount() > 0){
+                            $teamCreateName = null;
+                        }
+
+                        $db = null;
+                        unset($db);
+                    }
+                    catch(PDOException $e){
+                        $e->getMessage();
+                    }
+                }
+            ?>
+
+
+            <label for="team">Team</label>
+            <select id="team" name="teamname">
+                <option>select team</option>
+                <option value="create">new team...</option>
+            <?php
+                try{
+                    $db = new SQLiDB();
+                    $sql = "SELECT * FROM teams";
+                    $stmt = $db->prepare($sql);
+                    
+                    $stmt->execute();
+
+                    foreach($stmt as $row){
+                        echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+                    }
+
+                    $db = null;
+                    unset($db);
+                }
+                catch(PDOException $e){
+                    echo $e->getMessage();
+                }
+
+                
+            ?>
+            </select><br>
+            <div id="configNewTeam">
+                <label for="teamCreateName">Team Name</label>
+                <input type="text" id="teamCreateName" name="teamcreatename" value="<?php if($teamCreateName) echo "$teamCreateName"; ?>"><br>
+            </div>
+    </div>
+
+    <div id="configureAccount">
+        <?php
+            $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
+            $passwd = (isset($_POST['passwd']) && isset($_POST['cpasswd']) && ($_POST['passwd'] === $_POST['cpasswd'])) ? $_POST['passwd'] : null;
+        ?>
+
+        <h2>Configure Account</h2>
+        
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" value=<?php if($username) echo $username; ?>><br>
+            <label for="passwd">Password</label>
+            <input type="password" id="passwd" name="passwd"><br>
+            <label for="passwd">Confirm Password</label>
+            <input type="password" id="cpasswd" name="cpasswd"><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        
+
+    </div>
 
     <?php
-        $participant_ok = false;
+        ///Dis where the fun begins
+        try{
+            $db = new SQLiDB();
 
-        if($firstname && $lastname && $email && $phone && $position && $experience){
+            //Check to see if all fields are filled accordingly
+            if($firstname && $lastname && $email && $phone && $position && $experience && $username && $passwd && $teamName && (is_numeric($teamName) ? true : $teamCreateName)){
 
-            $participant_id = rand(1000, 9999);
-            try{
-                $db = new SQLiDB();
+                //For participant registration
+
+                //Set a random ID for the participant
+                $participant_id = rand(1000, 9999);
+                
                 $sql = "INSERT INTO participants (id, firstname, lastname, email, phone, position, experience) VALUES (:participant_id, :firstname, :lastname, :email, :phone, :position, :experience)";
                 $stmt = $db->prepare($sql);
 
@@ -58,54 +152,37 @@
                 $stmt->bindParam(':experience', $experience);
 
                 $stmt->execute();
+            
 
-                $db = null;
-                unset($db);
+                //For team details
 
-                $participant_ok = true;
-            }
-            catch(PDOException $e){
-                echo $e->getMessage();
-            }
-        }
-        else{
-            echo "Complete all fields!";
-        }
-    ?>
+                //If the user wants to create a new team
+                if($teamName === "create"){
+                    $sql = "INSERT INTO teams (name) VALUES (:name)";
+                    $stmt = $db->prepare($sql);
 
-    <?php
-        $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
-    ?>
+                    $stmt->bindParam(':name', $teamCreateName);
 
-    <h2>Configure Account</h2>
-    
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" value=<?php if($username) echo $username; ?>><br>
-        <label for="passwd">Password</label>
-        <input type="password" id="passwd" name="passwd"><br>
-        <label for="passwd">Confirm Password</label>
-        <input type="password" id="cpasswd" name="cpasswd"><br>
-        <button type="submit">Submit</button>
-    </form>
+                    $stmt->execute();
 
-    <?php
-        $passwd = null;
-        if(!$participant_ok){
-            echo "Complete participant registration first!";
-        }
-        else if(!(isset($_POST['passwd']) && isset($_POST['cpasswd']))){
-            echo "Complete all fields! <br>";
-        }
-        else if($_POST['passwd'] !== $_POST['cpasswd']){
-            echo "Passwords do not match!";
-        }
-        else{
-            $passwd = $_POST['passwd'];
-        }
+                    $sql = "SELECT * FROM teams WHERE name = :name";
+                    $stmt = $db->prepare($sql);
 
-        if($username && $passwd){
-            try{
-                $db = new SQLiDB('registration.sq3');
+                    $stmt->bindParam(':name', $teamCreateName);
+
+                    $stmt->execute();
+
+                    if($stmt){
+                        $team_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+                    }
+                }
+                //Else if the team already exists, use its id
+                else if(is_numeric($teamName)){
+                    $team_id = $teamName;
+                }
+
+                //For user configuration
+                
                 $sql = "INSERT INTO users (username, passwd, team_id, participant_id) VALUES (:username, :passwd, :team_id, :participant_id)";
                 $stmt = $db->prepare($sql);
                 
@@ -115,46 +192,58 @@
                 $stmt->bindParam(':participant_id', $participant_id);
 
                 $stmt->execute();
+            }
+            else{
+                echo "<br>Complete the fields accordingly then try again!<br>";
+            }
 
-                $db = null;
+        $db = null;
+        unset($db);
+
+        }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }  
+    ?>
+
+    <div id="debug">
+        <h2>Debug</h2>
+        <form method="post">
+            <button type="submit" name="delete">Clear Table</button>
+            <button type="submit" name="dump">Dump Table</button>
+        </form>
+        <?php
+            if(isset($_POST['delete'])){
+                $db = new SQLiDB();
+                $sql = "DELETE FROM participants";
+                $db->exec($sql);
+                unset($db);
+
+                echo "Table records deleted!";
+            }
+
+            if(isset($_POST['dump'])){
+
+                $db = new SQLiDB();
+                $sql = "SELECT * FROM participants";
+                $result = $db->query($sql);
+                
+                foreach($result as $row){
+                    foreach($row as $a){
+                        echo $a . " : ";
+                    }
+                    echo "<br>";
+                }
                 unset($db);
             }
-            catch(PDOException $e){
-                echo $e->getMessage();
-            }
-        }
-
-    ?>
-
-    <h2>Debug</h2>
-    <form method="post">
-        <button type="submit" name="delete">Clear Table</button>
-        <button type="submit" name="dump">Dump Table</button>
-    </form>
-    <?php
-        if(isset($_POST['delete'])){
-            $db = new SQLiDB();
-            $sql = "DELETE FROM participants";
-            $db->exec($sql);
-            unset($db);
-
-            echo "Table records deleted!";
-        }
-
-        if(isset($_POST['dump'])){
-
-            $db = new SQLiDB();
-            $sql = "SELECT * FROM participants";
-            $result = $db->query($sql);
-            
-            foreach($result as $row){
-                foreach($row as $a){
-                    echo $a . " : ";
-                }
-                echo "<br>";
-            }
-            unset($db);
-        }
-    ?>
+        ?>
+    </div>
 </body>
+
+<script>
+    function configNewTeam(){
+
+    }
+</script>
+
 </html>
