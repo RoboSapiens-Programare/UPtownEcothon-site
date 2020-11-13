@@ -20,7 +20,7 @@
 
 
 
-    <div id="registerParticipant">
+    <div id="registerParticipant" class="formelement">
         <h2>Register</h2>
         <form method="post">
             <label for="firstname">First Name</label>
@@ -30,7 +30,7 @@
             <label for="email">E-Mail Adress</label>
             <input type="text" id="email" name="email" value=<?php if($email) echo $email; ?>><br>
             <label for="phone">Phone</label>
-            <input type="text" id="phone" name="phone" value=<?php if($phone) echo $phone; ?>><br>
+            <input type="number" id="phone" name="phone" value=<?php if($phone) echo $phone; ?>><br>
             <label for="position">Position</label>
             <select id="position" name="position">
                 <option value="elev">Elev</option>
@@ -39,11 +39,11 @@
                 <option value="l-intrep">Liber Intreprinzator</option>
             </select><br>
             <label for="experience">Experience</label>
-            <textarea type="text" id="experience" name="experience"><?php if($experience) echo $experience; ?></textarea><br>    
+            <textarea type="text" id="experience" name="experience"><?php if($experience) echo $experience; ?></textarea><br>  
+            <button id="regbtn" type="button" style="background-color: lightcyan;" onclick="registrationOK();">Next</button>  
     </div>
     
-
-    <div id="teamDetails">
+    <div id="teamDetails" style="display: none;" class="formelement">
         <h2>Team Details</h2>
             <?php
                 $teamCreateName = (isset($_POST['teamcreatename']) && !empty($_POST)) ? $_POST['teamcreatename'] : null;
@@ -75,7 +75,7 @@
 
 
             <label for="team">Team</label>
-            <select id="team" name="teamname">
+            <select id="team" name="teamname" oninput="configNewTeam();">
                 <option>select team</option>
                 <option value="create">new team...</option>
             <?php
@@ -100,13 +100,14 @@
                 
             ?>
             </select><br>
-            <div id="configNewTeam">
+            <div id="configNewTeam" style="display: none;">
                 <label for="teamCreateName">Team Name</label>
                 <input type="text" id="teamCreateName" name="teamcreatename" value="<?php if($teamCreateName) echo "$teamCreateName"; ?>"><br>
             </div>
+            <button id="teambtn" type="button" style="background-color: lightcyan;" onclick="teamOK();">Next</button>
     </div>
 
-    <div id="configureAccount">
+    <div id="configureAccount" style="display: none;" class="formelement">
         <?php
             $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
             $passwd = (isset($_POST['passwd']) && isset($_POST['cpasswd']) && ($_POST['passwd'] === $_POST['cpasswd'])) ? $_POST['passwd'] : null;
@@ -187,7 +188,7 @@
                 $stmt = $db->prepare($sql);
                 
                 $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':passwd', $passwd);
+                $stmt->bindParam(':passwd', password_hash($passwd, PASSWORD_DEFAULT));
                 $stmt->bindParam(':team_id', $team_id);
                 $stmt->bindParam(':participant_id', $participant_id);
 
@@ -241,8 +242,28 @@
 </body>
 
 <script>
-    function configNewTeam(){
+    function registrationOK(){
+        var x = document.getElementById('teamDetails');
+        x.style.display = "block";
 
+        document.getElementById('regbtn').style.display = "none";
+    }
+
+    function configNewTeam(){
+        var x = document.getElementById("configNewTeam");
+        var sel = document.getElementById("team");
+        if (sel.value === "create") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function teamOK(){
+        var x = document.getElementById('configureAccount');
+        x.style.display = "block";
+
+        document.getElementById('teambtn').style.display = "none";
     }
 </script>
 
