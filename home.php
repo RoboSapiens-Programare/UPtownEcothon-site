@@ -1,3 +1,14 @@
+<?php
+	session_start();
+
+	$displaylogin = true;
+	if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+		$welcomemsg = "Hi, " . $_SESSION['username'] . "!";
+		$displaylogin = false;
+	}
+	
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -57,8 +68,14 @@
 		</div> 
 
 		<div id="bottom">
-			<a href="registration.php">Registration</a>
-
+			<?php
+				if($displaylogin){
+					echo "You are not logged in. <a href='login.php'>Login</a> or <a href='registration.php'>Sign up</a>.";
+				}
+				else{
+					echo $welcomemsg . " <a href='logout.php'>Logout</a>";
+				}
+			?>
 		</div>
 
 
