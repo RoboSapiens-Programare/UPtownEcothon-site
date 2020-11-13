@@ -187,8 +187,10 @@
                 $sql = "INSERT INTO users (username, passwd, team_id, participant_id) VALUES (:username, :passwd, :team_id, :participant_id)";
                 $stmt = $db->prepare($sql);
                 
+                $password = password_hash($passwd, PASSWORD_DEFAULT);
+
                 $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':passwd', password_hash($passwd, PASSWORD_DEFAULT));
+                $stmt->bindParam(':passwd', $password);
                 $stmt->bindParam(':team_id', $team_id);
                 $stmt->bindParam(':participant_id', $participant_id);
 
