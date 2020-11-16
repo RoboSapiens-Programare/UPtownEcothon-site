@@ -1,0 +1,66 @@
+body {
+    margin: 0px;
+}
+
+.section {
+    width: 100vw;
+    height: 100vh;
+}
+
+.section .title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: 'Agency FB Bold', arial;
+    font-size: 7vw;
+
+    transform: translate(-50%, -50%);
+}
+
+.section .titlebtn {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    font-size: 3vw;
+    color: aliceblue;
+
+    border-radius: 15px;
+    border: solid aliceblue;
+
+    padding: 0.9vw;
+    
+    transform: translate(-50%, -50%);
+}
+
+.section .titlebtn:hover {
+    background-color: aliceblue;
+    color: black;
+    cursor: pointer;
+}
+
+.section .sliding {
+    position: absolute;
+    background-color: aliceblue;
+
+    z-index: 4;
+
+    font-family: 'Agency FB', arial;
+    font-size: 2vw;
+
+    width: 45vw;
+    height: 43vh;
+
+    padding: 1.6vw;
+}
+
+.scroller {
+    position: fixed;
+    right: 0px;
+    top: 50%;
+
+    transform: translate(-100%, -50%);
+}
+
+/* .scroller .link {
+
+} */
