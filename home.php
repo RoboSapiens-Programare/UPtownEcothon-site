@@ -25,43 +25,7 @@
 
 	<body style="background-color:#75667c">
     
-		<div class="meniu">
-			<div id="meniu-full" style="display:block;">
-				<div id="cerc-logo-full">
-					<div  id="logo-meniu-full" >
-						<div id="sageata-meniu-TOP" z-index="3">
-							<img src="pictures/1sageataUTE.png" alt="logo arrow" style="width: inherit; height:inherit">
-						</div>
-						<div id="town-TOP">
-							<img src="pictures/1townUTE.png" alt="logo town" style="width: inherit; height:inherit">
-						</div>
-						<div id="cothon-TOP">
-							<img src="pictures/1cothonUTE.png" alt="logo cothon" style="width: inherit; height:inherit">
-						</div>
-					</div>
-				</div>
-
-				<div class="cerc-text">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Descriere Eveniment</a></li>
-					<li><a href="#">Despre Noi</a></li>
-					<li><a href="#">Inscriere</a></li>
-					<li><a href="#">Informatii</a></li>
-					<li><a href="#">Got A Problem?</a></li>
-					<li><a href="#">Our Sponsors</a></li>
-				</div>
-
-			</div>
-		
-			<div id="meniu-scroll" style="display:none; position: fixed; z-index: 1;" >
-				<div id="cerc-sageata-scroll">
-					<div id="sageata-meniu-scroll" >
-						<img class="sageata" src="pictures/1sageataUTE.png" alt="logo arrow" style="height:100%; position:absolute; left: 15%">
-					</div>
-				</div>
-			</div>
-
-		</div>	
+		<?php include "elements/sageata.html"; ?>	
 
 		<div id="content1" class="row">
 			
