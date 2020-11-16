@@ -23,10 +23,10 @@
 
 	</head>
 
-	<body style="background-color:beige">
+	<body style="background-color:#75667c">
     
 		<div class="meniu">
-			<div id="meniu-full" id="meniu-full" style="display:block;">
+			<div id="meniu-full" style="display:block;">
 				<div id="cerc-logo-full">
 					<div  id="logo-meniu-full" >
 						<div id="sageata-meniu-TOP" z-index="3">
@@ -62,19 +62,6 @@
 			</div>
 
 		</div>	
-
-
-		<!-- <div class="row">
-			<div id="sageata" class="column" style="flex: 10%; background-color: #123123">
-				<div id="menu" class="meniu">Meniu
-					<a href="">Alta pagina</a>
-					<a href="#content2">Inca o pagina</a>
-				</div>
-			</div>
-		
-			<div id="banner" class="column" style="flex: 90%; background-color: #75B33E">Banner</div>
-
-		</div> -->
 
 		<div id="content1" class="row">
 			
