@@ -1,10 +1,7 @@
-.meniu-full {
+.meniu {
     position: fixed;
     top: 0vw;
     left: 0vw;
-    border: 0px solid red;
-    height: 15vw;
-    width: 21vw;
     z-index: 1;
 }
 
@@ -42,67 +39,6 @@
     z-index: inherit;
 }
 
-.cerc-text {
-    position: absolute;
-    top: -12.5vw;
-    left: -7.7vw;
-    height: 30vw;
-    width: 30vw;
-    background-color: #d222d2;
-    border-radius: 100%;
-    z-index: 1;
-}
-
-.cerc-text>* {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -3em;
-    width: 6em;
-    height: 6em;
-}
-
-.cerc-text a {
-    margin: -2vw;
-    border-radius: 100%;
-    -webkit-transition: .15s;
-    transition: .15s;
-    text-decoration: none;
-    color: #ffffff;
-    font-family: 'Courier New', Courier, monospace;
-    width: 5vw;
-    height: 5vw;
-    text-overflow: clip;
-    font-size: 80%;
-    text-align: center;
-    vertical-align: middle;
-    display: table-cell;
-}
-
-.cerc-text a:hover {
-    background-color: #9d49a1;
-}
-
-
-/* .cerc-text a {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 4vw;
-    height: 4vw;
-    margin: -2vw;
-    z-index: 3;
-} */
-
-.meniu-scroll {
-    position: fixed;
-    top: 0vw;
-    left: 0vw;
-    z-index: 1;
-}
-
 #cerc-sageata-scroll {
     position: absolute;
     top: 1vw;
@@ -124,6 +60,48 @@
     z-index: 6;
     /* border: 2px solid yellow; */
     background-color: transparent;
+}
+
+.cerc-text {
+    position: absolute;
+    top: -12.5vw;
+    left: -7.7vw;
+    height: 30vw;
+    width: 30vw;
+    background-color: #d222d2;
+    border-radius: 100%;
+    z-index: 1;
+}
+
+.cerc-text>* {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -6%;
+    width: 15%;
+    height: 10%;
+}
+
+.cerc-text a {
+    margin: -2vw;
+    border-radius: 100%;
+    -webkit-transition: .15s;
+    transition: .15s;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Agency FB Bold', arial;
+    width: 5vw;
+    height: 5vw;
+    text-overflow: clip;
+    font-size: 100%;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.cerc-text a:hover {
+    background-color: #9d49a1;
 }
 
 .cerc-text>*:nth-of-type(1) {
@@ -152,8 +130,8 @@
 }
 
 .cerc-text>*:nth-of-type(6) {
-    -webkit-transform: rotate(92deg) translate(14.5em) rotate(-92deg);
-    transform: rotate(92deg) translate(14.5em) rotate(-92deg);
+    -webkit-transform: rotate(90deg) translate(14.5em) rotate(-90deg);
+    transform: rotate(90deg) translate(14.5em) rotate(-90deg);
 }
 
 .cerc-text>*:nth-of-type(7) {

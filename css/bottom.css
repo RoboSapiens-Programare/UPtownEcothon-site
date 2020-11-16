@@ -17,6 +17,7 @@ p {
     text-align: left;
     font-size: 80%;
     font-family: 'Agency FB Bold', arial;
+    z-index: 2;
 }
 
 ul {
