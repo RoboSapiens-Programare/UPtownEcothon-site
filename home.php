@@ -16,11 +16,14 @@
 
 		  <link rel="stylesheet" type="text/css" href="css/slideup.css">
 		  <link rel="stylesheet" type="text/css" href="css/sageata.css">
+
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
 	</head>
 
 	<body style="background-color:beige">
-
-		<div class="meniu-full">
+    
+		<div class="meniu-full" id="meniu-full" style="display:block;">
 			<div id="cerc-meniu-full">
 				<div  id="logo-meniu-full" >
 					<div id="sageata-meniu-TOP" z-index="3">
@@ -35,11 +38,11 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="meniu-scroll">
+    
+		<div class="meniu-scroll" style="display:block; position: fixed; z-index: 1;" >
 			<div id="cerc-sageata-scroll">
-				<div id="sageata-meniu-scroll">
-					<img class="sageata" src="pictures/1sageataUTE.png" alt="logo arrow" style="height:100%">
+				<div id="sageata-meniu-scroll" >
+					<img class="sageata" src="pictures/1sageataUTE.png" alt="logo arrow" style="height:100%; position:absolute; left: 15%">
 				</div>
 			</div>
 		</div>
@@ -76,6 +79,22 @@
 					echo $welcomemsg . " <a href='logout.php'>Logout</a>";
 				}
 			?>
+		</div>
+
+		<div id="bottom-of-page" class="row">
+		
+			<div id="logouri" class="column" flex="60vw" height="30vw">
+				c
+			</div>
+
+			<div id="contact" class="column" flex="40vw" height="30vw">
+				<div id="cerc-contact"> b </div>
+				<!-- <p>
+					Contact <br> Pagini <br> Login <br> Chestii
+				</p> -->
+			</div>
+		
+		
 		</div>
 
 

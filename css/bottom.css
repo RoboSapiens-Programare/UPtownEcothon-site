@@ -1,0 +1,10 @@
+#cerc-contact {
+    position: relative;
+    height: 30vw;
+    width: 30vw;
+    bottom: 0vw;
+    right: 0vw;
+    border-radius: 100%;
+    background-color: blueviolet;
+    z-index: 1;
+}
