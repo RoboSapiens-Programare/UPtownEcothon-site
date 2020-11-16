@@ -13,9 +13,148 @@
         $phone = (isset($_POST['phone']) && !empty($_POST['phone'])) ? $_POST['phone'] : null;
         $position = (isset($_POST['position']) && !empty($_POST['position'])) ? $_POST['position'] : null;
         $experience = (isset($_POST['experience']) && !empty($_POST['experience'])) ? $_POST['experience'] : null;
+        $teamCreateName = (isset($_POST['teamcreatename']) && !empty($_POST)) ? $_POST['teamcreatename'] : null;
+        $teamName = (isset($_POST['teamname']) && !empty($_POST)) ? $_POST['teamname'] : null;
+
+        if($teamCreateName){
+            try{
+                $db = new SQLiDB();
+
+                $sql = "SELECT * FROM teams WHERE name = :name";
+                $stmt = $db->prepare($sql);
+
+                $stmt->bindParam(':name', $teamCreateName);
+                
+                $stmt->execute();
+
+                if($stmt->rowCount() > 0){
+                    $teamCreateName = null;
+                }
+
+                $db = null;
+                unset($db);
+            }
+            catch(PDOException $e){
+                $e->getMessage();
+            }
+        }
 
         $team_id = 1;
         $participant_id = null;
+        $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
+        $passwd = (isset($_POST['passwd']) && isset($_POST['cpasswd']) && ($_POST['passwd'] === $_POST['cpasswd'])) ? $_POST['passwd'] : null;
+
+        $hasTeam = null;
+        if(isset($_POST['hasteam'])){
+            if($hasTeam === "yes"){
+                $hasTeam = true;
+            }
+            else if(!empty($_POST['hasname'])){
+                $hasTeam = false;
+            }
+        }
+
+        ///Dis where the fun begins
+        try{
+            $db = new SQLiDB();
+
+            //Check to see if all fields are filled accordingly
+            if($firstname && $lastname && $email && $phone && $position && $experience && $username && $passwd && $hasTeam && ($hasTeam ? ($teamName && (is_numeric($teamName) ? true : $teamCreateName)) : true)){
+
+                //For participant registration
+
+                //Set a random ID for the participant
+                $participant_id = rand(1000, 9999);
+                
+                $sql = "INSERT INTO participants (id, firstname, lastname, email, phone, position, experience) VALUES (:participant_id, :firstname, :lastname, :email, :phone, :position, :experience)";
+                $stmt = $db->prepare($sql);
+
+                $stmt->bindParam(':participant_id', $participant_id);
+                $stmt->bindParam(':firstname', $firstname);
+                $stmt->bindParam(':lastname', $lastname);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':phone', $phone);
+                $stmt->bindParam(':position', $position);
+                $stmt->bindParam(':experience', $experience);
+
+                $stmt->execute();
+            
+
+                //For team details
+
+                //If the user has or wants to create a team
+                if($hasTeam){
+                    //If the user wants to create a new team
+                    if($teamName === "create"){
+                        $sql = "INSERT INTO teams (name) VALUES (:name)";
+                        $stmt = $db->prepare($sql);
+
+                        $stmt->bindParam(':name', $teamCreateName);
+
+                        $stmt->execute();
+
+                        $sql = "SELECT * FROM teams WHERE name = :name";
+                        $stmt = $db->prepare($sql);
+
+                        $stmt->bindParam(':name', $teamCreateName);
+
+                        $stmt->execute();
+
+                        if($stmt){
+                            $team_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+                        }
+                    }
+                    //Else if the team already exists, use its id
+                    else if(is_numeric($teamName)){
+                        $team_id = $teamName;
+                    }
+                }
+                else{
+                    $sql = "INSERT INTO teams (name) VALUES (:name)";
+                    $stmt = $db->prepare($sql);
+
+                    $personalTeamName = $firstname . $lastname . "'s Team";
+                    $stmt->bindParam(':name', $personalTeamName);
+
+                    $stmt->execute();
+
+                    $sql = "SELECT * FROM teams WHERE name = :name";
+                    $stmt = $db->prepare($sql);
+
+                    $stmt->bindParam(':name', $personalTeamName);
+
+                    $stmt->execute();
+
+                    if($stmt){
+                        $team_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+                    }
+                }
+
+                //For user configuration
+                
+                $sql = "INSERT INTO users (username, passwd, team_id, participant_id) VALUES (:username, :passwd, :team_id, :participant_id)";
+                $stmt = $db->prepare($sql);
+                
+                $password = password_hash($passwd, PASSWORD_DEFAULT);
+
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':passwd', $password);
+                $stmt->bindParam(':team_id', $team_id);
+                $stmt->bindParam(':participant_id', $participant_id);
+
+                $stmt->execute();
+            }
+            else{
+                echo "<br>Complete the fields accordingly then try again!<br>";
+            }
+
+            $db = null;
+            unset($db);
+
+        }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }  
     ?>
 
 
@@ -45,61 +184,42 @@
     
     <div id="teamDetails" style="display: none;" class="formelement">
         <h2>Team Details</h2>
-            <?php
-                $teamCreateName = (isset($_POST['teamcreatename']) && !empty($_POST)) ? $_POST['teamcreatename'] : null;
-                $teamName = (isset($_POST['teamname']) && !empty($_POST)) ? $_POST['teamname'] : null;
-
-                if($teamCreateName){
+            <label for="hasteam">Do you have a team?</label>
+            <select name="hasteam" id="hasteam" oninput="hasTeam();">
+                <option> - </option>
+                <option value="yes">Yes</option>
+                <option value="want">No, but I want to find a team</option>
+                <option value="no">No, and I am a lone wolf</option>
+            </select><br>
+            
+            <div id="team" style="display: none;">
+                <label for="team">Team</label>
+                <select id="team" name="teamname" oninput="configNewTeam();">
+                    <option>select team</option>
+                    <option value="create">new team...</option>
+                <?php
                     try{
                         $db = new SQLiDB();
-
-                        $sql = "SELECT * FROM teams WHERE name = :name";
+                        $sql = "SELECT * FROM teams";
                         $stmt = $db->prepare($sql);
-
-                        $stmt->bindParam(':name', $teamCreateName);
                         
                         $stmt->execute();
 
-                        if($stmt->rowCount() > 0){
-                            $teamCreateName = null;
+                        foreach($stmt as $row){
+                            echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
                         }
 
                         $db = null;
                         unset($db);
                     }
                     catch(PDOException $e){
-                        $e->getMessage();
+                        echo $e->getMessage();
                     }
-                }
-            ?>
 
-
-            <label for="team">Team</label>
-            <select id="team" name="teamname" oninput="configNewTeam();">
-                <option>select team</option>
-                <option value="create">new team...</option>
-            <?php
-                try{
-                    $db = new SQLiDB();
-                    $sql = "SELECT * FROM teams";
-                    $stmt = $db->prepare($sql);
                     
-                    $stmt->execute();
-
-                    foreach($stmt as $row){
-                        echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
-                    }
-
-                    $db = null;
-                    unset($db);
-                }
-                catch(PDOException $e){
-                    echo $e->getMessage();
-                }
-
-                
-            ?>
-            </select><br>
+                ?>
+                </select><br>
+            </div>
             <div id="configNewTeam" style="display: none;">
                 <label for="teamCreateName">Team Name</label>
                 <input type="text" id="teamCreateName" name="teamcreatename" value="<?php if($teamCreateName) echo "$teamCreateName"; ?>"><br>
@@ -108,11 +228,6 @@
     </div>
 
     <div id="configureAccount" style="display: none;" class="formelement">
-        <?php
-            $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
-            $passwd = (isset($_POST['passwd']) && isset($_POST['cpasswd']) && ($_POST['passwd'] === $_POST['cpasswd'])) ? $_POST['passwd'] : null;
-        ?>
-
         <h2>Configure Account</h2>
         
             <label for="username">Username</label>
@@ -123,91 +238,7 @@
             <input type="password" id="cpasswd" name="cpasswd"><br>
             <button type="submit">Submit</button>
         </form>
-
-        
-
     </div>
-
-    <?php
-        ///Dis where the fun begins
-        try{
-            $db = new SQLiDB();
-
-            //Check to see if all fields are filled accordingly
-            if($firstname && $lastname && $email && $phone && $position && $experience && $username && $passwd && $teamName && (is_numeric($teamName) ? true : $teamCreateName)){
-
-                //For participant registration
-
-                //Set a random ID for the participant
-                $participant_id = rand(1000, 9999);
-                
-                $sql = "INSERT INTO participants (id, firstname, lastname, email, phone, position, experience) VALUES (:participant_id, :firstname, :lastname, :email, :phone, :position, :experience)";
-                $stmt = $db->prepare($sql);
-
-                $stmt->bindParam(':participant_id', $participant_id);
-                $stmt->bindParam(':firstname', $firstname);
-                $stmt->bindParam(':lastname', $lastname);
-                $stmt->bindParam(':email', $email);
-                $stmt->bindParam(':phone', $phone);
-                $stmt->bindParam(':position', $position);
-                $stmt->bindParam(':experience', $experience);
-
-                $stmt->execute();
-            
-
-                //For team details
-
-                //If the user wants to create a new team
-                if($teamName === "create"){
-                    $sql = "INSERT INTO teams (name) VALUES (:name)";
-                    $stmt = $db->prepare($sql);
-
-                    $stmt->bindParam(':name', $teamCreateName);
-
-                    $stmt->execute();
-
-                    $sql = "SELECT * FROM teams WHERE name = :name";
-                    $stmt = $db->prepare($sql);
-
-                    $stmt->bindParam(':name', $teamCreateName);
-
-                    $stmt->execute();
-
-                    if($stmt){
-                        $team_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
-                    }
-                }
-                //Else if the team already exists, use its id
-                else if(is_numeric($teamName)){
-                    $team_id = $teamName;
-                }
-
-                //For user configuration
-                
-                $sql = "INSERT INTO users (username, passwd, team_id, participant_id) VALUES (:username, :passwd, :team_id, :participant_id)";
-                $stmt = $db->prepare($sql);
-                
-                $password = password_hash($passwd, PASSWORD_DEFAULT);
-
-                $stmt->bindParam(':username', $username);
-                $stmt->bindParam(':passwd', $password);
-                $stmt->bindParam(':team_id', $team_id);
-                $stmt->bindParam(':participant_id', $participant_id);
-
-                $stmt->execute();
-            }
-            else{
-                echo "<br>Complete the fields accordingly then try again!<br>";
-            }
-
-        $db = null;
-        unset($db);
-
-        }
-        catch(PDOException $e){
-            echo $e->getMessage();
-        }  
-    ?>
 
     <div id="debug">
         <h2>Debug</h2>
@@ -249,6 +280,16 @@
         x.style.display = "block";
 
         document.getElementById('regbtn').style.display = "none";
+    }
+
+    function hasTeam(){
+        var x = document.getElementById("team");
+        var sel = document.getElementById("hasteam");
+        if (sel.value === "yes") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
     }
 
     function configNewTeam(){
