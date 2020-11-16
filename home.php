@@ -23,7 +23,7 @@
 
 	</head>
 
-	<body style="background-color:#75667c">
+	<body style="background-color:#75667c; margin:0px">
     
 		<?php include "elements/sageata.html"; ?>	
 
@@ -49,10 +49,21 @@
 			?>
 		</div>
 
-		<div id="bottom-of-page" class="row" style="overflow:hidden;">
+		<div id="bottom-of-page" style="overflow:hidden; background-color:#ffffff;">
+
+			<div id="rotunjit-colturi" style="overflow:hidden;"></div>
 		
-			<div id="logouri" class="column" style="overflow:hidden; flex:70%; height:30vw">
-				<ul style="display: inline;">
+		
+			<div id="hrefuri" style="position: relative; height:5vh; flex:100%; margin-top:2%;background-color:#ffffff;">
+				<ul style="position: absolute; background-color:#ffffff">
+					<li><a href="#">insta</a></li>
+					<li><a href="#">facebook</a></li>
+					<li><a href="#">contact</a></li>
+				</ul>
+			</div>
+
+			<div id="logouri" style="position: relative; height:20vh; flex:100%; margin-top:2%;background-color:#ffffff;">
+				<ul>
 					<li style="border-right: 3px solid black;">
 						<img src="pictures/logo v3.png" alt="logo robosabiens" style="padding-right: 0px;">	
 						<img src="pictures/robosapiens copy usa.png" alt="text robosapiens" style="padding-left: 0px;">
@@ -61,17 +72,23 @@
 				</ul>
 			</div>
 
-			<div id="contact" class="column" style="overflow:hidden; flex:40%; height:30vw">
-				<div id="cerc-contact" ></div>
+			<!-- <div id="logouri" style="overflow:hidden; flex:100%;border:2px solid black; height:30vh; z-index:2"> -->
+				<!-- <div style="position: absolute; height:50%;">
+					<ul style="position: absolute; ">
+					<li>insta</li>
+					<li>facebook</li>
+					<li>contact</li>
+					</ul>
+				</div> -->
+				<!-- <ul>
+					<li style="border-right: 3px solid black;">
+						<img src="pictures/logo v3.png" alt="logo robosabiens" style="padding-right: 0px;">	
+						<img src="pictures/robosapiens copy usa.png" alt="text robosapiens" style="padding-left: 0px;">
+					</li>
+					<li><img src="pictures/logo-header-web.png" alt="FTC/Natie prin educatie/BRD" style="padding-left:1vw; border-right: none;"></li>
+				</ul> -->
+			<!-- </div> -->
 
-				<div>
-					<p>
-						Contact <br> Pagini <br> Login <br> Chestii
-					</p>
-				</div>
-				
-				
-			</div>
 		
 		
 		</div>
