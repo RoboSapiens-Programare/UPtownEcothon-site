@@ -20,18 +20,57 @@ p {
     z-index: 2;
 }
 
-ul {
+#logouri ul {
     list-style: none;
     display: inline;
     position: absolute;
-    bottom: 0%;
+    z-index: 0;
+    border: 0px solid red;
 }
 
-ul li {
+#hrefuri ul {
+    list-style: none;
+    display: inline;
+    position: absolute;
+    z-index: 0;
+    border: 0px solid red;
+}
+
+#hrefuri li {
     display: inline-block;
     padding: 2px;
+    z-index: inherit;
+    margin: 2vw;
+}
+
+#logouri li {
+    display: inline-block;
+    padding: 2px;
+    z-index: inherit;
+    margin: 2vw;
+}
+
+#hrefuri li a {
+    font-family: 'Agency FB Bold', arial;
+    font-size: 1.5vw;
+    text-decoration: none;
+    color: black;
+}
+
+#hrefuri li a:hover {
+    color: #d222d2;
 }
 
 li img {
     height: 5vw;
+    z-index: inherit;
+}
+
+#rotunjit-colturi {
+    position: relative;
+    flex: 80%;
+    height: 20vh;
+    background-color: #75667c;
+    border-radius: 0% 0% 50% 50%;
+    box-shadow: 1vh 1vh 3vh #000000;
 }
