@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    overflow-x: hidden;
 }
 
 .section {
@@ -8,12 +9,12 @@ body {
 }
 
 .section .title{
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     font-family: 'Agency FB Bold', arial;
     font-size: 7vw;
-    color: darkgrey;
+    color:aliceblue;
 
     transform: translate(-50%, -50%);
 }
