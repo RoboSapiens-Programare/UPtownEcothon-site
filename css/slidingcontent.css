@@ -13,6 +13,7 @@ body {
     left: 50%;
     font-family: 'Agency FB Bold', arial;
     font-size: 7vw;
+    color: darkgrey;
 
     transform: translate(-50%, -50%);
 }
