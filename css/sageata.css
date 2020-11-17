@@ -91,6 +91,7 @@
     width: 5vw;
     height: 5vw;
     text-overflow: clip;
+    list-style-type: none;
     /* text-align: center;
     vertical-align: middle; */
 }
@@ -104,13 +105,13 @@
     text-decoration: none;
     color: #ffffff;
     font-family: 'Agency FB Bold', arial;
+    font-size: 1vw;
+    vertical-align: middle;
+    text-align: center;
+    display: list-item;
     /* width: 5vw;
     height: 5vw;
     text-overflow: clip; */
-    font-size: 1vw;
-    box-align: middle;
-    text-align: center;
-    display: table-cell;
 }
 
 .cerc-text li:hover {
@@ -148,8 +149,8 @@
 }
 
 .cerc-text>*:nth-of-type(7) {
-    -webkit-transform: rotate(114deg) translate(235%) rotate(-114deg);
-    transform: rotate(114deg) translate(235%) rotate(-114deg)
+    -webkit-transform: rotate(114deg) translate(238%) rotate(-114deg);
+    transform: rotate(114deg) translate(238%) rotate(-114deg)
 }
 
 

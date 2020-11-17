@@ -1,51 +1,24 @@
-#cerc-contact {
-    position: absolute;
-    height: 35vw;
-    width: 35vw;
-    bottom: -10vw;
-    right: -5vw;
-    border-radius: 100%;
-    background-color: #d222d2;
-    z-index: 1;
-}
-
-p {
-    color: white;
-    padding-left: 5vw;
-    padding-top: 10vw;
-    vertical-align: middle;
-    text-align: left;
-    font-size: 80%;
-    font-family: 'Agency FB Bold', arial;
-    z-index: 2;
-}
-
-#logouri ul {
-    list-style: none;
-    display: inline;
-    position: absolute;
-    z-index: 0;
-    border: 0px solid red;
+#hrefuri {
+    position: relative;
+    display: flex;
+    height: 5vh;
+    flex: 100%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    background-color: transparent;
 }
 
 #hrefuri ul {
     list-style: none;
-    display: inline;
     position: absolute;
-    z-index: 0;
+    /* display: inline; */
+    z-index: 1;
     border: 0px solid red;
 }
 
 #hrefuri li {
-    display: inline-block;
-    padding: 2px;
-    z-index: inherit;
-    margin: 2vw;
-}
-
-#logouri li {
-    display: inline-block;
-    padding: 2px;
+    display: inline;
+    /* padding: 2vw; */
     z-index: inherit;
     margin: 2vw;
 }
@@ -61,8 +34,37 @@ p {
     color: #d222d2;
 }
 
-li img {
-    height: 5vw;
+#logouri {
+    position: relative;
+    display: flex;
+    height: 20vh;
+    flex: 100%;
+    margin-top: 5vh;
+    background-color: #ffffff;
+    border: 1px solid red;
+}
+
+#logouri ul {
+    list-style: none;
+    /* display: inline; */
+    position: absolute;
+    height: 100%;
+    padding: 2vh;
+    z-index: 0;
+    border: 1px solid red;
+}
+
+#logouri li {
+    display: inline-block;
+    padding: 2vw;
+    z-index: inherit;
+    margin: 2vw;
+}
+
+#logouri li img {
+    position: absolute;
+    display: inline;
+    height: 100%;
     z-index: inherit;
 }
 
