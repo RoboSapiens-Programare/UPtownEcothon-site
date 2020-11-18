@@ -35,7 +35,7 @@
 
 #hrefuri li a {
     font-family: 'Agency FB Bold', arial;
-    font-size: 3vh;
+    font-size: 1.5vw;
     text-decoration: none;
     color: black;
 }
@@ -49,8 +49,8 @@
     display: flex;
     flex: 100%;
     margin-top: 1vh;
-    margin-bottom: 2vh;
-    height: 8.4vh;
+    margin-bottom: 3vh;
+    height: 5vw;
     padding: none;
     background-color: transparent;
     border: 0px solid blue;
@@ -58,6 +58,7 @@
 }
 
 #logouri ul {
+    height: inherit;
     list-style: none;
     position: absolute;
     z-index: inherit;
@@ -65,13 +66,19 @@
 }
 
 #logouri ul li {
+    height: inherit;
     display: inline;
-    padding-left: 1vw;
-    padding-right: 1vw;
 }
 
-#logouri ul li img {
+#logouri ul li div {
+    display: inline-block;
     position: relative;
-    height: 8vh;
+    height: inherit;
+    border: 2px solid green;
+}
+
+#logouri ul li div img {
+    position: relative;
+    height: inherit;
     margin: 0.2vw;
 }
