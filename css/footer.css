@@ -74,7 +74,7 @@
     display: inline-block;
     position: relative;
     height: inherit;
-    border: 2px solid green;
+    border: 0px solid green;
 }
 
 #logouri ul li div img {
