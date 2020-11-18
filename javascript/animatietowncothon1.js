@@ -3,26 +3,26 @@ var imgObj2 = null;
 var animate ;
 
 function init() {
-   imgObj = document.getElementById('myImage');
+   imgObj = document.getElementById('town-TOP');
    imgObj.style.position= 'relative'; 
-   imgObj.style.left = '300px';
-   imgObj.style.right = '300px';
-   imgObj2 = document.getElementById('myOtherImage');
+   imgObj.style.left = '20px';
+   imgObj.style.right = '20px';
+   imgObj2 = document.getElementById('cothon-TOP');
    imgObj2.style.position= 'relative'; 
-   imgObj2.style.left = '300px';
-   imgObj2.style.right = '300px';  
+   imgObj2.style.left = '20px';
+   imgObj2.style.right = '20px';  
 }
 function moveRight() {
-   imgObj.style.left = parseInt(imgObj.style.left) - 10 + 'px';
-   animate = setTimeout(moveRight,70);
-   imgObj2.style.left = parseInt(imgObj2.style.left) - 10 + 'px';
-   animate = setTimeout(moveRight,70);
+   imgObj.style.left = parseInt(imgObj.style.left) - 60 + 'px';
+   animate = setTimeout(moveRight,500);
+   imgObj2.style.left = parseInt(imgObj2.style.left) - 60 + 'px';
+   animate = setTimeout(moveRight,500);
 }
 function moveLeft() {
-   imgObj.style.right = parseInt(imgObj.style.right) + 10 + 'px';
-   animate = setTimeout(moveLeft,70);
-   imgObj2.style.right = parseInt(imgObj2.style.right) + 10 + 'px';
-   animate = setTimeout(moveLeft,70);
+   imgObj.style.right = parseInt(imgObj.style.right) + 60 + 'px';
+   animate = setTimeout(moveLeft,500);
+   imgObj2.style.right = parseInt(imgObj2.style.right) + 60 + 'px';
+   animate = setTimeout(moveLeft,500);
 }
 function stop() {
    clearTimeout(animate);
@@ -32,14 +32,14 @@ function stop() {
             
 window.onload = init;
 
-window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    document.getElementById("myImage", "myOtherImage").innerHTML = moveRight(); 
+window.onscroll = function() {scroll1Function(); scroll2Function};
+function scroll1Function() {
+  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
+    document.getElementsByClassName("town-TOP", "cothon-TOP").innerHTML = moveRight(); 
   } else {
-    document.getElementById("myImage", "myOtherImage").innerHTML = moveLeft();
+    document.getElementsByClassName("town-TOP", "cothon-TOP").innerHTML = stop();
   }
-  //if (document.body.scrollHeight < 1000 || document.documentElement.scrollHeight < 1000) {}
-
-  
+}
+function scroll2Function() {
+  document.getElementsByClassName("town-TOP", "cothon-TOP");
 }
