@@ -1,0 +1,42 @@
+body {
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.bigcontent {
+    top: 50%;
+    right: 6%;
+    position: absolute;
+
+    transform: translateY(-50%);
+
+    width: 40vw;
+    height: 40vw;
+    background-color: peachpuff;
+}
+
+.bigcontent .title {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    font-family: 'Agency FB Bold', arial;
+    font-size: 5vw;
+    color:rgb(156, 132, 223);
+    width: 75%;
+
+    transform: translate(-50%, -50%);
+}
+
+.smallcontent {
+    position: absolute;
+    left: 33%;
+
+    transform: translateX(-50%);
+
+    width: 20vw;
+    height: 25vh;
+
+    background-color: rgb(156, 132, 223);
+
+}
