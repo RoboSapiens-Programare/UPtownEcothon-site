@@ -2,7 +2,7 @@
     position: fixed;
     top: 0vw;
     left: 0vw;
-    z-index: 1;
+    z-index: 2;
 }
 
 #cerc-logo-full {
@@ -13,7 +13,7 @@
     width: 20vw;
     background-color: #ffffff;
     border-radius: 100%;
-    z-index: 2;
+    z-index: 3;
 }
 
 #logo-meniu-full {
@@ -47,7 +47,7 @@
     width: 5vw;
     background-color: #ffffff;
     border-radius: 100%;
-    z-index: 5;
+    z-index: 3;
     box-shadow: 1px 0.5px 3px #272727;
 }
 
@@ -57,7 +57,7 @@
     left: 0vw;
     height: 100%;
     width: 100%;
-    z-index: 6;
+    z-index: 4;
     /* border: 2px solid yellow; */
     background-color: transparent;
 }
@@ -70,7 +70,7 @@
     width: 30vw;
     background-color: #d222d2;
     border-radius: 100%;
-    z-index: 1;
+    z-index: 2;
 }
 
 .cerc-text>* {
@@ -92,15 +92,9 @@
     height: 5vw;
     text-overflow: clip;
     list-style-type: none;
-    /* text-align: center;
-    vertical-align: middle; */
 }
 
 .cerc-text li a {
-    /* margin: -2vw;
-    border-radius: 100%;
-    -webkit-transition: .15s;
-    transition: .15s;*/
     position: absolute;
     text-decoration: none;
     color: #ffffff;
@@ -112,9 +106,6 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    /* width: 5vw;
-    height: 5vw;
-    text-overflow: clip; */
 }
 
 .cerc-text li:hover {
@@ -122,38 +113,38 @@
 }
 
 .cerc-text>*:nth-of-type(1) {
-    -webkit-transform: rotate(-4deg) translate(235%) rotate(4deg);
-    transform: rotate(-4deg) translate(235%) rotate(4deg);
+    -webkit-transform: rotate(-5deg) translate(235%) rotate(5deg);
+    transform: rotate(-5deg) translate(235%) rotate(5deg);
 }
 
 .cerc-text>*:nth-of-type(2) {
-    -webkit-transform: rotate(13deg) translate(235%) rotate(-13deg);
-    transform: rotate(13deg) translate(235%) rotate(-13deg);
+    -webkit-transform: rotate(12deg) translate(235%) rotate(-12deg);
+    transform: rotate(12deg) translate(235%) rotate(-12deg);
 }
 
 .cerc-text>*:nth-of-type(3) {
-    -webkit-transform: rotate(30deg) translate(235%) rotate(-30deg);
-    transform: rotate(30deg) translate(235%) rotate(-30deg);
+    -webkit-transform: rotate(32deg) translate(235%) rotate(-32deg);
+    transform: rotate(32deg) translate(235%) rotate(-32deg);
 }
 
 .cerc-text>*:nth-of-type(4) {
-    -webkit-transform: rotate(48deg) translate(235%) rotate(-48deg);
-    transform: rotate(48deg) translate(235%) rotate(-48deg);
+    -webkit-transform: rotate(50deg) translate(235%) rotate(-50deg);
+    transform: rotate(50deg) translate(235%) rotate(-50deg);
 }
 
 .cerc-text>*:nth-of-type(5) {
-    -webkit-transform: rotate(67deg) translate(235%) rotate(-67deg);
-    transform: rotate(67deg) translate(235%) rotate(-67deg);
+    -webkit-transform: rotate(70deg) translate(235%) rotate(-70deg);
+    transform: rotate(70deg) translate(235%) rotate(-70deg);
 }
 
 .cerc-text>*:nth-of-type(6) {
-    -webkit-transform: rotate(90deg) translate(235%) rotate(-90deg);
-    transform: rotate(90deg) translate(235%) rotate(-90deg);
+    -webkit-transform: rotate(92deg) translate(235%) rotate(-92deg);
+    transform: rotate(92deg) translate(235%) rotate(-92deg);
 }
 
 .cerc-text>*:nth-of-type(7) {
-    -webkit-transform: rotate(114deg) translate(238%) rotate(-114deg);
-    transform: rotate(114deg) translate(238%) rotate(-114deg)
+    -webkit-transform: rotate(116deg) translate(238%) rotate(-116deg);
+    transform: rotate(116deg) translate(238%) rotate(-116deg)
 }
 
 
