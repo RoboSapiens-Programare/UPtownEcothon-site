@@ -16,18 +16,40 @@ body {
     background-color: peachpuff;
 }
 
-.bigcontent .title {
+.bigcontent .btitle, .smallcontent .title {
     position: absolute;
-    top: 10%;
+    font-family: 'Agency FB Bold', arial;
+}
+
+.bigcontent .bcontent, .smallcontent .content {
+    position: absolute;
     left: 50%;
     font-family: 'Agency FB Bold', arial;
+    text-align: justify;
+    color:white;
+    width: 90%;
+
+    transform: translateX(-50%);
+}
+
+.bigcontent .btitle {
+    top: 10%;
+    left: 50%;
+    width: 75%;
     font-size: 5vw;
     color:rgb(156, 132, 223);
-    width: 75%;
 
     transform: translate(-50%, -50%);
 }
 
+.bigcontent .bcontent {
+    top: 20%;
+
+    font-size: 1.7vw;
+}
+
+
+/* Twisty stuff are here */
 .smallcontent {
     position: absolute;
     left: 33%;
@@ -37,6 +59,56 @@ body {
     width: 20vw;
     height: 25vh;
 
-    background-color: rgb(156, 132, 223);
+    /* perspective: 1000px; */
+}
 
+.smallcontent-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.smallcontent:hover .smallcontent-inner {
+    transform: rotateY(180deg);
+}
+
+.smallcontent .title-card, .smallcontent .content-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    backface-visibility: hidden;
+}
+
+.smallcontent .title-card{
+    background-color: rgb(156, 132, 223);
+}
+
+.smallcontent .title{
+    top: 50%;
+    left: 50%;
+    width: 75%;
+    font-size: 3.6vw;
+    text-align: center;
+
+    color: white;
+
+    transform: translate(-50%, -50%);
+}
+
+.smallcontent .content-card {
+    background-color: white;
+    border: 1px solid rgb(156, 132, 223);
+
+    transform: rotateY(180deg)
+}
+
+.smallcontent .content {
+    top: 10%;
+    font-size: 1vw;
+    color: rgb(156, 132, 223);
 }

@@ -32,23 +32,60 @@
         </div>
 
         <div id="bigcontent" class="bigcontent">
-            <div id="bigtitle" class="title">Descriere Echipa</div>
+            <div id="bigtitle" class="btitle"></div>
+            <div id="bcontent" class="bcontent"></div>
         </div>
 
+        
         <div id="smallcontent1" class="smallcontent" style="top: 10%;">
-
+            <div class="smallcontent-inner">
+                <div class="title-card">
+                    <div class="title">Salut</div>
+                </div>
+                <div class="content-card">
+                    <div class="content">aa</div>
+                </div>
+            </div>
         </div>
 
         <div id="smallcontent2" class="smallcontent" style="top: 37.5%;">
-
+            <div class="smallcontent-inner">
+                <div class="title-card">
+                    <div class="title">Salut</div>
+                </div>
+                <div class="content-card">
+                    <div class="content">aa</div>
+                </div>
+            </div>
         </div>
 
         <div id="smallcontent3" class="smallcontent" style="bottom: 10%;">
-
+            <div class="smallcontent-inner">
+                <div class="title-card">
+                    <div class="title">Salut</div>
+                </div>
+                <div class="content-card">
+                    <div class="content">aa</div>
+                </div>
+            </div>
         </div>
 
         <script>
-            //document.getElementById("bigcontent").innerHTML = content[0]['Descriere Echipa'];
+            var i_content = 0;
+            var bigtitle = document.getElementById('bigtitle');
+            var bigcontent = document.getElementById('bcontent');
+            bigtitle.innerHTML = content[i_content]['title'];
+            bigcontent.innerHTML = content[i_content]['content'];
+
+            var smalltitles = document.getElementsByClassName('title');
+            for(let i = 0; i < smalltitles.length; i++){
+                smalltitles[i].innerHTML = content[i]['title'];
+            }
+
+            var smallcontents = document.getElementsByClassName('content');
+            for(let i = 0; i < smalltitles.length; i++){
+                smallcontents[i].innerHTML = content[i]['content'];
+            }
         </script>
     </body>
 </html>
