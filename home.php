@@ -17,6 +17,7 @@
 		  <link rel="stylesheet" type="text/css" href="css/slideup.css">
 		  <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		  <link rel="stylesheet" type="text/css" href="css/footer.css">
+		  <link rel="stylesheet" type="text/css" href="css/header.css">
 
 		  <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
 		  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -26,6 +27,7 @@
 	<body style="background-color:#75667c; margin:0px">
     
 		<?php include "elements/sageata.html"; ?>	
+
 
 		<div id="content1" class="row">
 			
@@ -49,6 +51,7 @@
 			?>
 		</div>
 
+		<div style="background-color: white;"><div id="rotunjit-colturi" style="overflow:hidden;"></div></div>
 		<?php include "elements/footer.html"; ?>	
 
 	</body>
