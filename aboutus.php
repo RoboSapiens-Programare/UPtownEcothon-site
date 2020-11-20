@@ -44,6 +44,7 @@
                 </div>
                 <div class="content-card">
                     <div class="content">aa</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);">Expand</div>
                 </div>
             </div>
         </div>
@@ -55,6 +56,7 @@
                 </div>
                 <div class="content-card">
                     <div class="content">aa</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);">Expand</div>
                 </div>
             </div>
         </div>
@@ -66,6 +68,7 @@
                 </div>
                 <div class="content-card">
                     <div class="content">aa</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);">Expand</div>
                 </div>
             </div>
         </div>
@@ -84,7 +87,7 @@
 
             var smallcontents = document.getElementsByClassName('content');
             for(let i = 0; i < smalltitles.length; i++){
-                smallcontents[i].innerHTML = content[i]['content'];
+                smallcontents[i].innerHTML = content[i]['short-description'];
             }
         </script>
     </body>

@@ -16,7 +16,7 @@ body {
     background-color: peachpuff;
 }
 
-.bigcontent .btitle, .smallcontent .title {
+.bigcontent .btitle, .smallcontent .title, .expand-button {
     position: absolute;
     font-family: 'Agency FB Bold', arial;
 }
@@ -74,6 +74,7 @@ body {
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .smallcontent:hover .smallcontent-inner {
     transform: rotateY(180deg);
+    cursor: pointer;
 }
 
 .smallcontent .title-card, .smallcontent .content-card {
@@ -111,4 +112,24 @@ body {
     top: 10%;
     font-size: 1vw;
     color: rgb(156, 132, 223);
+}
+
+.expand-button {
+    width: 8vw;
+    height: 4vh;
+
+    font-size: 1.7vw;
+
+    color: rgb(156, 132, 223);
+
+    border: 2px solid rgb(156, 132, 223);
+    border-radius: 3px;
+}
+
+.expand-button:hover {
+    cursor: pointer;
+
+    color: peachpuff;
+    background-color: rgb(156, 132, 223);
+
 }
