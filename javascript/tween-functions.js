@@ -246,4 +246,4 @@ var tweenFunctions = {
   }
 };
 
-module.exports = tweenFunctions;
+//module.exports = tweenFunctions;
