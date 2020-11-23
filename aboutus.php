@@ -1,3 +1,13 @@
+<?php
+	session_start();
+
+	$displaylogin = true;
+	if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+		$welcomemsg = "Hi, " . $_SESSION['username'] . "!";
+		$displaylogin = false;
+	}
+	
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,7 +34,7 @@
         </script>
     </head>
     <body>
-        <?php include "elements/sageata.html" ?>
+        <?php include "elements/sageata.php" ?>
 
         <div style="display: flex; width:100vw; height: 100vh">
             <div style="height:100vh; flex: 33.3%; background-color:peachpuff;"></div>

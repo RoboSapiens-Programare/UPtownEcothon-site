@@ -24,9 +24,9 @@
 
 	</head>
 
-	<body style="background-color:#75667c; margin:0px">
+	<body style="background-color:#75667c; margin:0px;">
     
-		<?php include "elements/sageata.html"; ?>	
+		<?php include "elements/sageata.php"; ?>	
 
 
 		<div id="content1" class="row">

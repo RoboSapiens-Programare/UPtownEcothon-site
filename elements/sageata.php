@@ -48,3 +48,38 @@
         </div>
     </div>
 </div>
+
+<div id="language">
+    <ul>
+        <li style="border-right: 0.2vw solid white;">
+            <a href="#">
+                ro
+            </a>
+        </li>
+        <li style="padding-left: 0.4vw;">
+            <a href="#">
+                en
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div id="login" style="position: fixed; top: 1vw;
+left: 0vw;
+height: 10vw;
+width: 35vw;
+padding: 0%;
+background-color: white;
+border-radius: 20px;
+z-index: 1;">
+    <?php
+    if($displaylogin){
+        include "elements/singin.html";
+        // echo "You are not logged in. <a href='login.php'>Login</a> or <a href='registration.php'>Sign up</a>.";
+    }
+    else{
+        include "elements/signout.php";
+        // echo $welcomemsg . " <a href='logout.php'>Logout</a>";
+    }
+    ?>
+</div>
