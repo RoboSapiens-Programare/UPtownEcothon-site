@@ -5,7 +5,7 @@
  * @param {HTMLElement} element
  * @returns {Object}
  */
-function getTranslateValues (element) {
+function getTranslateValues(element) {
     const style = window.getComputedStyle(element)
     const matrix = style['transform'] || style.webkitTransform || style.mozTransform
 
@@ -46,16 +46,16 @@ function getTranslateValues (element) {
 
 //elem - element to modify; func - function to change by; duration - total duration of transition;
 var transitions = {
-    slide2DPercentageParent: function(elem, func, duration, toX, toY){
+    slide2DPercentageParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
 
         var fromX = parseInt(elem.style.left) || 0;
         var fromY = parseInt(elem.style.top) || 0;
 
         //Maybe they are not set as element properties
-        if(!fromX || !fromY){
-            fromX = (elem.offsetLeft/elem.parentElement.clientWidth)*100;
-            fromY = (elem.offsetTop/elem.parentElement.clientHeight)*100;
+        if (!fromX || !fromY) {
+            fromX = (elem.offsetLeft / elem.parentElement.clientWidth) * 100;
+            fromY = (elem.offsetTop / elem.parentElement.clientHeight) * 100;
         }
 
         function tick() {
@@ -70,20 +70,20 @@ var transitions = {
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
             }
-            
+
         }
 
         requestAnimationFrame(tick);
     },
 
     //toX/toY - final coordinates
-    slide2DAbsoluteParent: function(elem, func, duration, toX, toY){
+    slide2DAbsoluteParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
         var fromX = parseFloat(getTranslateValues(elem).x) || 0;
         var fromY = parseFloat(getTranslateValues(elem).y) || 0;
 
-        toX = (toX/100) * elem.parentElement.clientWidth - elem.offsetLeft;
-        toY = (toY/100) * elem.parentElement.clientHeight - elem.offsetTop;
+        toX = (toX / 100) * elem.parentElement.clientWidth - elem.offsetLeft;
+        toY = (toY / 100) * elem.parentElement.clientHeight - elem.offsetTop;
 
 
         //alert(toX + ", " + toY);
@@ -103,13 +103,13 @@ var transitions = {
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
             }
-            
+
         }
 
         requestAnimationFrame(tick);
     },
 
-    fadeIn: function(elem, func, duration){
+    fadeIn: function(elem, func, duration) {
         let start = Date.now();
 
         var from = parseFloat(elem.style.opacity) || 0;
@@ -156,12 +156,23 @@ var transitions = {
 
         var from = parseFloat(elem.style.scale) || 1.0;
 
+        var margin_x = ((elem.clientWidth * to) - elem.clientWidth) / 2 || 0;
+        var margin_y = ((elem.clientHeight * to) - elem.clientHeight) / 2 || 0;
+
         function tick() {
             let now = Date.now();
             let elapsed = now - start;
             let val = func(elapsed, from, to, duration);
+            let mx = func(elapsed, 0, margin_x, duration);
+            let my = func(elapsed, 0, margin_y, duration);
 
             elem.style.scale = val;
+
+            elem.style.marginTop = my + 'px';
+            elem.style.marginBottom = my + 'px';
+
+            elem.style.marginLeft = mx + 'px';
+            elem.style.marginRight = mx + 'px';
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
@@ -172,9 +183,32 @@ var transitions = {
     },
 
     scale2D: function(elem, func, toX, toY, duration) {
-        
+
+    },
+
+    resize2DViewport: function(elem, func, toWidth, toHeight, duration) {
+        let start = Date.now();
+
+        var fromWidth = parseFloat(elem.style.width) || 0;
+        var fromHeight = parseFloat(elem.style.height) || 0;
+
+        function tick() {
+            let now = Date.now();
+            let elapsed = now - start;
+            let width = func(elapsed, fromWidth, toWidth, duration);
+            let height = func(elapsed, fromHeight, toHeight, duration);
+
+            elem.style.width = width + 'vw';
+            elem.style.height = height + 'vh';
+
+            if (elapsed < duration) {
+                requestAnimationFrame(tick);
+            }
+        }
+
+        requestAnimationFrame(tick);
     }
-  
+
 };
 
 //module.exports = transitions;

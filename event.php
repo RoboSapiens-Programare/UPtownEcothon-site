@@ -1,13 +1,4 @@
-<?php
-	session_start();
 
-	$displaylogin = true;
-	if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-		$welcomemsg = "Hi, " . $_SESSION['username'] . "!";
-		$displaylogin = false;
-	}
-	
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +16,7 @@
     </head>
     
     <body>
-        <?php include "elements/sageata.php" ?>
+        <?php include "elements/sageata.html" ?>
 
         <div id="scroller" class="scroller">
             <div id="link1" class="link">

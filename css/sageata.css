@@ -2,14 +2,14 @@
     position: fixed;
     top: 0vw;
     left: 0vw;
-    z-index: 2;
+    z-index: 102;
 }
 
 .cerc {
     position: absolute;
     background-color: #ffffff;
     border-radius: 100%;
-    z-index: 3;
+    z-index: 103;
 }
 
 
@@ -35,7 +35,7 @@
     /* background-color: green; */
     border: 0.3vw solid #d222d2;
     border-radius: 50%;
-    z-index: 1;
+    z-index: 101;
     /* -webkit-filter: invert(100%);
     filter: invert(100%); */
     /* mix-blend-mode: difference; */
@@ -58,7 +58,7 @@
     left: 0vw;
     height: 100%;
     width: 100%;
-    z-index: 4;
+    z-index: 104;
     /* border: 2px solid yellow; */
     /* background-blend-mode: darken; */
     /* mix-blend-mode: normal; */
@@ -81,7 +81,7 @@
     margin-top: 1vw;
     margin-left: 0px;
     background-color: transparent;
-    z-index: 3;
+    z-index: 103;
     width: 76%;
     height: 38%;
 }
@@ -119,7 +119,7 @@
     width: 30vw;
     background-color: #d222d2;
     border-radius: 100%;
-    z-index: 2;
+    z-index: 102;
 }
 
 .cerc-text>* {
@@ -244,7 +244,7 @@
     height: 4vh;
     background-color: transparent;
     mix-blend-mode: difference;
-    z-index: 4;
+    z-index: 104;
 }
 
 #language li {
@@ -276,7 +276,7 @@
     padding: 0%;
     background-color: white;
     border-radius: 20px;
-    z-index: 1;
+    z-index: 101;
 }
 
 .sign-in-out {

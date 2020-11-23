@@ -1,0 +1,72 @@
+.rectangle-content {
+    position: absolute;
+    background-color: aliceblue;
+    font-family: 'Agency FB Bold', arial;
+    font-size: 1vw;
+    color: black;
+    border-radius: 0.8vw;
+    width: 0px;
+    height: 0px;
+    z-index: 1;
+    overflow-y: visible;
+    text-overflow: clip;
+}
+
+.rectangle-content .circle-bottom-right,
+.rectangle-content .circle-bottom-left,
+.rectangle-content .circle-top-right,
+.rectangle-content .circle-top-left {
+    position: absolute;
+    border-radius: 100%;
+    border: 1.5vw solid aliceblue;
+    background-color: teal;
+    width: 30vh;
+    height: 30vh;
+    font-size: 500%;
+}
+
+.rectangle-content .circle-top-left:hover,
+.rectangle-content .circle-top-left:hover .text-centrat,
+.rectangle-content .circle-top-right:hover,
+.rectangle-content .circle-top-right:hover .text-centrat {
+    background-color: aliceblue;
+    cursor: pointer;
+    color: teal;
+}
+
+.circle-top-left {
+    top: 0px;
+    left: 0px;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.circle-top-right {
+    top: 0px;
+    right: 0px;
+    transform: translate(50%, -50%);
+    z-index: 3;
+}
+
+.circle-bottom-right {
+    bottom: 0px;
+    right: 0px;
+    transform: translate(50%, 50%);
+    z-index: 2;
+}
+
+.circle-bottom-left {
+    bottom: 0px;
+    left: 0px;
+    transform: translate(-50%, 50%);
+    z-index: 2;
+}
+
+.text-centrat {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Agency FB Bold', arial;
+    color: black;
+}
