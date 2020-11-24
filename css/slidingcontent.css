@@ -1,27 +1,16 @@
-html{
-    scroll-behavior: smooth
-}
-
-body {
-    margin: 0px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
 .section {
     width: 100vw;
     height: 100vh;
     position: relative;
 }
 
-.section .title{
+.section .title {
     position: absolute;
     top: 50%;
     left: 50%;
     font-family: 'Agency FB Bold', arial;
     font-size: 7vw;
-    color:aliceblue;
-
+    color: aliceblue;
     transform: translate(-50%, -50%);
 }
 
@@ -31,12 +20,9 @@ body {
     left: 50%;
     font-size: 3vw;
     color: aliceblue;
-
     border-radius: 15px;
     border: solid aliceblue;
-
     padding: 0.9vw;
-    
     transform: translate(-50%, -50%);
 }
 
@@ -49,13 +35,10 @@ body {
 .section .sliding {
     position: absolute;
     background-color: aliceblue;
-
     font-family: 'Agency FB', arial;
     font-size: 2vw;
-
     width: 45vw;
     height: 43vh;
-
     padding: 1.6vw;
 }
 
@@ -63,14 +46,10 @@ body {
     position: fixed;
     right: 0px;
     top: 50%;
-
     width: 8vh;
     height: auto;
-
     mix-blend-mode: difference;
-
     z-index: 4;
-
     transform: translateY(-50%);
 }
 
@@ -80,20 +59,16 @@ body {
     width: 7vh;
     height: 7vh;
     position: relative;
-
     margin-top: 2vh;
-
     transform: rotate(45deg);
     /* mix-blend-mode: difference; */
 }
 
-.scroller .link .dot{
+.scroller .link .dot {
     position: absolute;
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
-
     height: 5vh;
     width: 5vh;
     background-color: #ffffff;
@@ -101,6 +76,6 @@ body {
     display: inline-block;
 }
 
-.scroller .link .dot:hover{
+.scroller .link .dot:hover {
     background-color: black;
 }
