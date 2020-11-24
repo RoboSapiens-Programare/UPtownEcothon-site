@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html style="scroll-behavior: smooth">
     <head>
 		<title></title>
 
@@ -15,7 +15,7 @@
         <script src="javascript/transitions.js"></script>
     </head>
     
-    <body>
+    <body style="margin: 0px; overflow-x: hidden; overflow-y: hidden;">
         <?php include "elements/sageata.html" ?>
 
         <div id="scroller" class="scroller">
