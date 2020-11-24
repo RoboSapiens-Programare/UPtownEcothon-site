@@ -47,7 +47,7 @@ function scroll2Function() {
 
 
 
-var current = document.documentElement.scrollTop;
+/*var current = document.documentElement.scrollTop;
 var previous = current;
 current = document.documentElement.scrollTop;
 
@@ -95,4 +95,45 @@ function slidetowncothon(element, duration, X1, X2, Y1, Y2, reverse) {
     }
   }
   requestAnimationFrame(bip);
+}*/
+
+function slideIn(elem) {
+  slideElem2D(document.getElementsById('town-TOP','cothon-TOP'), 1500, 0, 100, 0, 0, false);
+  elem.setAttribute("onclick", "slideOut(this);");
+}
+
+function slideOut(elem) {
+  slideElem2D(document.getElementsById('town-TOP', 'cothon-TOP'), 1500, 0, 100, 0, 0, true);
+  elem.setAttribute("onclick", "slideIn(this);");
+}
+
+function slideElem2D(elem, duration, fromX, toX, fromY, toY, reverse) {
+  let start = Date.now();
+
+  if (reverse) {
+      let auxX = fromX;
+      fromX = toX;
+      toX = auxX;
+
+      let auxY = fromY;
+      fromY = toY;
+      toY = auxY;
+  }
+
+  function tick() {
+      let now = Date.now();
+      let elapsed = now - start;
+      let valX = tweenFunctions.easeInOutExpo(elapsed, fromX, toX, duration);
+      let valY = tweenFunctions.easeInOutExpo(elapsed, fromY, toY, duration);
+
+      //Fa-l in functie de viewport height
+
+      elem.style.transform = `translate(${valX}%, ${valY}%)`;
+
+      if (elapsed < duration) {
+          requestAnimationFrame(tick);
+      }
+  }
+
+  requestAnimationFrame(tick);
 }
