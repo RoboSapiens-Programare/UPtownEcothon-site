@@ -116,10 +116,10 @@
             var text = elem.getElementsByClassName('text-centrat')[0];
             text.innerHTML = icon.alt;
 
-            transitions.fadeOut(icon, tweenFunctions.easeOutSine, 500);
+            transitions.fadeOut(icon, tweenFunctions.easeOutSine, 200);
             icon.style.opacity = "0";
 
-            transitions.fadeIn(text, tweenFunctions.easeOutSine, 500);
+            transitions.fadeIn(text, tweenFunctions.easeOutSine, 600);
             text.style.opacity = "1.0";
         }
 
@@ -127,10 +127,12 @@
             var icon = elem.getElementsByClassName('icon')[0];
             var text = elem.getElementsByClassName('text-centrat')[0];
 
-            transitions.fadeOut(text, tweenFunctions.easeOutSine, 500);
+            transitions.fadeOut(text, tweenFunctions.easeOutSine, 200);
             text.style.opacity = "0";
+            text.innerHTML = " ";
 
-            transitions.fadeIn(icon, tweenFunctions.easeOutSine, 500);
+            transitions.fadeIn(icon, tweenFunctions.easeOutSine, 600);
             icon.style.opacity = "1.0";
+            text.style.opacity = "0";
         }
     </script>
