@@ -2,7 +2,14 @@
     position: fixed;
     top: 0vw;
     left: 0vw;
-    z-index: 2;
+    z-index: 102;
+}
+
+.cerc {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 100%;
+    z-index: 103;
 }
 
 
@@ -26,26 +33,22 @@
     height: 100%;
     width: 100%;
     /* background-color: green; */
-    border: 0.3vw solid white;
+    border: 0.3vw solid #d222d2;
     border-radius: 50%;
-    z-index: 1;
+    z-index: 101;
     /* -webkit-filter: invert(100%);
     filter: invert(100%); */
     /* mix-blend-mode: difference; */
 }
 
 #cerc-sageata-scroll {
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* margin: 1vw; */
     height: 85%;
     width: 85%;
-    background-color: #ffffff;
     /* mix-blend-mode: difference; */
-    border-radius: 100%;
-    z-index: 3;
     /* isolation: isolate; */
 }
 
@@ -55,7 +58,7 @@
     left: 0vw;
     height: 100%;
     width: 100%;
-    z-index: 4;
+    z-index: 104;
     /* border: 2px solid yellow; */
     /* background-blend-mode: darken; */
     /* mix-blend-mode: normal; */
@@ -65,14 +68,10 @@
 /* chestii pentru meniu mare */
 
 #cerc-logo-full {
-    position: absolute;
     top: -8vw;
     left: -3.2vw;
     height: 20vw;
     width: 20vw;
-    background-color: #ffffff;
-    border-radius: 100%;
-    z-index: 3;
 }
 
 #logo-meniu-full {
@@ -82,7 +81,7 @@
     margin-top: 1vw;
     margin-left: 0px;
     background-color: transparent;
-    z-index: 3;
+    z-index: 103;
     width: 76%;
     height: 38%;
 }
@@ -112,10 +111,6 @@
     filter: invert(100%);
 }
 
-.cerc-text ul li a img:hover {
-    display: none;
-}
-
 .cerc-text {
     position: absolute;
     top: -12.5vw;
@@ -124,7 +119,7 @@
     width: 30vw;
     background-color: #d222d2;
     border-radius: 100%;
-    z-index: 2;
+    z-index: 102;
 }
 
 .cerc-text>* {
@@ -240,3 +235,98 @@
         height: 38%;
     }
 } */
+
+#language {
+    position: fixed;
+    top: 0px;
+    right: 0vw;
+    margin: 1vw;
+    height: 4vh;
+    background-color: transparent;
+    mix-blend-mode: difference;
+    z-index: 104;
+}
+
+#language li {
+    display: inline;
+    font-family: 'Agency FB Bold', arial;
+    font-size: 2vw;
+    color: white;
+    text-decoration: none;
+}
+
+#language li a {
+    font-family: 'Agency FB Bold', arial;
+    font-size: 2vw;
+    color: white;
+    text-decoration: none;
+}
+
+#language li a:hover {
+    -webkit-filter: invert(50%);
+    filter: invert(50%);
+}
+
+#login {
+    position: fixed;
+    top: 1vw;
+    left: 0vw;
+    height: 10vw;
+    width: 35vw;
+    padding: 0%;
+    background-color: white;
+    border-radius: 20px;
+    z-index: 101;
+}
+
+.sign-in-out {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 0px;
+    margin-right: 2%;
+    height: 90%;
+    width: 33%;
+    border: 0px solid black;
+    text-align: center;
+    font-family: 'Agency FB Bold', arial;
+    font-size: 1vw;
+}
+
+button {
+    text-decoration: none;
+}
+
+.button {
+    position: relative;
+    display: block;
+    margin: 2%;
+    border-radius: 5px;
+    height: 28%;
+    width: 96%;
+    text-decoration: none;
+    font-size: 1vw;
+    font-family: 'Agency FB Bold', arial;
+}
+
+.main-btn-action {
+    color: white;
+    text-decoration: none;
+    background-color: #00bd11;
+    border: 0.2vw solid #00bd11;
+}
+
+.main-btn-action:hover,
+.secondary-btn-action:hover {
+    color: white;
+    background-color: black;
+    border: 0.2vw solid black;
+    cursor: pointer;
+}
+
+.secondary-btn-action {
+    color: #00bd11;
+    text-decoration: none;
+    background-color: white;
+    border: 0.2vw solid #00bd11;
+}
