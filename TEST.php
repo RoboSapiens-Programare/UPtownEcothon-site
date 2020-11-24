@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Test page 12</title>
+
 
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
         <link rel="stylesheet" type="text/css" href="css/twistycontent.css">

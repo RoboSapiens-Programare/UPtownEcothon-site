@@ -4,7 +4,6 @@
         <title></title>
 
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
-        <link rel="stylesheet" type="text/css" href="css/twistycontent.css">
         <link rel="stylesheet" type="text/css" href="css/circlecontent.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 
@@ -15,26 +14,30 @@
         <script src="javascript/tween-functions.js"></script>
         <script src="javascript/transitions.js"></script>
     </head>
-    <body style="background-color: #855754;">
+    <body style="background-color: #855754; overflow-y: hidden">
         <?php include "elements/sageata.html" ?>
 
-        <div id="rect" class="rectangle-content" style="top: 70%; left: 50%; transform: translate(-50%, -50%); opacity: 0">
-            <div class="circle-top-left" onclick="expand(this);"><div id = "text" class="text-centrat" style="opacity: 0">Salut</div></div>
+        <div name="toFade" class="rectangle-content" style="top: 70%; left: 50%; transform: translate(-50%, -50%); opacity: 0">
+            <div class="circle-top-left" onclick="expand(this);"><div class="text-centrat" style="opacity: 0">Salut</div></div>
             <div class="circle-bottom-right"></div>
             
             <div  class="text-centrat" style="font-size: 3vh">Salutare din nou, din spatele cercului</div>
         </div>
 
-        <div id="rect" class="rectangle-content" style="top: 16%; left: 60%; transform: translate(-50%, -50%); opacity: 1; scale: 0.4">
-            <div class="circle-top-right" onclick="expand(this);"><div id = "text" class="text-centrat" style="opacity: 1">Salut</div></div>
+        <div name="toFade" class="rectangle-content" style="top: 16%; left: 60%; transform: translate(-50%, -50%); opacity: 0; scale: 0.4">
+            <div class="circle-top-right" onclick="expand(this);"><div class="text-centrat" style="opacity: 0">Salut</div></div>
             <div class="circle-bottom-left"></div>
             
             <div  class="text-centrat" style="font-size: 3vh">Salutare din nou, din spatele cercului</div>
         </div>
 
         <script>
-            transitions.fadeIn(document.getElementById('rect'), tweenFunctions.easeOutSine, 1000);
-            transitions.fadeIn(document.getElementById('text'), tweenFunctions.easeOutSine, 3000);
+            var elems = document.getElementsByName("toFade");
+
+            for(let x of elems){
+                transitions.fadeIn(x, tweenFunctions.easeOutSine, Math.floor(Math.random() * (2000 - 500) ) + 500);
+                transitions.fadeIn(x.getElementsByClassName('text-centrat')[0], tweenFunctions.easeOutSine, Math.floor(Math.random() * (7000 - 2000) ) + 2000);
+            }
             
 
             function expand(elem){
