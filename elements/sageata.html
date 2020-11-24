@@ -31,7 +31,7 @@
                     <img class="icon" id="home" src="icons/home.svg" alt="Home">
                 </a>
             </li>
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
+            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)" onclick="slideinlogin(this)">
                 <a href="#">
                     <div class="text-centrat" style="color: white; opacity: 0;"></div>
                     <img class="icon" id="user" src="icons/user.svg" alt="Account">
@@ -68,7 +68,6 @@
                 </a>
             </li>
         </div>
-
     </div>
 
     <div class="meniu" id="meniu-scroll" style="display:none;">
@@ -134,5 +133,46 @@
             transitions.fadeIn(icon, tweenFunctions.easeOutSine, 600);
             icon.style.opacity = "1.0";
             text.style.opacity = "0";
+        }
+
+        function slideinlogin(elem) {
+            slideElem2D(document.getElementById('login'), 1500, 0, 100, 0, 0, false);
+            elem.setAttribute("onclick", "slideoutlogin(this);");
+        }
+
+        function slideoutlogin(elem) {
+            slideElem2D(document.getElementById('login'), 1500, 0, 100, 0, 0, true);
+            elem.setAttribute("onclick", "slideinlogin(this);");
+        }
+
+        function slideElem2D(elem, duration, fromX, toX, fromY, toY, reverse) {
+            let start = Date.now();
+
+            if (reverse) {
+                let auxX = fromX;
+                fromX = toX;
+                toX = auxX;
+
+                let auxY = fromY;
+                fromY = toY;
+                toY = auxY;
+            }
+
+            function tick() {
+                let now = Date.now();
+                let elapsed = now - start;
+                let valX = tweenFunctions.easeInOutExpo(elapsed, fromX, toX, duration);
+                let valY = tweenFunctions.easeInOutExpo(elapsed, fromY, toY, duration);
+
+                //Fa-l in functie de viewport height
+
+                elem.style.transform = `translate(${valX}%, ${valY}%)`;
+
+                if (elapsed < duration) {
+                    requestAnimationFrame(tick);
+                }
+            }
+
+            requestAnimationFrame(tick);
         }
     </script>

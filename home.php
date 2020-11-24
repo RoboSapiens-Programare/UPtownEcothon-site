@@ -8,7 +8,6 @@
 		  <link rel="stylesheet" type="text/css" href="css/slideup.css">
 		  <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		  <link rel="stylesheet" type="text/css" href="css/footer.css">
-		  <link rel="stylesheet" type="text/css" href="css/header.css">
 		  <link rel="stylesheet" type="text/css" href="css/basics.css">
 
 		  <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
