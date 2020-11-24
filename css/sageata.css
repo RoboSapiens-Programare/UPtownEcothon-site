@@ -146,6 +146,9 @@
 .cerc-text li a {
     position: absolute;
     display: inline-block;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     height: 100%;
     width: 100%;
     text-decoration: none;
@@ -155,9 +158,6 @@
     vertical-align: middle;
     text-align: center;
     display: list-item;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .cerc-text li:hover {

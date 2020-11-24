@@ -1,0 +1,9 @@
+.text-centrat {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Agency FB Bold', arial;
+    color: black;
+    z-index: inherit;
+}

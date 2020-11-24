@@ -3,6 +3,8 @@
     <head>
         <title></title>
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
+		<link rel="stylesheet" type="text/css" href="css/basics.css">
+
         <link rel="stylesheet" type="text/css" href="css/bottom.css">
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
 
