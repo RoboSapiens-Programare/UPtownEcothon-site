@@ -14,21 +14,12 @@
 		  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
 		  <script src="javascript/tween-functions.js"></script>
-<<<<<<< HEAD
-
-
-	</head>
-
-	<body style="background-color:#75667c; margin:0px">
-
-	<script src="javascript/animatietowncothon.js"></script>
-=======
 		  <script src="javascript/transitions.js"></script>
+		  <script src="javascript/animatietowncothon.js"></script>
 
 	</head>
 
 	<body style="background-color:#75667c; margin:0px;">
->>>>>>> a978023ff232a983de9cc101b3202a320e508c1b
     
 		<?php include "elements/sageata.html"; ?>	
 
