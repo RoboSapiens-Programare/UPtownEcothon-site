@@ -270,7 +270,7 @@
 #login {
     position: fixed;
     top: 1vw;
-    left: 0vw;
+    left: -35vw;
     height: 10vw;
     width: 35vw;
     padding: 0%;
