@@ -269,10 +269,10 @@
 
 #login {
     position: fixed;
-    top: 4vw;
+    top: 1vw;
     left: 0vw;
-    height: 30vw;
-    width: 30vw;
+    height: 10vw;
+    width: 35vw;
     padding: 0%;
     background-color: white;
     border-radius: 20px;
@@ -316,12 +316,6 @@ button {
     border: 0.2vw solid #00bd11;
 }
 
-
-/* .main-btn-action a {
-    color: white;
-    text-decoration: none;
-} */
-
 .main-btn-action:hover,
 .secondary-btn-action:hover {
     color: white;
@@ -336,14 +330,3 @@ button {
     background-color: white;
     border: 0.2vw solid #00bd11;
 }
-
-
-/* .secondary-btn-action a {
-    color: #00bd11;
-    text-decoration: none;
-} */
-
-
-/* .secondary-btn-action:hover a {
-    color: white;
-} */
