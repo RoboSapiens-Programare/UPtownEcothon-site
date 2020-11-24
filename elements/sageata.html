@@ -25,25 +25,25 @@
         </div>
 
         <div class="cerc-text">
-            <li>
+            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="home.php"><img class="icon" id="home" src="icons/home.svg" alt="Home"></a>
             </li>
-            <li>
+            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="#"><img class="icon" id="user" src="icons/user.svg" alt="Account"></a>
             </li>
-            <li>
+            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="info.php"><img class="icon" id="info" src="icons/calendar.svg" alt="Info"></a>
             </li>
-            <li>
+            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="aboutus.php"><img class="icon" id="contact" src="icons/users.svg" alt="About Us"></a>
             </li>
-            <li>
+            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="#"><img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?"></a>
             </li>
-            <li>
+            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="event.php"><img class="icon" id="event" src="icons/book.svg" alt="Event"></a>
             </li>
-            <li>
+            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="#"><img class="icon" id="sponsors" src="icons/investment.svg" alt="Our Sponsors"></a>
             </li>
         </div>
@@ -65,32 +65,41 @@
             <li style="border-right: 0.2vw solid white;">
                 <a href="#">
                 ro
-            </a>
+                </a>
             </li>
             <li style="padding-left: 0.4vw;">
                 <a href="#">
                 en
-            </a>
+                </a>
             </li>
         </ul>
     </div>
 
-    <div id="login" style="position: fixed; top: 1vw;
-left: 0vw;
-height: 10vw;
-width: 35vw;
-padding: 0%;
-background-color: white;
-border-radius: 20px;
-z-index: 101;">
+    <div id="login">
         <?php
-    if($displaylogin){
-        include "elements/signin.html";
-        // echo "You are not logged in. <a href='login.php'>Login</a> or <a href='registration.php'>Sign up</a>.";
-    }
-    else{
-        include "elements/signout.html";
-        // echo $welcomemsg . " <a href='logout.php'>Logout</a>";
-    }
-    ?>
+            if($displaylogin){
+                include "elements/signin.html";
+                // echo "You are not logged in. <a href='login.php'>Login</a> or <a href='registration.php'>Sign up</a>.";
+            }
+            else{
+                include "elements/signout.html";
+                // echo $welcomemsg . " <a href='logout.php'>Logout</a>";
+            }
+        ?>
     </div>
+
+
+    <script>
+        function fadeicon(elem) {
+            var icon = elem.getElementsByClassName('icon')[0];
+            //var text = icon.alt;
+            // alert(text);
+            transitions.fadeOut(icon, tweenFunctions.easeOutSine, 250);
+
+        }
+
+        function appearicon(elem) {
+            var icon = elem.getElementsByClassName('icon')[0];
+            transitions.fadeIn(icon, tweenFunctions.easeOutSine, 250);
+        }
+    </script>
