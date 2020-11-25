@@ -49,12 +49,8 @@
                 </div>
                 <div class="content-card">
                     <div class="content">aa</div>
-                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(this);">Expand</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(0);">Expand</div>
                 </div>
-            </div>
-            <div id="bigcontent" class="bigcontent" style="opacity: 0;">
-                <div id="bigtitle" class="btitle"></div>
-                <div id="bcontent" class="bcontent"></div>
             </div>
         </div>
 
@@ -65,12 +61,8 @@
                 </div>
                 <div class="content-card">
                     <div class="content">aa</div>
-                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(this);">Expand</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(1);">Expand</div>
                 </div>
-            </div>
-            <div id="bigcontent" class="bigcontent" style="opacity: 0;">
-                <div id="bigtitle" class="btitle"></div>
-                <div id="bcontent" class="bcontent"></div>
             </div>
         </div>
 
@@ -81,66 +73,68 @@
                 </div>
                 <div class="content-card" >
                     <div class="content">aa</div>
-                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(this);">Expand</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(2);">Expand</div>
                 </div>
-            </div>
-
-            <div id="bigcontent" class="bigcontent" style="opacity: 0;">
-                <div id="bigtitle" class="btitle"></div>
-                <div id="bcontent" class="bcontent"></div>
             </div>
         </div>
 
+        <div class="bigcontent" style="opacity: 0;">
+            <div id="bigtitle" class="btitle"></div>
+            <div id="bcontent" class="bcontent"></div>
+        </div>
+
+        <div class="bigcontent" style="opacity: 0;">
+            <div id="bigtitle" class="btitle"></div>
+            <div id="bcontent" class="bcontent"></div>
+        </div>
+
+        <div class="bigcontent" style="opacity: 0;">
+            <div id="bigtitle" class="btitle"></div>
+            <div id="bcontent" class="bcontent"></div>
+            
+        </div>
+        <div class="bigcontent" style="opacity: 1;">
+            <div class="btitle" style="font-size: 5vw; width:auto; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+                About Us
+            </div>
+        </div>
+
+
         <script>
             var i_content = 0;
-            var bigtitle = document.getElementsByClassName('btitle');
-            var bigcontent = document.getElementsByClassName('bcontent');
-            for(let i = 0; i < bigtitle.length; i++){
-                bigtitle[i].innerHTML = content[i]['title'];
+            var bigcontents = document.getElementsByClassName('bigcontent');
+            for(let i = 0; i < bigcontents.length-1; i++){
+                bigcontents[i].getElementsByClassName('btitle')[0].innerHTML = content[i]['title'];
+                bigcontents[i].getElementsByClassName('bcontent')[0].innerHTML = content[i]['content'];
             }
 
-            for(let i = 0; i < bigcontent.length; i++){
-                bigcontent[i].innerHTML = content[i]['content'];
-            }
-
-            var smalltitles = document.getElementsByClassName('title');
-            for(let i = 0; i < smalltitles.length; i++){
-                smalltitles[i].innerHTML = content[i]['title'];
-            }
-
-            var smallcontents = document.getElementsByClassName('content');
+            var smallcontents = document.getElementsByClassName('smallcontent');
             for(let i = 0; i < smallcontents.length; i++){
-                smallcontents[i].innerHTML = content[i]['short-description'];
+                smallcontents[i].getElementsByClassName('title')[0].innerHTML = content[i]['title'];
+                smallcontents[i].getElementsByClassName('content')[0].innerHTML = content[i]['short-description'];
             }
 
-            function expand(elem){
-                var box = elem.parentElement.parentElement.parentElement;
-                var expand = box.getElementsByClassName('bigcontent')[0];
-                var small = box.getElementsByClassName('smallcontent-inner')[0];
+            function expand(index){
+                var box = smallcontents[index];
+                var expand = bigcontents[index];
 
-                retractElements(expand);
+                restoreElementsBeside(index);
 
-                transitions.fadeOut(small, tweenFunctions.easeOutExpo, 200);
-                transitions.fadeIn(expand, tweenFunctions.easeOutExpo, 200);
-
-                transitions.scaleUniform(box, tweenFunctions.easeInExpo, 2.1, 500);
-                transitions.slide2DPercentageParent(box, tweenFunctions.easeOutExpo, 1500, 70, 25);
+                transitions.fadeOut(box, tweenFunctions.easeInQuint, 200);
+                transitions.fadeIn(expand, tweenFunctions.easeOutQuint, 1000);
             }
 
-            function retractElements(elem){
-                var expand = document.getElementsByClassName('bigcontent');
-                var small = document.getElementsByClassName('smallcontent');
-
-                for(let x of expand){
-                    if(x !== elem)
-                        transitions.fadeOut(x, tweenFunctions.easeOutExpo, 500);
+            function restoreElementsBeside(index){
+                for(let i = 0; i < bigcontents.length; i++){
+                    if(i !== index){
+                        transitions.fadeOut(bigcontents[i], tweenFunctions.easeInQuint, 1000);
+                    }
                 }
 
-                for(let x of small){
-                    x.style.left = "";
-                    x.getElementsByClassName('smallcontent-inner')[0].style.opacity = 1;
-                    x.style.scale = 1.0;
-                    x.style.margin = "";
+                for(let i = 0; i < smallcontents.length; i++){
+                    if(i !== index){
+                        transitions.fadeIn(smallcontents[i], tweenFunctions.easeOutExpo, 1000);
+                    }
                 }
             }
         </script>
