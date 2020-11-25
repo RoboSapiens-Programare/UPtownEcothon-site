@@ -1,0 +1,53 @@
+.scrollbar-area {
+    position: fixed;
+    top: 50%;
+    right: 0%;
+
+    transform: translateY(-50%);
+
+    height: 80vh;
+    width: 3vw;
+
+    /* background-color: white; */
+}
+
+.scrollbar-area .scrollbar-right {
+    position: absolute;
+
+    height: 100%;
+    width: 7%;
+
+    background-color: black;
+    transition: transform 0.3s;
+
+    right: 0%;
+}
+
+.scrollbar-area:hover .scrollbar-right{
+    transform: scaleX(6);
+}
+
+.scrollbar-area .dot{
+    position: absolute;
+
+    height: 3vh;
+    width: 3vh;
+
+    border-radius: 100%;
+
+    background-color: black;
+
+    top: 3%;
+    left: 0%;
+
+    transform: scale3d(0, 0, 0);
+    transition: transform 0.3s;
+}
+
+.dot:hover{
+    background-color: wheat;
+}
+
+.scrollbar-area:hover .dot {
+    transform: scale3d(1, 1, 1);
+}

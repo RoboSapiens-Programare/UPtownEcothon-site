@@ -37,9 +37,9 @@
                     <img class="icon" id="user" src="icons/user.svg" alt="Account">
                 </a>
             </li>
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
+            <li onmouseover="fadeicon(this);" onmouseleave="appearicon(this);" style="z-index: 104;">
                 <a href="info.php">
-                    <div class="text-centrat" style="color: white; opacity: 0;"></div>
+                    <div class="text-centrat" style="color: white; opacity: 0; z-index: 105;">Info</div>
                     <img class="icon" id="info" src="icons/calendar.svg" alt="Info">
                 </a>
             </li>
@@ -113,26 +113,31 @@
         function fadeicon(elem) {
             var icon = elem.getElementsByClassName('icon')[0];
             var text = elem.getElementsByClassName('text-centrat')[0];
-            text.innerHTML = icon.alt;
+            //text.innerHTML = icon.alt;
 
-            transitions.fadeOut(icon, tweenFunctions.easeOutSine, 200);
-            icon.style.opacity = "0";
+            transitions.fadeOut(icon, tweenFunctions.easeOutExpo, 400);
+            //icon.style.opacity = "0";
 
-            transitions.fadeIn(text, tweenFunctions.easeOutSine, 600);
-            text.style.opacity = "1.0";
+            document.getElementById('debug').innerHTML = 1;
+
+            transitions.fadeIn(text, tweenFunctions.easeInExpo, 400);
+            //text.style.opacity = "1.0";
         }
 
         function appearicon(elem) {
             var icon = elem.getElementsByClassName('icon')[0];
             var text = elem.getElementsByClassName('text-centrat')[0];
 
-            transitions.fadeOut(text, tweenFunctions.easeOutSine, 200);
-            text.style.opacity = "0";
-            text.innerHTML = " ";
+            transitions.fadeOut(text, tweenFunctions.easeOutExpo, 400);
+            //text.style.opacity = "0";
+            //text.innerHTML = " ";
 
-            transitions.fadeIn(icon, tweenFunctions.easeOutSine, 600);
-            icon.style.opacity = "1.0";
-            text.style.opacity = "0";
+            document.getElementById('debug').innerHTML = 0;
+
+
+            transitions.fadeIn(icon, tweenFunctions.easeInExpo, 400);
+            //icon.style.opacity = "1.0";
+            //text.style.opacity = "0";
         }
 
         function slideinlogin(elem) {

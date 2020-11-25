@@ -112,7 +112,13 @@ var transitions = {
     fadeIn: function(elem, func, duration) {
         let start = Date.now();
 
-        var from = parseFloat(elem.style.opacity) || 0;
+        var from;
+        if(parseFloat(elem.style.opacity) == null){
+            from = 0;
+        }
+        else{
+            from = parseFloat(elem.style.opacity);
+        }
         var to = 1.0;
 
         function tick() {
@@ -125,6 +131,9 @@ var transitions = {
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
             }
+            else{
+                elem.style.opacity = to;
+            }
         }
 
         requestAnimationFrame(tick);
@@ -133,7 +142,13 @@ var transitions = {
     fadeOut: function(elem, func, duration) {
         let start = Date.now();
 
-        var from = parseFloat(elem.style.opacity) || 1;
+        var from;
+        if(parseFloat(elem.style.opacity) == null){
+            from = 1;
+        }
+        else{
+            from = parseFloat(elem.style.opacity);
+        }
         var to = 0;
 
         function tick() {
@@ -145,6 +160,9 @@ var transitions = {
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
+            }
+            else{
+                elem.style.opacity = to;
             }
         }
 
