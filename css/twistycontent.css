@@ -37,7 +37,7 @@ body {
     top: 10%;
     left: 50%;
     width: 75%;
-    font-size: 200%;
+    font-size: 1.7vw;
     color:rgb(156, 132, 223);
 
     transform: translate(-50%, -50%);
@@ -46,7 +46,7 @@ body {
 .bigcontent .bcontent {
     top: 20%;
 
-    font-size: 100%;
+    font-size: 0.8vw;
 }
 
 

@@ -43,26 +43,34 @@
 
         
         <div id="smallcontent1" class="smallcontent" style="top: 10%;">
-            <div class="smallcontent-inner">
+            <div class="smallcontent-inner" style="z-index: 1">
                 <div class="title-card">
                     <div class="title">Salut</div>
                 </div>
                 <div class="content-card">
                     <div class="content">aa</div>
-                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="doThing(this);">Expand</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(this);">Expand</div>
                 </div>
+            </div>
+            <div id="bigcontent" class="bigcontent" style="opacity: 0;">
+                <div id="bigtitle" class="btitle"></div>
+                <div id="bcontent" class="bcontent"></div>
             </div>
         </div>
 
         <div id="smallcontent2" class="smallcontent" style="top: 37.5%;">
-            <div class="smallcontent-inner">
+            <div class="smallcontent-inner" style="z-index: 1">
                 <div class="title-card">
                     <div class="title">Salut</div>
                 </div>
                 <div class="content-card">
                     <div class="content">aa</div>
-                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="doThing(this);">Expand</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(this);">Expand</div>
                 </div>
+            </div>
+            <div id="bigcontent" class="bigcontent" style="opacity: 0;">
+                <div id="bigtitle" class="btitle"></div>
+                <div id="bcontent" class="bcontent"></div>
             </div>
         </div>
 
@@ -73,7 +81,7 @@
                 </div>
                 <div class="content-card" >
                     <div class="content">aa</div>
-                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="doThing(this);">Expand</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(this);">Expand</div>
                 </div>
             </div>
 
@@ -85,10 +93,15 @@
 
         <script>
             var i_content = 0;
-            var bigtitle = document.getElementById('bigtitle');
-            var bigcontent = document.getElementById('bcontent');
-            bigtitle.innerHTML = content[i_content]['title'];
-            bigcontent.innerHTML = content[i_content]['content'];
+            var bigtitle = document.getElementsByClassName('btitle');
+            var bigcontent = document.getElementsByClassName('bcontent');
+            for(let i = 0; i < bigtitle.length; i++){
+                bigtitle[i].innerHTML = content[i]['title'];
+            }
+
+            for(let i = 0; i < bigcontent.length; i++){
+                bigcontent[i].innerHTML = content[i]['content'];
+            }
 
             var smalltitles = document.getElementsByClassName('title');
             for(let i = 0; i < smalltitles.length; i++){
@@ -96,20 +109,39 @@
             }
 
             var smallcontents = document.getElementsByClassName('content');
-            for(let i = 0; i < smalltitles.length; i++){
+            for(let i = 0; i < smallcontents.length; i++){
                 smallcontents[i].innerHTML = content[i]['short-description'];
             }
 
-            function doThing(elem){
+            function expand(elem){
                 var box = elem.parentElement.parentElement.parentElement;
                 var expand = box.getElementsByClassName('bigcontent')[0];
                 var small = box.getElementsByClassName('smallcontent-inner')[0];
+
+                retractElements(expand);
 
                 transitions.fadeOut(small, tweenFunctions.easeOutExpo, 200);
                 transitions.fadeIn(expand, tweenFunctions.easeOutExpo, 200);
 
                 transitions.scaleUniform(box, tweenFunctions.easeInExpo, 2.1, 500);
-                transitions.slide2DPercentageParent(box, tweenFunctions.easeOutExpo, 1500, 85.4, 38);
+                transitions.slide2DPercentageParent(box, tweenFunctions.easeOutExpo, 1500, 70, 25);
+            }
+
+            function retractElements(elem){
+                var expand = document.getElementsByClassName('bigcontent');
+                var small = document.getElementsByClassName('smallcontent');
+
+                for(let x of expand){
+                    if(x !== elem)
+                        transitions.fadeOut(x, tweenFunctions.easeOutExpo, 500);
+                }
+
+                for(let x of small){
+                    x.style.left = "";
+                    x.getElementsByClassName('smallcontent-inner')[0].style.opacity = 1;
+                    x.style.scale = 1.0;
+                    x.style.margin = "";
+                }
             }
         </script>
     </body>
