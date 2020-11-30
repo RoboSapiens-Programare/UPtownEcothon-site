@@ -130,43 +130,12 @@
         }
 
         function slideinlogin(elem) {
-            slideElem2D(document.getElementById('login'), 800, 0, 100, 0, 0, false);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, 0, 0);
             elem.setAttribute("onclick", "slideoutlogin(this);");
         }
 
         function slideoutlogin(elem) {
-            slideElem2D(document.getElementById('login'), 800, 0, 100, 0, 0, true);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, -35, 0);
             elem.setAttribute("onclick", "slideinlogin(this);");
-        }
-
-        function slideElem2D(elem, duration, fromX, toX, fromY, toY, reverse) {
-            let start = Date.now();
-
-            if (reverse) {
-                let auxX = fromX;
-                fromX = toX;
-                toX = auxX;
-
-                let auxY = fromY;
-                fromY = toY;
-                toY = auxY;
-            }
-
-            function tick() {
-                let now = Date.now();
-                let elapsed = now - start;
-                let valX = tweenFunctions.easeInOutExpo(elapsed, fromX, toX, duration);
-                let valY = tweenFunctions.easeInOutExpo(elapsed, fromY, toY, duration);
-
-                //Fa-l in functie de viewport height
-
-                elem.style.transform = `translate(${valX}%, ${valY}%)`;
-
-                if (elapsed < duration) {
-                    requestAnimationFrame(tick);
-                }
-            }
-
-            requestAnimationFrame(tick);
         }
     </script>

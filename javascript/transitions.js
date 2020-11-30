@@ -69,6 +69,9 @@ var transitions = {
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
+            } else {
+                elem.style.left = toX + "%";
+                elem.style.top = toY + "%";
             }
 
         }
@@ -113,10 +116,9 @@ var transitions = {
         let start = Date.now();
 
         var from;
-        if(parseFloat(elem.style.opacity) == null){
+        if (parseFloat(elem.style.opacity) == null) {
             from = 0;
-        }
-        else{
+        } else {
             from = parseFloat(elem.style.opacity);
         }
         var to = 1.0;
@@ -130,8 +132,7 @@ var transitions = {
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
-            }
-            else{
+            } else {
                 elem.style.opacity = to;
             }
         }
@@ -143,10 +144,9 @@ var transitions = {
         let start = Date.now();
 
         var from;
-        if(parseFloat(elem.style.opacity) == null){
+        if (parseFloat(elem.style.opacity) == null) {
             from = 1;
-        }
-        else{
+        } else {
             from = parseFloat(elem.style.opacity);
         }
         var to = 0;
@@ -160,8 +160,7 @@ var transitions = {
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
-            }
-            else{
+            } else {
                 elem.style.opacity = to;
             }
         }
