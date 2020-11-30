@@ -49,14 +49,21 @@ var transitions = {
     slide2DPercentageParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
 
-        var fromX = parseInt(elem.style.left) || 0;
-        var fromY = parseInt(elem.style.top) || 0;
+        var fromX, fromY;
 
-        //Maybe they are not set as element properties
-        if (!fromX || !fromY) {
+        if (isNaN(parseFloat(elem.style.left))) {
             fromX = (elem.offsetLeft / elem.parentElement.clientWidth) * 100;
-            fromY = (elem.offsetTop / elem.parentElement.clientHeight) * 100;
+        } else {
+            fromX = parseFloat(elem.style.left);
         }
+
+        if (isNaN(parseFloat(elem.style.top))) {
+            fromY = (elem.offsetTop / elem.parentElement.clientHeight) * 100;
+        } else {
+            fromY = parseFloat(elem.style.top);
+        }
+
+        //alert(fromX + ", " + fromY);
 
         function tick() {
             let now = Date.now();

@@ -96,7 +96,7 @@
         </ul>
     </div>
 
-    <div id="login">
+    <div id="login" style="top: 3%;">
         <?php
             if($displaylogin){
                 include "elements/signin.html";
@@ -133,12 +133,12 @@
         }
 
         function slideinlogin(elem) {
-            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, 0, 0);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, 0, 3);
             elem.setAttribute("onclick", "slideoutlogin(this);");
         }
 
         function slideoutlogin(elem) {
-            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, -35, 0);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, -35, 3);
             elem.setAttribute("onclick", "slideinlogin(this);");
         }
 
