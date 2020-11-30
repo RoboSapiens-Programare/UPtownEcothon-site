@@ -199,8 +199,23 @@ var transitions = {
         requestAnimationFrame(tick);
     },
 
-    scale2D: function(elem, func, toX, toY, duration) {
+    scale2D: function(elem, func, duration, fromX, fromY, toX, toY) {
+        let start = Date.now();
 
+        function tick() {
+            let now = Date.now();
+            let elapsed = now - start;
+            let valX = func(elapsed, fromX, toX, duration);
+            let valY = func(elapsed, fromY, toY, duration);
+            
+            elem.style.transform = "scale("+ valX + ", " + valY + ")";
+
+            if (elapsed < duration) {
+                requestAnimationFrame(tick);
+            }
+        }
+
+        requestAnimationFrame(tick);
     },
 
     resize2DViewport: function(elem, func, toWidth, toHeight, duration) {

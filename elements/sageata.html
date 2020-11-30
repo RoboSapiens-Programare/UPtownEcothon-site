@@ -10,16 +10,17 @@
 ?>
 
     <div class="meniu" id="meniu-full" style="display:block;">
-        <div class="cerc" id="cerc-logo-full">
-            <div id="logo-meniu-full">
-                <div class="logo-elem" id="sageata-meniu-TOP" z-index="103">
-                    <img src="pictures/1sageataUTE.png" alt="logo arrow">
+        <div class="cerc" id="cerc-logo-full" >
+            <div id="logo-meniu-full" style="z-index: 102;">
+                <div class="logo-elem" id="sageata-meniu-TOP" style="z-index: 105" onmouseover="expandSageata(this);" onmouseleave="shrinkSageata(this);">
+                    <img src="pictures/1sageataUTE.png" alt="logo arrow" style="position: absolute; z-index: 104;">
+                    <div style="position: absolute; background-color: white; width: 23%; height: 100%; z-index: 103;"></div>
                 </div>
                 <div class="logo-elem" id="town-TOP">
-                    <img src="pictures/1townUTE.png" alt="logo town">
+                    <img src="pictures/1townUTE.png" style="z-index: 102;" alt="logo town">
                 </div>
                 <div class="logo-elem" id="cothon-TOP">
-                    <img src="pictures/1cothonUTE.png" alt="logo cothon">
+                    <img src="pictures/1cothonUTE.png" style="z-index: 102;" alt="logo cothon">
                 </div>
             </div>
         </div>
@@ -110,6 +111,8 @@
 
 
     <script>
+        shrinkSageata(document.getElementById('sageata-meniu-TOP'));
+
         function fadeicon(elem) {
             var icon = elem.getElementsByClassName('icon')[0];
             var text = elem.getElementsByClassName('text-centrat')[0];
@@ -138,4 +141,30 @@
             transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, -35, 0);
             elem.setAttribute("onclick", "slideinlogin(this);");
         }
+
+        var current = document.documentElement.scrollTop;
+        var previous = current;
+        current = document.documentElement.scrollTop;
+
+
+        function shrinkSageata(elem) {
+            var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
+            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
+            var sageata = elem.parentElement.parentElement;      
+        
+            // slidetowncothon(logo1, 1000, -60, 60, 0, 0, true);
+            // slidetowncothon(logo2, 1000, -60, 60, 0, 0, true);
+            transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
+            transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
+            //transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 0.5, 500);
+        }
+
+        function expandSageata(elem) {
+            var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
+            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];      
+
+            transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, 0, 0);
+            transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, 0, 0);
+        }
+        
     </script>
