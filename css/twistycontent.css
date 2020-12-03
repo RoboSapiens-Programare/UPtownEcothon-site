@@ -5,15 +5,19 @@ body {
 }
 
 .bigcontent {
-    /* top: 50%;
-    right: 6%; */
-    top: 0%;
+    top: 50%;
+    right: 6%;
+    /* top: 0%; */
     position: absolute;
 
-    /* transform: translateY(-50%); */
+    transform: translateY(-50%);
 
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
+
+    width: 40vw;
+    height: 70vh;
+
     background-color: peachpuff;
 }
 
@@ -37,7 +41,8 @@ body {
     top: 10%;
     left: 50%;
     width: 75%;
-    font-size: 200%;
+    /* font-size: 1.7vw; */
+    font-size: 3.4vw;
     color:rgb(156, 132, 223);
 
     transform: translate(-50%, -50%);
@@ -46,7 +51,8 @@ body {
 .bigcontent .bcontent {
     top: 20%;
 
-    font-size: 100%;
+    /* font-size: 0.8vw; */
+    font-size: 1.6vw;
 }
 
 

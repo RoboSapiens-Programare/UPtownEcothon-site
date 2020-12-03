@@ -10,16 +10,17 @@
 ?>
 
     <div class="meniu" id="meniu-full" style="display:block;">
-        <div class="cerc" id="cerc-logo-full">
-            <div id="logo-meniu-full">
-                <div class="logo-elem" id="sageata-meniu-TOP" onclick = "slideIn(this)" z-index="103">
-                    <img src="pictures/1sageataUTE.png" alt="logo arrow">
+        <div class="cerc" id="cerc-logo-full" >
+            <div id="logo-meniu-full" style="z-index: 102;">
+                <div class="logo-elem" id="sageata-meniu-TOP" style="z-index: 105" onmouseover="expandSageata(this);" onmouseleave="shrinkSageata(this);">
+                    <img src="pictures/1sageataUTE.png" alt="logo arrow" style="position: absolute; z-index: 104;">
+                    <div style="position: absolute; background-color: white; width: 23%; height: 100%; z-index: 103;"></div>
                 </div>
                 <div class="logo-elem" id="town-TOP">
-                    <img src="pictures/1townUTE.png" alt="logo town">
+                    <img src="pictures/1townUTE.png" style="z-index: 102;" alt="logo town">
                 </div>
                 <div class="logo-elem" id="cothon-TOP">
-                    <img src="pictures/1cothonUTE.png" alt="logo cothon">
+                    <img src="pictures/1cothonUTE.png" style="z-index: 102;" alt="logo cothon">
                 </div>
             </div>
         </div>
@@ -27,43 +28,43 @@
         <div class="cerc-text">
             <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="home.php">
-                    <div class="text-centrat" style="color: white; opacity: 0;"></div>
+                    <div class="text-centrat" style="color: white; opacity: 0;">Home</div>
                     <img class="icon" id="home" src="icons/home.svg" alt="Home">
                 </a>
             </li>
             <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)" onclick="slideinlogin(this)">
                 <a href="#">
-                    <div class="text-centrat" style="color: white; opacity: 0;"></div>
+                    <div class="text-centrat" style="color: white; opacity: 0;">Account</div>
                     <img class="icon" id="user" src="icons/user.svg" alt="Account">
                 </a>
             </li>
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
+            <li onmouseover="fadeicon(this);" onmouseleave="appearicon(this);" style="z-index: 104;">
                 <a href="info.php">
-                    <div class="text-centrat" style="color: white; opacity: 0;"></div>
+                    <div class="text-centrat" style="color: white; opacity: 0; z-index: 105;">Info</div>
                     <img class="icon" id="info" src="icons/calendar.svg" alt="Info">
                 </a>
             </li>
             <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="aboutus.php">
-                    <div class="text-centrat" style="color: white; opacity: 0;"></div>
+                    <div class="text-centrat" style="color: white; opacity: 0;">About Us</div>
                     <img class="icon" id="contact" src="icons/users.svg" alt="About Us">
                 </a>
             </li>
             <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="#">
-                    <div class="text-centrat" style="color: white; opacity: 0;"></div>
+                    <div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
                     <img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?">
                 </a>
             </li>
             <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="event.php">
-                    <div class="text-centrat" style="color: white; opacity: 0;"></div>
+                    <div class="text-centrat" style="color: white; opacity: 0;">Event</div>
                     <img class="icon" id="event" src="icons/book.svg" alt="Event">
                 </a>
             </li>
             <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="#">
-                    <div class="text-centrat" style="color: white; opacity: 0;"></div>
+                    <div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
                     <img class="icon" id="sponsors" src="icons/investment.svg" alt="Our Sponsors">
                 </a>
             </li>
@@ -95,7 +96,7 @@
         </ul>
     </div>
 
-    <div id="login">
+    <div id="login" style="top: 3%;">
         <?php
             if($displaylogin){
                 include "elements/signin.html";
@@ -110,69 +111,60 @@
 
 
     <script>
+        shrinkSageata(document.getElementById('sageata-meniu-TOP'));
+
         function fadeicon(elem) {
             var icon = elem.getElementsByClassName('icon')[0];
             var text = elem.getElementsByClassName('text-centrat')[0];
-            text.innerHTML = icon.alt;
 
-            transitions.fadeOut(icon, tweenFunctions.easeOutSine, 200);
-            icon.style.opacity = "0";
+            transitions.fadeOut(icon, tweenFunctions.easeOutExpo, 400);
 
-            transitions.fadeIn(text, tweenFunctions.easeOutSine, 600);
-            text.style.opacity = "1.0";
+            transitions.fadeIn(text, tweenFunctions.easeInExpo, 400);
         }
 
         function appearicon(elem) {
             var icon = elem.getElementsByClassName('icon')[0];
             var text = elem.getElementsByClassName('text-centrat')[0];
 
-            transitions.fadeOut(text, tweenFunctions.easeOutSine, 200);
-            text.style.opacity = "0";
-            text.innerHTML = " ";
+            transitions.fadeOut(text, tweenFunctions.easeOutExpo, 400);
 
-            transitions.fadeIn(icon, tweenFunctions.easeOutSine, 600);
-            icon.style.opacity = "1.0";
-            text.style.opacity = "0";
+            transitions.fadeIn(icon, tweenFunctions.easeInExpo, 400);
+
         }
 
         function slideinlogin(elem) {
-            slideElem2D(document.getElementById('login'), 1500, 0, 100, 0, 0, false);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, 0, 3);
             elem.setAttribute("onclick", "slideoutlogin(this);");
         }
 
         function slideoutlogin(elem) {
-            slideElem2D(document.getElementById('login'), 1500, 0, 100, 0, 0, true);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, -35, 3);
             elem.setAttribute("onclick", "slideinlogin(this);");
         }
 
-        function slideElem2D(elem, duration, fromX, toX, fromY, toY, reverse) {
-            let start = Date.now();
+        var current = document.documentElement.scrollTop;
+        var previous = current;
+        current = document.documentElement.scrollTop;
 
-            if (reverse) {
-                let auxX = fromX;
-                fromX = toX;
-                toX = auxX;
 
-                let auxY = fromY;
-                fromY = toY;
-                toY = auxY;
-            }
-
-            function tick() {
-                let now = Date.now();
-                let elapsed = now - start;
-                let valX = tweenFunctions.easeInOutExpo(elapsed, fromX, toX, duration);
-                let valY = tweenFunctions.easeInOutExpo(elapsed, fromY, toY, duration);
-
-                //Fa-l in functie de viewport height
-
-                elem.style.transform = `translate(${valX}%, ${valY}%)`;
-
-                if (elapsed < duration) {
-                    requestAnimationFrame(tick);
-                }
-            }
-
-            requestAnimationFrame(tick);
+        function shrinkSageata(elem) {
+            var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
+            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
+            var sageata = elem.parentElement.parentElement;      
+        
+            // slidetowncothon(logo1, 1000, -60, 60, 0, 0, true);
+            // slidetowncothon(logo2, 1000, -60, 60, 0, 0, true);
+            transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
+            transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
+            //transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 0.5, 500);
         }
+
+        function expandSageata(elem) {
+            var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
+            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];      
+
+            transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, 0, 0);
+            transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, 0, 0);
+        }
+        
     </script>

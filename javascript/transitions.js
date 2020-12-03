@@ -49,14 +49,21 @@ var transitions = {
     slide2DPercentageParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
 
-        var fromX = parseInt(elem.style.left) || 0;
-        var fromY = parseInt(elem.style.top) || 0;
+        var fromX, fromY;
 
-        //Maybe they are not set as element properties
-        if (!fromX || !fromY) {
+        if (isNaN(parseFloat(elem.style.left))) {
             fromX = (elem.offsetLeft / elem.parentElement.clientWidth) * 100;
-            fromY = (elem.offsetTop / elem.parentElement.clientHeight) * 100;
+        } else {
+            fromX = parseFloat(elem.style.left);
         }
+
+        if (isNaN(parseFloat(elem.style.top))) {
+            fromY = (elem.offsetTop / elem.parentElement.clientHeight) * 100;
+        } else {
+            fromY = parseFloat(elem.style.top);
+        }
+
+        //alert(fromX + ", " + fromY);
 
         function tick() {
             let now = Date.now();
@@ -69,6 +76,9 @@ var transitions = {
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
+            } else {
+                elem.style.left = toX + "%";
+                elem.style.top = toY + "%";
             }
 
         }
@@ -112,7 +122,12 @@ var transitions = {
     fadeIn: function(elem, func, duration) {
         let start = Date.now();
 
-        var from = parseFloat(elem.style.opacity) || 0;
+        var from;
+        if (parseFloat(elem.style.opacity) == null) {
+            from = 0;
+        } else {
+            from = parseFloat(elem.style.opacity);
+        }
         var to = 1.0;
 
         function tick() {
@@ -124,6 +139,8 @@ var transitions = {
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
+            } else {
+                elem.style.opacity = to;
             }
         }
 
@@ -133,7 +150,12 @@ var transitions = {
     fadeOut: function(elem, func, duration) {
         let start = Date.now();
 
-        var from = parseFloat(elem.style.opacity) || 1;
+        var from;
+        if (parseFloat(elem.style.opacity) == null) {
+            from = 1;
+        } else {
+            from = parseFloat(elem.style.opacity);
+        }
         var to = 0;
 
         function tick() {
@@ -145,6 +167,8 @@ var transitions = {
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
+            } else {
+                elem.style.opacity = to;
             }
         }
 
@@ -182,8 +206,23 @@ var transitions = {
         requestAnimationFrame(tick);
     },
 
-    scale2D: function(elem, func, toX, toY, duration) {
+    scale2D: function(elem, func, duration, fromX, fromY, toX, toY) {
+        let start = Date.now();
 
+        function tick() {
+            let now = Date.now();
+            let elapsed = now - start;
+            let valX = func(elapsed, fromX, toX, duration);
+            let valY = func(elapsed, fromY, toY, duration);
+            
+            elem.style.transform = "scale("+ valX + ", " + valY + ")";
+
+            if (elapsed < duration) {
+                requestAnimationFrame(tick);
+            }
+        }
+
+        requestAnimationFrame(tick);
     },
 
     resize2DViewport: function(elem, func, toWidth, toHeight, duration) {

@@ -269,10 +269,11 @@
 
 #login {
     position: fixed;
-    top: 1vw;
+    top: 0%;
     left: -35vw;
     height: 10vw;
     width: 35vw;
+    margin-top: 1vw;
     padding: 0%;
     background-color: white;
     border-radius: 20px;
