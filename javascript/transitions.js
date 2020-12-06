@@ -123,7 +123,7 @@ var transitions = {
         let start = Date.now();
 
         var from;
-        if (parseFloat(elem.style.opacity) == null) {
+        if (isNaN(parseFloat(elem.style.opacity))) {
             from = 0;
         } else {
             from = parseFloat(elem.style.opacity);
@@ -151,7 +151,7 @@ var transitions = {
         let start = Date.now();
 
         var from;
-        if (parseFloat(elem.style.opacity) == null) {
+        if (isNaN(parseFloat(elem.style.opacity))) {
             from = 1;
         } else {
             from = parseFloat(elem.style.opacity);
@@ -178,17 +178,35 @@ var transitions = {
     scaleUniform: function(elem, func, to, duration) {
         let start = Date.now();
 
-        var from = parseFloat(elem.style.scale) || 1.0;
+        var from;
+        if (isNaN(parseFloat(elem.style.scale))) {
+            from = 1;
+        } else {
+            from = parseFloat(elem.style.scale);
+        }
+    
+        //Luam valorile initiale ale marginilor
+        var from_margin_x, from_margin_y;
+        if (isNaN(parseFloat(elem.style.marginLeft))) {
+            from_margin_x = 0;
+        } else {
+            from_margin_x = parseFloat(elem.style.marginLeft);
+        }
+        if (isNaN(parseFloat(elem.style.marginTop))) {
+            from_margin_y = 0;
+        } else {
+            from_margin_y = parseFloat(elem.style.marginTop);
+        }
 
-        var margin_x = ((elem.clientWidth * to) - elem.clientWidth) / 2 || 0;
-        var margin_y = ((elem.clientHeight * to) - elem.clientHeight) / 2 || 0;
+        var to_margin_x = (((elem.clientWidth * to) - elem.clientWidth) / 2);
+        var to_margin_y = (((elem.clientHeight * to) - elem.clientHeight) / 2);
 
         function tick() {
             let now = Date.now();
             let elapsed = now - start;
             let val = func(elapsed, from, to, duration);
-            let mx = func(elapsed, 0, margin_x, duration);
-            let my = func(elapsed, 0, margin_y, duration);
+            let mx = func(elapsed, from_margin_x, to_margin_x, duration);
+            let my = func(elapsed, from_margin_y, to_margin_y, duration);
 
             elem.style.scale = val;
 

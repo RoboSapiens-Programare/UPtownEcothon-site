@@ -9,12 +9,12 @@
 	
 ?>
 
-    <div class="meniu" id="meniu-full" style="display:block;">
-        <div class="cerc" id="cerc-logo-full" >
+    <div class="meniu" id="meniu-full" style="display:block; width: 20vw; height: 20vw;">
+        <div class="cerc" id="cerc-logo-full">
             <div id="logo-meniu-full" style="z-index: 102;">
                 <div class="logo-elem" id="sageata-meniu-TOP" style="z-index: 105" onmouseover="expandSageata(this);" onmouseleave="shrinkSageata(this);">
                     <img src="pictures/1sageataUTE.png" alt="logo arrow" style="position: absolute; z-index: 104;">
-                    <div style="position: absolute; background-color: white; width: 23%; height: 100%; z-index: 103;"></div>
+                    <div style="position: absolute; background-color: white; width: 100%; height: 100%; z-index: 103; left: -78%;"></div>
                 </div>
                 <div class="logo-elem" id="town-TOP">
                     <img src="pictures/1townUTE.png" style="z-index: 102;" alt="logo town">
@@ -50,7 +50,7 @@
                     <img class="icon" id="contact" src="icons/users.svg" alt="About Us">
                 </a>
             </li>
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
+            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)" style="z-index: 2000;">
                 <a href="#">
                     <div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
                     <img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?">
@@ -111,7 +111,7 @@
 
 
     <script>
-        shrinkSageata(document.getElementById('sageata-meniu-TOP'));
+        //shrinkSageata(document.getElementById('sageata-meniu-TOP'));
 
         function fadeicon(elem) {
             var icon = elem.getElementsByClassName('icon')[0];
@@ -150,21 +150,45 @@
         function shrinkSageata(elem) {
             var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
             var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
-            var sageata = elem.parentElement.parentElement;      
+            var cerc_alb = elem.parentElement.parentElement; 
+            var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
         
             // slidetowncothon(logo1, 1000, -60, 60, 0, 0, true);
             // slidetowncothon(logo2, 1000, -60, 60, 0, 0, true);
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
-            //transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 0.5, 500);
+            // cerc_alb.style.marginTop = "6vh";
+            // cerc_alb.style.marginLeft = "2vw";
+            cerc_alb.style.top = "-6vh";
+            cerc_alb.style.left = "-2vw";
+
+            transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 0.5, 500);
+
+            sageata.style.top = "-20%";
+            sageata.style.left = "21%";
+
+            transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1.4, 500);
         }
 
         function expandSageata(elem) {
             var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
             var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];      
+            var cerc_alb = elem.parentElement.parentElement; 
+            var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
+
 
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, 0, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, 0, 0);
+
+            cerc_alb.style.top = "-8vw";
+            cerc_alb.style.left = "-3.2vw";
+
+            transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 1, 500);
+
+            sageata.style.top = "0%";
+            sageata.style.left = "0%";
+
+            transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1, 500);
         }
         
     </script>
