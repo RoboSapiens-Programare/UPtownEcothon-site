@@ -148,46 +148,45 @@
 
 
         function shrinkSageata(elem) {
+            //Get elements - logo1 / logo2 are town / cothon images
+            //             - cerc_alb is the white circle
+            //             - cerc_meniu is the circle with the menu icons
+            //             - sageata is the UP arrow
             var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
             var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
             var cerc_alb = elem.parentElement.parentElement;
+            var cerc_meniu = elem.parentElement.parentElement.parentElement.getElementsByClassName("cerc-text")[0];
             var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
 
-            // slidetowncothon(logo1, 1000, -60, 60, 0, 0, true);
-            // slidetowncothon(logo2, 1000, -60, 60, 0, 0, true);
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
-            // cerc_alb.style.marginTop = "6vh";
-            // cerc_alb.style.marginLeft = "2vw";
-            cerc_alb.style.top = "-6vh";
-            cerc_alb.style.left = "-2vw";
 
+            transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -10, -18);
             transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 0.5, 500);
 
-            sageata.style.top = "-20%";
-            sageata.style.left = "21%";
-
+            transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 21, -20);
             transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1.4, 500);
+
+            transitions.scaleUniform(cerc_meniu, tweenFunctions.easeOutQuad, 0.5, 700);
         }
 
         function expandSageata(elem) {
             var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
             var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
             var cerc_alb = elem.parentElement.parentElement;
+            var cerc_meniu = elem.parentElement.parentElement.parentElement.getElementsByClassName("cerc-text")[0];
             var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
 
 
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, 0, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, 0, 0);
 
-            cerc_alb.style.top = "-8vw";
-            cerc_alb.style.left = "-3.2vw";
-
+            transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -16, -40);
             transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 1, 500);
 
-            sageata.style.top = "0%";
-            sageata.style.left = "0%";
-
+            transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 0, 0);
             transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1, 500);
+
+            transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 1, 700);
         }
     </script>
