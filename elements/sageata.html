@@ -152,8 +152,8 @@
             //             - cerc_alb is the white circle
             //             - cerc_meniu is the circle with the menu icons
             //             - sageata is the UP arrow
-            var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
-            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
+            var logo1 = document.getElementById("town-TOP");
+            var logo2 = document.getElementById("cothon-TOP");
             var cerc_alb = elem.parentElement.parentElement; 
             var cerc_meniu = elem.parentElement.parentElement.parentElement.getElementsByClassName("cerc-text")[0];
             var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
@@ -171,8 +171,8 @@
         }
 
         function expandSageata(elem) {
-            var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
-            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];      
+            var logo1 = document.getElementById("town-TOP");
+            var logo2 = document.getElementById("cothon-TOP");      
             var cerc_alb = elem.parentElement.parentElement; 
             var cerc_meniu = elem.parentElement.parentElement.parentElement.getElementsByClassName("cerc-text")[0];
             var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
