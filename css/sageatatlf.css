@@ -1,0 +1,22 @@
+#cerc-sageatatlf {
+    position: fixed;
+    top: 1%;
+    left: 2%;
+    height: 25vw;
+    width: 25vw;
+    margin: 0%;
+    padding: 0%;
+    z-index: 101;
+    overflow-x: visible;
+    border: 2vw solid #d222d2;
+    background-color: white;
+}
+
+#sageata-meniutlf {
+    position: absolute;
+    top: 0vw;
+    left: 15.5%;
+    height: 21vw;
+    width: 42vw;
+    z-index: 104;
+}

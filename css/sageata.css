@@ -21,7 +21,6 @@
     width: 7vw;
     margin: 1vw;
     background-color: transparent;
-    /* mix-blend-mode: difference; */
 }
 
 #border-sageata {
@@ -29,27 +28,20 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* margin: 1vw; */
     height: 100%;
     width: 100%;
-    /* background-color: green; */
     border: 0.3vw solid #d222d2;
     border-radius: 50%;
+    background-color: #d222d2;
     z-index: 101;
-    /* -webkit-filter: invert(100%);
-    filter: invert(100%); */
-    /* mix-blend-mode: difference; */
 }
 
 #cerc-sageata-scroll {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* margin: 1vw; */
-    height: 85%;
-    width: 85%;
-    /* mix-blend-mode: difference; */
-    /* isolation: isolate; */
+    height: 90%;
+    width: 90%;
 }
 
 #sageata-meniu-scroll {
@@ -59,9 +51,6 @@
     height: 100%;
     width: 100%;
     z-index: 104;
-    /* border: 2px solid yellow; */
-    /* background-blend-mode: darken; */
-    /* mix-blend-mode: normal; */
 }
 
 
@@ -199,43 +188,6 @@
     transform: rotate(121deg) translate(238%) rotate(-121deg)
 }
 
-
-/* @media only screen and (max-width: 900px) {
-    #cerc-sageata-scroll {
-        position: absolute;
-        top: 1vw;
-        left: 1vw;
-        height: 13vw;
-        width: 13vw;
-        background-color: #ffffff;
-        border-radius: 100%;
-        z-index: 5;
-        box-shadow: 1px 1px 5px #484848"
-
-    }
-    #cerc-meniu-full {
-        position: absolute;
-        top: -16vw;
-        left: -6.4vw;
-        height: 40vw;
-        width: 40vw;
-        background-color: #ffffff;
-        border-radius: 100%;
-        z-index: 1;
-    }
-    #logo-meniu-full {
-        position: absolute;
-        left: 6.4vw;
-        top: 16vw;
-        margin-top: 1vw;
-        margin-left: 0px;
-        background-color: transparent;
-        z-index: 2;
-        width: 76%;
-        height: 38%;
-    }
-} */
-
 #language {
     position: fixed;
     top: 0px;
@@ -317,17 +269,17 @@ button {
     border: 0.2vw solid #00bd11;
 }
 
+.secondary-btn-action {
+    color: #00bd11;
+    text-decoration: none;
+    background-color: white;
+    border: 0.2vw solid #00bd11;
+}
+
 .main-btn-action:hover,
 .secondary-btn-action:hover {
     color: white;
     background-color: black;
     border: 0.2vw solid black;
     cursor: pointer;
-}
-
-.secondary-btn-action {
-    color: #00bd11;
-    text-decoration: none;
-    background-color: white;
-    border: 0.2vw solid #00bd11;
 }

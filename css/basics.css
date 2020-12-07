@@ -7,3 +7,7 @@
     color: black;
     z-index: inherit;
 }
+
+.cerc {
+    border-radius: 50%;
+}

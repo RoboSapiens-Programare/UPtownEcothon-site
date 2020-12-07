@@ -133,12 +133,12 @@
         }
 
         function slideinlogin(elem) {
-            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, 0, 3);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeOutExpo, 1000, 0, 3);
             elem.setAttribute("onclick", "slideoutlogin(this);");
         }
 
         function slideoutlogin(elem) {
-            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, -35, 3);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeInExpo, 1000, -35, 3);
             elem.setAttribute("onclick", "slideinlogin(this);");
         }
 
@@ -157,7 +157,7 @@
             var cerc_alb = elem.parentElement.parentElement; 
             var cerc_meniu = elem.parentElement.parentElement.parentElement.getElementsByClassName("cerc-text")[0];
             var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
-        
+
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
 
@@ -189,5 +189,4 @@
 
             transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 1, 700);
         }
-        
     </script>
