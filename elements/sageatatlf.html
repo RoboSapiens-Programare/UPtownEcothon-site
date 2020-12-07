@@ -1,0 +1,58 @@
+<div class="meniu" id="meniutlf">
+    <div class="cerc" id="cerc-sageatatlf" onclick="expandMenu(this)">
+        <div class="logo-elem" id="sageata-meniutlf">
+            <img src="pictures/1sageataUTE.png" alt="logo arrow">
+            <div style="position: absolute; top: 1%; background-color: white; width: 99%; height: 99%; z-index: 103; left: -78%;"></div>
+        </div>
+    </div>
+</div>
+
+<?php
+	session_start();
+
+	$displaylogin = true;
+	if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+		$welcomemsg = "Hi, " . $_SESSION['username'] . "!";
+		$displaylogin = false;
+	}
+	
+?>
+
+    <script>
+        function expandMenu(cerc) {
+            // slide2DAbsoluteParent: function(elem, func, duration, toX, toY)
+            // slide2DPercentageParent: function(elem, func, duration, toX, toY) 
+            // resize2DViewport: function(elem, func, toWidth, toHeight, duration)
+            // resize2DViewportWidth: function(elem, func, toWidth, toHeight, duration)
+
+            //nu imi merge daca ii dau cerc.get... for some reason?
+            var sageata = document.getElementById('sageata-meniutlf');
+
+            //pt sageata
+            transitions.slide2DPercentageParent(sageata, tweenFunctions.linear, 2000, 21, 17);
+            transitions.resize2DViewportWidth(sageata, tweenFunctions.linear, 90, 45, 2000);
+
+            //pt cerc
+            transitions.slide2DPercentageParent(cerc, tweenFunctions.linear, 2000, -50, -30);
+            transitions.resize2DViewportWidth(cerc, tweenFunctions.linear, 250, 250, 2000);
+
+            cerc.setAttribute("onclick", "contractMenu(this);");
+        }
+
+        //de modificat, vreau sa faca asta cand apas pe un buton de back, nu pe cerc
+        function contractMenu(cerc) {
+            //nu imi merge daca ii dau cerc.get... for some reason?
+            var sageata = document.getElementById('sageata-meniutlf');
+
+            //pt sageata
+            transitions.slide2DPercentageParent(sageata, tweenFunctions.linear, 2000, 15.5, 0);
+            transitions.resize2DViewportWidth(sageata, tweenFunctions.linear, 42, 21, 2000);
+
+            //pt cerc
+            transitions.slide2DPercentageParent(cerc, tweenFunctions.linear, 2000, 2, 1);
+            transitions.resize2DViewportWidth(cerc, tweenFunctions.linear, 25, 25, 2000);
+
+
+            cerc.setAttribute("onclick", "expandMenu(this);");
+        }
+    </script>

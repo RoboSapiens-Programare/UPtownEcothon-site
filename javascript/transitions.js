@@ -184,7 +184,7 @@ var transitions = {
         } else {
             from = parseFloat(elem.style.scale);
         }
-    
+
         //Luam valorile initiale ale marginilor
         var from_margin_x, from_margin_y;
         if (isNaN(parseFloat(elem.style.marginLeft))) {
@@ -232,8 +232,8 @@ var transitions = {
             let elapsed = now - start;
             let valX = func(elapsed, fromX, toX, duration);
             let valY = func(elapsed, fromY, toY, duration);
-            
-            elem.style.transform = "scale("+ valX + ", " + valY + ")";
+
+            elem.style.transform = "scale(" + valX + ", " + valY + ")";
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
@@ -260,6 +260,47 @@ var transitions = {
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
+            }
+        }
+
+        requestAnimationFrame(tick);
+    },
+
+    //resize numai cu viewport ca am nevoie pt un cerc si scaleUniform imi da scale numai la margini for some reason
+    resize2DViewportWidth: function(elem, func, toWidth, toHeight, duration) {
+        let start = Date.now();
+
+        //HELP elementul meu are width si height dar mi le da cand dai refersh ca fiind NaN, dupa ce ai apasat odata pe el merge
+        //alert("elem width: " + parseFloat(elem.style.width) + " , elem height: " + parseFloat(elem.style.height));
+        var fromWidth, fromHeight;
+        if (isNaN(parseFloat(elem.style.width))) {
+            fromWidth = 0;
+        } else {
+            fromWidth = parseFloat(elem.style.width);
+        }
+        if (isNaN(parseFloat(elem.style.height))) {
+            fromHeight = 0;
+        } else {
+            fromHeight = parseFloat(elem.style.height);
+        }
+
+        //alert("from width: " + fromWidth + " , from height: " + fromHeight);
+
+
+        function tick() {
+            let now = Date.now();
+            let elapsed = now - start;
+            let width = func(elapsed, fromWidth, toWidth, duration);
+            let height = func(elapsed, fromHeight, toHeight, duration);
+
+            elem.style.width = width + 'vw';
+            elem.style.height = height + 'vw';
+
+            if (elapsed < duration) {
+                requestAnimationFrame(tick);
+            } else {
+                elem.style.width = toWidth + 'vw';
+                elem.style.height = toHeight + 'vw';
             }
         }
 

@@ -133,12 +133,12 @@
         }
 
         function slideinlogin(elem) {
-            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, 0, 3);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeOutExpo, 1000, 0, 3);
             elem.setAttribute("onclick", "slideoutlogin(this);");
         }
 
         function slideoutlogin(elem) {
-            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, -35, 3);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeInExpo, 1000, -35, 3);
             elem.setAttribute("onclick", "slideinlogin(this);");
         }
 
@@ -150,9 +150,9 @@
         function shrinkSageata(elem) {
             var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
             var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
-            var cerc_alb = elem.parentElement.parentElement; 
+            var cerc_alb = elem.parentElement.parentElement;
             var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
-        
+
             // slidetowncothon(logo1, 1000, -60, 60, 0, 0, true);
             // slidetowncothon(logo2, 1000, -60, 60, 0, 0, true);
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
@@ -172,8 +172,8 @@
 
         function expandSageata(elem) {
             var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
-            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];      
-            var cerc_alb = elem.parentElement.parentElement; 
+            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
+            var cerc_alb = elem.parentElement.parentElement;
             var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
 
 
@@ -190,5 +190,4 @@
 
             transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1, 500);
         }
-        
     </script>

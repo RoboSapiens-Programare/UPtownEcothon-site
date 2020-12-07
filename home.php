@@ -1,4 +1,9 @@
+<?php
+require_once 'Mobile-Detect-master/Mobile_Detect.php';
+$detect = new Mobile_Detect;
 
+$scriptVersion = $detect->getScriptVersion();
+?>
 
 <!DOCTYPE html>
 <html>
@@ -9,6 +14,7 @@
 		  <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		  <link rel="stylesheet" type="text/css" href="css/footer.css">
 		  <link rel="stylesheet" type="text/css" href="css/basics.css">
+		  <link rel="stylesheet" type="text/css" href="css/sageatatlf.css">
 
 		  <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
 		  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -20,8 +26,13 @@
 
 	<body style="background-color:#75667c; margin:0px;">
     
-		<?php include "elements/sageata.html"; ?>	
-
+		<?php 
+			if($detect->isMobile() || $detect->isTablet()) {
+				include "elements/sageatatlf.html";
+			} else {
+				include "elements/sageata.html";
+			}
+		?>	
 
 		<div id="content1" class="row">
 			
