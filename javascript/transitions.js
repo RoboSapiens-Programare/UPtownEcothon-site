@@ -63,8 +63,6 @@ var transitions = {
             fromY = parseFloat(elem.style.top);
         }
 
-        //alert(fromX + ", " + fromY);
-
         function tick() {
             let now = Date.now();
             let elapsed = now - start;
@@ -218,6 +216,15 @@ var transitions = {
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
+            }
+            else{
+                elem.style.scale = to;
+
+                elem.style.marginTop = to_margin_y + 'px';
+                elem.style.marginBottom = to_margin_y + 'px';
+
+                elem.style.marginLeft = to_margin_x + 'px';
+                elem.style.marginRight = to_margin_x + 'px';
             }
         }
 
