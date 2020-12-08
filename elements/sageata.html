@@ -9,12 +9,12 @@
 	
 ?>
 
-    <div class="meniu" id="meniu-full" style="display:block;">
-        <div class="cerc" id="cerc-logo-full" >
+    <div class="meniu" id="meniu-full" style="display:block; width: 20vw; height: 20vw;">
+        <div class="cerc" id="cerc-logo-full" onmouseover="expandSageata();">
             <div id="logo-meniu-full" style="z-index: 102;">
-                <div class="logo-elem" id="sageata-meniu-TOP" style="z-index: 105" onmouseover="expandSageata(this);" onmouseleave="shrinkSageata(this);">
+                <div class="logo-elem" id="sageata-meniu-TOP" style="z-index: 105">
                     <img src="pictures/1sageataUTE.png" alt="logo arrow" style="position: absolute; z-index: 104;">
-                    <div style="position: absolute; background-color: white; width: 23%; height: 100%; z-index: 103;"></div>
+                    <div style="position: absolute; background-color: white; width: 100%; height: 100%; z-index: 103; left: -78%;"></div>
                 </div>
                 <div class="logo-elem" id="town-TOP">
                     <img src="pictures/1townUTE.png" style="z-index: 102;" alt="logo town">
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="cerc-text">
+        <div class="cerc-text" id="cerc-meniu" onmouseleave="shrinkSageata();">
             <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="home.php">
                     <div class="text-centrat" style="color: white; opacity: 0;">Home</div>
@@ -50,7 +50,7 @@
                     <img class="icon" id="contact" src="icons/users.svg" alt="About Us">
                 </a>
             </li>
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
+            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)" style="z-index: 2000;">
                 <a href="#">
                     <div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
                     <img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?">
@@ -111,7 +111,7 @@
 
 
     <script>
-        shrinkSageata(document.getElementById('sageata-meniu-TOP'));
+        //shrinkSageata(document.getElementById('sageata-meniu-TOP'));
 
         function fadeicon(elem) {
             var icon = elem.getElementsByClassName('icon')[0];
@@ -133,12 +133,12 @@
         }
 
         function slideinlogin(elem) {
-            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, 0, 3);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeOutExpo, 1000, 0, 3);
             elem.setAttribute("onclick", "slideoutlogin(this);");
         }
 
         function slideoutlogin(elem) {
-            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.linear, 1000, -35, 3);
+            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeInExpo, 1000, -35, 3);
             elem.setAttribute("onclick", "slideinlogin(this);");
         }
 
@@ -147,24 +147,46 @@
         current = document.documentElement.scrollTop;
 
 
-        function shrinkSageata(elem) {
-            var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
-            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
-            var sageata = elem.parentElement.parentElement;      
-        
-            // slidetowncothon(logo1, 1000, -60, 60, 0, 0, true);
-            // slidetowncothon(logo2, 1000, -60, 60, 0, 0, true);
+        function shrinkSageata() {
+            //Get elements - logo1 / logo2 are town / cothon images
+            //             - cerc_alb is the white circle
+            //             - cerc_meniu is the circle with the menu icons
+            //             - sageata is the UP arrow
+            var logo1 = document.getElementById("town-TOP");
+            var logo2 = document.getElementById("cothon-TOP");
+            var cerc_alb = document.getElementById("cerc-logo-full"); 
+            var cerc_meniu = document.getElementById("cerc-meniu");
+            var sageata = document.getElementById("sageata-meniu-TOP");
+
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
-            //transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 0.5, 500);
+
+            transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -10, -18);
+            transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 0.5, 500);
+
+            transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 21, -20);
+            transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1.4, 500);
+
+            transitions.scaleUniform(cerc_meniu, tweenFunctions.easeOutQuad, 0.5, 700);
         }
 
-        function expandSageata(elem) {
-            var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
-            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];      
+        function expandSageata() {
+            var logo1 = document.getElementById("town-TOP");
+            var logo2 = document.getElementById("cothon-TOP");      
+            var cerc_alb = document.getElementById("cerc-logo-full"); 
+            var cerc_meniu = document.getElementById("cerc-meniu");
+            var sageata = document.getElementById("sageata-meniu-TOP");
+
 
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, 0, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, 0, 0);
+
+            transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -16, -40);
+            transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 1, 500);
+
+            transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 0, 0);
+            transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1, 500);
+
+            transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 1, 700);
         }
-        
     </script>
