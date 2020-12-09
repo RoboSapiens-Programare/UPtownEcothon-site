@@ -1,58 +1,181 @@
-<div class="meniu" id="meniutlf">
-    <div class="cerc" id="cerc-sageatatlf" onclick="expandMenu(this)">
-        <div class="logo-elem" id="sageata-meniutlf">
-            <img src="pictures/1sageataUTE.png" alt="logo arrow">
-            <!-- <div style="position: absolute; top: 1%; background-color: white; width: 99%; height: 99%; z-index: 103; left: -78%;"></div> -->
-        </div>
-    </div>
-</div>
-
 <?php
-	session_start();
+session_start();
 
-	$displaylogin = true;
-	if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-		$welcomemsg = "Hi, " . $_SESSION['username'] . "!";
-		$displaylogin = false;
-	}
-	
+$displaylogin = true;
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+    $welcomemsg = "Hi, " . $_SESSION['username'] . "!";
+    $displaylogin = false;
+}
+
 ?>
 
+    <div id="cerc-sageatatlf" onclick="expandMenu()">
+        <div class="logo-elem-tlf" id="sageata-meniutlf">
+            <img src="pictures/1sageataUTE.png" alt="logo arrow" style="z-index: 2000;">
+            <!-- <div id="bkg-sageata" style="position: absolute; top: 1%; background-color: white; width: 99%; height: 99%; z-index: 103; left: -75%;"></div> -->
+        </div>
+        <div class="logo-elem-tlf" id="town-TOP">
+            <img src="pictures/1townUTE.png" style="z-index: 102;" alt="logo town">
+        </div>
+        <div class="logo-elem-tlf" id="cothon-TOP">
+            <img src="pictures/1cothonUTE.png" style="z-index: 102;" alt="logo cothon">
+        </div>
+    </div>
+
+    <div id="pages">
+        <div class="back" onclick="contractMenu()">
+            <img src="icons/arrow-left.svg" alt=" ">
+            <div>Back</div>
+        </div>
+        <ul>
+            <div class="line"></div>
+            <li>
+                <a href="home.php">
+                    Home
+                </a>
+            </li>
+            <div class="line"></div>
+            <li onclick="appearlogin()">
+                <a href="#">
+                    Account
+                </a>
+            </li>
+            <div class="line"></div>
+            <li style="z-index: 104;">
+                <a href="info.php">
+                    Info
+                </a>
+            </li>
+            <div class="line"></div>
+            <li>
+                <a href="aboutus.php">
+                    About Us
+                </a>
+            </li>
+            <div class="line"></div>
+            <li>
+                <a href="#">
+                    Got A Problem?
+                </a>
+            </li>
+            <div class="line"></div>
+            <li>
+                <a href="event.php">
+                    Event
+                </a>
+            </li>
+            <div class="line"></div>
+            <li>
+                <a href="#">
+                    Our Sponsors
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="login-tlf">
+        <div class="back" onclick="dissapearlogin()">
+            <img src="icons/arrow-left.svg" alt=" ">
+            <div>Back</div>
+        </div>
+
+        <?php
+            if($displaylogin){
+                include "elements/signin.html";
+                // echo "You are not logged in. <a href='login.php'>Login</a> or <a href='registration.php'>Sign up</a>.";
+            }
+            else{
+                include "elements/signout.html";
+                // echo $welcomemsg . " <a href='logout.php'>Logout</a>";
+            }
+        ?>
+    </div>
+
+
+
+
     <script>
-        function expandMenu(cerc) {
+        // var fixed = document.getElementsByClassName('fixed');
+
+        // fixed.addEventListener('touchmove', function(e) {
+        //     e.preventDefault();
+        // }, false);
+
+        //vars
+        var login = document.getElementById('login-tlf');
+        var cerc = document.getElementById('cerc-sageatatlf');
+        var sageata = document.getElementById('sageata-meniutlf');
+        var list = document.getElementById('pages');
+        var logo1 = document.getElementsByClassName("logo-elem-tlf")[1];
+        var logo2 = document.getElementsByClassName("logo-elem-tlf")[2];
+
+        function expandMenu() {
             // slide2DAbsoluteParent: function(elem, func, duration, toX, toY)
             // slide2DPercentageParent: function(elem, func, duration, toX, toY) 
             // resize2DViewport: function(elem, func, toWidth, toHeight, duration)
             // resize2DViewportWidth: function(elem, func, toWidth, toHeight, duration)
 
-            //nu imi merge daca ii dau cerc.get... for some reason?
-            var sageata = document.getElementById('sageata-meniutlf');
+            // alert(parseFloat(cerc.style.width));
 
             //pt sageata
-            transitions.slide2DPercentageParent(sageata, tweenFunctions.linear, 2000, 21, 17);
-            transitions.resize2DViewportWidth(sageata, tweenFunctions.linear, 90, 45, 2000);
+            transitions.slide2DPercentageParent(sageata, tweenFunctions.easeOutExpo, 1500, 21, 17);
+            transitions.resize2DViewportWidth(sageata, tweenFunctions.easeOutExpo, 90, 45, 1500);
 
             //pt cerc
-            transitions.slide2DPercentageParent(cerc, tweenFunctions.linear, 2000, -50, -30);
-            transitions.resize2DViewportWidth(cerc, tweenFunctions.linear, 250, 250, 2000);
+            transitions.slide2DPercentageParent(cerc, tweenFunctions.easeOutExpo, 1500, -50, -30);
+            transitions.resize2DViewportWidth(cerc, tweenFunctions.easeOutExpo, 250, 250, 1500);
 
-            cerc.setAttribute("onclick", "contractMenu(this);");
+            //pt lista meniului in sine
+            transitions.slide2DPercentageParent(list, tweenFunctions.easeInQuad, 1000, 0, 0);
+
+            //pt town si cothon
+            transitions.slide2DPercentageParent(logo1, tweenFunctions.easeOutExpo, 1500, 21, 17);
+            transitions.resize2DViewportWidth(logo1, tweenFunctions.easeOutExpo, 90, 45, 1500);
+
+            transitions.slide2DPercentageParent(logo2, tweenFunctions.easeOutExpo, 1500, 21, 17);
+            transitions.resize2DViewportWidth(logo2, tweenFunctions.easeOutExpo, 90, 45, 1500);
+
+            //cerc.setAttribute("onclick", "contractMenu(this);");
         }
 
-        //de modificat, vreau sa faca asta cand apas pe un buton de back, nu pe cerc
-        function contractMenu(cerc) {
-            //nu imi merge daca ii dau cerc.get... for some reason?
-            var sageata = document.getElementById('sageata-meniutlf');
+        function contractMenu() {
 
             //pt sageata
-            transitions.slide2DPercentageParent(sageata, tweenFunctions.linear, 2000, 15.5, 0);
-            transitions.resize2DViewportWidth(sageata, tweenFunctions.linear, 42, 21, 2000);
+            transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 1000, 15.5, 0);
+            transitions.resize2DViewportWidth(sageata, tweenFunctions.easeInQuad, 42, 21, 1000);
 
             //pt cerc
-            transitions.slide2DPercentageParent(cerc, tweenFunctions.linear, 2000, 2, 1);
-            transitions.resize2DViewportWidth(cerc, tweenFunctions.linear, 25, 25, 2000);
+            transitions.slide2DPercentageParent(cerc, tweenFunctions.easeInQuad, 1000, 2, 1);
+            transitions.resize2DViewportWidth(cerc, tweenFunctions.easeInQuad, 25, 25, 1000);
 
+            //pt lista meniului in sine
+            transitions.slide2DPercentageParent(list, tweenFunctions.easeOutQuad, 700, -100, 0);
 
-            cerc.setAttribute("onclick", "expandMenu(this);");
+            //pt town si cothon
+            transitions.slide2DPercentageParent(logo1, tweenFunctions.easeOutQuad, 1000, -200, 0);
+            transitions.resize2DViewportWidth(logo1, tweenFunctions.easeOutQuad, 42, 21, 1000);
+
+            transitions.slide2DPercentageParent(logo2, tweenFunctions.easeOutQuad, 1000, -200, 0);
+            transitions.resize2DViewportWidth(logo2, tweenFunctions.easeOutQuad, 42, 21, 1000);
+
+            //cerc.setAttribute("onclick", "expandMenu(this);");
+        }
+
+        function appearlogin() {
+
+            //pt lista meniului in sine
+            transitions.slide2DPercentageParent(list, tweenFunctions.easeOutQuad, 600, -100, 0);
+
+            //pt login
+            transitions.slide2DPercentageParent(login, tweenFunctions.easeInQuad, 600, 0, 0);
+        }
+
+        function dissapearlogin() {
+
+            //pt login
+            transitions.slide2DPercentageParent(login, tweenFunctions.easeOutQuad, 600, -100, 0);
+
+            //pt lista meniului in sine
+            transitions.slide2DPercentageParent(list, tweenFunctions.easeInQuad, 600, 0, 0);
         }
     </script>
