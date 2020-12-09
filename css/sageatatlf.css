@@ -6,8 +6,8 @@
     left: 2%;
     height: 25vw;
     width: 25vw;
-    margin: 0%;
-    padding: 0%;
+    margin: 0;
+    padding: 0;
     z-index: 101;
     overflow: hidden;
     border: 2vw solid #d222d2;
@@ -180,6 +180,13 @@ button {
     text-decoration: none;
     font-size: 6vw;
     font-family: 'Agency FB Bold', arial;
+}
+
+.button p {
+    border: none;
+    font-size: 6vw;
+    vertical-align: middle;
+    margin: none;
 }
 
 .main-btn-action {

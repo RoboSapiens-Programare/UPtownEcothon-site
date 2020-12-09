@@ -118,21 +118,41 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
             // alert(parseFloat(cerc.style.width));
 
             //pt sageata
-            transitions.slide2DPercentageParent(sageata, tweenFunctions.easeOutExpo, 1500, 21, 17);
+            // transitions.slide2DPercentageParent(sageata, tweenFunctions.easeOutExpo, 1500, 21, 17);
+            transitions.slide2D(new Dimension(sageata, 21, "percent"),
+                new Dimension(sageata, 17, "percent"),
+                tweenFunctions.easeOutExpo,
+                1500);
             transitions.resize2DViewportWidth(sageata, tweenFunctions.easeOutExpo, 90, 45, 1500);
 
             //pt cerc
-            transitions.slide2DPercentageParent(cerc, tweenFunctions.easeOutExpo, 1500, -50, -30);
+            // transitions.slide2DPercentageParent(cerc, tweenFunctions.easeOutExpo, 1500, -50, -30);
+            transitions.slide2D(new Dimension(cerc, -50, "percent"),
+                new Dimension(cerc, -30, "percent"),
+                tweenFunctions.easeOutExpo,
+                1500);
             transitions.resize2DViewportWidth(cerc, tweenFunctions.easeOutExpo, 250, 250, 1500);
 
             //pt lista meniului in sine
-            transitions.slide2DPercentageParent(list, tweenFunctions.easeInQuad, 1000, 0, 0);
+            // transitions.slide2DPercentageParent(list, tweenFunctions.easeInQuad, 1000, 0, 0);
+            transitions.slide2D(new Dimension(list, 0, "percent"),
+                new Dimension(list, 0, "percent"),
+                tweenFunctions.easeOutExpo,
+                1000);
 
             //pt town si cothon
-            transitions.slide2DPercentageParent(logo1, tweenFunctions.easeOutExpo, 1500, 21, 17);
+            // transitions.slide2DPercentageParent(logo1, tweenFunctions.easeOutExpo, 1500, 21, 17);
+            transitions.slide2D(new Dimension(logo1, 21, "percent"),
+                new Dimension(logo1, 17, "percent"),
+                tweenFunctions.easeOutExpo,
+                1500);
             transitions.resize2DViewportWidth(logo1, tweenFunctions.easeOutExpo, 90, 45, 1500);
 
-            transitions.slide2DPercentageParent(logo2, tweenFunctions.easeOutExpo, 1500, 21, 17);
+            // transitions.slide2DPercentageParent(logo2, tweenFunctions.easeOutExpo, 1500, 21, 17);
+            transitions.slide2D(new Dimension(logo2, 21, "percent"),
+                new Dimension(logo2, 17, "percent"),
+                tweenFunctions.easeOutExpo,
+                1500);
             transitions.resize2DViewportWidth(logo2, tweenFunctions.easeOutExpo, 90, 45, 1500);
 
             //cerc.setAttribute("onclick", "contractMenu(this);");
@@ -141,21 +161,42 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         function contractMenu() {
 
             //pt sageata
-            transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 1000, 15.5, 0);
-            transitions.resize2DViewportWidth(sageata, tweenFunctions.easeInQuad, 42, 21, 1000);
+            // transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 1000, 15.5, 0);
+            transitions.slide2D(new Dimension(sageata, 15.5, "percent"),
+                new Dimension(sageata, 0, "percent"),
+                tweenFunctions.easeInQuad,
+                1000);
+            // transitions.resize2DViewportWidth(sageata, tweenFunctions.easeInQuad, 42, 21, 1000);
+            transitions.resize2D(new Dimension(sageata, 42, "vw"))
 
             //pt cerc
-            transitions.slide2DPercentageParent(cerc, tweenFunctions.easeInQuad, 1000, 2, 1);
+            // transitions.slide2DPercentageParent(cerc, tweenFunctions.easeInQuad, 1000, 2, 1);
+            transitions.slide2D(new Dimension(cerc, 2, "percent"),
+                new Dimension(cerc, 1, "percent"),
+                tweenFunctions.easeInQuad,
+                1000);
             transitions.resize2DViewportWidth(cerc, tweenFunctions.easeInQuad, 25, 25, 1000);
 
             //pt lista meniului in sine
-            transitions.slide2DPercentageParent(list, tweenFunctions.easeOutQuad, 700, -100, 0);
+            // transitions.slide2DPercentageParent(list, tweenFunctions.easeOutQuad, 700, -100, 0);
+            transitions.slide2D(new Dimension(list, -100, "percent"),
+                new Dimension(list, 0, "percent"),
+                tweenFunctions.easeOutQuad,
+                700);
 
             //pt town si cothon
-            transitions.slide2DPercentageParent(logo1, tweenFunctions.easeOutQuad, 1000, -200, 0);
+            // transitions.slide2DPercentageParent(logo1, tweenFunctions.easeOutQuad, 1000, -200, 0);
+            transitions.slide2D(new Dimension(logo1, -200, "percent"),
+                new Dimension(logo1, 0, "percent"),
+                tweenFunctions.easeOutQuad,
+                1000);
             transitions.resize2DViewportWidth(logo1, tweenFunctions.easeOutQuad, 42, 21, 1000);
 
-            transitions.slide2DPercentageParent(logo2, tweenFunctions.easeOutQuad, 1000, -200, 0);
+            // transitions.slide2DPercentageParent(logo2, tweenFunctions.easeOutQuad, 1000, -200, 0);
+            transitions.slide2D(new Dimension(logo2, -200, "percent"),
+                new Dimension(logo2, 0, "percent"),
+                tweenFunctions.easeOutQuad,
+                1000);
             transitions.resize2DViewportWidth(logo2, tweenFunctions.easeOutQuad, 42, 21, 1000);
 
             //cerc.setAttribute("onclick", "expandMenu(this);");
@@ -164,18 +205,34 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         function appearlogin() {
 
             //pt lista meniului in sine
-            transitions.slide2DPercentageParent(list, tweenFunctions.easeOutQuad, 600, -100, 0);
+            // transitions.slide2DPercentageParent(list, tweenFunctions.easeOutQuad, 600, -100, 0);
+            transitions.slide2D(new Dimension(list, -100, "percent"),
+                new Dimension(list, 0, "percent"),
+                tweenFunctions.easeOutQuad,
+                600);
 
             //pt login
-            transitions.slide2DPercentageParent(login, tweenFunctions.easeInQuad, 600, 0, 0);
+            // transitions.slide2DPercentageParent(login, tweenFunctions.easeInQuad, 600, 0, 0);
+            transitions.slide2D(new Dimension(login, -100, "percent"),
+                new Dimension(login, 0, "percent"),
+                tweenFunctions.easeOutQuad,
+                600);
         }
 
         function dissapearlogin() {
 
             //pt login
-            transitions.slide2DPercentageParent(login, tweenFunctions.easeOutQuad, 600, -100, 0);
+            // transitions.slide2DPercentageParent(login, tweenFunctions.easeOutQuad, 600, -100, 0);
+            transitions.slide2D(new Dimension(login, -100, "percent"),
+                new Dimension(login, 0, "percent"),
+                tweenFunctions.easeOutQuad,
+                600);
 
             //pt lista meniului in sine
             transitions.slide2DPercentageParent(list, tweenFunctions.easeInQuad, 600, 0, 0);
+            transitions.slide2D(new Dimension(list, 0, "percent"),
+                new Dimension(list, 0, "percent"),
+                tweenFunctions.easeOutQuad,
+                600);
         }
     </script>

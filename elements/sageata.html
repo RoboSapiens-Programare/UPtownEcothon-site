@@ -132,12 +132,20 @@
         }
 
         function slideinlogin(elem) {
-            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeOutExpo, 1000, 0, 3);
+            // transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeOutExpo, 1000, 0, 3);
+            transitions.slide2D(new Dimension(document.getElementById('login'), 0, "percent"),
+                new Dimension(document.getElementById('login'), 3, "percent"),
+                tweenFunctions.easeOutExpo,
+                1000);
             elem.setAttribute("onclick", "slideoutlogin(this);");
         }
 
         function slideoutlogin(elem) {
-            transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeInExpo, 1000, -35, 3);
+            // transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeInExpo, 1000, -35, 3);
+            transitions.slide2D(new Dimension(document.getElementById('login'), -35, "percent"),
+                new Dimension(document.getElementById('login'), 3, "percent"),
+                tweenFunctions.easeOutExpo,
+                1000);
             elem.setAttribute("onclick", "slideinlogin(this);");
         }
 
@@ -153,21 +161,33 @@
             //             - sageata is the UP arrow
             var logo1 = document.getElementById("town-TOP");
             var logo2 = document.getElementById("cothon-TOP");
-            var cerc_alb = document.getElementById("cerc-logo-full"); 
+            var cerc_alb = document.getElementById("cerc-logo-full");
             var cerc_meniu = document.getElementById("cerc-meniu");
             var sageata = document.getElementById("sageata-meniu-TOP");
 
-            transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
-            transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
+            // transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
+            transitions.slide2D(new Dimension(logo1, -100, "percent"),
+                new Dimension(logo1, 0, "percent"),
+                tweenFunctions.easeInQuad,
+                500);
+            // transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
+            transitions.slide2D(new Dimension(logo2, -100, "percent"),
+                new Dimension(logo2, 0, "percent"),
+                tweenFunctions.easeInQuad,
+                500);
 
             //transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -10, -18);
-            transitions.slide2D(new Dimension(cerc_alb, -10, "percent"), 
-                                new Dimension(cerc_alb, -18, "percent"), 
-                                tweenFunctions.easeInQuad, 
-                                500);
+            transitions.slide2D(new Dimension(cerc_alb, -10, "percent"),
+                new Dimension(cerc_alb, -18, "percent"),
+                tweenFunctions.easeInQuad,
+                500);
             transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 0.5, 500);
 
-            transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 21, -20);
+            // transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 21, -20);
+            transitions.slide2D(new Dimension(sageata, 21, "percent"),
+                new Dimension(sageata, -20, "percent"),
+                tweenFunctions.easeInQuad,
+                500);
             transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1.4, 500);
 
             transitions.scaleUniform(cerc_meniu, tweenFunctions.easeOutQuad, 0.5, 700);
@@ -175,23 +195,35 @@
 
         function expandSageata() {
             var logo1 = document.getElementById("town-TOP");
-            var logo2 = document.getElementById("cothon-TOP");      
-            var cerc_alb = document.getElementById("cerc-logo-full"); 
+            var logo2 = document.getElementById("cothon-TOP");
+            var cerc_alb = document.getElementById("cerc-logo-full");
             var cerc_meniu = document.getElementById("cerc-meniu");
             var sageata = document.getElementById("sageata-meniu-TOP");
 
 
-            transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, 0, 0);
-            transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, 0, 0);
+            // transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, 0, 0);
+            transitions.slide2D(new Dimension(logo1, 0, "percent"),
+                new Dimension(logo1, 0, "percent"),
+                tweenFunctions.easeInQuad,
+                500);
+            // transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, 0, 0);
+            transitions.slide2D(new Dimension(logo2, 0, "percent"),
+                new Dimension(logo2, 0, "percent"),
+                tweenFunctions.easeInQuad,
+                500);
 
             // transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -16, -40);
-            transitions.slide2D(new Dimension(cerc_alb, -16, "percent"), 
-                                new Dimension(cerc_alb, -40, "percent"), 
-                                tweenFunctions.easeInQuad, 
-                                500);
+            transitions.slide2D(new Dimension(cerc_alb, -16, "percent"),
+                new Dimension(cerc_alb, -40, "percent"),
+                tweenFunctions.easeInQuad,
+                500);
             transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 1, 500);
 
-            transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 0, 0);
+            // transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 0, 0);
+            transitions.slide2D(new Dimension(sageata, 0, "percent"),
+                new Dimension(sageata, 0, "percent"),
+                tweenFunctions.easeInQuad,
+                500);
             transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1, 500);
 
             transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 1, 700);

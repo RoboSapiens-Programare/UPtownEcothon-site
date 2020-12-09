@@ -65,7 +65,10 @@ $scriptVersion = $detect->getScriptVersion();
             function expand(elem){
                 var rectangle = elem.parentElement;
 
-                transitions.resize2DViewport(rectangle, tweenFunctions.easeOutCubic, 50, 50, 1000);
+                transitions.resize2D(new Dimension(rectangle, 50, "vw"),
+                                    new Dimension(rectangle, 50, "vh"),
+                                    tweenFunctions.easeOutCubic,
+                                    1000);
                 transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 0.7, 1000);
                 transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, 0.7, 1000);
 
@@ -75,7 +78,10 @@ $scriptVersion = $detect->getScriptVersion();
             function retract(elem){
                 var rectangle = elem.parentElement;
 
-                transitions.resize2DViewport(rectangle, tweenFunctions.easeOutCubic, 0, 0, 1000);
+                transitions.resize2D(new Dimension(rectangle, 0, "vw"),
+                                    new Dimension(rectangle, 0, "vh"),
+                                    tweenFunctions.easeOutCubic,
+                                    1000);
                 transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
                 transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
 

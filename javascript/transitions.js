@@ -45,7 +45,7 @@ function getTranslateValues(element) {
 }
 
 class Dimension {
-    constructor(elem, val, unit){
+    constructor(elem, val, unit) {
         this.relativeElement = elem;
         this.value = val;
         this.unitOfMeasurement = unit;
@@ -77,34 +77,35 @@ class Dimension {
 
 var transitions = {
     /**
-    * Gets computed translate values
-    * @param {Dimension} toX - X coordinate to slide to
-    * @param {Dimension} toY - Y coordinate to slide to
-    * @param {tweenFunction} func - function to change by
-    * @param {duration} float - total duration of transition
-    * @returns {void}
-    */
-    slide2D: function(toX, toY, func, duration){
+     * Slide an HTML element
+     * @param {Dimension} toX - X coordinate to slide to
+     * @param {Dimension} toY - Y coordinate to slide to
+     * @param {tweenFunction} func - function to change by
+     * @param {float} duration - total duration of transition
+     * @returns {void}
+     */
+    slide2D: function(toX, toY, func, duration) {
         let start = Date.now();
 
         var elem = toX.relativeElement;
-        var fromX = new Dimension(elem, 0, "px"), fromY = new Dimension(elem, 0, "px");
+        var fromX = new Dimension(elem, 0, "px"),
+            fromY = new Dimension(elem, 0, "px");
 
         var style = window.getComputedStyle(elem);
 
-        if(!isNaN(parseFloat(elem.style.left))){
+        if (!isNaN(parseFloat(elem.style.left))) {
             let dimLeft = new Dimension(elem, parseFloat(elem.style.left), toX.unitOfMeasurement);
             fromX.value = dimLeft.to("px");
-        } else if(!isNaN(parseFloat(style.getPropertyValue('left')))){
+        } else if (!isNaN(parseFloat(style.getPropertyValue('left')))) {
             fromX.value = parseFloat(style.getPropertyValue('left'));
         } else {
             fromX.value = elem.offsetLeft;
-        } 
+        }
 
-        if(!isNaN(parseFloat(elem.style.top))){
+        if (!isNaN(parseFloat(elem.style.top))) {
             let dimTop = new Dimension(elem, parseFloat(elem.style.top), toY.unitOfMeasurement);
             fromY.value = dimTop.to("px");
-        } else if(!isNaN(parseFloat(style.getPropertyValue('top')))) {
+        } else if (!isNaN(parseFloat(style.getPropertyValue('top')))) {
             fromY.value = parseFloat(style.getPropertyValue('top'));
         } else {
             fromY.value = elem.offsetTop;
@@ -132,8 +133,8 @@ var transitions = {
     },
 
     /**
-    * @deprecated
-    */
+     * @deprecated
+     */
     slide2DPercentageParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
 
@@ -143,7 +144,7 @@ var transitions = {
 
         if (!isNaN(parseFloat(elem.style.left))) {
             fromX = parseFloat(elem.style.left);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('left')))){
+        } else if (!isNaN(parseFloat(style.getPropertyValue('left')))) {
             fromX = parseFloat(style.getPropertyValue('left'));
         } else {
             fromX = (elem.offsetLeft / elem.parentElement.clientWidth) * 100;
@@ -151,13 +152,13 @@ var transitions = {
 
         if (!isNaN(parseFloat(elem.style.top))) {
             fromY = parseFloat(elem.style.top);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('top')))) {
+        } else if (!isNaN(parseFloat(style.getPropertyValue('top')))) {
             fromY = parseFloat(style.getPropertyValue('top'));
         } else {
             fromY = (elem.offsetTop / elem.parentElement.clientHeight) * 100;
         }
 
-        
+
 
         function tick() {
             let now = Date.now();
@@ -181,8 +182,8 @@ var transitions = {
     },
 
     /**
-    * @deprecated
-    */
+     * @deprecated
+     */
     slide2DAbsoluteParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
 
@@ -190,7 +191,7 @@ var transitions = {
 
         if (!isNaN(parseFloat(elem.style.left))) {
             fromX = parseFloat(elem.style.left);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('left')))){
+        } else if (!isNaN(parseFloat(style.getPropertyValue('left')))) {
             fromX = parseFloat(style.getPropertyValue('left'));
         } else {
             fromX = 0;
@@ -198,7 +199,7 @@ var transitions = {
 
         if (!isNaN(parseFloat(elem.style.top))) {
             fromY = parseFloat(elem.style.top);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('top')))) {
+        } else if (!isNaN(parseFloat(style.getPropertyValue('top')))) {
             fromY = parseFloat(style.getPropertyValue('top'));
         } else {
             fromY = 0;
@@ -227,10 +228,6 @@ var transitions = {
         requestAnimationFrame(tick);
     },
 
-    fadeTo: function(elem, func, duration) {
-
-    },
-
     fadeIn: function(elem, func, duration) {
         let start = Date.now();
 
@@ -239,7 +236,7 @@ var transitions = {
 
         if (!isNaN(parseFloat(elem.style.opacity))) {
             from = parseFloat(elem.style.opacity);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('opacity')))){
+        } else if (!isNaN(parseFloat(style.getPropertyValue('opacity')))) {
             from = parseFloat(style.getPropertyValue('opacity'))
         } else {
             from = 1;
@@ -272,7 +269,7 @@ var transitions = {
 
         if (!isNaN(parseFloat(elem.style.opacity))) {
             from = parseFloat(elem.style.opacity);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('opacity')))){
+        } else if (!isNaN(parseFloat(style.getPropertyValue('opacity')))) {
             from = parseFloat(style.getPropertyValue('opacity'))
         } else {
             from = 1;
@@ -305,7 +302,7 @@ var transitions = {
 
         if (!isNaN(parseFloat(elem.style.scale))) {
             from = parseFloat(elem.style.scale);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('scale')))){
+        } else if (!isNaN(parseFloat(style.getPropertyValue('scale')))) {
             from = parseFloat(style.getPropertyValue('scale'));
         } else {
             from = 1;
@@ -315,7 +312,7 @@ var transitions = {
         var from_margin_x, from_margin_y;
         if (!isNaN(parseFloat(elem.style.marginLeft))) {
             from_margin_x = parseFloat(elem.style.marginLeft);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('margin-left')))){
+        } else if (!isNaN(parseFloat(style.getPropertyValue('margin-left')))) {
             from_margin_x = parseFloat(style.getPropertyValue('margin-left'));
         } else {
             from_margin_x = 0;
@@ -323,7 +320,7 @@ var transitions = {
 
         if (!isNaN(parseFloat(elem.style.marginTop))) {
             from_margin_y = parseFloat(elem.style.marginTop);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('margin-top')))){
+        } else if (!isNaN(parseFloat(style.getPropertyValue('margin-top')))) {
             from_margin_y = parseFloat(style.getPropertyValue('margin-top'));
         } else {
             from_margin_y = 0;
@@ -349,8 +346,7 @@ var transitions = {
 
             if (elapsed < duration) {
                 requestAnimationFrame(tick);
-            }
-            else{
+            } else {
                 elem.style.scale = to;
 
                 elem.style.marginTop = to_margin_y + 'px';
@@ -383,6 +379,62 @@ var transitions = {
         requestAnimationFrame(tick);
     },
 
+    /**
+     * Resizes an HTML element
+     * @param {Dimension} toWidth - width value to resize to
+     * @param {Dimension} toHeight - width value to resize to
+     * @param {tweenFunction} func - function to change by
+     * @param {float} duration - total duration of transition
+     * @returns {void}
+     */
+    resize2D: function(toWidth, toHeight, func, duration) {
+        let start = Date.now();
+
+        var elem = toWidth.relativeElement;
+        var fromWidth = new Dimension(elem, 0, "px"),
+            fromHeight = new Dimension(elem, 0, "px");
+
+        var style = window.getComputedStyle(elem);
+
+        if (!isNaN(parseFloat(elem.style.width))) {
+            let dimWidth = new Dimension(elem, parseFloat(elem.style.width), toWidth.unitOfMeasurement);
+            fromWidth.value = dimWidth.to("px");
+        } else if (!isNaN(parseFloat(style.getPropertyValue('width')))) {
+            fromWidth.value = parseFloat(style.getPropertyValue('width'));
+        } else {
+            fromWidth = 0;
+        }
+        if (!isNaN(parseFloat(elem.style.height))) {
+            let dimHeight = new Dimension(elem, parseFloat(elem.style.height), toHeight.unitOfMeasurement);
+            fromHeight.value = dimHeight.to("px");
+        } else if (!isNaN(parseFloat(style.getPropertyValue('height')))) {
+            fromHeight.value = parseFloat(style.getPropertyValue('height'));
+        } else {
+            fromHeight.value = 0;
+        }
+
+        function tick() {
+            let now = Date.now();
+            let elapsed = now - start;
+            let width = func(elapsed, fromWidth.to(toWidth.unitOfMeasurement), toWidth.value, duration);
+            let height = func(elapsed, fromHeight.to(toHeight.unitOfMeasurement), toHeight.value, duration);
+
+            elem.style.width = width + toWidth.unitOfMeasurementName;
+            elem.style.height = height + toHeight.unitOfMeasurementName;
+
+            if (elapsed < duration) {
+                requestAnimationFrame(tick);
+            } else {
+                elem.style.width = toWidth.value + toWidth.unitOfMeasurementName;
+                elem.style.height = toHeight.value + toHeight.unitOfMeasurementName;
+            }
+        }
+        requestAnimationFrame(tick);
+    },
+
+    /**
+     * @deprecated
+     */
     resize2DViewport: function(elem, func, toWidth, toHeight, duration) {
         let start = Date.now();
 
@@ -406,7 +458,9 @@ var transitions = {
         requestAnimationFrame(tick);
     },
 
-    //resize numai cu viewport ca am nevoie pt un cerc si scaleUniform imi da scale numai la margini for some reason
+    /**
+     * @deprecated
+     */
     resize2DViewportWidth: function(elem, func, toWidth, toHeight, duration) {
         let start = Date.now();
 
@@ -417,14 +471,14 @@ var transitions = {
         var fromWidth, fromHeight;
         if (!isNaN(parseFloat(elem.style.width))) {
             fromWidth = parseFloat(elem.style.width);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('width')))){
+        } else if (!isNaN(parseFloat(style.getPropertyValue('width')))) {
             fromWidth = parseFloat(style.getPropertyValue('width'));
         } else {
             fromWidth = 0;
         }
         if (!isNaN(parseFloat(elem.style.height))) {
             fromHeight = parseFloat(elem.style.height);
-        } else if(!isNaN(parseFloat(style.getPropertyValue('height')))){
+        } else if (!isNaN(parseFloat(style.getPropertyValue('height')))) {
             fromHeight = parseFloat(style.getPropertyValue('height'));
         } else {
             fromHeight = 0;
