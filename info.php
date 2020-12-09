@@ -1,11 +1,26 @@
+<?php
+require_once 'Mobile-Detect-master/Mobile_Detect.php';
+$detect = new Mobile_Detect;
+
+$scriptVersion = $detect->getScriptVersion();
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <title></title>
 
-        <link rel="stylesheet" type="text/css" href="css/sageata.css">
+        <!-- <link rel="stylesheet" type="text/css" href="css/sageata.css"> -->
         <link rel="stylesheet" type="text/css" href="css/circlecontent.css">
-		<link rel="stylesheet" type="text/css" href="css/basics.css">
+        <link rel="stylesheet" type="text/css" href="css/basics.css">
+        <!-- <link rel="stylesheet" type="text/css" href="css/sageatatlf.css"> -->
+
+        <?php 
+			if($detect->isMobile() || $detect->isTablet()) {
+				echo "<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>";
+			} else {
+				echo "<link rel='stylesheet' type='text/css' href='css/sageata.css'>";
+			}
+		?>
 
 
         <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
@@ -15,7 +30,14 @@
         <script src="javascript/transitions.js"></script>
     </head>
     <body style="background-color: #855754; overflow-y: hidden">
-        <?php include "elements/sageata.html" ?>
+        
+        <?php 
+			if($detect->isMobile() || $detect->isTablet()) {
+				include "elements/sageatatlf.html";
+			} else {
+				include "elements/sageata.html";
+			}
+		?>
 
         <div name="toFade" class="rectangle-content" style="top: 70%; left: 50%; transform: translate(-50%, -50%); opacity: 0">
             <div class="circle-top-left" onclick="expand(this);"><div class="text-centrat" style="opacity: 0">Salut</div></div>
