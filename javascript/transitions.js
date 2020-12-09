@@ -44,8 +44,93 @@ function getTranslateValues(element) {
     }
 }
 
-//elem - element to modify; func - function to change by; duration - total duration of transition;
+class Dimension {
+    constructor(elem, val, unit){
+        this.relativeElement = elem;
+        this.value = val;
+        this.unitOfMeasurement = unit;
+
+        this.units = {
+            px: 1,
+            percent: this.relativeElement.parentElement.clientWidth / 100,
+            vh: elem.ownerDocument.documentElement.clientHeight / 100,
+            vw: elem.ownerDocument.documentElement.clientWidth / 100
+        }
+
+        this.aliases = {
+            px: "px",
+            percent: "%",
+            vh: "vh",
+            vw: "vw"
+        }
+
+        this.unitOfMeasurementName = this.aliases[unit];
+    }
+
+    to(unit) {
+        let valInPX = this.value * this.units[this.unitOfMeasurement];
+
+        return valInPX / this.units[unit];
+    }
+}
+
+
 var transitions = {
+    /**
+    * Gets computed translate values
+    * @param {Dimension} toX - X coordinate to slide to
+    * @param {Dimension} toY - Y coordinate to slide to
+    * @param {tweenFunction} func - function to change by
+    * @param {duration} float - total duration of transition
+    * @returns {void}
+    */
+    slide2D: function(toX, toY, func, duration){
+        let start = Date.now();
+
+        var elem = toX.relativeElement;
+        var fromX = new Dimension(elem, 0, "px"), fromY = new Dimension(elem, 0, "px");
+
+        var style = window.getComputedStyle(elem);
+
+        if(!isNaN(parseFloat(elem.style.left))){
+            let dimLeft = new Dimension(elem, parseFloat(elem.style.left), toX.unitOfMeasurement);
+            fromX.value = dimLeft.to("px");
+        } else if(!isNaN(parseFloat(style.getPropertyValue('left')))){
+            fromX.value = parseFloat(style.getPropertyValue('left'));
+        } else {
+            fromX.value = elem.offsetLeft;
+        } 
+
+        if(!isNaN(parseFloat(elem.style.top))){
+            let dimTop = new Dimension(elem, parseFloat(elem.style.top), toY.unitOfMeasurement);
+            fromY.value = dimTop.to("px");
+        } else if(!isNaN(parseFloat(style.getPropertyValue('top')))) {
+            fromY.value = parseFloat(style.getPropertyValue('top'));
+        } else {
+            fromY.value = elem.offsetTop;
+        }
+
+        function tick() {
+            let now = Date.now();
+            let elapsed = now - start;
+            let valX = func(elapsed, fromX.to(toX.unitOfMeasurement), toX.value, duration);
+            let valY = func(elapsed, fromY.to(toY.unitOfMeasurement), toY.value, duration);
+
+            elem.style.left = valX + toX.unitOfMeasurementName;
+            elem.style.top = valY + toY.unitOfMeasurementName;
+
+            if (elapsed < duration) {
+                requestAnimationFrame(tick);
+            } else {
+                elem.style.left = toX.value + toX.unitOfMeasurementName;
+                elem.style.top = toY.value + toY.unitOfMeasurementName;
+            }
+
+        }
+
+        requestAnimationFrame(tick);
+    },
+
     slide2DPercentageParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
 

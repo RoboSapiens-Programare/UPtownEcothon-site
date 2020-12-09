@@ -161,7 +161,11 @@
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
 
-            transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -10, -18);
+            //transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -10, -18);
+            transitions.slide2D(new Dimension(cerc_alb, -10, "percent"), 
+                                new Dimension(cerc_alb, -18, "percent"), 
+                                tweenFunctions.easeInQuad, 
+                                500);
             transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 0.5, 500);
 
             transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 21, -20);
@@ -181,7 +185,11 @@
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, 0, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, 0, 0);
 
-            transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -16, -40);
+            // transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -16, -40);
+            transitions.slide2D(new Dimension(cerc_alb, -16, "percent"), 
+                                new Dimension(cerc_alb, -40, "percent"), 
+                                tweenFunctions.easeInQuad, 
+                                500);
             transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 1, 500);
 
             transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 0, 0);
