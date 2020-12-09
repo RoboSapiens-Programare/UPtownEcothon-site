@@ -105,5 +105,24 @@
                 </div>
             </div>
         </div>
+
+        <div style="background-color: red; width:50vw; height:50vh; position:relative" id="pilk">
+            <input type="text" id="value">
+            <button id="conv" onclick="slidey();">Convert</button>
+        </div>
+
+        <script>
+            function convert(){
+                var dim = new Dimension(document.getElementById('value'), document.getElementById('value').value, "vw");
+                alert(dim.to("percent"));
+            }
+
+            function slidey(){
+                var elem = document.getElementById('pilk');
+                var toX = new Dimension(elem, 50, "percent");
+                var toY = new Dimension(elem, 0, "percent");
+                transitions.slide2D(toX, toY, tweenFunctions.easeInQuad, 1000);
+            }
+        </script>
     </body>
 </html>

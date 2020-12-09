@@ -9,9 +9,9 @@
 ?>
 
     <div class="meniu" id="meniu-full" style="display:block; width: 20vw; height: 20vw;">
-        <div class="cerc" id="cerc-logo-full">
+        <div class="cerc" id="cerc-logo-full" onmouseover="expandSageata();">
             <div id="logo-meniu-full" style="z-index: 102;">
-                <div class="logo-elem" id="sageata-meniu-TOP" style="z-index: 105" onmouseover="expandSageata(this);" onmouseleave="shrinkSageata(this);">
+                <div class="logo-elem" id="sageata-meniu-TOP" style="z-index: 105">
                     <img src="pictures/1sageataUTE.png" alt="logo arrow" style="position: absolute; z-index: 104;">
                     <div style="position: absolute; background-color: white; width: 100%; height: 100%; z-index: 103; left: -78%;"></div>
                 </div>
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="cerc-text">
+        <div class="cerc-text" id="cerc-meniu" onmouseleave="shrinkSageata();">
             <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
                 <a href="home.php">
                     <div class="text-centrat" style="color: white; opacity: 0;">Home</div>
@@ -146,21 +146,25 @@
         current = document.documentElement.scrollTop;
 
 
-        function shrinkSageata(elem) {
+        function shrinkSageata() {
             //Get elements - logo1 / logo2 are town / cothon images
             //             - cerc_alb is the white circle
             //             - cerc_meniu is the circle with the menu icons
             //             - sageata is the UP arrow
-            var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
-            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
-            var cerc_alb = elem.parentElement.parentElement;
-            var cerc_meniu = elem.parentElement.parentElement.parentElement.getElementsByClassName("cerc-text")[0];
-            var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
+            var logo1 = document.getElementById("town-TOP");
+            var logo2 = document.getElementById("cothon-TOP");
+            var cerc_alb = document.getElementById("cerc-logo-full"); 
+            var cerc_meniu = document.getElementById("cerc-meniu");
+            var sageata = document.getElementById("sageata-meniu-TOP");
 
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
 
-            transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -10, -18);
+            //transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -10, -18);
+            transitions.slide2D(new Dimension(cerc_alb, -10, "percent"), 
+                                new Dimension(cerc_alb, -18, "percent"), 
+                                tweenFunctions.easeInQuad, 
+                                500);
             transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 0.5, 500);
 
             transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 21, -20);
@@ -169,18 +173,22 @@
             transitions.scaleUniform(cerc_meniu, tweenFunctions.easeOutQuad, 0.5, 700);
         }
 
-        function expandSageata(elem) {
-            var logo1 = elem.parentElement.getElementsByClassName("logo-elem")[1];
-            var logo2 = elem.parentElement.getElementsByClassName("logo-elem")[2];
-            var cerc_alb = elem.parentElement.parentElement;
-            var cerc_meniu = elem.parentElement.parentElement.parentElement.getElementsByClassName("cerc-text")[0];
-            var sageata = cerc_alb.getElementsByClassName("logo-elem")[0];
+        function expandSageata() {
+            var logo1 = document.getElementById("town-TOP");
+            var logo2 = document.getElementById("cothon-TOP");      
+            var cerc_alb = document.getElementById("cerc-logo-full"); 
+            var cerc_meniu = document.getElementById("cerc-meniu");
+            var sageata = document.getElementById("sageata-meniu-TOP");
 
 
             transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, 0, 0);
             transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, 0, 0);
 
-            transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -16, -40);
+            // transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -16, -40);
+            transitions.slide2D(new Dimension(cerc_alb, -16, "percent"), 
+                                new Dimension(cerc_alb, -40, "percent"), 
+                                tweenFunctions.easeInQuad, 
+                                500);
             transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 1, 500);
 
             transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 0, 0);

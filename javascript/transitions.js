@@ -44,24 +44,117 @@ function getTranslateValues(element) {
     }
 }
 
-//elem - element to modify; func - function to change by; duration - total duration of transition;
+class Dimension {
+    constructor(elem, val, unit){
+        this.relativeElement = elem;
+        this.value = val;
+        this.unitOfMeasurement = unit;
+
+        this.units = {
+            px: 1,
+            percent: this.relativeElement.parentElement.clientWidth / 100,
+            vh: elem.ownerDocument.documentElement.clientHeight / 100,
+            vw: elem.ownerDocument.documentElement.clientWidth / 100
+        }
+
+        this.aliases = {
+            px: "px",
+            percent: "%",
+            vh: "vh",
+            vw: "vw"
+        }
+
+        this.unitOfMeasurementName = this.aliases[unit];
+    }
+
+    to(unit) {
+        let valInPX = this.value * this.units[this.unitOfMeasurement];
+
+        return valInPX / this.units[unit];
+    }
+}
+
+
 var transitions = {
+    /**
+    * Gets computed translate values
+    * @param {Dimension} toX - X coordinate to slide to
+    * @param {Dimension} toY - Y coordinate to slide to
+    * @param {tweenFunction} func - function to change by
+    * @param {duration} float - total duration of transition
+    * @returns {void}
+    */
+    slide2D: function(toX, toY, func, duration){
+        let start = Date.now();
+
+        var elem = toX.relativeElement;
+        var fromX = new Dimension(elem, 0, "px"), fromY = new Dimension(elem, 0, "px");
+
+        var style = window.getComputedStyle(elem);
+
+        if(!isNaN(parseFloat(elem.style.left))){
+            let dimLeft = new Dimension(elem, parseFloat(elem.style.left), toX.unitOfMeasurement);
+            fromX.value = dimLeft.to("px");
+        } else if(!isNaN(parseFloat(style.getPropertyValue('left')))){
+            fromX.value = parseFloat(style.getPropertyValue('left'));
+        } else {
+            fromX.value = elem.offsetLeft;
+        } 
+
+        if(!isNaN(parseFloat(elem.style.top))){
+            let dimTop = new Dimension(elem, parseFloat(elem.style.top), toY.unitOfMeasurement);
+            fromY.value = dimTop.to("px");
+        } else if(!isNaN(parseFloat(style.getPropertyValue('top')))) {
+            fromY.value = parseFloat(style.getPropertyValue('top'));
+        } else {
+            fromY.value = elem.offsetTop;
+        }
+
+        function tick() {
+            let now = Date.now();
+            let elapsed = now - start;
+            let valX = func(elapsed, fromX.to(toX.unitOfMeasurement), toX.value, duration);
+            let valY = func(elapsed, fromY.to(toY.unitOfMeasurement), toY.value, duration);
+
+            elem.style.left = valX + toX.unitOfMeasurementName;
+            elem.style.top = valY + toY.unitOfMeasurementName;
+
+            if (elapsed < duration) {
+                requestAnimationFrame(tick);
+            } else {
+                elem.style.left = toX.value + toX.unitOfMeasurementName;
+                elem.style.top = toY.value + toY.unitOfMeasurementName;
+            }
+
+        }
+
+        requestAnimationFrame(tick);
+    },
+
     slide2DPercentageParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
 
         var fromX, fromY;
 
-        if (isNaN(parseFloat(elem.style.left))) {
-            fromX = (elem.offsetLeft / elem.parentElement.clientWidth) * 100;
-        } else {
+        var style = window.getComputedStyle(elem);
+
+        if (!isNaN(parseFloat(elem.style.left))) {
             fromX = parseFloat(elem.style.left);
+        } else if(!isNaN(parseFloat(style.getPropertyValue('left')))){
+            fromX = parseFloat(style.getPropertyValue('left'));
+        } else {
+            fromX = (elem.offsetLeft / elem.parentElement.clientWidth) * 100;
         }
 
-        if (isNaN(parseFloat(elem.style.top))) {
-            fromY = (elem.offsetTop / elem.parentElement.clientHeight) * 100;
-        } else {
+        if (!isNaN(parseFloat(elem.style.top))) {
             fromY = parseFloat(elem.style.top);
+        } else if(!isNaN(parseFloat(style.getPropertyValue('top')))) {
+            fromY = parseFloat(style.getPropertyValue('top'));
+        } else {
+            fromY = (elem.offsetTop / elem.parentElement.clientHeight) * 100;
         }
+
+        
 
         function tick() {
             let now = Date.now();
@@ -87,15 +180,27 @@ var transitions = {
     //toX/toY - final coordinates
     slide2DAbsoluteParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
-        var fromX = parseFloat(getTranslateValues(elem).x) || 0;
-        var fromY = parseFloat(getTranslateValues(elem).y) || 0;
+
+        var style = window.getComputedStyle(elem);
+
+        if (!isNaN(parseFloat(elem.style.left))) {
+            fromX = parseFloat(elem.style.left);
+        } else if(!isNaN(parseFloat(style.getPropertyValue('left')))){
+            fromX = parseFloat(style.getPropertyValue('left'));
+        } else {
+            fromX = 0;
+        }
+
+        if (!isNaN(parseFloat(elem.style.top))) {
+            fromY = parseFloat(elem.style.top);
+        } else if(!isNaN(parseFloat(style.getPropertyValue('top')))) {
+            fromY = parseFloat(style.getPropertyValue('top'));
+        } else {
+            fromY = 0;
+        }
 
         toX = (toX / 100) * elem.parentElement.clientWidth - elem.offsetLeft;
         toY = (toY / 100) * elem.parentElement.clientHeight - elem.offsetTop;
-
-
-        //alert(toX + ", " + toY);
-        //alert(fromX + ", " + fromY);
 
         function tick() {
             let now = Date.now();
@@ -121,11 +226,16 @@ var transitions = {
         let start = Date.now();
 
         var from;
-        if (isNaN(parseFloat(elem.style.opacity))) {
-            from = 0;
-        } else {
+        var style = window.getComputedStyle(elem);
+
+        if (!isNaN(parseFloat(elem.style.opacity))) {
             from = parseFloat(elem.style.opacity);
+        } else if(!isNaN(parseFloat(style.getPropertyValue('opacity')))){
+            from = parseFloat(style.getPropertyValue('opacity'))
+        } else {
+            from = 1;
         }
+
         var to = 1.0;
 
         function tick() {
@@ -149,11 +259,16 @@ var transitions = {
         let start = Date.now();
 
         var from;
-        if (isNaN(parseFloat(elem.style.opacity))) {
-            from = 1;
-        } else {
+        var style = window.getComputedStyle(elem);
+
+        if (!isNaN(parseFloat(elem.style.opacity))) {
             from = parseFloat(elem.style.opacity);
+        } else if(!isNaN(parseFloat(style.getPropertyValue('opacity')))){
+            from = parseFloat(style.getPropertyValue('opacity'))
+        } else {
+            from = 1;
         }
+
         var to = 0;
 
         function tick() {
@@ -177,23 +292,32 @@ var transitions = {
         let start = Date.now();
 
         var from;
-        if (isNaN(parseFloat(elem.style.scale))) {
-            from = 1;
-        } else {
+        var style = window.getComputedStyle(elem);
+
+        if (!isNaN(parseFloat(elem.style.scale))) {
             from = parseFloat(elem.style.scale);
+        } else if(!isNaN(parseFloat(style.getPropertyValue('scale')))){
+            from = parseFloat(style.getPropertyValue('scale'));
+        } else {
+            from = 1;
         }
 
         //Luam valorile initiale ale marginilor
         var from_margin_x, from_margin_y;
-        if (isNaN(parseFloat(elem.style.marginLeft))) {
-            from_margin_x = 0;
-        } else {
+        if (!isNaN(parseFloat(elem.style.marginLeft))) {
             from_margin_x = parseFloat(elem.style.marginLeft);
-        }
-        if (isNaN(parseFloat(elem.style.marginTop))) {
-            from_margin_y = 0;
+        } else if(!isNaN(parseFloat(style.getPropertyValue('margin-left')))){
+            from_margin_x = parseFloat(style.getPropertyValue('margin-left'));
         } else {
+            from_margin_x = 0;
+        }
+
+        if (!isNaN(parseFloat(elem.style.marginTop))) {
             from_margin_y = parseFloat(elem.style.marginTop);
+        } else if(!isNaN(parseFloat(style.getPropertyValue('margin-top')))){
+            from_margin_y = parseFloat(style.getPropertyValue('margin-top'));
+        } else {
+            from_margin_y = 0;
         }
 
         var to_margin_x = (((elem.clientWidth * to) - elem.clientWidth) / 2);
@@ -277,18 +401,24 @@ var transitions = {
     resize2DViewportWidth: function(elem, func, toWidth, toHeight, duration) {
         let start = Date.now();
 
+        var style = window.getComputedStyle(elem);
+
         //HELP elementul meu are width si height dar mi le da cand dai refersh ca fiind NaN, dupa ce ai apasat odata pe el merge
         //alert("elem width: " + parseFloat(elem.style.width) + " , elem height: " + parseFloat(elem.style.height));
         var fromWidth, fromHeight;
-        if (isNaN(parseFloat(elem.style.width))) {
-            fromWidth = 0;
-        } else {
+        if (!isNaN(parseFloat(elem.style.width))) {
             fromWidth = parseFloat(elem.style.width);
-        }
-        if (isNaN(parseFloat(elem.style.height))) {
-            fromHeight = 0;
+        } else if(!isNaN(parseFloat(style.getPropertyValue('width')))){
+            fromWidth = parseFloat(style.getPropertyValue('width'));
         } else {
+            fromWidth = 0;
+        }
+        if (!isNaN(parseFloat(elem.style.height))) {
             fromHeight = parseFloat(elem.style.height);
+        } else if(!isNaN(parseFloat(style.getPropertyValue('height')))){
+            fromHeight = parseFloat(style.getPropertyValue('height'));
+        } else {
+            fromHeight = 0;
         }
 
         //alert("from width: " + fromWidth + " , from height: " + fromHeight);
