@@ -131,6 +131,9 @@ var transitions = {
         requestAnimationFrame(tick);
     },
 
+    /**
+    * @deprecated
+    */
     slide2DPercentageParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
 
@@ -177,7 +180,9 @@ var transitions = {
         requestAnimationFrame(tick);
     },
 
-    //toX/toY - final coordinates
+    /**
+    * @deprecated
+    */
     slide2DAbsoluteParent: function(elem, func, duration, toX, toY) {
         let start = Date.now();
 
@@ -220,6 +225,10 @@ var transitions = {
         }
 
         requestAnimationFrame(tick);
+    },
+
+    fadeTo: function(elem, func, duration) {
+
     },
 
     fadeIn: function(elem, func, duration) {
