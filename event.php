@@ -107,143 +107,93 @@ $scriptVersion = $detect->getScriptVersion();
 
             function readMore(x){
                 var slidings = x.parentElement.getElementsByClassName("sliding");
+                var title = x.parentElement.getElementsByClassName('title')[0];
+                var scrollbar = document.getElementById("scroller");
+
                 for(var a of slidings) {
-                    if(a.style.left){
-                        animShow(a, 2000, 1);
+                    if(a.style.right){
+                        transitions.translate2D(
+                            new Dimension(a, -50, "pw"),
+                            new Dimension(a, 0, "px"),
+                            tweenFunctions.easeOutQuint,
+                            2000
+                        );
                     }
                     else{
-                        animShow(a, 2000, -1);
+                        transitions.translate2D(
+                            new Dimension(a, 50, "pw"),
+                            new Dimension(a, 0, "px"),
+                            tweenFunctions.easeOutQuint,
+                            2000
+                        );
                     }
-                    a.style.display = "block";
                 }
-                slideElem2D(x.parentElement.getElementsByClassName("title")[0], 1000, -50, -170, -50, -170, false);
-                slideElem2D(x, 1000, -50, -150, -50, -300, false);
-                slideElem2D(document.getElementById("scroller"), 1000, 0, 120, -50, -50, false);
+
+                transitions.translate2D(
+                    new Dimension(title, -25, "pw"),
+                    new Dimension(title, -20, "ph"),
+                    tweenFunctions.easeInOutExpo,
+                    1000
+                );
+                transitions.translate2D(
+                    new Dimension(x, -25, "pw"),
+                    new Dimension(x, -28, "ph"),
+                    tweenFunctions.easeInOutExpo,
+                    1000
+                );
+                transitions.translate2D(
+                    new Dimension(scrollbar, 4.8, "vw"),
+                    new Dimension(scrollbar, 0, "vh"), 
+                    tweenFunctions.easeInOutExpo,
+                    1000
+                );
                 x.innerHTML = "Read Less";
                 x.setAttribute("onclick", "readLess(this);");
             }
 
             function readLess(x){
                 var slidings = x.parentElement.getElementsByClassName("sliding");
+                var title = x.parentElement.getElementsByClassName('title')[0];
+                var scrollbar = document.getElementById("scroller");
+
                 for(var a of slidings) {
-                    if(a.style.left){
-                        animFade(a, 2000, 1);
-                    }
+                    if(a.style.right){
+                        transitions.translate2D(
+                            new Dimension(a, 50, "pw"),
+                            new Dimension(a, 0, "px"),
+                            tweenFunctions.easeOutQuint,
+                            2000
+                        );                    }
                     else{
-                        animFade(a, 2000, -1);
+                        transitions.translate2D(
+                            new Dimension(a, -50, "pw"),
+                            new Dimension(a, 0, "px"),
+                            tweenFunctions.easeOutQuint,
+                            2000
+                        );
                     }
                 }
-                slideElem2D(x.parentElement.getElementsByClassName("title")[0], 1000, -50, -170, -50, -170, true);
-                slideElem2D(x, 1000, -50, -150, -50, -300, true);
-                slideElem2D(document.getElementById("scroller"), 1000, 0, 120, -50, -50, true);
+
+                transitions.translate2D(
+                    new Dimension(title, 25, "pw"),
+                    new Dimension(title, 20, "ph"),
+                    tweenFunctions.easeInOutExpo,
+                    1000
+                );
+                transitions.translate2D(
+                    new Dimension(x, 25, "pw"),
+                    new Dimension(x, 28, "ph"),
+                    tweenFunctions.easeInOutExpo,
+                    1000
+                );
+                transitions.translate2D(
+                    new Dimension(scrollbar, -4.8, "vw"),
+                    new Dimension(scrollbar, 0, "vh"), 
+                    tweenFunctions.easeInOutExpo,
+                    1000
+                );
                 x.innerHTML = "Read More";
                 x.setAttribute("onclick", "readMore(this);");
-            }
-
-            function animShow(elem, duration, direction){
-                let start = Date.now();
-                let from = 0;
-                let to = 102;
-            
-                function tick() {
-                    let now = Date.now();
-                    let elapsed = now - start;
-                    let val = tweenFunctions.easeOutQuint(elapsed, from, to, duration);
-                    elem.style.transform = `translateX(${val*direction}%)`;
-                    if (elapsed < duration) {
-                        requestAnimationFrame(tick);
-                    }
-                }
-                requestAnimationFrame(tick);
-            }
-
-            function animFade(elem, duration, direction){
-                let start = Date.now();
-                let from = 102;
-                let to = 0;
-            
-                function tick() {
-                    let now = Date.now();
-                    let elapsed = now - start;
-                    let val = tweenFunctions.easeOutQuint(elapsed, from, to, duration);
-                    elem.style.transform = `translateX(${val*direction}%)`;
-                    if (elapsed < duration) {
-                        requestAnimationFrame(tick);
-                    }
-                }
-                requestAnimationFrame(tick);
-            }
-
-            function slideElem2D(elem, duration, fromX, toX, fromY, toY, reverse){
-                let start = Date.now();
-
-                if(reverse){
-                    let auxX = fromX;
-                    fromX = toX;
-                    toX = auxX;
-
-                    let auxY = fromY;
-                    fromY = toY;
-                    toY = auxY;
-                }
-
-                function tick() {
-                    let now = Date.now();
-                    let elapsed = now - start;
-                    let valX = tweenFunctions.easeInOutExpo(elapsed, fromX, toX, duration);
-                    let valY = tweenFunctions.easeInOutExpo(elapsed, fromY, toY, duration);
-
-                    //Fa-l in functie de viewport height
-
-                    elem.style.transform = `translate(${valX}%, ${valY}%)`;
-
-                    if (elapsed < duration) {
-                        requestAnimationFrame(tick);
-                    }
-                }
-
-                requestAnimationFrame(tick);
-            }
-
-            function slideElem2Dabsolute(elem, duration, fromX, toX, fromY, toY, reverse){
-                let start = Date.now();
-
-                if(reverse){
-                    let auxX = fromX;
-                    fromX = toX;
-                    toX = auxX;
-
-                    let auxY = fromY;
-                    fromY = toY;
-                    toY = auxY;
-                }
-
-                //alert(-17/100);
-
-                fromX = fromX/100 * elem.clientWidth;
-                fromY = fromY/100 * elem.clientHeight;
-
-                toX = (toX/100) * elem.parentElement.clientWidth + fromX;
-                toY = (toY/100) * elem.parentElement.clientHeight + fromX;
-                
-            
-
-                function tick() {
-                    let now = Date.now();
-                    let elapsed = now - start;
-                    let valX = tweenFunctions.easeInOutExpo(elapsed, fromX, toX, duration);
-                    let valY = tweenFunctions.easeInOutExpo(elapsed, fromY, toY, duration);
-
-                    //Fa-l in functie de viewport height
-
-
-                    elem.style.transform = `translate(${valX}px, ${valY}px)`;
-
-                    if (elapsed < duration) {
-                        requestAnimationFrame(tick);
-                    }
-                }
-                requestAnimationFrame(tick);
             }
         </script>
     </body>

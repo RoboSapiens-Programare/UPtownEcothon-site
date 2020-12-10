@@ -46,7 +46,7 @@
     position: fixed;
     right: 0px;
     top: 50%;
-    width: 8vh;
+    width: 4vw;
     height: auto;
     mix-blend-mode: difference;
     z-index: 4;
@@ -56,8 +56,8 @@
 .scroller .link {
     background-color: #bbb;
     border-radius: 15px;
-    width: 7vh;
-    height: 7vh;
+    width: 3vw;
+    height: 3vw;
     position: relative;
     margin-top: 2vh;
     transform: rotate(45deg);
@@ -69,8 +69,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 5vh;
-    width: 5vh;
+    height: 2vw;
+    width: 2vw;
     background-color: #ffffff;
     border-radius: 50%;
     display: inline-block;

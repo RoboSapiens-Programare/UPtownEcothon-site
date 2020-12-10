@@ -53,6 +53,8 @@ class Dimension {
         this.units = {
             px: 1,
             percent: this.relativeElement.parentElement.clientWidth / 100,
+            pw: this.relativeElement.parentElement.clientWidth / 100,
+            ph: this.relativeElement.parentElement.clientHeight / 100,
             vh: elem.ownerDocument.documentElement.clientHeight / 100,
             vw: elem.ownerDocument.documentElement.clientWidth / 100
         }
@@ -60,6 +62,8 @@ class Dimension {
         this.aliases = {
             px: "px",
             percent: "%",
+            pw: "%",
+            ph: "%",
             vh: "vh",
             vw: "vw"
         }
@@ -382,7 +386,7 @@ var transitions = {
     /**
      * Resizes an HTML element
      * @param {Dimension} toWidth - width value to resize to
-     * @param {Dimension} toHeight - width value to resize to
+     * @param {Dimension} toHeight - height value to resize to
      * @param {tweenFunction} func - function to change by
      * @param {float} duration - total duration of transition
      * @returns {void}
@@ -502,6 +506,66 @@ var transitions = {
                 elem.style.width = toWidth + 'vw';
                 elem.style.height = toHeight + 'vw';
             }
+        }
+
+        requestAnimationFrame(tick);
+    },
+
+    /**
+     * Translates an element
+     * @param {Dimension} byX - X to translate by
+     * @param {Dimension} byY - Y to translate by
+     * @param {tweenFunction} func - function to change by
+     * @param {float} duration - total duration of transition
+     * @returns {void}
+     */
+    translate2D: function(byX, byY, func, duration) {
+        let start = Date.now();
+
+        var elem = byX.relativeElement;
+        var fromX = new Dimension(elem, 0, "px"),
+            fromY = new Dimension(elem, 0, "px");
+
+        var style = window.getComputedStyle(elem);
+
+        if (!isNaN(parseFloat(elem.style.left))) {
+            let dimLeft = new Dimension(elem, parseFloat(elem.style.left), byX.unitOfMeasurement);
+            fromX.value = dimLeft.to("px");
+        } else if (!isNaN(parseFloat(style.getPropertyValue('left')))) {
+            fromX.value = parseFloat(style.getPropertyValue('left'));
+        } else {
+            fromX.value = elem.offsetLeft;
+        }
+
+        if (!isNaN(parseFloat(elem.style.top))) {
+            let dimTop = new Dimension(elem, parseFloat(elem.style.top), byY.unitOfMeasurement);
+            fromY.value = dimTop.to("px");
+        } else if (!isNaN(parseFloat(style.getPropertyValue('top')))) {
+            fromY.value = parseFloat(style.getPropertyValue('top'));
+        } else {
+            fromY.value = elem.offsetTop;
+        }
+
+
+        var toX = fromX.to(byX.unitOfMeasurement) + byX.value;
+        var toY = fromY.to(byY.unitOfMeasurement) + byY.value;
+
+        function tick() {
+            let now = Date.now();
+            let elapsed = now - start;
+            let valX = func(elapsed, fromX.to(byX.unitOfMeasurement), toX, duration);
+            let valY = func(elapsed, fromY.to(byY.unitOfMeasurement), toY, duration);
+
+            elem.style.left = valX + byX.unitOfMeasurementName;
+            elem.style.top = valY + byY.unitOfMeasurementName;
+
+            if (elapsed < duration) {
+                requestAnimationFrame(tick);
+            } else {
+                elem.style.left = toX + byX.unitOfMeasurementName;
+                elem.style.top = toY + byY.unitOfMeasurementName;
+            }
+
         }
 
         requestAnimationFrame(tick);

@@ -110,7 +110,7 @@
 
 
     <script>
-        //shrinkSageata(document.getElementById('sageata-meniu-TOP'));
+        shrinkSageata();
 
         function fadeicon(elem) {
             var icon = elem.getElementsByClassName('icon')[0];
@@ -132,7 +132,6 @@
         }
 
         function slideinlogin(elem) {
-            // transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeOutExpo, 1000, 0, 3);
             transitions.slide2D(new Dimension(document.getElementById('login'), 0, "percent"),
                 new Dimension(document.getElementById('login'), 3, "percent"),
                 tweenFunctions.easeOutExpo,
@@ -141,7 +140,6 @@
         }
 
         function slideoutlogin(elem) {
-            // transitions.slide2DPercentageParent(document.getElementById('login'), tweenFunctions.easeInExpo, 1000, -35, 3);
             transitions.slide2D(new Dimension(document.getElementById('login'), -35, "percent"),
                 new Dimension(document.getElementById('login'), 3, "percent"),
                 tweenFunctions.easeOutExpo,
@@ -165,32 +163,32 @@
             var cerc_meniu = document.getElementById("cerc-meniu");
             var sageata = document.getElementById("sageata-meniu-TOP");
 
-            // transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, -100, 0);
             transitions.slide2D(new Dimension(logo1, -100, "percent"),
                 new Dimension(logo1, 0, "percent"),
                 tweenFunctions.easeInQuad,
                 500);
-            // transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, -100, 0);
             transitions.slide2D(new Dimension(logo2, -100, "percent"),
                 new Dimension(logo2, 0, "percent"),
                 tweenFunctions.easeInQuad,
                 500);
 
-            //transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -10, -18);
             transitions.slide2D(new Dimension(cerc_alb, -10, "percent"),
                 new Dimension(cerc_alb, -18, "percent"),
                 tweenFunctions.easeInQuad,
                 500);
             transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 0.5, 500);
 
-            // transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 21, -20);
             transitions.slide2D(new Dimension(sageata, 21, "percent"),
                 new Dimension(sageata, -20, "percent"),
                 tweenFunctions.easeInQuad,
                 500);
             transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1.4, 500);
 
-            transitions.scaleUniform(cerc_meniu, tweenFunctions.easeOutQuad, 0.5, 700);
+            transitions.slide2D(new Dimension(cerc_meniu, -4.5, "vw"),
+                new Dimension(cerc_meniu, -6.2, "vw"),
+                tweenFunctions.easeInQuad,
+                500);
+            transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 0.3, 500);
         }
 
         function expandSageata() {
@@ -200,32 +198,31 @@
             var cerc_meniu = document.getElementById("cerc-meniu");
             var sageata = document.getElementById("sageata-meniu-TOP");
 
-
-            // transitions.slide2DPercentageParent(logo1, tweenFunctions.easeInQuad, 500, 0, 0);
             transitions.slide2D(new Dimension(logo1, 0, "percent"),
                 new Dimension(logo1, 0, "percent"),
                 tweenFunctions.easeInQuad,
                 500);
-            // transitions.slide2DPercentageParent(logo2, tweenFunctions.easeInQuad, 500, 0, 0);
             transitions.slide2D(new Dimension(logo2, 0, "percent"),
                 new Dimension(logo2, 0, "percent"),
                 tweenFunctions.easeInQuad,
                 500);
 
-            // transitions.slide2DPercentageParent(cerc_alb, tweenFunctions.easeInQuad, 500, -16, -40);
             transitions.slide2D(new Dimension(cerc_alb, -16, "percent"),
                 new Dimension(cerc_alb, -40, "percent"),
                 tweenFunctions.easeInQuad,
                 500);
             transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 1, 500);
 
-            // transitions.slide2DPercentageParent(sageata, tweenFunctions.easeInQuad, 500, 0, 0);
             transitions.slide2D(new Dimension(sageata, 0, "percent"),
                 new Dimension(sageata, 0, "percent"),
                 tweenFunctions.easeInQuad,
                 500);
             transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1, 500);
 
-            transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 1, 700);
+            transitions.slide2D(new Dimension(cerc_meniu, -7.7, "vw"),
+                new Dimension(cerc_meniu, -12.5, "vw"),
+                tweenFunctions.easeInQuad,
+                500);
+            transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 1, 500);
         }
     </script>
