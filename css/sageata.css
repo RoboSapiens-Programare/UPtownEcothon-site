@@ -262,6 +262,13 @@ button {
     font-family: 'Agency FB Bold', arial;
 }
 
+.button p {
+    border: none;
+    font-size: 1vw;
+    vertical-align: middle;
+    margin: none;
+}
+
 .main-btn-action {
     color: white;
     text-decoration: none;

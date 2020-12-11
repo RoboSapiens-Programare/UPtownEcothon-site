@@ -1,11 +1,26 @@
+<?php
+require_once 'Mobile-Detect-master/Mobile_Detect.php';
+$detect = new Mobile_Detect;
+
+$scriptVersion = $detect->getScriptVersion();
+?>
 <!DOCTYPE html>
 <html>
     <head>
         <title></title>
 
-        <link rel="stylesheet" type="text/css" href="css/sageata.css">
+        <!-- <link rel="stylesheet" type="text/css" href="css/sageata.css"> -->
         <link rel="stylesheet" type="text/css" href="css/circlecontent.css">
-		<link rel="stylesheet" type="text/css" href="css/basics.css">
+        <link rel="stylesheet" type="text/css" href="css/basics.css">
+        <!-- <link rel="stylesheet" type="text/css" href="css/sageatatlf.css"> -->
+
+        <?php 
+			if($detect->isMobile() || $detect->isTablet()) {
+				echo "<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>";
+			} else {
+				echo "<link rel='stylesheet' type='text/css' href='css/sageata.css'>";
+			}
+		?>
 
 
         <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
@@ -15,7 +30,14 @@
         <script src="javascript/transitions.js"></script>
     </head>
     <body style="background-color: #855754; overflow-y: hidden">
-        <?php include "elements/sageata.html" ?>
+        
+        <?php 
+			if($detect->isMobile() || $detect->isTablet()) {
+				include "elements/sageatatlf.html";
+			} else {
+				include "elements/sageata.html";
+			}
+		?>
 
         <div name="toFade" class="rectangle-content" style="top: 70%; left: 50%; transform: translate(-50%, -50%); opacity: 0">
             <div class="circle-top-left" onclick="expand(this);"><div class="text-centrat" style="opacity: 0">Salut</div></div>
@@ -43,7 +65,10 @@
             function expand(elem){
                 var rectangle = elem.parentElement;
 
-                transitions.resize2DViewport(rectangle, tweenFunctions.easeOutCubic, 50, 50, 1000);
+                transitions.resize2D(new Dimension(rectangle, 50, "vw"),
+                                    new Dimension(rectangle, 50, "vh"),
+                                    tweenFunctions.easeOutCubic,
+                                    1000);
                 transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 0.7, 1000);
                 transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, 0.7, 1000);
 
@@ -53,7 +78,10 @@
             function retract(elem){
                 var rectangle = elem.parentElement;
 
-                transitions.resize2DViewport(rectangle, tweenFunctions.easeOutCubic, 0, 0, 1000);
+                transitions.resize2D(new Dimension(rectangle, 0, "vw"),
+                                    new Dimension(rectangle, 0, "vh"),
+                                    tweenFunctions.easeOutCubic,
+                                    1000);
                 transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
                 transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
 
