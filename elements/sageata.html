@@ -140,10 +140,10 @@
         }
 
         function slideoutlogin(elem) {
-            transitions.slide2D(new Dimension(document.getElementById('login'), -35, "percent"),
+            transitions.slide2D(new Dimension(document.getElementById('login'), -35, "vw"),
                 new Dimension(document.getElementById('login'), 3, "percent"),
                 tweenFunctions.easeOutExpo,
-                1000);
+                900);
             elem.setAttribute("onclick", "slideinlogin(this);");
         }
 
