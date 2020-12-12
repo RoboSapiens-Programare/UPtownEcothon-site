@@ -1,3 +1,18 @@
+
+/**
+ * Creates a custom scrollbar from given classes
+ * Usage:
+ * 
+ * window.onload = function() {
+ *   ssb.scrollbar(container, scrollbar, scrollbar_over, scrollbar_down); 
+ * }
+ * 
+ * @param {String} container - container Id
+ * @param {Array} scrollbar - array of scrollbar classes {track_area, scrollbar, up_button, down_button}
+ * @param {Array} scrollbar_over - array of scrollbar:hover classes in the same order
+ * @param {Array} scrollbar_down - array of scrollbar:down classes in the same order
+ */
+
 var ssb = {
     aConts  : [],
     mouseY : 0,
@@ -6,9 +21,12 @@ var ssb = {
     sc : 0,
     sp : 0,
     to : 0,
+    scrollbar_normal : [],
+    scrollbar_over : [],
+    scrollbar_down : [],
     
     // constructor
-    scrollbar : function (cont_id) {
+    scrollbar : function (cont_id, scrollbar, scrollbar_over, scrollbar_down) {
       var cont = document.getElementById(cont_id);
       
       // perform initialization
@@ -27,11 +45,15 @@ var ssb = {
       
       cont.sg = false;
       
+
+      ssb.scrollbar_normal = scrollbar;
+      ssb.scrollbar_over = scrollbar_over;
+      ssb.scrollbar_down = scrollbar_down;
       //creating scrollbar child elements
-      cont.st = this.create_div('ssb_st', cont, cont_clone);
-      cont.sb = this.create_div('ssb_sb', cont, cont_clone);
-      cont.su = this.create_div('ssb_up', cont, cont_clone);
-      cont.sd = this.create_div('ssb_down', cont, cont_clone);
+      cont.st = this.create_div(scrollbar[0], cont, cont_clone);
+      cont.sb = this.create_div(scrollbar[1], cont, cont_clone);
+      cont.su = this.create_div(scrollbar[2], cont, cont_clone);
+      cont.sd = this.create_div(scrollbar[3], cont, cont_clone);
       
       // on mouse down processing
       cont.sb.onmousedown = function (e) {
@@ -44,7 +66,7 @@ var ssb = {
           this.cont.sg = true;
           
           // new class name
-          this.className = 'ssb_sb ssb_sb_down';
+          this.className = scrollbar[1] + " " + scrollbar_down[1];
         }
         return false;
       }
@@ -69,13 +91,13 @@ var ssb = {
       
       // on mouse over - apply custom class name: ssb_sb_over
       cont.sb.onmouseover = function (e) {
-        if (! this.cont.sg) this.className = 'ssb_sb ssb_sb_over';
+        if (! this.cont.sg) this.className = scrollbar[1] + " " + scrollbar_over[1];
         return false;
       }
       
       // on mouse out - revert back our usual class name 'ssb_sb'
       cont.sb.onmouseout  = function (e) {
-        if (! this.cont.sg) this.className = 'ssb_sb';
+        if (! this.cont.sg) this.className = scrollbar[1];
         return false;
       }
       
@@ -103,8 +125,15 @@ var ssb = {
       
       // temp inner function for event registration
       function addEvent (o, e, f) {
-        if (window.addEventListener) { o.addEventListener(e, f, false); ssb.w3c = true; return true; }
-        if (window.attachEvent) return o.attachEvent('on' + e, f);
+        if (window.addEventListener) { 
+          o.addEventListener(e, f, false); 
+          ssb.w3c = true; 
+          return true; 
+        }
+
+        if (window.attachEvent) 
+          return o.attachEvent('on' + e, f);
+
         return false;
       }
       
@@ -152,7 +181,7 @@ var ssb = {
     mousedown : function (o, s) {
       if (ssb.sc == 0) {
         // new class name
-        o.cont.sb.className = 'ssb_sb ssb_sb_down';
+        o.cont.sb.className = scrollbar[1] + " " + scrollbar_down[1];
         ssb.asd = o.cont;
         ssb.sc = s;
         ssb.sp = 400;
@@ -172,15 +201,19 @@ var ssb = {
       var tg = (e.target) ? e.target : e.srcElement;
       if (ssb.asd && document.releaseCapture) ssb.asd.releaseCapture();
       
+
       // new class name
-      if (ssb.asd) ssb.asd.sb.className = (tg.className.indexOf('scrollbar') > 0) ? 'ssb_sb ssb_sb_over' : 'ssb_sb';
+      if (ssb.asd)
+        ssb.asd.sb.className = 'ssb_sb';
+      alert(this.scrollbar_normal[1]);
       document.onselectstart = '';
       ssb.clear();
       ssb.asd.sg = false;
+
     }
   }
   
-  window.onload = function() {
-    ssb.scrollbar('container'); // scrollbar initialization
-  }
+  // window.onload = function() {
+  //   ssb.scrollbar('container'); // scrollbar initialization
+  // }
   

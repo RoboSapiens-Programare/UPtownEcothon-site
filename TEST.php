@@ -94,6 +94,12 @@
             position:relative;
             }
         </style>
+
+        <script>
+            window.onload = function() {
+               ssb.scrollbar('container', ['ssb_st', 'ssb_sb', 'ssb_up', 'ssb_down'], ['', 'ssb_sb_over', '', ''], ['', 'ssb_sb_down', '', '']); 
+            }
+        </script>
     </head>
     
     <body>

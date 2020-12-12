@@ -4,6 +4,7 @@ $detect = new Mobile_Detect;
 
 $scriptVersion = $detect->getScriptVersion();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,7 +30,7 @@ $scriptVersion = $detect->getScriptVersion();
         <script src="javascript/tween-functions.js"></script>
         <script src="javascript/transitions.js"></script>
     </head>
-    <body style="background-color: #855754; overflow-y: hidden">
+    <body style="background-color: #855754; overflow-y: hidden; margin:0px">
         
         <?php 
 			if($detect->isMobile() || $detect->isTablet()) {

@@ -42,7 +42,7 @@ $scriptVersion = $detect->getScriptVersion();
             var content = <?php echo json_encode($contentArray); ?>;
         </script>
     </head>
-    <body>
+    <body style="margin: 0px; overflow-x:hidden; overflow-y:hidden">
         <?php 
 			if($detect->isMobile() || $detect->isTablet()) {
 				include "elements/sageatatlf.html";

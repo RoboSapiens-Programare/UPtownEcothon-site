@@ -12,41 +12,57 @@
 
         <script src="javascript/tween-functions.js"></script>
         <script src="javascript/transitions.js"></script>
-    </head>
-    <body style="background-color: #3d8b8f;">
-        <div id="scrollbar-area" class="scrollbar-area">
-            <div class="scrollbar-right"></div>
-            <div id="dot" class="dot"></div>
-        </div>
+        <script src="javascript/customscrollbar.js"></script>
 
         <script>
-            document.getElementById('scrollbar-area').onclick = function clickEvent(e) {
-                // e = Mouse click event.
-                var rect = e.target.getBoundingClientRect();
-                var x = e.clientX - rect.left; //x position within the element.
-                var y = e.clientY - rect.top;  //y position within the element.
+            // window.onload = function() {
+            //     ssb.scrollbar('body', ['scrollbar-area', 'dot', ], [], []);
+            // }
+            
+        </script>
+    </head>
+    <body style="background-color: #3d8b8f;" id="body">
+        <!-- <div id="scrollbar-area" class="scrollbar-area" style="z-index: 21;">
+            <div class="scrollbar-right"></div>
+            <div id="dot" class="dot" style="z-index: 20"></div>
+        </div> -->
 
-                px = x/e.target.clientWidth * 100;
-                py = y/e.target.clientHeight * 100;
+        
 
-                //alert(px + ", " + py);
+        <script>
+            // var clicked = false;
 
-                e.target.getElementsByClassName('dot')[0].style.top = py + "%";
-            }
+            // document.getElementById('scrollbar-area').onmousedown = function clickEvent(e) {
+            //     var rect = e.target.getBoundingClientRect();
+            //     var x = e.clientX - rect.left; //x position within the element.
+            //     var y = e.clientY - rect.top;  //y position within the element.
 
-            document.getElementById('dot').onclick = function clickEvent(e) {
-                // e = Mouse click event.
-                var rect = e.target.parentElement.getBoundingClientRect();
-                var x = e.clientX - rect.left; //x position within the element.
-                var y = e.clientY - rect.top;  //y position within the element.
+            //     px = x/e.target.clientWidth * 100;
+            //     py = y/e.target.clientHeight * 100;
 
-                px = x/e.target.parentElement.clientWidth * 100;
-                py = y/e.target.parentElement.clientHeight * 100;
+            //     e.target.getElementsByClassName('dot')[0].style.top = py + "%";
+            // }
 
-                //alert(px + ", " + py);
+            // document.getElementById('dot').onmousedown = function clickEvent(e){
+            //     clicked = true;
+            // }
 
-                e.target.getElementsByClassName('dot')[0].style.top = py + "%";
-            }
+            // document.getElementById('scrollbar-area').onmousemove = function clickEvent(e) {
+            //     if(clicked){
+            //         var rect = e.target.getBoundingClientRect();
+            //         var x = e.clientX - rect.left; //x position within the element.
+            //         var y = e.clientY - rect.top;  //y position within the element.
+
+            //         px = x/e.target.clientWidth * 100;
+            //         py = y/e.target.clientHeight * 100;
+
+            //         e.target.getElementsByClassName('dot')[0].style.top = py + "%";
+            //     }
+            // }
+
+            // document.getElementById('dot').onmouseup = function clickEvent(e) {
+            //     clicked = false;
+            // }
             
         </script>
     </body>
