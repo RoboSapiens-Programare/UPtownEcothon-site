@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/scrollbar.css">
+        <link rel="stylesheet" type="text/css" href="css/franshalscontent.css">
 
         <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -15,20 +16,45 @@
         <script src="javascript/customscrollbar.js"></script>
 
         <script>
-            // window.onload = function() {
-            //     ssb.scrollbar('body', ['scrollbar-area', 'dot', ], [], []);
-            // }
+            window.onload = function() {
+                //ssb.scrollbar('body', ['scrollbar-area', 'scrollbar-dot', 'scrollbar-up', 'scrollbar-down'], ['', 'scrollbar-dot-over', '', ''], ['', '', '', '']);
+                ssb.scrollbar('body', ['ssb_st', 'ssb_sb', 'ssb_up', 'ssb_down'], ['', 'ssb_sb_over', '', ''], ['', 'ssb_sb_down', '', '']); 
+            }
             
         </script>
     </head>
-    <body style="background-color: #3d8b8f;" id="body">
+    <body style="background-color: #3d8b8f; margin: 0;" id="body">
         <!-- <div id="scrollbar-area" class="scrollbar-area" style="z-index: 21;">
             <div class="scrollbar-right"></div>
             <div id="dot" class="dot" style="z-index: 20"></div>
+            <div id="scrollbar-up" class="scrollbar-up"></div>
+            <div id="scrollbar-down" class="scrollbar-down"></div>
         </div> -->
 
-        
+        <div id="title">
+            Titlu
+        </div>
 
+        <div class="row">
+            <div class="col" id="col-pic">
+                <div id="pic1">
+                    poza 1
+                </div>
+                <div id="pic2">
+                    poza 2
+                </div>
+            </div>
+
+            <div class="col" id="col-text">
+                <div class="row" id="text1">
+                    text cu chestii 1
+                </div>
+                <div class="row" id="text2">
+                    text cu chestii 2
+                </div>
+            </div>
+        </div>
+        
         <script>
             // var clicked = false;
 
