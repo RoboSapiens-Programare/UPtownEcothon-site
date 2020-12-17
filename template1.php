@@ -17,27 +17,28 @@
 
         <script>
             window.onload = function() {
-                //ssb.scrollbar('body', ['scrollbar-area', 'scrollbar-dot', 'scrollbar-up', 'scrollbar-down'], ['', 'scrollbar-dot-over', '', ''], ['', '', '', '']);
                 ssb.scrollbar('scrollable', ['ssb_st', 'ssb_sb', 'ssb_up', 'ssb_down'], ['', 'ssb_sb_over', '', ''], ['', 'ssb_sb_down', '', '']); 
             }
             
         </script>
     </head>
     <body style="background-color: #3d8b8f; margin: 0;" id="body">
-        <!-- <div id="scrollbar-area" class="scrollbar-area" style="z-index: 21;">
-            <div class="scrollbar-right"></div>
-            <div id="dot" class="dot" style="z-index: 20"></div>
-            <div id="scrollbar-up" class="scrollbar-up"></div>
-            <div id="scrollbar-down" class="scrollbar-down"></div>
-        </div> -->
+        <div id="scrollable" style="width: 100vw; height: 100vh; position:relative; overflow: hidden">
+            <!-- <div id="scrollbar-area" class="scrollbar-area" style="z-index: 21;">
+                <div class="scrollbar-right"></div>
+                <div id="dot" class="dot" style="z-index: 20"></div>
+                <div id="scrollbar-up" class="scrollbar-up"></div>
+                <div id="scrollbar-down" class="scrollbar-down"></div>
+            </div> -->
 
-        <div id="scrollable" style="width: 100vw; height: 100vh; position: relative; overflow:hidden">
             <div id="title">
                 Titlu
             </div>
 
-            <div class="row">
-                <div class="col" id="col-pic">
+            <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
+
+            <div class="franshalssection" id="franshals1">
+                <div class="column" id="col-pic" style="left: 0;">
                     <div id="pic1">
                         poza 1
                     </div>
@@ -46,19 +47,49 @@
                     </div>
                 </div>
 
-                <div class="col" id="col-text">
-                    <div class="row" id="text1">
-                        text cu chestii 1
+                <div class="wrapper">
+                    <div class="row-content" style="right: 0;">
+                        text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
                     </div>
-                    <div class="row" id="text2">
-                        text cu chestii 2
+                </div>
+                    
+                <div class="wrapper">
+                    <div class="row-content" style="right: 0;">
+                        text cu chestii 222
+                    </div>
+
+                    <div style="position: relative; width: 100vh; height: 200vh"></div>
+                </div>
+                
+            </div>
+            
+            <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
+
+            <div class="franshalssection" id="franshals2">
+                <div class="column" id="col-pic" style=" left: 60%;">
+                    <div id="pic1">
+                        poza 1
+                    </div>
+                    <div id="pic2">
+                        poza 2
                     </div>
                 </div>
 
-                <div style="position: relative; width: 100vh; height: 200vh"></div>
+                <div class="wrapper">
+                    <div class="row-content" style="left: 0;">
+                        text cu chestii 111
+                    </div>
+                </div>
+                    
+                <div class="wrapper">
+                    <div class="row-content" style="left: 0;">
+                        text cu chestii 222
+                    </div>
+                </div>
+                
             </div>
         </div>
-        
+
         <script>
             // var clicked = false;
 
@@ -94,6 +125,22 @@
             //     clicked = false;
             // }
             
+            
+            var row = document.getElementById("franshals");
+            var pic = document.getElementById("col-pic");
+            // alert("a");
+            var origOffsetY = pic.offsetTop;
+
+
+            // function onScroll(e) {
+            //     if(window.scrollY >= origOffsetY){
+            //         pic.style.position = "fixed";
+            //     }
+            //     pic.style.position="absolute";
+            // }
+
+            // document.addEventListener('scroll', onScroll);
+                                  
         </script>
     </body>
 </html>

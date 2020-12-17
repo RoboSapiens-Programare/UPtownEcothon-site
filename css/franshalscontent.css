@@ -5,13 +5,48 @@
     background-color: #c071df;
     color: black;
     font-family: 'Agency FB Bold', arial;
-    font-size: 1000%;
+    font-size: 18vh;
     text-align: center;
+    vertical-align: middle;
 }
 
-.col {
+.franshalssection {
     position: relative;
-    height: 100vh;
-    width: 50vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* display: block; */
+    /* width: 100vw; */
+    /* height: 100vh; */
+    background-color: transparent;
+    /* border: 2px solid black; */
+}
+
+.column {
+    position: -webkit-sticky;
+    position: sticky;
     display: inline-block;
+    top: 0;
+    /* top: 0%; */
+    /* left: 0%; */
+    height: 100vh;
+    width: 40%;
+    background-color: #0c4549;
+}
+
+.wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+}
+
+.row-content {
+    position: absolute;
+    top: 0%;
+    /* right: 0%; */
+    height: 100vh;
+    width: 60%;
+    background-color: white;
 }
