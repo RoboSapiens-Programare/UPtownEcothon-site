@@ -39,18 +39,15 @@
             <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
 
             <div class="franshalssection" id="franshals1">
-                <div class="column" id="col-pic" style="flex:40%">
-                    <div id="pic1">
-                        poza 1
-                    </div>
-                    <div id="pic2">
-                        poza 2
+                <div class="column" id="col-pic" style="flex:40%;">
+                    <div class="sticky-col" style="position: sticky; top: 0; display: block; height: 100vh;">
+                        poza
                     </div>
                 </div>
 
-                <div class="column" style="flex: 60%">
+                <div class="column" style="flex: 60%; position: relative;">
                     <div class="wrapper">
-                        <div class="row-content" style="right: 0;">
+                        <div class="row-content" style="right: 0; ">
                             text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
                         </div>
                     </div>
@@ -86,14 +83,12 @@
                     </div>
                 </div>
 
-                <div class="column" id="col-pic">
-                    <div id="pic1">
-                        poza 1
+                <div class="column" id="col-pic" style="flex:40%;">
+                    <div class="sticky-col" style="position: sticky; top: 0; display: block; height: 100vh;">
+                        poza
                     </div>
-                    <div id="pic2">
-                        poza 2
-                    </div>
-                </div>  
+                </div> 
+
             </div>
         </div>
 
