@@ -27,9 +27,10 @@
     width: 3vh;
     border-radius: 100%;
     background-color: black;
-    top: 10%;
+    top: 0%;
     right: 0%;
     /* transform: scale3d(0, 0, 0); */
+    transform: translateY(-50%);
     transition: transform 0.3s;
 }
 
@@ -47,7 +48,7 @@
     width: 3vh;
     background-color: darkorange;
     position: fixed;
-    top: 10%;
+    top: 0%;
     right: 0%;
     transform: translateY(-50%);
 }
@@ -58,7 +59,7 @@
     width: 3vh;
     background-color: darkorange;
     position: fixed;
-    bottom: 10%;
+    bottom: 0%;
     right: 0%;
     transform: translateY(-50%);
 }
