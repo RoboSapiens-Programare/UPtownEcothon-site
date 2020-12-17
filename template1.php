@@ -23,7 +23,7 @@
         </script>
     </head>
     <body style="background-color: #3d8b8f; margin: 0;" id="body">
-        <div id="scrollable" style="width: 100vw; height: 100vh; position:relative; overflow: hidden">
+        <div id="scrollable" style="width: 100vw; height: 100vh; position: relative; overflow: hidden; scale: 1">
             <!-- <div id="scrollbar-area" class="scrollbar-area" style="z-index: 21;">
                 <div class="scrollbar-right"></div>
                 <div id="dot" class="dot" style="z-index: 20"></div>
@@ -38,7 +38,7 @@
             <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
 
             <div class="franshalssection" id="franshals1">
-                <div class="column" id="col-pic" style="left: 0;">
+                <div class="column" id="col-pic" style="flex:40%">
                     <div id="pic1">
                         poza 1
                     </div>
@@ -47,46 +47,52 @@
                     </div>
                 </div>
 
-                <div class="wrapper">
-                    <div class="row-content" style="right: 0;">
-                        text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
+                <div class="column" style="flex: 60%">
+                    <div class="wrapper">
+                        <div class="row-content" style="right: 0;">
+                            text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
+                        </div>
                     </div>
-                </div>
-                    
-                <div class="wrapper">
-                    <div class="row-content" style="right: 0;">
-                        text cu chestii 222
-                    </div>
+                        
+                    <div class="wrapper">
+                        <div class="row-content" style="right: 0">
+                            text cu chestii 222
+                        </div>
 
-                    <div style="position: relative; width: 100vh; height: 200vh"></div>
+                        <div style="position: relative; width: 100vh; height: 200vh"></div>
+                    </div>
+            
                 </div>
+                
                 
             </div>
             
             <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
 
             <div class="franshalssection" id="franshals2">
-                <div class="column" id="col-pic" style=" left: 60%;">
+                
+                <div class="column" style="flex: 60%">
+                    <div class="wrapper">
+                        <div class="row-content" style="left: 0;">
+                            text cu chestii 111
+                        </div>
+                    </div>
+                        
+                    <div class="wrapper">
+                        <div class="row-content" style="left: 0;">
+                            text cu chestii 222
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column" id="col-pic">
                     <div id="pic1">
                         poza 1
                     </div>
                     <div id="pic2">
                         poza 2
                     </div>
-                </div>
-
-                <div class="wrapper">
-                    <div class="row-content" style="left: 0;">
-                        text cu chestii 111
-                    </div>
-                </div>
-                    
-                <div class="wrapper">
-                    <div class="row-content" style="left: 0;">
-                        text cu chestii 222
-                    </div>
-                </div>
-                
+                </div>  
             </div>
         </div>
 
