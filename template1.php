@@ -18,7 +18,7 @@
         <script>
             window.onload = function() {
                 //ssb.scrollbar('body', ['scrollbar-area', 'scrollbar-dot', 'scrollbar-up', 'scrollbar-down'], ['', 'scrollbar-dot-over', '', ''], ['', '', '', '']);
-                ssb.scrollbar('body', ['ssb_st', 'ssb_sb', 'ssb_up', 'ssb_down'], ['', 'ssb_sb_over', '', ''], ['', 'ssb_sb_down', '', '']); 
+                ssb.scrollbar('scrollable', ['ssb_st', 'ssb_sb', 'ssb_up', 'ssb_down'], ['', 'ssb_sb_over', '', ''], ['', 'ssb_sb_down', '', '']); 
             }
             
         </script>
@@ -31,27 +31,31 @@
             <div id="scrollbar-down" class="scrollbar-down"></div>
         </div> -->
 
-        <div id="title">
-            Titlu
-        </div>
-
-        <div class="row">
-            <div class="col" id="col-pic">
-                <div id="pic1">
-                    poza 1
-                </div>
-                <div id="pic2">
-                    poza 2
-                </div>
+        <div id="scrollable" style="width: 100vw; height: 100vh; position: relative; overflow:hidden">
+            <div id="title">
+                Titlu
             </div>
 
-            <div class="col" id="col-text">
-                <div class="row" id="text1">
-                    text cu chestii 1
+            <div class="row">
+                <div class="col" id="col-pic">
+                    <div id="pic1">
+                        poza 1
+                    </div>
+                    <div id="pic2">
+                        poza 2
+                    </div>
                 </div>
-                <div class="row" id="text2">
-                    text cu chestii 2
+
+                <div class="col" id="col-text">
+                    <div class="row" id="text1">
+                        text cu chestii 1
+                    </div>
+                    <div class="row" id="text2">
+                        text cu chestii 2
+                    </div>
                 </div>
+
+                <div style="position: relative; width: 100vh; height: 200vh"></div>
             </div>
         </div>
         
