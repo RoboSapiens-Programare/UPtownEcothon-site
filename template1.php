@@ -15,13 +15,13 @@
         <script src="javascript/transitions.js"></script>
         <script src="javascript/customscrollbar.js"></script>
 
-        <script>
+        <!-- <script>
             window.onload = function() {
                 //ssb.scrollbar('body', ['scrollbar-area', 'scrollbar-dot', 'scrollbar-up', 'scrollbar-down'], ['', 'scrollbar-dot-over', '', ''], ['', '', '', '']);
                 ssb.scrollbar('body', ['ssb_st', 'ssb_sb', 'ssb_up', 'ssb_down'], ['', 'ssb_sb_over', '', ''], ['', 'ssb_sb_down', '', '']); 
             }
             
-        </script>
+        </script> -->
     </head>
     <body style="background-color: #3d8b8f; margin: 0;" id="body">
         <!-- <div id="scrollbar-area" class="scrollbar-area" style="z-index: 21;">
@@ -35,8 +35,10 @@
             Titlu
         </div>
 
-        <div class="row">
-            <div class="col" id="col-pic">
+        <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
+
+        <div class="franshalssection" id="franshals1">
+            <div class="column" id="col-pic" style="left: 0;">
                 <div id="pic1">
                     poza 1
                 </div>
@@ -45,16 +47,46 @@
                 </div>
             </div>
 
-            <div class="col" id="col-text">
-                <div class="row" id="text1">
-                    text cu chestii 1
-                </div>
-                <div class="row" id="text2">
-                    text cu chestii 2
+            <div class="wrapper">
+                <div class="row-content" style="right: 0;">
+                    text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
                 </div>
             </div>
+                
+            <div class="wrapper">
+                <div class="row-content" style="right: 0;">
+                    text cu chestii 222
+                </div>
+            </div>
+            
         </div>
         
+        <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
+
+        <div class="franshalssection" id="franshals2">
+            <div class="column" id="col-pic" style=" left: 60%;">
+                <div id="pic1">
+                    poza 1
+                </div>
+                <div id="pic2">
+                    poza 2
+                </div>
+            </div>
+
+            <div class="wrapper">
+                <div class="row-content" style="left: 0;">
+                    text cu chestii 111
+                </div>
+            </div>
+                
+            <div class="wrapper">
+                <div class="row-content" style="left: 0;">
+                    text cu chestii 222
+                </div>
+            </div>
+            
+        </div>
+
         <script>
             // var clicked = false;
 
@@ -90,6 +122,22 @@
             //     clicked = false;
             // }
             
+            
+            var row = document.getElementById("franshals");
+            var pic = document.getElementById("col-pic");
+            // alert("a");
+            var origOffsetY = pic.offsetTop;
+
+
+            // function onScroll(e) {
+            //     if(window.scrollY >= origOffsetY){
+            //         pic.style.position = "fixed";
+            //     }
+            //     pic.style.position="absolute";
+            // }
+
+            // document.addEventListener('scroll', onScroll);
+                                  
         </script>
     </body>
 </html>

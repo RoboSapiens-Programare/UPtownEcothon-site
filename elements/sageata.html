@@ -31,7 +31,7 @@
                     <img class="icon" id="home" src="icons/home.svg" alt="Home">
                 </a>
             </li>
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)" onclick="slideinlogin(this)">
+            <li id="account-btn" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)" onclick="slideinlogin()">
                 <a href="#">
                     <div class="text-centrat" style="color: white; opacity: 0;">Account</div>
                     <img class="icon" id="user" src="icons/user.svg" alt="Account">
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    <div class="meniu" id="meniu-scroll" style="display:none;">
+    <!-- <div class="meniu" id="meniu-scroll" style="display:none;">
         <div id="border-sageata">
             <div class="cerc" id="cerc-sageata-scroll">
                 <div class="logo-elem" id="sageata-meniu-scroll">
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div id="language">
         <ul>
@@ -95,7 +95,7 @@
         </ul>
     </div>
 
-    <div id="login" style="top: 3%;">
+    <div id="login" style="top: 3%;" onmouseover="slideinlogin(), expandSageata()">
         <?php
             if($displaylogin){
                 include "elements/signin.html";
@@ -131,20 +131,20 @@
 
         }
 
-        function slideinlogin(elem) {
+        function slideinlogin() {
             transitions.slide2D(new Dimension(document.getElementById('login'), 0, "percent"),
                 new Dimension(document.getElementById('login'), 3, "percent"),
                 tweenFunctions.easeOutExpo,
                 1000);
-            elem.setAttribute("onclick", "slideoutlogin(this);");
+            document.getElementById('account-btn').setAttribute("onclick", "slideoutlogin(900);");
         }
 
-        function slideoutlogin(elem) {
+        function slideoutlogin(time) {
             transitions.slide2D(new Dimension(document.getElementById('login'), -35, "vw"),
                 new Dimension(document.getElementById('login'), 3, "percent"),
-                tweenFunctions.easeOutExpo,
-                900);
-            elem.setAttribute("onclick", "slideinlogin(this);");
+                tweenFunctions.easeInExpo,
+                time);
+            document.getElementById('account-btn').setAttribute("onclick", "slideinlogin();");
         }
 
         var current = document.documentElement.scrollTop;
@@ -189,6 +189,8 @@
                 tweenFunctions.easeInQuad,
                 500);
             transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 0.3, 500);
+
+            slideoutlogin(200);
         }
 
         function expandSageata() {
