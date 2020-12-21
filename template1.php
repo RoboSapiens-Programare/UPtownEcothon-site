@@ -87,7 +87,7 @@
                 </div>
 
                 <div class="column col-pic" id="col-pic2" style="flex:40%;">
-                    <div class="sticky-col" style="height: 100vh;">
+                    <div class="sticky-col" style="height: 100vh;" >
                         <div class="poza1" style="background-color:red; z-index:3;"></div>
                         <div class="poza2" style="background-color:pink; z-index:3;"></div>
 
@@ -182,18 +182,18 @@
                 // console.log(window.scrollY);
                 // alert("a");
                 if((window.scrollY - (0.6 * wrapper12Offset)) >= 0){
-                    pic1.style.backgroundColor = "#c071df";
+                    // pic1.style.backgroundColor = "#c071df";
                     slideOutPoze(franshals1);
                 } else {
-                    pic1.style.backgroundColor = "#0c4549";
+                    // pic1.style.backgroundColor = "#0c4549";
                     slideInPoze(franshals1);
                 }
 
                 if((window.scrollY - (0.85 * wrapper22Offset)) >= 0){
-                    pic2.style.backgroundColor = "#c071df";
+                    // pic2.style.backgroundColor = "#c071df";
                     slideOutPoze(franshals2);
                 } else {
-                    pic2.style.backgroundColor = "#0c4549";
+                    // pic2.style.backgroundColor = "#0c4549";
                     slideInPoze(franshals2);
                 }
 
@@ -217,12 +217,12 @@
                 
                 transitions.slide2D(new Dimension(half1, 0, "percent"),
                                     new Dimension(half1, -100, "percent"),
-                                    tweenFunctions.linear,
+                                    tweenFunctions.easeOutQuad,
                                     300);
 
                 transitions.slide2D(new Dimension(half2, 0, "percent"),
                                     new Dimension(half2, 100, "percent"),
-                                    tweenFunctions.linear,
+                                    tweenFunctions.easeOutQuad,
                                     300);
 
                 section.setAttribute("onclick", "slideInPoze(this);");
@@ -234,12 +234,12 @@
                 
                 transitions.slide2D(new Dimension(half1, 0, "percent"),
                                     new Dimension(half1, 0, "percent"),
-                                    tweenFunctions.linear,
+                                    tweenFunctions.easeInQuad,
                                     300);
 
                 transitions.slide2D(new Dimension(half2, 0, "percent"),
                                     new Dimension(half2, 50, "percent"),
-                                    tweenFunctions.linear,
+                                    tweenFunctions.easeInQuad,
                                     300);
                 
                 section.setAttribute("onclick", "slideOutPoze(this);");
