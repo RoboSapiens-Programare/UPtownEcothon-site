@@ -60,3 +60,20 @@
     width: 100%;
     background-color: white;
 }
+
+.poza1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50%;
+    background-color: red;
+}
+
+.poza2 {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50%;
+}

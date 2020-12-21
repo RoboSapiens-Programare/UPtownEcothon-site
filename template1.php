@@ -38,9 +38,13 @@
             <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
 
             <div class="franshalssection" id="franshals1">
-                <div class="column col-pic" id="col-pic1" style="flex:40%;">
+                <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
                     <div class="sticky-col" style="height: 100vh;">
-                        poza
+                        <div class="poza1" style="background-color:red; z-index:3;"></div>
+                        <div class="poza2" style="background-color:pink; z-index:3;"></div>
+
+                        <div class="poza1" style="background-color:blue; z-index:2"></div>
+                        <div class="poza2" style="background-color:green; z-index:2;"></div>
                     </div>  
                 </div>
 
@@ -84,7 +88,11 @@
 
                 <div class="column col-pic" id="col-pic2" style="flex:40%;">
                     <div class="sticky-col" style="height: 100vh;">
-                        poza
+                        <div class="poza1" style="background-color:red; z-index:3;"></div>
+                        <div class="poza2" style="background-color:pink; z-index:3;"></div>
+
+                        <div class="poza1" style="background-color:blue; z-index:2"></div>
+                        <div class="poza2" style="background-color:green; z-index:2;"></div>
                     </div>
                 </div> 
 
@@ -158,7 +166,7 @@
             var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
             var wrapper22Offset = offset(wrapper22);
             var pic2 = franshals2.getElementsByClassName("col-pic")[0];
-        //    alert(wrapper22Offset);
+            //alert(wrapper22Offset);
 
             // var pic1 = document.getElementById("col-pic1");
             // var pic2 = document.getElementById("col-pic2");
@@ -173,16 +181,20 @@
                 // alert("b");
                 // console.log(window.scrollY);
                 // alert("a");
-                if((window.scrollY - (0.5 * wrapper12Offset)) >= 0){
+                if((window.scrollY - (0.6 * wrapper12Offset)) >= 0){
                     pic1.style.backgroundColor = "#c071df";
+                    slideOutPoze(franshals1);
                 } else {
                     pic1.style.backgroundColor = "#0c4549";
+                    slideInPoze(franshals1);
                 }
 
                 if((window.scrollY - (0.85 * wrapper22Offset)) >= 0){
                     pic2.style.backgroundColor = "#c071df";
+                    slideOutPoze(franshals2);
                 } else {
                     pic2.style.backgroundColor = "#0c4549";
+                    slideInPoze(franshals2);
                 }
 
             }
@@ -199,6 +211,45 @@
             //     window.addEventListener("scroll", imageChangeTrigger);
             // });
 
+            function slideOutPoze(section){
+                let half1 = section.getElementsByClassName('poza1')[0];
+                let half2 = section.getElementsByClassName('poza2')[0];
+                
+                transitions.slide2D(new Dimension(half1, 0, "percent"),
+                                    new Dimension(half1, -100, "percent"),
+                                    tweenFunctions.linear,
+                                    300);
+
+                transitions.slide2D(new Dimension(half2, 0, "percent"),
+                                    new Dimension(half2, 100, "percent"),
+                                    tweenFunctions.linear,
+                                    300);
+
+                section.setAttribute("onclick", "slideInPoze(this);");
+            }
+
+            function slideInPoze(section){
+                let half1 = section.getElementsByClassName('poza1')[0];
+                let half2 = section.getElementsByClassName('poza2')[0];
+                
+                transitions.slide2D(new Dimension(half1, 0, "percent"),
+                                    new Dimension(half1, 0, "percent"),
+                                    tweenFunctions.linear,
+                                    300);
+
+                transitions.slide2D(new Dimension(half2, 0, "percent"),
+                                    new Dimension(half2, 50, "percent"),
+                                    tweenFunctions.linear,
+                                    300);
+                
+                section.setAttribute("onclick", "slideOutPoze(this);");
+
+            }
+
+            // transitions.slide2D(new Dimension(document.getElementById('login'), 0, "percent"),
+            //     new Dimension(document.getElementById('login'), 3, "percent"),
+            //     tweenFunctions.easeOutExpo,
+            //     1000);
                                   
         </script>
     </body>
