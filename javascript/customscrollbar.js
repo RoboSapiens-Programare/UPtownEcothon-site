@@ -103,8 +103,9 @@ var ssb = {
 
         // onscroll - change positions of scroll element
         cont.ssb_onscroll = function() {
-            this.ratio = (this.offsetHeight - 2 * this.sw) / this.scrollHeight;
-            this.sb.style.top = Math.floor(this.sw + this.scrollTop * this.ratio) + 'px';
+            var style = window.getComputedStyle(this.sb);
+            this.ratio = (this.offsetHeight - parseFloat(style.getPropertyValue('height'))) / (this.scrollHeight - this.offsetHeight);
+            this.sb.style.top = Math.floor(this.scrollTop * this.ratio) + 'px';
         }
 
         // scrollbar width
@@ -163,8 +164,6 @@ var ssb = {
         for (var i = 0, N = ssb.N; i < N; i++) {
             var o = ssb.aConts[i];
             o.ssb_onscroll();
-            //o.sb.style.width = o.st.style.width = o.su.style.width = o.su.style.height = o.sd.style.width = o.sd.style.height = o.sw + 'px';
-            //o.sb.style.height = Math.ceil(Math.max(o.sw * .5, o.ratio * o.offsetHeight) + 1) + 'px';
         }
     },
     // arrow scrolling

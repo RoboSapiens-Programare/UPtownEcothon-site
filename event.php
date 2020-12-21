@@ -1,19 +1,40 @@
 <?php
-require_once 'Mobile-Detect-master/Mobile_Detect.php';
-$detect = new Mobile_Detect;
+    require_once 'Mobile-Detect-master/Mobile_Detect.php';
+    $detect = new Mobile_Detect;
 
-$scriptVersion = $detect->getScriptVersion();
+    $scriptVersion = $detect->getScriptVersion();
+
+    //CONTENT
+    include 'config/dbconfig.php';
+
+    try{
+        $db = new SQLiDB();
+
+        $sql = "SELECT * FROM content WHERE page = 'event.php'";
+
+        $stmt = $db->prepare($sql);
+        
+        $stmt->execute();
+
+        $content = array();
+        foreach($stmt as $row){
+            $content[$row["section"]][$row["subsection"]] = $row["content"];
+        }
+
+        $db = null;
+        unset($db);
+    }
+    catch(PDOException $e){
+        $e->getMessage();
+    }
 ?>
 <!DOCTYPE html>
 <html style="scroll-behavior: smooth">
     <head>
-		<title></title>
+		<title>Event - UTE</title>
 
-        <!-- <link rel="stylesheet" type="text/css" href="css/sageata.css"> -->
-        <!-- <link rel="stylesheet" type="text/css" href="css/bottom.css"> -->
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
-        <!-- <link rel="stylesheet" type="text/css" href="css/sageatatlf.css"> -->
 
         <?php 
 			if($detect->isMobile() || $detect->isTablet()) {
@@ -58,13 +79,13 @@ $scriptVersion = $detect->getScriptVersion();
             <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
 
             <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <?php echo $content["Teme"][1] ?>
             </div>
             <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <?php echo $content["Teme"][2] ?>
             </div>
             <div class="sliding" style="bottom: 0%; left: -50%; border-radius: 20px 20px 20px 0px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <?php echo $content["Teme"][3] ?>
             </div>
         </div>
 
