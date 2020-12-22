@@ -15,22 +15,17 @@
         <script src="javascript/transitions.js"></script>
         <script src="javascript/customscrollbar.js"></script>
 
-        <!-- <script>
+        <script>
             window.onload = function() {
                 ssb.scrollbar('scrollable', ['scrollbar-area', 'scrollbar-dot', 'scrollbar-up', 'scrollbar-down'], ['', 'scrollbar-dot-over', '', ''], ['', '', '', '']);
                 //ssb.scrollbar('scrollable', ['ssb_st', 'ssb_sb', 'ssb_up', 'ssb_down'], ['', 'ssb_sb_over', '', ''], ['', 'ssb_sb_down', '', '']); 
             }
             
-        </script> -->
+        </script>
     </head>
     <body style="background-color: #3d8b8f; margin: 0;" id="body">
-        <!-- <div id="scrollable" style="width: 100vw; height: 100vh; position: relative; overflow: auto; scale: 1"> -->
-            <!-- <div id="scrollbar-area" class="scrollbar-area" style="z-index: 21;">
-                <div class="scrollbar-right"></div>
-                <div id="dot" class="dot" style="z-index: 20"></div>
-                <div id="scrollbar-up" class="scrollbar-up"></div>
-                <div id="scrollbar-down" class="scrollbar-down"></div>
-            </div> -->
+        <div id="scrollable" style="width: 100vw; height: 100vh; position: relative; overflow: hidden; scale: 1">
+            
 
             <div id="title">
                 Titlu

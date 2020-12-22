@@ -32,7 +32,7 @@
     cursor: pointer;
 }
 
-.section .sliding {
+.sliding {
     position: absolute;
     background-color: aliceblue;
     font-family: 'Agency FB', arial;

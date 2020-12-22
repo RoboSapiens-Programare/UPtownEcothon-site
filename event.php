@@ -35,6 +35,7 @@
 
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
+        <link rel="stylesheet" type="text/css" href="css/circlecontent.css">     
 
         <?php 
 			if($detect->isMobile() || $detect->isTablet()) {
@@ -74,18 +75,38 @@
         </div>
 
 
-        <div id="sect1" class="section" style="background-color: darkkhaki;">
-            <div id="title1" class="title" style="opacity: 0;">Teme</div>
-            <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
+        <div style="display: flex; width: 200vw; height: 100vh">
+            <div id="sect1" class="section" style="background-color: darkkhaki; overflow-y: hidden; overflow-x:hidden">
+                <div id="title1" class="title" style="opacity: 0;">Teme</div>
+                <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
 
-            <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px;">
-                <?php echo $content["Teme"][1] ?>
+                <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto">
+                    <?php echo "<h2>" . $content["Teme"]["Title1"] . "</h2>";
+                          echo $content["Teme"][1]; ?>
+                </div>
+                <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px; background-color: darkkhaki; transform: scale(0.7)">
+                    <div name="toFade" class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 1">
+                        <div class="circle-top-left" onclick="expand(this);" style="overflow: hidden;">
+                            <img src="pictures/pollution1.jpg" style="height: 100%; width: 100%">
+                        </div>
+                        <div class="circle-bottom-right" style="background-color: aliceblue;"></div>
+                        
+                        <img src="pictures/pollution2.jpg" style="height: 100%; width: 100%; border-radius: 20px 20px 0px 20px">
+                    </div>
+                </div>
+                <div class="sliding" style="bottom: 0%; left: -50%; border-radius: 20px 20px 20px 0px;">
+                    <?php echo $content["Teme"][2] ?>
+                </div>
             </div>
-            <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px;">
-                <?php echo $content["Teme"][2] ?>
-            </div>
-            <div class="sliding" style="bottom: 0%; left: -50%; border-radius: 20px 20px 20px 0px;">
-                <?php echo $content["Teme"][3] ?>
+            <div style="flex: 50%; height: 100vh; background-color:darkkhaki; position: relative">
+                <div class="sliding" style=" width:60vw; height:85vh; right: 0; top: 7.5vh; margin-right: 2vw; overflow-y:auto">
+                    <?php
+                        echo "<h2>" . $content["Teme"]["Title2"] . "</h2>";
+                        echo $content["Teme"][3] . "<br>";
+                        echo $content["Teme"]["Subtitle1"];
+                        echo $content["Teme"][4] . "<br>";
+                    ?>
+                </div>
             </div>
         </div>
 
@@ -130,6 +151,7 @@
                 var slidings = x.parentElement.getElementsByClassName("sliding");
                 var title = x.parentElement.getElementsByClassName('title')[0];
                 var scrollbar = document.getElementById("scroller");
+                var section = x.parentElement;
 
                 for(var a of slidings) {
                     if(a.style.right){
@@ -170,12 +192,15 @@
                 );
                 x.innerHTML = "Read Less";
                 x.setAttribute("onclick", "readLess(this);");
+
+                document.body.style.overflowX = "scroll";
             }
 
             function readLess(x){
                 var slidings = x.parentElement.getElementsByClassName("sliding");
                 var title = x.parentElement.getElementsByClassName('title')[0];
                 var scrollbar = document.getElementById("scroller");
+                var section = x.parentElement;
 
                 for(var a of slidings) {
                     if(a.style.right){
@@ -215,6 +240,35 @@
                 );
                 x.innerHTML = "Read More";
                 x.setAttribute("onclick", "readMore(this);");
+
+                document.body.style.overflowX = "hidden";
+                window.location.href = "#" + x.parentElement.id;
+            }
+
+            function expand(elem){
+                var rectangle = elem.parentElement;
+
+                transitions.resize2D(new Dimension(rectangle, 50, "vw"),
+                                    new Dimension(rectangle, 50, "vh"),
+                                    tweenFunctions.easeOutCubic,
+                                    1000);
+                transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 0.7, 1000);
+                transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, 0.7, 1000);
+
+                elem.setAttribute("onclick", "retract(this);");
+            }
+
+            function retract(elem){
+                var rectangle = elem.parentElement;
+
+                transitions.resize2D(new Dimension(rectangle, 0, "vw"),
+                                    new Dimension(rectangle, 0, "vh"),
+                                    tweenFunctions.easeOutCubic,
+                                    1000);
+                transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
+                transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
+
+                elem.setAttribute("onclick", "expand(this);");
             }
         </script>
     </body>
