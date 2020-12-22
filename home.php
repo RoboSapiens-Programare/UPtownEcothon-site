@@ -33,7 +33,8 @@ $scriptVersion = $detect->getScriptVersion();
 
 	</head>
 
-	<body style="background-color:#75667c;margin: 0px; overflow-y:hidden">
+	
+	 <body style="background-color:#75667c; margin: 0px; overflow-y:visible">
     
 		<?php 
 			if($detect->isMobile() || $detect->isTablet()) {

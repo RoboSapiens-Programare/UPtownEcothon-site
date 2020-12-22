@@ -30,9 +30,14 @@
     top: 0;
     /* top: 0%; */
     /* left: 0%; */
-    height: 200vh;
+    /* height: 200vh; */
     flex: 40%;
     background-color: #0c4549;
+}
+
+.col-pic,
+.col-text {
+    height: 200vh;
 }
 
 .sticky-col {
@@ -68,7 +73,6 @@
     left: 0px;
     width: 100%;
     height: 50%;
-    background-color: red;
 }
 
 .poza2 {
@@ -77,4 +81,61 @@
     left: 0px;
     width: 100%;
     height: 50%;
+}
+
+body {
+    background-color: #3d8b8f;
+}
+
+@media all and (max-width: 980px) {
+    .franshalssection {
+        position: relative;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        display: block;
+        /* display: block; */
+        /* width: 100vw; */
+        /* height: 100vh; */
+        background-color: transparent;
+        /* border: 2px solid black; */
+    }
+    .column {
+        /* position: -webkit-sticky; */
+        position: relative;
+        /* display: flex; */
+        top: 0;
+        /* top: 0%; */
+        /* left: 0%; */
+        /* height: 200vh; */
+        flex: 100%;
+        background-color: transparent;
+    }
+    .col-text {
+        height: 200vh;
+    }
+    .col-pic {
+        height: 100vh;
+    }
+    .sticky-col {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        display: block;
+        overflow: hidden;
+    }
+    .wrapper {
+        position: relative;
+        /* display: inline-block; */
+        width: 100%;
+        background-color: transparent;
+    }
+    .row-content {
+        position: absolute;
+        top: 0%;
+        /* right: 0%; */
+        height: 100%;
+        width: 100%;
+        background-color: white;
+    }
 }

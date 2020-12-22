@@ -13,7 +13,7 @@
 
         <script src="javascript/tween-functions.js"></script>
         <script src="javascript/transitions.js"></script>
-        <script src="javascript/customscrollbar.js"></script>
+        <!-- <script src="javascript/customscrollbar.js"></script> -->
 
         <script>
             window.onload = function() {
@@ -23,9 +23,14 @@
             
         </script>
     </head>
-    <body style="background-color: #3d8b8f; margin: 0;" id="body">
-        <div id="scrollable" style="width: 100vw; height: 100vh; position: relative; overflow: hidden; scale: 1">
-            
+    <body style=" margin: 0;" id="body">
+        <!-- <div id="scrollable" style="width: 100vw; height: 100vh; position: relative; overflow: auto; scale: 1"> -->
+            <!-- <div id="scrollbar-area" class="scrollbar-area" style="z-index: 21;">
+                <div class="scrollbar-right"></div>
+                <div id="dot" class="dot" style="z-index: 20"></div>
+                <div id="scrollbar-up" class="scrollbar-up"></div>
+                <div id="scrollbar-down" class="scrollbar-down"></div>
+            </div> -->
 
             <div id="title">
                 Titlu
@@ -44,7 +49,7 @@
                     </div>  
                 </div>
 
-                <div class="column" style="flex: 60%; position: relative;">
+                <div class="column col-text" style="flex: 60%; position: relative;">
                     <div class="wrapper" style="height: 100vh;">
                         <div class="row-content" style="right: 0; ">
                             text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
@@ -146,6 +151,8 @@
 
             // document.addEventListener('scroll', onScroll);
 
+            // alert(window.innerWidth);
+
             function offset(el) {
                 var rect = el.getBoundingClientRect(),
                 scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -154,13 +161,13 @@
 
             var fanshals1 = document.getElementById("franshals1");
             var wrapper12 = franshals1.getElementsByClassName("wrapper")[1];
-            var wrapper12Offset = offset(wrapper12);
+            var wrapper12Offset = offset(wrapper12)-(window.innerHeight/2);
             var pic1 = franshals1.getElementsByClassName("col-pic")[0];
             // alert(wrapper12Offset);
 
             var fanshals2 = document.getElementById("franshals2");
             var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
-            var wrapper22Offset = offset(wrapper22);
+            var wrapper22Offset = offset(wrapper22)-(window.innerHeight/2);
             var pic2 = franshals2.getElementsByClassName("col-pic")[0];
             //alert(wrapper22Offset);
 
@@ -177,7 +184,7 @@
                 // alert("b");
                 // console.log(window.scrollY);
                 // alert("a");
-                if((window.scrollY - (0.6 * wrapper12Offset)) >= 0){
+                if(window.scrollY >= wrapper12Offset){
                     // pic1.style.backgroundColor = "#c071df";
                     slideOutPoze(franshals1);
                 } else {
@@ -185,7 +192,7 @@
                     slideInPoze(franshals1);
                 }
 
-                if((window.scrollY - (0.85 * wrapper22Offset)) >= 0){
+                if(window.scrollY >= wrapper22Offset){
                     // pic2.style.backgroundColor = "#c071df";
                     slideOutPoze(franshals2);
                 } else {
