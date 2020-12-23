@@ -10,19 +10,22 @@
 
 #hrefuri {
     position: relative;
-    display: flex;
+    display: block;
     height: 5vh;
-    flex: 100%;
+    width: 100%;
     margin-top: 2vh;
     margin-bottom: 2vh;
     background-color: transparent;
-    border: none;
+    border: 1px solid black;
     z-index: 1;
 }
 
 #hrefuri ul {
     list-style: none;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: inherit;
     border: none;
 }
@@ -46,14 +49,14 @@
 
 #logouri {
     position: relative;
-    display: flex;
-    flex: 100%;
+    display: block;
+    width: 100%;
     margin-top: 1vh;
     margin-bottom: 3vh;
     height: 3vw;
     padding: none;
     background-color: transparent;
-    border: 0px solid blue;
+    border: 1px solid blue;
     z-index: 1;
 }
 
@@ -61,6 +64,9 @@
     height: inherit;
     list-style: none;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: inherit;
     border: none;
 }
@@ -74,7 +80,7 @@
     display: inline-block;
     position: relative;
     height: inherit;
-    border: 0px solid green;
+    /* border: 0px solid green; */
 }
 
 #logouri ul li div img {

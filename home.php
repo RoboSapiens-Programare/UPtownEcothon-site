@@ -35,7 +35,7 @@ $scriptVersion = $detect->getScriptVersion();
 	</head>
 
 	
-	 <body style="background-color:#75667c; margin: 0px; overflow-y:visible;">
+	 <body style="background-color: #e7df68; margin: 0px; overflow-y:visible;">
     
 		<?php 
 			if($detect->isMobile() || $detect->isTablet()) {
@@ -46,13 +46,14 @@ $scriptVersion = $detect->getScriptVersion();
 		?>	
 
 		<div class="banner-homepage" style="position: relative; width:100vw; height:100vh; background-color:transparent">
-			<div class="bkg-banner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 98%; width: 98%; background-color: purple;">
+			<div class="bkg-banner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%; width: 100%; background-color: purple;">
 				<div class="text-centrat" style="font-size: 10vh;"> gif background + detailed menu </div>
 			</div>
 		</div>
 
-		<div class="sectiune-timeline">
-			
+			<div style="position:relative; height: 20vh; width: 100vw; border:0px solid black; margin: 3vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #df458d">Helpful Timeline =D</div> </div>
+
+			<div class="sectiune-timeline">
 				<div class="timeline">
 					<div class="progress"></div>
 					
@@ -81,7 +82,7 @@ $scriptVersion = $detect->getScriptVersion();
 						<div class="text-centrat meaning" style="opacity: 0;"> daca esti inscris hai pe discord pls </div>
 					</div>
 				</div>
-			
+
 		</div>
 
 		<!-- <div id="content1" class="row">
@@ -106,16 +107,16 @@ $scriptVersion = $detect->getScriptVersion();
 			?>
 		</div>
 
-		<div style="background-color: white;"><div id="rotunjit-colturi" style="overflow:hidden;"></div></div>
-		<?php include "elements/footer.html"; ?>	 -->
+		<div style="background-color: white;"><div id="rotunjit-colturi" style="overflow:hidden;"></div></div>  -->
+		<?php include "elements/footer.html"; ?>	
 
 		<script>
 			function showMeaning(elem){
 				var main = elem.getElementsByClassName("main")[0];
 				var meaning = elem.getElementsByClassName("meaning")[0];
 
-				transitions.resize2D(new Dimension(elem, 25, "vh"),
-                new Dimension(elem, 25, "vh"),
+				transitions.resize2D(new Dimension(elem, 30, "vh"),
+                new Dimension(elem, 30, "vh"),
                 tweenFunctions.easeOutQuad,
 				400);
 
@@ -127,8 +128,8 @@ $scriptVersion = $detect->getScriptVersion();
 				var main = elem.getElementsByClassName("main")[0];
 				var meaning = elem.getElementsByClassName("meaning")[0];
 
-				transitions.resize2D(new Dimension(elem, 10.5, "vh"),
-                new Dimension(elem, 10.5, "vh"),
+				transitions.resize2D(new Dimension(elem, 12, "vh"),
+                new Dimension(elem, 12, "vh"),
                 tweenFunctions.easeInQuad,
 				400);
 				
