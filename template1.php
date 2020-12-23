@@ -135,24 +135,6 @@
             //     clicked = false;
             // }
             
-            
-            // var row = document.getElementById("franshals");
-            // var pic = document.getElementById("col-pic");
-            // alert("a");
-            // var origOffsetY = pic.offsetTop;
-            
-
-            // function onScroll(e) {
-            //     if(window.scrollY >= origOffsetY){
-            //         pic.style.position = "fixed";
-            //     }
-            //     pic.style.position="absolute";
-            // }
-
-            // document.addEventListener('scroll', onScroll);
-
-            // alert(window.innerWidth);
-
             function offset(el) {
                 var rect = el.getBoundingClientRect(),
                 scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -163,40 +145,22 @@
             var wrapper12 = franshals1.getElementsByClassName("wrapper")[1];
             var wrapper12Offset = offset(wrapper12)-(window.innerHeight/2);
             var pic1 = franshals1.getElementsByClassName("col-pic")[0];
-            // alert(wrapper12Offset);
 
             var fanshals2 = document.getElementById("franshals2");
             var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
             var wrapper22Offset = offset(wrapper22)-(window.innerHeight/2);
             var pic2 = franshals2.getElementsByClassName("col-pic")[0];
-            //alert(wrapper22Offset);
-
-            // var pic1 = document.getElementById("col-pic1");
-            // var pic2 = document.getElementById("col-pic2");
-
-            
-
-            // alert(offset(wrapper12));
-            // alert(offset(wrapper22));
 
             function imageChangeTrigger(){
-                // alert("a");
-                // alert("b");
-                // console.log(window.scrollY);
-                // alert("a");
                 if(window.scrollY >= wrapper12Offset){
-                    // pic1.style.backgroundColor = "#c071df";
                     slideOutPoze(franshals1);
                 } else {
-                    // pic1.style.backgroundColor = "#0c4549";
                     slideInPoze(franshals1);
                 }
 
                 if(window.scrollY >= wrapper22Offset){
-                    // pic2.style.backgroundColor = "#c071df";
                     slideOutPoze(franshals2);
                 } else {
-                    // pic2.style.backgroundColor = "#0c4549";
                     slideInPoze(franshals2);
                 }
 
@@ -204,22 +168,12 @@
 
             window.addEventListener('scroll', imageChangeTrigger);
 
-
-            // // grab elements as array, rather than as NodeList
-            // var franshals = document.querySelectorAll(".franshalssection");
-            // franshals = Array.prototype.slice.call(franshals);
-
-            // // and then make each element do something on scroll
-            // franshals.forEach(function(element) {
-            //     window.addEventListener("scroll", imageChangeTrigger);
-            // });
-
             function slideOutPoze(section){
                 let half1 = section.getElementsByClassName('poza1')[0];
                 let half2 = section.getElementsByClassName('poza2')[0];
                 
                 transitions.slide2D(new Dimension(half1, 0, "percent"),
-                                    new Dimension(half1, -100, "percent"),
+                                    new Dimension(half1, -50, "percent"),
                                     tweenFunctions.easeOutQuad,
                                     300);
 
@@ -246,14 +200,8 @@
                                     300);
                 
                 section.setAttribute("onclick", "slideOutPoze(this);");
-
             }
-
-            // transitions.slide2D(new Dimension(document.getElementById('login'), 0, "percent"),
-            //     new Dimension(document.getElementById('login'), 3, "percent"),
-            //     tweenFunctions.easeOutExpo,
-            //     1000);
-                                  
+      
         </script>
     </body>
 </html>
