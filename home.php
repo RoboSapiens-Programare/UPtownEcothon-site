@@ -15,6 +15,7 @@ $scriptVersion = $detect->getScriptVersion();
 		  <link rel="stylesheet" type="text/css" href="css/basics.css">
 		  <!-- <link rel="stylesheet" type="text/css" href="css/sageatatlf.css"> -->
 		  <link rel="stylesheet" type="text/css" href="css/footer.css">
+		  <link rel="stylesheet" type="text/css" href="css/progressbar.css">
 
 		  <?php 
 			if($detect->isMobile() || $detect->isTablet()) {
@@ -34,7 +35,7 @@ $scriptVersion = $detect->getScriptVersion();
 	</head>
 
 	
-	 <body style="background-color:#75667c; margin: 0px; overflow-y:visible">
+	 <body style="background-color:#75667c; margin: 0px; overflow-y:visible;">
     
 		<?php 
 			if($detect->isMobile() || $detect->isTablet()) {
@@ -44,7 +45,46 @@ $scriptVersion = $detect->getScriptVersion();
 			}
 		?>	
 
-		<div id="content1" class="row">
+		<div class="banner-homepage" style="position: relative; width:100vw; height:100vh; background-color:transparent">
+			<div class="bkg-banner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 98%; width: 98%; background-color: purple;">
+				<div class="text-centrat" style="font-size: 10vh;"> gif background + detailed menu </div>
+			</div>
+		</div>
+
+		<div class="sectiune-timeline">
+			
+				<div class="timeline">
+					<div class="progress"></div>
+					
+					<div class="milestone" style="left: 0.5%;" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+						<div class="text-centrat main"> site :D</div>
+						<div class="text-centrat meaning" style="opacity: 0;"> avem site woo </div>
+					</div>
+
+					<div class="milestone" style="top:50%; left: 25%; transform: translate(-25%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+						<div class="text-centrat main"> inscriere </div>
+						<div class="text-centrat meaning" style="opacity: 0;"> te poti inscrie incepand cu 26 ianuarie :D </div>
+					</div>
+
+					<div class="milestone" style="top:50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+						<div class="text-centrat main"> terminat inscrieri </div>
+						<div class="text-centrat meaning" style="opacity: 0;"> nu te mai poti inscrie :( </div>
+					</div>
+
+					<div class="milestone" style="top:50%; left: 75%; transform: translate(-75%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+						<div class="text-centrat main"> 3 days til event</div>
+						<div class="text-centrat meaning" style="opacity: 0;"> mai sunt 3 zile pana la event!! </div>
+					</div>
+
+					<div class="milestone" style="right: 0.5%;" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+						<div class="text-centrat main"> event! </div>
+						<div class="text-centrat meaning" style="opacity: 0;"> daca esti inscris hai pe discord pls </div>
+					</div>
+				</div>
+			
+		</div>
+
+		<!-- <div id="content1" class="row">
 			
 			<div id="desc1" class="column" style="flex: 30vh; height: 80vh; background-color: #2A3151">Descriere primul content</div>
 			<div id="imagine1" class="column" style="flex: 70vh; height: 80vh"></div>
@@ -67,8 +107,36 @@ $scriptVersion = $detect->getScriptVersion();
 		</div>
 
 		<div style="background-color: white;"><div id="rotunjit-colturi" style="overflow:hidden;"></div></div>
-		<?php include "elements/footer.html"; ?>	
+		<?php include "elements/footer.html"; ?>	 -->
 
+		<script>
+			function showMeaning(elem){
+				var main = elem.getElementsByClassName("main")[0];
+				var meaning = elem.getElementsByClassName("meaning")[0];
+
+				transitions.resize2D(new Dimension(elem, 25, "vh"),
+                new Dimension(elem, 25, "vh"),
+                tweenFunctions.easeOutQuad,
+				400);
+
+				transitions.fadeOut(main, tweenFunctions.easeOutExpo, 400);
+
+				transitions.fadeIn(meaning, tweenFunctions.easeInExpo, 400);
+			}
+			function hideMeaning(elem){
+				var main = elem.getElementsByClassName("main")[0];
+				var meaning = elem.getElementsByClassName("meaning")[0];
+
+				transitions.resize2D(new Dimension(elem, 10.5, "vh"),
+                new Dimension(elem, 10.5, "vh"),
+                tweenFunctions.easeInQuad,
+				400);
+				
+				transitions.fadeOut(meaning, tweenFunctions.easeOutExpo, 400);
+
+				transitions.fadeIn(main, tweenFunctions.easeInExpo, 400);
+			}
+		</script>
 	</body>
 
 </html>
