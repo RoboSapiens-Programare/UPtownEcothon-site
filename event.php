@@ -8,18 +8,10 @@
     include 'config/dbconfig.php';
 
     try{
-        $db = new SQLiDB();
-
-        $sql = "SELECT * FROM content WHERE page = 'event.php'";
-
-        $stmt = $db->prepare($sql);
-        
-        $stmt->execute();
+        $db = new ContentDB();
 
         $content = array();
-        foreach($stmt as $row){
-            $content[$row["section"]][$row["subsection"]] = $row["content"];
-        }
+        $content = $db->getContentsForPage("event.php");
 
         $db = null;
         unset($db);

@@ -37,7 +37,7 @@
             $stmt->bindParam(':pageid', $pageid);
             $stmt->execute();
 
-            $sectionResult = $stmt->fetch(PDO::FETCH_ASSOC);
+            $sectionResult = $stmt;
 
             foreach($sectionResult as $section){
                 $sql = "SELECT id, name FROM subsections WHERE section_id = :sectionid";
@@ -45,7 +45,7 @@
                 $stmt->bindParam(':sectionid', $section['id']);
                 $stmt->execute();
 
-                $subsectionResult = $stmt->fetch(PDO::FETCH_ASSOC);
+                $subsectionResult = $stmt;
 
                 foreach($subsectionResult as $subsection) {
                     $sql = "SELECT value FROM content WHERE subsection_id = :subsectionid";
