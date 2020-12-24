@@ -73,8 +73,7 @@
                 <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
 
                 <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto">
-                    <?php echo "<h2>" . $content["Teme"]["Title1"] . "</h2>";
-                          echo $content["Teme"][1]; ?>
+                    <?php echo $content["Teme"][1]; ?>
                 </div>
                 <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px; background-color: darkkhaki; transform: scale(0.7)">
                     <div name="toFade" class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 1">
@@ -106,13 +105,14 @@
                 </div>
             </div>
             <div style="flex: 33%; height: 100vh; background-color:darkkhaki; position: relative">
-                <div class="sliding" style="width:75%; height:56%; left: 50%; top: 10%; overflow-y:auto; border-radius: 20px 20px 20px 20px; transform:translateX(-50%)">
+                <div id="bigScrollableSliding" class="sliding" style="width:75%; height:56%; left: 50%; top: 10%; overflow-y:auto; border-radius: 20px 20px 20px 20px; transform:translateX(-50%)">
                     <?php 
                         echo $content["Teme"][4] . "<br>";
                     ?>
                 </div>
-                <div class="sliding" style="width:78%; height:25%; left: 50%; top: 71.8%; overflow-y:hidden; border-radius: 20px 20px 20px 20px; transform:translateX(-50%); padding: 0">
-                   <img src="pictures/bucharest2.jpg" style="width: 100%; height: 100%; object-fit:cover">
+                <div id="wideChangingPicture" class="sliding" style="width:78%; height:25%; left: 50%; top: 71.8%; overflow-y:hidden; border-radius: 20px 20px 20px 20px; transform:translateX(-50%); padding: 0">
+                    <img src="pictures/bucharest2.jpg" style="width: 100%; height: 100%; object-fit:cover; position:absolute">
+                    <img src="pictures/bucharest2.jpg" style="width: 100%; height: 100%; object-fit:cover; opacity: 0; position:absolute">
                 </div>
             </div>
         </div>
@@ -149,10 +149,43 @@
             </div>
         </div>
 
-        <!-- Optimize this shit -->
         <script>
             transitions.fadeIn(document.getElementById('title1'), tweenFunctions.easeOutQuad, 1500);
             transitions.fadeIn(document.getElementById('titlebtn1'), tweenFunctions.easeInSine, 1500);
+            var detectChange = 0;
+            var lastDetectChange = 0;
+
+            document.getElementById('bigScrollableSliding').onscroll = function(){
+                var s = document.getElementById('bigScrollableSliding');
+                if(s.scrollTop > 150 && s.scrollTop < 900){
+                    detectChange = 1;
+                    if(detectChange != lastDetectChange){
+                        changePicture("pictures/traffic1.webp");
+                        lastDetectChange = detectChange;
+                    }
+                }
+                else if(s.scrollTop >= 900 && s.scrollTop < 1300){
+                    detectChange = 2;
+                    if(detectChange != lastDetectChange){
+                        changePicture("pictures/park2.jpg");
+                        lastDetectChange = detectChange;
+                    }
+                }
+                else if(s.scrollTop >= 1300){
+                    detectChange = 3;
+                    if(detectChange != lastDetectChange){
+                        changePicture("pictures/garbage1.jpg");
+                        lastDetectChange = detectChange;
+                    }
+                }
+                else{
+                    detectChange = 0
+                    if(detectChange != lastDetectChange){
+                        changePicture('pictures/bucharest2.jpg');
+                        lastDetectChange = detectChange;
+                    }
+                }
+            }
 
             function readMore(x){
                 var slidings = x.parentElement.getElementsByClassName("sliding");
@@ -276,6 +309,29 @@
                 transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
 
                 elem.setAttribute("onclick", "expand(this," + X + ", " + Y + ", " + scale +");");
+            }
+
+            function changePicture(path){
+                var picDiv = document.getElementById('wideChangingPicture')
+                var images = picDiv.getElementsByTagName("img");
+                var pic1 = images[0];
+                var pic2 = images[1];
+
+                pic2.src = pic1.src;
+                pic2.style.opacity = 1;
+                pic1.src = path;
+                pic1.style.opacity = 0;
+
+                transitions.fadeIn(pic1, tweenFunctions.easeInOutSine, 700);
+                transitions.fadeOut(pic2, tweenFunctions.easeInOutSine, 700);
+            }
+
+            function isOnScreen(element)
+            {
+                var curPos = element.offset();
+                var curTop = curPos.top;
+                var screenHeight = $(window).height();
+                return (curTop > screenHeight) ? false : true;
             }
         </script>
     </body>
