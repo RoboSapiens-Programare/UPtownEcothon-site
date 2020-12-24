@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/admdaniel/public_html/UPtownEcothon
+    - export DEPLOYPATH=/home/admdaniel/public_html/UPtownEcothon/
     - /bin/cp -R * $DEPLOYPATH
     
