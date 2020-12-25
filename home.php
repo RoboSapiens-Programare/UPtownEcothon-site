@@ -111,6 +111,9 @@ $scriptVersion = $detect->getScriptVersion();
 		<?php include "elements/footer.html"; ?>	
 
 		<script>
+
+			// alert(window.innerWidth);
+
 			function showMeaning(elem){
 				var main = elem.getElementsByClassName("main")[0];
 				var meaning = elem.getElementsByClassName("meaning")[0];

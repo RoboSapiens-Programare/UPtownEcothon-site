@@ -103,42 +103,6 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         var logo1 = document.getElementsByClassName("logo-elem-tlf")[1];
         var logo2 = document.getElementsByClassName("logo-elem-tlf")[2];
 
-        // var logoElemBigHeight;
-        // var logoElemBigWidth;
-        // var logoElemSmallHeight;
-        // var logoElemSmallWidth;
-        // var logoElemBigLeft;
-        // var logoElemBigRight;
-
-        // var cercBigHeight;
-        // var cercBigWidth;
-        // var cercSmallHeight;
-        // var cercSmallWidth;
-        // var cercBigLeft;
-        // var cercBigRight; 
-
-
-
-        // if (window.matchMedia("(orientation: portrait)").matches) {
-        //     var logoElemBigHeight=45;
-        //     var logoElemBigWidth=90;
-        //     var logoElemSmallHeight=21;
-        //     var logoElemSmallWidth=42;
-        //     var logoElemBigLeft=21;
-        //     var logoElemBigTop=17;
-
-        //     var cercBigSize=250;
-        //     var cercSmallSize=25;
-        //     var cercBigLef=-50;
-        //     var cercBigTop=-30; 
-        // }
-
-        // if (window.matchMedia("(orientation: landscape)").matches) {
-        //     // you're in LANDSCAPE mode
-        // }
-
-        // var width = parseFloat(document.getElementById('sageata-meniutlf').style.getPropertyValue('width'));
-        // alert(width);
 
         // function orientation() {
         //     if (window.matchMedia("(orientation: portrait)").matches) {
@@ -152,93 +116,11 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         //     }
         // }
 
-        var logoElemSmallWidth;
-        var logoElemSmallHeight;
+        var logoElemSmallWidth = 42;
+        var logoElemSmallHeight = 21;
 
-        var cercSmallSize;
-        var cercBigTop;
-
-        if (window.matchMedia("(orientation: landscape)").matches) {
-            // you're in PORTRAIT mode
-            // alert("landscape");
-
-            logoElemSmallWidth = 22;
-            logoElemSmallHeight = 11;
-            sageata.style.width = logoElemSmallWidth + "vw";
-            sageata.style.height = logoElemSmallHeight + "vw";
-            logo1.style.width = logoElemSmallWidth + "vw";
-            logo1.style.height = logoElemSmallHeight + "vw";
-            logo2.style.width = logoElemSmallWidth + "vw";
-            logo2.style.height = logoElemSmallHeight + "vw";
-
-            cercSmallSize = 13;
-            cerc.style.width = cercSmallSize + "vw";
-            cerc.style.height = cercSmallSize + "vw";
-
-            cercBigTop = -60;
-        } else if (window.matchMedia("(orientation: portrait)").matches) {
-            // you're in LANDSCAPE mode
-            // alert("portrait");
-
-            logoElemSmallWidth = 42;
-            logoElemSmallHeight = 21;
-            sageata.style.width = logoElemSmallWidth + "vw";
-            sageata.style.height = logoElemSmallHeight + "vw";
-            logo1.style.width = logoElemSmallWidth + "vw";
-            logo1.style.height = logoElemSmallHeight + "vw";
-            logo2.style.width = logoElemSmallWidth + "vw";
-            logo2.style.height = logoElemSmallHeight + "vw";
-
-            cercSmallSize = 25;
-            cerc.style.width = cercSmallSize + "vw";
-            cerc.style.height = cercSmallSize + "vw";
-            cercBigTop = -30;
-        }
-
-        window.addEventListener("orientationchange", function() {
-            if (window.matchMedia("(orientation: portrait)").matches) {
-                // you're in LANDSCAPE mode
-                // alert("landscape");
-
-                logoElemSmallWidth = 22;
-                logoElemSmallHeight = 11;
-                sageata.style.width = logoElemSmallWidth + "vw";
-                sageata.style.height = logoElemSmallHeight + "vw";
-                logo1.style.width = logoElemSmallWidth + "vw";
-                logo1.style.height = logoElemSmallHeight + "vw";
-                logo2.style.width = logoElemSmallWidth + "vw";
-                logo2.style.height = logoElemSmallHeight + "vw";
-
-                cercSmallSize = 13;
-                cerc.style.width = cercSmallSize + "vw";
-                cerc.style.height = cercSmallSize + "vw";
-
-                cercBigTop = -60;
-                if (cerc.style.width > cercSmallSize) {
-                    cerc.style.top = cercBigTop + "%";
-                }
-            } else if (window.matchMedia("(orientation: landscape)").matches) {
-                // you're in PORTRAIT mode
-                // alert("portrait");
-
-                logoElemSmallWidth = 42;
-                logoElemSmallHeight = 21;
-                sageata.style.width = logoElemSmallWidth + "vw";
-                sageata.style.height = logoElemSmallHeight + "vw";
-                logo1.style.width = logoElemSmallWidth + "vw";
-                logo1.style.height = logoElemSmallHeight + "vw";
-                logo2.style.width = logoElemSmallWidth + "vw";
-                logo2.style.height = logoElemSmallHeight + "vw";
-
-                cercSmallSize = 25;
-                cerc.style.width = cercSmallSize + "vw";
-                cerc.style.height = cercSmallSize + "vw";
-                cercBigTop = -30;
-                if (cerc.style.width > cercSmallSize) {
-                    cerc.style.top = cercBigTop + "%";
-                }
-            }
-        }, false);
+        var cercSmallSize = 25;
+        var cercBigTop = -20;
 
 
         function expandMenu() {

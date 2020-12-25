@@ -145,23 +145,43 @@
             var wrapper12 = franshals1.getElementsByClassName("wrapper")[1];
             var wrapper12Offset = offset(wrapper12)-(window.innerHeight/2);
             var pic1 = franshals1.getElementsByClassName("col-pic")[0];
+            var Change1 = false;
+            var lastChange1 = false;
 
             var fanshals2 = document.getElementById("franshals2");
             var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
             var wrapper22Offset = offset(wrapper22)-(window.innerHeight/2);
             var pic2 = franshals2.getElementsByClassName("col-pic")[0];
+            var Change2 = false;
+            var lastChange2 = false;
 
             function imageChangeTrigger(){
                 if(window.scrollY >= wrapper12Offset){
-                    slideOutPoze(franshals1);
+                    Change1 = true;
+                    if(Change1 ^ lastChange1){
+                        slideOutPoze(franshals1);
+                        lastChange1 = true;
+                    }
                 } else {
-                    slideInPoze(franshals1);
+                    Change1 = false;
+                    if(Change1 ^ lastChange1){
+                        slideInPoze(franshals1);
+                        lastChange1 = false;
+                    }
                 }
 
                 if(window.scrollY >= wrapper22Offset){
-                    slideOutPoze(franshals2);
+                    Change2 = true;
+                    if(Change2 ^ lastChange2){
+                        slideOutPoze(franshals2);
+                        lastChange2 = true;
+                    }
                 } else {
-                    slideInPoze(franshals2);
+                    Change2 = false;
+                    if(Change2 ^ lastChange2){
+                        slideInPoze(franshals2);
+                        lastChange2 = false;
+                    }
                 }
 
             }
