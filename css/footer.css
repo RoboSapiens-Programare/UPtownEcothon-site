@@ -11,40 +11,39 @@
 #hrefuri {
     position: relative;
     display: block;
-    height: 5vh;
-    width: 100%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
     margin-top: 2vh;
     margin-bottom: 2vh;
+    height: 50%;
+    width: 50%;
     background-color: transparent;
-    border: 1px solid black;
+    border: 0px solid black;
     z-index: 1;
 }
 
-#hrefuri ul {
-    list-style: none;
+.href-elem {
+    position: absolute;
+    display: inline-block;
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+    margin: 0;
+    border: 0.5vh solid black;
+}
+
+.href-elem:hover {
+    background-color: #e7df68;
+}
+
+.href-elem img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: inherit;
-    border: none;
-}
-
-#hrefuri li {
-    display: inline;
-    z-index: inherit;
-    margin: 2vw;
-}
-
-#hrefuri li a {
-    font-family: 'Agency FB Bold', arial;
-    font-size: 1.5vw;
-    text-decoration: none;
-    color: black;
-}
-
-#hrefuri li a:hover {
-    color: #d222d2;
+    height: 50%;
+    width: 50%;
 }
 
 #logouri {
@@ -56,7 +55,7 @@
     height: 3vw;
     padding: none;
     background-color: transparent;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     z-index: 1;
 }
 

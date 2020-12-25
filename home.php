@@ -35,7 +35,7 @@ $scriptVersion = $detect->getScriptVersion();
 	</head>
 
 	
-	 <body style="background-color: #e7df68; margin: 0px; overflow-y:visible;">
+	 <body style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
     
 		<?php 
 			if($detect->isMobile() || $detect->isTablet()) {
@@ -45,13 +45,13 @@ $scriptVersion = $detect->getScriptVersion();
 			}
 		?>	
 
-		<div class="banner-homepage" style="position: relative; width:100vw; height:100vh; background-color:transparent">
+		<div class="banner-homepage" style="position: relative; width:100%; height:100vh; background-color:transparent">
 			<div class="bkg-banner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%; width: 100%; background-color: purple;">
 				<div class="text-centrat" style="font-size: 10vh;"> gif background + detailed menu </div>
 			</div>
 		</div>
 
-			<div style="position:relative; height: 20vh; width: 100vw; border:0px solid black; margin: 3vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #df458d">Helpful Timeline =D</div> </div>
+			<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #df458d">Helpful Timeline =D</div> </div>
 
 			<div class="sectiune-timeline">
 				<div class="timeline">
@@ -123,6 +123,7 @@ $scriptVersion = $detect->getScriptVersion();
 				transitions.fadeOut(main, tweenFunctions.easeOutExpo, 400);
 
 				transitions.fadeIn(meaning, tweenFunctions.easeInExpo, 400);
+
 			}
 			function hideMeaning(elem){
 				var main = elem.getElementsByClassName("main")[0];
