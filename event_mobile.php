@@ -50,57 +50,6 @@
             </div>
         </div>
 
-
-        <!-- <div style="display: flex; width: 300vw; height: 100vh">
-            <div id="sect1" class="section" style="background-color: darkkhaki; overflow-y: hidden; overflow-x:hidden">
-                <div id="title1" class="title" style="opacity: 0;">Teme</div>
-                <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
-
-                <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto">
-                    <?php //echo $content["Teme"][1]; ?>
-                </div>
-                <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px; background-color: darkkhaki; transform: scale(0.7)">
-                    <div name="toFade" class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 1">
-                        <div class="circle-top-left" onclick="expand(this, 50, 50, 0.7);" style="overflow: hidden;">
-                            <img src="pictures/pollution1.jpg" style="height: 100%; width: 100%">
-                        </div>
-                        <div class="circle-bottom-right" style="background-color: aliceblue;"></div>
-                        
-                        <img src="pictures/pollution2.jpg" style="height: 100%; width: 100%; border-radius: 20px 20px 0px 20px">
-                    </div>
-                </div>
-                <div class="sliding" style="bottom: 0%; left: -50%; border-radius: 20px 20px 20px 0px; overflow-y: auto">
-                    <?php //echo $content["Teme"][2] ?>
-                </div>
-            </div>
-            <div style="flex: 33%; height: 100vh; background-color:darkkhaki; position: relative">
-                <div class="sliding" style=" width:60vw; height:75vh; right: 0; top: 12.5vh; margin-right: 2vw; overflow-y:auto; border-radius: 20px 20px 20px 20px">
-                    <?php
-                        //echo $content["Teme"][3] . "<br>";
-                    ?>
-                </div>
-                <div name="toFade" class="rectangle-content" style="top: 50%; left: 15%; transform: translate(-40%, -30%); z-index: 102">
-                    <div class="circle-top-left" onclick="expand(this, 27, 60, 0.4);" style="overflow: hidden;">
-                        <img src="pictures/pollution4.webp" style="height: 100%; width: 100%">
-                    </div>
-                    <div class="circle-bottom-right" style="background-color: aliceblue;"></div>
-                    
-                    <img src="pictures/pollution3.jpg" style="height: 100%; width: 100%; border-radius: 20px 20px 0px 20px">
-                </div>
-            </div>
-            <div style="flex: 33%; height: 100vh; background-color:darkkhaki; position: relative">
-                <div id="bigScrollableSliding" class="sliding" style="width:75%; height:56%; left: 50%; top: 10%; overflow-y:auto; border-radius: 20px 20px 20px 20px; transform:translateX(-50%)">
-                    <?php 
-                        //echo $content["Teme"][4] . "<br>";
-                    ?>
-                </div>
-                <div id="wideChangingPicture" class="sliding" style="width:78%; height:25%; left: 50%; top: 71.8%; overflow-y:hidden; border-radius: 20px 20px 20px 20px; transform:translateX(-50%); padding: 0">
-                    <img src="pictures/bucharest2.jpg" style="width: 100%; height: 100%; object-fit:cover; position:absolute">
-                    <img src="pictures/bucharest2.jpg" style="width: 100%; height: 100%; object-fit:cover; opacity: 0; position:absolute">
-                </div>
-            </div>
-        </div> -->
-
         <div id="sect1" class="section" >
             <div class="wrapper" style="background-color:darkkhaki; z-index: 5">
                 <div id="title1" class="title" style="opacity: 0;">Teme</div>
@@ -345,16 +294,6 @@
 
                 transitions.fadeIn(pic1, tweenFunctions.easeInOutSine, 700);
                 transitions.fadeOut(pic2, tweenFunctions.easeInOutSine, 700);
-            }
-
-            function isInViewport(element) {
-                const rect = element.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
             }
 
         </script>

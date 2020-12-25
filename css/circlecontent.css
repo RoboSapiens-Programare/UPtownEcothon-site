@@ -29,13 +29,6 @@
     mix-blend-mode: normal;
 }
 
-/* .rectangle-content .circle-top-left:hover,
-.rectangle-content .circle-top-left:hover .text-centrat,
-.rectangle-content .circle-top-right:hover,
-.rectangle-content .circle-top-right:hover .text-centrat {
-    mix-blend-mode: difference;
-} */
-
 .rectangle-content .circle-top-left:hover img,
 .rectangle-content .circle-top-right:hover img{
     mix-blend-mode: difference;
