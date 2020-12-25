@@ -119,7 +119,7 @@
             <div id="city" class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content">
                 <?php echo $content["Teme"][4] ?>
             </div>
-            <div style="position: sticky; width: 100%; height: 100%; bottom: 0; z-index: -1">
+            <div style="position: -webkit-sticky; position: -moz-sticky; position: -ms-sticky; position: -o-sticky; position: sticky; width: 100%; height: 100%; bottom: 0; z-index: -1">
                 <img src="pictures/pollution_portrait1.jpg" style="position:absolute; width: 100%; height: 100%; object-fit: cover">
                 <img src="pictures/pollution_portrait1.jpg" style="position:absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0">
             </div>
@@ -210,6 +210,7 @@
                 var title = x.parentElement.getElementsByClassName('title')[0];
                 var scrollbar = document.getElementById("scroller");
                 var wrapper = x.parentElement;
+                var section = wrapper.parentElement;
 
                 for(var a of slidings) {
                     if(a.style.right){
@@ -250,6 +251,8 @@
                 );
                 x.innerHTML = "Read Less";
                 x.setAttribute("onclick", "readLess(this);");
+
+                section.style.overflowY = "auto";
             }
 
             function readLess(x){
@@ -257,6 +260,7 @@
                 var title = x.parentElement.getElementsByClassName('title')[0];
                 var scrollbar = document.getElementById("scroller");
                 var wrapper = x.parentElement;
+                var section = wrapper.parentElement;
 
                 for(var a of slidings) {
                     if(a.style.right){
@@ -299,6 +303,7 @@
                 x.setAttribute("onclick", "readMore(this);");
 
                 window.location.href = "#" + x.parentElement.id;
+                section.style.overflowY = "hidden";
             }
 
             function expand(elem, X, Y, scale){
