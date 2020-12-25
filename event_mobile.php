@@ -1,9 +1,4 @@
 <?php
-    require_once 'Mobile-Detect-master/Mobile_Detect.php';
-    $detect = new Mobile_Detect;
-
-    $scriptVersion = $detect->getScriptVersion();
-
     //CONTENT
     include 'config/dbconfig.php';
 
@@ -28,15 +23,8 @@
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/circlecontent.css">     
-
-        <?php 
-			if($detect->isMobile() || $detect->isTablet()) {
-				echo "<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>";
-			} else {
-				echo "<link rel='stylesheet' type='text/css' href='css/sageata.css'>";
-			}
-		?>
-
+       
+		<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>
 
         <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -45,16 +33,12 @@
         <script src="javascript/transitions.js"></script>
     </head>
     
-    <body style="margin: 0px; overflow-x: hidden; overflow-y: hidden;">
+    <body style="margin: 0px; overflow-x:hidden">
         <?php 
-			if($detect->isMobile() || $detect->isTablet()) {
-				include "elements/sageatatlf.html";
-			} else {
-				include "elements/sageata.html";
-			}
+			include "elements/sageatatlf.html";
 		?>
 
-        <div id="scroller" class="scroller">
+        <div id="scroller" class="scroller" style="left: 0; width: 6vh">
             <div id="link1" class="link">
                 <a href="#sect1" class="dot"></a>
             </div>
@@ -67,13 +51,13 @@
         </div>
 
 
-        <div style="display: flex; width: 300vw; height: 100vh">
+        <!-- <div style="display: flex; width: 300vw; height: 100vh">
             <div id="sect1" class="section" style="background-color: darkkhaki; overflow-y: hidden; overflow-x:hidden">
                 <div id="title1" class="title" style="opacity: 0;">Teme</div>
                 <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
 
                 <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto">
-                    <?php echo $content["Teme"][1]; ?>
+                    <?php //echo $content["Teme"][1]; ?>
                 </div>
                 <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px; background-color: darkkhaki; transform: scale(0.7)">
                     <div name="toFade" class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 1">
@@ -86,13 +70,13 @@
                     </div>
                 </div>
                 <div class="sliding" style="bottom: 0%; left: -50%; border-radius: 20px 20px 20px 0px; overflow-y: auto">
-                    <?php echo $content["Teme"][2] ?>
+                    <?php //echo $content["Teme"][2] ?>
                 </div>
             </div>
             <div style="flex: 33%; height: 100vh; background-color:darkkhaki; position: relative">
                 <div class="sliding" style=" width:60vw; height:75vh; right: 0; top: 12.5vh; margin-right: 2vw; overflow-y:auto; border-radius: 20px 20px 20px 20px">
                     <?php
-                        echo $content["Teme"][3] . "<br>";
+                        //echo $content["Teme"][3] . "<br>";
                     ?>
                 </div>
                 <div name="toFade" class="rectangle-content" style="top: 50%; left: 15%; transform: translate(-40%, -30%); z-index: 102">
@@ -107,13 +91,37 @@
             <div style="flex: 33%; height: 100vh; background-color:darkkhaki; position: relative">
                 <div id="bigScrollableSliding" class="sliding" style="width:75%; height:56%; left: 50%; top: 10%; overflow-y:auto; border-radius: 20px 20px 20px 20px; transform:translateX(-50%)">
                     <?php 
-                        echo $content["Teme"][4] . "<br>";
+                        //echo $content["Teme"][4] . "<br>";
                     ?>
                 </div>
                 <div id="wideChangingPicture" class="sliding" style="width:78%; height:25%; left: 50%; top: 71.8%; overflow-y:hidden; border-radius: 20px 20px 20px 20px; transform:translateX(-50%); padding: 0">
                     <img src="pictures/bucharest2.jpg" style="width: 100%; height: 100%; object-fit:cover; position:absolute">
                     <img src="pictures/bucharest2.jpg" style="width: 100%; height: 100%; object-fit:cover; opacity: 0; position:absolute">
                 </div>
+            </div>
+        </div> -->
+
+        <div id="sect1" class="section" >
+            <div class="wrapper" style="background-color:darkkhaki; z-index: 5">
+                <div id="title1" class="title" style="opacity: 0;">Teme</div>
+                <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
+            </div>
+
+            <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content; margin-bottom: 50vh">
+                <?php echo $content["Teme"][1]; ?>
+            </div>
+            <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content">
+                <?php echo $content["Teme"][2] ?>
+            </div>
+            <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content; margin-bottom: 50vh">
+                <?php echo $content["Teme"][3] ?>
+            </div>
+            <div id="city" class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content">
+                <?php echo $content["Teme"][4] ?>
+            </div>
+            <div style="position: sticky; width: 100%; height: 100%; bottom: 0; z-index: -1">
+                <img src="pictures/pollution_portrait1.jpg" style="position:absolute; width: 100%; height: 100%; object-fit: cover">
+                <img src="pictures/pollution_portrait1.jpg" style="position:absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0">
             </div>
         </div>
 
@@ -157,33 +165,41 @@
 
             window.location.href = "#sect1";
 
-            document.getElementById('bigScrollableSliding').onscroll = function(){
-                var s = document.getElementById('bigScrollableSliding');
-                if(s.scrollTop > 150 && s.scrollTop < 900){
+            document.getElementById('sect1').onscroll = function(){
+                var s = document.getElementById('sect1');
+                //alert(document.getElementById('garbage').offsetTop);
+                if(s.scrollTop > (document.getElementById('garbage').offsetTop + document.getElementById('city').offsetHeight) + document.documentElement.clientHeight/2){
                     detectChange = 1;
                     if(detectChange != lastDetectChange){
-                        changePicture("pictures/traffic1.webp");
+                        changePicture(s, "pictures/garbage1.jpg");
                         lastDetectChange = detectChange;
                     }
                 }
-                else if(s.scrollTop >= 900 && s.scrollTop < 1300){
+                else if(s.scrollTop > (document.getElementById('park').offsetTop + document.getElementById('city').offsetHeight + document.documentElement.clientHeight/2)){
                     detectChange = 2;
                     if(detectChange != lastDetectChange){
-                        changePicture("pictures/park2.jpg");
+                        changePicture(s, "pictures/park2.jpg");
                         lastDetectChange = detectChange;
                     }
                 }
-                else if(s.scrollTop >= 1300){
+                else if(s.scrollTop > (document.getElementById('traffic').offsetTop + document.getElementById('city').offsetHeight + document.documentElement.clientHeight/2)){
                     detectChange = 3;
                     if(detectChange != lastDetectChange){
-                        changePicture("pictures/garbage1.jpg");
+                        changePicture(s, "pictures/traffic1.webp");
+                        lastDetectChange = detectChange;
+                    }
+                }
+                else if(s.scrollTop > document.getElementById('city').offsetHeight + + document.documentElement.clientHeight/2){
+                    detectChange = 4;
+                    if(detectChange != lastDetectChange){
+                        changePicture(s, "pictures/bucharest2.jpg");
                         lastDetectChange = detectChange;
                     }
                 }
                 else{
                     detectChange = 0
                     if(detectChange != lastDetectChange){
-                        changePicture('pictures/bucharest2.jpg');
+                        changePicture(s, 'pictures/pollution_portrait1.jpg');
                         lastDetectChange = detectChange;
                     }
                 }
@@ -193,7 +209,7 @@
                 var slidings = x.parentElement.getElementsByClassName("sliding");
                 var title = x.parentElement.getElementsByClassName('title')[0];
                 var scrollbar = document.getElementById("scroller");
-                var section = x.parentElement;
+                var wrapper = x.parentElement;
 
                 for(var a of slidings) {
                     if(a.style.right){
@@ -214,35 +230,33 @@
                     }
                 }
 
-                transitions.translate2D(
-                    new Dimension(title, -25, "pw"),
-                    new Dimension(title, -20, "ph"),
+                transitions.resize2D(
+                    new Dimension(wrapper, 100, "pw"),
+                    new Dimension(wrapper, 20, "ph"),
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
                 transitions.translate2D(
-                    new Dimension(x, -25, "pw"),
-                    new Dimension(x, -28, "ph"),
+                    new Dimension(title, 0, "pw"),
+                    new Dimension(title, -23, "ph"),
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
                 transitions.translate2D(
-                    new Dimension(scrollbar, 4.8, "vw"),
+                    new Dimension(scrollbar, -10, "vw"),
                     new Dimension(scrollbar, 0, "vh"), 
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
                 x.innerHTML = "Read Less";
                 x.setAttribute("onclick", "readLess(this);");
-
-                document.body.style.overflowX = "scroll";
             }
 
             function readLess(x){
                 var slidings = x.parentElement.getElementsByClassName("sliding");
                 var title = x.parentElement.getElementsByClassName('title')[0];
                 var scrollbar = document.getElementById("scroller");
-                var section = x.parentElement;
+                var wrapper = x.parentElement;
 
                 for(var a of slidings) {
                     if(a.style.right){
@@ -264,19 +278,19 @@
                 }
 
                 transitions.translate2D(
-                    new Dimension(title, 25, "pw"),
-                    new Dimension(title, 20, "ph"),
+                    new Dimension(title, 0, "pw"),
+                    new Dimension(title, 23, "ph"),
+                    tweenFunctions.easeInOutExpo,
+                    1000
+                );
+                transitions.resize2D(
+                    new Dimension(wrapper, 100, "pw"),
+                    new Dimension(wrapper, 100, "ph"),
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
                 transitions.translate2D(
-                    new Dimension(x, 25, "pw"),
-                    new Dimension(x, 28, "ph"),
-                    tweenFunctions.easeInOutExpo,
-                    1000
-                );
-                transitions.translate2D(
-                    new Dimension(scrollbar, -4.8, "vw"),
+                    new Dimension(scrollbar, 10, "vw"),
                     new Dimension(scrollbar, 0, "vh"), 
                     tweenFunctions.easeInOutExpo,
                     1000
@@ -284,7 +298,6 @@
                 x.innerHTML = "Read More";
                 x.setAttribute("onclick", "readMore(this);");
 
-                document.body.style.overflowX = "hidden";
                 window.location.href = "#" + x.parentElement.id;
             }
 
@@ -314,8 +327,8 @@
                 elem.setAttribute("onclick", "expand(this," + X + ", " + Y + ", " + scale +");");
             }
 
-            function changePicture(path){
-                var picDiv = document.getElementById('wideChangingPicture')
+            function changePicture(elem, path){
+                var picDiv = elem;
                 var images = picDiv.getElementsByTagName("img");
                 var pic1 = images[0];
                 var pic2 = images[1];
@@ -329,12 +342,16 @@
                 transitions.fadeOut(pic2, tweenFunctions.easeInOutSine, 700);
             }
 
-            function isOnScreen(element){
-                var curPos = element.offset();
-                var curTop = curPos.top;
-                var screenHeight = $(window).height();
-                return (curTop > screenHeight) ? false : true;
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
             }
+
         </script>
     </body>
 </html>
