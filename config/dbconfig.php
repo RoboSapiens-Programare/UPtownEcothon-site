@@ -22,7 +22,7 @@
             $this->exec("PRAGMA foreign_keys = ON");
         }
 
-        function getContentsForPage($pageName){
+        function getContentsForPage($pageName, $lang){
             $returnArray = array();
 
             $sql = "SELECT id FROM pages WHERE name = :pagename";
@@ -48,9 +48,10 @@
                 $subsectionResult = $stmt;
 
                 foreach($subsectionResult as $subsection) {
-                    $sql = "SELECT value FROM content WHERE subsection_id = :subsectionid";
+                    $sql = "SELECT value FROM content WHERE subsection_id = :subsectionid AND language = :lang";
                     $stmt = $this->prepare($sql);
                     $stmt->bindParam(':subsectionid', $subsection['id']);
+                    $stmt->bindParam(':lang', $lang);
                     $stmt->execute();
     
                     $content = $stmt->fetch(PDO::FETCH_ASSOC);

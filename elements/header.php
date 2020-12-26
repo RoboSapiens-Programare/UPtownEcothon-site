@@ -4,6 +4,13 @@
 
     $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
 
+    if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
+        $lang = 'EN';
+    }
+    else{
+        $lang = 'RO';
+    }
+
     //CONTENT
     include 'config/dbconfig.php';
 
@@ -11,7 +18,7 @@
         $db = new ContentDB();
 
         $content = array();
-        $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename));
+        $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
 
         $db = null;
         unset($db);

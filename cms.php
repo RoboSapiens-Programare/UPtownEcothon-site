@@ -8,6 +8,7 @@
     $section = (isset($_POST['section']) && !empty($_POST['section'])) ? $_POST['section'] : null; //id-ul curent al sectiunii
     $subsection = (isset($_POST['subsection']) && !empty($_POST['subsection'])) ? $_POST['subsection'] : null; //id-ul curent al subsectiunii
     $content = (isset($_POST['content']) && !empty($_POST['content'])) ? $_POST['content'] : null; //valoarea textarea-ului de content
+    $contentEN = (isset($_POST['contentEN']) && !empty($_POST['contentEN'])) ? $_POST['contentEN'] : null; //valoarea textarea-ului de contentEN
     $newPageName = (isset($_POST['newPageName']) && !empty($_POST['newPageName'])) ? $_POST['newPageName'] : null; //valoarea imputului de new page name
     $newSectionName = (isset($_POST['newSectionName']) && !empty($_POST['newSectionName'])) ? $_POST['newSectionName'] : null; //valoarea inputului de new section name
     $newSubsectionName = (isset($_POST['newSubsectionName']) && !empty($_POST['newSubsectionName'])) ? $_POST['newSubsectionName'] : null; //valoarea inputului de new subsection name
@@ -16,7 +17,7 @@
     $deleteSubsection = isset($_POST['deleteSubsection']); //
     
     //Daca valorile de page, section, subsection si content sunt setate then proceed
-    if($page && $section && $subsection && $content){
+    if($page && $section && $subsection && $content && $contentEN){
         try{
             //Creem conexiunea la DB
             $db = new ContentDB();
@@ -96,20 +97,35 @@
                     $subsection = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
                 }
                 //Adaugam noul content, aici ne trebuie si id-ul subsectiunii
-                $sql = "INSERT INTO content (value, subsection_id) VALUES (:content, :subsectionid);";
+                $sql = "INSERT INTO content (value, subsection_id, language) VALUES (:content, :subsectionid, 'RO');";
                 $stmt = $db->prepare($sql);
                 $stmt->bindParam(':content', $content);
+                $stmt->bindParam(':subsectionid', $subsection);
+                $stmt->execute();
+
+                $sql = "INSERT INTO content (value, subsection_id, language) VALUES (:content, :subsectionid, 'EN');";
+                $stmt = $db->prepare($sql);
+                $stmt->bindParam(':content', $contentEN);
                 $stmt->bindParam(':subsectionid', $subsection);
                 $stmt->execute();
             }
             //Daca nici nu dam delete, nici nu adaugam o pagina noua
             else{
                 //UPDATE STUFF
-                $sql = "UPDATE content SET value=:content WHERE subsection_id=:subsectionid";
+                $sql = "UPDATE content SET value=:content WHERE subsection_id=:subsectionid AND language='RO'";
 
                 $stmt = $db->prepare($sql);
 
                 $stmt->bindParam(':content', $content);
+                $stmt->bindParam(':subsectionid', $subsection);
+
+                $stmt->execute();
+
+                $sql = "UPDATE content SET value=:content WHERE subsection_id=:subsectionid AND language='EN'";
+
+                $stmt = $db->prepare($sql);
+
+                $stmt->bindParam(':content', $contentEN);
                 $stmt->bindParam(':subsectionid', $subsection);
 
                 $stmt->execute();
@@ -121,6 +137,9 @@
         catch(PDOException $e){
             $e->getMessage();
         }
+    }
+    else{
+        echo "<h2 style='color: red'>Da fill la tot coane!</h2>";
     }
 
     try{
@@ -162,7 +181,7 @@
         $stmt->execute();
 
         foreach($stmt as $row){
-            $contentValues[$row['subsection_id']] = $row['value'];
+            $contentValues[$row['subsection_id']][$row['language']] = $row['value'];
         }
 
         $db = null;
@@ -212,7 +231,8 @@
                 <input type="text" name="newSubsectionName" id="newSubsectionName">
             </div>
             <br>
-            <textarea name="content" id="content" style="width: 50vw; height: 50vh"></textarea><br>
+            <label for="content">RO:</label><br><textarea name="content" id="content" style="width: 50vw; height: 50vh"></textarea><br>
+            <label for="contentEN">EN:</label><br><textarea name="contentEN" id="contentEN" style="width: 50vw; height: 50vh"></textarea><br>
             <button type="submit">Submit</button>
         </form>
 
@@ -277,7 +297,8 @@
                     document.getElementById("addNewSubsection").style.display = "none";
                     document.getElementById("deleteSubsection").style.display = "inline ";
                 }
-                document.getElementById("content").innerHTML = contentValues[subsection];
+                document.getElementById("content").innerHTML = contentValues[subsection]["RO"];
+                document.getElementById("contentEN").innerHTML = contentValues[subsection]["EN"];
             }
         </script>
     </body>
