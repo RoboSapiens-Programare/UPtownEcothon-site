@@ -1,48 +1,21 @@
-<?php
-require_once 'Mobile-Detect-master/Mobile_Detect.php';
-$detect = new Mobile_Detect;
-
-$scriptVersion = $detect->getScriptVersion();
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<title></title>
 
 		  <link rel="stylesheet" type="text/css" href="css/slideup.css">
-		  <!-- <link rel="stylesheet" type="text/css" href="css/sageata.css"> -->
+		  <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		  <link rel="stylesheet" type="text/css" href="css/basics.css">
-		  <!-- <link rel="stylesheet" type="text/css" href="css/sageatatlf.css"> -->
 		  <link rel="stylesheet" type="text/css" href="css/footer.css">
 		  <link rel="stylesheet" type="text/css" href="css/progressbar.css">
-
-		  <?php 
-			if($detect->isMobile() || $detect->isTablet()) {
-				echo "<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>";
-			} else {
-				echo "<link rel='stylesheet' type='text/css' href='css/sageata.css'>";
-			}
-		  ?>	
 				  
-
-		  <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
-		  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
-		  <script src="javascript/tween-functions.js"></script>
-		  <script src="javascript/transitions.js"></script>
+		<?php include 'elements/header.php'; ?>
 
 	</head>
-
-	
-	 <body style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
+	<body style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
     
 		<?php 
-			if($detect->isMobile() || $detect->isTablet()) {
-				include "elements/sageatatlf.html";
-			} else {
-				include "elements/sageata.html";
-			}
+			include "elements/sageata.html";
 		?>	
 
 		<div class="banner-homepage" style="position: relative; width:100%; height:100vh; background-color:transparent">

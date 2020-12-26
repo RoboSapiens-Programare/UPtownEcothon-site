@@ -30,33 +30,37 @@
             $stmt->bindParam(':pagename', $pageName);
             $stmt->execute();
 
-            $pageid = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+            $pageid = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $sql = "SELECT id, name FROM sections WHERE page_id = :pageid";
-            $stmt = $this->prepare($sql);
-            $stmt->bindParam(':pageid', $pageid);
-            $stmt->execute();
+            if($pageid){
+                $pageid = $pageid['id'];
 
-            $sectionResult = $stmt;
-
-            foreach($sectionResult as $section){
-                $sql = "SELECT id, name FROM subsections WHERE section_id = :sectionid";
+                $sql = "SELECT id, name FROM sections WHERE page_id = :pageid";
                 $stmt = $this->prepare($sql);
-                $stmt->bindParam(':sectionid', $section['id']);
+                $stmt->bindParam(':pageid', $pageid);
                 $stmt->execute();
 
-                $subsectionResult = $stmt;
+                $sectionResult = $stmt;
 
-                foreach($subsectionResult as $subsection) {
-                    $sql = "SELECT value FROM content WHERE subsection_id = :subsectionid AND language = :lang";
+                foreach($sectionResult as $section){
+                    $sql = "SELECT id, name FROM subsections WHERE section_id = :sectionid";
                     $stmt = $this->prepare($sql);
-                    $stmt->bindParam(':subsectionid', $subsection['id']);
-                    $stmt->bindParam(':lang', $lang);
+                    $stmt->bindParam(':sectionid', $section['id']);
                     $stmt->execute();
-    
-                    $content = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                    $returnArray[$section['name']][$subsection['name']] = $content['value'];
+                    $subsectionResult = $stmt;
+
+                    foreach($subsectionResult as $subsection) {
+                        $sql = "SELECT value FROM content WHERE subsection_id = :subsectionid AND language = :lang";
+                        $stmt = $this->prepare($sql);
+                        $stmt->bindParam(':subsectionid', $subsection['id']);
+                        $stmt->bindParam(':lang', $lang);
+                        $stmt->execute();
+        
+                        $content = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        $returnArray[$section['name']][$subsection['name']] = $content['value'];
+                    }
                 }
             }
 
