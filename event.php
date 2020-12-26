@@ -1,25 +1,3 @@
-<?php
-    require_once 'Mobile-Detect-master/Mobile_Detect.php';
-    $detect = new Mobile_Detect;
-
-    $scriptVersion = $detect->getScriptVersion();
-
-    //CONTENT
-    include 'config/dbconfig.php';
-
-    try{
-        $db = new ContentDB();
-
-        $content = array();
-        $content = $db->getContentsForPage("event.php");
-
-        $db = null;
-        unset($db);
-    }
-    catch(PDOException $e){
-        $e->getMessage();
-    }
-?>
 <!DOCTYPE html>
 <html style="scroll-behavior: smooth">
     <head>
@@ -28,30 +6,14 @@
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/circlecontent.css">     
-
-        <?php 
-			if($detect->isMobile() || $detect->isTablet()) {
-				echo "<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>";
-			} else {
-				echo "<link rel='stylesheet' type='text/css' href='css/sageata.css'>";
-			}
-		?>
-
-
-        <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
-        <script src="javascript/tween-functions.js"></script>
-        <script src="javascript/transitions.js"></script>
+        <link rel='stylesheet' type='text/css' href='css/sageata.css'>
+        
+        <?php include "elements/header.php"; ?>
     </head>
     
     <body style="margin: 0px; overflow-x: hidden; overflow-y: hidden;">
         <?php 
-			if($detect->isMobile() || $detect->isTablet()) {
-				include "elements/sageatatlf.html";
-			} else {
-				include "elements/sageata.html";
-			}
+			include "elements/sageata.html";
 		?>
 
         <div id="scroller" class="scroller">
