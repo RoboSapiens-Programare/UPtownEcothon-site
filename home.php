@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html style="scroll-behavior: smooth">
 	<head>
-		<title></title>
 
 		  <link rel="stylesheet" type="text/css" href="css/slideup.css">
 		  <link rel="stylesheet" type="text/css" href="css/sageata.css">

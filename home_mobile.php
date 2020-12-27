@@ -8,7 +8,6 @@ $scriptVersion = $detect->getScriptVersion();
 <!DOCTYPE html>
 <html>
 	<head>
-		<title></title>
 
 		  <link rel="stylesheet" type="text/css" href="css/slideup.css">
 		  <link rel="stylesheet" type="text/css" href="css/basics.css">
@@ -16,11 +15,13 @@ $scriptVersion = $detect->getScriptVersion();
           <link rel="stylesheet" type="text/css" href="css/progressbar.css">
           <link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>	  
 
-		  <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
-		  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		  <!-- <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" /> -->
+		  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">  -->
 
-		  <script src="javascript/tween-functions.js"></script>
-		  <script src="javascript/transitions.js"></script>
+		  <!-- <script src="javascript/tween-functions.js"></script> -->
+		  <!-- <script src="javascript/transitions.js"></script> -->
+
+		  <?php include "elements/header.php"; ?>
 
     </head>
     
@@ -75,8 +76,8 @@ $scriptVersion = $detect->getScriptVersion();
 					var main = elem.getElementsByClassName("main")[0];
 					var meaning = elem.getElementsByClassName("meaning")[0];
 
-					transitions.resize2D(new Dimension(elem, 50, "vw"),
-					new Dimension(elem, 50, "vw"),
+					transitions.resize2D(new Dimension(elem, 35, "vw"),
+					new Dimension(elem, 35, "vw"),
 					tweenFunctions.easeOutQuad,
 					400);
 
@@ -91,8 +92,8 @@ $scriptVersion = $detect->getScriptVersion();
 					var main = elem.getElementsByClassName("main")[0];
 					var meaning = elem.getElementsByClassName("meaning")[0];
 
-					transitions.resize2D(new Dimension(elem, 25, "vw"),
-					new Dimension(elem, 25, "vw"),
+					transitions.resize2D(new Dimension(elem, 20, "vw"),
+					new Dimension(elem, 20, "vw"),
 					tweenFunctions.easeInQuad,
 					400);
 					

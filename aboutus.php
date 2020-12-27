@@ -1,30 +1,12 @@
-<?php
-require_once 'Mobile-Detect-master/Mobile_Detect.php';
-$detect = new Mobile_Detect;
-
-$scriptVersion = $detect->getScriptVersion();
-?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
 
-        <!-- <link rel="stylesheet" type="text/css" href="css/sageata.css"> -->
+        <link rel="stylesheet" type="text/css" href="css/sageata.css">
         <link rel="stylesheet" type="text/css" href="css/twistycontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
-        <!-- <link rel="stylesheet" type="text/css" href="css/sageatatlf.css"> -->
 
-        <?php 
-			if($detect->isMobile() || $detect->isTablet()) {
-				echo "<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>";
-			} else {
-				echo "<link rel='stylesheet' type='text/css' href='css/sageata.css'>";
-			}
-		?>
-
-
-        <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <?php include 'elements/header.php'; ?>
 
 
         <?php 
@@ -44,12 +26,8 @@ $scriptVersion = $detect->getScriptVersion();
     </head>
     <body style="margin: 0px; overflow-x:hidden; overflow-y:hidden">
         <?php 
-			if($detect->isMobile() || $detect->isTablet()) {
-				include "elements/sageatatlf.html";
-			} else {
-				include "elements/sageata.html";
-			}
-		?>
+			include "elements/sageata.html";
+		?>	
 
         <div style="display: flex; width:100vw; height: 100vh">
             <div style="height:100vh; flex: 33.3%; background-color:peachpuff;"></div>

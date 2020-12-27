@@ -30,8 +30,15 @@
 }
 
 .rectangle-content .circle-top-left:hover img,
-.rectangle-content .circle-top-right:hover img{
+.rectangle-content .circle-top-right:hover img {
     mix-blend-mode: difference;
+    cursor: pointer;
+}
+
+.rectangle-content .circle-top-left:hover,
+.rectangle-content .circle-top-right:hover {
+    filter: hue-rotate(50deg);
+    cursor: pointer;
 }
 
 .circle-top-left {

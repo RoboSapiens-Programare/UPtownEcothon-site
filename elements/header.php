@@ -28,6 +28,10 @@
     }
 ?>
 
+<title> <?php echo basename($including_filename, ".php"); ?> - UTE </title>
+
+<link rel="shortcut icon" type="image/png" href="./icons/FaviconUTE.png"/>
+
 <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 

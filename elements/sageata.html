@@ -62,7 +62,7 @@
                 </a>
             </li>
             <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
-                <a href="#">
+                <a href="sponsors.php">
                     <div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
                     <img class="icon" id="sponsors" src="icons/investment.svg" alt="Our Sponsors">
                 </a>
@@ -136,7 +136,7 @@
                 new Dimension(document.getElementById('login'), 3, "percent"),
                 tweenFunctions.easeOutExpo,
                 1000);
-            document.getElementById('account-btn').setAttribute("onclick", "slideoutlogin(900);");
+            document.getElementById('account-btn').setAttribute("onclick", "slideoutlogin(700);");
         }
 
         function slideoutlogin(time) {
@@ -162,6 +162,10 @@
             var cerc_alb = document.getElementById("cerc-logo-full");
             var cerc_meniu = document.getElementById("cerc-meniu");
             var sageata = document.getElementById("sageata-meniu-TOP");
+
+            slideoutlogin(300);
+            document.getElementById('login').style.left = -35 + "vw";
+            document.getElementById('login').style.top = 3 + "%";
 
             transitions.slide2D(new Dimension(logo1, -100, "percent"),
                 new Dimension(logo1, 0, "percent"),
@@ -190,7 +194,7 @@
                 500);
             transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 0.3, 500);
 
-            slideoutlogin(200);
+
         }
 
         function expandSageata() {

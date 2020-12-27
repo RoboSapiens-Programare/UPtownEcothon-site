@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html style="scroll-behavior: smooth">
     <head>
-		<title>Event - UTE</title>
 
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">

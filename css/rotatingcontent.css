@@ -1,0 +1,77 @@
+.rotating-content {
+    position: relative;
+    overflow: hidden;
+}
+
+.rotate-section {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #009452;
+}
+
+.rotate-btn {
+    position: absolute;
+    height: 15%;
+    width: 10%;
+    background-color: transparent;
+    z-index: 50;
+}
+
+.rotate-btn img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: inherit;
+}
+
+.rotate-btn:hover,
+.rotate-btn:active {
+    cursor: pointer;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+
+#btn-prev {
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+}
+
+#btn-next {
+    top: 50%;
+    left: 100%;
+    transform: translate(-100%, -50%);
+}
+
+.rotate-index {
+    position: relative;
+    left: 0%;
+    width: 100%;
+    height: 5vh;
+}
+
+.rotate-index ul {
+    list-style: none;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    height: 90%;
+    /* width: 13%; */
+    /* border: 0px solid blue; */
+}
+
+.rotate-index ul li {
+    display: inline;
+    height: inherit;
+    opacity: 0.5;
+}
+
+.rotate-index ul li img {
+    display: inline-block;
+    height: inherit;
+    margin: 0vh 0.5vw 0vh 0.5vw;
+}
