@@ -75,3 +75,74 @@
     height: inherit;
     margin: 0vh 0.5vw 0vh 0.5vw;
 }
+
+@media all and (orientation:portrait) {
+    .rotate-btn {
+        position: absolute;
+        height: 60%;
+        width: 8%;
+        background-image: url(../icons/next.svg);
+        background-size: 100% 100%;
+        z-index: 50;
+    }
+    .rotate-btn img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: inherit;
+    }
+    .rotate-btn:hover,
+    .rotate-btn:active {
+        cursor: pointer;
+        filter: invert(100%);
+        -webkit-filter: invert(100%);
+    }
+    #btn-prev {
+        top: 50%;
+        left: 0%;
+        transform: translate(0%, -50%) rotate(-180deg);
+    }
+    #btn-next {
+        top: 50%;
+        left: 100%;
+        transform: translate(-100%, -50%);
+    }
+    .rotate-index ul {
+        list-style: none;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -30%);
+        height: 90%;
+        /* width: 26%; */
+        /* border: 2px solid blue; */
+    }
+    /* .rotate-index ul li img {
+        display: inline-block;
+        height: inherit;
+        margin: 0vh 0.2vw 0vh 0.2vw;
+    } */
+    .rotate-rectangle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 60vh;
+        width: 70vw;
+        background-color: white;
+        border-radius: 3vw;
+        padding: 5vh 5vw 5vh 5vw;
+        font-size: 5vw;
+        font-family: Arial, Helvetica, sans-serif;
+        overflow-y: scroll;
+    }
+    .rt-rect-title {
+        position: relative;
+        height: 10%;
+        font-size: 7vw;
+    }
+    .rt-rect-title img {
+        position: absolute;
+        height: 100%;
+    }
+}
