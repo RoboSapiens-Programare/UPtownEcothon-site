@@ -66,7 +66,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
             </li>
             <div class="line"></div>
             <li>
-                <a href="#">
+                <a href="sponsors.php">
                     Our Sponsors
                 </a>
             </li>
@@ -103,6 +103,26 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         var logo1 = document.getElementsByClassName("logo-elem-tlf")[1];
         var logo2 = document.getElementsByClassName("logo-elem-tlf")[2];
 
+
+        // function orientation() {
+        //     if (window.matchMedia("(orientation: portrait)").matches) {
+        //         // you're in PORTRAIT mode
+        //         alert("portrait");
+        //     }
+
+        //     if (window.matchMedia("(orientation: landscape)").matches) {
+        //         // you're in LANDSCAPE mode
+        //         alert("landscape");
+        //     }
+        // }
+
+        var logoElemSmallWidth = 42;
+        var logoElemSmallHeight = 21;
+
+        var cercSmallSize = 25;
+        var cercBigTop = -30;
+
+
         function expandMenu() {
             //pt sageata
             transitions.slide2D(new Dimension(sageata, 21, "percent"),
@@ -116,12 +136,13 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 
 
             //pt cerc
-            transitions.slide2D(new Dimension(cerc, -50, "percent"),
-                new Dimension(cerc, -30, "percent"),
-                tweenFunctions.easeOutExpo,
-                1500);
             transitions.resize2D(new Dimension(cerc, 250, "vw"),
                 new Dimension(cerc, 250, "vw"),
+                tweenFunctions.easeOutExpo,
+                1500);
+
+            transitions.slide2D(new Dimension(cerc, -50, "vw"),
+                new Dimension(cerc, -30, "vh"),
                 tweenFunctions.easeOutExpo,
                 1500);
 
@@ -162,19 +183,19 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
                 new Dimension(sageata, 0, "percent"),
                 tweenFunctions.easeInQuad,
                 1000);
-            transitions.resize2D(new Dimension(sageata, 42, "vw"),
-                new Dimension(sageata, 21, "vw"),
+            transitions.resize2D(new Dimension(sageata, logoElemSmallWidth, "vw"),
+                new Dimension(sageata, logoElemSmallHeight, "vw"),
                 tweenFunctions.easeInQuad,
                 1000);
 
 
             //pt cerc
-            transitions.slide2D(new Dimension(cerc, 2, "percent"),
-                new Dimension(cerc, 1, "percent"),
+            transitions.slide2D(new Dimension(cerc, 2, "vw"),
+                new Dimension(cerc, 1, "vh"),
                 tweenFunctions.easeInQuad,
                 900);
-            transitions.resize2D(new Dimension(cerc, 25, "vw"),
-                new Dimension(sageata, 25, "vw"),
+            transitions.resize2D(new Dimension(cerc, cercSmallSize, "vw"),
+                new Dimension(sageata, cercSmallSize, "vw"),
                 tweenFunctions.easeInQuad,
                 900);
 
@@ -191,8 +212,8 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
                 new Dimension(logo1, 0, "percent"),
                 tweenFunctions.easeOutQuad,
                 1000);
-            transitions.resize2D(new Dimension(logo1, 42, "vw"),
-                new Dimension(logo1, 21, "vw"),
+            transitions.resize2D(new Dimension(logo1, logoElemSmallWidth, "vw"),
+                new Dimension(logo1, logoElemSmallHeight, "vw"),
                 tweenFunctions.easeOutQuad,
                 1000);
 
@@ -200,8 +221,8 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
                 new Dimension(logo2, 0, "percent"),
                 tweenFunctions.easeOutQuad,
                 1000);
-            transitions.resize2D(new Dimension(logo2, 42, "vw"),
-                new Dimension(logo2, 21, "vw"),
+            transitions.resize2D(new Dimension(logo2, logoElemSmallWidth, "vw"),
+                new Dimension(logo2, logoElemSmallHeight, "vw"),
                 tweenFunctions.easeOutQuad,
                 1000);
 

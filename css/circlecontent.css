@@ -25,13 +25,20 @@
     font-size: 500%;
 }
 
-.rectangle-content .circle-top-left:hover,
-.rectangle-content .circle-top-left:hover .text-centrat,
-.rectangle-content .circle-top-right:hover,
-.rectangle-content .circle-top-right:hover .text-centrat {
-    background-color: aliceblue;
+.rectangle-content img {
+    mix-blend-mode: normal;
+}
+
+.rectangle-content .circle-top-left:hover img,
+.rectangle-content .circle-top-right:hover img {
+    mix-blend-mode: difference;
     cursor: pointer;
-    color: teal;
+}
+
+.rectangle-content .circle-top-left:hover,
+.rectangle-content .circle-top-right:hover {
+    filter: hue-rotate(50deg);
+    cursor: pointer;
 }
 
 .circle-top-left {

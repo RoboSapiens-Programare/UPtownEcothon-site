@@ -1,0 +1,123 @@
+.sectiune-timeline {
+    position: relative;
+    height: 50vh;
+    width: 100vw;
+}
+
+.wrapper-timeline {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 10%;
+    width: 95%;
+    /* border: 0.5vh solid black; */
+    /* border-radius: 5vh; */
+    background-color: transparent;
+}
+
+.timeline {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 10%;
+    width: 95%;
+    border: 0.5vh solid #403446;
+    border-radius: 5vh;
+    background-color: #df458d;
+    z-index: 3;
+}
+
+.progress {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0%, -50%);
+    margin: 0% 0% 0% 0%;
+    height: 82%;
+    width: 40%;
+    filter: invert(12%) sepia(80%) saturate(4523%) hue-rotate(291deg) brightness(90%) contrast(123%);
+    background: url(../pictures/7sXy.gif);
+    /* background-color: black; */
+    border-radius: 5vh;
+}
+
+.milestone {
+    position: absolute;
+    top: 50%;
+    /* left: 50%; */
+    transform: translate(0%, -50%);
+    height: 12vh;
+    width: 12vh;
+    border: 0.8vh solid #df458d;
+    border-radius: 50%;
+    background-color: white;
+    /* z-index: 2; */
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2vh;
+}
+
+.milestone:hover {
+    cursor: pointer;
+}
+
+@media all and (orientation:portrait) {
+    .sectiune-timeline {
+        position: relative;
+        height: 150vh;
+        width: 100vw;
+    }
+    .wrapper-timeline {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 95%;
+        width: 10%;
+        /* border: 0.5vh solid black; */
+        /* border-radius: 5vh; */
+        background-color: transparent;
+    }
+    .timeline {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 95%;
+        width: 10%;
+        border: 0.5vh solid #403446;
+        border-radius: 5vw;
+        background-color: #df458d;
+        z-index: 3;
+    }
+    .progress {
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        margin: 0%;
+        height: 40%;
+        width: 80%;
+        filter: invert(12%) sepia(80%) saturate(4523%) hue-rotate(291deg) brightness(90%) contrast(123%);
+        background: url(../pictures/7sXy.gif) 0 0 repeat;
+        /* background-color: black; */
+        border-radius: 5vw;
+    }
+    .milestone {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        height: 20vw;
+        width: 20vw;
+        border: 1vw solid #df458d;
+        border-radius: 50%;
+        background-color: white;
+        /* z-index: 2; */
+        text-align: center;
+        vertical-align: middle;
+        font-size: 4vw;
+    }
+}

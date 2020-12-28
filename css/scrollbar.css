@@ -2,52 +2,119 @@
     position: fixed;
     top: 50%;
     right: 0%;
-
     transform: translateY(-50%);
-
     height: 80vh;
     width: 3vw;
-
     /* background-color: white; */
 }
 
-.scrollbar-area .scrollbar-right {
+.scrollbar-right {
     position: absolute;
-
     height: 100%;
     width: 7%;
-
     background-color: black;
     transition: transform 0.3s;
-
     right: 0%;
 }
 
-.scrollbar-area:hover .scrollbar-right{
+.scrollbar-area:hover .scrollbar-right {
     transform: scaleX(6);
 }
 
-.scrollbar-area .dot{
-    position: absolute;
-
+.scrollbar-dot {
+    position: fixed;
     height: 3vh;
     width: 3vh;
-
     border-radius: 100%;
-
     background-color: black;
-
-    top: 3%;
-    left: 0%;
-
-    transform: scale3d(0, 0, 0);
+    top: 0%;
+    right: 0%;
+    /* transform: scale3d(0, 0, 0); */
+    /* transform: translateY(-50%); */
     transition: transform 0.3s;
 }
 
-.dot:hover{
+.scrollbar-dot-over {
     background-color: wheat;
 }
 
-.scrollbar-area:hover .dot {
+.scrollbar-area:hover .scrollbar-dot {
     transform: scale3d(1, 1, 1);
+}
+
+.scrollbar-up {
+    border-radius: 1.5vh 1.5vh 0vh 0vh;
+    height: 1.5vh;
+    width: 3vh;
+    background-color: darkorange;
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    /* transform: translateY(-50%); */
+}
+
+.scrollbar-down {
+    border-radius: 0vh 0vh 1.5vh 1.5vh;
+    height: 1.5vh;
+    width: 3vh;
+    background-color: darkorange;
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+    /* transform: translateY(-50%); */
+}
+
+.ssb_down {
+    background-color: #33ccaa;
+    bottom: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    width: 2vh;
+    border-radius: 10px;
+}
+
+.ssb_sb {
+    background-color: #22aabb;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    width: 2vh;
+    border-radius: 10px;
+}
+
+.ssb_sb_down {
+    background-color: #1199aa;
+}
+
+.ssb_sb_over {
+    background-color: #33bbcc;
+}
+
+.ssb_st {
+    background-color: #dedede;
+    cursor: pointer;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2vh;
+    border-radius: 10px;
+}
+
+.ssb_up {
+    background-color: #33ccaa;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2vh;
+    border-radius: 10px;
+}
+
+.parent {
+    font-family: verdana;
+    height: 100%;
+    padding: 10px;
+    position: relative;
 }
