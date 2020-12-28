@@ -15,15 +15,31 @@
     <body style="margin: 0; background-color:#009452">
 		<?php include "elements/sageatatlf.html"?>
 
-		<div style="position: relative; width:100%; height: 15vh; background-color: transparent; font-size:7vw">
-            <div class="text-centrat">
-                A huge thank you to our sponsors!
-            </div>
-        </div>
+		
+        <!-- <div class="wrapper-rotating-content" style="position:relative; left:0%; height:100vh; background-color:#009452;"> -->
+            
+        
+            <div class="rotating-content"  id="rotating-content" style="left:0%; height: 100vh; width:100%; z-index:1; overflow:hidden">
+                <div class="page-title" style="position: relative; margin-top: 5vh; width:100%; height: 10vh; background-color: transparent; font-size:7vw; z-index:70">
+                    <div class="text-centrat">
+                        A huge thank you to our sponsors!
+                    </div>
+                </div>
 
-
-        <div class="wrapper-rotating-content" style="position:relative; left:0%; height:85vh; background-color:#009452;">
-            <div class="rotating-content"  id="rotating-content" style="left:0%; height: 80vh; width:100%; background-color:#009452;">
+                <div class="rotate-index" style="z-index: 70;">
+                    <ul>
+                        <li id="dot1" style="margin-left: -5vw">
+                            <img src="icons/dot.svg">
+                        </li>
+                        <li id="dot2">
+                            <img src="icons/dot.svg">
+                        </li>
+                        <li id="dot3">
+                            <img src="icons/dot.svg">
+                        </li>
+                    </ul>
+                </div>
+                
                 <div class="rotate-btn" id="btn-prev" onclick="rotateLoopLeftToRight()" >
                     <!-- <img src="icons/next.svg"> -->
                 </div>
@@ -32,58 +48,27 @@
                     <!-- <img src="icons/next.svg"> -->
                 </div>
 
-                <div class="rotate-section" id="rt-sect3">
-                    <!-- <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" >
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh; background-color:#e7df68;"><div class="text-centrat">FTC</div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh; background-color:#e7df68;"></div>
-                        
-                        <div  class="text-centrat" style="font-size: 3vh"> chestii despre ftc</div>
-					</div> -->
-					<div class="rotate-rectangle">
-						<div class="rt-rect-title"><img src="pictures/logo-header-web.png"></div>
-						<div class="rt-rect-content">chestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftc</div>
-					</div>
+                <div class="rotate-section" id="rt-sect3" style="background-color: #f0a7c0;">
+                    <!-- <div class="wrapper-title-btn"> -->
+                        <div class="sect-title"> <div class="text-centrat">FTC</div> </div>
+                        <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
+                    <!-- </div> -->
                 </div>
-                <div class="rotate-section" id="rt-sect2">
-                    <!-- <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" >
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh; background-color:#e7df68;" ><div class="text-centrat">Gemini Sols</div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh; background-color:#e7df68;"></div>
-                        
-                        <div  class="text-centrat" style="font-size: 3vh"> chestii despre gemini</div>
-					</div> -->
-					<div class="rotate-rectangle">
-						<div class="rt-rect-title">Gemini Solutions</div>
-						<div class="rt-rect-content">chestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftc</div>
-					</div>
+                <div class="rotate-section" id="rt-sect2" style="background-color: #e7df68">
+                    <!-- <div class="wrapper-title-btn"> -->
+                        <div class="sect-title"> <div class="text-centrat">Gemini Solutions</div> </div>
+                        <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
+                    <!-- </div> -->
                 </div>
-                <div class="rotate-section" id="rt-sect1">
-                    <!-- <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" >
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh; background-color:#e7df68;"><div class="text-centrat">Fundraiser</div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh; background-color:#e7df68;"></div>
-                        
-                        <div  class="text-centrat" style="font-size: 3vh"> chestii despre fundraiser</div>
-					</div> -->
-					<div class="rotate-rectangle">
-						<div class="rt-rect-title">Fundraiser</div>
-						<div class="rt-rect-content">chestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftcchestii despre ftc</div>
-					
-					</div>
+                <div class="rotate-section" id="rt-sect1" style="background-color: #009452">
+                    <!-- <div class="wrapper-title-btn"> -->
+                        <div class="sect-title"> <div class="text-centrat">Fundraiser</div> </div>
+                        <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
+                    <!-- </div>                    -->
                 </div>
             </div>
-            <div class="rotate-index">
-                <ul>
-                    <li id="dot1" style="margin-left: -5vw">
-                        <img src="icons/dot.svg">
-                    </li>
-                    <li id="dot2">
-                        <img src="icons/dot.svg">
-                    </li>
-                    <li id="dot3">
-                        <img src="icons/dot.svg">
-                    </li>
-                </ul>
-            </div>
-        </div>
+           
+        <!-- </div> -->
         
 
         <div id="bottom-of-page" style="overflow:hidden; background-color:transparent; position: relative; height: 25vh; width: 100%;">
@@ -144,7 +129,13 @@
             var dot2 = document.getElementById('dot2');
             var dot3 = document.getElementById('dot3');
 
-            // alert("a");
+            var pageTitle = rotatingContent.getElementsByClassName('page-title')[0];
+            var rotateIndex = rotatingContent.getElementsByClassName('rotate-index')[0];
+            var btnPrev = rotatingContent.getElementsByClassName('rotate-btn')[0];
+            var btnNext = rotatingContent.getElementsByClassName('rotate-btn')[1];
+            
+
+            // alert("b");
 
             window.onload = function(){
                 rotateLoopRightToLeft();
@@ -340,6 +331,87 @@
                 elem.setAttribute("onclick", "expand(this," + X + ", " + Y + ", " + scale +");");
             }
             
+            function readMore(btn){
+                var title = btn.parentElement.getElementsByClassName("sect-title")[0];
+                var readTag =btn.getElementsByClassName('text-centrat')[0];
+
+                transitions.translate2D(new Dimension(title, 0, "pw"),
+                    new Dimension(title, -40, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                
+                transitions.translate2D(new Dimension(btn, 0, "pw"),
+                    new Dimension(btn, -45, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+
+                transitions.translate2D(new Dimension(pageTitle, 0, "pw"),
+                    new Dimension(pageTitle, -50, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                
+                transitions.translate2D(new Dimension(rotateIndex, 0, "vw"),
+                    new Dimension(rotateIndex, -50, "vh"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                
+                // alert("a");
+                
+                transitions.translate2D(new Dimension(btnPrev, -50, "pw"),
+                    new Dimension(btnPrev, 0, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                
+                transitions.translate2D(new Dimension(btnNext, 50, "pw"),
+                    new Dimension(btnNext, 0, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+
+                // alert("a");                    
+                readTag.innerHTML = "Read Less";
+                btn.setAttribute('onclick', 'readLess(this);');
+            }
+
+            function readLess(btn){
+                var title = btn.parentElement.getElementsByClassName("sect-title")[0];
+                var readTag =btn.getElementsByClassName('text-centrat')[0];
+
+                transitions.translate2D(new Dimension(title, 0, "pw"),
+                    new Dimension(title, 40, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                
+                transitions.translate2D(new Dimension(btn, 0, "pw"),
+                    new Dimension(btn, 45, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+
+                transitions.translate2D(new Dimension(pageTitle, 0, "pw"),
+                    new Dimension(pageTitle, 50, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                
+                transitions.translate2D(new Dimension(rotateIndex, 0, "vw"),
+                    new Dimension(rotateIndex, 50, "vh"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                
+                // alert("a");
+                
+                transitions.translate2D(new Dimension(btnPrev, 50, "pw"),
+                    new Dimension(btnPrev, 0, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                
+                transitions.translate2D(new Dimension(btnNext, -50, "pw"),
+                    new Dimension(btnNext, 0, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+
+                // alert("a");                    
+                readTag.innerHTML = "Read More";
+                btn.setAttribute('onclick', 'readMore(this);');
+            }
 
         </script>
     </body>
