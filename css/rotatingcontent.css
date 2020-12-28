@@ -75,3 +75,105 @@
     height: inherit;
     margin: 0vh 0.5vw 0vh 0.5vw;
 }
+
+@media all and (orientation:portrait) {
+    .rotating-content {
+        position: relative;
+        top: 0px;
+        overflow-x: hidden;
+    }
+    .rotate-section {
+        position: absolute;
+        bottom: 0px;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        /* background-color: #009452; */
+    }
+    .rotate-btn {
+        position: absolute;
+        height: 60%;
+        width: 8%;
+        background-image: url(../icons/next.svg);
+        background-size: 100% 100%;
+        z-index: 50;
+    }
+    .rotate-btn img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: inherit;
+    }
+    .rotate-btn:hover,
+    .rotate-btn:active {
+        cursor: pointer;
+        filter: invert(100%);
+        -webkit-filter: invert(100%);
+    }
+    #btn-prev {
+        top: 50%;
+        left: 0%;
+        transform: translate(0%, -50%) rotate(-180deg);
+    }
+    #btn-next {
+        top: 50%;
+        left: 100%;
+        transform: translate(-100%, -50%);
+    }
+    .rotate-index {
+        position: relative;
+        left: 0%;
+        width: 100%;
+        height: 3vh;
+    }
+    .rotate-index ul {
+        list-style: none;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -30%);
+        height: 90%;
+        /* width: 26%; */
+        /* border: 2px solid blue; */
+    }
+    /* .rotate-index ul li img {
+        display: inline-block;
+        height: inherit;
+        margin: 0vh 0.2vw 0vh 0.2vw;
+    } */
+    /* .wrapper-title-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 20vh;
+        font-family: 'Agency FB Bold', arial;
+    } */
+    .sect-title {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        height: 10vh;
+        background-color: transparent;
+        font-size: 10vw;
+        font-family: 'Agency FB Bold', arial;
+    }
+    .read-more-btn {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        height: 7vh;
+        width: 35vw;
+        border: 0.5vh solid black;
+        border-radius: 3vh;
+        font-size: 4vw;
+        font-family: 'Agency FB Bold', arial;
+    }
+    .read-more-btn:hover {
+        cursor: pointer;
+        filter: invert(100%);
+        -webkit-filter: invert(100%);
+    }
+}

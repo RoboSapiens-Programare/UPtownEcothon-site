@@ -28,7 +28,7 @@
     }
 ?>
 
-<title> <?php echo basename($including_filename, ".php"); ?> - UTE </title>
+<title> <?php echo ucwords(basename($including_filename, ".php")); ?> - UTE </title>
 
 <link rel="shortcut icon" type="image/png" href="./icons/FaviconUTE.png"/>
 
