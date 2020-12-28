@@ -55,7 +55,7 @@
 			<img src="pictures/LogoUTE.png" style="z-index: 110; position: absolute; height:30%; top: 30%; left: 50%; transform: translate(-50%, -50%);">
 			<div style="background-color: transparent; width: 100%; height: 40%; bottom:0%; z-index:100; position: absolute">
 				<div class="wrapper-bulina" style="margin: 0">
-					<div class="buline-homepage">
+					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="info.php">
 							<div class="text-centrat" style="color: white; opacity: 0; z-index: 105;">Info</div>
 							<img class="icon" id="info" src="icons/calendar.svg" alt="Info">
@@ -63,7 +63,7 @@
 					</div>
 				</div>
 				<div class="wrapper-bulina">
-					<div class="buline-homepage">
+					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="aboutus.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">About Us</div>
 							<img class="icon" id="contact" src="icons/users.svg" alt="About Us">
@@ -71,7 +71,7 @@
 					</div>
 				</div>
 				<div class="wrapper-bulina">
-					<div class="buline-homepage">
+					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="#">
 							<div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
 							<img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?">
@@ -79,7 +79,7 @@
 					</div>
 				</div>
 				<div class="wrapper-bulina">
-					<div class="buline-homepage">
+					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="event.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Event</div>
 							<img class="icon" id="event" src="icons/book.svg" alt="Event">
@@ -87,7 +87,7 @@
 					</div>
 				</div>
 				<div class="wrapper-bulina">
-					<div class="buline-homepage">
+					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="sponsors.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
 							<img class="icon" id="sponsors" src="icons/investment.svg" alt="Our Sponsors">
