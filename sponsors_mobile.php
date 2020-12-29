@@ -49,26 +49,35 @@
                 </div>
 
                 <div class="rotate-section" id="rt-sect3" style="background-color: #f0a7c0;">
-                    <!-- <div class="wrapper-title-btn"> -->
-                        <div class="sect-title"> <div class="text-centrat">FTC</div> </div>
-                        <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
-                    <!-- </div> -->
+                        <div class="wrapper" style="background-color: #f0a7c0;">
+                            <div class="sect-title"> <div class="text-centrat">FTC</div> </div>
+                            <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
+                        </div>
+                        <div class="sect-content"></div>
                 </div>
                 <div class="rotate-section" id="rt-sect2" style="background-color: #e7df68">
-                    <!-- <div class="wrapper-title-btn"> -->
-                        <div class="sect-title"> <div class="text-centrat">Gemini Solutions</div> </div>
-                        <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
-                    <!-- </div> -->
+                        <div class="wrapper" style="background-color: #e7df68">
+                            <div class="sect-title"> <div class="text-centrat">Gemini Solutions</div> </div>
+                            <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
+                        </div>
+                        <div class="sect-content"></div>
                 </div>
                 <div class="rotate-section" id="rt-sect1" style="background-color: #009452">
-                    <!-- <div class="wrapper-title-btn"> -->
-                        <div class="sect-title"> <div class="text-centrat">Fundraiser</div> </div>
-                        <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
-                    <!-- </div>                    -->
+                        <div class="wrapper" style="background-color: #009452">
+                            <div class="sect-title"> <div class="text-centrat">Fundraiser</div> </div>
+                            <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
+                        </div>
+                        <div class="sect-content">
+                            <!-- <div class="text-centrat" > -->
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque lorem libero, vulputate porttitor sem consectetur a. Nullam ullamcorper urna vel elit hendrerit pellentesque. Nam finibus euismod quam quis vehicula. Sed nec dolor ipsum. Donec quam nulla, consequat et erat non, tincidunt tincidunt nisi. Nunc consectetur, tellus sed hendrerit dapibus, mauris dui faucibus turpis, sed dapibus nibh erat eu augue. Aenean tellus est, vehicula a semper sit amet, maximus a tortor. Proin ornare pretium auctor.
+                            Ut feugiat at ipsum eu varius. Fusce non massa nulla. Ut aliquet, nibh id convallis dignissim, arcu elit scelerisque urna, quis mattis ex nunc et diam. Aliquam erat volutpat. In fringilla nec orci sit amet venenatis. Nullam vitae pharetra urna. Ut faucibus dolor id ex dapibus posuere. Nunc facilisis, leo vitae maximus rhoncus, est lorem mattis magna, quis tristique velit mauris ut leo. Nunc sit amet blandit elit. Sed nec mattis dolor. Suspendisse vulputate, augue vel sodales vehicula, urna augue imperdiet felis, vitae venenatis neque turpis eu est. Suspendisse sodales sed ex eget commodo.
+                            orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque lorem libero, vulputate porttitor sem consectetur a. Nullam ullamcorper urna vel elit hendrerit pellentesque. Nam finibus euismod quam quis vehicula. Sed nec dolor ipsum. Donec quam nulla, consequat et erat non, tincidunt tincidunt nisi. Nunc consectetur, tellus sed hendrerit dapibus, mauris dui faucibus turpis, sed dapibus nibh erat eu augue. Aenean tellus est, vehicula a semper sit amet, maximus a tortor. Proin ornare pretium auctor.
+                            Ut feugiat at ipsum eu varius. Fusce non massa nulla. Ut aliquet, nibh id convallis dignissim, arcu elit scelerisque urna, quis mattis ex nunc et diam. Aliquam erat volutpat. In fringilla nec orci sit amet venenatis. Nullam vitae pharetra urna. Ut faucibus dolor id ex dapibus posuere. Nunc facilisis, leo vitae maximus rhoncus, est lorem mattis magna, quis tristique velit mauris ut leo. Nunc sit amet blandit elit. Sed nec mattis dolor. Suspendisse vulputate, augue vel sodales vehicula, urna augue imperdiet felis, vitae venenatis neque turpis eu est. Suspendisse sodales sed ex eget commodo. 
+                            <!-- </div> -->
+                        </div>
                 </div>
             </div>
            
-        <!-- </div> -->
         
 
         <div id="bottom-of-page" style="overflow:hidden; background-color:transparent; position: relative; height: 25vh; width: 100%;">
@@ -332,8 +341,16 @@
             }
             
             function readMore(btn){
-                var title = btn.parentElement.getElementsByClassName("sect-title")[0];
+                var wrapper = btn.parentElement;
+                var section = wrapper.parentElement;                
+                var title = wrapper.getElementsByClassName("sect-title")[0];
                 var readTag =btn.getElementsByClassName('text-centrat')[0];
+                var content = section.getElementsByClassName("sect-content")[0];
+
+                transitions.resize2D(new Dimension(wrapper, 100, "pw"),
+                    new Dimension(wrapper, 20, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
 
                 transitions.translate2D(new Dimension(title, 0, "pw"),
                     new Dimension(title, -40, "ph"),
@@ -341,7 +358,7 @@
                     500);
                 
                 transitions.translate2D(new Dimension(btn, 0, "pw"),
-                    new Dimension(btn, -45, "ph"),
+                    new Dimension(btn, -5, "ph"),
                     tweenFunctions.easeInOutQuad,
                     500);
 
@@ -367,14 +384,31 @@
                     tweenFunctions.easeInOutQuad,
                     500);
 
+
+                transitions.translate2D(new Dimension(content, 0, "pw"),
+                    new Dimension(content, -80, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
                 // alert("a");                    
                 readTag.innerHTML = "Read Less";
                 btn.setAttribute('onclick', 'readLess(this);');
+
+                section.style.overflowY = "auto";
             }
 
             function readLess(btn){
-                var title = btn.parentElement.getElementsByClassName("sect-title")[0];
+                var wrapper = btn.parentElement;
+                var section = wrapper.parentElement;
+                var title = wrapper.getElementsByClassName("sect-title")[0];
                 var readTag =btn.getElementsByClassName('text-centrat')[0];
+                var content = section.getElementsByClassName("sect-content")[0];
+
+                transitions.resize2D(new Dimension(wrapper, 100, "pw"),
+                    new Dimension(wrapper, 100, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+
+
 
                 transitions.translate2D(new Dimension(title, 0, "pw"),
                     new Dimension(title, 40, "ph"),
@@ -382,7 +416,7 @@
                     500);
                 
                 transitions.translate2D(new Dimension(btn, 0, "pw"),
-                    new Dimension(btn, 45, "ph"),
+                    new Dimension(btn, 5, "ph"),
                     tweenFunctions.easeInOutQuad,
                     500);
 
@@ -408,9 +442,16 @@
                     tweenFunctions.easeInOutQuad,
                     500);
 
+
+                transitions.translate2D(new Dimension(content, 0, "pw"),
+                    new Dimension(content, 80, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
                 // alert("a");                    
                 readTag.innerHTML = "Read More";
                 btn.setAttribute('onclick', 'readMore(this);');
+
+                section.style.overflowY = "hidden";
             }
 
         </script>
