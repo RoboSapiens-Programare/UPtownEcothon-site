@@ -10,7 +10,7 @@
         <?php include "elements/header.php"; ?>
     </head>
     
-    <body style="margin: 0px; overflow-x: hidden; overflow-y: hidden;">
+    <body style="margin: 0px; overflow:scroll; overflow-x: hidden; overflow-y: hidden;">
         <?php 
 			include "elements/sageata.html";
 		?>
@@ -27,11 +27,24 @@
             </div>
         </div>
 
+        <div id="sect1" class="section" style="background-color: lightsalmon;">
+            <div id="title2" class="title">Scop</div>
+
+            <div id="titlebtn2" class="titlebtn" onclick="readMore(this, false);">Read More</div>
+
+            <div id="scopSliding" class="sliding" style="top: 0%; right: -50%; border-radius: 20px 20px 20px 20px; overflow-y:auto; height: 90vh; margin-top:2.5vh">
+                <?php echo $content["Scop"][1]; ?>
+            </div>
+            <div class="sliding" style="bottom: 0%; left: -50%; border-radius: 20px 20px 20px 20px; margin-bottom:2.5vh; padding: 0; overflow-y:hidden;">
+                <img src="pictures/bucharest2.jpg" style="width: 100%; height: 100%; object-fit:cover; position:absolute">
+                <img src="pictures/bucharest2.jpg" style="width: 100%; height: 100%; object-fit:cover; opacity: 0; position:absolute">            
+            </div>
+        </div>
 
         <div style="display: flex; width: 300vw; height: 100vh">
-            <div id="sect1" class="section" style="background-color: darkkhaki; overflow-y: hidden; overflow-x:hidden">
+            <div id="sect2" class="section" style="background-color: darkkhaki; overflow-y: hidden; overflow-x:hidden">
                 <div id="title1" class="title" style="opacity: 0;">Teme</div>
-                <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
+                <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this, true);">Read More</div>
 
                 <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto">
                     <?php echo $content["Teme"][1]; ?>
@@ -78,26 +91,12 @@
             </div>
         </div>
 
-        <div id="sect2" class="section" style="background-color: lightsalmon;">
-            <div id="title2" class="title">Scop</div>
-
-            <div id="titlebtn2" class="titlebtn" onclick="readMore(this);">Read More</div>
-
-            <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-            <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-            <div class="sliding" style="bottom: 0%; left: -50%; border-radius: 20px 20px 20px 0px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-        </div>
+        
 
         <div id="sect3" class="section" style="background-color:#291942;">
             <div id="title3" class="title">Cerinte & Premii</div>
 
-            <div id="titlebtn3" class="titlebtn" onclick="readMore(this);">Read More</div>
+            <div id="titlebtn3" class="titlebtn" onclick="readMore(this, true);">Read More</div>
 
             <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px;">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -120,37 +119,42 @@
 
             document.getElementById('bigScrollableSliding').onscroll = function(){
                 var s = document.getElementById('bigScrollableSliding');
+                var pic = document.getElementById('wideChangingPicture');
                 if(s.scrollTop > 150 && s.scrollTop < 900){
                     detectChange = 1;
                     if(detectChange != lastDetectChange){
-                        changePicture("pictures/traffic1.webp");
+                        changePicture(pic, "pictures/traffic1.webp");
                         lastDetectChange = detectChange;
                     }
                 }
                 else if(s.scrollTop >= 900 && s.scrollTop < 1300){
                     detectChange = 2;
                     if(detectChange != lastDetectChange){
-                        changePicture("pictures/park2.jpg");
+                        changePicture(pic, "pictures/park2.jpg");
                         lastDetectChange = detectChange;
                     }
                 }
                 else if(s.scrollTop >= 1300){
                     detectChange = 3;
                     if(detectChange != lastDetectChange){
-                        changePicture("pictures/garbage1.jpg");
+                        changePicture(pic, "pictures/garbage1.jpg");
                         lastDetectChange = detectChange;
                     }
                 }
                 else{
                     detectChange = 0
                     if(detectChange != lastDetectChange){
-                        changePicture('pictures/bucharest2.jpg');
+                        changePicture(pic, 'pictures/bucharest2.jpg');
                         lastDetectChange = detectChange;
                     }
                 }
             }
 
-            function readMore(x){
+            document.getElementById('scopSliding').onscroll = function(){
+
+            }
+
+            function readMore(x, showOverflow){
                 var slidings = x.parentElement.getElementsByClassName("sliding");
                 var title = x.parentElement.getElementsByClassName('title')[0];
                 var scrollbar = document.getElementById("scroller");
@@ -194,12 +198,26 @@
                     1000
                 );
                 x.innerHTML = "Read Less";
-                x.setAttribute("onclick", "readLess(this);");
+                x.setAttribute("onclick", "readLess(this, " + showOverflow +");");
 
-                document.body.style.overflowX = "scroll";
+                if(showOverflow){
+                    var body = document.body;
+
+                    body.style.overflowX = "auto";
+
+                    section.parentElement.addEventListener('wheel', function(e) {
+                        if (e.deltaY > 0) {
+                            body.scrollLeft += 100;
+                            alert(body.style.overflowX);
+                        }
+                        else {
+                            body.scrollLeft -= 100;
+                        }
+                    });
+                }
             }
 
-            function readLess(x){
+            function readLess(x, showOverflow){
                 var slidings = x.parentElement.getElementsByClassName("sliding");
                 var title = x.parentElement.getElementsByClassName('title')[0];
                 var scrollbar = document.getElementById("scroller");
@@ -243,7 +261,7 @@
                     1000
                 );
                 x.innerHTML = "Read More";
-                x.setAttribute("onclick", "readMore(this);");
+                x.setAttribute("onclick", "readMore(this, " + showOverflow + ");");
 
                 document.body.style.overflowX = "hidden";
                 window.location.href = "#" + x.parentElement.id;
@@ -275,8 +293,8 @@
                 elem.setAttribute("onclick", "expand(this," + X + ", " + Y + ", " + scale +");");
             }
 
-            function changePicture(path){
-                var picDiv = document.getElementById('wideChangingPicture')
+            function changePicture(elem, path){
+                var picDiv = elem;
                 var images = picDiv.getElementsByTagName("img");
                 var pic1 = images[0];
                 var pic2 = images[1];
