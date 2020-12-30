@@ -8,6 +8,54 @@
         <link rel='stylesheet' type='text/css' href='css/sageata.css'>
         
         <?php include "elements/header.php"; ?>
+
+        <style>
+            #award-row{
+                position:absolute; 
+                height: 45vh; 
+                width: 81vw; 
+                bottom: 0; 
+                margin-left:10vw; 
+                background-color: transparent; 
+                border-radius: 20px 20px 20px 20px;
+            }
+
+            #award-row .award-slot{
+                position: relative;
+                height: 100%;
+                width: 33%;
+                border-radius: 20px 20px 20px 20px;
+                background-color: white;
+                display: inline-block;
+                margin-left: 0.3%;
+                opacity: 0.8;
+                mix-blend-mode: normal;
+            }
+
+            .award-slot .title{
+                font-family: 'Agency FB', arial;
+                font-size: 3vw;
+                font-weight: bold;
+                width: 70%;
+                top: 5%;
+                transform: translate(-50%, 0%);
+                color: white;
+                mix-blend-mode:exclusion;
+            }
+
+            .award-slot .desc{
+                font-family: 'Agency FB', arial;
+                font-size: 1.5vw;
+                font-weight: normal;
+                width: 90%;
+                height: fit-content;
+                height: -moz-fit-content;
+                bottom: 2%;
+                transform: translate(-50%, 0%);
+                color: grey;
+                mix-blend-mode:exclusion;
+            }
+        </style>
     </head>
     
     <body style="margin: 0px; overflow:scroll; overflow-x: hidden; overflow-y: hidden;">
@@ -96,16 +144,25 @@
         <div id="sect3" class="section" style="background-color:#291942;">
             <div id="title3" class="title">Cerinte & Premii</div>
 
-            <div id="titlebtn3" class="titlebtn" onclick="readMore(this, true);">Read More</div>
+            <div id="titlebtn3" class="titlebtn" onclick="readMore(this, false); showAwards(true);">Read More</div>
 
-            <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto">
+                <?php 
+                    echo $content["Cerinte & Premii"]["Descriere"] . "<br>";
+                ?>
             </div>
-            <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-            <div class="sliding" style="bottom: 0%; left: -50%; border-radius: 20px 20px 20px 0px;">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+            <div id="award-row"  style="top: 100vh;">
+                <div class="award-slot">
+                    <div class="text-centrat title">Creativity Award</div>
+                    <div class="text-centrat desc"><?php echo $content["Cerinte & Premii"]["Creativitate"] . "<br>"; ?></div>
+                </div><div class="award-slot">
+                    <div class="text-centrat title">Innovation Award</div>
+                    <div class="text-centrat desc"><?php echo $content["Cerinte & Premii"]["Inovatie"] . "<br>"; ?></div>
+                </div><div class="award-slot">
+                    <div class="text-centrat title">Utility & Implementation Award</div>
+                    <div class="text-centrat desc"><?php echo $content["Cerinte & Premii"]["Implementare"] . "<br>"; ?></div>
+                </div>
             </div>
         </div>
 
@@ -198,23 +255,32 @@
                     1000
                 );
                 x.innerHTML = "Read Less";
-                x.setAttribute("onclick", "readLess(this, " + showOverflow +");");
+                
 
                 if(showOverflow){
                     var body = document.body;
 
                     body.style.overflowX = "auto";
 
-                    section.parentElement.addEventListener('wheel', function(e) {
-                        if (e.deltaY > 0) {
-                            body.scrollLeft += 100;
-                            alert(body.style.overflowX);
-                        }
-                        else {
-                            body.scrollLeft -= 100;
-                        }
-                    });
+                    // section.parentElement.addEventListener('wheel', function(e) {
+                    //     if (e.deltaY > 0) {
+                    //         body.scrollLeft += 100;
+                    //         alert(body.style.overflowX);
+                    //     }
+                    //     else {
+                    //         body.scrollLeft -= 100;
+                    //     }
+                    // });
                 }
+
+                if(section.getElementsByClassName('award-slot').length > 0){
+                    showAwards(true);
+                    x.setAttribute("onclick", "readLess(this, " + showOverflow +"); showAwards(false);");
+                }
+                else{
+                    x.setAttribute("onclick", "readLess(this, " + showOverflow +");");
+                }
+
             }
 
             function readLess(x, showOverflow){
@@ -261,7 +327,13 @@
                     1000
                 );
                 x.innerHTML = "Read More";
-                x.setAttribute("onclick", "readMore(this, " + showOverflow + ");");
+                if(section.getElementsByClassName('award-slot').length > 0){
+                    showAwards(false);
+                    x.setAttribute("onclick", "readMore(this, " + showOverflow +"); showAwards(true);");
+                }
+                else{
+                    x.setAttribute("onclick", "readMore(this, " + showOverflow +");");
+                }
 
                 document.body.style.overflowX = "hidden";
                 window.location.href = "#" + x.parentElement.id;
@@ -308,12 +380,17 @@
                 transitions.fadeOut(pic2, tweenFunctions.easeInOutSine, 700);
             }
 
-            function isOnScreen(element){
-                var curPos = element.offset();
-                var curTop = curPos.top;
-                var screenHeight = $(window).height();
-                return (curTop > screenHeight) ? false : true;
+            function showAwards(b){
+                var el = document.getElementById("award-row");
+
+                transitions.slide2D(
+                    new Dimension(el, 0, "vw"),
+                    new Dimension(el, b? 55 : 100, "vh"),
+                    tweenFunctions.easeInOutExpo,
+                    1000
+                );
             }
+
         </script>
     </body>
 </html>

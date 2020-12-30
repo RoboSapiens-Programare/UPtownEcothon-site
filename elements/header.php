@@ -28,7 +28,7 @@
     }
 ?>
 
-<title> <?php echo ucwords(basename($including_filename, ".php")); ?> - UTE </title>
+<title> <?php echo ucwords(str_replace($mobile_suffix, "", basename($including_filename, $extension))); ?> - UTE </title>
 
 <link rel="shortcut icon" type="image/png" href="./icons/FaviconUTE.png"/>
 
@@ -39,7 +39,7 @@
 <script src="javascript/transitions.js"></script>
 
 <script>   
-    var pagename = "<?php echo basename($including_filename, ".php"); ?>";
+    var pagename = "<?php echo basename($including_filename, $extension); ?>";
     var mobile_suffix = "<?php echo $mobile_suffix; ?>";
     var extension = "<?php echo $extension; ?>";
     if(pagename.includes(mobile_suffix)) {
