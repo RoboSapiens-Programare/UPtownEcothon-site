@@ -10,6 +10,54 @@
 		<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>
 
         <?php include "elements/header.php"; ?>
+
+        <style>
+            #award-row{
+                position:relative; 
+                height: fit-content -moz-fit-content -webkit-fit-content; 
+                width: 90vw;
+                bottom: 0; 
+                margin-left:5vw; 
+                background-color: transparent; 
+                border-radius: 20px 20px 20px 20px;
+            }
+
+            #award-row .award-slot{
+                position: relative;
+                height: 33vh;
+                width: 100%;
+                border-radius: 20px 20px 20px 20px;
+                background-color: white;
+                display: inline-block;
+                margin-left: 0.3%;
+                opacity: 0.8;
+                mix-blend-mode: normal;
+            }
+
+            .award-slot .title{
+                font-family: 'Agency FB', arial;
+                font-size: 9vw;
+                font-weight: bold;
+                width: 90%;
+                top: 5%;
+                transform: translate(-50%, 0%);
+                color: white;
+                mix-blend-mode:exclusion;
+            }
+
+            .award-slot .desc{
+                font-family: 'Agency FB', arial;
+                font-size: 4vw;
+                font-weight: normal;
+                width: 90%;
+                height: fit-content;
+                height: -moz-fit-content;
+                bottom: 2%;
+                transform: translate(-50%, 0%);
+                color: grey;
+                mix-blend-mode:exclusion;
+            }
+        </style>
     </head>
     
     <body style="margin: 0px; overflow-x:hidden">
@@ -30,9 +78,20 @@
         </div>
 
         <div id="sect1" class="section" >
-            <div class="wrapper" style="background-color:darkkhaki; z-index: 5">
-                <div id="title1" class="title" style="opacity: 0;">Teme</div>
+            <div class="wrapper" style="background-color:darkslategray; z-index: 5">
+                <div id="title1" class="title" style="opacity: 0;">Scop</div>
                 <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
+            </div>
+
+            <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content">
+                <?php echo $content["Scop"][1]; ?>
+            </div>
+        </div>
+
+        <div id="sect2" class="section" >
+            <div class="wrapper" style="background-color:darkkhaki; z-index: 5">
+                <div id="title2" class="title" >Teme</div>
+                <div id="titlebtn2" class="titlebtn" onclick="readMore(this);">Read More</div>
             </div>
 
             <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content; margin-bottom: 50vh">
@@ -53,17 +112,27 @@
             </div>
         </div>
 
-        <div id="sect2" class="section" >
-            <div class="wrapper" style="background-color:darkslategray; z-index: 5">
-                <div id="title1" class="title">Scop</div>
-                <div id="titlebtn1" class="titlebtn" onclick="readMore(this);">Read More</div>
-            </div>
-        </div>
-
-        <div id="sect3" class="section" >
+        <div id="sect3" class="section" style="background-color: wheat;" >
             <div class="wrapper" style="background-color:salmon; z-index: 5">
-                <div id="title1" class="title" style="font-size: 15vw; width: 100vw;text-align: center">Cerinte & Premii</div>
-                <div id="titlebtn1" class="titlebtn" onclick="readMore(this);">Read More</div>
+                <div id="title3" class="title" style="font-size: 15vw; width: 100vw;text-align: center">Cerinte & Premii</div>
+                <div id="titlebtn3" class="titlebtn" onclick="readMore(this);">Read More</div>
+            </div>
+
+            <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content; margin-bottom: 5vh">
+                <?php echo $content["Cerinte & Premii"]["Descriere"]; ?>
+            </div>
+
+            <div id="award-row">
+                <div class="award-slot">
+                    <div class="text-centrat title">Creativity Award</div>
+                    <div class="text-centrat desc"><?php echo $content["Cerinte & Premii"]["Creativitate"] . "<br>"; ?></div>
+                </div><div class="award-slot">
+                    <div class="text-centrat title">Innovation Award</div>
+                    <div class="text-centrat desc"><?php echo $content["Cerinte & Premii"]["Inovatie"] . "<br>"; ?></div>
+                </div><div class="award-slot">
+                    <div class="text-centrat title">Utility & Implementation Award</div>
+                    <div class="text-centrat desc"><?php echo $content["Cerinte & Premii"]["Implementare"] . "<br>"; ?></div>
+                </div>
             </div>
         </div>
 
