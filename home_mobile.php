@@ -25,7 +25,7 @@ $scriptVersion = $detect->getScriptVersion();
 
     </head>
     
-    <body style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
+    <body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
     
         <?php include "elements/sageatatlf.html"?>
         
@@ -46,17 +46,22 @@ $scriptVersion = $detect->getScriptVersion();
 						<div class="text-centrat meaning" style="opacity: 0;"> avem site woo </div>
 					</div>
 
-					<div class="milestone" style="top:25%; left: 50%; transform: translate(-50%, -25%);" onclick="showMeaning(this)">
+					<div class="milestone" style="top:20%; left: 50%; transform: translate(-50%, -20%);" onclick="showMeaning(this)">
 						<div class="text-centrat main"> inscriere </div>
 						<div class="text-centrat meaning" style="opacity: 0;"> te poti inscrie incepand cu 26 ianuarie :D </div>
 					</div>
 
-					<div class="milestone" style="top:50%; left: 50%; transform: translate(-50%, -50%);" onclick="showMeaning(this)">
+					<div class="milestone" style="top:40%; left: 50%; transform: translate(-50%, -40%);" onclick="showMeaning(this)">
 						<div class="text-centrat main"> terminat inscrieri </div>
 						<div class="text-centrat meaning" style="opacity: 0;"> nu te mai poti inscrie :( </div>
 					</div>
 
-					<div class="milestone" style="top:75%; left: 50%; transform: translate(-50%, -75%);" onclick="showMeaning(this)">
+					<div class="milestone" style="top:60%; left: 50%; transform: translate(-50%, -60%);" onclick="showMeaning(this)">
+						<div class="text-centrat main"> team making </div>
+						<div class="text-centrat meaning" style="opacity: 0;"> se fac echipele, expect e-mails :D </div>
+					</div>
+
+					<div class="milestone" style="top:80%; left: 50%; transform: translate(-50%, -80%);" onclick="showMeaning(this)">
 						<div class="text-centrat main"> 3 days til event</div>
 						<div class="text-centrat meaning" style="opacity: 0;"> mai sunt 3 zile pana la event!! </div>
 					</div>

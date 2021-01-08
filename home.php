@@ -43,13 +43,11 @@
 		</style>
 
 	</head>
-	<body style="background-color: #e7df68; margin: 0px; overflow-x:visible;">
+	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
     
-		<?php 
-			include "elements/sageata.html";
-		?>	
+		
 
-		<div style="width: 100vw; height: 100vh; overflow: visible">
+		<div style="width: 100vw; height: 100vh; overflow: hidden">
 			<div id="banner-homepage"></div>
 			<div class="text-centrat" style="font-size: 3vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
 			<img src="pictures/LogoUTE.png" style="z-index: 110; position: absolute; height:30%; top: 30%; left: 50%; transform: translate(-50%, -50%);">
@@ -97,6 +95,11 @@
 			</div>
 		</div>
 
+		<div class="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #df458d">
+			<div style="position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #df458d">Registrations begin january 26th!</div> </div>
+			
+		</div>
+
 		<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #df458d">Helpful Timeline =D</div> </div>
 
 		<div class="sectiune-timeline">
@@ -108,17 +111,22 @@
 					<div class="text-centrat meaning" style="opacity: 0;"> avem site woo </div>
 				</div>
 
-				<div class="milestone" style="top:50%; left: 25%; transform: translate(-25%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+				<div class="milestone" style="top:50%; left: 20%; transform: translate(-20%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
 					<div class="text-centrat main"> inscriere </div>
 					<div class="text-centrat meaning" style="opacity: 0;"> te poti inscrie incepand cu 26 ianuarie :D </div>
 				</div>
 
-				<div class="milestone" style="top:50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+				<div class="milestone" style="top:50%; left: 40%; transform: translate(-40%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
 					<div class="text-centrat main"> terminat inscrieri </div>
 					<div class="text-centrat meaning" style="opacity: 0;"> nu te mai poti inscrie :( </div>
 				</div>
 
-				<div class="milestone" style="top:50%; left: 75%; transform: translate(-75%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+				<div class="milestone" style="top:50%; left: 60%; transform: translate(-60%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+					<div class="text-centrat main"> team making </div>
+					<div class="text-centrat meaning" style="opacity: 0;"> se fac echipele, expect e-mails :D </div>
+				</div>
+
+				<div class="milestone" style="top:50%; left: 80%; transform: translate(-80%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
 					<div class="text-centrat main"> 3 days til event</div>
 					<div class="text-centrat meaning" style="opacity: 0;"> mai sunt 3 zile pana la event!! </div>
 				</div>

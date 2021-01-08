@@ -124,7 +124,7 @@
         position: relative;
         left: 0%;
         width: 100%;
-        height: 3vh;
+        height: 4vh;
     }
     .rotate-index ul {
         list-style: none;
@@ -133,14 +133,19 @@
         left: 50%;
         transform: translate(-50%, -30%);
         height: 90%;
-        /* width: 26%; */
-        /* border: 2px solid blue; */
+        /* width: 13%; */
+        /* border: 0px solid blue; */
     }
-    /* .rotate-index ul li img {
+    .rotate-index ul li {
+        display: inline;
+        height: inherit;
+        opacity: 0.5;
+    }
+    .rotate-index ul li img {
         display: inline-block;
         height: inherit;
-        margin: 0vh 0.2vw 0vh 0.2vw;
-    } */
+        margin: 0vh 0.5vw 0vh 0.5vw;
+    }
     /* .wrapper-title-btn {
         position: absolute;
         top: 50%;
