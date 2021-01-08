@@ -7,23 +7,8 @@
         <link rel="stylesheet" type="text/css" href="css/basics.css">
 
         <?php include 'elements/header.php'; ?>
-
-
-        <?php 
-            include "content/c_aboutus.php";
-            $contentArray = array();
-            $contentArray[] = $__DescEchipa;
-            $contentArray[] = $__Contact;
-            $contentArray[] = $__ThisSite;
-        ?>
-
-        <script src="javascript/tween-functions.js"></script>
-        <script src="javascript/transitions.js"></script>
-
-        <script>
-            var content = <?php echo json_encode($contentArray); ?>;
-        </script>
     </head>
+
     <body style="margin: 0px; overflow-x:hidden; overflow-y:hidden">
         <?php 
 			include "elements/sageata.html";
@@ -43,10 +28,10 @@
         <div id="smallcontent1" class="smallcontent" style="top: 10%;">
             <div class="smallcontent-inner" style="z-index: 1">
                 <div class="title-card">
-                    <div class="title">Salut</div>
+                    <div class="title">Contact</div>
                 </div>
                 <div class="content-card">
-                    <div class="content">aa</div>
+                    <div class="content"><?php echo $content['Content']['Short'] ?></div>
                     <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(0);">Expand</div>
                 </div>
             </div>
@@ -77,8 +62,8 @@
         </div>
 
         <div class="bigcontent" style="opacity: 0;">
-            <div id="bigtitle" class="btitle"></div>
-            <div id="bcontent" class="bcontent"></div>
+            <div id="bigtitle" class="btitle">Contact</div>
+            <div id="bcontent" class="bcontent"><?php echo $content['Content']['Long'] ?></div>
         </div>
 
         <div class="bigcontent" style="opacity: 0;">
@@ -101,6 +86,8 @@
         <script>
             var i_content = 0;
             var bigcontents = document.getElementsByClassName('bigcontent');
+            var content = <?php json_encode($content); ?>;
+
             for(let i = 0; i < bigcontents.length-1; i++){
                 bigcontents[i].getElementsByClassName('btitle')[0].innerHTML = content[i]['title'];
                 bigcontents[i].getElementsByClassName('bcontent')[0].innerHTML = content[i]['content'];
