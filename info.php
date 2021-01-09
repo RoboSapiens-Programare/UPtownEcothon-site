@@ -8,95 +8,126 @@
 
         <?php include 'elements/header.php'; ?>
        
+        <style>
+            .menu-item:hover{
+                background-color: burlywood;
+                cursor: pointer;
+            }
+        </style>
     </head>
-    <body style="background-color: #855754; overflow-y: hidden; margin:0px;">
-        
+    <body style="background-color: #855754; overflow: hidden; margin:0px;">
+
         <?php 
 			include "elements/sageata.html";
-		?>	
+        ?>	
+        
 
-        <div class="rounded-rect" style="position:absolute; left: 0; top: 50%; transform:translateY(-50%); height:70vh; width: 85vw; overflow-y: auto; overflow-x: hidden; padding:0">
-            <div class="franshalssection" id="franshals1">
-                <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
-                    <div class="sticky-col" style="height: 100vh;">
-                        <div class="poza1" style="background-color:red; z-index:3;"></div>
-                        <div class="poza2" style="background-color:pink; z-index:3;"></div>
-
-                        <div class="poza1" style="background-color:blue; z-index:2"></div>
-                        <div class="poza2" style="background-color:green; z-index:2;"></div>
-                    </div>  
-                </div>
-
-                <div class="column col-text" style="flex: 60%; position: relative;">
-                    <div class="wrapper" style="height: 100vh;">
-                        <div class="row-content" style="right: 0; ">
-                            text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
-                        </div>
-                    </div>
-                        
-                    <div class="wrapper" style="height: 100vh;">
-                        <div class="row-content" style="right: 0">
-                            text cu chestii 222
-                        </div>
-                    </div>
-                </div>
+        <div id="info-menu" style="position:fixed; width: 13vw; height: 70vh; top:50vh; right: 0px; transform:translateY(-50%); z-index: 20">
+            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 20%; padding: 0" onclick="document.location.href = '#program';">
+                <div class="text-centrat">Program</div>
             </div>
-
-            <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
-
-            <div class="franshalssection" id="franshals2">
-                
-                <div class="column" style="flex: 60%">
-                    <div class="wrapper" style="height: 100vh;">
-                        <div class="row-content" style="left: 0;">
-                            text cu chestii 111
-                        </div>
-                    </div>
-                        
-                    <div class="wrapper" style="height: 100vh;">
-                        <div class="row-content" style="left: 0;">
-                            text cu chestii 222
-                        </div>
-                    </div>
-                </div>
-
-                <div class="column col-pic" id="col-pic2" style="flex:40%;">
-                    <div class="sticky-col" style="height: 100vh;" >
-                        <div class="poza1" style="background-color:red; z-index:3;"></div>
-                        <div class="poza2" style="background-color:pink; z-index:3;"></div>
-
-                        <div class="poza1" style="background-color:blue; z-index:2"></div>
-                        <div class="poza2" style="background-color:green; z-index:2;"></div>
-                    </div>
-                </div> 
-
+            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; bottom: 20%; padding: 0" onclick="document.location.href = '#news';">
+                <div class="text-centrat">News</div>
             </div>
         </div>
 
+        <div style="background-color: #855754; overflow: hidden; margin:0px; width: 200vw; height: 100vh">
+
+            <div id="program" style="position:absolute; left: 0%; display:inline-block; width: 100vw; height: 100vh">
+                <div id="program-container" class="rounded-rect" style="position:absolute; left: 0%; top: 50%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; font-size:2rem">
+                    <?php echo $content['Program'][1]?>
+                </div>
+            </div>
+
+            <div id="news" style="position:absolute; left:100%; display:inline-block; width: 100vw; height: 100vh;">
+                <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 0; top: 50%; transform:translateY(-50%); height:70%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
+                    <div class="franshalssection" id="franshals1">
+                        <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
+                            <div class="sticky-col">
+                                <div class="poza1" style="background-color:red; z-index:3;"></div>
+                                <div class="poza2" style="background-color:pink; z-index:3;"></div>
+
+                                <div class="poza1" style="background-color:blue; z-index:2"></div>
+                                <div class="poza2" style="background-color:green; z-index:2;"></div>
+                            </div>  
+                        </div>
+
+                        <div class="column col-text" style="flex: 60%; position: relative;">
+                            <div class="wrapper">
+                                <div class="row-content" style="right: 0; ">
+                                    text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
+                                </div>
+                            </div>
+                                
+                            <div class="wrapper">
+                                <div class="row-content" style="right: 0">
+                                    text cu chestii 222
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
+
+                    <div class="franshalssection" id="franshals2">
+                        
+                        <div class="column" style="flex: 60%">
+                            <div class="wrapper">
+                                <div class="row-content" style="left: 0;">
+                                    text cu chestii 111
+                                </div>
+                            </div>
+                                
+                            <div class="wrapper">
+                                <div class="row-content" style="left: 0;">
+                                    text cu chestii 222
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column col-pic" id="col-pic2" style="flex:40%;">
+                            <div class="sticky-col" >
+                                <div class="poza1" style="background-color:red; z-index:3;"></div>
+                                <div class="poza2" style="background-color:pink; z-index:3;"></div>
+
+                                <div class="poza1" style="background-color:blue; z-index:2"></div>
+                                <div class="poza2" style="background-color:green; z-index:2;"></div>
+                            </div>
+                        </div> 
+
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
 
         <script>        
             function offset(el) {
                 var rect = el.getBoundingClientRect(),
-                scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                return rect.top + scrollTop;
+                scrollTop = container.scrollTop;
+                //alert(rect.top);
+                return rect.top;
             }
+
+            var container = document.getElementById('news-container');
 
             var fanshals1 = document.getElementById("franshals1");
             var wrapper12 = franshals1.getElementsByClassName("wrapper")[1];
-            var wrapper12Offset = offset(wrapper12)-(window.innerHeight/2);
+            var wrapper12Offset = offset(wrapper12)-(container.clientHeight/2);
             var pic1 = franshals1.getElementsByClassName("col-pic")[0];
             var Change1 = false;
             var lastChange1 = false;
 
             var fanshals2 = document.getElementById("franshals2");
             var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
-            var wrapper22Offset = offset(wrapper22)-(window.innerHeight/2);
+            var wrapper22Offset = offset(wrapper22)-(container.clientHeight/2);
             var pic2 = franshals2.getElementsByClassName("col-pic")[0];
             var Change2 = false;
             var lastChange2 = false;
 
             function imageChangeTrigger(){
-                if(window.scrollY >= wrapper12Offset){
+                if(container.scrollTop >= wrapper12Offset){
                     Change1 = true;
                     if(Change1 ^ lastChange1){
                         slideOutPoze(franshals1);
@@ -110,7 +141,7 @@
                     }
                 }
 
-                if(window.scrollY >= wrapper22Offset){
+                if(container.scrollTop >= wrapper22Offset){
                     Change2 = true;
                     if(Change2 ^ lastChange2){
                         slideOutPoze(franshals2);
@@ -126,7 +157,7 @@
 
             }
 
-            window.addEventListener('scroll', imageChangeTrigger);
+            //container.addEventListener('scroll', imageChangeTrigger);
 
             function slideOutPoze(section){
                 let half1 = section.getElementsByClassName('poza1')[0];

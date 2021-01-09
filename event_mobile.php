@@ -168,7 +168,7 @@
                         lastDetectChange = detectChange;
                     }
                 }
-                else if(s.scrollTop > document.getElementById('city').offsetHeight + + document.documentElement.clientHeight/2){
+                else if(s.scrollTop > document.getElementById('city').offsetHeight + document.documentElement.clientHeight/2){
                     detectChange = 4;
                     if(detectChange != lastDetectChange){
                         changePicture(s, "pictures/bucharest2.jpg");
