@@ -41,6 +41,20 @@
     cursor: pointer;
 }
 
+
+/* #sponsors .rectangle-content .circle-top-left:hover img,
+#sponsors .rectangle-content .circle-top-right:hover img {
+    mix-blend-mode: difference;
+    cursor: pointer;
+} */
+
+#sponsors .rectangle-content .circle-top-left:hover,
+#sponsors .rectangle-content .circle-top-right:hover {
+    filter: hue-rotate(200deg);
+    /* mix-blend-mode: multiply; */
+    cursor: pointer;
+}
+
 .circle-top-left {
     top: 0px;
     left: 0px;
