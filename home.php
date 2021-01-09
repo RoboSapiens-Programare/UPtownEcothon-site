@@ -48,6 +48,7 @@
 				height: 70%;
 				background-color: transparent;
 				overflow-y: scroll;
+				scrollbar-width: none;
 			}
 			.wrapper-lists::-webkit-scrollbar{
 				display: none;
