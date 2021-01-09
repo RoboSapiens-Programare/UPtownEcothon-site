@@ -40,7 +40,7 @@
             </div>
 
             <div id="news" style="position:absolute; left:100%; display:inline-block; width: 100vw; height: 100vh;">
-                <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 0; top: 50%; transform:translateY(-50%); height:70%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
+                <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 0; top: 50%; transform:translateY(-50%); height:75%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
                     <div class="franshalssection" id="franshals1">
                         <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
                             <div class="sticky-col">
