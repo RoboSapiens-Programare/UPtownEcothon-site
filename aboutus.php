@@ -14,9 +14,25 @@
 
         // $response = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
 
-        // if (!$response->isSuccess()) {
-        //     throw new \Exception('ReCaptcha was not validated.');
-        // }
+        // post request to server
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array('secret' => $recaptchaSecret, 'response' => $_POST['g-recaptcha-response']);
+
+        $options = array(
+            'http' => array(
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'POST',
+            'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $response = file_get_contents($url, false, $context);
+        $responseKeys = json_decode($response,true);
+        header('Content-type: application/json');
+
+        if (!$responseKeys["success"] || $responseKeys["score"] <= 0.5) {
+            throw new \Exception('ReCaptcha was not validated.');
+        }
 
         if (isset($_POST['Email'])) {
             $email_to = "ute-contact@robosapiens.ro";
