@@ -12,6 +12,13 @@
 
 
         <?php include 'elements/header.php'; ?>
+
+        <style>
+            h2 {
+                font-size: 3.5rem;
+                color: darkgrey;
+            }
+        </style>
     </head>
 
     <body style="margin: 0px; overflow-x:hidden; overflow-y:hidden">
@@ -70,7 +77,7 @@
                         
                         <!-- contact form -->
                         <div class="card">
-                        <h2 class="card-header">Contact Form</h2>
+                        <h2 class="card-header" style="color: black; font-size: 2rem">Contact Form</h2>
                         <div class="card-body">
                             <form class="contact_form" method="post" action="mail.php">
 
@@ -82,10 +89,7 @@
                                 <div class="col-md-6 form-group">
                                 <input name="email" type="email" class="form-control" placeholder="Email" required>
                                 </div>
-                                <div class="col-md-6 form-group">
-                                <input name="phone" type="text" class="form-control" placeholder="Phone" required>
-                                </div>
-                                <div class="col-md-6 form-group">
+                                <div class="col-md-12 form-group">
                                 <input name="subject" type="text" class="form-control" placeholder="Subject" required>
                                 </div>
                                 <div class="col-12 form-group">
