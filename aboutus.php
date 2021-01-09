@@ -4,7 +4,7 @@
     $successmsg = "";
     $recaptchaSecret = "6Lc3EicaAAAAADJIqvcY6peRjuj3TxLVetydIwvE";
 
-    error_reporting(E_ALL & ~E_NOTICE);
+    error_reporting(0);
     try{
         if (!isset($_POST['g-recaptcha-response'])) {
             throw new \Exception('ReCaptcha is not set.');
