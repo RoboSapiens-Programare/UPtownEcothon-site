@@ -90,7 +90,7 @@
 
         <div style="display: flex; width:100vw; height: 100vh">
             <div style="height:100vh; flex: 33.3%; background-color:peachpuff;"></div>
-            <div style="height:100vh; flex: 66.6%; background-color:white;"></div>
+            <div style="height:100vh; flex: 66.6%; background-image: url(pictures/spiru1.jpg); object-fit: cover; background-position: center center; filter: blur(3px);"></div>
         </div>
 
         <!-- <div id="bigcontent" class="bigcontent">
