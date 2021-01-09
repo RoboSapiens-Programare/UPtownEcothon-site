@@ -193,7 +193,6 @@
 
                             <div class="fcf-form-group">
                                 <button id="fcf-button" 
-                                    type="submit"
                                     class="g-recaptcha fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block" 
                                     data-sitekey="6Lc3EicaAAAAACx7cucfSk0pKiALJOH6v2puvb4G" 
                                     data-callback='onSubmit' 
@@ -259,7 +258,7 @@
             }
 
             function onSubmit(token) {
-                document.getElementById("fcf-form").submit();
+                document.getElementById("fcf-form-id").submit();
             }
 
         </script>
