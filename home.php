@@ -40,6 +40,18 @@
 				background-color: purple;
 				border-radius: 50%;
 			}
+			.wrapper-lists{
+				position: absolute;
+				z-index: 100;
+				bottom: 0;
+				width: 100%;
+				height: 70%;
+				background-color: transparent;
+				overflow-y: scroll;
+			}
+			.wrapper-lists::-webkit-scrollbar{
+				display: none;
+			}
 		</style>
 
 	</head>
@@ -59,6 +71,13 @@
 							<img class="icon" id="info" src="icons/calendar.svg" alt="Info">
 						</a>
 					</div>
+					<div class="wrapper-lists">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+							<li>copac</li>
+							<li>mai multe cuvinte</li>
+							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						</ul>
+					</div>
 				</div>
 				<div class="wrapper-bulina">
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
@@ -66,6 +85,13 @@
 							<div class="text-centrat" style="color: white; opacity: 0;">About Us</div>
 							<img class="icon" id="contact" src="icons/users.svg" alt="About Us">
 						</a>
+					</div>
+					<div class="wrapper-lists">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+							<li>copac</li>
+							<li>mai multe cuvinte</li>
+							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						</ul>
 					</div>
 				</div>
 				<div class="wrapper-bulina">
@@ -75,6 +101,13 @@
 							<img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?">
 						</a>
 					</div>
+					<div class="wrapper-lists">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+							<li>copac</li>
+							<li>mai multe cuvinte</li>
+							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						</ul>
+					</div>
 				</div>
 				<div class="wrapper-bulina">
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
@@ -83,6 +116,13 @@
 							<img class="icon" id="event" src="icons/book.svg" alt="Event">
 						</a>
 					</div>
+					<div class="wrapper-lists">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+							<li>copac</li>
+							<li>mai multe cuvinte</li>
+							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						</ul>
+					</div>
 				</div>
 				<div class="wrapper-bulina">
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
@@ -90,6 +130,13 @@
 							<div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
 							<img class="icon" id="sponsors" src="icons/investment.svg" alt="Our Sponsors">
 						</a>
+					</div>
+					<div class="wrapper-lists">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+							<li>copac</li>
+							<li>mai multe cuvinte</li>
+							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						</ul>
 					</div>
 				</div>
 			</div>
