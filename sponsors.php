@@ -12,7 +12,7 @@
 
     </head>
     
-    <body style="margin: 0; background-color:#009452">
+    <body id="sponsors" style="margin: 0; background-color:#009452">
 
         <?php 
 			include "elements/sageata.html";
@@ -35,7 +35,7 @@
                     <img src="icons/arrow-right.svg">
                 </div>
 
-                <div class="rotate-section" id="rt-sect3">
+                <div class="rotate-section" id="rt-sect4">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
                         <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh; background-color:#e7df68;"><div class="text-centrat">FTC</div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh; background-color:#e7df68;"></div>
@@ -43,12 +43,20 @@
                         <div  class="text-centrat" style="font-size: 3vh"> chestii despre ftc</div>
                     </div>
                 </div>
-                <div class="rotate-section" id="rt-sect2">
+                <div class="rotate-section" id="rt-sect3">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
                         <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh; background-color:#e7df68;" ><div class="text-centrat">Gemini Sols</div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh; background-color:#e7df68;"></div>
                         
                         <div  class="text-centrat" style="font-size: 3vh"> chestii despre gemini</div>
+                    </div>
+                </div>
+                <div class="rotate-section" id="rt-sect2">
+                    <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
+                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh; background-color:#e7df68;"><div class="text-centrat">Endava</div></div>
+                        <div class="circle-bottom-right" style="height: 70vh; width:70vh; background-color:#e7df68;"></div>
+                        
+                        <div  class="text-centrat" style="font-size: 3vh"> chestii despre endava</div>
                     </div>
                 </div>
                 <div class="rotate-section" id="rt-sect1">
@@ -71,49 +79,14 @@
                     <li id="dot3">
                         <img src="icons/dot.svg">
                     </li>
+                    <li id="dot4">
+                        <img src="icons/dot.svg">
+                    </li>
                 </ul>
             </div>
         </div>
         
-
-        <div id="bottom-of-page" style="overflow:hidden; background-color:transparent; position: relative; height: 25vh; width: 100%;">
-            <div style="position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%; width: 100%; background-color: #9de498">
-                <div id="hrefuri">
-                    <a href="#">
-                        <div class="href-elem" style="top:0; left: 25%; transform: translate(-25%, 0%);">
-                            <img src="./icons/instagram.svg">
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="href-elem" style="top:0; left: 50%; transform: translate(-50%, 0%);">
-                            <img src="./icons/facebook.svg">
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="href-elem" style="top:0; left: 75%; transform: translate(-75%, 0%);">
-                            <img src="./icons/phone.svg">
-                        </div>
-                    </a>
-
-                </div>
-
-                <div id="logouri">
-                    <ul>
-                        <li>
-                            <div>
-                                <img src="pictures/logo v3.png" style="margin-left: -2vw;">
-                                <img src="pictures/robosapiens copy usa.png">
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <img src="pictures/logo-header-web.png">
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <?php include "elements/footer.html"; ?>	
                 
         <script>
 
@@ -121,18 +94,21 @@
 
             var rotateStatus = 1;
             var rotateTimer = 3000;
+            var isFirst = true;
 
             var rotatingContent = document.getElementById('rotating-content');
             // var rotatingIndex = document.getElementsByClassName('rotating-index')[0];
             // alert("a"); 
 
-            var sect1 = rotatingContent.getElementsByClassName('rotate-section')[2];
-            var sect2 = rotatingContent.getElementsByClassName('rotate-section')[1];
-            var sect3 = rotatingContent.getElementsByClassName('rotate-section')[0];
+            var sect1 = rotatingContent.getElementsByClassName('rotate-section')[3];
+            var sect2 = rotatingContent.getElementsByClassName('rotate-section')[2];
+            var sect3 = rotatingContent.getElementsByClassName('rotate-section')[1];
+            var sect4 = rotatingContent.getElementsByClassName('rotate-section')[0];
 
             var dot1 = document.getElementById('dot1');
             var dot2 = document.getElementById('dot2');
             var dot3 = document.getElementById('dot3');
+            var dot4 = document.getElementById('dot4');
 
             // alert("a");
 
@@ -158,58 +134,69 @@
 
             function rotateLoopRightToLeft(){
                 if(rotateStatus === 1){
-                    sect2.style.opacity ="0";
+                    sect3.style.opacity ="0";
+                    if(isFirst){
+                        sect2.style.opacity ="0";
+                    }
 
                     setTimeout(function(){
                         dot1.style.opacity ="1";
                         dot2.style.opacity ="0.5";
                         dot3.style.opacity ="0.5";
+                        dot4.style.opacity ="0.5";
 
-                        ToLeft(sect3);
-                        sect3.style.zIndex = "10"; 
+                        ToLeft(sect4);
+                        sect4.style.zIndex = "10"; 
                         ToCenter(sect1);
                         sect1.style.zIndex = "20";
+                        ToRight(sect3);
+                        sect3.style.zIndex = "30";
                         ToRight(sect2);
-                        sect2.style.zIndex = "30";
+                        sect2.style.zIndex = "40";
+                        
                     }, 500);
 
                     setTimeout(function(){
-                        sect2.style.opacity = "1";
+                        sect3.style.opacity = "1";
+                        if(isFirst){
+                            sect2.style.opacity ="1";
+                            isFirst = false;
+                        }
                     }, 1200);
 
                     rotateStatus = 2;
                 } else if(rotateStatus === 2){
-                    sect3.style.opacity ="0";
+                    sect4.style.opacity ="0";
 
-                    
                     setTimeout(function(){
                         dot1.style.opacity ="0.5";
                         dot2.style.opacity ="1";
                         dot3.style.opacity ="0.5";
-
+                        dot4.style.opacity ="0.5";
                     
                         ToLeft(sect1);
                         sect1.style.zIndex = "10";
                         ToCenter(sect2);
                         sect2.style.zIndex = "20";
                         ToRight(sect3);
-                        sect3.style.zIndex = "30";
+                        sect3.style.zIndex = "40";
+                        ToRight(sect4);
+                        sect4.style.zIndex = "30";
                     }, 500);
 
                     setTimeout(function(){
-                        sect3.style.opacity = "1";
+                        sect4.style.opacity = "1";
                     }, 1200);
 
                     rotateStatus = 3;
                 } else if(rotateStatus === 3){
                     sect1.style.opacity ="0";
 
-                    
                     setTimeout(function(){
                         dot1.style.opacity ="0.5";
                         dot2.style.opacity ="0.5";
                         dot3.style.opacity ="1";
-        
+                        dot4.style.opacity ="0.5";
         
                         ToLeft(sect2);
                         sect2.style.zIndex = "10";
@@ -217,10 +204,36 @@
                         sect3.style.zIndex = "20";
                         ToRight(sect1);
                         sect1.style.zIndex = "30";
+                        ToRight(sect4);
+                        sect4.style.zIndex = "40";
                     }, 500);
 
                     setTimeout(function(){
                         sect1.style.opacity = "1";
+                    }, 1200);
+
+                    rotateStatus = 4;
+                } else if(rotateStatus === 4){
+                    sect2.style.opacity ="0";
+
+                    setTimeout(function(){
+                        dot1.style.opacity ="0.5";
+                        dot2.style.opacity ="0.5";
+                        dot3.style.opacity ="0.5";
+                        dot4.style.opacity ="1";
+        
+                        ToLeft(sect3);
+                        sect3.style.zIndex = "10";
+                        ToCenter(sect4);
+                        sect4.style.zIndex = "20";
+                        ToRight(sect2);
+                        sect2.style.zIndex = "30";
+                        ToRight(sect1);
+                        sect1.style.zIndex = "40";
+                    }, 500);
+
+                    setTimeout(function(){
+                        sect2.style.opacity = "1";
                     }, 1200);
 
                     rotateStatus = 1;
@@ -229,64 +242,44 @@
 
             function rotateLoopLeftToRight(){
                 if(rotateStatus === 3){
-                    sect3.style.opacity ="0";
+                    sect4.style.opacity ="0";
 
-                
-                    setTimeout(function(){
-                        dot1.style.opacity ="0.5";
-                        dot2.style.opacity ="0.5";
-                        dot3.style.opacity ="1";
-
-                
-                        ToLeft(sect3);
-                        sect3.style.zIndex = "10"; 
-                        ToCenter(sect1);
-                        sect1.style.zIndex = "20";
-                        ToRight(sect2);
-                        sect2.style.zIndex = "30";
-                    }, 500);
-
-                    setTimeout(function(){
-                        sect3.style.opacity = "1";
-                    }, 1200);
-
-                    rotateStatus = 2;
-                } else if(rotateStatus === 1){
-                    sect1.style.opacity ="0";
-
-        
                     setTimeout(function(){
                         dot1.style.opacity ="1";
                         dot2.style.opacity ="0.5";
                         dot3.style.opacity ="0.5";
-
-                        ToLeft(sect1);
-                        sect1.style.zIndex = "10";
-                        ToCenter(sect2);
-                        sect2.style.zIndex = "20";
+                        dot4.style.opacity ="0.5";
+                
+                        ToLeft(sect4);
+                        sect4.style.zIndex = "10"; 
+                        ToCenter(sect1);
+                        sect1.style.zIndex = "20";
+                        ToRight(sect2);
+                        sect2.style.zIndex = "40";
                         ToRight(sect3);
                         sect3.style.zIndex = "30";
                     }, 500);
 
                     setTimeout(function(){
-                        sect1.style.opacity = "1";
+                        sect4.style.opacity = "1";
                     }, 1200);
 
-                    rotateStatus = 3;
-                } else if(rotateStatus === 2){
+                    rotateStatus = 2;
+                } else if(rotateStatus === 1){
                     sect2.style.opacity ="0";
-                    
         
                     setTimeout(function(){
                         dot1.style.opacity ="0.5";
-                        dot2.style.opacity ="1";
-                        dot3.style.opacity ="0.5";
+                        dot2.style.opacity ="0.5";
+                        dot3.style.opacity ="1";
+                        dot4.style.opacity ="0.5";
 
-        
                         ToLeft(sect2);
                         sect2.style.zIndex = "10";
                         ToCenter(sect3);
                         sect3.style.zIndex = "20";
+                        ToRight(sect4);
+                        sect4.style.zIndex = "40";
                         ToRight(sect1);
                         sect1.style.zIndex = "30";
                     }, 500);
@@ -295,7 +288,55 @@
                         sect2.style.opacity = "1";
                     }, 1200);
 
+                    rotateStatus = 4;
+                } else if(rotateStatus === 2){
+                    sect3.style.opacity ="0";
+        
+                    setTimeout(function(){
+                        dot1.style.opacity ="0.5";
+                        dot2.style.opacity ="0.5";
+                        dot3.style.opacity ="0.5";
+                        dot4.style.opacity ="1";
+
+                        ToLeft(sect3);
+                        sect3.style.zIndex = "10";
+                        ToCenter(sect4);
+                        sect4.style.zIndex = "20";
+                        ToRight(sect1);
+                        sect1.style.zIndex = "40";
+                        ToRight(sect2);
+                        sect2.style.zIndex = "30";
+                    }, 500);
+
+                    setTimeout(function(){
+                        sect3.style.opacity = "1";
+                    }, 1200);
+
                     rotateStatus = 1;
+                } else if(rotateStatus === 4){
+                    sect1.style.opacity ="0";
+        
+                    setTimeout(function(){
+                        dot1.style.opacity ="0.5";
+                        dot2.style.opacity ="1";
+                        dot3.style.opacity ="0.5";
+                        dot4.style.opacity ="0.5";
+
+                        ToLeft(sect1);
+                        sect1.style.zIndex = "10";
+                        ToCenter(sect2);
+                        sect2.style.zIndex = "20";
+                        ToRight(sect3);
+                        sect3.style.zIndex = "40";
+                        ToRight(sect4);
+                        sect4.style.zIndex = "30";
+                    }, 500);
+
+                    setTimeout(function(){
+                        sect1.style.opacity = "1";
+                    }, 1200);
+
+                    rotateStatus = 3;
                 }
             }
 

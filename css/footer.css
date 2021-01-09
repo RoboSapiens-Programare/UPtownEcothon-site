@@ -8,6 +8,14 @@
     /* box-shadow: 1vh 1vh 3vh #000000; */
 }
 
+#home #background {
+    background-color: #df458d;
+}
+
+#sponsors #background {
+    background-color: #9de498;
+}
+
 #hrefuri {
     position: relative;
     display: block;
@@ -33,8 +41,12 @@
     border: 0.5vh solid black;
 }
 
-.href-elem:hover {
+#home .href-elem:hover {
     background-color: #e7df68;
+}
+
+#sponsors .href-elem:hover {
+    background-color: #009452;
 }
 
 .href-elem img {
@@ -50,12 +62,12 @@
     position: relative;
     display: block;
     top: 0;
-    left: 50%;
-    transform: translate(-50%, -25%);
+    /* left: 50%; */
+    /* transform: translate(-50%, -25%); */
     width: 100%;
-    /* margin-top: 1vh; */
+    margin-top: -3vh;
     /* margin-bottom: 3vh; */
-    height: 30%;
+    height: 40%;
     padding: none;
     background-color: transparent;
     /* border: 1px solid blue; */
@@ -63,7 +75,7 @@
 }
 
 #logouri ul {
-    height: 100%;
+    height: 90%;
     list-style: none;
     position: absolute;
     top: 50%;
@@ -76,6 +88,7 @@
 #logouri ul li {
     height: inherit;
     display: inline;
+    margin: 0.2vw;
 }
 
 #logouri ul li div {
@@ -119,32 +132,43 @@
         position: relative;
         display: block;
         top: 0;
-        left: 50%;
-        transform: translate(-50%, -25%);
+        /* left: 50%; */
+        /* transform: translate(-50%, -25%); */
         width: 100%;
-        height: 9vw;
-        margin-top: -6%;
+        margin-top: -3vh;
+        /* margin-bottom: 3vh; */
+        height: 50%;
         padding: none;
         background-color: transparent;
         /* border: 1px solid blue; */
         z-index: 1;
     }
     #logouri ul {
-        height: 100%;
-        width: 100%;
-        display: inline-block;
+        height: 90%;
+        width: 90%;
         list-style: none;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: inherit;
-        border: none;
+        /* border: 1px solid green; */
+    }
+    #logouri ul li {
+        height: inherit;
+        display: inline;
+        margin: 0.2vw;
+    }
+    #logouri ul li div {
+        display: inline-block;
+        position: relative;
+        height: 70%;
+        /* border: 0px solid green; */
     }
     #logouri ul li div img {
         position: relative;
         height: inherit;
-        margin: 0vw;
+        margin: 0.2vw;
     }
 }
 
