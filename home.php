@@ -56,10 +56,9 @@
 		</style>
 
 	</head>
+
 	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
     
-		
-
 		<div style="width: 100vw; height: 100vh; overflow: hidden">
 			<div id="banner-homepage"></div>
 			<div class="text-centrat" style="font-size: 3vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
@@ -215,6 +214,25 @@
 		<script>
 
 			// alert(window.innerWidth);
+
+			function fadeicon(elem) {
+            var icon = elem.getElementsByClassName('icon')[0];
+            var text = elem.getElementsByClassName('text-centrat')[0];
+
+            transitions.fadeOut(icon, tweenFunctions.easeOutExpo, 400);
+
+            transitions.fadeIn(text, tweenFunctions.easeInExpo, 400);
+			}
+
+			function appearicon(elem) {
+				var icon = elem.getElementsByClassName('icon')[0];
+				var text = elem.getElementsByClassName('text-centrat')[0];
+
+				transitions.fadeOut(text, tweenFunctions.easeOutExpo, 400);
+
+				transitions.fadeIn(icon, tweenFunctions.easeInExpo, 400);
+
+			}
 
 			function showMeaning(elem){
 				var main = elem.getElementsByClassName("main")[0];

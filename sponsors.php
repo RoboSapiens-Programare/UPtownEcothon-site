@@ -90,7 +90,7 @@
                 
         <script>
 
-            // alert('a'); 
+            // alert(window.innerWidth); 
 
             var rotateStatus = 1;
             var rotateTimer = 3000;

@@ -1,13 +1,3 @@
-#rotunjit-colturi {
-    position: relative;
-    display: flex;
-    flex: 100%;
-    height: 20vh;
-    background-color: #75667c;
-    border-radius: 0% 0% 5vw 5vw;
-    /* box-shadow: 1vh 1vh 3vh #000000; */
-}
-
 #home #background {
     background-color: #df458d;
 }
@@ -62,20 +52,16 @@
     position: relative;
     display: block;
     top: 0;
-    /* left: 50%; */
-    /* transform: translate(-50%, -25%); */
     width: 100%;
-    margin-top: -3vh;
-    /* margin-bottom: 3vh; */
-    height: 40%;
+    margin-top: -3%;
+    height: 30%;
     padding: none;
     background-color: transparent;
-    /* border: 1px solid blue; */
     z-index: 1;
 }
 
 #logouri ul {
-    height: 90%;
+    height: 80%;
     list-style: none;
     position: absolute;
     top: 50%;
@@ -83,25 +69,32 @@
     transform: translate(-50%, -50%);
     z-index: inherit;
     border: none;
+    vertical-align: middle;
+    text-align: center;
 }
 
 #logouri ul li {
     height: inherit;
     display: inline;
     margin: 0.2vw;
+    vertical-align: middle;
+    text-align: center;
 }
 
-#logouri ul li div {
+#logouri ul li a {
     display: inline-block;
     position: relative;
     height: inherit;
-    /* border: 0px solid green; */
+    vertical-align: middle;
+    text-align: center;
 }
 
-#logouri ul li div img {
+#logouri ul li a img {
     position: relative;
     height: inherit;
     margin: 0.2vw;
+    vertical-align: middle;
+    text-align: center;
 }
 
 @media all and (orientation:portrait) {
@@ -132,15 +125,11 @@
         position: relative;
         display: block;
         top: 0;
-        /* left: 50%; */
-        /* transform: translate(-50%, -25%); */
         width: 100%;
-        margin-top: -3vh;
-        /* margin-bottom: 3vh; */
-        height: 50%;
+        margin-top: -10%;
+        height: 30%;
         padding: none;
         background-color: transparent;
-        /* border: 1px solid blue; */
         z-index: 1;
     }
     #logouri ul {
@@ -152,39 +141,46 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: inherit;
-        /* border: 1px solid green; */
     }
     #logouri ul li {
         height: inherit;
         display: inline;
-        margin: 0.2vw;
+        margin: 0;
     }
-    #logouri ul li div {
-        display: inline-block;
-        position: relative;
+    #logouri ul li a {
         height: 70%;
-        /* border: 0px solid green; */
     }
-    #logouri ul li div img {
-        position: relative;
-        height: inherit;
-        margin: 0.2vw;
+    #logouri ul li a img {
+        margin: 0;
     }
 }
 
 
-/* @media all and (max-width: 1240px) {
+/* @media all and (max-width: 1740px) and (orientation:landscape) {
     #logouri {
         position: relative;
         display: block;
         top: 0;
-        left: 50%;
-        transform: translate(-50%, -25%);
         width: 100%;
-        height: 20%;
+        height: 40%;
         padding: none;
         background-color: transparent;
-        border: 1px solid blue;
         z-index: 1;
+        margin-top: -3%;
+    }
+} */
+
+
+/* @media all and (max-width: 1200px) and (orientation:landscape) {
+    #logouri {
+        position: relative;
+        display: block;
+        top: 0;
+        width: 100%;
+        height: 40%;
+        padding: none;
+        background-color: transparent;
+        z-index: 1;
+        margin-top: -5%;
     }
 } */
