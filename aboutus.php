@@ -86,7 +86,7 @@
             $successmsg = "Thank you for contacting us. We will be in touch with you very soon.";
         }
     } catch (\Exception $e) {
-        $responseArray = array('type' => 'danger', 'message' => $e->getMessage());
+        echo $e->getMessage();
     }
 
     // if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
