@@ -24,13 +24,6 @@
         </script>
     </head>
     <body style=" margin: 0;" id="body">
-        <!-- <div id="scrollable" style="width: 100vw; height: 100vh; position: relative; overflow: auto; scale: 1"> -->
-            <!-- <div id="scrollbar-area" class="scrollbar-area" style="z-index: 21;">
-                <div class="scrollbar-right"></div>
-                <div id="dot" class="dot" style="z-index: 20"></div>
-                <div id="scrollbar-up" class="scrollbar-up"></div>
-                <div id="scrollbar-down" class="scrollbar-down"></div>
-            </div> -->
 
             <div id="title">
                 Titlu

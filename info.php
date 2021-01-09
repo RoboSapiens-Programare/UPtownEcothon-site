@@ -1,68 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html style="scroll-behavior: smooth">
     <head>
 
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
-        <link rel="stylesheet" type="text/css" href="css/circlecontent.css">
+        <link rel="stylesheet" type="text/css" href="css/franshalscontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
 
         <?php include 'elements/header.php'; ?>
        
     </head>
-    <body style="background-color: #855754; overflow-y: hidden; margin:0px">
+    <body style="background-color: #855754; overflow-y: hidden; margin:0px;">
         
         <?php 
 			include "elements/sageata.html";
 		?>	
 
-        <div name="toFade" class="rectangle-content" style="top: 70%; left: 50%; transform: translate(-50%, -50%); opacity: 0">
-            <div class="circle-top-left" onclick="expand(this);"><div class="text-centrat" style="opacity: 0">Salut</div></div>
-            <div class="circle-bottom-right"></div>
-            
-            <div  class="text-centrat" style="font-size: 3vh">Salutare din nou, din spatele cercului</div>
+        <div class="rounded-rect" style="position:absolute; left: 0; top: 50%; transform:translateY(-50%); height:70vh; width: 85vw; overflow-y: auto; overflow-x: hidden; padding:0">
+            <div class="franshalssection" id="franshals1">
+                <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
+                    <div class="sticky-col" style="height: 100vh;">
+                        <div class="poza1" style="background-color:red; z-index:3;"></div>
+                        <div class="poza2" style="background-color:pink; z-index:3;"></div>
+
+                        <div class="poza1" style="background-color:blue; z-index:2"></div>
+                        <div class="poza2" style="background-color:green; z-index:2;"></div>
+                    </div>  
+                </div>
+
+                <div class="column col-text" style="flex: 60%; position: relative;">
+                    <div class="wrapper" style="height: 100vh;">
+                        <div class="row-content" style="right: 0; ">
+                            text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
+                        </div>
+                    </div>
+                        
+                    <div class="wrapper" style="height: 100vh;">
+                        <div class="row-content" style="right: 0">
+                            text cu chestii 222
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
+
+            <div class="franshalssection" id="franshals2">
+                
+                <div class="column" style="flex: 60%">
+                    <div class="wrapper" style="height: 100vh;">
+                        <div class="row-content" style="left: 0;">
+                            text cu chestii 111
+                        </div>
+                    </div>
+                        
+                    <div class="wrapper" style="height: 100vh;">
+                        <div class="row-content" style="left: 0;">
+                            text cu chestii 222
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column col-pic" id="col-pic2" style="flex:40%;">
+                    <div class="sticky-col" style="height: 100vh;" >
+                        <div class="poza1" style="background-color:red; z-index:3;"></div>
+                        <div class="poza2" style="background-color:pink; z-index:3;"></div>
+
+                        <div class="poza1" style="background-color:blue; z-index:2"></div>
+                        <div class="poza2" style="background-color:green; z-index:2;"></div>
+                    </div>
+                </div> 
+
+            </div>
         </div>
 
-        <div name="toFade" class="rectangle-content" style="top: 16%; left: 60%; transform: translate(-50%, -50%); opacity: 0; scale: 0.4">
-            <div class="circle-top-right" onclick="expand(this);"><div class="text-centrat" style="opacity: 0">Salut</div></div>
-            <div class="circle-bottom-left"></div>
-            
-            <div  class="text-centrat" style="font-size: 3vh">Salutare din nou, din spatele cercului</div>
-        </div>
 
-        <script>
-            var elems = document.getElementsByName("toFade");
-
-            for(let x of elems){
-                transitions.fadeIn(x, tweenFunctions.easeOutSine, Math.floor(Math.random() * (2000 - 500) ) + 500);
-                transitions.fadeIn(x.getElementsByClassName('text-centrat')[0], tweenFunctions.easeOutSine, Math.floor(Math.random() * (7000 - 2000) ) + 2000);
-            }
-            
-
-            function expand(elem){
-                var rectangle = elem.parentElement;
-
-                transitions.resize2D(new Dimension(rectangle, 50, "vw"),
-                                    new Dimension(rectangle, 50, "vh"),
-                                    tweenFunctions.easeOutCubic,
-                                    1000);
-                transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 0.7, 1000);
-                transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, 0.7, 1000);
-
-                elem.setAttribute("onclick", "retract(this);");
+        <script>        
+            function offset(el) {
+                var rect = el.getBoundingClientRect(),
+                scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                return rect.top + scrollTop;
             }
 
-            function retract(elem){
-                var rectangle = elem.parentElement;
+            var fanshals1 = document.getElementById("franshals1");
+            var wrapper12 = franshals1.getElementsByClassName("wrapper")[1];
+            var wrapper12Offset = offset(wrapper12)-(window.innerHeight/2);
+            var pic1 = franshals1.getElementsByClassName("col-pic")[0];
+            var Change1 = false;
+            var lastChange1 = false;
 
-                transitions.resize2D(new Dimension(rectangle, 0, "vw"),
-                                    new Dimension(rectangle, 0, "vh"),
-                                    tweenFunctions.easeOutCubic,
-                                    1000);
-                transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
-                transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
+            var fanshals2 = document.getElementById("franshals2");
+            var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
+            var wrapper22Offset = offset(wrapper22)-(window.innerHeight/2);
+            var pic2 = franshals2.getElementsByClassName("col-pic")[0];
+            var Change2 = false;
+            var lastChange2 = false;
 
-                elem.setAttribute("onclick", "expand(this);");
+            function imageChangeTrigger(){
+                if(window.scrollY >= wrapper12Offset){
+                    Change1 = true;
+                    if(Change1 ^ lastChange1){
+                        slideOutPoze(franshals1);
+                        lastChange1 = true;
+                    }
+                } else {
+                    Change1 = false;
+                    if(Change1 ^ lastChange1){
+                        slideInPoze(franshals1);
+                        lastChange1 = false;
+                    }
+                }
+
+                if(window.scrollY >= wrapper22Offset){
+                    Change2 = true;
+                    if(Change2 ^ lastChange2){
+                        slideOutPoze(franshals2);
+                        lastChange2 = true;
+                    }
+                } else {
+                    Change2 = false;
+                    if(Change2 ^ lastChange2){
+                        slideInPoze(franshals2);
+                        lastChange2 = false;
+                    }
+                }
+
             }
+
+            window.addEventListener('scroll', imageChangeTrigger);
+
+            function slideOutPoze(section){
+                let half1 = section.getElementsByClassName('poza1')[0];
+                let half2 = section.getElementsByClassName('poza2')[0];
+                
+                transitions.slide2D(new Dimension(half1, 0, "percent"),
+                                    new Dimension(half1, -50, "percent"),
+                                    tweenFunctions.easeOutQuad,
+                                    300);
+
+                transitions.slide2D(new Dimension(half2, 0, "percent"),
+                                    new Dimension(half2, 100, "percent"),
+                                    tweenFunctions.easeOutQuad,
+                                    300);
+
+                section.setAttribute("onclick", "slideInPoze(this);");
+            }
+
+            function slideInPoze(section){
+                let half1 = section.getElementsByClassName('poza1')[0];
+                let half2 = section.getElementsByClassName('poza2')[0];
+                
+                transitions.slide2D(new Dimension(half1, 0, "percent"),
+                                    new Dimension(half1, 0, "percent"),
+                                    tweenFunctions.easeInQuad,
+                                    300);
+
+                transitions.slide2D(new Dimension(half2, 0, "percent"),
+                                    new Dimension(half2, 50, "percent"),
+                                    tweenFunctions.easeInQuad,
+                                    300);
+                
+                section.setAttribute("onclick", "slideOutPoze(this);");
+            }
+      
         </script>
     </body>
 </html>
