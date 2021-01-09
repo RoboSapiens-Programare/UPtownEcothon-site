@@ -10,13 +10,13 @@
             throw new \Exception('ReCaptcha is not set.');
         }
 
-        $recaptcha = new \ReCaptcha\ReCaptcha($recaptchaSecret, new \ReCaptcha\RequestMethod\CurlPost());
+        // $recaptcha = new \ReCaptcha\ReCaptcha($recaptchaSecret, new \ReCaptcha\RequestMethod\CurlPost());
 
-        $response = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
+        // $response = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
 
-        if (!$response->isSuccess()) {
-            throw new \Exception('ReCaptcha was not validated.');
-        }
+        // if (!$response->isSuccess()) {
+        //     throw new \Exception('ReCaptcha was not validated.');
+        // }
 
         if (isset($_POST['Email'])) {
             $email_to = "ute-contact@robosapiens.ro";
