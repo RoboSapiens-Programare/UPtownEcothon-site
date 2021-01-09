@@ -75,6 +75,9 @@
             <div id="link3" class="link">
                 <a href="#sect3" class="dot"></a>
             </div>
+            <div id="link4" class="link">
+                <a href="#sect4" class="dot"></a>
+            </div>
         </div>
 
         <div id="sect1" class="section" >
@@ -133,6 +136,17 @@
                     <div class="text-centrat title">Utility & Implementation Award</div>
                     <div class="text-centrat desc"><?php echo $content["Cerinte & Premii"]["Implementare"] . "<br>"; ?></div>
                 </div>
+            </div>
+        </div>
+
+        <div id="sect4" class="section" >
+            <div class="wrapper" style="background-color: #7cc4cc; z-index: 5">
+                <div id="title4" class="title" style="opacity: 1; font-size: 9vw">Code of Conduct</div>
+                <div id="titlebtn4" class="titlebtn" style="opacity: 1" onclick="readMore(this);">Read More</div>
+            </div>
+
+            <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content">
+                <?php echo $content["Code of Conduct"][1]; ?>
             </div>
         </div>
 
