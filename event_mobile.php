@@ -75,6 +75,9 @@
             <div id="link3" class="link">
                 <a href="#sect3" class="dot"></a>
             </div>
+            <div id="link4" class="link">
+                <a href="#sect4" class="dot"></a>
+            </div>
         </div>
 
         <div id="sect1" class="section" >
@@ -136,6 +139,17 @@
             </div>
         </div>
 
+        <div id="sect4" class="section" >
+            <div class="wrapper" style="background-color: #7cc4cc; z-index: 5">
+                <div id="title4" class="title" style="opacity: 1; font-size: 9vw">Code of Conduct</div>
+                <div id="titlebtn4" class="titlebtn" style="opacity: 1" onclick="readMore(this);">Read More</div>
+            </div>
+
+            <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content">
+                <?php echo $content["Code of Conduct"][1]; ?>
+            </div>
+        </div>
+
         <script>
             transitions.fadeIn(document.getElementById('title1'), tweenFunctions.easeOutQuad, 1500);
             transitions.fadeIn(document.getElementById('titlebtn1'), tweenFunctions.easeInSine, 1500);
@@ -168,7 +182,7 @@
                         lastDetectChange = detectChange;
                     }
                 }
-                else if(s.scrollTop > document.getElementById('city').offsetHeight + + document.documentElement.clientHeight/2){
+                else if(s.scrollTop > document.getElementById('city').offsetHeight + document.documentElement.clientHeight/2){
                     detectChange = 4;
                     if(detectChange != lastDetectChange){
                         changePicture(s, "pictures/bucharest2.jpg");

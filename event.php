@@ -73,6 +73,9 @@
             <div id="link3" class="link">
                 <a href="#sect3" class="dot"></a>
             </div>
+            <div id="link4" class="link">
+                <a href="#sect4" class="dot"></a>
+            </div>
         </div>
 
         <div id="sect1" class="section" style="background-color: lightsalmon;">
@@ -166,6 +169,16 @@
             </div>
         </div>
 
+        <div id="sect4" class="section" style="background-color:#7cc4cc;">
+            <div id="title4" class="title">Code of Conduct</div>
+
+            <div id="titlebtn4" class="titlebtn" onclick="readMore(this, false);">Read More</div>
+
+            <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 20px 20px 20px; overflow-y:auto; height: 90vh; margin-top:2.5vh; overflow-y: auto">
+                <?php echo $content["Code of Conduct"][1]; ?>
+            </div>
+        </div>
+
         <script>
             transitions.fadeIn(document.getElementById('title1'), tweenFunctions.easeOutQuad, 1500);
             transitions.fadeIn(document.getElementById('titlebtn1'), tweenFunctions.easeInSine, 1500);
@@ -219,38 +232,36 @@
 
                 for(var a of slidings) {
                     if(a.style.right){
-                        transitions.translate2D(
-                            new Dimension(a, -50, "pw"),
-                            new Dimension(a, 0, "ph"),
+                        transitions.slideX(
+                            new Dimension(a, 52, "pw"),
                             tweenFunctions.easeOutQuint,
                             2000
                         );
                     }
                     else{
-                        transitions.translate2D(
-                            new Dimension(a, 50, "pw"),
-                            new Dimension(a, 0, "ph"),
+                        transitions.slideX(
+                            new Dimension(a, 0, "pw"),
                             tweenFunctions.easeOutQuint,
                             2000
                         );
                     }
                 }
 
-                transitions.translate2D(
-                    new Dimension(title, -25, "pw"),
-                    new Dimension(title, -20, "ph"),
+                transitions.slide2D(
+                    new Dimension(title, 25, "pw"),
+                    new Dimension(title, 30, "ph"),
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
-                transitions.translate2D(
-                    new Dimension(x, -25, "pw"),
-                    new Dimension(x, -28, "ph"),
+                transitions.slide2D(
+                    new Dimension(x, 25, "pw"),
+                    new Dimension(x, 45, "ph"),
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
-                transitions.translate2D(
-                    new Dimension(scrollbar, 4.8, "vw"),
-                    new Dimension(scrollbar, 0, "vh"), 
+                transitions.slide2D(
+                    new Dimension(scrollbar, 100.8, "vw"),
+                    new Dimension(scrollbar, 50, "vh"), 
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
@@ -291,38 +302,36 @@
 
                 for(var a of slidings) {
                     if(a.style.right){
-                        transitions.translate2D(
-                            new Dimension(a, 50, "pw"),
-                            new Dimension(a, 0, "ph"),
+                        transitions.slideX(
+                            new Dimension(a, 100, "pw"),
                             tweenFunctions.easeOutQuint,
                             2000
                         );                    
                     }
                     else{
-                        transitions.translate2D(
+                        transitions.slideX(
                             new Dimension(a, -50, "pw"),
-                            new Dimension(a, 0, "ph"),
                             tweenFunctions.easeOutQuint,
                             2000
                         );
                     }
                 }
 
-                transitions.translate2D(
-                    new Dimension(title, 25, "pw"),
-                    new Dimension(title, 20, "ph"),
+                transitions.slide2D(
+                    new Dimension(title, 50, "pw"),
+                    new Dimension(title, 50, "ph"),
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
-                transitions.translate2D(
-                    new Dimension(x, 25, "pw"),
-                    new Dimension(x, 28, "ph"),
+                transitions.slide2D(
+                    new Dimension(x, 50, "pw"),
+                    new Dimension(x, 70, "ph"),
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
-                transitions.translate2D(
-                    new Dimension(scrollbar, -4.8, "vw"),
-                    new Dimension(scrollbar, 0, "vh"), 
+                transitions.slide2D(
+                    new Dimension(scrollbar, 96, "vw"),
+                    new Dimension(scrollbar, 50, "vh"), 
                     tweenFunctions.easeInOutExpo,
                     1000
                 );

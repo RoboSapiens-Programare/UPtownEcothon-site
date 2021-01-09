@@ -90,14 +90,8 @@
 
         <div style="display: flex; width:100vw; height: 100vh">
             <div style="height:100vh; flex: 33.3%; background-color:peachpuff;"></div>
-            <div style="height:100vh; flex: 66.6%; background-color:white;"></div>
+            <div style="height:100vh; flex: 66.6%; background-image: url(pictures/spiru1.jpg); object-fit: cover; background-position: center center; filter: blur(3px);"></div>
         </div>
-
-        <!-- <div id="bigcontent" class="bigcontent">
-            <div id="bigtitle" class="btitle"></div>
-            <div id="bcontent" class="bcontent"></div>
-        </div> -->
-
         
         <div id="smallcontent1" class="smallcontent" style="top: 10%;">
             <div class="smallcontent-inner" style="z-index: 1">
@@ -198,18 +192,7 @@
         <script>
             var i_content = 0;
             var bigcontents = document.getElementsByClassName('bigcontent');
-            //var content = <?php /*json_encode($content);*/ ?>;
-
-            // for(let i = 0; i < bigcontents.length-1; i++){
-            //     bigcontents[i].getElementsByClassName('btitle')[0].innerHTML = content[i]['title'];
-            //     bigcontents[i].getElementsByClassName('bcontent')[0].innerHTML = content[i]['content'];
-            // }
-
             var smallcontents = document.getElementsByClassName('smallcontent');
-            // for(let i = 0; i < smallcontents.length; i++){
-            //     smallcontents[i].getElementsByClassName('title')[0].innerHTML = content[i]['title'];
-            //     smallcontents[i].getElementsByClassName('content')[0].innerHTML = content[i]['short-description'];
-            // }
 
             function expand(index){
                 var box = smallcontents[index];

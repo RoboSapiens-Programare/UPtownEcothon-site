@@ -136,6 +136,24 @@ var transitions = {
         requestAnimationFrame(tick);
     },
 
+    slideX: function(toX, func, duration){
+        var elem = toX.relativeElement;
+        var fromY = new Dimension(elem, 0, "px");
+
+        var style = window.getComputedStyle(elem);
+
+        if (!isNaN(parseFloat(elem.style.top))) {
+            let dimTop = new Dimension(elem, parseFloat(elem.style.top), "px");
+            fromY.value = dimTop.to("px");
+        } else if (!isNaN(parseFloat(style.getPropertyValue('top')))) {
+            fromY.value = parseFloat(style.getPropertyValue('top'));
+        } else {
+            fromY.value = elem.offsetTop;
+        }
+
+        this.slide2D(toX, fromY, func, duration);
+    },
+
     /**
      * @deprecated
      */
