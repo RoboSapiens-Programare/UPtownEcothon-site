@@ -4,7 +4,6 @@
     $successmsg = "";
     $recaptchaSecret = "6Lc3EicaAAAAADJIqvcY6peRjuj3TxLVetydIwvE";
 
-    error_reporting(0);
     try{
         if (!isset($_POST['g-recaptcha-response'])) {
             throw new \Exception('ReCaptcha is not set.');
@@ -124,7 +123,9 @@
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/contact-form.css">
 
-        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://www.google.com/recaptcha/api.js?render=6Lc3EicaAAAAACx7cucfSk0pKiALJOH6v2puvb4G"></script>
+
 
         <?php include 'elements/header.php'; ?>
     </head>
@@ -179,48 +180,57 @@
             <div id="bigtitle" class="btitle">Contact</div>
             <div id="bcontent" class="bcontent">
                 <?php echo $content['Contact']['Long'] ?>
-                <div class="fcf-body" style="width: 50%;">
+                <!-- contact form demo container -->
+                <section style="margin: 50px 20px;">
+                    <div style="max-width: 768px; margin: auto;">
+                        
+                        <!-- contact form -->
+                        <div class="card">
+                        <h2 class="card-header">Contact Form</h2>
+                        <div class="card-body">
+                            <form class="contact_form" method="post" action="mail.php">
 
-                    <div id="fcf-form">
-                        <h3 class="fcf-h3">Contact us</h3>
-
-                        <form id="fcf-form-id" class="fcf-form-class" method="post">
-                            
-                            <div class="fcf-form-group">
-                                <label for="Name" class="fcf-label">Your name</label>
-                                <div class="fcf-input-group">
-                                    <input type="text" id="Name" name="Name" class="fcf-form-control" required>
+                            <!-- form fields -->
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                <input name="name" type="text" class="form-control" placeholder="Name" required>
                                 </div>
-                            </div>
-
-                            <div class="fcf-form-group">
-                                <label for="Email" class="fcf-label">Your email address</label>
-                                <div class="fcf-input-group">
-                                    <input type="email" id="Email" name="Email" class="fcf-form-control" required>
+                                <div class="col-md-6 form-group">
+                                <input name="email" type="email" class="form-control" placeholder="Email" required>
                                 </div>
-                            </div>
-
-                            <div class="fcf-form-group">
-                                <label for="Message" class="fcf-label">Your message</label>
-                                <div class="fcf-input-group">
-                                    <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
+                                <div class="col-md-6 form-group">
+                                <input name="phone" type="text" class="form-control" placeholder="Phone" required>
                                 </div>
+                                <div class="col-md-6 form-group">
+                                <input name="subject" type="text" class="form-control" placeholder="Subject" required>
+                                </div>
+                                <div class="col-12 form-group">
+                                <textarea name="message" class="form-control" rows="5" placeholder="Message" required></textarea>
+                                </div>
+
+                                <!-- form message prompt -->
+                                <div class="row">
+                                <div class="col-12">
+                                    <div class="contact_msg" style="display: none">
+                                    <p>Your message was sent.</p>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="col-12">
+                                <input type="submit" value="Submit Form" class="btn btn-success" name="post">
+                                </div>
+
+                                <!-- hidden reCaptcha token input -->
+                                <input type="hidden" id="token" name="token">
                             </div>
 
-                            <div class="fcf-form-group">
-                                <button id="fcf-button" 
-                                    class="g-recaptcha fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block" 
-                                    data-sitekey="6Lc3EicaAAAAACx7cucfSk0pKiALJOH6v2puvb4G" 
-                                    data-callback='onSubmit' 
-                                    data-action='submit'>
-                                        Send Message
-                                </button>
-                            </div>
+                            </form>
+                        </div>
+                        </div>
 
-                            <?php echo $successmsg; ?>
-                        </form>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
 
@@ -273,10 +283,16 @@
                 }
             }
 
-            function onSubmit(token) {
-                document.getElementById("fcf-form-id").submit();
-            }
-
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Lc3EicaAAAAACx7cucfSk0pKiALJOH6v2puvb4G', {action: 'homepage'}).then(function(token) {
+                // console.log(token);
+                document.getElementById("token").value = token;
+                });
+            });
+            
         </script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="javascript/form.js"></script>
     </body>
 </html>
