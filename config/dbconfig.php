@@ -1,13 +1,12 @@
 <?php
-    //VARIABLES
-    $reg_db_name = "registration.sq3";
-    $content_db_name = "content.sq3";
+
+    require_once("dbcredentials.php");
 
     //---------
 
     class SQLiDB extends PDO {
         function __construct(){
-            parent::__construct('sqlite:' . $GLOBALS['reg_db_name']);
+            parent::__construct($GLOBALS['dbtype'] . ':' . $GLOBALS['reg_db_name'], $GLOBALS['usr'], $GLOBALS['pass']);
 
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->exec("PRAGMA foreign_keys = ON");
@@ -16,7 +15,7 @@
 
     class ContentDB extends PDO {
         function __construct(){
-            parent::__construct('sqlite:' . $GLOBALS['content_db_name']);
+            parent::__construct($GLOBALS['dbtype'] . ':' . $GLOBALS['content_db_name'], $GLOBALS['usr'], $GLOBALS['pass']);
 
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->exec("PRAGMA foreign_keys = ON");

@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail_to = "ute-contact@robosapiens.ro";
     
     # Sender form data
-    $subject = trim($_POST["subject"]);
+    $subject = "New Form Submission: " . trim($_POST["subject"]);
     $name = str_replace(array("\r","\n"),array(" "," ") , strip_tags(trim($_POST["name"])));
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
     $message = trim($_POST["message"]);
