@@ -1,2 +1,3 @@
 .vscode/launch.json
 registration.sq3
+config/dbcredentials.php
