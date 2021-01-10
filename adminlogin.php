@@ -48,10 +48,8 @@
 
         try{
             $db = new ContentDB();
-            $msg = "1";
 
             if($username && $passwd){
-                $msg = "2";
                 $sql = "SELECT id, username, passwd FROM admins WHERE username = :uname LIMIT 1";
                 $stmt = $db->prepare($sql);
 

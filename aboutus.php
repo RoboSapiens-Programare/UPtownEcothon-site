@@ -7,11 +7,13 @@
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/contact-form.css">
 
+        <?php 
+            include 'elements/header.php'; 
+            require_once('config/captchacredentials.php');
+        ?>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://www.google.com/recaptcha/api.js?render=6Lc3EicaAAAAACx7cucfSk0pKiALJOH6v2puvb4G"></script>
-
-
-        <?php include 'elements/header.php'; ?>
+        <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $site_key; ?>"></script>
 
         <style>
             h2 {
@@ -231,7 +233,7 @@
             }
 
             grecaptcha.ready(function() {
-                grecaptcha.execute('6Lc3EicaAAAAACx7cucfSk0pKiALJOH6v2puvb4G', {action: 'homepage'}).then(function(token) {
+                grecaptcha.execute('<?php echo $site_key; ?>', {action: 'homepage'}).then(function(token) {
                 // console.log(token);
                 document.getElementById("token").value = token;
                 });

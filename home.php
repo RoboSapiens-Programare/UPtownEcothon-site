@@ -234,15 +234,6 @@
 			</div>
 
 		</div>
-
-		<?php
-			if($displaylogin){
-				echo "You are not logged in. <a href='login.php'>Login</a> or <a href='registration.php'>Sign up</a>.";
-			}
-			else{
-				echo $welcomemsg . " <a href='logout.php'>Logout</a>";
-			}
-		?>
 	
 		<?php include "elements/footer.html"; ?>	
 

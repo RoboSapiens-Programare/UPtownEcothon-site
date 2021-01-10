@@ -207,7 +207,7 @@
         <title>CMS UTE :D</title>
     </head>
     <body>
-        <form method="post">
+        <form method="post" id="theForm">
             <label for="page">Page</label>
             <select name="page" id="page" oninput="displayContent(3);">
                 <?php
@@ -217,7 +217,7 @@
                 ?>
                 <option value="newPage">new page...</option>
             </select>
-            <button type="submit" name="deletePage" id="deletePage">Delete</button>
+            <button type="submit" onclick="popupDialogue(this);" name="deletePage" id="deletePage">Delete</button>
             <div style="display: none" id="addNewPage">
                 <label for="newPageName">Name</label>
                 <input type="text" name="newPageName" id="newPageName">
@@ -226,7 +226,7 @@
             <label for="section">Section</label>
             <select name="section" id="section" oninput="displayContent(2);">
             </select>
-            <button type="submit" name="deleteSection" id="deleteSection">Delete</button>
+            <button type="submit" onclick="popupDialogue(this);" name="deleteSection" id="deleteSection">Delete</button>
             <div style="display: none" id="addNewSection">
                 <label for="newSectionName">Name</label>
                 <input type="text" name="newSectionName" id="newSectionName">
@@ -235,7 +235,7 @@
             <label for="subsection">Subsection</label>
             <select name="subsection" id="subsection" oninput="displayContent(1);">
             </select>
-            <button type="submit" name="deleteSubsection" id="deleteSubsection">Delete</button>
+            <button type="submit" onclick="popupDialogue(this);" name="deleteSubsection" id="deleteSubsection">Delete</button>
             <div style="display: none" id="addNewSubsection">
                 <label for="newSubsectionName">Name</label>
                 <input type="text" name="newSubsectionName" id="newSubsectionName">
@@ -310,6 +310,16 @@
                 document.getElementById("content").innerHTML = contentValues[subsection]["RO"];
                 document.getElementById("contentEN").innerHTML = contentValues[subsection]["EN"];
             }
+
+            // function popupDialogue(el){
+            //     if (confirm('Are you sure you want to delete the thing? Really sure?')) {
+            //         console.log('Thing was deleted from the database.');
+            //         var myInput = document.createElement('input');
+            //         myInput.setAttribute("id", el.id);
+            //         myInput.setAttribute("value", 1);
+            //         document.getElementById('theForm').submit();
+            //     }
+            // }
         </script>
     </body>
 </html>
