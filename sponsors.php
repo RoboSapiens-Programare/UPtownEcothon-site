@@ -113,7 +113,16 @@
             // alert("a");
 
             window.onload = function(){
+                sect2.style.opacity ="0";
+                sect3.style.opacity ="0";
+                sect4.style.opacity ="0";
                 rotateLoopRightToLeft();
+                setTimeout(function(){
+                    sect2.style.opacity ="1";
+                    sect3.style.opacity ="1";
+                    sect4.style.opacity ="1";
+                }, 1200);
+
             }
 
             var startLoop = setInterval(function(){
@@ -135,9 +144,9 @@
             function rotateLoopRightToLeft(){
                 if(rotateStatus === 1){
                     sect3.style.opacity ="0";
-                    if(isFirst){
-                        sect2.style.opacity ="0";
-                    }
+                    // if(isFirst){
+                    //     sect2.style.opacity ="0";
+                    // }
 
                     setTimeout(function(){
                         dot1.style.opacity ="1";
@@ -150,18 +159,18 @@
                         ToCenter(sect1);
                         sect1.style.zIndex = "20";
                         ToRight(sect3);
-                        sect3.style.zIndex = "30";
+                        sect3.style.zIndex = "10";
                         ToRight(sect2);
-                        sect2.style.zIndex = "40";
+                        sect2.style.zIndex = "30";
                         
                     }, 500);
 
                     setTimeout(function(){
                         sect3.style.opacity = "1";
-                        if(isFirst){
-                            sect2.style.opacity ="1";
-                            isFirst = false;
-                        }
+                        // if(isFirst){
+                        //     sect2.style.opacity ="1";
+                        //     isFirst = false;
+                        // }
                     }, 1200);
 
                     rotateStatus = 2;
@@ -179,9 +188,9 @@
                         ToCenter(sect2);
                         sect2.style.zIndex = "20";
                         ToRight(sect3);
-                        sect3.style.zIndex = "40";
+                        sect3.style.zIndex = "30";
                         ToRight(sect4);
-                        sect4.style.zIndex = "30";
+                        sect4.style.zIndex = "10";
                     }, 500);
 
                     setTimeout(function(){
@@ -203,9 +212,9 @@
                         ToCenter(sect3);
                         sect3.style.zIndex = "20";
                         ToRight(sect1);
-                        sect1.style.zIndex = "30";
+                        sect1.style.zIndex = "10";
                         ToRight(sect4);
-                        sect4.style.zIndex = "40";
+                        sect4.style.zIndex = "30";
                     }, 500);
 
                     setTimeout(function(){
@@ -227,9 +236,9 @@
                         ToCenter(sect4);
                         sect4.style.zIndex = "20";
                         ToRight(sect2);
-                        sect2.style.zIndex = "30";
+                        sect2.style.zIndex = "10";
                         ToRight(sect1);
-                        sect1.style.zIndex = "40";
+                        sect1.style.zIndex = "30";
                     }, 500);
 
                     setTimeout(function(){
@@ -255,9 +264,9 @@
                         ToCenter(sect1);
                         sect1.style.zIndex = "20";
                         ToRight(sect2);
-                        sect2.style.zIndex = "40";
+                        sect2.style.zIndex = "30";
                         ToRight(sect3);
-                        sect3.style.zIndex = "30";
+                        sect3.style.zIndex = "10";
                     }, 500);
 
                     setTimeout(function(){
@@ -279,9 +288,9 @@
                         ToCenter(sect3);
                         sect3.style.zIndex = "20";
                         ToRight(sect4);
-                        sect4.style.zIndex = "40";
+                        sect4.style.zIndex = "30";
                         ToRight(sect1);
-                        sect1.style.zIndex = "30";
+                        sect1.style.zIndex = "10";
                     }, 500);
 
                     setTimeout(function(){
@@ -303,9 +312,9 @@
                         ToCenter(sect4);
                         sect4.style.zIndex = "20";
                         ToRight(sect1);
-                        sect1.style.zIndex = "40";
+                        sect1.style.zIndex = "30";
                         ToRight(sect2);
-                        sect2.style.zIndex = "30";
+                        sect2.style.zIndex = "10";
                     }, 500);
 
                     setTimeout(function(){
@@ -327,9 +336,9 @@
                         ToCenter(sect2);
                         sect2.style.zIndex = "20";
                         ToRight(sect3);
-                        sect3.style.zIndex = "40";
+                        sect3.style.zIndex = "30";
                         ToRight(sect4);
-                        sect4.style.zIndex = "30";
+                        sect4.style.zIndex = "10";
                     }, 500);
 
                     setTimeout(function(){

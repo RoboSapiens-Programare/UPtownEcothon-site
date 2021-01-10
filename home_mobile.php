@@ -24,14 +24,144 @@ $scriptVersion = $detect->getScriptVersion();
 		  <?php include "elements/header.php"; ?>
 
     </head>
+
+	<style>
+			#banner-homepage{
+				position: absolute; 
+				top:0;
+				width:100%; 
+				height:100%; 
+				background: url(pictures/gifbackgroundhome2.gif); 
+				background-size: cover;
+				background-position: center center;
+				/* filter: blur(7px); */
+			}
+			.wrapper-bulina{
+				position: relative;
+				display: inline-block;
+				width: 80%;
+				height: 20%;
+				background-color: transparent;
+				margin-left: 15%;
+				/* border: 1px  solid blue; */
+			}
+			.buline-homepage{
+				position: absolute;
+				z-index: 100;
+				top: 0;
+				width: 10vw;
+				height: 10vw;
+				left: 0%;
+				background-color: purple;
+				border-radius: 50%;
+			}
+			.wrapper-lists{
+				position: absolute;
+				z-index: 100;
+				bottom: 0;
+				width: 100%;
+				height: 80%;
+				background-color: transparent;
+				overflow-y: hidden;
+				scrollbar-width: none;
+			}
+			.wrapper-lists::-webkit-scrollbar{
+				display: none;
+			}
+			.sectiune-butoane {
+				position: relative;
+				height: 200vh;
+				width: 100vw;
+			}
+		</style>
     
     <body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
     
         <?php include "elements/sageatatlf.html"?>
         
-        <div class="banner-homepage" style="position: relative; width:100%; height:100vh; background-color:transparent">
-			<div class="bkg-banner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%; width: 100%; background-color: purple;">
-				<div class="text-centrat" style="font-size: 10vh;"> gif background + detailed menu </div>
+        <div style="width: 100vw; height: 100vh; overflow: hidden">
+			<div id="banner-homepage"></div>
+			<div style=" position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); font-family: 'Agency FB', arial; font-weight: bold; color: black; z-index: inherit; text-align: center; font-size: 4vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
+			<img src="pictures/LogoUTE.png" style="z-index: 100; position: absolute; height:30%; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+		</div>
+
+		<div class="sectiune-butoane">
+			<div style="background-color: transparent; width: 100%; height: 100%; bottom:0%; top:0%; z-index:100; position: absolute">
+				<div class="wrapper-bulina" style="margin: 0; margin-left: 15%;">
+					<div class="buline-homepage" style="top: 5%;">
+						<a href="info.php">
+							<div class="text-centrat" style="color: white; opacity: 0; z-index: 105;">Info</div>
+							<img class="icon" id="info" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/calendar.svg" alt="Info">
+						</a>
+					</div>
+					<div class="wrapper-lists">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+							<li>copac</li>
+							<li>mai multe cuvinte</li>
+							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						</ul>
+					</div>
+				</div>
+				<div class="wrapper-bulina">
+					<div class="buline-homepage">
+						<a href="aboutus.php">
+							<div class="text-centrat" style="color: white; opacity: 0;">About Us</div>
+							<img class="icon" id="contact" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/users.svg" alt="About Us">
+						</a>
+					</div>
+					<div class="wrapper-lists">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+							<li>copac</li>
+							<li>mai multe cuvinte</li>
+							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						</ul>
+					</div>
+				</div>
+				<div class="wrapper-bulina">
+					<div class="buline-homepage">
+						<a href="#">
+							<div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
+							<img class="icon" id="help" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/help.svg" alt="Got A Problem?">
+						</a>
+					</div>
+					<div class="wrapper-lists">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+							<li>copac</li>
+							<li>mai multe cuvinte</li>
+							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						</ul>
+					</div>
+				</div>
+				<div class="wrapper-bulina">
+					<div class="buline-homepage">
+						<a href="event.php">
+							<div class="text-centrat" style="color: white; opacity: 0;">Event</div>
+							<img class="icon" id="event" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/book.svg" alt="Event">
+						</a>
+					</div>
+					<div class="wrapper-lists">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+							<li>copac</li>
+							<li>mai multe cuvinte</li>
+							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						</ul>
+					</div>
+				</div>
+				<div class="wrapper-bulina">
+					<div class="buline-homepage">
+						<a href="sponsors.php">
+							<div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
+							<img class="icon" id="sponsors" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/investment.svg" alt="Our Sponsors">
+						</a>
+					</div>
+					<div class="wrapper-lists">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+							<li>copac</li>
+							<li>mai multe cuvinte</li>
+							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 
