@@ -6,19 +6,22 @@
 
     class SQLiDB extends PDO {
         function __construct(){
-            parent::__construct($GLOBALS['dbtype'] . ':' . $GLOBALS['reg_db_name'], $GLOBALS['usr'], $GLOBALS['pass']);
+            parent::__construct($GLOBALS['dbtype'] . ':' . $GLOBALS['reg_db_name'], $GLOBALS['usr'], $GLOBALS['pass'], array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET CHARACTER SET UTF8"));
 
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->exec("PRAGMA foreign_keys = ON");
+            if($GLOBALS['dbtype'] == "sqlite")
+                $this->exec("PRAGMA foreign_keys = ON");
         }
     }
 
     class ContentDB extends PDO {
         function __construct(){
-            parent::__construct($GLOBALS['dbtype'] . ':' . $GLOBALS['content_db_name'], $GLOBALS['usr'], $GLOBALS['pass']);
+            parent::__construct($GLOBALS['dbtype'] . ':' . $GLOBALS['content_db_name'], $GLOBALS['usr'], $GLOBALS['pass'], array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET CHARACTER SET UTF8"));
 
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->exec("PRAGMA foreign_keys = ON");
+            
+            if($GLOBALS['dbtype'] == "sqlite")
+                $this->exec("PRAGMA foreign_keys = ON");
         }
 
         function getContentsForPage($pageName, $lang){

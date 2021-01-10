@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 
 <?php
+    session_start();
+
+	$displaylogin = true;
+	if(!isset($_SESSION['adminloggedin']) || $_SESSION['adminloggedin'] == false){
+        header('Location: adminlogin.php');
+        die();
+	}
+?>
+
+<?php
     include 'config/dbconfig.php';
 
     //Luam toate variabilele setate in POST si verificam daca sunt valide (adica daca sunt setate si nu sunt goale)
