@@ -61,10 +61,10 @@
 			}
 			.registration-button{
 				position:absolute; 
-				top:0%; left: 50%; 
-				transform: translate(-50%, 0%); 
-				height: 90%; 
-				width: 30%; 
+				top:50%;  
+				transform: translate(0%, -50%); 
+				height: 20%; 
+				width: 8%; 
 				border: 0.5vh solid black; 
 				border-radius:2vw;
 				font-size: 5vh;
@@ -182,13 +182,17 @@
 
 		<div class="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #df458d">
 			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat">Registrations begin january 26th!</div> </div>
-			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:2.5vh;"> <div class="text-centrat">In the meantime, subscribe to our newsletter, or check us out on <a href="#bottom-of-page" id="href" >social media</a>!</div> </div>
+			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:2.5vh;"> <div class="subtitile text-centrat">In the meantime, subscribe to our newsletter, or check us out on <a href="#bottom-of-page" id="href" >social media</a>!</div> </div>
 			<div id="wrapper-registration-buttons" style="position: absolute; bottom:0; height: 25vh; width:100%;" >
-				<div class="registration-button">
+				<div id="subscribe-btn" class="registration-button" style="left: 10%;">
 					<a href="#" class="text-centrat" style="text-decoration: none;">
-						Subscribe now
+						back
 					</a>
 				</div>
+				<form method="POST" style="position:absolute; height:100%; width:100%;" action="register_subscriber.php">
+					<input type="text" id="email" name="email" placeholder="your e-mail..." style="position: absolute; top:50%; left: 50%; transform: translate(-50%, -50%); background-color:transparent; border:0.3vh solid black; border-radius: 2vw; color:white; height:30%; width:60%; font-size:3vh">
+					<button type="submit" class="registration-button" style="right:10%; background-color:transparent; "><div class="text-centrat">Submit</div></button>
+            	</form>
 			</div>
 		</div>
 
@@ -231,29 +235,15 @@
 
 		</div>
 
-		<!-- <div id="content1" class="row">
-			
-			<div id="desc1" class="column" style="flex: 30vh; height: 80vh; background-color: #2A3151">Descriere primul content</div>
-			<div id="imagine1" class="column" style="flex: 70vh; height: 80vh"></div>
-		</div>
-		<br>
-		<div id="content2" class="row">
-			<div id="imagine2" class="column" style="flex: 70vh; height: 100vh"></div>
-			<div id="desc2" class="column" style="flex: 30vh; background-color: #AA3151; height: 100vh">Descriere al doilea content</div>
-		</div> 
-
-		<div id="bottom">
-			<?php
-				if($displaylogin){
-					echo "You are not logged in. <a href='login.php'>Login</a> or <a href='registration.php'>Sign up</a>.";
-				}
-				else{
-					echo $welcomemsg . " <a href='logout.php'>Logout</a>";
-				}
-			?>
-		</div>
-
-		<div style="background-color: white;"><div id="rotunjit-colturi" style="overflow:hidden;"></div></div>  -->
+		<?php
+			if($displaylogin){
+				echo "You are not logged in. <a href='login.php'>Login</a> or <a href='registration.php'>Sign up</a>.";
+			}
+			else{
+				echo $welcomemsg . " <a href='logout.php'>Logout</a>";
+			}
+		?>
+	
 		<?php include "elements/footer.html"; ?>	
 
 		<script>
