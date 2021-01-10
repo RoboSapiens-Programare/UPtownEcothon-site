@@ -55,11 +55,11 @@
 /* Twisty stuff are here */
 .smallcontent {
     position: absolute;
-    left: 25%;
+    left: 30%;
 
     transform: translateX(-50%);
 
-    width: 30vw;
+    width: 25vw;
     height: 25vh;
 
     /* perspective: 1000px; */

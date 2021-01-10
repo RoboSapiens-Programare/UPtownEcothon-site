@@ -53,13 +53,50 @@
 			.wrapper-lists::-webkit-scrollbar{
 				display: none;
 			}
+			.wrapper-registration #href{
+				text-decoration: underline; color: black;
+			}
+			.wrapper-registration #href:hover{
+				color: #e7df68;
+			}
+			.registration-button{
+				position:absolute; 
+				top:0%; left: 50%; 
+				transform: translate(-50%, 0%); 
+				height: 90%; 
+				width: 30%; 
+				border: 0.5vh solid black; 
+				border-radius:2vw;
+				font-size: 5vh;
+			}
+			.registration-button:hover{
+				color:#e7df68;
+				border: 0.5vh solid #e7df68; 
+			}
+			.registration-button:hover a{
+				color:white;
+			}
 		</style>
 
 	</head>
-	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
-    
-		
 
+	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
+
+		<div id="language">
+			<ul>
+				<li style="border-right: 0.2vw solid white;">
+					<a href="?lang=ro">
+					ro
+					</a>
+				</li>
+				<li style="padding-left: 0.4vw;">
+					<a href="?lang=en">
+					en
+					</a>
+				</li>
+			</ul>
+		</div>
+    
 		<div style="width: 100vw; height: 100vh; overflow: hidden">
 			<div id="banner-homepage"></div>
 			<div class="text-centrat" style="font-size: 3vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
@@ -144,8 +181,15 @@
 		</div>
 
 		<div class="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #df458d">
-			<div style="position:absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #df458d">Registrations begin january 26th!</div> </div>
-			
+			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat">Registrations begin january 26th!</div> </div>
+			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:2.5vh;"> <div class="text-centrat">In the meantime, subscribe to our newsletter, or check us out on <a href="#bottom-of-page" id="href" >social media</a>!</div> </div>
+			<div id="wrapper-registration-buttons" style="position: absolute; bottom:0; height: 25vh; width:100%;" >
+				<div class="registration-button">
+					<a href="#" class="text-centrat" style="text-decoration: none;">
+						Subscribe now
+					</a>
+				</div>
+			</div>
 		</div>
 
 		<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #df458d">Helpful Timeline =D</div> </div>
@@ -215,6 +259,25 @@
 		<script>
 
 			// alert(window.innerWidth);
+
+			function fadeicon(elem) {
+            var icon = elem.getElementsByClassName('icon')[0];
+            var text = elem.getElementsByClassName('text-centrat')[0];
+
+            transitions.fadeOut(icon, tweenFunctions.easeOutExpo, 400);
+
+            transitions.fadeIn(text, tweenFunctions.easeInExpo, 400);
+			}
+
+			function appearicon(elem) {
+				var icon = elem.getElementsByClassName('icon')[0];
+				var text = elem.getElementsByClassName('text-centrat')[0];
+
+				transitions.fadeOut(text, tweenFunctions.easeOutExpo, 400);
+
+				transitions.fadeIn(icon, tweenFunctions.easeInExpo, 400);
+
+			}
 
 			function showMeaning(elem){
 				var main = elem.getElementsByClassName("main")[0];

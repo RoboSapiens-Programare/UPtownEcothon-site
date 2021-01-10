@@ -10,37 +10,39 @@
        
         <style>
             .menu-item:hover{
-                background-color: burlywood;
+                /* background-color: burlywood; */
+                opacity: 0.9;
                 cursor: pointer;
             }
         </style>
     </head>
-    <body style="background-color: #855754; overflow: hidden; margin:0px;">
+    <body style="background:linear-gradient(#193f1e, #193f1e), url(pictures/SiBQ.gif); background-size:cover; background-blend-mode: multiply; overflow: hidden; margin:0px;">
 
         <?php 
 			include "elements/sageata.html";
         ?>	
         
 
-        <div id="info-menu" style="position:fixed; width: 13vw; height: 70vh; top:50vh; right: 0px; transform:translateY(-50%); z-index: 20">
-            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 20%; padding: 0" onclick="document.location.href = '#program';">
-                <div class="text-centrat">Program</div>
+        <div id="info-menu" style="position:fixed; width: 10vw; height: 70vh; top:50vh; right: 1vw; transform:translateY(-50%); z-index: 20">
+            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 20%; padding: 0;" onclick="document.location.href = '#program';">
+                <div class="text-centrat" style="font-size: 1.5vw;">Program</div>
             </div>
-            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; bottom: 20%; padding: 0" onclick="document.location.href = '#news';">
-                <div class="text-centrat">News</div>
+            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; bottom: 20%; padding: 0;" onclick="document.location.href = '#news';">
+                <div class="text-centrat" style="font-size: 1.5vw;">News</div>
             </div>
         </div>
 
-        <div style="background-color: #855754; overflow: hidden; margin:0px; width: 200vw; height: 100vh">
+        <!-- background-color: #855754; -->
+        <div style="backgound:transparent; overflow: hidden; margin:0px; width: 200vw; height: 100vh">
 
             <div id="program" style="position:absolute; left: 0%; display:inline-block; width: 100vw; height: 100vh">
-                <div id="program-container" class="rounded-rect" style="position:absolute; left: 0%; top: 50%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; font-size:2rem">
+                <div id="program-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; font-size:2rem">
                     <?php echo $content['Program'][1]?>
                 </div>
             </div>
 
             <div id="news" style="position:absolute; left:100%; display:inline-block; width: 100vw; height: 100vh;">
-                <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 0; top: 50%; transform:translateY(-50%); height:70%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
+                <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:75%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
                     <div class="franshalssection" id="franshals1">
                         <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
                             <div class="sticky-col">

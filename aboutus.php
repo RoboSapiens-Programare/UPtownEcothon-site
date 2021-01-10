@@ -1,77 +1,4 @@
 <!DOCTYPE html>
-
-<?php
-    $successmsg = "";
-
-    if (isset($_POST['Email'])) {
-        $email_to = "ute-contact@robosapiens.ro";
-        $email_subject = "New form submissions";
-
-        function problem($error)
-        {
-            echo "We are very sorry, but there were error(s) found with the form you submitted. ";
-            echo "These errors appear below.<br><br>";
-            echo $error . "<br><br>";
-            echo "Please go back and fix these errors.<br><br>";
-            die();
-        }
-
-        // validation expected data exists
-        if (
-            !isset($_POST['Name']) ||
-            !isset($_POST['Email']) ||
-            !isset($_POST['Message'])
-        ) {
-            problem('We are sorry, but there appears to be a problem with the form you submitted.');
-        }
-
-        $name = $_POST['Name']; // required
-        $email = $_POST['Email']; // required
-        $message = $_POST['Message']; // required
-
-        $error_message = "";
-        $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
-
-        if (!preg_match($email_exp, $email)) {
-            $error_message .= 'The Email address you entered does not appear to be valid.<br>';
-        }
-
-        $string_exp = "/^[A-Za-z .'-]+$/";
-
-        if (!preg_match($string_exp, $name)) {
-            $error_message .= 'The Name you entered does not appear to be valid.<br>';
-        }
-
-        if (strlen($message) < 2) {
-            $error_message .= 'The Message you entered do not appear to be valid.<br>';
-        }
-
-        if (strlen($error_message) > 0) {
-            problem($error_message);
-        }
-
-        $email_message = "Form details below.\n\n";
-
-        function clean_string($string)
-        {
-            $bad = array("content-type", "bcc:", "to:", "cc:", "href");
-            return str_replace($bad, "", $string);
-        }
-
-        $email_message .= "Name: " . clean_string($name) . "\n";
-        $email_message .= "Email: " . clean_string($email) . "\n";
-        $email_message .= "Message: " . clean_string($message) . "\n";
-
-        // create email headers
-        $headers = 'From: ' . $email . "\r\n" .
-            'Reply-To: ' . $email . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-        mail($email_to, $email_subject, $email_message, $headers);
-
-        $successmsg = "Thank you for contacting us. We will be in touch with you very soon.";
-    }
-?>
-
 <html>
     <head>
 
@@ -80,13 +7,83 @@
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/contact-form.css">
 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://www.google.com/recaptcha/api.js?render=6Lc3EicaAAAAACx7cucfSk0pKiALJOH6v2puvb4G"></script>
+
+
         <?php include 'elements/header.php'; ?>
+
+        <style>
+            h2 {
+                font-size: 3.5rem;
+                color: darkgrey;
+            }
+            #footer-special ul{
+                list-style: none;
+                height: 100%;
+                overflow: hidden;
+                bottom: 0;
+                position: absolute;
+            }
+            #footer-special ul li{
+                /* border: 2px solid blue; */
+                width:auto;
+                height: 8%;
+                margin: 3vh 0vw 3vh -1vw;
+            }
+            #footer-special ul li a{
+                /* position: absolute; */
+                height: 100%;
+                /* width:100%; */
+            }
+            #footer-special ul li a img{
+                /* position: absolute; */
+                height: inherit;
+                width:inherit;
+            }
+        </style>
     </head>
 
     <body style="margin: 0px; overflow-x:hidden; overflow-y:hidden">
         <?php 
 			include "elements/sageata.html";
-		?>	
+        ?>	
+        
+        <div id="footer-special" style="position:absolute; bottom:0; left:0; width:15%; height:60vh;">
+            <ul>
+                <li style="height:10%">
+                    <a href="https://www.instagram.com/uptown.ecothon/">
+                        <img src="./icons/instagram.svg">
+                    </a>
+                </li>
+                <li style="height: 10%;">
+                    <a href="https://www.facebook.com/uptown.ecothon">
+                        <img src="./icons/facebook.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="sponsors.php">
+                        <img src="pictures/FTC.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="sponsors.php">
+                        <img src="pictures/natie.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="sponsors.php">
+                        <img src="pictures/gemini-solutions-logo.svg">
+                    </a>
+                </li>
+                <li>
+                    <a href="sponsors.php">
+                        <img src="pictures/endava.png">
+                    </a>
+                </li>
+
+            </ul>
+        </div>
 
         <div style="display: flex; width:100vw; height: 100vh">
             <div style="height:100vh; flex: 33.3%; background-color:peachpuff;"></div>
@@ -133,42 +130,54 @@
             <div id="bigtitle" class="btitle">Contact</div>
             <div id="bcontent" class="bcontent">
                 <?php echo $content['Contact']['Long'] ?>
-                <div class="fcf-body" style="width: 50%;">
+                <!-- contact form demo container -->
+                <section style="margin: 50px 20px;">
+                    <div style="max-width: 768px; margin: auto;">
+                        
+                        <!-- contact form -->
+                        <div class="card">
+                        <h2 class="card-header" style="color: black; font-size: 2rem">Contact Form</h2>
+                        <div class="card-body">
+                            <form class="contact_form" method="post" action="mail.php">
 
-                    <div id="fcf-form">
-                        <h3 class="fcf-h3">Contact us</h3>
-
-                        <form id="fcf-form-id" class="fcf-form-class" method="post">
-                            
-                            <div class="fcf-form-group">
-                                <label for="Name" class="fcf-label">Your name</label>
-                                <div class="fcf-input-group">
-                                    <input type="text" id="Name" name="Name" class="fcf-form-control" required>
+                            <!-- form fields -->
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                <input name="name" type="text" class="form-control" placeholder="Name" required>
                                 </div>
-                            </div>
-
-                            <div class="fcf-form-group">
-                                <label for="Email" class="fcf-label">Your email address</label>
-                                <div class="fcf-input-group">
-                                    <input type="email" id="Email" name="Email" class="fcf-form-control" required>
+                                <div class="col-md-6 form-group">
+                                <input name="email" type="email" class="form-control" placeholder="Email" required>
                                 </div>
-                            </div>
-
-                            <div class="fcf-form-group">
-                                <label for="Message" class="fcf-label">Your message</label>
-                                <div class="fcf-input-group">
-                                    <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
+                                <div class="col-md-12 form-group">
+                                <input name="subject" type="text" class="form-control" placeholder="Subject" required>
                                 </div>
+                                <div class="col-12 form-group">
+                                <textarea name="message" class="form-control" rows="5" placeholder="Message" required></textarea>
+                                </div>
+
+                                <!-- form message prompt -->
+                                <div class="row">
+                                <div class="col-12">
+                                    <div class="contact_msg" style="display: none">
+                                    <p>Your message was sent.</p>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="col-12">
+                                <input type="submit" value="Submit Form" class="btn btn-success" name="post">
+                                </div>
+
+                                <!-- hidden reCaptcha token input -->
+                                <input type="hidden" id="token" name="token">
                             </div>
 
-                            <div class="fcf-form-group">
-                                <button type="submit" id="fcf-button" class="fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block">Send Message</button>
-                            </div>
+                            </form>
+                        </div>
+                        </div>
 
-                            <?php echo $successmsg; ?>
-                        </form>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
 
@@ -220,6 +229,17 @@
                     }
                 }
             }
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Lc3EicaAAAAACx7cucfSk0pKiALJOH6v2puvb4G', {action: 'homepage'}).then(function(token) {
+                // console.log(token);
+                document.getElementById("token").value = token;
+                });
+            });
+            
         </script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="javascript/form.js"></script>
     </body>
 </html>
