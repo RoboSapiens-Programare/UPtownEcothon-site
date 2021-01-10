@@ -8,96 +8,93 @@
         die();
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $msg = "";
 
-        # BEGIN Setting reCaptcha v3 validation data
-        $url = "https://www.google.com/recaptcha/api/siteverify";
-        $data = [
-          'secret' => "6Lc3EicaAAAAADJIqvcY6peRjuj3TxLVetydIwvE",
-          'response' => $_POST['token'],
-          'remoteip' => $_SERVER['REMOTE_ADDR']
-        ];
-      
-        $options = array(
-          'http' => array(
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-            'method'  => 'POST',
-            'content' => http_build_query($data)
-          )
-        );
+    # BEGIN Setting reCaptcha v3 validation data
+    $url = "https://www.google.com/recaptcha/api/siteverify";
+    $data = [
+        'secret' => "6Lc3EicaAAAAADJIqvcY6peRjuj3TxLVetydIwvE",
+        'response' => $_POST['token'],
+        'remoteip' => $_SERVER['REMOTE_ADDR']
+    ];
+    
+    $options = array(
+        'http' => array(
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($data)
+        )
+    );
+    
+    # Creates and returns stream context with options supplied in options preset 
+    $context  = stream_context_create($options);
+    # file_get_contents() is the preferred way to read the contents of a file into a string
+    $response = file_get_contents($url, false, $context);
+    # Takes a JSON encoded string and converts it into a PHP variable
+    $res = json_decode($response, true);
+    # END setting reCaptcha v3 validation data
         
-        # Creates and returns stream context with options supplied in options preset 
-        $context  = stream_context_create($options);
-        # file_get_contents() is the preferred way to read the contents of a file into a string
-        $response = file_get_contents($url, false, $context);
-        # Takes a JSON encoded string and converts it into a PHP variable
-        $res = json_decode($response, true);
-        # END setting reCaptcha v3 validation data
-         
-          // print_r($response); 
-        # Post form OR output alert and bypass post if false. NOTE: score conditional is optional
-        # since the successful score default is set at >= 0.5 by Google. Some developers want to
-        # be able to control score result conditions, so I included that in this example.
-      
-        if ($res['success'] == true && $res['score'] >= 0.5) {
-            
-            require_once 'config/dbconfig.php';
+        //$res['success'] = true; $res['score'] = 0.6;
+    # Post form OR output alert and bypass post if false. NOTE: score conditional is optional
+    # since the successful score default is set at >= 0.5 by Google. Some developers want to
+    # be able to control score result conditions, so I included that in this example.
+    
+    if ($res['success'] == true && $res['score'] >= 0.5) {
+        
+        require_once 'config/dbconfig.php';
 
-            $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
-            $passwd = (isset($_POST['passwd']) && !empty($_POST['passwd'])) ? $_POST['passwd'] : null;
+        $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
+        $passwd = (isset($_POST['passwd']) && !empty($_POST['passwd'])) ? $_POST['passwd'] : null;
 
-            try{
-                $db = new ContentDB();
-                if($username && $passwd){
-                    $sql = "SELECT id, username, passwd FROM admins WHERE username = :uname LIMIT 1";
-                    $stmt = $db->prepare($sql);
+        try{
+            $db = new ContentDB();
+            $msg = "1";
 
-                    $stmt->bindParam(':uname', $username);
+            if($username && $passwd){
+                $msg = "2";
+                $sql = "SELECT id, username, passwd FROM admins WHERE username = :uname LIMIT 1";
+                $stmt = $db->prepare($sql);
 
-                    $stmt->execute();
+                $stmt->bindParam(':uname', $username);
 
-                    if($stmt){
-                        $ret = $stmt->fetch(PDO::FETCH_ASSOC);
-                        $hash = $ret['passwd'];
-                        if(password_verify($passwd, $hash)){
-                            $msg = "Ai intrat!";
+                $stmt->execute();
 
-                            session_start();
+                if($stmt){
+                    $ret = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $hash = $ret['passwd'];
+                    if(password_verify($passwd, $hash)){
+                        $msg = "Ai intrat!";
 
-                            $_SESSION['adminloggedin'] = true;
-                            $_SESSION['adminid'] = $ret['id'];
-                            $_SESSION['adminusername'] = $ret['username'];
+                        session_start();
 
-                            header("location: cms.php");
-                        }
-                        else{
-                            $msg = "Username or password incorrect!";
-                        }
+                        $_SESSION['adminloggedin'] = true;
+                        $_SESSION['adminid'] = $ret['id'];
+                        $_SESSION['adminusername'] = $ret['username'];
+
+                        header("location: cms.php");
                     }
                     else{
-                        $msg = "Database problem!";
+                        $msg = "Username or password incorrect!";
                     }
                 }
+                else{
+                    $msg = "Database problem!";
+                }
+            }
 
-                $db = null;
-                unset($db);
-            }
-            catch(PDOException $e){
-                echo $e->getMessage();
-            }
-      
-        } else {
-      
-            echo '<div class="alert alert-danger">
-            Error! The security token has expired or you are a bot.
-            </div>';
-        }  
-      
+            $db = null;
+            unset($db);
+        }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    
     } else {
-    # Not a POST request, set a 403 (forbidden) response code
-    http_response_code(403);
-    echo '<p class="alert-warning">There was a problem with your submission, please try again.</p>';
-    } 
+    
+        echo '<div>
+        Error! The security token has expired or you are a bot.
+        </div>';
+    }  
 ?>
 
 <html>
@@ -120,16 +117,17 @@
                             <!-- form fields -->
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <input name="username" type="text" class="form-control" placeholder="Username" required>
+                                    <input id="username" name="username" type="text" class="form-control" placeholder="Username" required>
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <input name="passwd" type="password" class="form-control" placeholder="Password" required>
+                                    <input id="passwd" name="passwd" type="password" class="form-control" placeholder="Password" required>
                                 </div>
 
                                 <div class="col-12">
                                     <input type="submit" value="Login" class="btn btn-success" name="post">
                                 </div>
 
+                                <?php echo $msg ?>
                                 <!-- hidden reCaptcha token input -->
                                 <input type="hidden" id="token" name="token">
                             </div>
@@ -150,6 +148,5 @@
         </script>
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="javascript/form.js"></script>
     </body>
 </html>
