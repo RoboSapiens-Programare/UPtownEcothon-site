@@ -24,7 +24,7 @@
         unset($db);
     }
     catch(PDOException $e){
-        $e->getMessage();
+        echo $e->getMessage();
     }
 ?>
 
