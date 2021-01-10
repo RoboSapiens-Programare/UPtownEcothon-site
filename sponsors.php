@@ -37,32 +37,32 @@
 
                 <div class="rotate-section" id="rt-sect4">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh; background-color:#d222d2;"><div class="text-centrat" style="width:95%"><img src="pictures/FTC.png" alt="FTC" style="width:100%"></div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh; background-color:#d222d2 ;"></div>
+                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;"><div class="text-centrat" style="width:95%"><img src="pictures/FTC.png" alt="FTC" style="width:100%"></div></div>
+                        <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
                         <div  class="text-centrat" style="font-size: 3vh"> chestii despre ftc</div>
                     </div>
                 </div>
                 <div class="rotate-section" id="rt-sect3">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh; background-color:#d222d2;" ><div class="text-centrat" style="width:95%"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%"></div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh; background-color:#d222d2 ;"></div>
+                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;" ><div class="text-centrat" style="width:95%"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%"></div></div>
+                        <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
                         <div  class="text-centrat" style="font-size: 3vh"> chestii despre gemini</div>
                     </div>
                 </div>
                 <div class="rotate-section" id="rt-sect2">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh; background-color:#d222d2;"><div class="text-centrat" style="width: 90%;"><img src="pictures/endava.png" alt="Endava" style="width: 100%;"></div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh; background-color:#d222d2 ;"></div>
+                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;"><div class="text-centrat" style="width: 90%;"><img src="pictures/endava.png" alt="Endava" style="width: 100%;"></div></div>
+                        <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
                         <div  class="text-centrat" style="font-size: 3vh"> chestii despre endava</div>
                     </div>
                 </div>
                 <div class="rotate-section" id="rt-sect1">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh; background-color:#d222d2;"><div class="text-centrat" style="color:white">Fundraiser</div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh; background-color:#d222d2 ;"></div>
+                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;"><div class="text-centrat" style="color:white">Fundraiser</div></div>
+                        <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
                         <div  class="text-centrat" style="font-size: 3vh"> chestii despre fundraiser</div>
                     </div>
@@ -149,10 +149,13 @@
                     // }
 
                     setTimeout(function(){
-                        dot1.style.opacity ="1";
-                        dot2.style.opacity ="0.5";
-                        dot3.style.opacity ="0.5";
-                        dot4.style.opacity ="0.5";
+                        dot1.style.filter ="invert(100%)";
+                        dot2.style.filter ="invert(0%)";
+                        dot3.style.filter ="invert(0%)";
+                        dot4.style.filter ="invert(0%)";
+                        // dot2.style.opacity ="0.5";
+                        // dot3.style.opacity ="0.5";
+                        // dot4.style.opacity ="0.5";
 
                         ToLeft(sect4);
                         sect4.style.zIndex = "10"; 
@@ -178,10 +181,14 @@
                     sect4.style.opacity ="0";
 
                     setTimeout(function(){
-                        dot1.style.opacity ="0.5";
-                        dot2.style.opacity ="1";
-                        dot3.style.opacity ="0.5";
-                        dot4.style.opacity ="0.5";
+                        dot1.style.filter ="invert(0%)";
+                        dot2.style.filter ="invert(100%)";
+                        dot3.style.filter ="invert(0%)";
+                        dot4.style.filter ="invert(0%)";
+                        // dot1.style.opacity ="0.5";
+                        // dot2.style.opacity ="1";
+                        // dot3.style.opacity ="0.5";
+                        // dot4.style.opacity ="0.5";
                     
                         ToLeft(sect1);
                         sect1.style.zIndex = "10";
@@ -202,10 +209,14 @@
                     sect1.style.opacity ="0";
 
                     setTimeout(function(){
-                        dot1.style.opacity ="0.5";
-                        dot2.style.opacity ="0.5";
-                        dot3.style.opacity ="1";
-                        dot4.style.opacity ="0.5";
+                        dot1.style.filter ="invert(0%)";
+                        dot2.style.filter ="invert(0%)";
+                        dot3.style.filter ="invert(100%)";
+                        dot4.style.filter ="invert(0%)";
+                        // dot1.style.opacity ="0.5";
+                        // dot2.style.opacity ="0.5";
+                        // dot3.style.opacity ="1";
+                        // dot4.style.opacity ="0.5";
         
                         ToLeft(sect2);
                         sect2.style.zIndex = "10";
@@ -226,10 +237,14 @@
                     sect2.style.opacity ="0";
 
                     setTimeout(function(){
-                        dot1.style.opacity ="0.5";
-                        dot2.style.opacity ="0.5";
-                        dot3.style.opacity ="0.5";
-                        dot4.style.opacity ="1";
+                        // dot1.style.opacity ="0.5";
+                        // dot2.style.opacity ="0.5";
+                        // dot3.style.opacity ="0.5";
+                        // dot4.style.opacity ="1";
+                        dot1.style.filter ="invert(0%)";
+                        dot2.style.filter ="invert(0%)";
+                        dot3.style.filter ="invert(0%)";
+                        dot4.style.filter ="invert(100%)";
         
                         ToLeft(sect3);
                         sect3.style.zIndex = "10";
@@ -254,10 +269,14 @@
                     sect4.style.opacity ="0";
 
                     setTimeout(function(){
-                        dot1.style.opacity ="1";
-                        dot2.style.opacity ="0.5";
-                        dot3.style.opacity ="0.5";
-                        dot4.style.opacity ="0.5";
+                        dot1.style.filter ="invert(100%)";
+                        dot2.style.filter ="invert(0%)";
+                        dot3.style.filter ="invert(0%)";
+                        dot4.style.filter ="invert(0%)";
+                        // dot1.style.opacity ="1";
+                        // dot2.style.opacity ="0.5";
+                        // dot3.style.opacity ="0.5";
+                        // dot4.style.opacity ="0.5";
                 
                         ToLeft(sect4);
                         sect4.style.zIndex = "10"; 
@@ -278,10 +297,14 @@
                     sect2.style.opacity ="0";
         
                     setTimeout(function(){
-                        dot1.style.opacity ="0.5";
-                        dot2.style.opacity ="0.5";
-                        dot3.style.opacity ="1";
-                        dot4.style.opacity ="0.5";
+                        dot1.style.filter ="invert(0%)";
+                        dot2.style.filter ="invert(0%)";
+                        dot3.style.filter ="invert(100%)";
+                        dot4.style.filter ="invert(0%)";
+                        // dot1.style.opacity ="0.5";
+                        // dot2.style.opacity ="0.5";
+                        // dot3.style.opacity ="1";
+                        // dot4.style.opacity ="0.5";
 
                         ToLeft(sect2);
                         sect2.style.zIndex = "10";
@@ -302,10 +325,14 @@
                     sect3.style.opacity ="0";
         
                     setTimeout(function(){
-                        dot1.style.opacity ="0.5";
-                        dot2.style.opacity ="0.5";
-                        dot3.style.opacity ="0.5";
-                        dot4.style.opacity ="1";
+                        dot1.style.filter ="invert(0%)";
+                        dot2.style.filter ="invert(0%)";
+                        dot3.style.filter ="invert(0%)";
+                        dot4.style.filter ="invert(100%)";
+                        // dot1.style.opacity ="0.5";
+                        // dot2.style.opacity ="0.5";
+                        // dot3.style.opacity ="0.5";
+                        // dot4.style.opacity ="1";
 
                         ToLeft(sect3);
                         sect3.style.zIndex = "10";
@@ -326,10 +353,14 @@
                     sect1.style.opacity ="0";
         
                     setTimeout(function(){
-                        dot1.style.opacity ="0.5";
-                        dot2.style.opacity ="1";
-                        dot3.style.opacity ="0.5";
-                        dot4.style.opacity ="0.5";
+                        dot1.style.filter ="invert(0%)";
+                        dot2.style.filter ="invert(100%)";
+                        dot3.style.filter ="invert(0%)";
+                        dot4.style.filter ="invert(0%)";
+                        // dot1.style.opacity ="0.5";
+                        // dot2.style.opacity ="1";
+                        // dot3.style.opacity ="0.5";
+                        // dot4.style.opacity ="0.5";
 
                         ToLeft(sect1);
                         sect1.style.zIndex = "10";

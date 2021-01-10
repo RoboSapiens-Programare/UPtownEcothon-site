@@ -68,7 +68,7 @@
 .rotate-index ul li {
     display: inline;
     height: inherit;
-    opacity: 0.5;
+    /* opacity: 0.5; */
 }
 
 .rotate-index ul li img {

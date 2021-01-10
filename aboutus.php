@@ -51,7 +51,7 @@
 			include "elements/sageata.html";
         ?>	
         
-        <div id="footer-special" style="position:absolute; bottom:0; left:0; width:15%; height:60vh;">
+        <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
             <ul>
                 <li style="height:10%">
                     <a href="https://www.instagram.com/uptown.ecothon/">

@@ -19,7 +19,7 @@
     position: absolute;
     border-radius: 100%;
     border: 1.5vw solid aliceblue;
-    background-color: teal;
+    /* background-color: teal; */
     width: 30vh;
     height: 30vh;
     font-size: 500%;
@@ -29,29 +29,40 @@
     mix-blend-mode: normal;
 }
 
-.rectangle-content .circle-top-left:hover img,
-.rectangle-content .circle-top-right:hover img {
+#event .rectangle-content .circle-top-left:hover img,
+#event .rectangle-content .circle-top-right:hover img {
     mix-blend-mode: difference;
     cursor: pointer;
 }
 
-.rectangle-content .circle-top-left:hover,
+
+/* .rectangle-content .circle-top-left:hover,
 .rectangle-content .circle-top-right:hover {
     filter: hue-rotate(50deg);
     cursor: pointer;
-}
+} */
 
 
 /* #sponsors .rectangle-content .circle-top-left:hover img,
 #sponsors .rectangle-content .circle-top-right:hover img {
-    mix-blend-mode: difference;
+    filter: grayscale(100%) saturate(150%);
     cursor: pointer;
 } */
 
+#sponsors .rectangle-content .circle-top-left,
+#sponsors .rectangle-content .circle-top-right,
+#sponsors .rectangle-content .circle-bottom-left,
+#sponsors .rectangle-content .circle-bottom-right {
+    background-color: #d222d2;
+    cursor: pointer;
+}
+
 #sponsors .rectangle-content .circle-top-left:hover,
 #sponsors .rectangle-content .circle-top-right:hover {
-    filter: hue-rotate(200deg);
+    /* filter: hue-rotate(200deg); */
     /* mix-blend-mode: multiply; */
+    background-color: black;
+    /* filter: grayscale(100%) saturate(150%); */
     cursor: pointer;
 }
 

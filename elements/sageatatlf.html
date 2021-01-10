@@ -10,7 +10,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 ?>
 
     <div id="cerc-sageatatlf" onclick="expandMenu()">
-        <div id="bkg-sageata"></div>
+        <!-- <div id="bkg-sageata"></div> -->
         <!-- <div class="logo-elem-tlf" id="sageata-meniutlf">
             <img src="pictures/1sageataUTE.png" alt="logo arrow">
         </div>
@@ -24,7 +24,8 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 
     <!-- <div id="bkg-sageata"></div> -->
     <div class="logo-elem-tlf" id="sageata-meniutlf" onclick="expandMenu()">
-        <img src="pictures/1sageataUTE.png" alt="logo arrow">
+        <div id="bkg-sageata" style="z-index: 101;"></div>
+        <img src="pictures/1sageataUTE.png" alt="logo arrow" style="z-index: 105;">
     </div>
     <div class="logo-elem-tlf" id="town-TOP">
         <img src="pictures/1townUTE.png" style="z-index: 102;" alt="logo town">
@@ -130,6 +131,9 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         var logoElemSmallWidth = 42;
         var logoElemSmallHeight = 21;
 
+        var logoElemBigWidth = 80;
+        var logoElemBigHeight = 40;
+
         var cercSmallSize = 21;
         var cercBigTop = -30;
 
@@ -140,47 +144,47 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
             //     new Dimension(sageata, 2, "vh"),
             //     tweenFunctions.easeOutExpo,
             //     1500);
-            transitions.resize2D(new Dimension(sageata, 86, "vw"),
-                new Dimension(sageata, 43, "vw"),
+            transitions.resize2D(new Dimension(sageata, logoElemBigWidth, "vw"),
+                new Dimension(sageata, logoElemBigHeight, "vw"),
                 tweenFunctions.easeOutExpo,
                 1500);
 
 
             //pt cerc
-            transitions.resize2D(new Dimension(cerc, 250, "vw"),
-                new Dimension(cerc, 250, "vw"),
+            transitions.resize2D(new Dimension(cerc, 400, "vw"),
+                new Dimension(cerc, 400, "vw"),
                 tweenFunctions.easeOutExpo,
                 1500);
 
-            transitions.slide2D(new Dimension(cerc, -50, "vw"),
-                new Dimension(cerc, -30, "vh"),
+            transitions.slide2D(new Dimension(cerc, -70, "vw"),
+                new Dimension(cerc, -70, "vw"),
                 tweenFunctions.easeOutExpo,
                 1500);
 
 
             //pt lista meniului in sine
             transitions.slide2D(new Dimension(list, 0, "percent"),
-                new Dimension(list, 0, "percent"),
+                new Dimension(list, 30, "vh"),
                 tweenFunctions.easeOutExpo,
                 1000);
 
 
             //pt town si cothon
-            transitions.slide2D(new Dimension(logo1, 7.5, "vw"),
+            transitions.slide2D(new Dimension(logo1, 7.3, "vw"),
                 new Dimension(logo1, 2, "vh"),
                 tweenFunctions.easeOutExpo,
                 1500);
-            transitions.resize2D(new Dimension(logo1, 86, "vw"),
-                new Dimension(logo1, 43, "vw"),
+            transitions.resize2D(new Dimension(logo1, logoElemBigWidth, "vw"),
+                new Dimension(logo1, logoElemBigHeight, "vw"),
                 tweenFunctions.easeOutExpo,
                 1500);
 
-            transitions.slide2D(new Dimension(logo2, 7.5, "vw"),
+            transitions.slide2D(new Dimension(logo2, 7.3, "vw"),
                 new Dimension(logo2, 2, "vh"),
                 tweenFunctions.easeOutExpo,
                 1500);
-            transitions.resize2D(new Dimension(logo2, 86, "vw"),
-                new Dimension(logo2, 43, "vw"),
+            transitions.resize2D(new Dimension(logo2, logoElemBigWidth, "vw"),
+                new Dimension(logo2, logoElemBigHeight, "vw"),
                 tweenFunctions.easeOutExpo,
                 1500);
 
@@ -190,7 +194,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         function contractMenu() {
 
             //pt sageata
-            transitions.slide2D(new Dimension(sageata, 7.5, "vw"),
+            transitions.slide2D(new Dimension(sageata, 7.3, "vw"),
                 new Dimension(sageata, 2, "vh"),
                 tweenFunctions.easeInQuad,
                 1000);
@@ -213,7 +217,7 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 
             //pt lista meniului in sine
             transitions.slide2D(new Dimension(list, -100, "percent"),
-                new Dimension(list, 0, "percent"),
+                new Dimension(list, 30, "vh"),
                 tweenFunctions.easeOutQuad,
                 700);
 
@@ -244,13 +248,13 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 
             //pt lista meniului in sine
             transitions.slide2D(new Dimension(list, -100, "percent"),
-                new Dimension(list, 0, "percent"),
+                new Dimension(list, 30, "vh"),
                 tweenFunctions.easeOutQuad,
                 600);
 
             //pt login
             transitions.slide2D(new Dimension(login, 0, "percent"),
-                new Dimension(login, 0, "percent"),
+                new Dimension(login, 30, "vh"),
                 tweenFunctions.easeInQuad,
                 600);
         }
@@ -259,13 +263,13 @@ if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 
             //pt login
             transitions.slide2D(new Dimension(login, -100, "percent"),
-                new Dimension(login, 0, "percent"),
+                new Dimension(login, 30, "vh"),
                 tweenFunctions.easeOutQuad,
                 600);
 
             //pt lista meniului in sine
             transitions.slide2D(new Dimension(list, 0, "percent"),
-                new Dimension(list, 0, "percent"),
+                new Dimension(list, 30, "vh"),
                 tweenFunctions.easeInQuad,
                 600);
         }

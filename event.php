@@ -58,7 +58,7 @@
         </style>
     </head>
     
-    <body style="margin: 0px; overflow:scroll; overflow-x: hidden; overflow-y: hidden;">
+    <body id="event" style="margin: 0px; overflow:scroll; overflow-x: hidden; overflow-y: hidden;">
         <?php 
 			include "elements/sageata.html";
 		?>

@@ -3,8 +3,9 @@
 }
 
 #sponsors #background {
-    background-color: #d222d2;
-    color: #3b9247;
+    /* background-color: #d222d2; */
+    background-color: #851985;
+    /* color: #3b9247; */
 }
 
 #hrefuri {
@@ -37,7 +38,8 @@
 }
 
 #sponsors .href-elem:hover {
-    background-color: #00bd11;
+    /* background-color: #851985; */
+    filter: invert(100%);
 }
 
 .href-elem img {
