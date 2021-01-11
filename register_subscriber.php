@@ -22,14 +22,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute();
 
             http_response_code(200);
-            echo '<div class="subtitile text-centrat">Thank You! Your email has been successfully sent.</div>';
+            echo '<p class="alert alert-success">Thank You! Your message has been successfully sent.</p>';
         } else {
-            echo 'not a vaild email';
+            http_response_code(500);
+            echo '<p class="alert alert-warning">Something went wrong, your message could not be sent.</p>';
         }
 
         unset($db);
 
-        header('Location: home.php');
+        // header('Location: home.php');
 
     } catch (PDOException $e) {
         echo $e->getMessage();

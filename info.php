@@ -33,12 +33,18 @@
         </div>
 
         <!-- background-color: #855754; -->
-        <div style="background-color:transparent; overflow: hidden; margin:0px; width: 200vw; height: 100vh">
+        <div style="background:transparent; overflow: hidden; margin:0px; width: 200vw; height: 100vh">
 
             <div id="program" style="position:absolute; left: 0%; display:inline-block; width: 100vw; height: 100vh">
-                <div id="program-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; font-size:2rem">
-                    <?php echo $content['Program'][1]?>
+                <div id="program-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:2vw; background: url(pictures/infobkg.png); background-size:cover; color:white">
+                    <div style="position: absolute; left:1%; top:50%; transform:translate(0%, -50%);">
+                        <?php echo $content['Program'][1]?>
+                    </div>
+                    <!-- <div style="position:absolute; left:60%; top:50%; transform:translate(0%, -50%); height:90%; border:2px solid red"> -->
+                        <img src="pictures/drafttimetable.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%); height:65%; width: 40%;border:0px solid red">
+                    <!-- </div> -->
                 </div>
+                
             </div>
 
             <div id="news" style="position:absolute; left:100%; display:inline-block; width: 100vw; height: 100vh;">

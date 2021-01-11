@@ -136,7 +136,7 @@ var transitions = {
         requestAnimationFrame(tick);
     },
 
-    slideX: function(toX, func, duration){
+    slideX: function(toX, func, duration) {
         var elem = toX.relativeElement;
         var fromY = new Dimension(elem, 0, "px");
 
@@ -359,6 +359,9 @@ var transitions = {
             let my = func(elapsed, from_margin_y, to_margin_y, duration);
 
             elem.style.scale = val;
+            // elem.style.transform = "scale(" + val + ", " + val + ")";
+            // elem.style.transform = "scale(" + val + ")";
+
 
             elem.style.marginTop = my + 'px';
             elem.style.marginBottom = my + 'px';
@@ -370,6 +373,8 @@ var transitions = {
                 requestAnimationFrame(tick);
             } else {
                 elem.style.scale = to;
+                // elem.style.transform = "scale(" + to + ", " + to + ")";
+                // elem.style.transform = "scale(" + to + ")";
 
                 elem.style.marginTop = to_margin_y + 'px';
                 elem.style.marginBottom = to_margin_y + 'px';
