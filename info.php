@@ -33,7 +33,7 @@
         </div>
 
         <!-- background-color: #855754; -->
-        <div style="backgound:transparent; overflow: hidden; margin:0px; width: 200vw; height: 100vh">
+        <div style="background-color:transparent; overflow: hidden; margin:0px; width: 200vw; height: 100vh">
 
             <div id="program" style="position:absolute; left: 0%; display:inline-block; width: 100vw; height: 100vh">
                 <div id="program-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; font-size:2rem">
