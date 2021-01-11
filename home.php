@@ -65,14 +65,16 @@
 				/* transform: translate(0%, -50%);  */
 				/* height: 20%; 
 				width: 8%;  */
-				border: 0.3vh solid black; 
+				border: 0.4vh solid black; 
 				border-radius:2vw;
-				font-size: 2vh;
+				font-size: 3vh;
+				background-color:#e7df68
 			}
 			.registration-button:hover{
 				color:white;
 				border: 0.5vh solid #e7df68; 
 				cursor:pointer;
+				background-color: transparent;
 			}
 			.registration-button:hover div{
 				color:white;
@@ -182,19 +184,22 @@
 			</div>
 		</div>
 
-		<div class="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #df458d">
+		<div class="wrapper-registration" id="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #df458d">
 			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat">Registrations begin january 26th!</div> </div>
 			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:2.5vh;"> <div class="subtitile text-centrat">In the meantime, subscribe to our newsletter, or check us out on <a href="#bottom-of-page" id="href" >social media</a>!</div> </div>
 			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
 				
 				<form method="POST" class="form" style="display:visible; position:absolute; height:100%; width:100%; left:100%;" action="register_subscriber.php">
-					<input type="text" id="email" class="email" name="email" placeholder="your e-mail..." style="position: absolute; top:0%; left: 50%; transform: translate(-50%, -20%); background-color:transparent; border:0.3vh solid black; border-radius: 2vw; color:white; height:30%; width:60%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw">
-					<button type="submit" class="registration-button" style="right:10%; height: 20%; width: 8%; background-color:transparent; "><div class="text-centrat">Submit</div></button>
+					<input type="text" id="email" class="email" name="email" placeholder="your e-mail..." style="position: absolute; top:0%; left: 50%; transform: translate(-50%, -20%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:60%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw">
+					<button type="submit" class="registration-button" style="right:10%; height: 20%; width: 8%;"><div class="text-centrat">Submit</div></button>
 				</form>
-				<div id="subscribe-btn" class="registration-button" style="top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:30%" onclick="showSubscribe()">
+				<div id="subscribe-btn" class="registration-button" style="top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:30%;" onclick="showSubscribe()">
 					<div class="text-centrat" style="text-decoration: none;">
 						Subscribe
 					</div>
+				</div>
+				<div class="contact_msg" style="display: none">
+					<p>Your message was sent.</p>
 				</div>
 			</div>
 		</div>
@@ -237,6 +242,7 @@
 			</div>
 
 		</div>
+
 	
 		<?php include "elements/footer.html"; ?>	
 
@@ -293,6 +299,7 @@
 
 			var wrprRegBtn = document.getElementById('wrapper-registration-buttons');
 			var subscribe = wrprRegBtn.getElementsByClassName('registration-button')[1]; 
+			var subscribe_text = subscribe.getElementsByClassName('text-centrat')[0];
 			var email = wrprRegBtn.getElementsByClassName('email')[0];
 			var submit = wrprRegBtn.getElementsByClassName('registration-button')[0];
 			var form = wrprRegBtn.getElementsByClassName('form')[0];
@@ -303,14 +310,16 @@
                		new Dimension(subscribe, 20, "percent"),
                 	tweenFunctions.easeOutExpo,
 					700);
-				transitions.translate2D(
-					new Dimension(subscribe, -36, "percent"),
+				transitions.slide2D(
+					new Dimension(subscribe, 14, "percent"),
 					new Dimension(subscribe, 0, "percent"),
 					tweenFunctions.easeOutExpo,
 					700);
 
-				transitions.translate2D(
-					new Dimension(form, -100, "percent"),
+				subscribe_text.innerHTML = "Back";
+
+				transitions.slide2D(
+					new Dimension(form, 0, "percent"),
 					new Dimension(form, 0, "percent"),
 					tweenFunctions.easeOutExpo,
 					700);
@@ -325,13 +334,15 @@
                		new Dimension(subscribe, 80, "percent"),
                 	tweenFunctions.easeOutExpo,
 					700);
-				transitions.translate2D(
-					new Dimension(subscribe, 36, "percent"),
+				transitions.slide2D(
+					new Dimension(subscribe, 50, "percent"),
 					new Dimension(subscribe, 0, "percent"),
 					tweenFunctions.easeOutExpo,
 					700);
+				subscribe_text.innerHTML = "Subscribe";
+				
 
-				transitions.translate2D(
+				transitions.slide2D(
 					new Dimension(form, 100, "percent"),
 					new Dimension(form, 0, "percent"),
 					tweenFunctions.easeOutExpo,
@@ -341,6 +352,10 @@
 					 
 			}
 		</script>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="javascript/form.js"></script>
+		
 	</body>
 
 </html>
