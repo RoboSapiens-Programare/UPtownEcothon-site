@@ -41,7 +41,7 @@
                         <?php echo $content['Program'][1]?>
                     </div>
                     <!-- <div style="position:absolute; left:60%; top:50%; transform:translate(0%, -50%); height:90%; border:2px solid red"> -->
-                        <img src="pictures/drafttimetable.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%); height:65%; width: 40%;border:0px solid red">
+                        <img src="pictures/drafttimetable.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
                     <!-- </div> -->
                 </div>
                 
