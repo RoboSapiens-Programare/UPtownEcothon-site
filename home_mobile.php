@@ -7,9 +7,7 @@ $scriptVersion = $detect->getScriptVersion();
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="robots" content="noindex">
-		
+	<head>		
 		<link rel="stylesheet" type="text/css" href="css/slideup.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 		<link rel="stylesheet" type="text/css" href="css/footer.css">

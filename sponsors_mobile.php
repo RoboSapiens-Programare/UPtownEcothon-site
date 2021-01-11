@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-        <meta name="robots" content="noindex">
-
 		<link rel="stylesheet" type="text/css" href="css/sageatatlf.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 		<link rel="stylesheet" type="text/css" href="css/footer.css">

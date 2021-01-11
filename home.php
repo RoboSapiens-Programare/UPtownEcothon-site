@@ -2,11 +2,11 @@
 <html style="scroll-behavior: smooth">
 	<head>
 
-		  <link rel="stylesheet" type="text/css" href="css/slideup.css">
-		  <link rel="stylesheet" type="text/css" href="css/sageata.css">
-		  <link rel="stylesheet" type="text/css" href="css/basics.css">
-		  <link rel="stylesheet" type="text/css" href="css/footer.css">
-		  <link rel="stylesheet" type="text/css" href="css/progressbar.css">
+		<link rel="stylesheet" type="text/css" href="css/slideup.css">
+		<link rel="stylesheet" type="text/css" href="css/sageata.css">
+		<link rel="stylesheet" type="text/css" href="css/basics.css">
+		<link rel="stylesheet" type="text/css" href="css/footer.css">
+		<link rel="stylesheet" type="text/css" href="css/progressbar.css">
 				  
 		<?php include 'elements/header.php'; ?>
 
