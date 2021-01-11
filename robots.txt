@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /config/
+Disallow: /content/
+Disallow: /css/
+Disallow: /elements/
+Disallow: /icons/
+Disallow: /javascript/
+Disallow: /Mobile-Detect-master/
+Disallow: /pictures/
+
+Sitemap: https://ute.robosapiens.ro/sitemap.xml
