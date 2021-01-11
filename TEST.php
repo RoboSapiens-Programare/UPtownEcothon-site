@@ -3,7 +3,8 @@
     <head>
         <title>Test page 12</title>
 
-
+        <meta name="robots" content="noindex">
+        
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
         <link rel="stylesheet" type="text/css" href="css/twistycontent.css">
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">

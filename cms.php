@@ -204,6 +204,7 @@
 
 <html>
     <head>
+        <meta name="robots" content="noindex">
         <title>CMS UTE :D</title>
     </head>
     <body>

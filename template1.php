@@ -2,7 +2,7 @@
 <html>
     <head>
         <title></title>
-
+        <meta name="robots" content="noindex">
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/scrollbar.css">

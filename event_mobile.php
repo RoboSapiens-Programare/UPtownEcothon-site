@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html style="scroll-behavior: smooth">
     <head>
+        <meta name="robots" content="noindex">
+
 		<title>Event - UTE</title>
 
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">

@@ -73,6 +73,8 @@
 
 <html>
     <head>
+        <meta name="robots" content="noindex">
+        
         <?php  
             require_once 'config/captchacredentials.php';
         ?>

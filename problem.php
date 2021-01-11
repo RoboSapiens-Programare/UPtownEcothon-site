@@ -12,6 +12,16 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $site_key; ?>"></script>
 
+        <style>
+            .collapsible:hover{
+                cursor: pointer;
+            }
+
+            .card-body{
+                display: none;
+            }
+        </style>
+
     </head>
     <body style="padding: 0; background-color: cornflowerblue">
         <?php include 'elements/sageata.html' ?>
@@ -23,7 +33,7 @@
                     
                     <!-- contact form -->
                     <div class="card">
-                    <h2 class="card-header" style="color: black; font-size: 2rem">Form for Reporting Issue</h2>
+                    <h2 class="card-header collapsible" style="color: black; font-size: 2rem">Form for Reporting Issue</h2>
                     <div class="card-body">
                         <form class="contact_form" method="post" action="reportissue.php">
 
@@ -57,6 +67,11 @@
                                 </div>
                                 </div>
 
+                                <div class="form-check col-md-12" style="display: none;">
+                                    <input type="checkbox" class="form-check-input" id="captchaRefresh" onclick="reqRefresh(this);">
+                                    <label class="form-check-label" for="captchaRefresh">Captcha has expired. Please check me to get a new token and verify that I am not a bot!</label>
+                                </div>
+
                                 <div class="col-12">
                                 <input type="submit" value="Report Issue" class="btn btn-success" name="post">
                                 </div>
@@ -80,7 +95,7 @@
                     
                     <!-- contact form -->
                     <div class="card">
-                    <h2 class="card-header" style="color: black; font-size: 2rem">Stuck? Contact a mentor to help you out!</h2>
+                    <h2 class="card-header collapsible" style="color: black; font-size: 2rem">Stuck? Contact a mentor to help you out!</h2>
                     <div class="card-body">
                         <form class="contact_form" method="post" action="contactmentor.php">
 
@@ -114,6 +129,11 @@
                                 </div>
                                 </div>
 
+                                <div class="form-check col-md-12" style="display: none;">
+                                    <input type="checkbox" class="form-check-input" id="captchaRefresh" onclick="reqRefresh(this);">
+                                    <label class="form-check-label" for="captchaRefresh">Captcha has expired. Please check me to get a new token and verify that I am not a bot!</label>
+                                </div>
+
                                 <div class="col-12">
                                 <input type="submit" value="Submit" class="btn btn-success" name="post">
                                 </div>
@@ -131,12 +151,77 @@
         </div>
 
         <script>
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+
+                    var checkbox_input = content.getElementsByClassName('form-check-input')[0];
+                    reqRefresh(checkbox_input);
+                });
+            } 
+
+
             grecaptcha.ready(function() {
+                captchaRefresh();
+            });
+
+            function captchaRefresh(){
                 grecaptcha.execute('<?php echo $site_key; ?>', {action: 'homepage'}).then(function(token) {
                 // console.log(token);
                 document.getElementById("token").value = token;
                 });
-            });
+            }
+
+            function reqRefresh(el){
+                captchaRefresh();
+                enButton(document.getElementById("token").value, el);
+            }
+
+            async function enButton(old_token, el) {
+                btn_submit = el.parentElement.parentElement.getElementsByClassName('btn-success')[0];
+                btn_check = el;
+                btn_check.parentElement.style.display = "none";
+                btn_submit.disabled = true;
+
+                var strToken = old_token;
+                var varCant = 0;
+
+                while (strToken == old_token && varCant < 30) {
+                    strToken = document.getElementById("token").value;
+
+                    await sleep(100);
+                    varCant++;
+                }
+
+
+                btn_submit.style.opacity = 1;
+                btn_submit.disabled = false;
+
+                setTimeout(function(){
+                    disButton(el);
+                }, 120000);
+            }
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            function disButton(el){
+                btn_submit = el.parentElement.parentElement.getElementsByClassName('btn-success')[0];
+                btn_check = el;
+                btn_check.checked = false;
+                btn_check.parentElement.style.display = "block";
+                btn_submit.style.opacity = 0.6;
+                btn_submit.disabled = true;
+            }
         </script>
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
