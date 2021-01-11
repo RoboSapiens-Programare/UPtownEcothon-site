@@ -93,10 +93,10 @@
                                 <input name="phone" type="phone" class="form-control" placeholder="Phone number (optional)">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                <input name="team" type="text" class="form-control" placeholder="Team name">
+                                <input name="team" type="text" class="form-control" placeholder="Team name" required>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                <input name="discordname" type="text" class="form-control" placeholder="Discord nickname">
+                                <input name="discordname" type="text" class="form-control" placeholder="Discord nickname" required>
                                 </div>
                                 <div class="col-12 form-group">
                                 <textarea name="message" class="form-control" rows="5" placeholder="Tell us about your problem" required></textarea>
