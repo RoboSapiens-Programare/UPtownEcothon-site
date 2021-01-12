@@ -72,7 +72,7 @@
     display: inline;
     height: inherit;
     /* opacity: 0.5; */
-    /* filter: invert(100%); */
+    filter: invert(100%);
 }
 
 .rotate-index ul li img {

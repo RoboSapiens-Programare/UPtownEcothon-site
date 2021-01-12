@@ -3,33 +3,31 @@
     right: 5%;
     /* top: 0%; */
     position: absolute;
-
     transform: translateY(-50%);
-
     /* width: 100%;
     height: 100%; */
-
     width: 50vw;
     height: 70vh;
-
-    background-color: peachpuff;
-
+    background-color: #340634;
     overflow-y: auto;
+    border-radius: 1vw;
 }
 
-.bigcontent .btitle, .smallcontent .title, .expand-button {
+.bigcontent .btitle,
+.smallcontent .title,
+.expand-button {
     position: absolute;
     font-family: 'Agency FB Bold', arial;
 }
 
-.bigcontent .bcontent, .smallcontent .content {
+.bigcontent .bcontent,
+.smallcontent .content {
     position: absolute;
     left: 50%;
     font-family: 'Agency FB Bold', arial;
     text-align: justify;
-    color:white;
+    color: white;
     width: 90%;
-
     transform: translateX(-50%);
 }
 
@@ -39,29 +37,30 @@
     width: 75%;
     /* font-size: 1.7vw; */
     font-size: 3.4vw;
-    color:rgb(156, 132, 223);
-
+    /* color: rgb(156, 132, 223); */
+    color: white;
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: #00ff16;
+    /* border-bottom: 0.5vh dashed #00ff16; */
     transform: translate(-50%, -50%);
 }
 
 .bigcontent .bcontent {
     top: 20%;
-
     /* font-size: 0.8vw; */
     font-size: 1.6vw;
 }
 
 
 /* Twisty stuff are here */
+
 .smallcontent {
     position: absolute;
     left: 30%;
-
     transform: translateX(-50%);
-
     width: 25vw;
     height: 25vh;
-
     /* perspective: 1000px; */
 }
 
@@ -72,68 +71,68 @@
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-  }
-  
+}
+
+
 /* Do an horizontal flip when you move the mouse over the flip box container */
+
 .smallcontent:hover .smallcontent-inner {
     transform: rotateX(180deg);
     cursor: pointer;
 }
 
-.smallcontent .title-card, .smallcontent .content-card {
+.smallcontent .title-card,
+.smallcontent .content-card {
     position: absolute;
     width: 100%;
     height: 100%;
-
     backface-visibility: hidden;
+    border-radius: 1vw;
+    border: 0.4vh solid #00ff16;
 }
 
-.smallcontent .title-card{
-    background-color: rgb(156, 132, 223);
+.smallcontent .title-card {
+    /* background-color: rgb(156, 132, 223); */
+    background-color: #76667d;
 }
 
-.smallcontent .title{
+.smallcontent .title {
     top: 50%;
     left: 50%;
     width: 75%;
     font-size: 3.6vw;
     text-align: center;
-
     color: white;
-
     transform: translate(-50%, -50%);
 }
 
 .smallcontent .content-card {
     background-color: white;
-    border: 1px solid rgb(156, 132, 223);
-
+    /* border: 1px solid rgb(156, 132, 223); */
     transform: rotateX(180deg)
-    
 }
 
 .smallcontent .content {
     top: 10%;
     font-size: 1.2vw;
-    color: rgb(156, 132, 223);
+    /* color: rgb(156, 132, 223); */
+    color: black;
 }
 
 .expand-button {
     width: 8vw;
-    height: 4vh;
-
+    height: 5vh;
     font-size: 1.7vw;
-
-    color: rgb(156, 132, 223);
-
-    border: 2px solid rgb(156, 132, 223);
-    border-radius: 3px;
+    /* color: rgb(156, 132, 223); */
+    color: black;
+    /* border: 2px solid rgb(156, 132, 223); */
+    border: 2px solid #00ff16;
+    border-radius: 1vw;
 }
 
 .expand-button:hover {
     cursor: pointer;
-
-    color: peachpuff;
-    background-color: rgb(156, 132, 223);
-
+    color: white;
+    /* background-color: rgb(156, 132, 223); */
+    background-color: #00ff16;
 }

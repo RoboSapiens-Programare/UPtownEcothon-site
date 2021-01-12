@@ -53,12 +53,12 @@
         
         <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
             <ul>
-                <li style="height:10%">
+                <li style="height:10%; filter:invert(100%)">
                     <a href="https://www.instagram.com/uptown.ecothon/">
                         <img src="./icons/instagram.svg">
                     </a>
                 </li>
-                <li style="height: 10%;">
+                <li style="height: 10%; filter:invert(100%)">
                     <a href="https://www.facebook.com/uptown.ecothon">
                         <img src="./icons/facebook.svg">
                     </a>
@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="sponsors.php">
+                    <a href="sponsors.php" style="filter: invert(100%);">
                         <img src="pictures/natie.png">
                     </a>
                 </li>
@@ -88,7 +88,7 @@
         </div>
 
         <div style="display: flex; width:100vw; height: 100vh">
-            <div style="height:100vh; flex: 33.3%; background-color:peachpuff;"></div>
+            <div style="height:100vh; flex: 33.3%; background-color:#340634; border-right:0.3vw solid #00ff16"></div>
             <div style="height:100vh; flex: 66.6%; background-image: url(pictures/spiru1.jpg); object-fit: cover; background-position: center center; filter: blur(3px);"></div>
         </div>
         
