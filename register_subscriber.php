@@ -13,6 +13,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = null;
 
         $_SESSION['subscribemsg'] = 'Please enter a valid e-mail address';
+
+        // header('Location: home_mobile.php');
+
+        $_SESSION['showsbs'] = true;
+
+        if($_SESSION['ismobile']){
+            header("location: home_mobile.php");
+        } else{
+            header("location: home.php");
+        }
         
     }
 
@@ -27,22 +37,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $stmt->execute();
 
-            // http_response_code(200);
-            // echo '<p class="alert alert-success">Thank You! Your message has been successfully sent.</p>';
             $_SESSION['subscribemsg'] = 'You have successfully subscribed to our newsletter ;D';
         } else {
-            // http_response_code(500);
-            // echo '<p class="alert alert-warning">Something went wrong, your message could not be sent.</p>';
             $_SESSION['subscribemsg'] = 'Something went wrong :(';
         }
 
         unset($db);
 
-        header('Location: home.php');
+        // header('Location: home_mobile.php');
         // header('Location: home.php#scroll='.$scrollPos);
+
+        $_SESSION['showsbs'] = true;
+
+        if($_SESSION['ismobile']){
+            header("location: home_mobile.php");
+        } else{
+            header("location: home.php");
+        }
 
     } catch (PDOException $e) {
         echo $e->getMessage();
     }
 }
 ?>
+
