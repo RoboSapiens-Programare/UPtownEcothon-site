@@ -86,6 +86,16 @@
 
 	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
 
+	<!-- nu stiu unde ar trebui sa pun asta -->
+	<?php
+		session_start();
+		if(isset($_SESSION['subscribemsg'])){
+			$subscribemessage = $_SESSION['subscribemsg'];
+		} else {
+			$subscribemessage = " ";
+		}
+	?>
+
 		<div id="language">
 			<ul>
 				<li style="border-right: 0.2vw solid white;">
@@ -191,7 +201,8 @@
 				
 				<form method="POST" class="form" style="display:visible; position:absolute; height:100%; width:100%; left:100%;" action="register_subscriber.php">
 					<input type="text" id="email" class="email" name="email" placeholder="your e-mail..." style="position: absolute; top:0%; left: 50%; transform: translate(-50%, -20%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:60%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw">
-					<button type="submit" class="registration-button" style="right:10%; height: 20%; width: 8%;"><div class="text-centrat">Submit</div></button>
+					<button type="submit" id="submit" class="registration-button" style="right:10%; height: 20%; width: 8%;"><div class="text-centrat">Submit</div></button>
+					<div type="text" id="message" name="message" style="position: absolute; top:40%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:60%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw; font-family:sans-serif"><?php echo $subscribemessage;?></div>
 				</form>
 				<div id="subscribe-btn" class="registration-button" style="top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:30%;" onclick="showSubscribe()">
 					<div class="text-centrat" style="text-decoration: none;">
@@ -352,6 +363,37 @@
 					 
 			}
 		</script>
+
+		<!-- <script>
+			window.addEventListener('load', function() {
+				// Do we have a #scroll in the URL hash?
+				// if(window.location.hash && /#scroll/.test(window.location.hash)) {
+				if(window.location.hash && (window.location.hash === '#scroll')) {
+					// Scroll to the #scroll value
+					window.scrollTo(0, window.location.hash.replace('#scroll=', ''));
+				}
+
+				
+				// Get all <a> elements with data-remember-position attribute
+				// var links = document.querySelectorAll('a[data-remember-position]');
+				var submit = document.getElementById('submit');
+
+				// if(links.length) {
+					// Loop through the found links
+					// for(var i = 0; i < links.length; i++) {
+						// Listen for clicks
+						// links[i].addEventListener('click', function(e) {
+							submit.addEventListener('click', function(e) {
+							// Prevent normal redirection
+							e.preventDefault();
+
+							// Redirect manually but put the current scroll value at the end
+							window.location = this.href + '?scroll=' + window.scrollY;
+						});
+					// }
+				// }
+			});
+		</script> -->
 
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="javascript/form.js"></script>
