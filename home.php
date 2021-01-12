@@ -30,13 +30,14 @@
 				top:0;
 				width:100%;
 				height:100%; 
-				background: url(pictures/gifbackgroundhome2.gif); 
+				background: url(pictures/lamp.gif); 
 				background-size: cover;
 				background-position: center center;
 				/* background-blend-mode: hue; */
 				/* transform: rotate(90deg); */
 
-				filter: grayscale(100%);
+				/* filter: grayscale(100%); */
+				filter: blur(15px) hue-rotate(300deg);
 			}
 			.wrapper-bulina{
 				position: relative;
@@ -120,8 +121,8 @@
     
 		<div style="width: 100vw; height: 100vh; overflow: hidden">
 			<div id="banner-homepage"></div>
-			<div class="text-centrat" style="font-size: 3vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
-			<img src="pictures/LogoUTE.png" style="z-index: 110; position: absolute; height:30%; top: 30%; left: 50%; transform: translate(-50%, -50%);">
+			<div class="text-centrat" style="font-size: 3vw; width:100%; color: white"> Join us in the quest for building a better Bucharest! </div>
+			<img src="pictures/LogoUTEAlb.png" style="z-index: 110; position: absolute; height:30%; top: 30%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode:difference;" alt="UPtown Ecothon">
 			<div style="background-color: transparent; width: 100%; height: 40%; bottom:0%; z-index:100; position: absolute">
 				<div class="wrapper-bulina" style="margin: 0">
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
