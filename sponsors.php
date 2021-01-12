@@ -25,7 +25,8 @@
         </div>
 
 
-        <div class="wrapper-rotating-content" style="position:relative; left:0%; height:85vh; background:linear-gradient(black, black), url(pictures/blob.gif);background-position: -10% center; background-size:cover; background-blend-mode: hue;">
+        <div class="wrapper-rotating-content" style="position:relative; left:0%; height:85vh;">
+        <div style="position:absolute; width:100%; height:100%; background:linear-gradient(black, black), url(pictures/blob.gif);background-position: -10% center; background-size:cover; background-blend-mode: hue; filter:blur(10px)"></div>
             <div class="rotating-content"  id="rotating-content" style="left:0%; height: 80vh; width:100%; background-color:transparent">
                 <div class="rotate-btn" id="btn-prev" onclick="rotateLoopLeftToRight()" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
                     <img src="icons/arrow-left.svg">
@@ -150,9 +151,9 @@
 
                     setTimeout(function(){
                         dot1.style.filter ="invert(100%)";
-                        dot2.style.filter ="invert(0%)";
-                        dot3.style.filter ="invert(0%)";
-                        dot4.style.filter ="invert(0%)";
+                        dot2.style.filter ="invert(60%)";
+                        dot3.style.filter ="invert(60%)";
+                        dot4.style.filter ="invert(60%)";
                         // dot2.style.opacity ="0.5";
                         // dot3.style.opacity ="0.5";
                         // dot4.style.opacity ="0.5";
@@ -181,10 +182,10 @@
                     sect4.style.opacity ="0";
 
                     setTimeout(function(){
-                        dot1.style.filter ="invert(0%)";
+                        dot1.style.filter ="invert(60%)";
                         dot2.style.filter ="invert(100%)";
-                        dot3.style.filter ="invert(0%)";
-                        dot4.style.filter ="invert(0%)";
+                        dot3.style.filter ="invert(60%)";
+                        dot4.style.filter ="invert(60%)";
                         // dot1.style.opacity ="0.5";
                         // dot2.style.opacity ="1";
                         // dot3.style.opacity ="0.5";
@@ -209,10 +210,10 @@
                     sect1.style.opacity ="0";
 
                     setTimeout(function(){
-                        dot1.style.filter ="invert(0%)";
-                        dot2.style.filter ="invert(0%)";
+                        dot1.style.filter ="invert(60%)";
+                        dot2.style.filter ="invert(60%)";
                         dot3.style.filter ="invert(100%)";
-                        dot4.style.filter ="invert(0%)";
+                        dot4.style.filter ="invert(60%)";
                         // dot1.style.opacity ="0.5";
                         // dot2.style.opacity ="0.5";
                         // dot3.style.opacity ="1";
@@ -241,9 +242,9 @@
                         // dot2.style.opacity ="0.5";
                         // dot3.style.opacity ="0.5";
                         // dot4.style.opacity ="1";
-                        dot1.style.filter ="invert(0%)";
-                        dot2.style.filter ="invert(0%)";
-                        dot3.style.filter ="invert(0%)";
+                        dot1.style.filter ="invert(60%)";
+                        dot2.style.filter ="invert(60%)";
+                        dot3.style.filter ="invert(60%)";
                         dot4.style.filter ="invert(100%)";
         
                         ToLeft(sect3);
@@ -270,9 +271,9 @@
 
                     setTimeout(function(){
                         dot1.style.filter ="invert(100%)";
-                        dot2.style.filter ="invert(0%)";
-                        dot3.style.filter ="invert(0%)";
-                        dot4.style.filter ="invert(0%)";
+                        dot2.style.filter ="invert(60%)";
+                        dot3.style.filter ="invert(60%)";
+                        dot4.style.filter ="invert(60%)";
                         // dot1.style.opacity ="1";
                         // dot2.style.opacity ="0.5";
                         // dot3.style.opacity ="0.5";
@@ -297,10 +298,10 @@
                     sect2.style.opacity ="0";
         
                     setTimeout(function(){
-                        dot1.style.filter ="invert(0%)";
-                        dot2.style.filter ="invert(0%)";
+                        dot1.style.filter ="invert(60%)";
+                        dot2.style.filter ="invert(60%)";
                         dot3.style.filter ="invert(100%)";
-                        dot4.style.filter ="invert(0%)";
+                        dot4.style.filter ="invert(60%)";
                         // dot1.style.opacity ="0.5";
                         // dot2.style.opacity ="0.5";
                         // dot3.style.opacity ="1";
@@ -325,9 +326,9 @@
                     sect3.style.opacity ="0";
         
                     setTimeout(function(){
-                        dot1.style.filter ="invert(0%)";
-                        dot2.style.filter ="invert(0%)";
-                        dot3.style.filter ="invert(0%)";
+                        dot1.style.filter ="invert(60%)";
+                        dot2.style.filter ="invert(60%)";
+                        dot3.style.filter ="invert(60%)";
                         dot4.style.filter ="invert(100%)";
                         // dot1.style.opacity ="0.5";
                         // dot2.style.opacity ="0.5";
@@ -353,10 +354,10 @@
                     sect1.style.opacity ="0";
         
                     setTimeout(function(){
-                        dot1.style.filter ="invert(0%)";
+                        dot1.style.filter ="invert(60%)";
                         dot2.style.filter ="invert(100%)";
-                        dot3.style.filter ="invert(0%)";
-                        dot4.style.filter ="invert(0%)";
+                        dot3.style.filter ="invert(60%)";
+                        dot4.style.filter ="invert(60%)";
                         // dot1.style.opacity ="0.5";
                         // dot2.style.opacity ="1";
                         // dot3.style.opacity ="0.5";
