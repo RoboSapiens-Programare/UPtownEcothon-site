@@ -81,21 +81,21 @@
 				cursor:pointer;
 			}
 		</style>
-
 	</head>
 
 	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
-
+	
 	<!-- nu stiu unde ar trebui sa pun asta -->
-	<?php
-		session_start();
-		if(isset($_SESSION['subscribemsg'])){
-			$subscribemessage = $_SESSION['subscribemsg'];
-		} else {
-			$subscribemessage = " ";
-		}
-	?>
+		<?php
+			session_start();
+			if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
+				$subscribemessage = $_SESSION['subscribemsg'];
+			} else {
+				$subscribemessage = " ";
+			}
+		?>
 
+	
 		<div id="language">
 			<ul>
 				<li style="border-right: 0.2vw solid white;">
@@ -209,9 +209,6 @@
 						Subscribe
 					</div>
 				</div>
-				<div class="contact_msg" style="display: none">
-					<p>Your message was sent.</p>
-				</div>
 			</div>
 		</div>
 
@@ -258,8 +255,6 @@
 		<?php include "elements/footer.html"; ?>	
 
 		<script>
-
-			// alert(window.innerWidth);
 
 			function fadeicon(elem) {
             var icon = elem.getElementsByClassName('icon')[0];
@@ -362,8 +357,15 @@
 				subscribe.setAttribute('onclick', 'showSubscribe()');
 					 
 			}
+
 		</script>
 
+		<?php
+			if($_SESSION['showsbs']){
+				echo '<script>window.onload(showSubscribe());</script>';
+				$_SESSION['showsbs']=false;
+			} 
+		?>
 		<!-- <script>
 			window.addEventListener('load', function() {
 				// Do we have a #scroll in the URL hash?
