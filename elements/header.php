@@ -29,7 +29,7 @@
 ?>
         
         
-<title> <?php echo ucwords(str_replace($mobile_suffix, "", basename($including_filename, $extension))); ?> - UTE </title>
+<title> <?php echo ucwords(str_replace($mobile_suffix, "", basename($including_filename, $extension))); ?> - UPtown Ecothon </title>
 
 <link rel="shortcut icon" type="image/png" href="./icons/FaviconUTE.png"/>
 
