@@ -4,7 +4,6 @@ Disallow: /content/
 Disallow: /icons/
 Disallow: /javascript/
 Disallow: /Mobile-Detect-master/
-Disallow: /pictures/
 
 Allow: /javascript/transitions.js/
 Allow: /javascript/tweenfunctions.js/
