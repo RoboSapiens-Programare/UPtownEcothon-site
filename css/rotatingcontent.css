@@ -19,6 +19,8 @@
     width: 10%;
     background-color: transparent;
     z-index: 50;
+    filter: invert(70%) sepia(62%) saturate(6015%) hue-rotate(94deg) brightness(121%) contrast(122%);
+    -webkit-filter: invert(70%) sepia(62%) saturate(6015%) hue-rotate(94deg) brightness(121%) contrast(122%);
 }
 
 .rotate-btn img {
@@ -52,6 +54,7 @@
     left: 0%;
     width: 100%;
     height: 5vh;
+    /* mix-blend-mode: difference; */
 }
 
 .rotate-index ul {
@@ -69,6 +72,7 @@
     display: inline;
     height: inherit;
     /* opacity: 0.5; */
+    /* filter: invert(100%); */
 }
 
 .rotate-index ul li img {

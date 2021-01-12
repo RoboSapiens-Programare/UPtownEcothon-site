@@ -53,7 +53,7 @@
 #sponsors .rectangle-content .circle-top-right,
 #sponsors .rectangle-content .circle-bottom-left,
 #sponsors .rectangle-content .circle-bottom-right {
-    background-color: #d222d2;
+    background-color: #340634;
     cursor: pointer;
 }
 
@@ -61,8 +61,8 @@
 #sponsors .rectangle-content .circle-top-right:hover {
     /* filter: hue-rotate(200deg); */
     /* mix-blend-mode: multiply; */
-    background-color: black;
     /* filter: grayscale(100%) saturate(150%); */
+    background-color: #d222d2;
     cursor: pointer;
 }
 

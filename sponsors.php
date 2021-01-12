@@ -12,20 +12,20 @@
 
     </head>
     
-    <body id="sponsors" style="margin: 0; background:linear-gradient(black, black), url(pictures/WSG.gif); background-size:cover; background-blend-mode: hue;">
+    <body id="sponsors" style="margin: 0; background-color:black">
 
         <?php 
 			include "elements/sageata.html";
         ?>
 
         <div style="position: relative; width:100%; height: 15vh; background-color: transparent; font-size:3vw">
-            <div class="text-centrat" style="color:white">
+            <div class="text-centrat" style="color:white; border-bottom: 0.5vh dashed #00ff16">
                 A huge thank you to our sponsors!
             </div>
         </div>
 
 
-        <div class="wrapper-rotating-content" style="position:relative; left:0%; height:85vh; background-color:transparent">
+        <div class="wrapper-rotating-content" style="position:relative; left:0%; height:85vh; background:linear-gradient(black, black), url(pictures/blob.gif);background-position: -10% center; background-size:cover; background-blend-mode: hue;">
             <div class="rotating-content"  id="rotating-content" style="left:0%; height: 80vh; width:100%; background-color:transparent">
                 <div class="rotate-btn" id="btn-prev" onclick="rotateLoopLeftToRight()" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
                     <img src="icons/arrow-left.svg">

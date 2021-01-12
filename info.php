@@ -16,7 +16,7 @@
             }
         </style>
     </head>
-    <body style="background:linear-gradient(#193f1e, #193f1e), url(pictures/SiBQ.gif); background-size:cover; background-blend-mode: multiply; overflow: hidden; margin:0px;">
+    <body style="background:linear-gradient(#340634, #340634), url(pictures/blob.gif); background-size:cover; background-blend-mode: multiply; background-position:center; overflow: hidden; margin:0px;">
 
         <?php 
 			include "elements/sageata.html";
@@ -24,10 +24,10 @@
         
 
         <div id="info-menu" style="position:fixed; width: 10vw; height: 70vh; top:50vh; right: 1vw; transform:translateY(-50%); z-index: 20">
-            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 20%; padding: 0;" onclick="document.location.href = '#program';">
+            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 20%; padding: 0; border:0.5vh solid #00ff16" onclick="document.location.href = '#program';">
                 <div class="text-centrat" style="font-size: 1.5vw;">Program</div>
             </div>
-            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; bottom: 20%; padding: 0;" onclick="document.location.href = '#news';">
+            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; bottom: 20%; padding: 0; border:0.5vh solid #00ff16" onclick="document.location.href = '#news';">
                 <div class="text-centrat" style="font-size: 1.5vw;">News</div>
             </div>
         </div>
@@ -36,12 +36,12 @@
         <div style="background:transparent; overflow: hidden; margin:0px; width: 200vw; height: 100vh">
 
             <div id="program" style="position:absolute; left: 0%; display:inline-block; width: 100vw; height: 100vh">
-                <div id="program-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:2vw; background: url(pictures/infobkg.png); background-size:cover; color:white">
+                <div id="program-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:1.8vw; background: url(pictures/infobkg1.png); background-size:cover;  background-position: left center;color:white">
                     <div style="position: absolute; left:1%; top:50%; transform:translate(0%, -50%);">
                         <?php echo $content['Program'][1]?>
                     </div>
                     <!-- <div style="position:absolute; left:60%; top:50%; transform:translate(0%, -50%); height:90%; border:2px solid red"> -->
-                        <img src="pictures/drafttimetable.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
+                        <img src="pictures/timetable1.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
                     <!-- </div> -->
                 </div>
                 
