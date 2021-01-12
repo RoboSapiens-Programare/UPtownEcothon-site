@@ -14,9 +14,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION['subscribemsg'] = 'Please enter a valid e-mail address';
 
-        header('Location: home.php');
+        // header('Location: home_mobile.php');
 
         $_SESSION['showsbs'] = true;
+
+        if($_SESSION['ismobile']){
+            header("location: home_mobile.php");
+        } else{
+            header("location: home.php");
+        }
         
     }
 
@@ -38,12 +44,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         unset($db);
 
-        header('Location: home.php');
+        // header('Location: home_mobile.php');
         // header('Location: home.php#scroll='.$scrollPos);
+
         $_SESSION['showsbs'] = true;
+
+        if($_SESSION['ismobile']){
+            header("location: home_mobile.php");
+        } else{
+            header("location: home.php");
+        }
 
     } catch (PDOException $e) {
         echo $e->getMessage();
     }
 }
 ?>
+

@@ -88,12 +88,15 @@
 	<!-- nu stiu unde ar trebui sa pun asta -->
 		<?php
 			session_start();
+
+			$_SESSION['ismobile'] = false;
+
 			if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
 				$subscribemessage = $_SESSION['subscribemsg'];
 			} else {
 				$subscribemessage = " ";
 			}
-		?>
+        ?>
 
 	
 		<div id="language">

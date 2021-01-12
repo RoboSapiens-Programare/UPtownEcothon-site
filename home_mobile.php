@@ -1,12 +1,5 @@
-<?php
-require_once 'Mobile-Detect-master/Mobile_Detect.php';
-$detect = new Mobile_Detect;
-
-$scriptVersion = $detect->getScriptVersion();
-?>
-
 <!DOCTYPE html>
-<html>
+<html style="scroll-behavior: smooth">
 	<head>		
 		<link rel="stylesheet" type="text/css" href="css/slideup.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
@@ -22,9 +15,7 @@ $scriptVersion = $detect->getScriptVersion();
 
 		<?php include "elements/header.php"; ?>
 
-    </head>
-
-	<style>
+		<style>
 			#banner-homepage{
 				position: absolute; 
 				top:0;
@@ -100,19 +91,26 @@ $scriptVersion = $detect->getScriptVersion();
 				cursor:pointer;
 			}
 		</style>
+
+    </head>
+
+	
     
 	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
 	
 	<!-- nu stiu unde ar trebui sa pun asta -->
 		<?php
 			session_start();
+
+			$_SESSION['ismobile'] = true;
+
 			if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
 				$subscribemessage = $_SESSION['subscribemsg'];
 			} else {
 				$subscribemessage = " ";
 			}
-		?>
-    
+        ?>
+		
         <?php include "elements/sageatatlf.html"?>
         
         <div style="width: 100vw; height: 100vh; overflow: hidden">
@@ -202,14 +200,14 @@ $scriptVersion = $detect->getScriptVersion();
 		</div>
 
 		<div class="wrapper-registration" id="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #df458d; font-family: 'Agency FB', arial;">
-			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:100%; border:0px solid black; margin: 0vh 0vw 0 0vw;font-size:8vw;text-align:center; padding:6% 0 0 0; font-weight:bold"> Registrations begin january 26th! </div>
-			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); width:100%; border:0px solid black; margin: 0vh 0vw -5vh 0vw;font-size:4vw;text-align:center; "> <div class="subtitile text-centrat" style="font-weight:normal">In the meantime, subscribe to our newsletter, or check us out on <a href="#bottom-of-page" id="href" >social media</a>!</div> </div>
+			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:100%; border:0px solid black; margin: 0vh 0vw 0 0vw;font-size:5vh;text-align:center; padding:6% 0 0 0; font-weight:bold"> Registrations begin january 26th! </div>
+			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); width:100%; border:0px solid black; margin: 0vh 0vw -5vh 0vw;font-size:2.5vh;text-align:center; "> <div class="subtitile text-centrat" style="font-weight:normal">In the meantime, subscribe to our newsletter, or check us out on <a href="#bottom-of-page" id="href" >social media</a>!</div> </div>
 			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
 				
 				<form method="POST" class="form" style="display:visible; position:absolute; height:100%; width:100%; left:100%;" action="register_subscriber.php">
 					<input type="text" id="email" class="email" name="email" placeholder="your e-mail..." style="position: absolute; top:30%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:90%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw">
 					<button type="submit" id="submit" class="registration-button" style="right:5%; height: 25%; width: 40%;"><div class="text-centrat">Submit</div></button>
-					<div type="text" id="message" name="message" style="position: absolute; top:40%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:60%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw; font-family:sans-serif"><?php echo $subscribemessage;?></div>
+					<div type="text" id="message" name="message" style="position: absolute; top:65%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:90%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw;"><?php echo $subscribemessage;?></div>
 				</form>
 				<div id="subscribe-btn" class="registration-button" style="top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:80%;" onclick="showSubscribe()">
 					<div class="text-centrat" style="text-decoration: none;">
