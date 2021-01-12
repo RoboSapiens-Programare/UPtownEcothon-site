@@ -1,76 +1,66 @@
-<?php
-	session_start();
-
-	$displaylogin = true;
-	if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-		$welcomemsg = "Hi, " . $_SESSION['username'] . "!";
-		$displaylogin = false;
-	}	
-?>
-
-    <div class="meniu" id="meniu-full" style="display:block" onmouseleave="shrinkSageata();">
-        <div class="cerc" id="cerc-logo-full" onmouseover="expandSageata();">
-            <div id="logo-meniu-full" style="z-index: 102;">
-                <div class="logo-elem" id="sageata-meniu-TOP" style="z-index: 105">
-                    <img src="pictures/1sageataUTE.png" alt="logo arrow" style="position: absolute; z-index: 104;">
-                    <div style="position: absolute; background-color: white; width: 100%; height: 100%; z-index: 103; left: -78%;"></div>
-                </div>
-                <div class="logo-elem" id="town-TOP">
-                    <img src="pictures/1townUTE.png" style="z-index: 102;" alt="logo town">
-                </div>
-                <div class="logo-elem" id="cothon-TOP">
-                    <img src="pictures/1cothonUTE.png" style="z-index: 102;" alt="logo cothon">
-                </div>
+<div class="meniu" id="meniu-full" style="display:block" onmouseleave="shrinkSageata();">
+    <div class="cerc" id="cerc-logo-full" onmouseover="expandSageata();">
+        <div id="logo-meniu-full" style="z-index: 102;">
+            <div class="logo-elem" id="sageata-meniu-TOP" style="z-index: 105">
+                <img src="pictures/1sageataUTE.png" alt="logo arrow" style="position: absolute; z-index: 104;">
+                <div style="position: absolute; background-color: white; width: 100%; height: 100%; z-index: 103; left: -78%;"></div>
             </div>
-        </div>
-
-        <div class="cerc-text" id="cerc-meniu">
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
-                <a href="home.php">
-                    <div class="text-centrat" style="color: white; opacity: 0;">Home</div>
-                    <img class="icon" id="home" src="icons/home.svg" alt="Home">
-                </a>
-            </li>
-            <li id="account-btn" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)" onclick="slideinlogin()">
-                <a href="#">
-                    <div class="text-centrat" style="color: white; opacity: 0;">Account</div>
-                    <img class="icon" id="user" src="icons/user.svg" alt="Account">
-                </a>
-            </li>
-            <li onmouseover="fadeicon(this);" onmouseleave="appearicon(this);" style="z-index: 104;">
-                <a href="info.php">
-                    <div class="text-centrat" style="color: white; opacity: 0; z-index: 105;">Info</div>
-                    <img class="icon" id="info" src="icons/calendar.svg" alt="Info">
-                </a>
-            </li>
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
-                <a href="aboutus.php">
-                    <div class="text-centrat" style="color: white; opacity: 0;">About Us</div>
-                    <img class="icon" id="contact" src="icons/users.svg" alt="About Us">
-                </a>
-            </li>
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)" style="z-index: 2000;">
-                <a href="problem.php">
-                    <div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
-                    <img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?">
-                </a>
-            </li>
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
-                <a href="event.php">
-                    <div class="text-centrat" style="color: white; opacity: 0;">Event</div>
-                    <img class="icon" id="event" src="icons/book.svg" alt="Event">
-                </a>
-            </li>
-            <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
-                <a href="sponsors.php">
-                    <div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
-                    <img class="icon" id="sponsors" src="icons/investment.svg" alt="Our Sponsors">
-                </a>
-            </li>
+            <div class="logo-elem" id="town-TOP">
+                <img src="pictures/1townUTE.png" style="z-index: 102;" alt="logo town">
+            </div>
+            <div class="logo-elem" id="cothon-TOP">
+                <img src="pictures/1cothonUTE.png" style="z-index: 102;" alt="logo cothon">
+            </div>
         </div>
     </div>
 
-    <!-- <div class="meniu" id="meniu-scroll" style="display:none;">
+    <div class="cerc-text" id="cerc-meniu">
+        <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
+            <a href="home.php">
+                <div class="text-centrat" style="color: white; opacity: 0;">Home</div>
+                <img class="icon" id="home" src="icons/home.svg" alt="Home">
+            </a>
+        </li>
+        <li id="account-btn" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)" onclick="slideinlogin()">
+            <a href="#">
+                <div class="text-centrat" style="color: white; opacity: 0;">Account</div>
+                <img class="icon" id="user" src="icons/user.svg" alt="Account">
+            </a>
+        </li>
+        <li onmouseover="fadeicon(this);" onmouseleave="appearicon(this);" style="z-index: 104;">
+            <a href="info.php">
+                <div class="text-centrat" style="color: white; opacity: 0; z-index: 105;">Info</div>
+                <img class="icon" id="info" src="icons/calendar.svg" alt="Info">
+            </a>
+        </li>
+        <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
+            <a href="aboutus.php">
+                <div class="text-centrat" style="color: white; opacity: 0;">About Us</div>
+                <img class="icon" id="contact" src="icons/users.svg" alt="About Us">
+            </a>
+        </li>
+        <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)" style="z-index: 2000;">
+            <a href="problem.php">
+                <div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
+                <img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?">
+            </a>
+        </li>
+        <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
+            <a href="event.php">
+                <div class="text-centrat" style="color: white; opacity: 0;">Event</div>
+                <img class="icon" id="event" src="icons/book.svg" alt="Event">
+            </a>
+        </li>
+        <li onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
+            <a href="sponsors.php">
+                <div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
+                <img class="icon" id="sponsors" src="icons/investment.svg" alt="Our Sponsors">
+            </a>
+        </li>
+    </div>
+</div>
+
+<!-- <div class="meniu" id="meniu-scroll" style="display:none;">
         <div id="border-sageata">
             <div class="cerc" id="cerc-sageata-scroll">
                 <div class="logo-elem" id="sageata-meniu-scroll">
@@ -80,33 +70,33 @@
         </div>
     </div> -->
 
-    <div id="language">
-        <ul>
-            <li style="border-right: 0.2vw solid white;">
-                <a href="?lang=ro">
+<div id="language">
+    <ul>
+        <li style="border-right: 0.2vw solid white;">
+            <a href="?lang=ro">
                 ro
                 </a>
-            </li>
-            <li style="padding-left: 0.4vw;">
-                <a href="?lang=en">
+        </li>
+        <li style="padding-left: 0.4vw;">
+            <a href="?lang=en">
                 en
                 </a>
-            </li>
-        </ul>
-    </div>
+        </li>
+    </ul>
+</div>
 
-    <div id="login" style="top: 3%;" onmouseover="slideinlogin(), expandSageata()">
+<div id="login" style="top: 3%;" onmouseover="slideinlogin(), expandSageata()">
 
-        <div class="sign-in-out" id="registration">
-            <p class="button" style="height: 40%;">Registrations begin january 26th!</p>
-            <a href='home.php #wrapper-registration'>
-                <button class="button main-btn-action" style="margin-top: 0%; height:40%">
+    <div class="sign-in-out" id="registration">
+        <p class="button" style="height: 40%;">Registrations begin january 26th!</p>
+        <a href='home.php #wrapper-registration'>
+            <button class="button main-btn-action" style="margin-top: 0%; height:40%">
                     Subscribe to our newsletter!
                 </button>
-            </a>
+        </a>
 
-        </div>
-        <!-- <?php
+    </div>
+    <!-- <?php
             if($displaylogin){
                 include "elements/signin.html";
                 // echo "You are not logged in. <a href='login.php'>Login</a> or <a href='registration.php'>Sign up</a>.";
@@ -116,127 +106,127 @@
                 // echo $welcomemsg . " <a href='logout.php'>Logout</a>";
             }
         ?> -->
-    </div>
+</div>
 
 
-    <script>
-        shrinkSageata();
+<script>
+    shrinkSageata();
 
-        function fadeicon(elem) {
-            var icon = elem.getElementsByClassName('icon')[0];
-            var text = elem.getElementsByClassName('text-centrat')[0];
+    function fadeicon(elem) {
+        var icon = elem.getElementsByClassName('icon')[0];
+        var text = elem.getElementsByClassName('text-centrat')[0];
 
-            transitions.fadeOut(icon, tweenFunctions.easeOutExpo, 400);
+        transitions.fadeOut(icon, tweenFunctions.easeOutExpo, 400);
 
-            transitions.fadeIn(text, tweenFunctions.easeInExpo, 400);
-        }
+        transitions.fadeIn(text, tweenFunctions.easeInExpo, 400);
+    }
 
-        function appearicon(elem) {
-            var icon = elem.getElementsByClassName('icon')[0];
-            var text = elem.getElementsByClassName('text-centrat')[0];
+    function appearicon(elem) {
+        var icon = elem.getElementsByClassName('icon')[0];
+        var text = elem.getElementsByClassName('text-centrat')[0];
 
-            transitions.fadeOut(text, tweenFunctions.easeOutExpo, 400);
+        transitions.fadeOut(text, tweenFunctions.easeOutExpo, 400);
 
-            transitions.fadeIn(icon, tweenFunctions.easeInExpo, 400);
+        transitions.fadeIn(icon, tweenFunctions.easeInExpo, 400);
 
-        }
+    }
 
-        function slideinlogin() {
-            transitions.slide2D(new Dimension(document.getElementById('login'), 0, "percent"),
-                new Dimension(document.getElementById('login'), 3, "percent"),
-                tweenFunctions.easeOutExpo,
-                1000);
-            document.getElementById('account-btn').setAttribute("onclick", "slideoutlogin(700);");
-        }
+    function slideinlogin() {
+        transitions.slide2D(new Dimension(document.getElementById('login'), 0, "percent"),
+            new Dimension(document.getElementById('login'), 3, "percent"),
+            tweenFunctions.easeOutExpo,
+            1000);
+        document.getElementById('account-btn').setAttribute("onclick", "slideoutlogin(700);");
+    }
 
-        function slideoutlogin(time) {
-            transitions.slide2D(new Dimension(document.getElementById('login'), -35, "vw"),
-                new Dimension(document.getElementById('login'), 3, "percent"),
-                tweenFunctions.easeInExpo,
-                time);
-            document.getElementById('account-btn').setAttribute("onclick", "slideinlogin();");
-        }
+    function slideoutlogin(time) {
+        transitions.slide2D(new Dimension(document.getElementById('login'), -35, "vw"),
+            new Dimension(document.getElementById('login'), 3, "percent"),
+            tweenFunctions.easeInExpo,
+            time);
+        document.getElementById('account-btn').setAttribute("onclick", "slideinlogin();");
+    }
 
-        var current = document.documentElement.scrollTop;
-        var previous = current;
-        current = document.documentElement.scrollTop;
+    var current = document.documentElement.scrollTop;
+    var previous = current;
+    current = document.documentElement.scrollTop;
 
 
-        function shrinkSageata() {
-            //Get elements - logo1 / logo2 are town / cothon images
-            //             - cerc_alb is the white circle
-            //             - cerc_meniu is the circle with the menu icons
-            //             - sageata is the UP arrow
-            var logo1 = document.getElementById("town-TOP");
-            var logo2 = document.getElementById("cothon-TOP");
-            var cerc_alb = document.getElementById("cerc-logo-full");
-            var cerc_meniu = document.getElementById("cerc-meniu");
-            var sageata = document.getElementById("sageata-meniu-TOP");
+    function shrinkSageata() {
+        //Get elements - logo1 / logo2 are town / cothon images
+        //             - cerc_alb is the white circle
+        //             - cerc_meniu is the circle with the menu icons
+        //             - sageata is the UP arrow
+        var logo1 = document.getElementById("town-TOP");
+        var logo2 = document.getElementById("cothon-TOP");
+        var cerc_alb = document.getElementById("cerc-logo-full");
+        var cerc_meniu = document.getElementById("cerc-meniu");
+        var sageata = document.getElementById("sageata-meniu-TOP");
 
-            slideoutlogin(300);
-            document.getElementById('login').style.left = -35 + "vw";
-            document.getElementById('login').style.top = 3 + "%";
+        slideoutlogin(300);
+        document.getElementById('login').style.left = -35 + "vw";
+        document.getElementById('login').style.top = 3 + "%";
 
-            transitions.slide2D(new Dimension(logo1, -100, "percent"),
-                new Dimension(logo1, 0, "percent"),
-                tweenFunctions.easeInQuad,
-                500);
-            transitions.slide2D(new Dimension(logo2, -100, "percent"),
-                new Dimension(logo2, 0, "percent"),
-                tweenFunctions.easeInQuad,
-                500);
+        transitions.slide2D(new Dimension(logo1, -100, "percent"),
+            new Dimension(logo1, 0, "percent"),
+            tweenFunctions.easeInQuad,
+            500);
+        transitions.slide2D(new Dimension(logo2, -100, "percent"),
+            new Dimension(logo2, 0, "percent"),
+            tweenFunctions.easeInQuad,
+            500);
 
-            transitions.slide2D(new Dimension(cerc_alb, -2.4, "vw"),
-                new Dimension(cerc_alb, -3.6, "vw"),
-                tweenFunctions.easeInQuad,
-                500);
-            transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 0.5, 500);
+        transitions.slide2D(new Dimension(cerc_alb, -2.4, "vw"),
+            new Dimension(cerc_alb, -3.6, "vw"),
+            tweenFunctions.easeInQuad,
+            500);
+        transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 0.5, 500);
 
-            transitions.slide2D(new Dimension(sageata, 21, "percent"),
-                new Dimension(sageata, -20, "percent"),
-                tweenFunctions.easeInQuad,
-                500);
-            transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1.4, 500);
+        transitions.slide2D(new Dimension(sageata, 21, "percent"),
+            new Dimension(sageata, -20, "percent"),
+            tweenFunctions.easeInQuad,
+            500);
+        transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1.4, 500);
 
-            transitions.slide2D(new Dimension(cerc_meniu, -4.5, "vw"),
-                new Dimension(cerc_meniu, -6.2, "vw"),
-                tweenFunctions.easeInQuad,
-                500);
-            transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 0.3, 500);
-        }
+        transitions.slide2D(new Dimension(cerc_meniu, -4.5, "vw"),
+            new Dimension(cerc_meniu, -6.2, "vw"),
+            tweenFunctions.easeInQuad,
+            500);
+        transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 0.3, 500);
+    }
 
-        function expandSageata() {
-            var logo1 = document.getElementById("town-TOP");
-            var logo2 = document.getElementById("cothon-TOP");
-            var cerc_alb = document.getElementById("cerc-logo-full");
-            var cerc_meniu = document.getElementById("cerc-meniu");
-            var sageata = document.getElementById("sageata-meniu-TOP");
+    function expandSageata() {
+        var logo1 = document.getElementById("town-TOP");
+        var logo2 = document.getElementById("cothon-TOP");
+        var cerc_alb = document.getElementById("cerc-logo-full");
+        var cerc_meniu = document.getElementById("cerc-meniu");
+        var sageata = document.getElementById("sageata-meniu-TOP");
 
-            transitions.slide2D(new Dimension(logo1, 0, "percent"),
-                new Dimension(logo1, 0, "percent"),
-                tweenFunctions.easeInQuad,
-                500);
-            transitions.slide2D(new Dimension(logo2, 0, "percent"),
-                new Dimension(logo2, 0, "percent"),
-                tweenFunctions.easeInQuad,
-                500);
+        transitions.slide2D(new Dimension(logo1, 0, "percent"),
+            new Dimension(logo1, 0, "percent"),
+            tweenFunctions.easeInQuad,
+            500);
+        transitions.slide2D(new Dimension(logo2, 0, "percent"),
+            new Dimension(logo2, 0, "percent"),
+            tweenFunctions.easeInQuad,
+            500);
 
-            transitions.slide2D(new Dimension(cerc_alb, -3, "vw"),
-                new Dimension(cerc_alb, -7.7, "vw"),
-                tweenFunctions.easeInQuad,
-                500);
-            transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 1, 500);
+        transitions.slide2D(new Dimension(cerc_alb, -3, "vw"),
+            new Dimension(cerc_alb, -7.7, "vw"),
+            tweenFunctions.easeInQuad,
+            500);
+        transitions.scaleUniform(cerc_alb, tweenFunctions.easeInQuad, 1, 500);
 
-            transitions.slide2D(new Dimension(sageata, 0, "percent"),
-                new Dimension(sageata, 0, "percent"),
-                tweenFunctions.easeInQuad,
-                500);
-            transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1, 500);
+        transitions.slide2D(new Dimension(sageata, 0, "percent"),
+            new Dimension(sageata, 0, "percent"),
+            tweenFunctions.easeInQuad,
+            500);
+        transitions.scaleUniform(sageata, tweenFunctions.easeInQuad, 1, 500);
 
-            transitions.slide2D(new Dimension(cerc_meniu, -7.7, "vw"),
-                new Dimension(cerc_meniu, -12.5, "vw"),
-                tweenFunctions.easeInQuad,
-                500);
-            transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 1, 500);
-        }
-    </script>
+        transitions.slide2D(new Dimension(cerc_meniu, -7.7, "vw"),
+            new Dimension(cerc_meniu, -12.5, "vw"),
+            tweenFunctions.easeInQuad,
+            500);
+        transitions.scaleUniform(cerc_meniu, tweenFunctions.easeInQuad, 1, 500);
+    }
+</script>

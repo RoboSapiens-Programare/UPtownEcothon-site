@@ -27,6 +27,16 @@
         echo $e->getMessage();
     }
 ?>
+
+<?php
+	session_start();
+
+	$displaylogin = true;
+	if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+		$welcomemsg = "Hi, " . $_SESSION['username'] . "!";
+		$displaylogin = false;
+	}	
+?>
         
         
 <title> <?php echo ucwords(str_replace($mobile_suffix, "", basename($including_filename, $extension))); ?> - UPtown Ecothon </title>
