@@ -28,14 +28,15 @@
 
 		<style>
 			#banner-homepage{
-				position: absolute; 
+				position: relative; 
 				top:0;
 				width:100%; 
-				height:100%; 
+				height:100vh; 
 				background: url(pictures/gifbackgroundhome2.gif); 
 				background-size: cover;
 				background-position: center center;
 				/* filter: blur(7px); */
+				overflow:hidden;
 			}
 			.wrapper-bulina{
 				position: relative;
@@ -50,18 +51,31 @@
 				position: absolute;
 				z-index: 100;
 				top: 0;
-				width: 10vw;
-				height: 10vw;
+				width: 12vw;
+				height: 12vw;
 				left: 0%;
 				background-color: purple;
 				border-radius: 50%;
+			}
+			.titlu-buline {
+				position: absolute;
+				height: 12vw;
+				width: 100%;
+				background-color: transparent;
+				top: 0;
+				left: 12vw;
+				/* border: 1px solid blue; */
+				font-family: 'Agency FB', arial; 
+				font-weight: bold;
+				padding-left: 5%;
+    			font-size: 10vw;
 			}
 			.wrapper-lists{
 				position: absolute;
 				z-index: 100;
 				bottom: 0;
 				width: 100%;
-				height: 80%;
+				height: 70%;
 				background-color: transparent;
 				overflow-y: hidden;
 				scrollbar-width: none;
@@ -71,7 +85,7 @@
 			}
 			.sectiune-butoane {
 				position: relative;
-				height: 200vh;
+				height: 100vh;
 				width: 100vw;
 			}
 			.wrapper-registration #href{
@@ -101,6 +115,11 @@
 				color:white;
 				cursor:pointer;
 			}
+			.wrapper-lists ul {
+				columns: 2;
+				-webkit-columns: 2;
+				-moz-columns: 2;
+			}
 		</style>
 
     </head>
@@ -110,26 +129,27 @@
 	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">			
         <?php include "elements/sageatatlf.html"?>
         
-        <div style="width: 100vw; height: 100vh; overflow: hidden">
+        <!-- <div style="width: 100vw; height: 100vh; overflow: hidden"> -->
 			<div id="banner-homepage"></div>
 			<div style=" position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); font-family: 'Agency FB', arial; font-weight: bold; color: black; z-index: inherit; text-align: center; font-size: 4vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
 			<img src="pictures/LogoUTE.png" style="z-index: 100; position: absolute; height:30%; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-		</div>
+		<!-- </div>  -->
 
+		<div style="position: relative; height: 5vh; width: 100%; background-color: transparent;"></div>
 		<div class="sectiune-butoane">
 			<div style="background-color: transparent; width: 100%; height: 100%; bottom:0%; top:0%; z-index:100; position: absolute">
 				<div class="wrapper-bulina" style="margin: 0; margin-left: 15%;">
-					<div class="buline-homepage" style="top: 5%;">
+					<div class="buline-homepage">
 						<a href="info.php">
 							<div class="text-centrat" style="color: white; opacity: 0; z-index: 105;">Info</div>
 							<img class="icon" id="info" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/calendar.svg" alt="Info">
 						</a>
 					</div>
+					<div class="titlu-buline">Info</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>copac</li>
-							<li>mai multe cuvinte</li>
-							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large; columns: 1; -webkit-columns: 1; -moz-columns: 1;">
+							<li>Program</li>
+							<li>News</li>
 						</ul>
 					</div>
 				</div>
@@ -140,11 +160,12 @@
 							<img class="icon" id="contact" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/users.svg" alt="About Us">
 						</a>
 					</div>
+					<div class="titlu-buline">About us</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>copac</li>
-							<li>mai multe cuvinte</li>
-							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+							<li>Contact</li>
+							<li>Echipa</li>
+							<li>Site</li>
 						</ul>
 					</div>
 				</div>
@@ -155,11 +176,11 @@
 							<img class="icon" id="help" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/help.svg" alt="Got A Problem?">
 						</a>
 					</div>
+					<div class="titlu-buline">Got a problem?</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>copac</li>
-							<li>mai multe cuvinte</li>
-							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+							<li>Raporteaza o problema</li>
+							<li>Contacteaza un mentor</li>
 						</ul>
 					</div>
 				</div>
@@ -170,11 +191,13 @@
 							<img class="icon" id="event" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/book.svg" alt="Event">
 						</a>
 					</div>
+					<div class="titlu-buline">Event</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>copac</li>
-							<li>mai multe cuvinte</li>
-							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+							<li>Scop</li>
+							<li>Teme</li>
+							<li>Cerinte si premii</li>
+							<li>Code of conduct</li>
 						</ul>
 					</div>
 				</div>
@@ -185,16 +208,19 @@
 							<img class="icon" id="sponsors" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/investment.svg" alt="Our Sponsors">
 						</a>
 					</div>
+					<div class="titlu-buline">Sponsors</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>copac</li>
-							<li>mai multe cuvinte</li>
-							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+							<li>Fundraiser</li>
+							<li>Endava</li>
+							<li>Gemini Solutions</li>
+							<li>First Tech Challange</li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div style="position: relative; height: 5vh; width: 100%; background-color: transparent;"></div>
 
 		<div class="wrapper-registration" id="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #df458d; font-family: 'Agency FB', arial;">
 			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:100%; border:0px solid black; margin: 0vh 0vw 0 0vw;font-size:5vh;text-align:center; padding:6% 0 0 0; font-weight:bold"> Registrations begin january 26th! </div>

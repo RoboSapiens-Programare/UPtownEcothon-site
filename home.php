@@ -50,6 +50,7 @@
 				left: 0%;
 				background-color: purple;
 				border-radius: 50%;
+				font-size: 1.5vw;
 			}
 			.wrapper-lists{
 				position: absolute;
@@ -124,9 +125,8 @@
 					</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>copac</li>
-							<li>mai multe cuvinte</li>
-							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+							<li>Program</li>
+							<li>News</li>
 						</ul>
 					</div>
 				</div>
@@ -139,9 +139,9 @@
 					</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>copac</li>
-							<li>mai multe cuvinte</li>
-							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+							<li>Contact</li>
+							<li>Echipa</li>
+							<li>Site</li>
 						</ul>
 					</div>
 				</div>
@@ -154,9 +154,8 @@
 					</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>copac</li>
-							<li>mai multe cuvinte</li>
-							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+							<li>Raporteaza o problema</li>
+							<li>Contacteaza un mentor</li>
 						</ul>
 					</div>
 				</div>
@@ -169,9 +168,10 @@
 					</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>copac</li>
-							<li>mai multe cuvinte</li>
-							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+							<li>Scop</li>
+							<li>Teme</li>
+							<li>Cerinte si premii</li>
+							<li>Code of conduct</li>
 						</ul>
 					</div>
 				</div>
@@ -184,9 +184,10 @@
 					</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>copac</li>
-							<li>mai multe cuvinte</li>
-							<li>sunt foarte multe cuvinte pe un rand si nu stiu cum sa le pun sa se puna pe randul urmator oare merge daca doar scriu mult? da</li>
+							<li>Fundraiser</li>
+							<li>Endava</li>
+							<li>Gemini Solutions</li>
+							<li>First Tech Challange</li>
 						</ul>
 					</div>
 				</div>
