@@ -15,12 +15,15 @@
 			#banner-homepage{
 				position: absolute; 
 				top:0;
-				width:100%; 
+				width:100%;
 				height:100%; 
 				background: url(pictures/gifbackgroundhome2.gif); 
 				background-size: cover;
 				background-position: center center;
-				/* filter: blur(7px); */
+				/* background-blend-mode: hue; */
+				/* transform: rotate(90deg); */
+
+				filter: grayscale(100%);
 			}
 			.wrapper-bulina{
 				position: relative;
@@ -38,7 +41,7 @@
 				width: 6vw;
 				height: 6vw;
 				left: 0%;
-				background-color: purple;
+				background-color: #d222d2;
 				border-radius: 50%;
 				font-size: 1.5vw;
 			}
@@ -59,7 +62,7 @@
 				text-decoration: underline; color: black;
 			}
 			.wrapper-registration #href:hover{
-				color: #e7df68;
+				color: #00ff16;
 			}
 			.registration-button{
 				position:absolute; 
@@ -67,14 +70,15 @@
 				/* transform: translate(0%, -50%);  */
 				/* height: 20%; 
 				width: 8%;  */
-				border: 0.4vh solid black; 
+				border: 0.4vh solid #00ff16; 
 				border-radius:2vw;
 				font-size: 3vh;
-				background-color:#e7df68
+				background-color:#340634;
+				color:white;
 			}
 			.registration-button:hover{
 				color:white;
-				border: 0.5vh solid #e7df68; 
+				border: 0.5vh solid #00ff16; 
 				cursor:pointer;
 				background-color: transparent;
 			}
@@ -86,18 +90,18 @@
 	</head>
 
 	<?php
-	// session_start();
+		// session_start();
 
-	$_SESSION['ismobile'] = false;
+		$_SESSION['ismobile'] = false;
 
-	if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
-		$subscribemessage = $_SESSION['subscribemsg'];
-	} else {
-		$subscribemessage = " ";
-	}
+		if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
+			$subscribemessage = $_SESSION['subscribemsg'];
+		} else {
+			$subscribemessage = " ";
+		}
 	?>
 
-	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
+	<body id="home" style="background-color: #340634; margin: 0px; overflow-x:hidden;">
 		<div id="language">
 			<ul>
 				<li style="border-right: 0.2vw solid white;">
@@ -149,7 +153,7 @@
 				</div>
 				<div class="wrapper-bulina">
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
-						<a href="#">
+						<a href="problem.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
 							<img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?">
 						</a>
@@ -196,8 +200,8 @@
 			</div>
 		</div>
 
-		<div class="wrapper-registration" id="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #df458d">
-			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat">Registrations begin january 26th!</div> </div>
+		<div class="wrapper-registration" id="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #d222d2">
+			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #00ff16">Registrations begin january 26th!</div> </div>
 			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:90%; border:0px solid black; margin: 0vh 0vw -10vh 0vw;font-size:2.5vh;"> <div class="subtitile text-centrat">In the meantime, subscribe to our newsletter, or check us out on <a href="#bottom-of-page" id="href" >social media</a>!</div> </div>
 			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
 				
@@ -207,14 +211,14 @@
 					<div type="text" id="message" name="message" style="position: absolute; top:40%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:60%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw; font-family:sans-serif"><?php echo $subscribemessage;?></div>
 				</form>
 				<div id="subscribe-btn" class="registration-button" style="top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:30%;" onclick="showSubscribe()">
-					<div class="text-centrat" style="text-decoration: none;">
+					<div class="text-centrat" style="text-decoration: none; color:white;">
 						Subscribe
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #df458d">Helpful Timeline =D</div> </div>
+		<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #00ff16; color:white">Helpful Timeline =D</div> </div>
 
 		<div class="sectiune-timeline">
 			<div class="timeline">

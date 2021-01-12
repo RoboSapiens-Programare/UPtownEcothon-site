@@ -1,5 +1,5 @@
 #home #background {
-    background-color: #df458d;
+    background-color: #d222d2;
 }
 
 #sponsors #background {
@@ -34,7 +34,9 @@
 }
 
 #home .href-elem:hover {
-    background-color: #e7df68;
+    /* background-color: white; */
+    /* border: 0.5vh solid white; */
+    filter: invert(100%);
 }
 
 #sponsors .href-elem:hover {

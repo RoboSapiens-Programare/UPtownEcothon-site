@@ -30,7 +30,7 @@
 
 <?php
 	session_start();
-
+    
 	$displaylogin = true;
 	if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
 		$welcomemsg = "Hi, " . $_SESSION['username'] . "!";

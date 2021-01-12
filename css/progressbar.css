@@ -23,9 +23,9 @@
     transform: translate(-50%, -50%);
     height: 10%;
     width: 95%;
-    border: 0.5vh solid #403446;
+    border: 0.5vh solid #00ff16;
     border-radius: 5vh;
-    background-color: #df458d;
+    background-color: transparent;
     z-index: 3;
 }
 
@@ -50,13 +50,14 @@
     transform: translate(0%, -50%);
     height: 12vh;
     width: 12vh;
-    border: 0.8vh solid #df458d;
+    border: 0.8vh solid white;
     border-radius: 50%;
-    background-color: white;
+    background-color: #00bd10;
     /* z-index: 2; */
     text-align: center;
     vertical-align: middle;
     font-size: 2vh;
+    color: white;
 }
 
 .milestone:hover {
