@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<?php
+	session_start();
+
+	$_SESSION['ismobile'] = false;
+
+	if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
+		$subscribemessage = $_SESSION['subscribemsg'];
+	} else {
+		$subscribemessage = " ";
+	}
+?>
 <html style="scroll-behavior: smooth">
 	<head>
 
@@ -85,21 +96,6 @@
 	</head>
 
 	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
-	
-	<!-- nu stiu unde ar trebui sa pun asta -->
-		<?php
-			session_start();
-
-			$_SESSION['ismobile'] = false;
-
-			if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
-				$subscribemessage = $_SESSION['subscribemsg'];
-			} else {
-				$subscribemessage = " ";
-			}
-        ?>
-
-	
 		<div id="language">
 			<ul>
 				<li style="border-right: 0.2vw solid white;">

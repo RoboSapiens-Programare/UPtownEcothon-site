@@ -5,16 +5,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     require_once ("config/dbconfig.php");
 
-    // $scrollPos = (array_key_exists('scroll', $_GET)) ? $_GET['scroll'] : 0; 
-
     $email = (isset($_POST['email']) && !empty($_POST['email'])) ? $_POST['email'] : null;
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
 
     if (strpos($email, '@') == false) {
         $email = null;
 
         $_SESSION['subscribemsg'] = 'Please enter a valid e-mail address';
-
-        // header('Location: home_mobile.php');
 
         $_SESSION['showsbs'] = true;
 
@@ -38,14 +35,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute();
 
             $_SESSION['subscribemsg'] = 'You have successfully subscribed to our newsletter ;D';
+
+            $mail_to = $email;
+            $subject = "[UTE]Thank you for subscribing to our newsletter!";
+            $content = "Fenk";
+            $headers = "From: Contact UPtown Ecothon <ute-contact@robosapiens.ro>";
+
+            mail($mail_to, $subject, $content, $headers);
         } else {
             $_SESSION['subscribemsg'] = 'Something went wrong :(';
         }
 
         unset($db);
-
-        // header('Location: home_mobile.php');
-        // header('Location: home.php#scroll='.$scrollPos);
 
         $_SESSION['showsbs'] = true;
 

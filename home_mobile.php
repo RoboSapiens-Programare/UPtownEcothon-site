@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<?php
+	session_start();
+
+	$_SESSION['ismobile'] = true;
+
+	if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
+		$subscribemessage = $_SESSION['subscribemsg'];
+	} else {
+		$subscribemessage = " ";
+	}
+?>
 <html style="scroll-behavior: smooth">
 	<head>		
 		<link rel="stylesheet" type="text/css" href="css/slideup.css">
@@ -115,21 +126,7 @@
 
 	
     
-	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">
-	
-	<!-- nu stiu unde ar trebui sa pun asta -->
-		<?php
-			session_start();
-
-			$_SESSION['ismobile'] = true;
-
-			if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
-				$subscribemessage = $_SESSION['subscribemsg'];
-			} else {
-				$subscribemessage = " ";
-			}
-        ?>
-		
+	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">			
         <?php include "elements/sageatatlf.html"?>
         
         <!-- <div style="width: 100vw; height: 100vh; overflow: hidden"> -->
