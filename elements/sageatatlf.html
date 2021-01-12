@@ -1,3 +1,13 @@
+<?php
+	if (!isset ($_SESSION)) session_start();
+    
+	$displaylogin = true;
+	if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+		$welcomemsg = "Hi, " . $_SESSION['username'] . "!";
+		$displaylogin = false;
+	}	
+?>
+
 <div id="cerc-sageatatlf" onclick="expandMenu()">
     <!-- <div id="bkg-sageata"></div> -->
     <!-- <div class="logo-elem-tlf" id="sageata-meniutlf">

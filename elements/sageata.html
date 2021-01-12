@@ -1,3 +1,13 @@
+<?php
+	if (!isset ($_SESSION)) session_start();
+    
+	$displaylogin = true;
+	if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+		$welcomemsg = "Hi, " . $_SESSION['username'] . "!";
+		$displaylogin = false;
+	}	
+?>
+
 <div class="meniu" id="meniu-full" style="display:block" onmouseleave="shrinkSageata();">
     <div class="cerc" id="cerc-logo-full" onmouseover="expandSageata();">
         <div id="logo-meniu-full" style="z-index: 102;">

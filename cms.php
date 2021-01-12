@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-    session_start();
+    if (!isset ($_SESSION)) session_start();
 
 	$displaylogin = true;
 	if(!isset($_SESSION['adminloggedin']) || $_SESSION['adminloggedin'] == false){

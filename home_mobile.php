@@ -1,5 +1,17 @@
 <!DOCTYPE html>
 
+<?php
+	if (!isset ($_SESSION)) session_start();
+
+	$_SESSION['ismobile'] = true;
+
+	if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
+		$subscribemessage = $_SESSION['subscribemsg'];
+	} else {
+		$subscribemessage = " ";
+	}
+?>
+
 <html style="scroll-behavior: smooth">
 	<head>		
 		<link rel="stylesheet" type="text/css" href="css/slideup.css">
@@ -7,12 +19,6 @@
 		<link rel="stylesheet" type="text/css" href="css/footer.css">
 		<link rel="stylesheet" type="text/css" href="css/progressbar.css">
 		<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>	  
-
-		<!-- <link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" /> -->
-		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">  -->
-
-		<!-- <script src="javascript/tween-functions.js"></script> -->
-		<!-- <script src="javascript/transitions.js"></script> -->
 
 		<?php include "elements/header.php"; ?>
 
@@ -106,7 +112,10 @@
 				cursor:pointer;
 			}
 			.wrapper-lists ul {
+				position: absolute;
 				columns: 2;
+				margin: 0;
+				bottom: 10%;
 				-webkit-columns: 2;
 				-moz-columns: 2;
 			}
@@ -114,17 +123,7 @@
 
     </head>
 
-	<?php
-	// session_start();
-
-	$_SESSION['ismobile'] = true;
-
-	if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
-		$subscribemessage = $_SESSION['subscribemsg'];
-	} else {
-		$subscribemessage = " ";
-	}
-	?>
+	
     
 	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">			
         <?php include "elements/sageatatlf.html"?>

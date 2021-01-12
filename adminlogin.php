@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-    session_start();
+    if (!isset ($_SESSION)) session_start();
 
     if(isset($_SESSION['adminloggedin']) && $_SESSION['adminloggedin'] == true){
         header("location: cms.php");
@@ -39,7 +39,7 @@
                     if(password_verify($passwd, $hash)){
                         $msg = "Ai intrat!";
 
-                        session_start();
+                        if (!isset ($_SESSION)) session_start();
 
                         $_SESSION['adminloggedin'] = true;
                         $_SESSION['adminid'] = $ret['id'];

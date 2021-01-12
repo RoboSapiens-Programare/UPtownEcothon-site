@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+<?php
+	if (!isset ($_SESSION)) session_start();
+
+	$_SESSION['ismobile'] = false;
+
+	if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
+		$subscribemessage = $_SESSION['subscribemsg'];
+	} else {
+		$subscribemessage = " ";
+	}
+
+	$showsbs = isset($_SESSION['showsbs']) ? $_SESSION['showsbs'] : false;
+?>
 
 <html style="scroll-behavior: smooth">
 	<head>
@@ -31,7 +44,7 @@
 				width: 20%;
 				height: 100%;
 				background-color: transparent;
-				margin-left: -0.4%;
+				/* margin-left: -0.4%; */
 				/* border: 1px  solid blue; */
 			}
 			.buline-homepage{
@@ -89,18 +102,6 @@
 		</style>
 	</head>
 
-	<?php
-		// session_start();
-
-		$_SESSION['ismobile'] = false;
-
-		if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
-			$subscribemessage = $_SESSION['subscribemsg'];
-		} else {
-			$subscribemessage = " ";
-		}
-	?>
-
 	<body id="home" style="background-color: #340634; margin: 0px; overflow-x:hidden;">
 		<div id="language">
 			<ul>
@@ -135,8 +136,7 @@
 							<li>News</li>
 						</ul>
 					</div>
-				</div>
-				<div class="wrapper-bulina">
+				</div><div class="wrapper-bulina">
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="aboutus.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">About Us</div>
@@ -150,8 +150,7 @@
 							<li>Site</li>
 						</ul>
 					</div>
-				</div>
-				<div class="wrapper-bulina">
+				</div><div class="wrapper-bulina">
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="problem.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
@@ -164,8 +163,7 @@
 							<li>Contacteaza un mentor</li>
 						</ul>
 					</div>
-				</div>
-				<div class="wrapper-bulina">
+				</div><div class="wrapper-bulina">
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="event.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Event</div>
@@ -180,8 +178,7 @@
 							<li>Code of conduct</li>
 						</ul>
 					</div>
-				</div>
-				<div class="wrapper-bulina">
+				</div><div class="wrapper-bulina">
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="sponsors.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
@@ -367,9 +364,9 @@
 		</script>
 
 		<?php
-			if($_SESSION['showsbs']){
+			if($showsbs){
 				echo '<script>window.onload(showSubscribe());</script>';
-				$_SESSION['showsbs']=false;
+				if(isset($_SESSION)) $_SESSION['showsbs']=false;
 			} 
 		?>
 		<!-- <script>
