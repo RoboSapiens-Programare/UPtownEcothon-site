@@ -78,7 +78,7 @@
             </div>
         </div>
 
-        <div id="sect1" class="section" style="background-color: lightsalmon;">
+        <div id="sect1" class="section" style="background-color: #340634;">
             <div id="title2" class="title">Scop</div>
 
             <div id="titlebtn2" class="titlebtn" onclick="readMore(this, false);">Read More</div>
@@ -93,14 +93,14 @@
         </div>
 
         <div style="display: flex; width: 300vw; height: 100vh">
-            <div id="sect2" class="section" style="background-color: darkkhaki; overflow-y: hidden; overflow-x:hidden">
+            <div id="sect2" class="section" style="background-color: #9d49a1; overflow-y: hidden; overflow-x:hidden">
                 <div id="title1" class="title" style="opacity: 0;">Teme</div>
                 <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this, true);">Read More</div>
 
                 <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto">
                     <?php echo $content["Teme"][1]; ?>
                 </div>
-                <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px; background-color: darkkhaki; transform: scale(0.7)">
+                <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px; background-color: #9d49a1; transform: scale(0.7)">
                     <div name="toFade" class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 1">
                         <div class="circle-top-left" onclick="expand(this, 50, 50, 0.7);" style="overflow: hidden;">
                             <img src="pictures/pollution1.jpg" style="height: 100%; width: 100%">
@@ -114,7 +114,7 @@
                     <?php echo $content["Teme"][2] ?>
                 </div>
             </div>
-            <div style="flex: 33%; height: 100vh; background-color:darkkhaki; position: relative">
+            <div style="flex: 33%; height: 100vh; background-color:#9d49a1; position: relative">
                 <div class="sliding" style=" width:60vw; height:75vh; right: 0; top: 12.5vh; margin-right: 2vw; overflow-y:auto; border-radius: 20px 20px 20px 20px">
                     <?php
                         echo $content["Teme"][3] . "<br>";
@@ -129,7 +129,7 @@
                     <img src="pictures/pollution3.jpg" style="height: 100%; width: 100%; border-radius: 20px 20px 0px 20px">
                 </div>
             </div>
-            <div style="flex: 33%; height: 100vh; background-color:darkkhaki; position: relative">
+            <div style="flex: 33%; height: 100vh; background-color:#9d49a1; position: relative">
                 <div id="bigScrollableSliding" class="sliding" style="width:75%; height:56%; left: 50%; top: 10%; overflow-y:auto; border-radius: 20px 20px 20px 20px; transform:translateX(-50%)">
                     <?php 
                         echo $content["Teme"][4] . "<br>";
@@ -144,7 +144,7 @@
 
         
 
-        <div id="sect3" class="section" style="background-color:#291942;">
+        <div id="sect3" class="section" style="background-color:#5a0b5a;">
             <div id="title3" class="title">Cerinte & Premii</div>
 
             <div id="titlebtn3" class="titlebtn" onclick="readMore(this, false); showAwards(true);">Read More</div>
@@ -169,7 +169,7 @@
             </div>
         </div>
 
-        <div id="sect4" class="section" style="background-color:#7cc4cc;">
+        <div id="sect4" class="section" style="background-color:#76667d;">
             <div id="title4" class="title">Code of Conduct</div>
 
             <div id="titlebtn4" class="titlebtn" onclick="readMore(this, false);">Read More</div>

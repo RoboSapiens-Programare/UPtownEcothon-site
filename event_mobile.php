@@ -81,7 +81,7 @@
         </div>
 
         <div id="sect1" class="section" >
-            <div class="wrapper" style="background-color:darkslategray; z-index: 5">
+            <div class="wrapper" style="background-color:#340634; z-index: 5">
                 <div id="title1" class="title" style="opacity: 0;">Scop</div>
                 <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
             </div>
@@ -92,7 +92,7 @@
         </div>
 
         <div id="sect2" class="section" >
-            <div class="wrapper" style="background-color:darkkhaki; z-index: 5">
+            <div class="wrapper" style="background-color:#9d49a1; z-index: 5">
                 <div id="title2" class="title" >Teme</div>
                 <div id="titlebtn2" class="titlebtn" onclick="readMore(this);">Read More</div>
             </div>
@@ -115,8 +115,8 @@
             </div>
         </div>
 
-        <div id="sect3" class="section" style="background-color: wheat;" >
-            <div class="wrapper" style="background-color:salmon; z-index: 5">
+        <div id="sect3" class="section" style="background-color: #5a0b5a;" >
+            <div class="wrapper" style="background-color:#5a0b5a; z-index: 5">
                 <div id="title3" class="title" style="font-size: 15vw; width: 100vw;text-align: center">Cerinte & Premii</div>
                 <div id="titlebtn3" class="titlebtn" onclick="readMore(this);">Read More</div>
             </div>
@@ -140,7 +140,7 @@
         </div>
 
         <div id="sect4" class="section" >
-            <div class="wrapper" style="background-color: #7cc4cc; z-index: 5">
+            <div class="wrapper" style="background-color: #76667d; z-index: 5">
                 <div id="title4" class="title" style="opacity: 1; font-size: 9vw">Code of Conduct</div>
                 <div id="titlebtn4" class="titlebtn" style="opacity: 1" onclick="readMore(this);">Read More</div>
             </div>
