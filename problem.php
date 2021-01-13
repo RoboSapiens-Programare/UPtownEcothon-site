@@ -21,9 +21,17 @@
             .card-body{
                 display: none;
             }
-            h2{
+            h1, h2, h3{
+                font-family: 'Khand', sans-serif;
                 border-bottom: 0.5vh dashed #00ff16;
             }
+            .rounded-rect{
+                border: 0.4vh solid #00ff16; 
+                background-color:white; 
+                font-family: 'Montserrat', sans-serif; 
+                font-weight: 300;
+            }
+
         </style>
 
     </head>
@@ -31,12 +39,12 @@
         <?php include 'elements/sageata.html' ?>
 
         <div class="page-title" style="position: relative; margin-top: 5vh; width:100%; height: 5vh; background-color: transparent; font-size:5vw; z-index:70">
-            <div class="text-centrat" style="color:white; border-bottom: 0.5vh dashed #00ff16">
+            <div class="text-centrat" style="color:white; border-bottom: 0.5vh dashed #00ff16;")>
                 Got a problem?
             </div>
         </div>
 
-        <div class="rounded-rect" style="position:relative; width: 45%; height: 76vh; margin: 5% 2.5% 5% 2.5%; overflow-x: hidden; overflow-y: auto; display: inline-block; border: 0.4vh solid #00ff16; background-color:white">
+        <div class="rounded-rect" style="position:relative; width: 45%; height: 76vh; margin: 5% 2.5% 5% 2.5%; overflow-x: hidden; overflow-y: auto; display: inline-block; ">
             <?php echo $content['Report Issue'][1] ?>
             <section style="margin: 50px 20px;">
                 <div style="max-width: 768px; margin: auto;">
@@ -98,7 +106,7 @@
             </section>
         </div>
 
-        <div class="rounded-rect" style="position:absolute; width: 45%; height: 76vh; margin: 5% 2.5% 5% 2.5%; overflow-x: hidden; overflow-y: auto; display: inline-block; border: 0.4vh solid #00ff16; background-color:white">
+        <div class="rounded-rect" style="position:absolute; width: 45%; height: 76vh; margin: 5% 2.5% 5% 2.5%; overflow-x: hidden; overflow-y: auto; display: inline-block;">
             <?php echo $content['Contact Mentor'][1] ?>
             <section style="margin: 50px 20px;">
                 <div style="max-width: 768px; margin: auto;">

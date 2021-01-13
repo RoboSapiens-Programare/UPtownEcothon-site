@@ -142,7 +142,7 @@
     width: 100%;
     text-decoration: none;
     color: #ffffff;
-    font-family: 'Agency FB Bold', arial;
+    font-family: 'Khand', sans-serif; font-weight: bold;
     font-size: 1vw;
     vertical-align: middle;
     text-align: center;
@@ -201,14 +201,14 @@
 
 #language li {
     display: inline;
-    font-family: 'Agency FB Bold', arial;
+    font-family: 'Khand', sans-serif; font-weight: bold;
     font-size: 2vw;
     color: white;
     text-decoration: none;
 }
 
 #language li a {
-    font-family: 'Agency FB Bold', arial;
+    font-family: 'Khand', sans-serif; font-weight: bold;
     font-size: 2vw;
     color: white;
     text-decoration: none;
@@ -242,7 +242,7 @@
     width: 33%;
     border: 0px solid black;
     text-align: center;
-    font-family: 'Agency FB Bold', arial;
+    font-family: 'Khand', sans-serif; font-weight: bold;
     font-size: 1vw;
 }
 
@@ -259,7 +259,7 @@ button {
     width: 96%;
     text-decoration: none;
     font-size: 1vw;
-    font-family: 'Agency FB Bold', arial;
+    font-family: 'Khand', sans-serif; font-weight: bold;
 }
 
 .button p {

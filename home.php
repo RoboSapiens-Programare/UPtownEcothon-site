@@ -164,7 +164,7 @@
 						</a>
 					</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
 							<?php echo $content['Buline']['Info']; ?>
 						</ul>
 					</div>
@@ -176,7 +176,7 @@
 						</a>
 					</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
 							<?php echo $content['Buline']['About us']; ?>
 						</ul>
 					</div>
@@ -188,7 +188,7 @@
 						</a>
 					</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
 							<?php echo $content['Buline']['Got a problem?']; ?>
 						</ul>
 					</div>
@@ -200,7 +200,7 @@
 						</a>
 					</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
 							<?php echo $content['Buline']['Event']; ?>
 						</ul>
 					</div>
@@ -212,7 +212,7 @@
 						</a>
 					</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
 							<?php echo $content['Buline']['Our sponsors']; ?>
 						</ul>
 					</div>

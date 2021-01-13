@@ -157,7 +157,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         height: 20vh;
-        font-family: 'Agency FB Bold', arial;
+        font-family: 'Khand', sans-serif; font-weight: bold;
     } */
     .wrapper {
         width: 100%;
@@ -181,7 +181,7 @@
         width: 100%;
         background-color: transparent;
         font-size: 10vw;
-        font-family: 'Agency FB Bold', arial;
+        font-family: 'Khand', sans-serif; font-weight: bold;
         text-decoration: underline;
         text-decoration-color: #00ff16;
         text-decoration-style: dashed;
@@ -196,7 +196,7 @@
         border: 0.5vh solid #00ff16;
         border-radius: 3vh;
         font-size: 4vw;
-        font-family: 'Agency FB Bold', arial;
+        font-family: 'Khand', sans-serif; font-weight: bold;
     }
     .read-more-btn:hover {
         cursor: pointer;
@@ -211,7 +211,7 @@
         overflow-y: scroll;
         font-size: 5vw;
         text-align: justify;
-        font-family: 'Agency FB Bold', arial;
+        font-family: 'Khand', sans-serif; font-weight: bold;
         background-color: white;
         /* padding: 5%; */
     }

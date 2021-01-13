@@ -33,7 +33,9 @@
 
 <link rel="shortcut icon" type="image/png" href="./icons/FaviconUTE.png"/>
 
-<link href="https://allfont.net/allfont.css?fonts=agency-fb-bold" rel="stylesheet" type="text/css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Khand&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
 <script src="javascript/tween-functions.js"></script>

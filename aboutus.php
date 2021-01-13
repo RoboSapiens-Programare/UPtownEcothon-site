@@ -6,20 +6,17 @@
         <link rel="stylesheet" type="text/css" href="css/twistycontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/contact-form.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
         <?php 
             include 'elements/header.php'; 
             require_once('config/captchacredentials.php');
         ?>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        
         <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $site_key; ?>"></script>
 
         <style>
-            h2 {
-                font-size: 3.5rem;
-                color: darkgrey;
-            }
             #footer-special ul{
                 list-style: none;
                 height: 100%;

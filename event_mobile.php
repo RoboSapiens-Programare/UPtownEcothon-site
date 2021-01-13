@@ -35,7 +35,7 @@
             }
 
             .award-slot .title{
-                font-family: 'Agency FB', arial;
+                font-family: 'Khand', sans-serif;
                 font-size: 9vw;
                 font-weight: bold;
                 width: 90%;
@@ -46,7 +46,7 @@
             }
 
             .award-slot .desc{
-                font-family: 'Agency FB', arial;
+                font-family: 'Khand', sans-serif;
                 font-size: 4vw;
                 font-weight: normal;
                 width: 90%;

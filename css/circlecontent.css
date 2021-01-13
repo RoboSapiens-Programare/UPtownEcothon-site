@@ -1,7 +1,7 @@
 .rectangle-content {
     position: absolute;
     background-color: aliceblue;
-    font-family: 'Agency FB Bold', arial;
+    font-family: 'Montserrat', sans-serif; font-weight: 300;
     font-size: 1vw;
     color: black;
     border-radius: 0.8vw;
@@ -16,6 +16,8 @@
 .rectangle-content .circle-bottom-left,
 .rectangle-content .circle-top-right,
 .rectangle-content .circle-top-left {
+    font-family: 'Khand', sans-serif; 
+    font-weight: bold;
     position: absolute;
     border-radius: 100%;
     border: 1.5vh solid aliceblue;

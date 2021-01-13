@@ -3,7 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Agency FB', arial;
+    font-family: 'Khand', sans-serif;
     /* font-weight: bold; */
     /* color: black; */
     z-index: inherit;
@@ -18,6 +18,6 @@
     border-radius: 20px 20px 20px 20px;
     padding: 1.6vw;
     background-color: aliceblue;
-    font-family: 'Agency FB', arial;
+    font-family: 'Khand', sans-serif;
     color: black;
 }

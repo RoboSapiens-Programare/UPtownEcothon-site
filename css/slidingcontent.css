@@ -8,7 +8,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    font-family: 'Agency FB', arial;
+    font-family: 'Khand', sans-serif;
     font-weight: bold;
     font-size: 7vw;
     color: white;
@@ -28,7 +28,7 @@
     border: solid #00ff16;
     padding: 0.9vw;
     transform: translate(-50%, -50%);
-    font-family: sans-serif;
+    font-family: 'Montserrat' , sans-serif;
 }
 
 .section .titlebtn:hover {
@@ -41,11 +41,16 @@
 .sliding {
     position: absolute;
     background-color: aliceblue;
-    font-family: 'Agency FB', arial;
-    font-size: 2vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 1.6vw;
     width: 45vw;
     height: 43vh;
     padding: 1.6vw;
+}
+
+.sliding h1, .sliding h2, .sliding h3{
+    font-family: 'Khand', sans-serif;
 }
 
 .scroller {

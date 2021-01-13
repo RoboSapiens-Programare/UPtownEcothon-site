@@ -95,7 +95,7 @@
 				top: 0;
 				left: 12vw;
 				/* border: 1px solid blue; */
-				font-family: 'Agency FB', arial; 
+				font-family: 'Khand', sans-serif; 
 				font-weight: bold;
 				padding-left: 5%;
     			font-size: 10vw;
@@ -167,7 +167,7 @@
         <!-- <div style="width: 100vw; height: 100vh; overflow: hidden"> -->
 			<div id="banner-homepage"></div>
 			<div style=" position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); 
-						font-family: 'Agency FB', arial; font-weight: bold; color: white; z-index: inherit; text-align: center; font-size: 4vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
+						font-family: 'Khand', sans-serif; font-weight: bold; color: white; z-index: inherit; text-align: center; font-size: 4vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
 			<img src="pictures/LogoUTEAlb.png" style="z-index: 100; position: absolute; height: 40vw; width: 90vw; top: 50%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode:difference;">
 		<!-- </div>  -->
 
@@ -183,7 +183,7 @@
 					</div>
 					<div class="titlu-buline">Info</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large; columns: 1; -webkit-columns: 1; -moz-columns: 1;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large; columns: 1; -webkit-columns: 1; -moz-columns: 1;">
 							<?php echo $content['Buline']['Info']; ?>
 						</ul>
 					</div>
@@ -197,7 +197,7 @@
 					</div>
 					<div class="titlu-buline">About us</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
 							<?php echo $content['Buline']['About us']; ?>
 						</ul>
 					</div>
@@ -211,7 +211,7 @@
 					</div>
 					<div class="titlu-buline">Got a problem?</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
 							<?php echo $content['Buline']['Got a problem?']; ?>
 						</ul>
 					</div>
@@ -225,7 +225,7 @@
 					</div>
 					<div class="titlu-buline">Event</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
 							<?php echo $content['Buline']['Event']; ?>
 						</ul>
 					</div>
@@ -239,7 +239,7 @@
 					</div>
 					<div class="titlu-buline">Sponsors</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
 							<?php echo $content['Buline']['Our sponsors']; ?>
 						</ul>
 					</div>
@@ -248,7 +248,7 @@
 		</div>
 		<div style="position: relative; height: 5vh; width: 100%; background-color: transparent;"></div>
 
-		<div class="wrapper-registration" id="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #d222d2; font-family: 'Agency FB', arial;">
+		<div class="wrapper-registration" id="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #d222d2; font-family: 'Khand', sans-serif;">
 			<div style="position:relative; 
 						left: 50%; 
 						transform: translate(-50%, 0%); 

@@ -4,7 +4,7 @@
 
 .fcf-body {
     margin: 0;
-    font-family: -apple-system, Arial, sans-serif;
+    font-family: -apple-system, sans-serif, sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -59,7 +59,7 @@ select.fcf-form-control[size], select.fcf-form-control[multiple] {
 }
 
 textarea.fcf-form-control {
-    font-family: -apple-system, Arial, sans-serif;
+    font-family: -apple-system, sans-serif, sans-serif;
     height: auto;
 }
 

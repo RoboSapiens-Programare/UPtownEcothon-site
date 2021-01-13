@@ -24,7 +24,7 @@
     
     #pages ul {
         list-style-type: none;
-        font-family: 'Agency FB Bold', arial;
+        font-family: 'Khand', sans-serif; font-weight: bold;
         font-size: 3.5vh;
     }
     
@@ -52,7 +52,7 @@
         margin: 5% 10% -50% 10%;
         /* border: 2px solid black; */
         color: black;
-        font-family: 'Agency FB Bold', arial;
+        font-family: 'Khand', sans-serif; font-weight: bold;
         font-size: 3.5vh;
         padding: 0%;
     }
@@ -68,7 +68,7 @@
         height: auto;
         vertical-align: middle;
         /* border: 3px solid red; */
-        font-family: 'Agency FB Bold', arial;
+        font-family: 'Khand', sans-serif; font-weight: bold;
         font-size: 3.5vh;
         color: black;
     }
@@ -112,7 +112,7 @@
         width: 100%;
         border: 0px solid black;
         text-align: center;
-        font-family: 'Agency FB Bold', arial;
+        font-family: 'Khand', sans-serif; font-weight: bold;
         font-size: 3.5vh;
     }
     
@@ -129,7 +129,7 @@
         width: 84%;
         text-decoration: none;
         font-size: 3.5vh;
-        font-family: 'Agency FB Bold', arial;
+        font-family: 'Khand', sans-serif; font-weight: bold;
     }
     
     .button p {
