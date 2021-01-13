@@ -3,12 +3,18 @@
 <?php
 	if (!isset ($_SESSION)) session_start();
 
-	$_SESSION['ismobile'] = true;
+	$_SESSION['ismobile'] = false;
+	$hassbs;
+	$showemail;
 
-	if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
-		$subscribemessage = $_SESSION['subscribemsg'];
+	if(isset($_SESSION['hassbs']) && $_SESSION['hassbs']){
+		$hassbs = true;
+	} else if (isset($_SESSION['hassbs']) && $_SESSION['hassbs'] === false){
+		$hassbs = false;
+		$showemail = true;
 	} else {
-		$subscribemessage = " ";
+		$showemail = false;
+		$hassbs = false;
 	}
 ?>
 
@@ -21,6 +27,34 @@
 		<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>	  
 
 		<?php include "elements/header.php"; ?>
+
+		<?php
+			if($hassbs || $showemail){
+				echo " <script>
+				function Scrolldown() {
+					window.location.hash = '#wrapper-registration';
+				}
+
+				window.onload  = Scrolldown;
+				</script>
+				";
+			}
+			
+		?>
+
+		<script>
+			function validateForm(){
+				var email = document.forms["newsletter"]["email"].value;
+				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				var isemail = re.test(String(email).toLowerCase());
+				var message = document.getElementById('message');
+
+				if(!isemail){
+					document.getElementById('message').innerHTML = 'Please enter a valid email address';
+					return false;
+				}
+			}
+		</script>
 
 		<style>
 			#banner-homepage{
@@ -241,7 +275,7 @@
 
 			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
 				
-				<form method="POST" class="form" style="display:visible; position:absolute; height:100%; width:100%; left:100%;" action="register_subscriber.php">
+				<!-- <form method="POST" class="form" style="display:visible; position:absolute; height:100%; width:100%; left:100%;" action="register_subscriber.php">
 					<input type="text" id="email" class="email" name="email" placeholder="your e-mail..." style="position: absolute; top:30%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:90%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw">
 					<button type="submit" id="submit" class="registration-button" style="right:5%; height: 25%; width: 40%;"><div class="text-centrat">Submit</div></button>
 					<div type="text" id="message" name="message" style="position: absolute; top:65%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:90%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw;"><?php echo $subscribemessage;?></div>
@@ -250,7 +284,48 @@
 					<div class="text-centrat" style="text-decoration: none;">
 						Subscribe
 					</div>
-				</div>
+				</div> -->
+				<!-- <div id='subscribe-btn' class='registration-button' style='top:0%;left: 25.5%; transform:translate(-50%, 0%); height:25%; width:40%;'>
+							<div class='text-centrat' style='text-decoration: none; color:white;'>
+								Back
+							</div>
+						</div> -->
+
+				<?php 
+					if($hassbs){
+						echo "
+							<div id='subscribe-btn' style='border: 0.4vh solid #00ff16;	border-radius:2vw; font-size: 3vh; background-color:#340634; color: white;position:absolute; top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:80%;'>
+								<div class='text-centrat' style='text-decoration: none; color:white;'> 
+									You have successfully subscribed to our newsletter ;D
+								</div>
+							</div>
+						";
+						// $_SESSION['hassbs'] = false;
+						$showemail = false;
+					} else if ($hassbs === false && $showemail) {
+						echo "
+						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:0%;' onsubmit='return validateForm()' action='register_subscriber.php'>
+							<input type='text' id='email' class='email' name='email' placeholder='your e-mail...' style='position: absolute; top:30%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:90%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw'>
+							<button type='submit' id='submit' class='registration-button' style='right:5%; height: 25%; width: 90%;'><div class='text-centrat'>Submit</div></button>
+							<div type='text' id='message' name='message' style='position: absolute; top:65%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:90%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw;'>";
+						echo $_SESSION['subscribemsg'];
+						echo "	</div>
+						</form>
+						";
+						$showemail = false;
+						unset ($_SESSION['hassbs']);
+					} else {
+						echo "
+						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:0%;' onsubmit='return validateForm()' action='register_subscriber.php'>
+							<input type='text' id='email' class='email' name='email' placeholder='your e-mail...' style='position: absolute; top:30%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:90%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw'>
+							<button type='submit' id='submit' class='registration-button' style='right:5%; height: 25%; width: 90%;'><div class='text-centrat'>Submit</div></button>
+							<div type='text' id='message' name='message' style='position: absolute; top:65%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:90%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw;'>
+							</div>
+						</form>
+
+						";
+					}
+				?>			
 	
 			</div>
 		</div>
@@ -298,99 +373,92 @@
 		
 		<script> 
 			function showMeaning(elem){
-					var main = elem.getElementsByClassName("main")[0];
-					var meaning = elem.getElementsByClassName("meaning")[0];
+				var main = elem.getElementsByClassName("main")[0];
+				var meaning = elem.getElementsByClassName("meaning")[0];
 
-					transitions.resize2D(new Dimension(elem, 35, "vw"),
-					new Dimension(elem, 35, "vw"),
-					tweenFunctions.easeOutQuad,
-					400);
+				transitions.resize2D(new Dimension(elem, 35, "vw"),
+				new Dimension(elem, 35, "vw"),
+				tweenFunctions.easeOutQuad,
+				400);
 
-					transitions.fadeOut(main, tweenFunctions.easeOutExpo, 400);
+				transitions.fadeOut(main, tweenFunctions.easeOutExpo, 400);
 
-					transitions.fadeIn(meaning, tweenFunctions.easeInExpo, 400);
+				transitions.fadeIn(meaning, tweenFunctions.easeInExpo, 400);
 
-					elem.setAttribute("onclick", "hideMeaning(this)")
+				elem.setAttribute("onclick", "hideMeaning(this)")
 
-				}
-				function hideMeaning(elem){
-					var main = elem.getElementsByClassName("main")[0];
-					var meaning = elem.getElementsByClassName("meaning")[0];
+			}
+			function hideMeaning(elem){
+				var main = elem.getElementsByClassName("main")[0];
+				var meaning = elem.getElementsByClassName("meaning")[0];
 
-					transitions.resize2D(new Dimension(elem, 20, "vw"),
-					new Dimension(elem, 20, "vw"),
-					tweenFunctions.easeInQuad,
-					400);
-					
-					transitions.fadeOut(meaning, tweenFunctions.easeOutExpo, 400);
+				transitions.resize2D(new Dimension(elem, 20, "vw"),
+				new Dimension(elem, 20, "vw"),
+				tweenFunctions.easeInQuad,
+				400);
+				
+				transitions.fadeOut(meaning, tweenFunctions.easeOutExpo, 400);
 
-					transitions.fadeIn(main, tweenFunctions.easeInExpo, 400);
+				transitions.fadeIn(main, tweenFunctions.easeInExpo, 400);
 
-					elem.setAttribute("onclick", "showMeaning(this)")
-				}
-
-				var wrprRegBtn = document.getElementById('wrapper-registration-buttons');
-			var subscribe = wrprRegBtn.getElementsByClassName('registration-button')[1]; 
-			var subscribe_text = subscribe.getElementsByClassName('text-centrat')[0];
-			var email = wrprRegBtn.getElementsByClassName('email')[0];
-			var submit = wrprRegBtn.getElementsByClassName('registration-button')[0];
-			var form = wrprRegBtn.getElementsByClassName('form')[0];
-
-			function showSubscribe(){
-				transitions.resize2D(
-					new Dimension(subscribe, 40, "percent"),
-               		new Dimension(subscribe, 25, "percent"),
-                	tweenFunctions.easeOutExpo,
-					700);
-				transitions.slide2D(
-					new Dimension(subscribe, 25.5, "percent"),
-					new Dimension(subscribe, 0, "percent"),
-					tweenFunctions.easeOutExpo,
-					700);
-
-				subscribe_text.innerHTML = "Back";
-
-				transitions.slide2D(
-					new Dimension(form, 0, "percent"),
-					new Dimension(form, 0, "percent"),
-					tweenFunctions.easeOutExpo,
-					700);
-
-				subscribe.setAttribute('onclick', 'hideSubscribe()');
-					 
+				elem.setAttribute("onclick", "showMeaning(this)")
 			}
 
-			function hideSubscribe(){
-				transitions.resize2D(
-					new Dimension(subscribe, 80, "percent"),
-               		new Dimension(subscribe, 80, "percent"),
-                	tweenFunctions.easeOutExpo,
-					700);
-				transitions.slide2D(
-					new Dimension(subscribe, 50, "percent"),
-					new Dimension(subscribe, 0, "percent"),
-					tweenFunctions.easeOutExpo,
-					700);
-				subscribe_text.innerHTML = "Subscribe";
+			// var wrprRegBtn = document.getElementById('wrapper-registration-buttons');
+			// var subscribe = wrprRegBtn.getElementsByClassName('registration-button')[1]; 
+			// var subscribe_text = subscribe.getElementsByClassName('text-centrat')[0];
+			// var email = wrprRegBtn.getElementsByClassName('email')[0];
+			// var submit = wrprRegBtn.getElementsByClassName('registration-button')[0];
+			// var form = wrprRegBtn.getElementsByClassName('form')[0];
+
+			// function showSubscribe(){
+			// 	transitions.resize2D(
+			// 		new Dimension(subscribe, 40, "percent"),
+            //    		new Dimension(subscribe, 25, "percent"),
+            //     	tweenFunctions.easeOutExpo,
+			// 		700);
+			// 	transitions.slide2D(
+			// 		new Dimension(subscribe, 25.5, "percent"),
+			// 		new Dimension(subscribe, 0, "percent"),
+			// 		tweenFunctions.easeOutExpo,
+			// 		700);
+
+			// 	subscribe_text.innerHTML = "Back";
+
+			// 	transitions.slide2D(
+			// 		new Dimension(form, 0, "percent"),
+			// 		new Dimension(form, 0, "percent"),
+			// 		tweenFunctions.easeOutExpo,
+			// 		700);
+
+			// 	subscribe.setAttribute('onclick', 'hideSubscribe()');
+					 
+			// }
+
+			// function hideSubscribe(){
+			// 	transitions.resize2D(
+			// 		new Dimension(subscribe, 80, "percent"),
+            //    		new Dimension(subscribe, 80, "percent"),
+            //     	tweenFunctions.easeOutExpo,
+			// 		700);
+			// 	transitions.slide2D(
+			// 		new Dimension(subscribe, 50, "percent"),
+			// 		new Dimension(subscribe, 0, "percent"),
+			// 		tweenFunctions.easeOutExpo,
+			// 		700);
+			// 	subscribe_text.innerHTML = "Subscribe";
 				
 
-				transitions.slide2D(
-					new Dimension(form, 100, "percent"),
-					new Dimension(form, 0, "percent"),
-					tweenFunctions.easeOutExpo,
-					700);
+			// 	transitions.slide2D(
+			// 		new Dimension(form, 100, "percent"),
+			// 		new Dimension(form, 0, "percent"),
+			// 		tweenFunctions.easeOutExpo,
+			// 		700);
 
-				subscribe.setAttribute('onclick', 'showSubscribe()');
+			// 	subscribe.setAttribute('onclick', 'showSubscribe()');
 					 
-			}
+			// }
 		</script>
-
-		<?php
-			if($_SESSION['showsbs']){
-				echo '<script>window.onload(showSubscribe());</script>';
-				$_SESSION['showsbs']=false;
-			} 
-		?>
 
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="javascript/form.js"></script>

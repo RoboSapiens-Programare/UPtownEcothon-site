@@ -3,14 +3,18 @@
 	if (!isset ($_SESSION)) session_start();
 
 	$_SESSION['ismobile'] = false;
+	$hassbs;
+	$showemail;
 
-	if(isset($_SESSION['subscribemsg']) && !empty($_SESSION['subscribemsg']) && $_SESSION['showsbs']){
-		$subscribemessage = $_SESSION['subscribemsg'];
+	if(isset($_SESSION['hassbs']) && $_SESSION['hassbs']){
+		$hassbs = true;
+	} else if (isset($_SESSION['hassbs']) && $_SESSION['hassbs'] === false){
+		$hassbs = false;
+		$showemail = true;
 	} else {
-		$subscribemessage = " ";
+		$showemail = false;
+		$hassbs = false;
 	}
-
-	$showsbs = isset($_SESSION['showsbs']) ? $_SESSION['showsbs'] : false;
 ?>
 
 <html style="scroll-behavior: smooth">
@@ -23,6 +27,34 @@
 		<link rel="stylesheet" type="text/css" href="css/progressbar.css">
 				  
 		<?php include 'elements/header.php'; ?>
+
+		<?php
+			if($hassbs || $showemail){
+				echo " <script>
+				function Scrolldown() {
+					window.location.hash = '#wrapper-registration';
+				}
+
+				window.onload  = Scrolldown;
+				</script>
+				";
+			}
+			
+		?>
+
+		<script>
+			function validateForm(){
+				var email = document.forms["newsletter"]["email"].value;
+				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				var isemail = re.test(String(email).toLowerCase());
+				var message = document.getElementById('message');
+
+				if(!isemail){
+					document.getElementById('message').innerHTML = 'Please enter a valid email address';
+					return false;
+				}
+			}
+		</script>
 
 		<style>
 			#banner-homepage{
@@ -103,6 +135,7 @@
 	</head>
 
 	<body id="home" style="background-color: #340634; margin: 0px; overflow-x:hidden;">
+
 		<div id="language">
 			<ul>
 				<li style="border-right: 0.2vw solid white;">
@@ -213,17 +246,52 @@
 			</div>
 
 			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
-				
-				<form method="POST" class="form" style="display:visible; position:absolute; height:100%; width:100%; left:100%;" action="register_subscriber.php">
-					<input type="text" id="email" class="email" name="email" placeholder="your e-mail..." style="position: absolute; top:0%; left: 50%; transform: translate(-50%, -20%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:60%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw">
-					<button type="submit" id="submit" class="registration-button" style="right:10%; height: 20%; width: 8%;"><div class="text-centrat">Submit</div></button>
-					<div type="text" id="message" name="message" style="position: absolute; top:40%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:60%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw; font-family:sans-serif"><?php echo $subscribemessage;?></div>
-				</form>
-				<div id="subscribe-btn" class="registration-button" style="top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:30%;" onclick="showSubscribe()">
-					<div class="text-centrat" style="text-decoration: none; color:white;">
-						Subscribe
-					</div>
-				</div>
+				<?php 
+					if($hassbs){
+						echo "
+							<div id='subscribe-btn' style='position:absolute; top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:30%; border: 0.4vh solid #00ff16;	border-radius:2vw; font-size: 3vh;	background-color:#340634; color:white;'>
+								<div class='text-centrat' style='text-decoration: none; color:white;'> 
+									You have successfully subscribed to our newsletter ;D
+								</div>
+							</div>
+						";
+						// unset ($_SESSION['hassbs']);
+						$showemail = false;
+					} else if ($hassbs === false && $showemail) {
+						echo "
+						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:0%;' onsubmit='return validateForm()' action='register_subscriber.php'>
+							<input type='text' id='email' class='email' name='email' placeholder='your e-mail...' style='position: absolute; top:0%; left: 50%; transform: translate(-50%, -20%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:60%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw'>
+							<button type='submit' id='submit' class='registration-button' style='right:10%; height: 20%; width: 8%;'><div class='text-centrat'>Submit</div></button>
+							<div type='text' id='message' name='message' style='position: absolute; top:40%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:60%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw; font-family:sans-serif'>";
+						echo $_SESSION['subscribemsg'];
+						echo "	</div>
+						</form>
+
+						<div id='subscribe-btn' class='registration-button' style='top:0%;left: 14%; transform:translate(-50%, 0%); height:20%; width:8%;' onclick='hideSubscribe()'>
+							<div class='text-centrat' style='text-decoration: none; color:white;'>
+								Back
+							</div>
+						</div>
+						";
+						$showemail = false;
+						unset ($_SESSION['hassbs']);
+					} else {
+						echo "
+						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:100%;' onsubmit='return validateForm()' action='register_subscriber.php'>
+							<input type='text' id='email' class='email' name='email' placeholder='your e-mail...' style='position: absolute; top:0%; left: 50%; transform: translate(-50%, -20%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:60%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw'>
+							<button type='submit' id='submit' class='registration-button' style='right:10%; height: 20%; width: 8%;'><div class='text-centrat'>Submit</div></button>
+							<div type='text' id='message' name='message' style='position: absolute; top:40%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:60%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw; font-family:sans-serif'>
+							    	</div>
+						</form>
+
+						<div id='subscribe-btn' class='registration-button' style='top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:30%;' onclick='showSubscribe()'>
+							<div class='text-centrat' style='text-decoration: none; color:white;'>
+								Subscribe
+							</div>
+						</div>
+						";
+					}
+				?>				
 			</div>
 		</div>
 
@@ -270,6 +338,7 @@
 		<?php include "elements/footer.html"; ?>	
 
 		<script>
+			
 
 			function fadeicon(elem) {
             var icon = elem.getElementsByClassName('icon')[0];
@@ -318,7 +387,7 @@
 				transitions.fadeIn(main, tweenFunctions.easeInExpo, 400);
 			}
 
-			var wrprRegBtn = document.getElementById('wrapper-registration-buttons');
+			var wrprRegBtn = document.getElementById('wrapper-registration-buttons');			
 			var subscribe = wrprRegBtn.getElementsByClassName('registration-button')[1]; 
 			var subscribe_text = subscribe.getElementsByClassName('text-centrat')[0];
 			var email = wrprRegBtn.getElementsByClassName('email')[0];
@@ -374,43 +443,6 @@
 			}
 
 		</script>
-
-		<?php
-			if($showsbs){
-				echo '<script>window.onload(showSubscribe());</script>';
-				if(isset($_SESSION)) $_SESSION['showsbs']=false;
-			} 
-		?>
-		<!-- <script>
-			window.addEventListener('load', function() {
-				// Do we have a #scroll in the URL hash?
-				// if(window.location.hash && /#scroll/.test(window.location.hash)) {
-				if(window.location.hash && (window.location.hash === '#scroll')) {
-					// Scroll to the #scroll value
-					window.scrollTo(0, window.location.hash.replace('#scroll=', ''));
-				}
-
-				
-				// Get all <a> elements with data-remember-position attribute
-				// var links = document.querySelectorAll('a[data-remember-position]');
-				var submit = document.getElementById('submit');
-
-				// if(links.length) {
-					// Loop through the found links
-					// for(var i = 0; i < links.length; i++) {
-						// Listen for clicks
-						// links[i].addEventListener('click', function(e) {
-							submit.addEventListener('click', function(e) {
-							// Prevent normal redirection
-							e.preventDefault();
-
-							// Redirect manually but put the current scroll value at the end
-							window.location = this.href + '?scroll=' + window.scrollY;
-						});
-					// }
-				// }
-			});
-		</script> -->
 
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="javascript/form.js"></script>
