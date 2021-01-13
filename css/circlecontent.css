@@ -18,7 +18,7 @@
 .rectangle-content .circle-top-left {
     position: absolute;
     border-radius: 100%;
-    border: 1.5vw solid aliceblue;
+    border: 1.5vh solid aliceblue;
     /* background-color: teal; */
     width: 30vh;
     height: 30vh;

@@ -25,7 +25,7 @@
         </div>
 
 
-        <div class="wrapper-rotating-content" style="position:relative; left:0%; height:85vh;">
+        <div class="wrapper-rotating-content" style="position:relative; left:0%; height:85vh; overflow-y:visible">
         <div style="position:absolute; width:100%; height:100%; background:linear-gradient(black, black), url(pictures/blob.gif);background-position: -10% center; background-size:cover; background-blend-mode: hue; filter:blur(10px)"></div>
             <div class="rotating-content"  id="rotating-content" style="left:0%; height: 80vh; width:100%; background-color:transparent">
                 <div class="rotate-btn" id="btn-prev" onclick="rotateLoopLeftToRight()" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
@@ -38,7 +38,7 @@
 
                 <div class="rotate-section" id="rt-sect4">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;"><div class="text-centrat" style="width:95%"><img src="pictures/FTC.png" alt="FTC" style="width:100%"></div></div>
+                        <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 70vh; width:70vh;"><div class="text-centrat" style="width:95%"><img src="pictures/FTC.png" alt="FTC" style="width:100%"></div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
                         <div  class="text-centrat" style="font-size: 3vh"> chestii despre ftc</div>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="rotate-section" id="rt-sect3">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;" ><div class="text-centrat" style="width:95%"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%"></div></div>
+                        <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 70vh; width:70vh;" ><div class="text-centrat" style="width:95%"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%"></div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
                         <div  class="text-centrat" style="font-size: 3vh"> chestii despre gemini</div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="rotate-section" id="rt-sect2">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;"><div class="text-centrat" style="width: 90%;"><img src="pictures/endava.png" alt="Endava" style="width: 100%;"></div></div>
+                        <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 70vh; width:70vh;"><div class="text-centrat" style="width: 90%;"><img src="pictures/endava.png" alt="Endava" style="width: 100%;"></div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
                         <div  class="text-centrat" style="font-size: 3vh"> chestii despre endava</div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="rotate-section" id="rt-sect1">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;"><div class="text-centrat" style="color:white">Fundraiser</div></div>
+                        <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 70vh; width:70vh; font-size:200%"><div class="text-centrat" style="color:white; font-size:100%">Fundraiser</div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
                         <div  class="text-centrat" style="font-size: 3vh"> chestii despre fundraiser</div>
@@ -402,30 +402,51 @@
                     700);
             }
 
-            function expand(elem, X, Y, scale){
+            function expand(elem, X, Y, toSize, sizeunit){
                 var rectangle = elem.parentElement;
+                var initialheight = parseFloat(elem.style.height);
+                // alert(initialheight);
 
                 transitions.resize2D(new Dimension(rectangle, X, "vw"),
                                     new Dimension(rectangle, Y, "vh"),
                                     tweenFunctions.easeOutCubic,
                                     1000);
-                transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, scale, 1000);
-                transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, scale, 1000);
+                transitions.resize2D(new Dimension(elem, toSize, sizeunit),
+                new Dimension(rectangle, toSize, sizeunit),
+                tweenFunctions.easeOutCubic,
+                1000);
+                transitions.resize2D(new Dimension(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], toSize, sizeunit),
+                new Dimension(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], toSize, sizeunit),
+                tweenFunctions.easeOutCubic,
+                1000);
+                // transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, scale, 1000);
+                // transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, scale, 1000);
 
-                elem.setAttribute("onclick", "retract(this, " + X + ", " + Y + ", " + scale +");");
+                elem.setAttribute("onclick", "retract(this, " + X + ", " + Y + ", " + initialheight + ", " + "'" + sizeunit + "'" + ", " + toSize + ");");
             }
 
-            function retract(elem, X, Y, scale){
+            function retract(elem, X, Y, initialheight, sizeUnit, toSize){
+                // alert("a");
+
                 var rectangle = elem.parentElement;
+                // alert("a");
 
                 transitions.resize2D(new Dimension(rectangle, 0, "vw"),
                                     new Dimension(rectangle, 0, "vh"),
                                     tweenFunctions.easeOutCubic,
                                     1000);
-                transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
-                transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
+                transitions.resize2D(new Dimension(elem, initialheight, sizeUnit),
+                                    new Dimension(elem, initialheight, sizeUnit),
+                                    tweenFunctions.easeOutCubic,
+                                    1000);
+                transitions.resize2D(new Dimension(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], initialheight, sizeUnit),
+                                    new Dimension(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], initialheight, sizeUnit),
+                                    tweenFunctions.easeOutCubic,
+                                    1000);
+                // transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
+                // transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
 
-                elem.setAttribute("onclick", "expand(this," + X + ", " + Y + ", " + scale +");");
+                elem.setAttribute("onclick", "expand(this," + X + ", " + Y + ", " + toSize + ", " + "'" + sizeUnit + "'" + ");");
             }
             
 
