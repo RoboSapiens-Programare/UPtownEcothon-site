@@ -88,9 +88,9 @@
         transform: translate(-50%, -50%);
         height: 95%;
         width: 10%;
-        border: 0.5vh solid #403446;
+        border: 0.5vh solid #00ff16;
         border-radius: 5vw;
-        background-color: #df458d;
+        background-color: transparent;
         z-index: 3;
     }
     .progress {
@@ -113,12 +113,13 @@
         transform: translate(-50%, 0%);
         height: 20vw;
         width: 20vw;
-        border: 1vw solid #df458d;
+        border: 1vw solid white;
         border-radius: 50%;
-        background-color: white;
+        background-color: #00bd10;
         /* z-index: 2; */
         text-align: center;
         vertical-align: middle;
         font-size: 4vw;
+        color: white;
     }
 }
