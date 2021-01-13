@@ -155,7 +155,7 @@
 			<div id="banner-homepage"></div>
 			<div class="text-centrat" style="font-size: 3vw; width:100%; color: white"> Join us in the quest for building a better Bucharest! </div>
 			<img src="pictures/LogoUTEAlb.png" style="z-index: 110; position: absolute; height:30%; top: 30%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode:difference;" alt="UPtown Ecothon">
-			<div style="background-color: transparent; width: 100%; height: 40%; bottom:0%; z-index:100; position: absolute">
+			<div style="background-color: transparent; width: 100%; height: 40%; bottom:0%; z-index:100; position: absolute; margin-left:1vw;">
 				<div class="wrapper-bulina" style="margin: 0">
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="info.php">
@@ -164,7 +164,7 @@
 						</a>
 					</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: 3vh">
 							<?php echo $content['Buline']['Info']; ?>
 						</ul>
 					</div>
@@ -176,7 +176,7 @@
 						</a>
 					</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: 3vh">
 							<?php echo $content['Buline']['About us']; ?>
 						</ul>
 					</div>
@@ -188,7 +188,7 @@
 						</a>
 					</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: 3vh">
 							<?php echo $content['Buline']['Got a problem?']; ?>
 						</ul>
 					</div>
@@ -200,7 +200,7 @@
 						</a>
 					</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: 3vh">
 							<?php echo $content['Buline']['Event']; ?>
 						</ul>
 					</div>
@@ -212,7 +212,7 @@
 						</a>
 					</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
+						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: 3vh">
 							<?php echo $content['Buline']['Our sponsors']; ?>
 						</ul>
 					</div>
