@@ -4,7 +4,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: 'Agency FB', arial;
-    font-weight: bold;
+    /* font-weight: bold; */
     /* color: black; */
     z-index: inherit;
     text-align: center;

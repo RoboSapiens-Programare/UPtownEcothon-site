@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="scroll-behavior: smooth">
 	<head>
 		<link rel="stylesheet" type="text/css" href="css/sageatatlf.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
@@ -11,7 +11,7 @@
 
     </head>
 
-    <body id="sponsors" style="margin: 0; background-color:#009452">
+    <body id="sponsors-mobile" style="margin: 0; background-color:#d222d2">
 		<?php include "elements/sageatatlf.html"?>
 
 		
@@ -19,8 +19,8 @@
             
         
             <div class="rotating-content"  id="rotating-content" style="left:0%; height: 100vh; width:100%; z-index:1; overflow:hidden">
-                <div class="page-title" style="position: relative; margin-top: 5vh; width:100%; height: 10vh; background-color: transparent; font-size:7vw; z-index:70">
-                    <div class="text-centrat">
+                <div class="page-title" style="position: relative; margin-top: 5vh; width:100%; height: 10vh; background-color: transparent; font-size:5vw; z-index:70">
+                    <div class="text-centrat" style="color: white; text-decoration: underline dashed #00ff16;">
                         <?php echo $content['Thanks'][1]; ?>                    
                     </div>
                 </div>
@@ -53,34 +53,38 @@
                     <!-- <img src="icons/next.svg"> -->
                 </div>
 
-                <div class="rotate-section" id="rt-sect4" style="background-color: #f0a7c0;">
-                        <div class="wrapper" style="background-color: #f0a7c0;">
-                            <div class="sect-title"> <div class="text-centrat">FTC</div> </div>
+                <div class="rotate-section" id="rt-sect4" style="background-color: #76667d;">
+                        <div class="wrapper" style="background-color: #76667d;">
+                            <div class="sect-title"> <div class="text-centrat"><img src="pictures/FTC.png" alt="FTC" style="width: 100%;"></div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="sect-content"><?php echo $content['FTC']['desc']; ?></div>
+                        <div class="wrapper-sect-content"><?php echo $content['FTC']['desc']; ?></div>
                 </div>
-                <div class="rotate-section" id="rt-sect3" style="background-color: #e7df68">
-                        <div class="wrapper" style="background-color: #e7df68">
-                            <div class="sect-title"> <div class="text-centrat">Gemini Solutions</div> </div>
+                <div class="rotate-section" id="rt-sect3" style="background-color: #5a0b5a">
+                        <div class="wrapper" style="background-color: #5a0b5a">
+                            <div class="sect-title"> <div class="text-centrat"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%"></div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="sect-content"><?php echo $content['Gemini']['desc']; ?></div>
+                        <div class="wrapper-sect-content"><?php echo $content['Gemini']['desc']; ?></div>
                 </div>
-                <div class="rotate-section" id="rt-sect2" style="background-color: #9cc0e9">
-                        <div class="wrapper" style="background-color: #9cc0e9">
-                            <div class="sect-title"> <div class="text-centrat">Endava</div> </div>
+                <div class="rotate-section" id="rt-sect2" style="background-color: #9d49a1">
+                        <div class="wrapper" style="background-color: #9d49a1">
+                            <div class="sect-title"> <div class="text-centrat"><img src="pictures/endava.png" alt="Endava" style="width: 100%;"></div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="sect-content"><?php echo $content['Endava']['desc']; ?></div>
+                        <div class="wrapper-sect-content">
+                            <?php echo $content['Endava']['desc']; ?>
+                        </div>
                 </div>
-                <div class="rotate-section" id="rt-sect1" style="background-color: #009452">
-                        <div class="wrapper" style="background-color: #009452">
+                <div class="rotate-section" id="rt-sect1" style="background-color: #340634;">
+                        <div class="wrapper" style="background-color: #340634;">
                             <div class="sect-title"> <div class="text-centrat">Fundraiser</div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="sect-content">
-                            <?php echo $content['Fundraiser']['desc']; ?>
+                        <div class="wrapper-sect-content" style="color: black;">
+                            <div class="sect-content" >
+                                <?php echo $content['Fundraiser']['desc']; ?>
+                            </div>
                         </div>
                 </div>
             </div>
@@ -352,38 +356,12 @@
                     700);
             }
 
-            function expand(elem, X, Y, scale){
-                var rectangle = elem.parentElement;
-
-                transitions.resize2D(new Dimension(rectangle, X, "vw"),
-                                    new Dimension(rectangle, Y, "vh"),
-                                    tweenFunctions.easeOutCubic,
-                                    1000);
-                transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, scale, 1000);
-                transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, scale, 1000);
-
-                elem.setAttribute("onclick", "retract(this, " + X + ", " + Y + ", " + scale +");");
-            }
-
-            function retract(elem, X, Y, scale){
-                var rectangle = elem.parentElement;
-
-                transitions.resize2D(new Dimension(rectangle, 0, "vw"),
-                                    new Dimension(rectangle, 0, "vh"),
-                                    tweenFunctions.easeOutCubic,
-                                    1000);
-                transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
-                transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
-
-                elem.setAttribute("onclick", "expand(this," + X + ", " + Y + ", " + scale +");");
-            }
-            
             function readMore(btn){
                 var wrapper = btn.parentElement;
                 var section = wrapper.parentElement;                
                 var title = wrapper.getElementsByClassName("sect-title")[0];
                 var readTag =btn.getElementsByClassName('text-centrat')[0];
-                var content = section.getElementsByClassName("sect-content")[0];
+                var content = section.getElementsByClassName("wrapper-sect-content")[0];
 
                 transitions.resize2D(new Dimension(wrapper, 100, "pw"),
                     new Dimension(wrapper, 20, "ph"),
@@ -391,12 +369,16 @@
                     500);
 
                 transitions.translate2D(new Dimension(title, 0, "pw"),
-                    new Dimension(title, -40, "ph"),
+                    new Dimension(title, -30, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                transitions.resize2D(new Dimension(title, 70, "percent"),
+                    new Dimension(title, 8, "vh"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 
                 transitions.translate2D(new Dimension(btn, 0, "pw"),
-                    new Dimension(btn, -5, "ph"),
+                    new Dimension(btn, -3, "ph"),
                     tweenFunctions.easeInOutQuad,
                     500);
 
@@ -424,7 +406,7 @@
 
 
                 transitions.translate2D(new Dimension(content, 0, "pw"),
-                    new Dimension(content, -80, "ph"),
+                    new Dimension(content, -78, "ph"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 // alert("a");                    
@@ -439,7 +421,7 @@
                 var section = wrapper.parentElement;
                 var title = wrapper.getElementsByClassName("sect-title")[0];
                 var readTag =btn.getElementsByClassName('text-centrat')[0];
-                var content = section.getElementsByClassName("sect-content")[0];
+                var content = section.getElementsByClassName("wrapper-sect-content")[0];
 
                 transitions.resize2D(new Dimension(wrapper, 100, "pw"),
                     new Dimension(wrapper, 100, "ph"),
@@ -449,12 +431,18 @@
 
 
                 transitions.translate2D(new Dimension(title, 0, "pw"),
-                    new Dimension(title, 40, "ph"),
+                    new Dimension(title, 30, "ph"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+
+                transitions.resize2D(new Dimension(title, 100, "percent"),
+                    new Dimension(title, 10, "vh"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 
+                
                 transitions.translate2D(new Dimension(btn, 0, "pw"),
-                    new Dimension(btn, 5, "ph"),
+                    new Dimension(btn, 3, "ph"),
                     tweenFunctions.easeInOutQuad,
                     500);
 

@@ -35,7 +35,6 @@
 				background-position: center center;
 				/* background-blend-mode: hue; */
 				/* transform: rotate(90deg); */
-
 				/* filter: grayscale(100%); */
 				filter: blur(15px) hue-rotate(300deg);
 			}

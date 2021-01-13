@@ -18,7 +18,7 @@
 .rectangle-content .circle-top-left {
     position: absolute;
     border-radius: 100%;
-    border: 1.5vw solid aliceblue;
+    border: 1.5vh solid aliceblue;
     /* background-color: teal; */
     width: 30vh;
     height: 30vh;
@@ -49,16 +49,16 @@
     cursor: pointer;
 } */
 
-#sponsors .rectangle-content .circle-top-left,
-#sponsors .rectangle-content .circle-top-right,
-#sponsors .rectangle-content .circle-bottom-left,
-#sponsors .rectangle-content .circle-bottom-right {
+.sponsors .rectangle-content .circle-top-left,
+.sponsors .rectangle-content .circle-top-right,
+.sponsors .rectangle-content .circle-bottom-left,
+.sponsors .rectangle-content .circle-bottom-right {
     background-color: #340634;
     cursor: pointer;
 }
 
-#sponsors .rectangle-content .circle-top-left:hover,
-#sponsors .rectangle-content .circle-top-right:hover {
+.sponsors .rectangle-content .circle-top-left:hover,
+.sponsors .rectangle-content .circle-top-right:hover {
     /* filter: hue-rotate(200deg); */
     /* mix-blend-mode: multiply; */
     /* filter: grayscale(100%) saturate(150%); */

@@ -8,9 +8,9 @@
 	}	
 ?>
 
-<div id="cerc-sageatatlf" onclick="expandMenu()">
-    <!-- <div id="bkg-sageata"></div> -->
-    <!-- <div class="logo-elem-tlf" id="sageata-meniutlf">
+    <div id="cerc-sageatatlf" onclick="expandMenu()">
+        <!-- <div id="bkg-sageata"></div> -->
+        <!-- <div class="logo-elem-tlf" id="sageata-meniutlf">
             <img src="pictures/1sageataUTE.png" alt="logo arrow">
         </div>
         <div class="logo-elem-tlf" id="town-TOP">
@@ -19,78 +19,88 @@
         <div class="logo-elem-tlf" id="cothon-TOP">
             <img src="pictures/1cothonUTE.png" style="z-index: 102;" alt="logo cothon">
         </div> -->
-</div>
-
-<!-- <div id="bkg-sageata"></div> -->
-<div class="logo-elem-tlf" id="sageata-meniutlf" onclick="expandMenu()">
-    <div id="bkg-sageata" style="z-index: 101;"></div>
-    <img src="pictures/1sageataUTE.png" alt="logo arrow" style="z-index: 105;">
-</div>
-<div class="logo-elem-tlf" id="town-TOP">
-    <img src="pictures/1townUTE.png" style="z-index: 102;" alt="logo town">
-</div>
-<div class="logo-elem-tlf" id="cothon-TOP">
-    <img src="pictures/1cothonUTE.png" style="z-index: 102;" alt="logo cothon">
-</div>
-
-<div id="pages">
-    <div class="back" onclick="contractMenu()">
-        <img src="icons/arrow-left.svg" alt=" ">
-        <div>Back</div>
     </div>
-    <ul>
-        <div class="line" style="margin-top:-5%"></div>
-        <li>
-            <a href="home.php">
+
+    <!-- <div id="bkg-sageata"></div> -->
+    <div class="logo-elem-tlf" id="sageata-meniutlf" onclick="expandMenu()" style="overflow: hidden;">
+        <!-- <div id="bkg-sageata" style="z-index: 101;"></div> -->
+        <img src="pictures/1sageataUTE.png" alt="logo arrow" style="z-index: 105;">
+    </div>
+    <div class="logo-elem-tlf" id="town-TOP">
+        <img src="pictures/1townUTE.png" style="z-index: 102;" alt="logo town">
+    </div>
+    <div class="logo-elem-tlf" id="cothon-TOP">
+        <img src="pictures/1cothonUTE.png" style="z-index: 102;" alt="logo cothon">
+    </div>
+
+    <div id="pages">
+        <div class="back" onclick="contractMenu()">
+            <img src="icons/arrow-left.svg" alt=" ">
+            <div>Back</div>
+        </div>
+        <ul>
+            <div class="line" style="margin-top:-5%"></div>
+            <li>
+                <a href="home.php">
                     Home
                 </a>
-        </li>
-        <div class="line"></div>
-        <li onclick="appearlogin()">
-            <a href="#">
+            </li>
+            <div class="line"></div>
+            <li onclick="appearlogin()">
+                <a href="#">
                     Account
                 </a>
-        </li>
-        <div class="line"></div>
-        <li style="z-index: 104;">
-            <a href="info.php">
+            </li>
+            <div class="line"></div>
+            <li style="z-index: 104;">
+                <a href="info.php">
                     Info
                 </a>
-        </li>
-        <div class="line"></div>
-        <li>
-            <a href="aboutus.php">
+            </li>
+            <div class="line"></div>
+            <li>
+                <a href="aboutus.php">
                     About Us
                 </a>
-        </li>
-        <div class="line"></div>
-        <li>
-            <a href="problem.php">
+            </li>
+            <div class="line"></div>
+            <li>
+                <a href="problem.php">
                     Got A Problem?
                 </a>
-        </li>
-        <div class="line"></div>
-        <li>
-            <a href="event.php">
+            </li>
+            <div class="line"></div>
+            <li>
+                <a href="event.php">
                     Event
                 </a>
-        </li>
-        <div class="line"></div>
-        <li>
-            <a href="sponsors.php">
+            </li>
+            <div class="line"></div>
+            <li>
+                <a href="sponsors.php">
                     Our Sponsors
                 </a>
-        </li>
-    </ul>
-</div>
-
-<div id="login-tlf">
-    <div class="back" onclick="dissapearlogin()">
-        <img src="icons/arrow-left.svg" alt=" ">
-        <div>Back</div>
+            </li>
+        </ul>
     </div>
 
-    <?php
+    <div id="login-tlf">
+        <div class="back" onclick="dissapearlogin()">
+            <img src="icons/arrow-left.svg" alt=" ">
+            <div>Back</div>
+        </div>
+
+        <div class="sign-in-out" id="registration">
+            <p class="button" style="height: 40%;">Registrations begin january 26th! <br> In the meantime, </p>
+            <a href='home.php #wrapper-registration'>
+                <button class="button main-btn-action" style="margin-top: 0%; height:40%; text-decoration: none;">
+                    Subscribe to our newsletter!
+                </button>
+            </a>
+
+        </div>
+
+        <!-- <?php
             if($displaylogin){
                 include "elements/signin.html";
                 // echo "You are not logged in. <a href='login.php'>Login</a> or <a href='registration.php'>Sign up</a>.";
@@ -99,177 +109,177 @@
                 include "elements/signout.html";
                 // echo $welcomemsg . " <a href='logout.php'>Logout</a>";
             }
-        ?>
-</div>
+        ?> -->
+    </div>
 
 
 
 
-<script>
-    //vars
-    var login = document.getElementById('login-tlf');
-    var cerc = document.getElementById('cerc-sageatatlf');
-    var sageata = document.getElementById('sageata-meniutlf');
-    var list = document.getElementById('pages');
-    var logo1 = document.getElementsByClassName("logo-elem-tlf")[1];
-    var logo2 = document.getElementsByClassName("logo-elem-tlf")[2];
+    <script>
+        //vars
+        var login = document.getElementById('login-tlf');
+        var cerc = document.getElementById('cerc-sageatatlf');
+        var sageata = document.getElementById('sageata-meniutlf');
+        var list = document.getElementById('pages');
+        var logo1 = document.getElementsByClassName("logo-elem-tlf")[1];
+        var logo2 = document.getElementsByClassName("logo-elem-tlf")[2];
 
 
-    // function orientation() {
-    //     if (window.matchMedia("(orientation: portrait)").matches) {
-    //         // you're in PORTRAIT mode
-    //         alert("portrait");
-    //     }
+        // function orientation() {
+        //     if (window.matchMedia("(orientation: portrait)").matches) {
+        //         // you're in PORTRAIT mode
+        //         alert("portrait");
+        //     }
 
-    //     if (window.matchMedia("(orientation: landscape)").matches) {
-    //         // you're in LANDSCAPE mode
-    //         alert("landscape");
-    //     }
-    // }
+        //     if (window.matchMedia("(orientation: landscape)").matches) {
+        //         // you're in LANDSCAPE mode
+        //         alert("landscape");
+        //     }
+        // }
 
-    var logoElemSmallWidth = 42;
-    var logoElemSmallHeight = 21;
+        var logoElemSmallWidth = 42;
+        var logoElemSmallHeight = 21;
 
-    var logoElemBigWidth = 80;
-    var logoElemBigHeight = 40;
+        var logoElemBigWidth = 80;
+        var logoElemBigHeight = 40;
 
-    var cercSmallSize = 21;
-    var cercBigTop = -30;
-
-
-    function expandMenu() {
-        //pt sageata
-        // transitions.slide2D(new Dimension(sageata, 7.5, "vw"),
-        //     new Dimension(sageata, 2, "vh"),
-        //     tweenFunctions.easeOutExpo,
-        //     1500);
-        transitions.resize2D(new Dimension(sageata, logoElemBigWidth, "vw"),
-            new Dimension(sageata, logoElemBigHeight, "vw"),
-            tweenFunctions.easeOutExpo,
-            1500);
+        var cercSmallSize = 21;
+        var cercBigTop = -30;
 
 
-        //pt cerc
-        transitions.resize2D(new Dimension(cerc, 400, "vw"),
-            new Dimension(cerc, 400, "vw"),
-            tweenFunctions.easeOutExpo,
-            1500);
-
-        transitions.slide2D(new Dimension(cerc, -70, "vw"),
-            new Dimension(cerc, -70, "vw"),
-            tweenFunctions.easeOutExpo,
-            1500);
-
-
-        //pt lista meniului in sine
-        transitions.slide2D(new Dimension(list, 0, "percent"),
-            new Dimension(list, 30, "vh"),
-            tweenFunctions.easeOutExpo,
-            1000);
+        function expandMenu() {
+            //pt sageata
+            // transitions.slide2D(new Dimension(sageata, 7.5, "vw"),
+            //     new Dimension(sageata, 2, "vh"),
+            //     tweenFunctions.easeOutExpo,
+            //     1500);
+            transitions.resize2D(new Dimension(sageata, logoElemBigWidth, "vw"),
+                new Dimension(sageata, logoElemBigHeight, "vw"),
+                tweenFunctions.easeOutExpo,
+                1500);
 
 
-        //pt town si cothon
-        transitions.slide2D(new Dimension(logo1, 7.3, "vw"),
-            new Dimension(logo1, 2, "vh"),
-            tweenFunctions.easeOutExpo,
-            1500);
-        transitions.resize2D(new Dimension(logo1, logoElemBigWidth, "vw"),
-            new Dimension(logo1, logoElemBigHeight, "vw"),
-            tweenFunctions.easeOutExpo,
-            1500);
+            //pt cerc
+            transitions.resize2D(new Dimension(cerc, 400, "vw"),
+                new Dimension(cerc, 400, "vw"),
+                tweenFunctions.easeOutExpo,
+                1500);
 
-        transitions.slide2D(new Dimension(logo2, 7.3, "vw"),
-            new Dimension(logo2, 2, "vh"),
-            tweenFunctions.easeOutExpo,
-            1500);
-        transitions.resize2D(new Dimension(logo2, logoElemBigWidth, "vw"),
-            new Dimension(logo2, logoElemBigHeight, "vw"),
-            tweenFunctions.easeOutExpo,
-            1500);
-
-        cerc.setAttribute("onclick", "contractMenu(this);");
-    }
-
-    function contractMenu() {
-
-        //pt sageata
-        transitions.slide2D(new Dimension(sageata, 7.3, "vw"),
-            new Dimension(sageata, 2, "vh"),
-            tweenFunctions.easeInQuad,
-            1000);
-        transitions.resize2D(new Dimension(sageata, logoElemSmallWidth, "vw"),
-            new Dimension(sageata, logoElemSmallHeight, "vw"),
-            tweenFunctions.easeInQuad,
-            1000);
+            transitions.slide2D(new Dimension(cerc, -70, "vw"),
+                new Dimension(cerc, -70, "vw"),
+                tweenFunctions.easeOutExpo,
+                1500);
 
 
-        //pt cerc
-        transitions.slide2D(new Dimension(cerc, 2, "vw"),
-            new Dimension(cerc, 1, "vh"),
-            tweenFunctions.easeInQuad,
-            900);
-        transitions.resize2D(new Dimension(cerc, cercSmallSize, "vw"),
-            new Dimension(sageata, cercSmallSize, "vw"),
-            tweenFunctions.easeInQuad,
-            900);
+            //pt lista meniului in sine
+            transitions.slide2D(new Dimension(list, 0, "percent"),
+                new Dimension(list, 30, "vh"),
+                tweenFunctions.easeOutExpo,
+                1000);
 
 
-        //pt lista meniului in sine
-        transitions.slide2D(new Dimension(list, -100, "percent"),
-            new Dimension(list, 30, "vh"),
-            tweenFunctions.easeOutQuad,
-            700);
+            //pt town si cothon
+            transitions.slide2D(new Dimension(logo1, 7.3, "vw"),
+                new Dimension(logo1, 2, "vh"),
+                tweenFunctions.easeOutExpo,
+                1500);
+            transitions.resize2D(new Dimension(logo1, logoElemBigWidth, "vw"),
+                new Dimension(logo1, logoElemBigHeight, "vw"),
+                tweenFunctions.easeOutExpo,
+                1500);
+
+            transitions.slide2D(new Dimension(logo2, 7.3, "vw"),
+                new Dimension(logo2, 2, "vh"),
+                tweenFunctions.easeOutExpo,
+                1500);
+            transitions.resize2D(new Dimension(logo2, logoElemBigWidth, "vw"),
+                new Dimension(logo2, logoElemBigHeight, "vw"),
+                tweenFunctions.easeOutExpo,
+                1500);
+
+            cerc.setAttribute("onclick", "contractMenu(this);");
+        }
+
+        function contractMenu() {
+
+            //pt sageata
+            transitions.slide2D(new Dimension(sageata, 7.3, "vw"),
+                new Dimension(sageata, 2, "vh"),
+                tweenFunctions.easeInQuad,
+                1000);
+            transitions.resize2D(new Dimension(sageata, 21, "vw"),
+                new Dimension(sageata, logoElemSmallHeight, "vw"),
+                tweenFunctions.easeInQuad,
+                1000);
 
 
-        //pt town si cothon
-        transitions.slide2D(new Dimension(logo1, -42, "vw"),
-            new Dimension(logo1, 2, "vh"),
-            tweenFunctions.easeOutQuad,
-            1000);
-        transitions.resize2D(new Dimension(logo1, logoElemSmallWidth, "vw"),
-            new Dimension(logo1, logoElemSmallHeight, "vw"),
-            tweenFunctions.easeOutQuad,
-            1000);
+            //pt cerc
+            transitions.slide2D(new Dimension(cerc, 2, "vw"),
+                new Dimension(cerc, 1, "vh"),
+                tweenFunctions.easeInQuad,
+                900);
+            transitions.resize2D(new Dimension(cerc, cercSmallSize, "vw"),
+                new Dimension(sageata, cercSmallSize, "vw"),
+                tweenFunctions.easeInQuad,
+                900);
 
-        transitions.slide2D(new Dimension(logo2, -170, "percent"),
-            new Dimension(logo2, 0, "percent"),
-            tweenFunctions.easeOutQuad,
-            1000);
-        transitions.resize2D(new Dimension(logo2, logoElemSmallWidth, "vw"),
-            new Dimension(logo2, logoElemSmallHeight, "vw"),
-            tweenFunctions.easeOutQuad,
-            1000);
 
-        cerc.setAttribute("onclick", "expandMenu(this);");
-    }
+            //pt lista meniului in sine
+            transitions.slide2D(new Dimension(list, -100, "percent"),
+                new Dimension(list, 30, "vh"),
+                tweenFunctions.easeOutQuad,
+                700);
 
-    function appearlogin() {
 
-        //pt lista meniului in sine
-        transitions.slide2D(new Dimension(list, -100, "percent"),
-            new Dimension(list, 30, "vh"),
-            tweenFunctions.easeOutQuad,
-            600);
+            //pt town si cothon
+            transitions.slide2D(new Dimension(logo1, -42, "vw"),
+                new Dimension(logo1, 2, "vh"),
+                tweenFunctions.easeOutQuad,
+                1000);
+            transitions.resize2D(new Dimension(logo1, logoElemSmallWidth, "vw"),
+                new Dimension(logo1, logoElemSmallHeight, "vw"),
+                tweenFunctions.easeOutQuad,
+                1000);
 
-        //pt login
-        transitions.slide2D(new Dimension(login, 0, "percent"),
-            new Dimension(login, 30, "vh"),
-            tweenFunctions.easeInQuad,
-            600);
-    }
+            transitions.slide2D(new Dimension(logo2, -170, "percent"),
+                new Dimension(logo2, 0, "percent"),
+                tweenFunctions.easeOutQuad,
+                1000);
+            transitions.resize2D(new Dimension(logo2, logoElemSmallWidth, "vw"),
+                new Dimension(logo2, logoElemSmallHeight, "vw"),
+                tweenFunctions.easeOutQuad,
+                1000);
 
-    function dissapearlogin() {
+            cerc.setAttribute("onclick", "expandMenu(this);");
+        }
 
-        //pt login
-        transitions.slide2D(new Dimension(login, -100, "percent"),
-            new Dimension(login, 30, "vh"),
-            tweenFunctions.easeOutQuad,
-            600);
+        function appearlogin() {
 
-        //pt lista meniului in sine
-        transitions.slide2D(new Dimension(list, 0, "percent"),
-            new Dimension(list, 30, "vh"),
-            tweenFunctions.easeInQuad,
-            600);
-    }
-</script>
+            //pt lista meniului in sine
+            transitions.slide2D(new Dimension(list, -100, "percent"),
+                new Dimension(list, 30, "vh"),
+                tweenFunctions.easeOutQuad,
+                600);
+
+            //pt login
+            transitions.slide2D(new Dimension(login, 0, "percent"),
+                new Dimension(login, 30, "vh"),
+                tweenFunctions.easeInQuad,
+                600);
+        }
+
+        function dissapearlogin() {
+
+            //pt login
+            transitions.slide2D(new Dimension(login, -100, "percent"),
+                new Dimension(login, 30, "vh"),
+                tweenFunctions.easeOutQuad,
+                600);
+
+            //pt lista meniului in sine
+            transitions.slide2D(new Dimension(list, 0, "percent"),
+                new Dimension(list, 30, "vh"),
+                tweenFunctions.easeInQuad,
+                600);
+        }
+    </script>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html style="scroll-behavior: smooth">
     <head>
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
+        <link rel="stylesheet" type="text/css" href="css/footer.css">
 
         <?php 
             include 'elements/header.php'; 
@@ -20,21 +21,30 @@
             .card-body{
                 display: none;
             }
+            h2{
+                border-bottom: 0.5vh dashed #00ff16;
+            }
         </style>
 
     </head>
-    <body style="padding: 0; background-color: cornflowerblue">
+    <body id="home" style="padding: 0; background-color: #340634; margin:0;">
         <?php include 'elements/sageata.html' ?>
 
-        <div class="rounded-rect" style="position:relative; width: 45%; height: 80vh; margin: 5% 2.5% 5% 2.5%; overflow-x: hidden; overflow-y: auto; display: inline-block">
+        <div class="page-title" style="position: relative; margin-top: 5vh; width:100%; height: 5vh; background-color: transparent; font-size:5vw; z-index:70">
+            <div class="text-centrat" style="color:white; border-bottom: 0.5vh dashed #00ff16">
+                Got a problem?
+            </div>
+        </div>
+
+        <div class="rounded-rect" style="position:relative; width: 45%; height: 76vh; margin: 5% 2.5% 5% 2.5%; overflow-x: hidden; overflow-y: auto; display: inline-block; border: 0.4vh solid #00ff16; background-color:white">
             <?php echo $content['Report Issue'][1] ?>
             <section style="margin: 50px 20px;">
                 <div style="max-width: 768px; margin: auto;">
                     
                     <!-- contact form -->
-                    <div class="card">
-                    <h2 class="card-header collapsible" style="color: black; font-size: 2rem">Form for Reporting Issue</h2>
-                    <div class="card-body">
+                    <div class="card" style="border-radius:20px">
+                    <h2 class="card-header collapsible" style="color: white; font-size: 2rem; background-color:#d222d2; border-radius:20px">Form for Reporting Issue</h2>
+                    <div class="card-body" >
                         <form class="contact_form" method="post" action="reportissue.php">
 
                             <!-- form fields -->
@@ -88,14 +98,14 @@
             </section>
         </div>
 
-        <div class="rounded-rect" style="position:absolute; width: 45%; height: 80vh; margin: 5% 2.5% 5% 2.5%; overflow-x: hidden; overflow-y: auto; display: inline-block">
+        <div class="rounded-rect" style="position:absolute; width: 45%; height: 76vh; margin: 5% 2.5% 5% 2.5%; overflow-x: hidden; overflow-y: auto; display: inline-block; border: 0.4vh solid #00ff16; background-color:white">
             <?php echo $content['Contact Mentor'][1] ?>
             <section style="margin: 50px 20px;">
                 <div style="max-width: 768px; margin: auto;">
                     
                     <!-- contact form -->
-                    <div class="card">
-                    <h2 class="card-header collapsible" style="color: black; font-size: 2rem">Stuck? Contact a mentor to help you out!</h2>
+                    <div class="card" style="border-radius: 20px;">
+                    <h2 class="card-header collapsible" style="color: white; font-size: 2rem; background-color:#d222d2; border-radius:20px">Stuck? Contact a mentor to help you out!</h2>
                     <div class="card-body">
                         <form class="contact_form" method="post" action="contactmentor.php">
 
@@ -149,6 +159,8 @@
                 </div>
             </section>
         </div>
+
+        <?php include "elements/footer.html"; ?>	
 
         <script>
             var coll = document.getElementsByClassName("collapsible");

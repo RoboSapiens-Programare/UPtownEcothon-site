@@ -11,8 +11,11 @@
     font-family: 'Agency FB', arial;
     font-weight: bold;
     font-size: 7vw;
-    color: aliceblue;
+    color: white;
     transform: translate(-50%, -50%);
+    text-decoration: underline;
+    text-decoration-color: #00ff16;
+    text-decoration-style: dashed;
 }
 
 .section .titlebtn {
@@ -20,16 +23,18 @@
     top: 70%;
     left: 50%;
     font-size: 3vw;
-    color: aliceblue;
+    color: white;
     border-radius: 15px;
-    border: solid aliceblue;
+    border: solid #00ff16;
     padding: 0.9vw;
     transform: translate(-50%, -50%);
+    font-family: sans-serif;
 }
 
 .section .titlebtn:hover {
-    background-color: aliceblue;
-    color: black;
+    background-color: white;
+    color: #290529;
+    border: none;
     cursor: pointer;
 }
 
@@ -95,34 +100,28 @@
 }
 
 @media screen and (orientation:portrait) {
-    .scroller{
+    .scroller {
         width: 15vh;
     }
-
     .scroller .link {
         width: 4vh;
         height: 4vh;
         left: 10%;
     }
-
-    .scroller .link .dot{
+    .scroller .link .dot {
         width: 2.5vh;
         height: 2.5vh;
     }
-
     .section {
         overflow-x: auto;
         overflow-y: hidden;
     }
-
     .section .title {
-        font-size: 20vw;  
+        font-size: 20vw;
     }
-
     .section .titlebtn {
         font-size: 7vw;
     }
-
     .sliding {
         font-size: 5vw;
         height: -moz-fit-content;

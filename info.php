@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
         <link rel="stylesheet" type="text/css" href="css/franshalscontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
+        <link rel="stylesheet" type="text/css" href="css/footer.css">
 
         <?php include 'elements/header.php'; ?>
        
@@ -16,7 +17,7 @@
             }
         </style>
     </head>
-    <body style="background:linear-gradient(#340634, #340634), url(pictures/blob.gif); background-size:cover; background-blend-mode: multiply; background-position:center; overflow: hidden; margin:0px;">
+    <body class="sponsors" style="background:linear-gradient(#340634, #340634), url(pictures/blob.gif); background-size:cover; background-blend-mode: multiply; background-position:center; overflow: hidden; margin:0px;">
 
         <?php 
 			include "elements/sageata.html";
@@ -109,6 +110,10 @@
 
             
         </div>
+
+        <?php 
+			include "elements/footer.html";
+        ?>	
 
         <script>        
             function offset(el) {
