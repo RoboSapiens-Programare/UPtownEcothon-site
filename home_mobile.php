@@ -71,10 +71,10 @@
 			.wrapper-bulina{
 				position: relative;
 				display: inline-block;
-				width: 80%;
+				width: 85%;
 				height: 20%;
 				background-color: transparent;
-				margin-left: 15%;
+				margin-left: 5%;
 				/* border: 1px  solid blue; */
 			}
 			.buline-homepage{
@@ -86,6 +86,10 @@
 				left: 0%;
 				background-color: #d222d2;
 				border-radius: 50%;
+			} 
+			.buline-homepage img{
+				filter: invert(100%);
+				position: absolute;
 			}
 			.titlu-buline {
 				position: absolute;
@@ -168,22 +172,22 @@
 			<div id="banner-homepage"></div>
 			<div style=" position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); 
 						font-family: 'Khand', sans-serif; font-weight: bold; color: white; z-index: inherit; text-align: center; font-size: 4vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
-			<img src="pictures/LogoUTEAlb.png" style="z-index: 100; position: absolute; height: 40vw; width: 90vw; top: 50%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode:difference;">
+			<img src="pictures/LogoUTEAlb.png" style="z-index: 100; position: absolute; width: 80vw; width: 90vw; top: 50%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode:difference;">
 		<!-- </div>  -->
 
 		<div style="position: relative; height: 5vh; width: 100%; background-color: transparent;"></div>
 		<div class="sectiune-butoane">
 			<div style="background-color: transparent; width: 100%; height: 100%; bottom:0%; top:0%; z-index:100; position: absolute">
-				<div class="wrapper-bulina" style="margin: 0; margin-left: 15%;">
+				<div class="wrapper-bulina" style="margin: 0; margin-left: 5%;">
 					<div class="buline-homepage">
 						<a href="info.php">
 							<div class="text-centrat" style="color: white; opacity: 0; z-index: 105;">Info</div>
-							<img class="icon" id="info" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/calendar.svg" alt="Info">
+							<img class="icon" id="info" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="icons/calendar.svg" alt="Info">
 						</a>
 					</div>
 					<div class="titlu-buline">Info</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large; columns: 1; -webkit-columns: 1; -moz-columns: 1;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 2.5vh; columns: 1; -webkit-columns: 1; -moz-columns: 1;">
 							<?php echo $content['Buline']['Info']; ?>
 						</ul>
 					</div>
@@ -192,12 +196,12 @@
 					<div class="buline-homepage">
 						<a href="aboutus.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">About Us</div>
-							<img class="icon" id="contact" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/users.svg" alt="About Us">
+							<img class="icon" id="contact" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="icons/users.svg" alt="About Us">
 						</a>
 					</div>
 					<div class="titlu-buline">About us</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 2.5vh;">
 							<?php echo $content['Buline']['About us']; ?>
 						</ul>
 					</div>
@@ -206,12 +210,12 @@
 					<div class="buline-homepage">
 						<a href="#">
 							<div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
-							<img class="icon" id="help" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/help.svg" alt="Got A Problem?">
+							<img class="icon" id="help" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="icons/help.svg" alt="Got A Problem?">
 						</a>
 					</div>
 					<div class="titlu-buline">Got a problem?</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 2.5vh;">
 							<?php echo $content['Buline']['Got a problem?']; ?>
 						</ul>
 					</div>
@@ -220,12 +224,12 @@
 					<div class="buline-homepage">
 						<a href="event.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Event</div>
-							<img class="icon" id="event" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/book.svg" alt="Event">
+							<img class="icon" id="event" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="icons/book.svg" alt="Event">
 						</a>
 					</div>
 					<div class="titlu-buline">Event</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 2.5vh;">
 							<?php echo $content['Buline']['Event']; ?>
 						</ul>
 					</div>
@@ -234,12 +238,12 @@
 					<div class="buline-homepage">
 						<a href="sponsors.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
-							<img class="icon" id="sponsors" style="height: 70%; width: 70%; left: 50%; top: 50%; transform: translate(20%, 20%);" src="icons/investment.svg" alt="Our Sponsors">
+							<img class="icon" id="sponsors" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="icons/investment.svg" alt="Our Sponsors">
 						</a>
 					</div>
 					<div class="titlu-buline">Sponsors</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: x-large;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 2.5vh;">
 							<?php echo $content['Buline']['Our sponsors']; ?>
 						</ul>
 					</div>

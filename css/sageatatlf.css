@@ -219,6 +219,41 @@
         height: inherit;
         /* width: inherit; */
     }
+    
+    #language {
+        position: absolute;
+        top: 0px;
+        /* right: 0vw; */
+        left: 60%;
+        margin: 1vw;
+        height: 4vh;
+        width: 5vw;
+        background-color: transparent;
+        mix-blend-mode: difference;
+        z-index: 104;
+    }
+    
+    #language li {
+        display: inline;
+        font-family: 'Agency FB Bold', arial;
+        font-size: 3.5vh;
+        color: black;
+        right: 0;
+        text-decoration: none;
+    }
+    
+    #language li a {
+        font-family: 'Agency FB Bold', arial;
+        font-size: 3.5vh;
+        color: black;
+        text-decoration: none;
+    }
+    
+    #language li a:hover {
+        /* -webkit-filter: invert(50%);
+        filter: invert(50%); */
+        color: #00bd11;
+    }
     /* } */
     /* @media all and (orientation:landscape) {
         #cerc-sageatatlf {
