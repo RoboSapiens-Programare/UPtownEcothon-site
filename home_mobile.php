@@ -28,11 +28,11 @@
 				top:0;
 				width:100%; 
 				height:100vh; 
-				background: url(pictures/gifbackgroundhome2.gif); 
+				background: url(pictures/lamp.gif); 
 				background-size: cover;
 				background-position: center center;
-				/* filter: blur(7px); */
 				overflow:hidden;
+				filter: blur(15px) hue-rotate(300deg);
 			}
 			.wrapper-bulina{
 				position: relative;
@@ -50,7 +50,7 @@
 				width: 12vw;
 				height: 12vw;
 				left: 0%;
-				background-color: purple;
+				background-color: #d222d2;
 				border-radius: 50%;
 			}
 			.titlu-buline {
@@ -65,6 +65,7 @@
 				font-weight: bold;
 				padding-left: 5%;
     			font-size: 10vw;
+				color: white;
 			}
 			.wrapper-lists{
 				position: absolute;
@@ -88,7 +89,7 @@
 				text-decoration: underline; color: black;
 			}
 			.wrapper-registration #href:hover{
-				color: #e7df68;
+				color: #00ff16;
 			}
 			.registration-button{
 				position:absolute; 
@@ -96,14 +97,15 @@
 				/* transform: translate(0%, -50%);  */
 				/* height: 20%; 
 				width: 8%;  */
-				border: 0.4vh solid black; 
+				border: 0.4vh solid #00ff16; 
 				border-radius:2vw;
 				font-size: 3vh;
-				background-color:#e7df68
+				background-color:#340634;
+				color: white;
 			}
 			.registration-button:hover{
 				color:white;
-				border: 0.5vh solid #e7df68; 
+				border: 0.5vh solid #00ff16; 
 				cursor:pointer;
 				background-color: transparent;
 			}
@@ -125,13 +127,13 @@
 
 	
     
-	<body id="home" style="background-color: #e7df68; margin: 0px; overflow-x:hidden;">			
+	<body id="home" style="background-color: #340634; margin: 0px; overflow-x:hidden;">			
         <?php include "elements/sageatatlf.html"?>
         
         <!-- <div style="width: 100vw; height: 100vh; overflow: hidden"> -->
 			<div id="banner-homepage"></div>
-			<div style=" position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); font-family: 'Agency FB', arial; font-weight: bold; color: black; z-index: inherit; text-align: center; font-size: 4vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
-			<img src="pictures/LogoUTE.png" style="z-index: 100; position: absolute; height:30%; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+			<div style=" position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); font-family: 'Agency FB', arial; font-weight: bold; color: white; z-index: inherit; text-align: center; font-size: 4vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
+			<img src="pictures/LogoUTEAlb.png" style="z-index: 100; position: absolute; height:30%; top: 50%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode:difference;">
 		<!-- </div>  -->
 
 		<div style="position: relative; height: 5vh; width: 100%; background-color: transparent;"></div>
@@ -221,8 +223,8 @@
 		</div>
 		<div style="position: relative; height: 5vh; width: 100%; background-color: transparent;"></div>
 
-		<div class="wrapper-registration" id="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #df458d; font-family: 'Agency FB', arial;">
-			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:100%; border:0px solid black; margin: 0vh 0vw 0 0vw;font-size:5vh;text-align:center; padding:6% 0 0 0; font-weight:bold"> Registrations begin january 26th! </div>
+		<div class="wrapper-registration" id="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #d222d2; font-family: 'Agency FB', arial;">
+			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:100%; border:0px solid black; margin: 0vh 0vw 0 0vw;font-size:5vh;text-align:center; padding:6% 0 0 0; font-weight:bold;"> Registrations begin january 26th! </div>
 			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); width:100%; border:0px solid black; margin: 0vh 0vw -5vh 0vw;font-size:2.5vh;text-align:center; "> <div class="subtitile text-centrat" style="font-weight:normal">In the meantime, subscribe to our newsletter, or check us out on <a href="#bottom-of-page" id="href" >social media</a>!</div> </div>
 			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
 				
@@ -240,7 +242,7 @@
 			</div>
 		</div>
 
-			<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw 5vh 0vw;font-size:8vw;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #df458d">Helpful Timeline =D</div> </div>
+			<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw 5vh 0vw;font-size:8vw;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #00ff16; color:white">Helpful Timeline =D</div> </div>
 
 			<div class="sectiune-timeline">
 				<div class="timeline">
