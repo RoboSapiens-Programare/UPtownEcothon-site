@@ -213,10 +213,10 @@
     }
     
     .logo-elem-tlf img {
-        height: 17vw;
-        width: 30vw;
+        /* height: 17vw;
+        width: 30vw; */
         /* left: 2%; */
-        /* height: inherit; */
+        height: inherit;
         /* width: inherit; */
     }
     /* } */
