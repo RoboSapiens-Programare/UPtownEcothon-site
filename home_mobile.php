@@ -132,8 +132,9 @@
         
         <!-- <div style="width: 100vw; height: 100vh; overflow: hidden"> -->
 			<div id="banner-homepage"></div>
-			<div style=" position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); font-family: 'Agency FB', arial; font-weight: bold; color: white; z-index: inherit; text-align: center; font-size: 4vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
-			<img src="pictures/LogoUTEAlb.png" style="z-index: 100; position: absolute; height:30%; top: 50%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode:difference;">
+			<div style=" position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); 
+						font-family: 'Agency FB', arial; font-weight: bold; color: white; z-index: inherit; text-align: center; font-size: 4vw; width:100%"> Join us in the quest for building a better Bucharest! </div>
+			<img src="pictures/LogoUTEAlb.png" style="z-index: 100; position: absolute; height: 40vw; width: 90vw; top: 50%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode:difference;">
 		<!-- </div>  -->
 
 		<div style="position: relative; height: 5vh; width: 100%; background-color: transparent;"></div>
