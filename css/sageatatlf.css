@@ -214,7 +214,7 @@
     
     .logo-elem-tlf img {
         height: inherit;
-        width: inherit;
+        /* width: inherit; */
     }
     /* } */
     /* @media all and (orientation:landscape) {
