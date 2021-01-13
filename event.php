@@ -102,7 +102,7 @@
                 </div>
                 <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px; background-color: #9d49a1; transform: scale(0.7)">
                     <div name="toFade" class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 1">
-                        <div class="circle-top-left" onclick="expand(this, 50, 50, 0.7);" style="overflow: hidden;">
+                        <div class="circle-top-left" onclick="expand(this, 50, 50, 15, 'vh');" style="overflow: hidden;">
                             <img src="pictures/pollution1.jpg" style="height: 100%; width: 100%">
                         </div>
                         <div class="circle-bottom-right" style="background-color: aliceblue;"></div>
@@ -121,7 +121,7 @@
                     ?>
                 </div>
                 <div name="toFade" class="rectangle-content" style="top: 50%; left: 15%; transform: translate(-40%, -30%); z-index: 102">
-                    <div class="circle-top-left" onclick="expand(this, 27, 60, 0.4);" style="overflow: hidden;">
+                    <div class="circle-top-left" onclick="expand(this, 27, 60, 10, 'vh');" style="overflow: hidden;">
                         <img src="pictures/pollution4.webp" style="height: 100%; width: 100%">
                     </div>
                     <div class="circle-bottom-right" style="background-color: aliceblue;"></div>
@@ -348,30 +348,93 @@
                 window.location.href = "#" + x.parentElement.id;
             }
 
-            function expand(elem, X, Y, scale){
-                var rectangle = elem.parentElement;
+            // function expand(elem, X, Y, scale){
+            //     var rectangle = elem.parentElement;
 
+            //     transitions.resize2D(new Dimension(rectangle, X, "vw"),
+            //                         new Dimension(rectangle, Y, "vh"),
+            //                         tweenFunctions.easeOutCubic,
+            //                         1000);
+            //     transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, scale, 1000);
+            //     transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, scale, 1000);
+
+            //     elem.setAttribute("onclick", "retract(this, " + X + ", " + Y + ", " + scale +");");
+            // }
+
+            // function retract(elem, X, Y, scale){
+            //     var rectangle = elem.parentElement;
+
+            //     transitions.resize2D(new Dimension(rectangle, 0, "vw"),
+            //                         new Dimension(rectangle, 0, "vh"),
+            //                         tweenFunctions.easeOutCubic,
+            //                         1000);
+            //     transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
+            //     transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
+
+            //     elem.setAttribute("onclick", "expand(this," + X + ", " + Y + ", " + scale +");");
+            // }
+
+            function expand(elem, X, Y, toSize, sizeunit){
+                var rectangle = elem.parentElement;
+                // var initialheight = parseFloat(elem.style.height);
+                // var initialheight = document.styleSheets[0].cssRules[0].style;
+                // // alert(initialheight);
+                // if (!isNaN(parseFloat(elem.style.height))) {
+                //     // let dimHeight = new Dimension(elem, parseFloat(elem.style.height), toHeight.unitOfMeasurement);
+                //     alert(initialheight + "1");
+                    
+                //     initialheight = parseFloat(elem.style.height);
+                // } 
+                // else if (!isNaN(parseFloat(initialheight.getPropertyValue('height')))) {
+                //     alert(initialheight + "2");
+
+                //     initialheight = parseFloat(initialheight.getPropertyValue('height'));
+                // } 
+                // else {
+                //     alert(initialheight + "3");
+
+                //     initialheight = 0;
+                // }
                 transitions.resize2D(new Dimension(rectangle, X, "vw"),
                                     new Dimension(rectangle, Y, "vh"),
                                     tweenFunctions.easeOutCubic,
                                     1000);
-                transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, scale, 1000);
-                transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, scale, 1000);
+                transitions.resize2D(new Dimension(elem, toSize, sizeunit),
+                new Dimension(rectangle, toSize, sizeunit),
+                tweenFunctions.easeOutCubic,
+                1000);
+                transitions.resize2D(new Dimension(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], toSize, sizeunit),
+                new Dimension(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], toSize, sizeunit),
+                tweenFunctions.easeOutCubic,
+                1000);
+                // transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, scale, 1000);
+                // transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, scale, 1000);
 
-                elem.setAttribute("onclick", "retract(this, " + X + ", " + Y + ", " + scale +");");
+                elem.setAttribute("onclick", "retract(this, " + X + ", " + Y + ", " + 30 + ", " + "'" + sizeunit + "'" + ", " + toSize + ");");
             }
 
-            function retract(elem, X, Y, scale){
+            function retract(elem, X, Y, initialheight, sizeUnit, toSize){
+                // alert("a");
+
                 var rectangle = elem.parentElement;
+                // alert("a");
 
                 transitions.resize2D(new Dimension(rectangle, 0, "vw"),
                                     new Dimension(rectangle, 0, "vh"),
                                     tweenFunctions.easeOutCubic,
                                     1000);
-                transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
-                transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
+                transitions.resize2D(new Dimension(elem, initialheight, sizeUnit),
+                                    new Dimension(elem, initialheight, sizeUnit),
+                                    tweenFunctions.easeOutCubic,
+                                    1000);
+                transitions.resize2D(new Dimension(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], initialheight, sizeUnit),
+                                    new Dimension(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], initialheight, sizeUnit),
+                                    tweenFunctions.easeOutCubic,
+                                    1000);
+                // transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
+                // transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
 
-                elem.setAttribute("onclick", "expand(this," + X + ", " + Y + ", " + scale +");");
+                elem.setAttribute("onclick", "expand(this," + X + ", " + Y + ", " + toSize + ", " + "'" + sizeUnit + "'" + ");");
             }
 
             function changePicture(elem, path){
