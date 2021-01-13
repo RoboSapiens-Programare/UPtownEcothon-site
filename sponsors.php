@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="scroll-behavior: smooth">
 	<head>
 
 		<link rel="stylesheet" type="text/css" href="css/sageata.css">
@@ -12,7 +12,7 @@
 
     </head>
     
-    <body id="sponsors" style="margin: 0; background-color:black">
+    <body class="sponsors" style="margin: 0; background-color:black">
 
         <?php 
 			include "elements/sageata.html";

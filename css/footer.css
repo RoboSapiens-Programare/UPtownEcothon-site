@@ -2,7 +2,12 @@
     background-color: #d222d2;
 }
 
-#sponsors #background {
+.sponsors #background {
+    /* background-color: #d222d2; */
+    background-color: #340634;
+}
+
+.info-mobile #background {
     /* background-color: #d222d2; */
     background-color: #340634;
 }
@@ -47,12 +52,22 @@
     filter: invert(100%);
 }
 
-#sponsors .href-elem {
+.sponsors .href-elem {
     filter: invert(100%);
     /* border: 0.5vh solid white; */
 }
 
-#sponsors .href-elem:hover {
+.sponsors .href-elem:hover {
+    /* background-color: #851985; */
+    filter: invert(70%) sepia(70%) saturate(4792%) hue-rotate(87deg) brightness(117%) contrast(120%);
+}
+
+#info-mobile .href-elem {
+    filter: invert(100%);
+    /* border: 0.5vh solid white; */
+}
+
+#info-mobile .href-elem:hover {
     /* background-color: #851985; */
     filter: invert(70%) sepia(70%) saturate(4792%) hue-rotate(87deg) brightness(117%) contrast(120%);
 }

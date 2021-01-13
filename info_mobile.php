@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html style="scroll-behavior: smooth">
     <head>
         <link rel="stylesheet" type="text/css" href="css/circlecontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/sageatatlf.css">
+        <link rel="stylesheet" type="text/css" href="footer.css">
 
         <style>
             .info-btn{
                 position: absolute;
                 /* top: 50%; */
                 /* transform: translate(0%, -50%); */
-                border: 0.3vh solid white;
+                border: 0.4vh solid #00ff16;
                 border-radius: 2vw;
                 background-color: black;
                 color:white;
@@ -23,16 +24,24 @@
                 font-size:5vw;
                 text-decoration: none;
             }
+            h2{
+                text-decoration: underline;
+                text-decoration-style: dashed;
+                text-decoration-color: #00ff16;
+            }
+            p{
+                text-decoration: none;
+            }
         </style>
 
         <?php include 'elements/header.php'; ?>
     </head>
 
-    <body style="margin: 0; overflow-x:hidden; background-color:#d34f56">
+    <body id="info-mobile" style="margin: 0; overflow-x:hidden; background-color:#340634;">
         <?php include "elements/sageatatlf.html"?>
 
         <div style="position: relative; width:100%; height:21vw; margin:0vh 0vw 3vh 0vw;padding:2vh 2vw 2vh 2vw;font-size:20vw; font-family: sans-serif ">
-            <div style="position: absolute; left:50%; top:50%; transform:translate(-50%, -50%)">
+            <div style="position: absolute; left:50%; top:50%; transform:translate(-50%, -50%); color:white; border-bottom: 0.5vh dashed #00ff16">
                 Info
             </div>
         </div>
@@ -56,7 +65,7 @@
             </div>
             <div style="position: relative; color:black">
                 <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family:sans-serif">
-                    <h2> Timetable <h2>
+                    <h2> Timetable </h2>
                 </div>
             </div>
             <div style="position: relative; width:95%; left:50%; transform:translate(-50%, 0%); padding:3%">
@@ -66,7 +75,7 @@
         <div id="news" style="position: relative; width:100%; background-color:black; ">
             <div style="position: relative; color:white">
                 <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family:sans-serif">
-                    <h2> News <h2>
+                    <h2> News </h2>
                     <p style="font-size: 1.5vh;">No news at the moment :(</p>
                 </div>
             </div>
@@ -127,6 +136,8 @@
                     </div>
                 </div> -->
         </div>
+
+        <?php include "elements/footer.html"; ?>	
 
         <script>        
             function offset(el) {
