@@ -21,7 +21,7 @@
             <div class="rotating-content"  id="rotating-content" style="left:0%; height: 100vh; width:100%; z-index:1; overflow:hidden">
                 <div class="page-title" style="position: relative; margin-top: 5vh; width:100%; height: 10vh; background-color: transparent; font-size:7vw; z-index:70">
                     <div class="text-centrat">
-                        A huge thank you to our sponsors!
+                        <?php echo $content['Thanks'][1]; ?>                    
                     </div>
                 </div>
 
@@ -58,21 +58,21 @@
                             <div class="sect-title"> <div class="text-centrat">FTC</div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="sect-content"></div>
+                        <div class="sect-content"><?php echo $content['FTC']['desc']; ?></div>
                 </div>
                 <div class="rotate-section" id="rt-sect3" style="background-color: #e7df68">
                         <div class="wrapper" style="background-color: #e7df68">
                             <div class="sect-title"> <div class="text-centrat">Gemini Solutions</div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="sect-content"></div>
+                        <div class="sect-content"><?php echo $content['Gemini']['desc']; ?></div>
                 </div>
                 <div class="rotate-section" id="rt-sect2" style="background-color: #9cc0e9">
                         <div class="wrapper" style="background-color: #9cc0e9">
                             <div class="sect-title"> <div class="text-centrat">Endava</div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="sect-content"></div>
+                        <div class="sect-content"><?php echo $content['Endava']['desc']; ?></div>
                 </div>
                 <div class="rotate-section" id="rt-sect1" style="background-color: #009452">
                         <div class="wrapper" style="background-color: #009452">
@@ -80,12 +80,7 @@
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
                         <div class="sect-content">
-                            <!-- <div class="text-centrat" > -->
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque lorem libero, vulputate porttitor sem consectetur a. Nullam ullamcorper urna vel elit hendrerit pellentesque. Nam finibus euismod quam quis vehicula. Sed nec dolor ipsum. Donec quam nulla, consequat et erat non, tincidunt tincidunt nisi. Nunc consectetur, tellus sed hendrerit dapibus, mauris dui faucibus turpis, sed dapibus nibh erat eu augue. Aenean tellus est, vehicula a semper sit amet, maximus a tortor. Proin ornare pretium auctor.
-                            Ut feugiat at ipsum eu varius. Fusce non massa nulla. Ut aliquet, nibh id convallis dignissim, arcu elit scelerisque urna, quis mattis ex nunc et diam. Aliquam erat volutpat. In fringilla nec orci sit amet venenatis. Nullam vitae pharetra urna. Ut faucibus dolor id ex dapibus posuere. Nunc facilisis, leo vitae maximus rhoncus, est lorem mattis magna, quis tristique velit mauris ut leo. Nunc sit amet blandit elit. Sed nec mattis dolor. Suspendisse vulputate, augue vel sodales vehicula, urna augue imperdiet felis, vitae venenatis neque turpis eu est. Suspendisse sodales sed ex eget commodo.
-                            orem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque lorem libero, vulputate porttitor sem consectetur a. Nullam ullamcorper urna vel elit hendrerit pellentesque. Nam finibus euismod quam quis vehicula. Sed nec dolor ipsum. Donec quam nulla, consequat et erat non, tincidunt tincidunt nisi. Nunc consectetur, tellus sed hendrerit dapibus, mauris dui faucibus turpis, sed dapibus nibh erat eu augue. Aenean tellus est, vehicula a semper sit amet, maximus a tortor. Proin ornare pretium auctor.
-                            Ut feugiat at ipsum eu varius. Fusce non massa nulla. Ut aliquet, nibh id convallis dignissim, arcu elit scelerisque urna, quis mattis ex nunc et diam. Aliquam erat volutpat. In fringilla nec orci sit amet venenatis. Nullam vitae pharetra urna. Ut faucibus dolor id ex dapibus posuere. Nunc facilisis, leo vitae maximus rhoncus, est lorem mattis magna, quis tristique velit mauris ut leo. Nunc sit amet blandit elit. Sed nec mattis dolor. Suspendisse vulputate, augue vel sodales vehicula, urna augue imperdiet felis, vitae venenatis neque turpis eu est. Suspendisse sodales sed ex eget commodo. 
-                            <!-- </div> -->
+                            <?php echo $content['Fundraiser']['desc']; ?>
                         </div>
                 </div>
             </div>

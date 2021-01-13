@@ -20,7 +20,7 @@
 
         <div style="position: relative; width:100%; height: 15vh; background-color: transparent; font-size:3vw">
             <div class="text-centrat" style="color:white; border-bottom: 0.5vh dashed #00ff16">
-                A huge thank you to our sponsors!
+                <?php echo $content['Thanks'][1]; ?>    
             </div>
         </div>
 
@@ -40,7 +40,7 @@
                         <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;"><div class="text-centrat" style="width:95%"><img src="pictures/FTC.png" alt="FTC" style="width:100%"></div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
-                        <div  class="text-centrat" style="font-size: 3vh"> chestii despre ftc</div>
+                        <div  class="text-centrat" style="font-size: 3vh"> <?php echo $content['FTC']['desc']; ?> </div>
                     </div>
                 </div>
                 <div class="rotate-section" id="rt-sect3">
@@ -48,7 +48,7 @@
                         <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;" ><div class="text-centrat" style="width:95%"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%"></div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
-                        <div  class="text-centrat" style="font-size: 3vh"> chestii despre gemini</div>
+                        <div  class="text-centrat" style="font-size: 3vh"> <?php echo $content['Gemini']['desc']; ?> </div>
                     </div>
                 </div>
                 <div class="rotate-section" id="rt-sect2">
@@ -56,7 +56,7 @@
                         <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;"><div class="text-centrat" style="width: 90%;"><img src="pictures/endava.png" alt="Endava" style="width: 100%;"></div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
-                        <div  class="text-centrat" style="font-size: 3vh"> chestii despre endava</div>
+                        <div  class="text-centrat" style="font-size: 3vh"> <?php echo $content['Endava']['desc']; ?> </div>
                     </div>
                 </div>
                 <div class="rotate-section" id="rt-sect1">
@@ -64,7 +64,7 @@
                         <div class="circle-top-left" onclick="expand(this, 60, 60, 0.3);" style="height: 70vh; width:70vh;"><div class="text-centrat" style="color:white">Fundraiser</div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
-                        <div  class="text-centrat" style="font-size: 3vh"> chestii despre fundraiser</div>
+                        <div  class="text-centrat" style="font-size: 3vh"> <?php echo $content['Fundraiser']['desc']; ?> </div>
                     </div>
                 </div>
             </div>

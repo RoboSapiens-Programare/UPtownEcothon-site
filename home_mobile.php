@@ -147,8 +147,7 @@
 					<div class="titlu-buline">Info</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large; columns: 1; -webkit-columns: 1; -moz-columns: 1;">
-							<li>Program</li>
-							<li>News</li>
+							<?php echo $content['Buline']['Info']; ?>
 						</ul>
 					</div>
 				</div>
@@ -162,9 +161,7 @@
 					<div class="titlu-buline">About us</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>Contact</li>
-							<li>Echipa</li>
-							<li>Site</li>
+							<?php echo $content['Buline']['About us']; ?>
 						</ul>
 					</div>
 				</div>
@@ -178,8 +175,7 @@
 					<div class="titlu-buline">Got a problem?</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>Raporteaza o problema</li>
-							<li>Contacteaza un mentor</li>
+							<?php echo $content['Buline']['Got a problem?']; ?>
 						</ul>
 					</div>
 				</div>
@@ -193,10 +189,7 @@
 					<div class="titlu-buline">Event</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>Scop</li>
-							<li>Teme</li>
-							<li>Cerinte si premii</li>
-							<li>Code of conduct</li>
+							<?php echo $content['Buline']['Event']; ?>
 						</ul>
 					</div>
 				</div>
@@ -210,10 +203,7 @@
 					<div class="titlu-buline">Sponsors</div>
 					<div class="wrapper-lists">
 						<ul style="font-family: 'Agency FB Bold', arial; color: white; font-size: x-large;">
-							<li>Fundraiser</li>
-							<li>Endava</li>
-							<li>Gemini Solutions</li>
-							<li>First Tech Challange</li>
+							<?php echo $content['Buline']['Our sponsors']; ?>
 						</ul>
 					</div>
 				</div>
@@ -222,8 +212,30 @@
 		<div style="position: relative; height: 5vh; width: 100%; background-color: transparent;"></div>
 
 		<div class="wrapper-registration" id="wrapper-registration" style="position:relative; height: 50vh; width:100%; margin:0; background-color: #df458d; font-family: 'Agency FB', arial;">
-			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); height: 20vh; width:100%; border:0px solid black; margin: 0vh 0vw 0 0vw;font-size:5vh;text-align:center; padding:6% 0 0 0; font-weight:bold"> Registrations begin january 26th! </div>
-			<div style="position:relative; left: 50%; transform: translate(-50%, 0%); width:100%; border:0px solid black; margin: 0vh 0vw -5vh 0vw;font-size:2.5vh;text-align:center; "> <div class="subtitile text-centrat" style="font-weight:normal">In the meantime, subscribe to our newsletter, or check us out on <a href="#bottom-of-page" id="href" >social media</a>!</div> </div>
+			<div style="position:relative; 
+						left: 50%; 
+						transform: translate(-50%, 0%); 
+						height: 20vh; width:100%; 
+						border:0px solid black;
+						margin: 0vh 0vw 0 0vw;
+						font-size:5vh;text-align:center; 
+						padding:6% 0 0 0; 
+						font-weight:bold"> 
+
+				<?php echo $content['Registration']['Title']; ?>			
+			</div>
+			<div style="position:relative; 
+						left: 50%; 
+						transform: translate(-50%, 0%); 
+						width:100%; border:0px solid black; 
+						margin: 0vh 0vw -5vh 0vw;
+						font-size:2.5vh;
+						text-align:center; "> 
+				<div class="subtitile text-centrat" style="font-weight:normal">
+					<?php echo $content['Registration']['More']; ?>
+				</div> 
+			</div>
+
 			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
 				
 				<form method="POST" class="form" style="display:visible; position:absolute; height:100%; width:100%; left:100%;" action="register_subscriber.php">
@@ -247,33 +259,33 @@
 					<div class="progress"></div>
 					
 					<div class="milestone" style="top: 0.5%;" onclick="showMeaning(this)">
-						<div class="text-centrat main"> site :D</div>
-						<div class="text-centrat meaning" style="opacity: 0;"> avem site woo </div>
+						<div class="text-centrat main"><?php echo $content['Timeline']['1 Title']?></div>
+						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['1']?></div>
 					</div>
 
 					<div class="milestone" style="top:20%; left: 50%; transform: translate(-50%, -20%);" onclick="showMeaning(this)">
-						<div class="text-centrat main"> inscriere </div>
-						<div class="text-centrat meaning" style="opacity: 0;"> te poti inscrie incepand cu 26 ianuarie :D </div>
+						<div class="text-centrat main"><?php echo $content['Timeline']['2 Title']?></div>
+						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['2']?></div>
 					</div>
 
 					<div class="milestone" style="top:40%; left: 50%; transform: translate(-50%, -40%);" onclick="showMeaning(this)">
-						<div class="text-centrat main"> terminat inscrieri </div>
-						<div class="text-centrat meaning" style="opacity: 0;"> nu te mai poti inscrie :( </div>
+						<div class="text-centrat main"><?php echo $content['Timeline']['3 Title']?></div>
+						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['3']?></div>
 					</div>
 
 					<div class="milestone" style="top:60%; left: 50%; transform: translate(-50%, -60%);" onclick="showMeaning(this)">
-						<div class="text-centrat main"> team making </div>
-						<div class="text-centrat meaning" style="opacity: 0;"> se fac echipele, expect e-mails :D </div>
+						<div class="text-centrat main"><?php echo $content['Timeline']['4 Title']?></div>
+						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['4']?></div>
 					</div>
 
 					<div class="milestone" style="top:80%; left: 50%; transform: translate(-50%, -80%);" onclick="showMeaning(this)">
-						<div class="text-centrat main"> 3 days til event</div>
-						<div class="text-centrat meaning" style="opacity: 0;"> mai sunt 3 zile pana la event!! </div>
+						<div class="text-centrat main"><?php echo $content['Timeline']['5 Title']?></div>
+						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['5']?></div>
 					</div>
 
 					<div class="milestone" style="top: 99.5%; left:50%; transform: translate(-50%, -99.5%)" onclick="showMeaning(this)">
-						<div class="text-centrat main"> event! </div>
-						<div class="text-centrat meaning" style="opacity: 0;"> daca esti inscris hai pe discord pls </div>
+						<div class="text-centrat main"><?php echo $content['Timeline']['6 Title']?></div>
+						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['6']?></div>
 					</div>
 				</div>
 

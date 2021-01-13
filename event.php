@@ -233,14 +233,14 @@
                 for(var a of slidings) {
                     if(a.style.right){
                         transitions.slideX(
-                            new Dimension(a, 52, "pw"),
+                            new Dimension(a, 50, "pw"),
                             tweenFunctions.easeOutQuint,
                             2000
                         );
                     }
                     else{
                         transitions.slideX(
-                            new Dimension(a, 0, "pw"),
+                            new Dimension(a, 2, "pw"),
                             tweenFunctions.easeOutQuint,
                             2000
                         );
