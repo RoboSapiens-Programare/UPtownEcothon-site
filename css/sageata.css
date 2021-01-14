@@ -220,7 +220,7 @@
 }
 
 #login {
-    position: fixed;
+    /* position: fixed; */
     top: 0%;
     left: -35vw;
     height: 10vw;
