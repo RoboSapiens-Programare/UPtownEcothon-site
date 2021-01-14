@@ -129,7 +129,6 @@
             <div id="bigtitle" class="btitle">Contact</div>
             <div id="bcontent" class="bcontent">
                 <?php echo $content['Contact']['Long'] ?>
-                <!-- contact form demo container -->
                 <section style="margin: 50px 20px;">
                     <div style="max-width: 768px; margin: auto;">
                         

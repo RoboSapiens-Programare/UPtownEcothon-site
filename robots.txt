@@ -1,6 +1,5 @@
 User-agent: *
 Disallow: /config/
-Disallow: /content/
 Disallow: /Mobile-Detect-master/
 
 Sitemap: https://ute.robosapiens.ro/sitemap.xml
