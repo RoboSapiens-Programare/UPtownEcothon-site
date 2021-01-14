@@ -208,7 +208,7 @@
         <title>CMS UTE :D</title>
     </head>
     <body>
-        <form method="post" id="theForm">
+        <form method="post" id="theForm" accept-charset="UTF-8">
             <label for="page">Page</label>
             <select name="page" id="page" oninput="displayContent(3);">
                 <?php
