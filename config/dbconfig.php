@@ -16,12 +16,16 @@
 
     class ContentDB extends PDO {
         function __construct(){
-            parent::__construct($GLOBALS['dbtype'] . ':' . $GLOBALS['content_db_name'], $GLOBALS['usr'], $GLOBALS['pass'], array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES UTF8; SET CHARACTER SET UTF8"));
+            parent::__construct($GLOBALS['dbtype'] . ':' . $GLOBALS['content_db_name'], $GLOBALS['usr'], $GLOBALS['pass']);
 
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            if($GLOBALS['dbtype'] == "sqlite")
+            if($GLOBALS['dbtype'] == "sqlite"){
                 $this->exec("PRAGMA foreign_keys = ON");
+            }
+            else{
+                $this->exec("SET NAMES UTF8; SET CHARACTER SET UTF8;");
+            }
         }
 
         function getContentsForPage($pageName, $lang){
