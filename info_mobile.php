@@ -24,7 +24,9 @@
                 font-size:5vw;
                 text-decoration: none;
             }
-            h2{
+            h1, h2{
+                font-family: 'Khand', sans-serif;
+                font-weight: bold;
                 text-decoration: underline;
                 text-decoration-style: dashed;
                 text-decoration-color: #00ff16;
@@ -59,12 +61,12 @@
         </div>
         <div id="program" style="position: relative; width:100%; background-color:white; ">
             <div style="position: relative; color:black">
-                <div style="padding:3% 5% 3% 5%; font-size:2vh; font-family:sans-serif">
+                <div style="padding:3% 5% 3% 5%; font-size:2vh; font-family: 'Montserrat', sans-serif">
                     <?php echo $content['Program'][1]?>
                 </div>
             </div>
             <div style="position: relative; color:black">
-                <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family:sans-serif">
+                <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family: 'Montserrat', sans-serif">
                     <h2> Timetable </h2>
                 </div>
             </div>
@@ -74,7 +76,7 @@
         </div>
         <div id="news" style="position: relative; width:100%; background-color:black; ">
             <div style="position: relative; color:white">
-                <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family:sans-serif">
+                <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family: 'Montserrat', sans-serif">
                     <h2> News </h2>
                     <p style="font-size: 1.5vh;">No news at the moment :(</p>
                 </div>

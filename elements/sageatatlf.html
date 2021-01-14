@@ -34,9 +34,34 @@
     </div>
 
     <div id="pages">
-        <div class="back" onclick="contractMenu()">
-            <img src="icons/arrow-left.svg" alt=" ">
-            <div>Back</div>
+        <div class="list-top">
+            <div class="back" onclick="contractMenu()">
+                <img src="icons/arrow-left.svg" alt=" ">
+                <div>Back</div>
+            </div>
+
+            <div id="language">
+                <ul>
+                    <?php 
+                        if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
+                            echo 
+                            "<li>
+                                <a href='?lang=ro'>
+                                    ro  &#x1F1F7;&#x1F1F4; 
+                                </a>
+                            </li>";
+                        }
+                        else{
+                            echo
+                            "<li style='padding-left: 0.4vw;'>
+                                <a href='?lang=en'>
+                                    en &#127468;&#127463;
+                                </a>
+                            </li>";
+                        }
+                    ?>
+                </ul>
+            </div>
         </div>
 
         <ul>

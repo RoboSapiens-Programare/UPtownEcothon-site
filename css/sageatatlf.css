@@ -45,16 +45,21 @@
     }
     /* pt butonul de back */
     
-    .back {
+    .list-top{
         position: relative;
         display: inline-block;
-        width: 30%;
+        width: 100%;
         height: 7vh;
-        margin: 5% 10% -50% 10%;
-        /* border: 2px solid black; */
-        color: black;
-        font-family: 'Khand', sans-serif; font-weight: bold;
-        font-size: 3.5vh;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .back {
+        position: absolute;
+        width: 30%;
+        height: 100%;
+        margin-left: 5%;
         padding: 0%;
         border: 2px solid #76667d;
         border-radius: 20px;
@@ -74,15 +79,15 @@
         vertical-align: middle;
         /* border: 3px solid red; */
         font-family: 'Khand', sans-serif; font-weight: bold;
-        font-size: 3.5vh;
+        font-size: 6vw;
         color: black;
     }
     
     .back img {
         display: inline;
         position: relative;
-        height: 7vh;
-        width: auto;
+        height: auto;
+        width: 11vw;
         margin: 0% 2% 0% 0%;
         vertical-align: initial;
         /* border: 3px solid yellow; */
@@ -231,29 +236,30 @@
     
     #language {
         position: absolute;
-        top: 0px;
-        /* right: 0vw; */
-        left: 60%;
-        margin: 1vw;
-        height: 4vh;
-        width: 5vw;
+        right: 0;
+        margin-right: 5%;
+        height: 100%;
+        width: 30%;
         background-color: transparent;
         mix-blend-mode: difference;
         z-index: 104;
     }
+
+    #language ul{
+        margin: 0;
+    }
     
     #language li {
         display: inline;
-        font-family: 'Agency FB Bold', arial;
-        font-size: 3.5vh;
-        color: black;
         right: 0;
         text-decoration: none;
+        vertical-align: middle;
+
     }
     
     #language li a {
-        font-family: 'Agency FB Bold', arial;
-        font-size: 3.5vh;
+        font-family: 'Khand', sans-serif;
+        font-size: 8vw;
         color: black;
         text-decoration: none;
     }
