@@ -165,7 +165,7 @@
 
 	
     
-	<body id="home" style="background-color: #340634; margin: 0px; overflow-x:hidden;">			
+	<body id="home" style="background-color: #340634; margin: 0px; overflow-x:hidden;" onload="updateTimeline();">			
         <?php include "elements/sageatatlf.html"?>
         
         <!-- <div style="width: 100vw; height: 100vh; overflow: hidden"> -->
@@ -336,18 +336,18 @@
 
 			<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw 5vh 0vw;font-size:8vw;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #00ff16; color:white">Helpful Timeline =D</div> </div>
 
-			<div class="sectiune-timeline">
+			<div class="sectiune-timeline" id="timeline">
 				<div class="timeline">
 					<div class="progress"></div>
 					
 					<div class="milestone" style="top: 0.5%;" onclick="showMeaning(this)">
 						<div class="text-centrat main"><?php echo $content['Timeline']['1 Title']?></div>
-						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['1']?></div>
+						<a href="aboutus.php"><div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['1']?></div></a>
 					</div>
 
 					<div class="milestone" style="top:20%; left: 50%; transform: translate(-50%, -20%);" onclick="showMeaning(this)">
 						<div class="text-centrat main"><?php echo $content['Timeline']['2 Title']?></div>
-						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['2']?></div>
+						<a href="registration.php"><div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['2']?></div></a>
 					</div>
 
 					<div class="milestone" style="top:40%; left: 50%; transform: translate(-50%, -40%);" onclick="showMeaning(this)">
@@ -408,60 +408,36 @@
 				elem.setAttribute("onclick", "showMeaning(this)")
 			}
 
-			// var wrprRegBtn = document.getElementById('wrapper-registration-buttons');
-			// var subscribe = wrprRegBtn.getElementsByClassName('registration-button')[1]; 
-			// var subscribe_text = subscribe.getElementsByClassName('text-centrat')[0];
-			// var email = wrprRegBtn.getElementsByClassName('email')[0];
-			// var submit = wrprRegBtn.getElementsByClassName('registration-button')[0];
-			// var form = wrprRegBtn.getElementsByClassName('form')[0];
+			function updateTimeline(){
+				var currentTime = new Date();
+				var milestoneTimes = [];
 
-			// function showSubscribe(){
-			// 	transitions.resize2D(
-			// 		new Dimension(subscribe, 40, "percent"),
-            //    		new Dimension(subscribe, 25, "percent"),
-            //     	tweenFunctions.easeOutExpo,
-			// 		700);
-			// 	transitions.slide2D(
-			// 		new Dimension(subscribe, 25.5, "percent"),
-			// 		new Dimension(subscribe, 0, "percent"),
-			// 		tweenFunctions.easeOutExpo,
-			// 		700);
+				//VARS
+				milestoneTimes[0] = new Date('January 15, 2021 00:00:00');
+				milestoneTimes[1] = new Date('January 26, 2021 00:00:00');
+				milestoneTimes[2] = new Date('February 21, 2021 00:00:00');
+				milestoneTimes[3] = new Date('February 22, 2021 00:00:00');
+				milestoneTimes[4] = new Date('February 24, 2021 18:00:00');
+				milestoneTimes[5] = new Date('February 26, 2021 18:00:00');
+				var offsetLeft = 5;
+				var offsetRight = 5;
 
-			// 	subscribe_text.innerHTML = "Back";
+				var maxHeight = 100 - offsetLeft - offsetRight;
+				var progress = document.getElementById('timeline').getElementsByClassName('progress')[0];
+				var step = maxHeight / (document.getElementById('timeline').getElementsByClassName('milestone').length - 1);
+				var totalHeight = 0;
 
-			// 	transitions.slide2D(
-			// 		new Dimension(form, 0, "percent"),
-			// 		new Dimension(form, 0, "percent"),
-			// 		tweenFunctions.easeOutExpo,
-			// 		700);
+				for(let i = 0; i < 5; i++){
+					if(currentTime > milestoneTimes[i]){
+						let sectTime = currentTime - milestoneTimes[i];
+						let maxSectTime = milestoneTimes[i + 1] - milestoneTimes[i];
+						let sectPercentage = Math.min(sectTime, maxSectTime) * step / maxSectTime;
+						totalHeight += sectPercentage;
+					}
+				}
 
-			// 	subscribe.setAttribute('onclick', 'hideSubscribe()');
-					 
-			// }
-
-			// function hideSubscribe(){
-			// 	transitions.resize2D(
-			// 		new Dimension(subscribe, 80, "percent"),
-            //    		new Dimension(subscribe, 80, "percent"),
-            //     	tweenFunctions.easeOutExpo,
-			// 		700);
-			// 	transitions.slide2D(
-			// 		new Dimension(subscribe, 50, "percent"),
-			// 		new Dimension(subscribe, 0, "percent"),
-			// 		tweenFunctions.easeOutExpo,
-			// 		700);
-			// 	subscribe_text.innerHTML = "Subscribe";
-				
-
-			// 	transitions.slide2D(
-			// 		new Dimension(form, 100, "percent"),
-			// 		new Dimension(form, 0, "percent"),
-			// 		tweenFunctions.easeOutExpo,
-			// 		700);
-
-			// 	subscribe.setAttribute('onclick', 'showSubscribe()');
-					 
-			// }
+				progress.style.height = offsetLeft + totalHeight + "%";
+			}
 		</script>
 
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

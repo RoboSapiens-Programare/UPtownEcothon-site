@@ -1,11 +1,6 @@
 User-agent: *
 Disallow: /config/
 Disallow: /content/
-Disallow: /icons/
-Disallow: /javascript/
 Disallow: /Mobile-Detect-master/
-
-Allow: /javascript/transitions.js/
-Allow: /javascript/tweenfunctions.js/
 
 Sitemap: https://ute.robosapiens.ro/sitemap.xml

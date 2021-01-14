@@ -134,7 +134,7 @@
 		</style>
 	</head>
 
-	<body id="home" style="background-color: #340634; margin: 0px; overflow-x:hidden;">
+	<body id="home" style="background-color: #340634; margin: 0px; overflow-x:hidden;" onload="updateTimeline();">
 
 		<div id="language">
 			<ul>
@@ -297,19 +297,19 @@
 
 		<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #00ff16; color:white">Helpful Timeline =D</div> </div>
 
-		<div class="sectiune-timeline">
+		<div class="sectiune-timeline" id="timeline">
 			<div class="timeline">
 				<div class="progress"></div>
 				
-				<div class="milestone" style="left: 0.5%;" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+				<a href="aboutus.php"><div class="milestone" style="left: 0.5%;" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
 					<div class="text-centrat main"><?php echo $content['Timeline']['1 Title']?></div>
 					<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline'][1]; ?> </div>
-				</div>
+				</div></a>
 
-				<div class="milestone" style="top:50%; left: 20%; transform: translate(-20%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+				<a href="registration.php"><div class="milestone" style="top:50%; left: 20%; transform: translate(-20%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
 					<div class="text-centrat main"><?php echo $content['Timeline']['2 Title']?></div>
 					<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline'][2]; ?> </div>
-				</div>
+				</div></a>
 
 				<div class="milestone" style="top:50%; left: 40%; transform: translate(-40%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
 					<div class="text-centrat main"><?php echo $content['Timeline']['3 Title']?></div>
@@ -440,6 +440,50 @@
 
 				subscribe.setAttribute('onclick', 'showSubscribe()');
 					 
+			}
+
+			function updateTimeline(){
+				//Pentru cei curiosi, aici iau timpul actual
+				var currentTime = new Date();
+				var milestoneTimes = [];
+
+				//VARS
+				//Aici setez toate milestone-urile intr-un array (ca si format Date)
+				milestoneTimes[0] = new Date('January 15, 2021 00:00:00');
+				milestoneTimes[1] = new Date('January 26, 2021 00:00:00');
+				milestoneTimes[2] = new Date('February 21, 2021 00:00:00');
+				milestoneTimes[3] = new Date('February 22, 2021 00:00:00');
+				milestoneTimes[4] = new Date('February 24, 2021 18:00:00');
+				milestoneTimes[5] = new Date('February 26, 2021 18:00:00');
+				//Astea sunt niste offset uri la progress bar pt ca cineva ~ehem~ nu le-a pus din colturi
+				var offsetLeft = 5;
+				var offsetRight = 5;
+
+				//Asta e marimea maxima a progress bar-ului
+				var maxWidth = 100 - offsetLeft - offsetRight;
+				var progress = document.getElementById('timeline').getElementsByClassName('progress')[0];
+				//Spatiul dintre 2 buline (in percentage) - o sa avem nevoie pentru ca intre fiecare 2 buline nu este aceeasi durata fizica de timp
+				var step = maxWidth / (document.getElementById('timeline').getElementsByClassName('milestone').length - 1);
+				var totalWidth = 0;
+
+				//Pentru fiecare milestone, mai putin ultimul
+				for(let i = 0; i < 5; i++){
+					//Daca data actuala a trecut de respectivul milestone
+					if(currentTime > milestoneTimes[i]){
+						//Aplicam regula de 3 simpla: 'ms' = 'milestone'
+						//	ms[i+1] - ms[i] (timpul dintre 2 buline) .................... step
+						//	currTime - ms[i] (timpul de la bulina pana in prezent) ...... sectPercentage
+
+						let sectTime = currentTime - milestoneTimes[i];
+						let maxSectTime = milestoneTimes[i + 1] - milestoneTimes[i];
+						//Also verificam sa nu fie mai mare decat maxSectTime
+						let sectPercentage = Math.min(sectTime, maxSectTime) * step / maxSectTime;
+						//Adunam la total
+						totalWidth += sectPercentage;
+					}
+				}
+
+				progress.style.width = offsetLeft + totalWidth + "%";
 			}
 
 		</script>
