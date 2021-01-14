@@ -62,22 +62,12 @@
     filter: invert(70%) sepia(70%) saturate(4792%) hue-rotate(87deg) brightness(117%) contrast(120%);
 }
 
-#info-mobile .href-elem {
+#info-mobile .href-elem, #aboutus-mobile .href-elem, #sponsors-mobile .href-elem {
     filter: invert(100%);
     /* border: 0.5vh solid white; */
 }
 
-#info-mobile .href-elem:hover {
-    /* background-color: #851985; */
-    filter: invert(70%) sepia(70%) saturate(4792%) hue-rotate(87deg) brightness(117%) contrast(120%);
-}
-
-#sponsors-mobile .href-elem {
-    filter: invert(100%);
-    /* border: 0.5vh solid white; */
-}
-
-#sponsors-mobile .href-elem:hover {
+#info-mobile .href-elem:hover, #aboutus-mobile .href-elem:hover, #sponsors-mobile .href-elem:hover {
     /* background-color: #851985; */
     filter: invert(70%) sepia(70%) saturate(4792%) hue-rotate(87deg) brightness(117%) contrast(120%);
 }

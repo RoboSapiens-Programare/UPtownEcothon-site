@@ -26,6 +26,7 @@
         list-style-type: none;
         font-family: 'Khand', sans-serif; font-weight: bold;
         font-size: 3.5vh;
+        margin-top: revert;
     }
     
     #pages li {
@@ -47,7 +48,7 @@
     .back {
         position: relative;
         display: inline-block;
-        width: 80%;
+        width: 30%;
         height: 7vh;
         margin: 5% 10% -50% 10%;
         /* border: 2px solid black; */
@@ -55,6 +56,10 @@
         font-family: 'Khand', sans-serif; font-weight: bold;
         font-size: 3.5vh;
         padding: 0%;
+        border: 2px solid #76667d;
+        border-radius: 20px;
+        padding-left: 3%;
+        box-sizing: border-box;
     }
     
     .back div {
@@ -79,6 +84,7 @@
         height: 7vh;
         width: auto;
         margin: 0% 2% 0% 0%;
+        vertical-align: initial;
         /* border: 3px solid yellow; */
     }
     
@@ -86,6 +92,7 @@
     .back:hover {
         -webkit-filter: invert(48%) sepia(51%) saturate(4899%) hue-rotate(101deg) brightness(105%) contrast(104%);
         filter: invert(48%) sepia(51%) saturate(4899%) hue-rotate(101deg) brightness(105%) contrast(104%);
+        cursor: pointer;
     }
     /* pt elementele de la chestia de account */
     
@@ -176,6 +183,8 @@
         border: 2vw solid #d222d2;
         border-radius: 50%;
         background-color: white;
+        box-sizing: initial;
+
     }
     /* pt sageata din cerc */
     

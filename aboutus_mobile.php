@@ -7,7 +7,6 @@
         <link rel="stylesheet" type="text/css" href="css/footer.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-
         <?php 
             include 'elements/header.php';
             require_once('config/captchacredentials.php'); 
@@ -44,11 +43,11 @@
         </style>
     </head>
 
-    <body style="margin: 0; overflow-x:hidden; background-color:#340634;">
+    <body id="aboutus-mobile" style="margin: 0; overflow-x:hidden; background-color:#340634;">
         <?php include "elements/sageatatlf.html"?>
 
-        <div style="position: relative; width:100%; height:21vw; margin:0vh 0vw 3vh 0vw;padding:2vh 2vw 2vh 2vw;font-size:15vw; font-family: 'Khand', sans-serif;">
-            <div style="position: absolute; left:50%; top:50%; transform:translate(-50%, -50%); color:white; border-bottom: 0.5vh dashed #00ff16">
+        <div style="position: relative; width:100%; height:21vw; margin:0vh 0vw 3vh 0vw; padding:2vh 2vw 2vh 2vw;font-size:15vw; font-family: 'Khand', sans-serif;">
+            <div style="position: absolute; right:10%; top:50%; transform:translateY(-50%); color:white; border-bottom: 0.5vh dashed #00ff16">
                 About us
             </div>
         </div>

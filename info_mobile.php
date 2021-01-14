@@ -41,7 +41,7 @@
         <?php include "elements/sageatatlf.html"?>
 
         <div style="position: relative; width:100%; height:21vw; margin:0vh 0vw 3vh 0vw;padding:2vh 2vw 2vh 2vw;font-size:20vw; font-family: 'Khand', sans-serif ">
-            <div style="position: absolute; left:50%; top:50%; transform:translate(-50%, -50%); color:white; border-bottom: 0.5vh dashed #00ff16">
+            <div style="position: absolute; right:10%; top:50%; transform:translateY(-50%); color:white; border-bottom: 0.5vh dashed #00ff16">
                 Info
             </div>
         </div>
