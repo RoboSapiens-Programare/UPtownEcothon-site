@@ -221,6 +221,7 @@
 
 #login {
     /* position: fixed; */
+    position: absolute;
     top: 0%;
     left: -35vw;
     height: 10vw;
