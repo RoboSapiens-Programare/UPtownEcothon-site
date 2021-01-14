@@ -187,7 +187,7 @@
 					</div>
 					<div class="titlu-buline">Info</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 2.5vh; columns: 1; -webkit-columns: 1; -moz-columns: 1;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 4vw; columns: 1; -webkit-columns: 1; -moz-columns: 1;">
 							<?php echo $content['Buline']['Info']; ?>
 						</ul>
 					</div>
@@ -201,7 +201,7 @@
 					</div>
 					<div class="titlu-buline">About us</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 2.5vh;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 4vw;">
 							<?php echo $content['Buline']['About us']; ?>
 						</ul>
 					</div>
@@ -215,7 +215,7 @@
 					</div>
 					<div class="titlu-buline">Got a problem?</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 2.5vh;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 4vw;">
 							<?php echo $content['Buline']['Got a problem?']; ?>
 						</ul>
 					</div>
@@ -229,7 +229,7 @@
 					</div>
 					<div class="titlu-buline">Event</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 2.5vh;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 4vw;">
 							<?php echo $content['Buline']['Event']; ?>
 						</ul>
 					</div>
@@ -243,7 +243,7 @@
 					</div>
 					<div class="titlu-buline">Sponsors</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 2.5vh;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 4vw;">
 							<?php echo $content['Buline']['Our sponsors']; ?>
 						</ul>
 					</div>
@@ -259,7 +259,7 @@
 						height: 20vh; width:100%; 
 						border:0px solid black;
 						margin: 0vh 0vw 0 0vw;
-						font-size:5vh;text-align:center; 
+						font-size:7.6vw;text-align:center; 
 						padding:6% 0 0 0; 
 						font-weight:bold"> 
 
@@ -270,9 +270,9 @@
 						transform: translate(-50%, 0%); 
 						width:100%; border:0px solid black; 
 						margin: 0vh 0vw -5vh 0vw;
-						font-size:2.5vh;
+						font-size:4vw;
 						text-align:center; "> 
-				<div class="subtitile text-centrat" style="font-weight:normal">
+				<div class="subtitile text-centrat" style="font-weight:normal; width: 70%">
 					<?php echo $content['Registration']['More']; ?>
 				</div> 
 			</div>
