@@ -66,15 +66,19 @@
         <div id="scroller" class="scroller">
             <div id="link1" class="link">
                 <a href="#sect1" class="dot"></a>
+                <div class="sect-title"><?php echo $content['Scop']['Title']; ?></div>
             </div>
             <div id="link2" class="link">
                 <a href="#sect2" class="dot"></a>
+                <div class="sect-title"><?php echo $content['Teme']['Title']; ?></div>
             </div>
             <div id="link3" class="link">
                 <a href="#sect3" class="dot"></a>
+                <div class="sect-title"><?php echo $content['Cerinte & Premii']['Title']; ?></div>
             </div>
             <div id="link4" class="link">
                 <a href="#sect4" class="dot"></a>
+                <div class="sect-title"><?php echo $content['Code of Conduct']['Title']; ?></div>
             </div>
         </div>
 
@@ -157,13 +161,13 @@
 
             <div id="award-row"  style="top: 100vh;">
                 <div class="award-slot">
-                    <div class="text-centrat title">Creativity Award</div>
+                    <div class="text-centrat title" style="font-size: 2.5vw;">Creativity Award</div>
                     <div class="text-centrat desc"><?php echo $content["Cerinte & Premii"]["Creativitate"] . "<br>"; ?></div>
                 </div><div class="award-slot">
-                    <div class="text-centrat title">Innovation Award</div>
+                    <div class="text-centrat title" style="font-size: 2.5vw;">Innovation Award</div>
                     <div class="text-centrat desc"><?php echo $content["Cerinte & Premii"]["Inovatie"] . "<br>"; ?></div>
                 </div><div class="award-slot">
-                    <div class="text-centrat title">Utility & Implementation Award</div>
+                    <div class="text-centrat title" style="font-size: 2.5vw;">Utility & Implementation Award</div>
                     <div class="text-centrat desc"><?php echo $content["Cerinte & Premii"]["Implementare"] . "<br>"; ?></div>
                 </div>
             </div>

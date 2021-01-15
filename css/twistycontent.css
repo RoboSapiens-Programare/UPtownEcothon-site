@@ -17,22 +17,27 @@
 .smallcontent .title,
 .expand-button {
     position: absolute;
-    font-family: 'Khand', sans-serif; font-weight: bold;
+    font-family: 'Khand', sans-serif;
+    font-weight: bold;
 }
 
 .bigcontent .bcontent,
 .smallcontent .content {
     position: absolute;
     left: 50%;
-    font-family: 'Montserrat', sans-serif; font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
     text-align: justify;
     color: white;
     width: 90%;
     transform: translateX(-50%);
 }
 
-.bigcontent .bcontent h1, .bigcontent .bcontent h2, .bigcontent .bcontent h3{
-    font-family: 'Khand', sans-serif; font-weight: bold;
+.bigcontent .bcontent h1,
+.bigcontent .bcontent h2,
+.bigcontent .bcontent h3 {
+    font-family: 'Khand', sans-serif;
+    font-weight: bold;
     font-size: 3.5rem;
     color: darkgrey;
 }
@@ -84,6 +89,10 @@
 
 .smallcontent:hover .smallcontent-inner {
     transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
     cursor: pointer;
 }
 
@@ -144,7 +153,7 @@
 }
 
 @media screen and (orientation:portrait) {
-    .bigcontent{
+    .bigcontent {
         position: relative;
         height: auto;
         top: 0;
@@ -152,7 +161,6 @@
         width: 100%;
         transform: translateY(0%);
     }
-
     .bigcontent .bcontent {
         position: relative;
     }
