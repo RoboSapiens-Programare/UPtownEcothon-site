@@ -52,22 +52,27 @@
     filter: invert(100%);
 }
 
+
+/* .sponsors .href-elem {
+    filter: invert(100%);
+}
+
+.sponsors .href-elem:hover {
+    filter: invert(70%) sepia(70%) saturate(4792%) hue-rotate(87deg) brightness(117%) contrast(120%);
+} */
+
+#info-mobile .href-elem,
+#aboutus-mobile .href-elem,
+#sponsors-mobile .href-elem,
 .sponsors .href-elem {
     filter: invert(100%);
     /* border: 0.5vh solid white; */
 }
 
+#info-mobile .href-elem:hover,
+#aboutus-mobile .href-elem:hover,
+#sponsors-mobile .href-elem:hover,
 .sponsors .href-elem:hover {
-    /* background-color: #851985; */
-    filter: invert(70%) sepia(70%) saturate(4792%) hue-rotate(87deg) brightness(117%) contrast(120%);
-}
-
-#info-mobile .href-elem, #aboutus-mobile .href-elem, #sponsors-mobile .href-elem {
-    filter: invert(100%);
-    /* border: 0.5vh solid white; */
-}
-
-#info-mobile .href-elem:hover, #aboutus-mobile .href-elem:hover, #sponsors-mobile .href-elem:hover {
     /* background-color: #851985; */
     filter: invert(70%) sepia(70%) saturate(4792%) hue-rotate(87deg) brightness(117%) contrast(120%);
 }
@@ -128,6 +133,13 @@
     margin: 0.2vw;
     vertical-align: middle;
     text-align: center;
+}
+
+.sponsors #invert,
+#info-mobile #invert,
+#aboutus-mobile #invert,
+#sponsors-mobile #invert {
+    filter: invert(100%);
 }
 
 @media all and (orientation:portrait) {

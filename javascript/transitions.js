@@ -153,6 +153,23 @@ var transitions = {
 
         this.slide2D(toX, fromY, func, duration);
     },
+    slideY: function(toY, func, duration) {
+        var elem = toY.relativeElement;
+        var fromX = new Dimension(elem, 0, "px");
+
+        var style = window.getComputedStyle(elem);
+
+        if (!isNaN(parseFloat(elem.style.left))) {
+            let dimLeft = new Dimension(elem, parseFloat(elem.style.left), "px");
+            fromX.value = dimLeft.to("px");
+        } else if (!isNaN(parseFloat(style.getPropertyValue('left')))) {
+            fromX.value = parseFloat(style.getPropertyValue('left'));
+        } else {
+            fromX.value = elem.offsetLeft;
+        }
+
+        this.slide2D(fromX, toY, func, duration);
+    },
 
     /**
      * @deprecated
