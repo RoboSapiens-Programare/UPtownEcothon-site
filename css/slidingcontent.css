@@ -22,7 +22,7 @@
     position: absolute;
     top: 70%;
     left: 50%;
-    font-size: 3vw;
+    font-size: 2.5vw;
     color: white;
     border-radius: 15px;
     border: solid #00ff16;
@@ -43,7 +43,7 @@
     background-color: aliceblue;
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    font-size: 1.6vw;
+    font-size: 1.3vw;
     width: 45vw;
     height: 43vh;
     padding: 1.6vw;
@@ -89,7 +89,8 @@
     display: inline-block;
 }
 
-.scroller .link .dot:hover {
+.scroller .link .dot:hover,
+.scroller .link .dot:active {
     background-color: black;
 }
 
@@ -102,7 +103,7 @@
     font-size: 2.5vw;
     text-align: right;
     width: 600%;
-    transition: all 0.7s ease;
+    transition: all 0.5s ease;
     cursor: context-menu;
     pointer-events: none;
     font-family: 'Khand', sans-serif;
@@ -110,7 +111,7 @@
 
 .dot:hover+.sect-title {
     transform: rotate(-45deg) translate(-6vw, 5vw);
-    transition: all 0.7s ease;
+    transition: all 0.5s ease;
 }
 
 #side-scroller{
@@ -179,10 +180,10 @@
         overflow-y: hidden;
     }
     .section .title {
-        font-size: 20vw;
+        font-size: 15vw;
     }
     .section .titlebtn {
-        font-size: 7vw;
+        font-size: 5vw;
     }
     .sliding {
         font-size: 5vw;

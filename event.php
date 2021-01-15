@@ -153,8 +153,6 @@
 
         </div>
 
-        
-
         <div id="sect3" class="section" style="background-color:#5a0b5a;">
             <div id="title3" class="title"><?php echo $content['Cerinte & Premii']['Title']; ?></div>
 
@@ -197,7 +195,38 @@
             var detectChange = 0;
             var lastDetectChange = 0;
 
-            window.location.href = "#sect1";
+            window.location.hash = "#sect1";
+            
+
+            var dot1 = document.getElementById('link1').getElementsByClassName('dot')[0];
+            var dot2 = document.getElementById('link2').getElementsByClassName('dot')[0];
+            var dot3 = document.getElementById('link3').getElementsByClassName('dot')[0];
+            var dot4 = document.getElementById('link4').getElementsByClassName('dot')[0];
+
+            document.addEventListener('scroll', function(e) {
+                if (window.location.hash === '#sect1'){
+                    dot1.style.backgroundColor = "black";
+                    dot2.style.backgroundColor = "white";
+                    dot3.style.backgroundColor = "white";
+                    dot4.style.backgroundColor = "white";
+                } else if(window.location.hash === '#sect2'){
+                    dot1.style.backgroundColor = "white";
+                    dot2.style.backgroundColor = "black";
+                    dot3.style.backgroundColor = "white";
+                    dot4.style.backgroundColor = "white";
+                } else if(window.location.hash === '#sect3'){
+                    dot1.style.backgroundColor = "white";
+                    dot2.style.backgroundColor = "white";
+                    dot3.style.backgroundColor = "black";
+                    dot4.style.backgroundColor = "white";
+                } else {
+                    dot1.style.backgroundColor = "white";
+                    dot2.style.backgroundColor = "white";
+                    dot3.style.backgroundColor = "white";
+                    dot4.style.backgroundColor = "black";
+                }
+
+            });
 
             document.getElementById('bigScrollableSliding').onscroll = function(){
                 var s = document.getElementById('bigScrollableSliding');

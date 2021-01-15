@@ -342,12 +342,12 @@
 					
 					<div class="milestone" style="top: 0.5%;" onclick="showMeaning(this)">
 						<div class="text-centrat main"><?php echo $content['Timeline']['1 Title']?></div>
-						<a href="aboutus.php"><div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['1']?></div></a>
+						<div><div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['1']?></div></div>
 					</div>
 
 					<div class="milestone" style="top:20%; left: 50%; transform: translate(-50%, -20%);" onclick="showMeaning(this)">
 						<div class="text-centrat main"><?php echo $content['Timeline']['2 Title']?></div>
-						<a href="registration.php"><div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['2']?></div></a>
+						<div><div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['2']?></div></div>
 					</div>
 
 					<div class="milestone" style="top:40%; left: 50%; transform: translate(-50%, -40%);" onclick="showMeaning(this)">

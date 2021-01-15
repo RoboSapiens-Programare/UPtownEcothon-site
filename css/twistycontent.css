@@ -60,7 +60,7 @@
 .bigcontent .bcontent {
     top: 20%;
     /* font-size: 0.8vw; */
-    font-size: 1.6vw;
+    font-size: 1.2vw;
 }
 
 
@@ -115,7 +115,7 @@
     top: 50%;
     left: 50%;
     width: 75%;
-    font-size: 3.6vw;
+    font-size: 2.5vw;
     text-align: center;
     color: white;
     transform: translate(-50%, -50%);
@@ -129,7 +129,7 @@
 
 .smallcontent .content {
     top: 10%;
-    font-size: 1.2vw;
+    font-size: 1vw;
     /* color: rgb(156, 132, 223); */
     color: black;
 }
@@ -137,12 +137,14 @@
 .expand-button {
     width: 8vw;
     height: 5vh;
-    font-size: 1.7vw;
+    font-size: 1.3vw;
     /* color: rgb(156, 132, 223); */
     color: black;
     /* border: 2px solid rgb(156, 132, 223); */
     border: 2px solid #00ff16;
     border-radius: 1vw;
+    vertical-align: middle;
+    text-align: center;
 }
 
 .expand-button:hover {

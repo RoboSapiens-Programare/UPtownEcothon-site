@@ -38,7 +38,7 @@
     <body id="home" style="padding: 0; background-color: #340634; margin:0;">
         <?php include 'elements/sageata.html' ?>
 
-        <div class="page-title" style="position: relative; margin-top: 5vh; width:100%; height: 5vh; background-color: transparent; font-size:5vw; z-index:70">
+        <div class="page-title" style="position: relative; margin-top: 5vh; width:100%; height: 5vh; background-color: transparent; font-size:3vw; z-index:70">
             <div class="text-centrat" style="color:white; border-bottom: 0.5vh dashed #00ff16;")>
                 <?php echo $content['Interface']['Page-title']; ?>
             </div>

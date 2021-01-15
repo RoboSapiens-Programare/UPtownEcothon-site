@@ -23,7 +23,7 @@
 			include "elements/sageata.html";
         ?>	
         
-        <div class="page-title" style="position: absolute; margin-top: 5vh; width:100%; height: 4vh; background-color: transparent; font-size:5vw; z-index:70">
+        <div class="page-title" style="position: absolute; margin-top: 5vh; width:100%; height: 4vh; background-color: transparent; font-size:3vw; z-index:70">
             <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
                 Info
             </div>
@@ -43,7 +43,7 @@
         <div style="background:transparent; overflow: hidden; margin:0px; width: 200vw; height: 100vh">
 
             <div id="program" style="position:absolute; left: 0%; display:inline-block; width: 100vw; height: 100vh">
-                <div id="program-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:1.8vw; background: url(pictures/infobkg1.png); background-size:cover;  background-position: left center;color:white">
+                <div id="program-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:1.4vw; background: url(pictures/infobkg1.png); background-size:cover;  background-position: left center;color:white">
                     <div style="position: absolute; left:1%; top:50%; transform:translate(0%, -50%);">
                         <?php echo $content['Program'][1]?>
                     </div>
