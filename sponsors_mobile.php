@@ -62,7 +62,7 @@
                 </div>
                 <div class="rotate-section" id="rt-sect3" style="background-color: #5a0b5a">
                         <div class="wrapper" style="background-color: #5a0b5a">
-                            <div class="sect-title"> <div class="text-centrat"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%"></div> </div>
+                            <div class="sect-title"> <div class="text-centrat"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%; height:15vh"></div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
                         <div class="wrapper-sect-content"><?php echo $content['Gemini']['desc']; ?></div>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="rotate-section" id="rt-sect1" style="background-color: #340634;">
                         <div class="wrapper" style="background-color: #340634;">
-                            <div class="sect-title"> <div class="text-centrat">Fundraiser</div> </div>
+                            <div class="sect-title"> <div class="text-centrat"><img src="pictures/sprijina.svg" alt="Fundraiser" style="width:100%; height:15vh"></div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
                         <div class="wrapper-sect-content" style="color: black;">
@@ -368,45 +368,67 @@
                     tweenFunctions.easeInOutQuad,
                     500);
 
-                transitions.translate2D(new Dimension(title, 0, "pw"),
-                    new Dimension(title, -30, "ph"),
+                transitions.slideY(new Dimension(title, 15, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
-                transitions.resize2D(new Dimension(title, 70, "percent"),
-                    new Dimension(title, 8, "vh"),
+                transitions.resize2D(new Dimension(title, 50, "percent"),
+                    new Dimension(title, 5, "vh"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 
-                transitions.translate2D(new Dimension(btn, 0, "pw"),
-                    new Dimension(btn, -3, "ph"),
+                // transitions.translate2D(new Dimension(btn, 0, "pw"),
+                //     new Dimension(btn, -3, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideY(new Dimension(btn, 50, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
 
-                transitions.translate2D(new Dimension(pageTitle, 0, "pw"),
-                    new Dimension(pageTitle, -50, "ph"),
+                // transitions.translate2D(new Dimension(pageTitle, 0, "pw"),
+                //     new Dimension(pageTitle, -50, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideY(new Dimension(pageTitle, -50, "vh"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 
-                transitions.translate2D(new Dimension(rotateIndex, 0, "vw"),
-                    new Dimension(rotateIndex, -50, "vh"),
+                // transitions.translate2D(new Dimension(rotateIndex, 0, "vw"),
+                //     new Dimension(rotateIndex, -50, "vh"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideY(new Dimension(rotateIndex, -50, "vh"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 
                 // alert("a");
                 
-                transitions.translate2D(new Dimension(btnPrev, -50, "pw"),
-                    new Dimension(btnPrev, 0, "ph"),
+                // transitions.translate2D(new Dimension(btnPrev, -50, "pw"),
+                //     new Dimension(btnPrev, 0, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideX(new Dimension(btnPrev, -100, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 
-                transitions.translate2D(new Dimension(btnNext, 50, "pw"),
-                    new Dimension(btnNext, 0, "ph"),
+                // transitions.translate2D(new Dimension(btnNext, 50, "pw"),
+                //     new Dimension(btnNext, 0, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                // transitions.slide2D(new Dimension(btnNext, 200, "percent"),
+                //     new Dimension(btnNext, 50, "percent"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideX(new Dimension(btnNext, 200, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
+                
 
 
-                transitions.translate2D(new Dimension(content, 0, "pw"),
-                    new Dimension(content, -78, "ph"),
+                // transitions.translate2D(new Dimension(content, 0, "pw"),
+                //     new Dimension(content, -78, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideY(new Dimension(content, 20, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 // alert("a");                    
@@ -430,8 +452,11 @@
 
 
 
-                transitions.translate2D(new Dimension(title, 0, "pw"),
-                    new Dimension(title, 30, "ph"),
+                // transitions.translate2D(new Dimension(title, 0, "pw"),
+                //     new Dimension(title, 30, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideY(new Dimension(title, 40, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
 
@@ -441,36 +466,58 @@
                     500);
                 
                 
-                transitions.translate2D(new Dimension(btn, 0, "pw"),
-                    new Dimension(btn, 3, "ph"),
+                // transitions.translate2D(new Dimension(btn, 0, "pw"),
+                //     new Dimension(btn, 3, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideY(new Dimension(btn, 55, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
 
-                transitions.translate2D(new Dimension(pageTitle, 0, "pw"),
-                    new Dimension(pageTitle, 50, "ph"),
+                // transitions.translate2D(new Dimension(pageTitle, 0, "pw"),
+                //     new Dimension(pageTitle, 50, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideY(new Dimension(pageTitle, 0, "ph"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 
-                transitions.translate2D(new Dimension(rotateIndex, 0, "vw"),
-                    new Dimension(rotateIndex, 50, "vh"),
+                // transitions.translate2D(new Dimension(rotateIndex, 0, "vw"),
+                //     new Dimension(rotateIndex, 50, "vh"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideY(new Dimension(rotateIndex, 0, "ph"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 
                 // alert("a");
                 
-                transitions.translate2D(new Dimension(btnPrev, 50, "pw"),
-                    new Dimension(btnPrev, 0, "ph"),
+                // transitions.translate2D(new Dimension(btnPrev, 50, "pw"),
+                //     new Dimension(btnPrev, 0, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideX(new Dimension(btnPrev, 0, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 
-                transitions.translate2D(new Dimension(btnNext, -50, "pw"),
-                    new Dimension(btnNext, 0, "ph"),
+                // transitions.translate2D(new Dimension(btnNext, -50, "pw"),
+                //     new Dimension(btnNext, 0, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                // transitions.slide2D(new Dimension(btnNext, 100, "percent"),
+                //     new Dimension(btnNext, 50, "percent"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideX(new Dimension(btnNext, 100, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
 
 
-                transitions.translate2D(new Dimension(content, 0, "pw"),
-                    new Dimension(content, 80, "ph"),
+                // transitions.translate2D(new Dimension(content, 0, "pw"),
+                //     new Dimension(content, 80, "ph"),
+                //     tweenFunctions.easeInOutQuad,
+                //     500);
+                transitions.slideY(new Dimension(content, 100, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 // alert("a");                    

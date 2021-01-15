@@ -28,7 +28,7 @@
     border: solid #00ff16;
     padding: 0.9vw;
     transform: translate(-50%, -50%);
-    font-family: 'Montserrat' , sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .section .titlebtn:hover {
@@ -49,7 +49,9 @@
     padding: 1.6vw;
 }
 
-.sliding h1, .sliding h2, .sliding h3{
+.sliding h1,
+.sliding h2,
+.sliding h3 {
     font-family: 'Khand', sans-serif;
 }
 
@@ -89,6 +91,26 @@
 
 .scroller .link .dot:hover {
     background-color: black;
+}
+
+.scroller .link .sect-title {
+    position: absolute;
+    color: white;
+    top: 0;
+    right: 0;
+    transform: rotate(-45deg) translate(100%, 5vw);
+    font-size: 2.5vw;
+    text-align: right;
+    width: 600%;
+    transition: all 0.7s ease;
+    cursor: context-menu;
+    pointer-events: none;
+    font-family: 'Khand', sans-serif;
+}
+
+.dot:hover+.sect-title {
+    transform: rotate(-45deg) translate(-6vw, 5vw);
+    transition: all 0.7s ease;
 }
 
 .wrapper {

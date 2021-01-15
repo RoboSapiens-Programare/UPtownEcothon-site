@@ -43,7 +43,7 @@
         <?php include "elements/sageatatlf.html"?>
 
         <div style="position: relative; width:100%; height:21vw; margin:0vh 0vw 3vh 0vw;padding:2vh 2vw 2vh 2vw;font-size:20vw; font-family: 'Khand', sans-serif ">
-            <div style="position: absolute; right:10%; top:50%; transform:translateY(-50%); color:white; border-bottom: 0.5vh dashed #00ff16">
+            <div style="position: absolute; right:10%; top:50%; transform:translateY(-50%); color:white; text-decoration:underline dashed 0.5vh #00ff16">
                 Info
             </div>
         </div>
@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div style="position: relative; width:95%; left:50%; transform:translate(-50%, 0%); padding:3%">
-                <img src="pictures/drafttimetable.png" alt="timetable.png crashed most likely" style=" width:inherit;">
+                <img src="pictures/timetablefinal.png" alt="timetable.png crashed most likely" style=" width:inherit;">
             </div>
         </div>
         <div id="news" style="position: relative; width:100%; background-color:black; ">

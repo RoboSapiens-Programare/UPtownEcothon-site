@@ -62,7 +62,7 @@
                 </div>
                 <div class="rotate-section" id="rt-sect1">
                     <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 70vh; width:70vh; font-size:200%"><div class="text-centrat" style="color:white; font-size:100%">Fundraiser</div></div>
+                        <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 70vh; width:70vh; font-size:200%"><div class="text-centrat" style="color:white; font-size:100%"><img src="pictures/sprijina.svg" alt="Fundraiser" style="width:100%;"></div></div>
                         <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
                         
                         <div  class="text-centrat" style="font-size: 1.5vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Fundraiser']['desc']; ?> </div>
