@@ -89,7 +89,8 @@
     display: inline-block;
 }
 
-.scroller .link .dot:hover {
+.scroller .link .dot:hover,
+.scroller .link .dot:active {
     background-color: black;
 }
 
@@ -102,7 +103,7 @@
     font-size: 2.5vw;
     text-align: right;
     width: 600%;
-    transition: all 0.7s ease;
+    transition: all 0.5s ease;
     cursor: context-menu;
     pointer-events: none;
     font-family: 'Khand', sans-serif;
@@ -110,7 +111,7 @@
 
 .dot:hover+.sect-title {
     transform: rotate(-45deg) translate(-6vw, 5vw);
-    transition: all 0.7s ease;
+    transition: all 0.5s ease;
 }
 
 .wrapper {
