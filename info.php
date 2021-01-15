@@ -17,18 +17,24 @@
             }
         </style>
     </head>
-    <body class="sponsors" style="background:linear-gradient(#340634, #340634), url(pictures/blob.gif); background-size:cover; background-blend-mode: multiply; background-position:center; overflow: hidden; margin:0px;">
+    <body class="sponsors" style="background:linear-gradient(#340634, #340634), url(pictures/blob.gif); background-size:100% 100%; background-blend-mode: multiply; background-position:left top;  background-repeat:no-repeat; overflow-x: hidden; margin:0px;">
 
         <?php 
 			include "elements/sageata.html";
         ?>	
         
+        <div class="page-title" style="position: absolute; margin-top: 5vh; width:100%; height: 4vh; background-color: transparent; font-size:5vw; z-index:70">
+            <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
+                Info
+            </div>
+        </div>
 
-        <div id="info-menu" style="position:fixed; width: 10vw; height: 70vh; top:50vh; right: 1vw; transform:translateY(-50%); z-index: 20">
-            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 20%; padding: 0; border:0.5vh solid #00ff16" onclick="document.location.href = '#program';">
+        <!-- document.location.href = '#program'; -->
+        <div id="info-menu" style="position:absolute; width: 10vw; height: 70vh; top:50vh; right: 1vw; transform:translateY(-50%); z-index: 20">
+            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 20%; padding: 0; border:0.5vh solid #00ff16" onclick="toProgram()">
                 <div class="text-centrat" style="font-size: 1.5vw;">Program</div>
             </div>
-            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; bottom: 20%; padding: 0; border:0.5vh solid #00ff16" onclick="document.location.href = '#news';">
+            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; bottom: 20%; padding: 0; border:0.5vh solid #00ff16" onclick="toNews()">
                 <div class="text-centrat" style="font-size: 1.5vw;">News</div>
             </div>
         </div>
@@ -42,7 +48,7 @@
                         <?php echo $content['Program'][1]?>
                     </div>
                     <!-- <div style="position:absolute; left:60%; top:50%; transform:translate(0%, -50%); height:90%; border:2px solid red"> -->
-                        <img src="pictures/timetable1.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
+                        <img src="pictures/timetablefinal.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
                     <!-- </div> -->
                 </div>
                 
@@ -119,7 +125,29 @@
 			include "elements/footer.html";
         ?>	
 
-        <script>        
+        <script>   
+
+            var news = document.getElementById('news');
+            var program = document.getElementById('program');
+            
+            function toNews(){
+                transitions.slideX(new Dimension(program, -100, "percent"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                transitions.slideX(new Dimension(news, 0, "percent"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+            }
+
+            function toProgram(){
+                transitions.slideX(new Dimension(news, 100, "percent"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+                transitions.slideX(new Dimension(program, 0, "percent"),
+                    tweenFunctions.easeInOutQuad,
+                    500);
+            }
+            
             function offset(el) {
                 var rect = el.getBoundingClientRect(),
                 scrollTop = container.scrollTop;
