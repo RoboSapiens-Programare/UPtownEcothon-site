@@ -113,6 +113,41 @@
     transition: all 0.7s ease;
 }
 
+#side-scroller{
+    position: fixed;
+    right: 0px;
+    bottom: 2vh;
+    width: 250px;
+    height: 50px;
+    filter: invert(3%) sepia(94%) saturate(6683%) hue-rotate(298deg) brightness(90%) contrast(96%);
+    z-index: 100;
+}
+
+#side-scroller #button-left{
+    position: absolute;
+    left: 20px;
+    background-image: url('../icons/arrow-left.svg');
+    background-size: cover;
+	background-position: center center;
+    height: 50px;
+    width: 75px;
+}
+
+#side-scroller #button-right{
+    position: absolute;
+    right: 20px;
+    background-image: url('../icons/arrow-right.svg');
+    background-size: cover;
+	background-position: center center;
+    height: 50px;
+    width: 75px;
+}
+
+#side-scroller #button-left:hover ,#side-scroller #button-right:hover{
+    cursor: pointer;
+    filter: invert(100%);
+}   
+
 .wrapper {
     width: 100%;
     height: 100%;

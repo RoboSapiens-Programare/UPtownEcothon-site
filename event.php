@@ -58,7 +58,8 @@
         </style>
     </head>
     
-    <body id="event" style="margin: 0px; overflow:scroll; overflow-x: hidden; overflow-y: hidden;">
+    <body id="event" style="margin: 0px; overflow-x: hidden; overflow-y: hidden; scrollbar-width: none; box-sizing: border-box;">
+    <div style="overflow-x: hidden; overflow-y: scroll; scrollbar-width: none; box-sizing: border-box; height: 100vh; scroll-behavior: smooth">
         <?php 
 			include "elements/sageata.html";
 		?>
@@ -101,7 +102,7 @@
                 <div id="title1" class="title" style="opacity: 0;"><?php echo $content['Teme']['Title']; ?></div>
                 <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this, true);"><?php echo $content['Interface']['Expand-btn']; ?></div>
 
-                <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto">
+                <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto; font-size: 1.2vw">
                     <?php echo $content["Teme"][1]; ?>
                 </div>
                 <div class="sliding" style="bottom: 0%; right: -50%; border-radius: 20px 20px 0px 20px; background-color: #9d49a1; transform: scale(0.7)">
@@ -114,12 +115,12 @@
                         <img src="pictures/pollution2.jpg" style="height: 100%; width: 100%; border-radius: 20px 20px 0px 20px">
                     </div>
                 </div>
-                <div class="sliding" style="bottom: 0%; left: -50%; border-radius: 20px 20px 20px 0px; overflow-y: auto">
+                <div class="sliding" style="bottom: 0%; left: -50%; border-radius: 20px 20px 20px 0px; overflow-y: auto; font-size: 1vw">
                     <?php echo $content["Teme"][2] ?>
                 </div>
             </div>
-            <div style="flex: 33%; height: 100vh; background-color:#9d49a1; position: relative">
-                <div class="sliding" style=" width:60vw; height:75vh; right: 0; top: 12.5vh; margin-right: 2vw; overflow-y:auto; border-radius: 20px 20px 20px 20px">
+            <div id="sect2-2" style="flex: 33%; height: 100vh; background-color:#9d49a1; position: relative">
+                <div class="sliding" style=" width:60vw; height:75vh; right: 0; top: 12.5vh; margin-right: 2vw; overflow-y:auto; border-radius: 20px 20px 20px 20px;">
                     <?php
                         echo $content["Teme"][3] . "<br>";
                     ?>
@@ -133,8 +134,8 @@
                     <img src="pictures/pollution3.jpg" style="height: 100%; width: 100%; border-radius: 20px 20px 0px 20px">
                 </div>
             </div>
-            <div style="flex: 33%; height: 100vh; background-color:#9d49a1; position: relative">
-                <div id="bigScrollableSliding" class="sliding" style="width:75%; height:56%; left: 50%; top: 10%; overflow-y:auto; border-radius: 20px 20px 20px 20px; transform:translateX(-50%)">
+            <div id="sect2-3" style="flex: 33%; height: 100vh; background-color:#9d49a1; position: relative">
+                <div id="bigScrollableSliding" class="sliding" style="width:75%; height:56%; left: 50%; top: 10%; overflow-y:auto; border-radius: 20px 20px 20px 20px; transform:translateX(-50%);">
                     <?php 
                         echo $content["Teme"][4] . "<br>";
                     ?>
@@ -144,6 +145,12 @@
                     <img src="pictures/bucharest2.jpg" style="width: 100%; height: 100%; object-fit:cover; opacity: 0; position:absolute">
                 </div>
             </div>
+
+            <div id="side-scroller" style="opacity: 0">
+                <div id="button-left" onclick="prevSub();"></div>
+                <div id="button-right" onclick="nextSub();"></div>
+            </div>
+
         </div>
 
         
@@ -182,6 +189,7 @@
                 <?php echo $content["Code of Conduct"][1]; ?>
             </div>
         </div>
+    </div>
 
         <script>
             transitions.fadeIn(document.getElementById('title1'), tweenFunctions.easeOutQuad, 1500);
@@ -273,19 +281,10 @@
                 
 
                 if(showOverflow){
-                    var body = document.body;
+                    section.parentElement.parentElement.style.overflowX = "auto";
+                    section.parentElement.parentElement.style.overflowY = "hidden";
 
-                    body.style.overflowX = "auto";
-
-                    // section.parentElement.addEventListener('wheel', function(e) {
-                    //     if (e.deltaY > 0) {
-                    //         body.scrollLeft += 100;
-                    //         alert(body.style.overflowX);
-                    //     }
-                    //     else {
-                    //         body.scrollLeft -= 100;
-                    //     }
-                    // });
+                    transitions.fadeIn(document.getElementById('side-scroller'), tweenFunctions.easeOutQuad, 700);
                 }
 
                 if(section.getElementsByClassName('award-slot').length > 0){
@@ -348,7 +347,10 @@
                     x.setAttribute("onclick", "readMore(this, " + showOverflow +");");
                 }
 
-                document.body.style.overflowX = "hidden";
+                section.parentElement.parentElement.style.overflowX = "hidden";
+                section.parentElement.parentElement.style.overflowY = "auto";
+
+                transitions.fadeOut(document.getElementById('side-scroller'), tweenFunctions.easeOutQuad, 700);
                 window.location.href = "#" + x.parentElement.id;
             }
 
@@ -465,6 +467,28 @@
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
+            }
+
+            var currentSub = document.getElementById("sect2");
+
+            function nextSub(){
+                document.location.href = "#" + currentSub.nextElementSibling.id;
+                currentSub = currentSub.nextElementSibling;
+
+                if(currentSub.nextElementSibling.id == "side-scroller"){
+                    document.getElementById("button-right").style.display = "none";
+                }
+                document.getElementById("button-left").style.display = "block";
+            }
+
+            function prevSub(){
+                document.location.href = "#" + currentSub.previousElementSibling.id;
+                currentSub = currentSub.previousElementSibling;
+
+                if(currentSub.previousElementSibling == undefined){
+                    document.getElementById("button-left").style.display = "none";
+                }
+                document.getElementById("button-right").style.display = "block";
             }
 
         </script>

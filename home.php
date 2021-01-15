@@ -79,6 +79,17 @@
 				/* margin-left: -0.4%; */
 				/* border: 1px  solid blue; */
 			}
+			.wrapper-bulina .title{
+				font-family: 'Khand', sans-serif;
+				font-size: 2vw;
+				color: white;
+				position:absolute;
+				right: 0;
+				top: 0;
+				width: 65%;
+				text-align: left;
+				margin-top: 7%;
+			}
 			.buline-homepage{
 				position: absolute;
 				z-index: 100;
@@ -88,7 +99,7 @@
 				left: 0%;
 				background-color: #d222d2;
 				border-radius: 50%;
-				font-size: 1.5vw;
+				font-size: 1.2vw;
 			}
 			.wrapper-lists{
 				position: absolute;
@@ -163,8 +174,9 @@
 							<img class="icon" id="info" src="icons/calendar.svg" alt="Info">
 						</a>
 					</div>
+					<div class="title">Info</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 3vh;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 1.2vw;">
 							<?php echo $content['Buline']['Info']; ?>
 						</ul>
 					</div>
@@ -175,8 +187,9 @@
 							<img class="icon" id="contact" src="icons/users.svg" alt="About Us">
 						</a>
 					</div>
+					<div class="title">About Us</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 3vh;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 1.2vw;">
 							<?php echo $content['Buline']['About us']; ?>
 						</ul>
 					</div>
@@ -187,8 +200,9 @@
 							<img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?">
 						</a>
 					</div>
+					<div class="title">Got A Problem?</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 3vh;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 1.2vw;">
 							<?php echo $content['Buline']['Got a problem?']; ?>
 						</ul>
 					</div>
@@ -199,8 +213,9 @@
 							<img class="icon" id="event" src="icons/book.svg" alt="Event">
 						</a>
 					</div>
+					<div class="title">Event</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 3vh;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 1.2vw;">
 							<?php echo $content['Buline']['Event']; ?>
 						</ul>
 					</div>
@@ -211,8 +226,9 @@
 							<img class="icon" id="sponsors" src="icons/investment.svg" alt="Our Sponsors">
 						</a>
 					</div>
+					<div class="title">Sponsors</div>
 					<div class="wrapper-lists">
-						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 3vh;">
+						<ul style="font-family: 'Montserrat', sans-serif; font-weight: 400; color: white; font-size: 1.2vw;">
 							<?php echo $content['Buline']['Our sponsors']; ?>
 						</ul>
 					</div>
