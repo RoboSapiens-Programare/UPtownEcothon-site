@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+    header('Location: notyet.php')
+?>
 <html>
     <head>
         <title></title>

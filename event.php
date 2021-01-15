@@ -307,9 +307,10 @@
                     1000
                 );
                 x.innerHTML = "<?php echo $content['Interface']['Close-btn']; ?>";
-                
+                window.location.href = "#" + section.id;
 
                 if(showOverflow){
+                    
                     section.parentElement.parentElement.style.overflowX = "auto";
                     section.parentElement.parentElement.style.overflowY = "hidden";
 
