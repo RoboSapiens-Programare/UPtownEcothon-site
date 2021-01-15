@@ -317,15 +317,15 @@
 			<div class="timeline">
 				<div class="progress"></div>
 				
-				<a href="aboutus.php"><div class="milestone" style="left: 0.5%;" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+				<div class="milestone" style="left: 0.5%;" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
 					<div class="text-centrat main"><?php echo $content['Timeline']['1 Title']?></div>
 					<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline'][1]; ?> </div>
-				</div></a>
+				</div>
 
-				<a href="registration.php"><div class="milestone" style="top:50%; left: 20%; transform: translate(-20%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
+				<div class="milestone" style="top:50%; left: 20%; transform: translate(-20%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
 					<div class="text-centrat main"><?php echo $content['Timeline']['2 Title']?></div>
 					<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline'][2]; ?> </div>
-				</div></a>
+				</div>
 
 				<div class="milestone" style="top:50%; left: 40%; transform: translate(-40%, -50%);" onmouseover="showMeaning(this)" onmouseleave="hideMeaning(this)">
 					<div class="text-centrat main"><?php echo $content['Timeline']['3 Title']?></div>
@@ -469,7 +469,7 @@
 				milestoneTimes[1] = new Date('January 26, 2021 00:00:00');
 				milestoneTimes[2] = new Date('February 21, 2021 00:00:00');
 				milestoneTimes[3] = new Date('February 22, 2021 00:00:00');
-				milestoneTimes[4] = new Date('February 24, 2021 18:00:00');
+				milestoneTimes[4] = new Date('February 23, 2021 18:00:00');
 				milestoneTimes[5] = new Date('February 26, 2021 18:00:00');
 				//Astea sunt niste offset uri la progress bar pt ca cineva ~ehem~ nu le-a pus din colturi
 				var offsetLeft = 5;
