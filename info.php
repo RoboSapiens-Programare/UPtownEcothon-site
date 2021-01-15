@@ -50,7 +50,11 @@
 
             <div id="news" style="position:absolute; left:100%; display:inline-block; width: 100vw; height: 100vh;">
                 <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:75%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
-                    <div class="franshalssection" id="franshals1">
+                    <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
+                        <?php echo $content['Errors']['news-unav']; ?>
+                    </div>
+                    
+                    <!-- <div class="franshalssection" id="franshals1">
                         <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
                             <div class="sticky-col">
                                 <div class="poza1" style="background-color:red; z-index:3;"></div>
@@ -104,7 +108,7 @@
                             </div>
                         </div> 
 
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

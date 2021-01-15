@@ -79,9 +79,9 @@
         </div>
 
         <div id="sect1" class="section" style="background-color: #340634;">
-            <div id="title2" class="title">Scop</div>
+            <div id="title2" class="title"><?php echo $content['Scop']['Title']; ?></div>
 
-            <div id="titlebtn2" class="titlebtn" onclick="readMore(this, false);">Read More</div>
+            <div id="titlebtn2" class="titlebtn" onclick="readMore(this, false);"><?php echo $content['Interface']['Expand-btn']; ?></div>
 
             <div id="scopSliding" class="sliding" style="top: 0%; right: -50%; border-radius: 20px 20px 20px 20px; overflow-y:auto; height: 90vh; margin-top:2.5vh">
                 <?php echo $content["Scop"][1]; ?>
@@ -94,8 +94,8 @@
 
         <div style="display: flex; width: 300vw; height: 100vh">
             <div id="sect2" class="section" style="background-color: #9d49a1; overflow-y: hidden; overflow-x:hidden">
-                <div id="title1" class="title" style="opacity: 0;">Teme</div>
-                <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this, true);">Read More</div>
+                <div id="title1" class="title" style="opacity: 0;"><?php echo $content['Teme']['Title']; ?></div>
+                <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this, true);"><?php echo $content['Interface']['Expand-btn']; ?></div>
 
                 <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto">
                     <?php echo $content["Teme"][1]; ?>
@@ -145,9 +145,9 @@
         
 
         <div id="sect3" class="section" style="background-color:#5a0b5a;">
-            <div id="title3" class="title">Cerinte & Premii</div>
+            <div id="title3" class="title"><?php echo $content['Cerinte & Premii']['Title']; ?></div>
 
-            <div id="titlebtn3" class="titlebtn" onclick="readMore(this, false); showAwards(true);">Read More</div>
+            <div id="titlebtn3" class="titlebtn" onclick="readMore(this, false); showAwards(true);"><?php echo $content['Interface']['Expand-btn']; ?></div>
 
             <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 0px 20px 20px; overflow-y:auto">
                 <?php 
@@ -170,9 +170,9 @@
         </div>
 
         <div id="sect4" class="section" style="background-color:#76667d;">
-            <div id="title4" class="title">Code of Conduct</div>
+            <div id="title4" class="title"><?php echo $content['Code of Conduct']['Title']; ?></div>
 
-            <div id="titlebtn4" class="titlebtn" onclick="readMore(this, false);">Read More</div>
+            <div id="titlebtn4" class="titlebtn" onclick="readMore(this, false);"><?php echo $content['Interface']['Expand-btn']; ?></div>
 
             <div class="sliding" style="top: 0%; right: -50%; border-radius: 20px 20px 20px 20px; overflow-y:auto; height: 90vh; margin-top:2.5vh; overflow-y: auto">
                 <?php echo $content["Code of Conduct"][1]; ?>
@@ -265,7 +265,7 @@
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
-                x.innerHTML = "Read Less";
+                x.innerHTML = "<?php echo $content['Interface']['Close-btn']; ?>";
                 
 
                 if(showOverflow){
@@ -335,7 +335,7 @@
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
-                x.innerHTML = "Read More";
+                x.innerHTML = "<?php echo $content['Interface']['Expand-btn']; ?>";
                 if(section.getElementsByClassName('award-slot').length > 0){
                     showAwards(false);
                     x.setAttribute("onclick", "readMore(this, " + showOverflow +"); showAwards(true);");

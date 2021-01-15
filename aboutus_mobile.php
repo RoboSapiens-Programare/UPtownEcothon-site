@@ -48,30 +48,30 @@
 
         <div style="position: relative; width:100%; height:21vw; margin:0vh 0vw 3vh 0vw; padding:2vh 2vw 2vh 2vw;font-size:15vw; font-family: 'Khand', sans-serif;">
             <div style="position: absolute; right:10%; top:50%; transform:translateY(-50%); color:white; border-bottom: 0.5vh dashed #00ff16">
-                About us
+                <?php echo $content['Interface']['Page-title']; ?>
             </div>
         </div>
         <div style="position: relative; width:100%; height:30vh; border:0px solid blue">
             <a href="#contact" class="info-btn" style="left:5%; top: 5%">
                 <div class="text-centrat">
-                    Contact
+                    <?php echo $content['Contact']['Title'] ?>
                 </div>
             </a>
             <a href="#team" class="info-btn" style="left: 5%;  top: 35%">
                 <div class="text-centrat">
-                    Our Team
+                    <?php echo $content['Descriere Echipa']['Title'] ?>
                 </div>
             </a>
             <a href="#site" class="info-btn" style="left: 5%;  top: 65%">
                 <div class="text-centrat">
-                    This Site
+                    <?php echo $content['Site']['Title'] ?>
                 </div>
             </a>
         </div>
         <div id="contact" class="bigcontent" style="background-color:white; ">
             <div class="bcontent" style="position: relative; color:black">
                 <div style="padding:3% 5% 3% 5%; font-size:2vh; font-family:'Montserrat', sans-serif">
-                    <h1>Contact</h1>
+                    <h1><?php echo $content['Contact']['Title'] ?></h1>
                     <?php echo $content['Contact']['Long']?>
                     <section style="margin: 50px 20px;">
                         <div style="max-width: 768px; margin: auto;">
@@ -126,7 +126,7 @@
         <div id="team" class="bigcontent" style="background-color:black; ">
             <div class="bcontent" style="position: relative; color:white">
                 <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family:'Montserrat', sans-serif">
-                    <h1>Our Team</h1>
+                    <h1><?php echo $content['Descriere Echipa']['Title'] ?></h1>
                     <?php echo $content['Descriere Echipa']['Long']?>
                 </div>
             </div>
@@ -134,7 +134,7 @@
         <div id="site" class="bigcontent" style="background-color: #76667d">
             <div class="bcontent" >
                 <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family:'Montserrat', sans-serif">
-                    <h1> This Site </h1>
+                    <h1><?php echo $content['Site']['Title'] ?></h1>
                     <?php echo $content['Site']['Long']?>
                 </div>
             </div>

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html style="scroll-behavior: smooth">
     <head>
-		<title>Event - UTE</title>
-
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/circlecontent.css">     
        
-		<link rel='stylesheet' type='text/css' href='css/sageatatlf.css'>
+        <link rel="stylesheet" type="text/css" href="css/sageatatlf.css">     
 
         <?php include "elements/header.php"; ?>
 
@@ -82,8 +80,8 @@
 
         <div id="sect1" class="section" >
             <div class="wrapper" style="background-color:#340634; z-index: 5">
-                <div id="title1" class="title" style="opacity: 0;">Scop</div>
-                <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);">Read More</div>
+                <div id="title1" class="title" style="opacity: 0;"><?php echo $content['Scop']['Title']; ?></div>
+                <div id="titlebtn1" class="titlebtn" style="opacity: 0" onclick="readMore(this);"><?php echo $content['Interface']['Expand-btn']; ?></div>
             </div>
 
             <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content">
@@ -93,8 +91,8 @@
 
         <div id="sect2" class="section" >
             <div class="wrapper" style="background-color:#9d49a1; z-index: 5">
-                <div id="title2" class="title" >Teme</div>
-                <div id="titlebtn2" class="titlebtn" onclick="readMore(this);">Read More</div>
+                <div id="title2" class="title" ><?php echo $content['Teme']['Title']; ?></div>
+                <div id="titlebtn2" class="titlebtn" onclick="readMore(this);"><?php echo $content['Interface']['Expand-btn']; ?></div>
             </div>
 
             <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content; margin-bottom: 50vh">
@@ -117,8 +115,8 @@
 
         <div id="sect3" class="section" style="background-color: #5a0b5a;" >
             <div class="wrapper" style="background-color:#5a0b5a; z-index: 5">
-                <div id="title3" class="title" style="font-size: 15vw; width: 100vw;text-align: center">Cerinte & Premii</div>
-                <div id="titlebtn3" class="titlebtn" onclick="readMore(this);">Read More</div>
+                <div id="title3" class="title" style="font-size: 15vw; width: 100vw;text-align: center"><?php echo $content['Cerinte & Premii']['Title']; ?></div>
+                <div id="titlebtn3" class="titlebtn" onclick="readMore(this);"><?php echo $content['Interface']['Expand-btn']; ?></div>
             </div>
 
             <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content; margin-bottom: 5vh">
@@ -141,8 +139,8 @@
 
         <div id="sect4" class="section" >
             <div class="wrapper" style="background-color: #76667d; z-index: 5">
-                <div id="title4" class="title" style="opacity: 1; font-size: 9vw">Code of Conduct</div>
-                <div id="titlebtn4" class="titlebtn" style="opacity: 1" onclick="readMore(this);">Read More</div>
+                <div id="title4" class="title" style="opacity: 1; font-size: 8vw"><?php echo $content['Code of Conduct']['Title']; ?></div>
+                <div id="titlebtn4" class="titlebtn" style="opacity: 1" onclick="readMore(this);"><?php echo $content['Interface']['Expand-btn']; ?></div>
             </div>
 
             <div class="sliding" style="border-radius: 20px 20px 20px 20px; overflow-y:hidden; width:80vw; height:fit-content">
@@ -222,7 +220,7 @@
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
-                x.innerHTML = "Read Less";
+                x.innerHTML = "<?php echo $content['Interface']['Close-btn']; ?>";
                 x.setAttribute("onclick", "readLess(this);");
 
                 section.style.overflowY = "auto";
@@ -252,7 +250,7 @@
                     tweenFunctions.easeInOutExpo,
                     1000
                 );
-                x.innerHTML = "Read More";
+                x.innerHTML = "<?php echo $content['Interface']['Expand-btn']; ?>";
                 x.setAttribute("onclick", "readMore(this);");
 
                 window.location.href = "#" + section.id;

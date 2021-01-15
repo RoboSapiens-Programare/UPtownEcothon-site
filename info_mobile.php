@@ -78,7 +78,7 @@
             <div style="position: relative; color:white">
                 <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family: 'Montserrat', sans-serif">
                     <h2> News </h2>
-                    <p style="font-size: 1.5vh;">No news at the moment :(</p>
+                    <p style="font-size: 1.5vh;"><?php echo $content['Errors']['news-unav']; ?></p>
                 </div>
             </div>
             <!-- <div id="news-container" class="rounded-rect" style="position:relative; left: 50%; transform:translateX(-50%); height:75%; width: 90%; overflow-y: auto; overflow-x: hidden; padding:0"> -->

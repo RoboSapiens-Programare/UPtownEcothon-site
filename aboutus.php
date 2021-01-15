@@ -92,11 +92,11 @@
         <div id="smallcontent1" class="smallcontent" style="top: 10%;">
             <div class="smallcontent-inner" style="z-index: 1">
                 <div class="title-card">
-                    <div class="title">Contact</div>
+                    <div class="title"><?php echo $content['Contact']['Title'] ?></div>
                 </div>
                 <div class="content-card">
                     <div class="content"><?php echo $content['Contact']['Short'] ?></div>
-                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(0);">Expand</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(0);"><?php echo $content['Interface']['Expand-btn'] ?></div>
                 </div>
             </div>
         </div>
@@ -104,11 +104,11 @@
         <div id="smallcontent2" class="smallcontent" style="top: 37.5%;">
             <div class="smallcontent-inner" style="z-index: 1">
                 <div class="title-card">
-                    <div class="title">Our Team</div>
+                    <div class="title"><?php echo $content['Descriere Echipa']['Title'] ?></div>
                 </div>
                 <div class="content-card">
                     <div class="content"><?php echo $content['Descriere Echipa']['Short'] ?></div>
-                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(1);">Expand</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(1);"><?php echo $content['Interface']['Expand-btn'] ?></div>
                 </div>
             </div>
         </div>
@@ -116,17 +116,17 @@
         <div id="smallcontent3" class="smallcontent" style="top: 65%;">
             <div class="smallcontent-inner" style="z-index: 1">
                 <div class="title-card">
-                    <div class="title">This Site</div>
+                    <div class="title"><?php echo $content['Site']['Title'] ?></div>
                 </div>
                 <div class="content-card" >
                     <div class="content"><?php echo $content['Site']['Short'] ?></div>
-                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(2);">Expand</div>
+                    <div class="expand-button" style="top: 80%; left: 50%; transform:translate(-50%, -50%);" onclick="expand(2);"><?php echo $content['Interface']['Expand-btn'] ?></div>
                 </div>
             </div>
         </div>
 
         <div class="bigcontent" style="opacity: 0;">
-            <div id="bigtitle" class="btitle">Contact</div>
+            <div id="bigtitle" class="btitle"><?php echo $content['Contact']['Title'] ?></div>
             <div id="bcontent" class="bcontent">
                 <?php echo $content['Contact']['Long'] ?>
                 <section style="margin: 50px 20px;">
@@ -180,18 +180,18 @@
         </div>
 
         <div class="bigcontent" style="opacity: 0;">
-            <div id="bigtitle" class="btitle">Our Team</div>
+            <div id="bigtitle" class="btitle"><?php echo $content['Descriere Echipa']['Title'] ?></div>
             <div id="bcontent" class="bcontent"><?php echo $content['Descriere Echipa']['Long'] ?></div>
         </div>
 
         <div class="bigcontent" style="opacity: 0;">
-            <div id="bigtitle" class="btitle">This Site</div>
+            <div id="bigtitle" class="btitle"><?php echo $content['Site']['Title'] ?></div>
             <div id="bcontent" class="bcontent"><?php echo $content['Site']['Long'] ?></div>
             
         </div>
         <div class="bigcontent" style="opacity: 1;">
             <div class="btitle" style="font-size: 5vw; width:auto; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-                About Us
+                <?php echo $content['Interface']['Page-title']; ?>
             </div>
         </div>
 
