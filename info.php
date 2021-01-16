@@ -165,38 +165,42 @@
             //         500);
             // }
             
-            // function offset(el) {
-            //     var rect = el.getBoundingClientRect(),
-            //     scrollTop = container.scrollTop;
-            //     //alert(rect.top);
-            //     return rect.top;
-            // }
+            function offset(el) {
+                var rect = el.getBoundingClientRect();
+                var scrollTop = container.scrollTop;
+                //alert(rect.top);
+                return rect.top + scrollTop;
+            }
 
             var container = document.getElementById('news-container');
 
             var franshals1 = document.getElementById("franshals1");
-            // var wrapper12 = franshals1.getElementsByClassName("wrapper")[1];
+            var wrapper12 = franshals1.getElementsByClassName("wrapper")[1];
             // var wrapper12Offset = offset(wrapper12)-(container.clientHeight/2);
             // var pic1 = franshals1.getElementsByClassName("col-pic")[0];
-            var Change1 = false;
-            var lastChange1 = false;
+            // var Change1 = false;
+            // var lastChange1 = false;
 
             var franshals2 = document.getElementById("franshals2");
-            // var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
+            var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
             // var wrapper22Offset = offset(wrapper22)-(container.clientHeight/2);
             // var pic2 = franshals2.getElementsByClassName("col-pic")[0];
-            var Change2 = false;
-            var lastChange2 = false;
+            // var Change2 = false;
+            // var lastChange2 = false;
 
             // var Change = false;
             // var lastChange = false;
 
+            // alert(wrapper12.offsetTop + ", " + wrapper22.offsetTop);
 
-            function imageChangeTrigger(franshalssection){
+
+            function imageChangeTrigger(section){
                 // var franshals1 = document.getElementById("franshals1"); ELEM
+                var franshalssection = section;
+                // alert(franshalssection);
                 var wrapper2 = franshalssection.getElementsByClassName("wrapper")[1];
-                // var wrapper2Offset = offset(wrapper2)-(container.clientHeight/2);
-                var wrapper2Offset = wrapper2.offsetTop-(container.clientHeight/2);
+                var wrapper2Offset = offset(wrapper2)-(container.clientHeight/2);
+                // var wrapper2Offset = wrapper2.offsetTop-(container.clientHeight/2);
                 // var pic = franshalssection.getElementsByClassName("col-pic")[0];
                 var Change = false;
                 var lastChange = false;
@@ -211,10 +215,10 @@
                     // Change = false;
                     // if(Change ^ lastChange){
                         slideInPoze(franshalssection);
-                        // lastChange = false;
+                    //     lastChange = false;
                     // }
                 }
-                console.log(Change + ", " + lastChange);
+                console.log(Change + ", " + lastChange + ", " + wrapper2.offsetTop);
 
                 // if(container.scrollTop >= wrapper22Offset){
                 //     Change2 = true;
@@ -233,7 +237,7 @@
             }
 
             container.addEventListener('scroll', function(){
-                // imageChangeTrigger(franshals1);
+                imageChangeTrigger(franshals1);
                 imageChangeTrigger(franshals2);
             });
 
