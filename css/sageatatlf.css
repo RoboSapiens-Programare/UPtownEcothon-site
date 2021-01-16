@@ -254,7 +254,7 @@
         right: 0;
         text-decoration: none;
         vertical-align: middle;
-
+        text-align: right;
     }
     
     #language li a {
