@@ -164,8 +164,8 @@
     
 		<div style="width: 100vw; height: 100vh; overflow: hidden">
 			<div id="banner-homepage"></div>
-			<div class="text-centrat" style="font-size: 2vw; width:100%; color: white; top:15%"> The Online Hackathon</div>
-			<div class="text-centrat" style="font-size: 2vw; width:100%; color: white; font-family: 'Montserrat', sans-serif"> Join us in the quest for building a <span style="color: #00bc10;"> better </span> Bucharest! </div>
+			<div class="text-centrat" style="font-size: 1.5vw; width:100%; color: white; top:15%"> The Online Hackathon</div>
+			<div class="text-centrat" style="font-size: 2.6vw; width:100%; color: white; font-family: 'Montserrat', sans-serif;"> Join us in the quest for building a <span style="mix-blend-mode: difference; color: white"> better </span> Bucharest! </div>
 			<img src="pictures/LogoUTEAlb.png" style="z-index: 110; position: absolute; height:30%; top: 30%; left: 50%; transform: translate(-50%, -50%); mix-blend-mode:difference;" alt="UPtown Ecothon">
 			<div style="background-color: transparent; width: 100%; height: 40%; bottom:0%; z-index:100; position: absolute; margin-left:1vw;">
 				<div class="wrapper-bulina" style="margin: 0">
