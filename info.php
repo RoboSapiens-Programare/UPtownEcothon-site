@@ -73,7 +73,7 @@
                 </div>    
 
                 <div id="news" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
-                    <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:75%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
+                    <div id="news-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; padding:0">
                         <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
                             <?php echo $content['Errors']['news-unav']; ?>
                         </div>
@@ -168,7 +168,7 @@
             function offset(el) {
                 var rect = el.getBoundingClientRect();
                 var scrollTop = container.scrollTop;
-                //alert(rect.top);
+                // alert(rect.top);
                 return rect.top + scrollTop;
             }
 
@@ -194,9 +194,9 @@
             // alert(wrapper12.offsetTop + ", " + wrapper22.offsetTop);
 
 
-            function imageChangeTrigger(section){
+            function imageChangeTrigger(franshalssection){
                 // var franshals1 = document.getElementById("franshals1"); ELEM
-                var franshalssection = section;
+                // var franshalssection = section;
                 // alert(franshalssection);
                 var wrapper2 = franshalssection.getElementsByClassName("wrapper")[1];
                 var wrapper2Offset = offset(wrapper2)-(container.clientHeight/2);
