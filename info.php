@@ -71,15 +71,14 @@
                         <!-- </div> -->
                     </div>
                     
-                </div>
 
                 <div id="news" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
                     <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:75%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
                         <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
                             <?php echo $content['Errors']['news-unav']; ?>
                         </div>
-                        
-                        <!-- <div class="franshalssection" id="franshals1">
+<!--                         
+                        <div class="franshalssection" id="franshals1">
                             <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
                                 <div class="sticky-col">
                                     <div class="poza1" style="background-color:red; z-index:3;"></div>
@@ -133,8 +132,7 @@
                                 </div>
                             </div> 
 
-                        </div> -->
-                    </div>
+                    </div> -->
                 </div>
             </div>
             
@@ -149,79 +147,90 @@
             var news = document.getElementById('news');
             var program = document.getElementById('program');
             
-            function toNews(){
-                transitions.slideX(new Dimension(program, -100, "percent"),
-                    tweenFunctions.easeInOutQuad,
-                    500);
-                transitions.slideX(new Dimension(news, 0, "percent"),
-                    tweenFunctions.easeInOutQuad,
-                    500);
-            }
+            // function toNews(){
+            //     transitions.slideX(new Dimension(program, -100, "percent"),
+            //         tweenFunctions.easeInOutQuad,
+            //         500);
+            //     transitions.slideX(new Dimension(news, 0, "percent"),
+            //         tweenFunctions.easeInOutQuad,
+            //         500);
+            // }
 
-            function toProgram(){
-                transitions.slideX(new Dimension(news, 100, "percent"),
-                    tweenFunctions.easeInOutQuad,
-                    500);
-                transitions.slideX(new Dimension(program, 0, "percent"),
-                    tweenFunctions.easeInOutQuad,
-                    500);
-            }
+            // function toProgram(){
+            //     transitions.slideX(new Dimension(news, 100, "percent"),
+            //         tweenFunctions.easeInOutQuad,
+            //         500);
+            //     transitions.slideX(new Dimension(program, 0, "percent"),
+            //         tweenFunctions.easeInOutQuad,
+            //         500);
+            // }
             
             function offset(el) {
                 var rect = el.getBoundingClientRect(),
                 scrollTop = container.scrollTop;
                 //alert(rect.top);
-                return rect.top;
+                return rect.top + scrollTop;
             }
 
             var container = document.getElementById('news-container');
 
             var fanshals1 = document.getElementById("franshals1");
-            var wrapper12 = franshals1.getElementsByClassName("wrapper")[1];
-            var wrapper12Offset = offset(wrapper12)-(container.clientHeight/2);
-            var pic1 = franshals1.getElementsByClassName("col-pic")[0];
-            var Change1 = false;
-            var lastChange1 = false;
+            // var wrapper12 = franshals1.getElementsByClassName("wrapper")[1];
+            // var wrapper12Offset = offset(wrapper12)-(container.clientHeight/2);
+            // var pic1 = franshals1.getElementsByClassName("col-pic")[0];
+            // var Change1 = false;
+            // var lastChange1 = false;
 
             var fanshals2 = document.getElementById("franshals2");
-            var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
-            var wrapper22Offset = offset(wrapper22)-(container.clientHeight/2);
-            var pic2 = franshals2.getElementsByClassName("col-pic")[0];
-            var Change2 = false;
-            var lastChange2 = false;
+            // var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
+            // var wrapper22Offset = offset(wrapper22)-(container.clientHeight/2);
+            // var pic2 = franshals2.getElementsByClassName("col-pic")[0];
+            // var Change2 = false;
+            // var lastChange2 = false;
 
-            function imageChangeTrigger(){
-                if(container.scrollTop >= wrapper12Offset){
-                    Change1 = true;
-                    if(Change1 ^ lastChange1){
-                        slideOutPoze(franshals1);
-                        lastChange1 = true;
+            function imageChangeTrigger(franshalssection){
+                // var fanshals1 = document.getElementById("franshals1"); ELEM
+                var wrapper2 = franshalssection.getElementsByClassName("wrapper")[1];
+                var wrapper2Offset = offset(wrapper2)-(container.clientHeight/2);
+                // var wrapper2Offset = wrapper2.offsetTop-(container.clientHeight/2);
+                // var pic = franshalssection.getElementsByClassName("col-pic")[0];
+                let Change = false;
+                let lastChange = false;
+
+                if(container.scrollTop >= wrapper2Offset){
+                    Change = true;
+                    if(Change ^ lastChange){
+                        slideOutPoze(franshalssection);
+                        lastChange = true;
                     }
                 } else {
-                    Change1 = false;
-                    if(Change1 ^ lastChange1){
-                        slideInPoze(franshals1);
-                        lastChange1 = false;
+                    Change = false;
+                    if(Change ^ lastChange){
+                        slideInPoze(franshalssection);
+                        lastChange = false;
                     }
                 }
 
-                if(container.scrollTop >= wrapper22Offset){
-                    Change2 = true;
-                    if(Change2 ^ lastChange2){
-                        slideOutPoze(franshals2);
-                        lastChange2 = true;
-                    }
-                } else {
-                    Change2 = false;
-                    if(Change2 ^ lastChange2){
-                        slideInPoze(franshals2);
-                        lastChange2 = false;
-                    }
-                }
+                // if(container.scrollTop >= wrapper22Offset){
+                //     Change2 = true;
+                //     if(Change2 ^ lastChange2){
+                //         slideOutPoze(franshals2);
+                //         lastChange2 = true;
+                //     }
+                // } else {
+                //     Change2 = false;
+                //     if(Change2 ^ lastChange2){
+                //         slideInPoze(franshals2);
+                //         lastChange2 = false;
+                //     }
+                // }
 
             }
 
-            //container.addEventListener('scroll', imageChangeTrigger);
+            container.addEventListener('scroll', function(){
+                imageChangeTrigger(fanshals1);
+                imageChangeTrigger(fanshals2);
+            });
 
             function slideOutPoze(section){
                 let half1 = section.getElementsByClassName('poza1')[0];
