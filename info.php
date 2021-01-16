@@ -70,14 +70,14 @@
                             <img src="pictures/timetablefinal.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
                         <!-- </div> -->
                     </div>
-                    
+                </div>    
 
                 <div id="news" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
                     <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:75%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
                         <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
                             <?php echo $content['Errors']['news-unav']; ?>
                         </div>
-<!--                         
+                        
                         <div class="franshalssection" id="franshals1">
                             <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
                                 <div class="sticky-col">
@@ -132,7 +132,7 @@
                                 </div>
                             </div> 
 
-                    </div> -->
+                    </div>
                 </div>
             </div>
             
@@ -165,51 +165,56 @@
             //         500);
             // }
             
-            function offset(el) {
-                var rect = el.getBoundingClientRect(),
-                scrollTop = container.scrollTop;
-                //alert(rect.top);
-                return rect.top + scrollTop;
-            }
+            // function offset(el) {
+            //     var rect = el.getBoundingClientRect(),
+            //     scrollTop = container.scrollTop;
+            //     //alert(rect.top);
+            //     return rect.top;
+            // }
 
             var container = document.getElementById('news-container');
 
-            var fanshals1 = document.getElementById("franshals1");
+            var franshals1 = document.getElementById("franshals1");
             // var wrapper12 = franshals1.getElementsByClassName("wrapper")[1];
             // var wrapper12Offset = offset(wrapper12)-(container.clientHeight/2);
             // var pic1 = franshals1.getElementsByClassName("col-pic")[0];
-            // var Change1 = false;
-            // var lastChange1 = false;
+            var Change1 = false;
+            var lastChange1 = false;
 
-            var fanshals2 = document.getElementById("franshals2");
+            var franshals2 = document.getElementById("franshals2");
             // var wrapper22 = franshals2.getElementsByClassName("wrapper")[1];
             // var wrapper22Offset = offset(wrapper22)-(container.clientHeight/2);
             // var pic2 = franshals2.getElementsByClassName("col-pic")[0];
-            // var Change2 = false;
-            // var lastChange2 = false;
+            var Change2 = false;
+            var lastChange2 = false;
+
+            // var Change = false;
+            // var lastChange = false;
+
 
             function imageChangeTrigger(franshalssection){
-                // var fanshals1 = document.getElementById("franshals1"); ELEM
+                // var franshals1 = document.getElementById("franshals1"); ELEM
                 var wrapper2 = franshalssection.getElementsByClassName("wrapper")[1];
-                var wrapper2Offset = offset(wrapper2)-(container.clientHeight/2);
-                // var wrapper2Offset = wrapper2.offsetTop-(container.clientHeight/2);
+                // var wrapper2Offset = offset(wrapper2)-(container.clientHeight/2);
+                var wrapper2Offset = wrapper2.offsetTop-(container.clientHeight/2);
                 // var pic = franshalssection.getElementsByClassName("col-pic")[0];
-                let Change = false;
-                let lastChange = false;
-
+                var Change = false;
+                var lastChange = false;
+                
                 if(container.scrollTop >= wrapper2Offset){
                     Change = true;
                     if(Change ^ lastChange){
                         slideOutPoze(franshalssection);
                         lastChange = true;
-                    }
+                    } 
                 } else {
-                    Change = false;
-                    if(Change ^ lastChange){
+                    // Change = false;
+                    // if(Change ^ lastChange){
                         slideInPoze(franshalssection);
-                        lastChange = false;
-                    }
+                        // lastChange = false;
+                    // }
                 }
+                console.log(Change + ", " + lastChange);
 
                 // if(container.scrollTop >= wrapper22Offset){
                 //     Change2 = true;
@@ -228,8 +233,8 @@
             }
 
             container.addEventListener('scroll', function(){
-                imageChangeTrigger(fanshals1);
-                imageChangeTrigger(fanshals2);
+                // imageChangeTrigger(franshals1);
+                imageChangeTrigger(franshals2);
             });
 
             function slideOutPoze(section){
