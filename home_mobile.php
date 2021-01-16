@@ -342,32 +342,32 @@
 					
 					<div class="milestone" style="top: 0.5%;" onclick="showMeaning(this)">
 						<div class="text-centrat main"><?php echo $content['Timeline']['1 Title']?></div>
-						<div><div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['1']?></div></div>
+						<div><div class="text-centrat meaning" style="opacity: 0; font-size: 2.3vw"><?php echo $content['Timeline']['1']?></div></div>
 					</div>
 
 					<div class="milestone" style="top:20%; left: 50%; transform: translate(-50%, -20%);" onclick="showMeaning(this)">
 						<div class="text-centrat main"><?php echo $content['Timeline']['2 Title']?></div>
-						<div><div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['2']?></div></div>
+						<div><div class="text-centrat meaning" style="opacity: 0; font-size: 2.3vw"><?php echo $content['Timeline']['2']?></div></div>
 					</div>
 
 					<div class="milestone" style="top:40%; left: 50%; transform: translate(-50%, -40%);" onclick="showMeaning(this)">
 						<div class="text-centrat main"><?php echo $content['Timeline']['3 Title']?></div>
-						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['3']?></div>
+						<div class="text-centrat meaning" style="opacity: 0; font-size: 2.3vw"><?php echo $content['Timeline']['3']?></div>
 					</div>
 
 					<div class="milestone" style="top:60%; left: 50%; transform: translate(-50%, -60%);" onclick="showMeaning(this)">
 						<div class="text-centrat main"><?php echo $content['Timeline']['4 Title']?></div>
-						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['4']?></div>
+						<div class="text-centrat meaning" style="opacity: 0; font-size: 2.3vw"><?php echo $content['Timeline']['4']?></div>
 					</div>
 
 					<div class="milestone" style="top:80%; left: 50%; transform: translate(-50%, -80%);" onclick="showMeaning(this)">
 						<div class="text-centrat main"><?php echo $content['Timeline']['5 Title']?></div>
-						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['5']?></div>
+						<div class="text-centrat meaning" style="opacity: 0; font-size: 2.3vw"><?php echo $content['Timeline']['5']?></div>
 					</div>
 
 					<div class="milestone" style="top: 99.5%; left:50%; transform: translate(-50%, -99.5%)" onclick="showMeaning(this)">
 						<div class="text-centrat main"><?php echo $content['Timeline']['6 Title']?></div>
-						<div class="text-centrat meaning" style="opacity: 0;"><?php echo $content['Timeline']['6']?></div>
+						<div class="text-centrat meaning" style="opacity: 0; font-size: 2.3vw"><?php echo $content['Timeline']['6']?></div>
 					</div>
 				</div>
 

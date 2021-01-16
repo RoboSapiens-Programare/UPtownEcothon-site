@@ -17,7 +17,7 @@
             }
         </style>
     </head>
-    <body class="sponsors" style="background:linear-gradient(#340634, #340634), url(pictures/blob.gif); background-size:100% 100%; background-blend-mode: multiply; background-position:left top;  background-repeat:no-repeat; overflow-x: hidden; margin:0px;">
+    <body class="sponsors" style="background:linear-gradient(#340634, #340634), url(pictures/blob.gif); background-size:100% 100%; background-blend-mode: multiply; background-position:left top;  background-repeat:repeat-x; overflow-x: hidden; margin:0px;">
 
         <?php 
 			include "elements/sageata.html";
@@ -30,94 +30,113 @@
         </div>
 
         <!-- document.location.href = '#program'; -->
-        <div id="info-menu" style="position:absolute; width: 10vw; height: 70vh; top:50vh; right: 1vw; transform:translateY(-50%); z-index: 20">
-            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 20%; padding: 0; border:0.5vh solid #00ff16" onclick="toProgram()">
-                <div class="text-centrat" style="font-size: 1.5vw;">Program</div>
-            </div>
-            <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; bottom: 20%; padding: 0; border:0.5vh solid #00ff16" onclick="toNews()">
-                <div class="text-centrat" style="font-size: 1.5vw;">News</div>
-            </div>
+        <div id="info-menu" style="position: fixed; width: 10vw; height: 70vh; top:50vh; right: 1vw; transform:translateY(-50%); z-index: 20">
+            <a href="#general">
+                <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 10%; padding: 0; border:0.5vh solid #00ff16">
+                    <div class="text-centrat" style="font-size: 1.5vw;">General</div>
+                </div>
+            </a>
+            <a href="#program">
+                <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 40%; padding: 0; border:0.5vh solid #00ff16">
+                    <div class="text-centrat" style="font-size: 1.5vw;">Program</div>
+                </div>
+            </a>
+            <a href="#news">
+                <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 70%; padding: 0; border:0.5vh solid #00ff16">
+                    <div class="text-centrat" style="font-size: 1.5vw;">News</div>
+                </div>
+            </a>
         </div>
 
         <!-- background-color: #855754; -->
-        <div style="background:transparent; overflow: hidden; margin:0px; width: 200vw; height: 100vh">
+        <div style="background:transparent; overflow-x: auto; overflow-y: hidden; margin:0px; width: 100vw; height: 100vh; box-sizing: border-box; z-index:10; position:relative; scrollbar-width: none; scroll-behavior: smooth">
+            <div style="background:transparent; width: 301%; height: 100%; position: relative">
+                <div id="general" style="position:relative; display:inline-block; width: 100vw; height: 100vh; z-index:0; color: white">
+                    <div id="general-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:1.4vw; background-color: #76667d; background-size:cover;  background-position: left center;color:white">
+                        <div style="position: absolute; left:1%; top:50%; transform:translate(0%, -50%);">
+                            <?php echo $content['General'][1]?>
+                        </div>
+                    <img src="pictures/LogoUTE.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
 
-            <div id="program" style="position:absolute; left: 0%; display:inline-block; width: 100vw; height: 100vh">
-                <div id="program-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:1.4vw; background: url(pictures/infobkg1.png); background-size:cover;  background-position: left center;color:white">
-                    <div style="position: absolute; left:1%; top:50%; transform:translate(0%, -50%);">
-                        <?php echo $content['Program'][1]?>
                     </div>
-                    <!-- <div style="position:absolute; left:60%; top:50%; transform:translate(0%, -50%); height:90%; border:2px solid red"> -->
-                        <img src="pictures/timetablefinal.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
-                    <!-- </div> -->
                 </div>
-                
-            </div>
 
-            <div id="news" style="position:absolute; left:100%; display:inline-block; width: 100vw; height: 100vh;">
-                <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:75%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
-                    <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
-                        <?php echo $content['Errors']['news-unav']; ?>
+                <div id="program" style="position:relative; display:inline-block; width: 100vw; height: 100vh">
+                    <div id="program-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:1.4vw; background: url(pictures/infobkg1.png); background-size:cover;  background-position: left center;color:white">
+                        <div style="position: absolute; left:1%; top:50%; transform:translate(0%, -50%);">
+                            <?php echo $content['Program'][1]?>
+                        </div>
+                        <!-- <div style="position:absolute; left:60%; top:50%; transform:translate(0%, -50%); height:90%; border:2px solid red"> -->
+                            <img src="pictures/timetablefinal.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
+                        <!-- </div> -->
                     </div>
                     
-                    <!-- <div class="franshalssection" id="franshals1">
-                        <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
-                            <div class="sticky-col">
-                                <div class="poza1" style="background-color:red; z-index:3;"></div>
-                                <div class="poza2" style="background-color:pink; z-index:3;"></div>
+                </div>
 
-                                <div class="poza1" style="background-color:blue; z-index:2"></div>
-                                <div class="poza2" style="background-color:green; z-index:2;"></div>
-                            </div>  
+                <div id="news" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
+                    <div id="news-container" onscroll="imageChangeTrigger();" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:75%; width: 85%; overflow-y: auto; overflow-x: hidden; padding:0">
+                        <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
+                            <?php echo $content['Errors']['news-unav']; ?>
                         </div>
-
-                        <div class="column col-text" style="flex: 60%; position: relative;">
-                            <div class="wrapper">
-                                <div class="row-content" style="right: 0; ">
-                                    text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
-                                </div>
-                            </div>
-                                
-                            <div class="wrapper">
-                                <div class="row-content" style="right: 0">
-                                    text cu chestii 222
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
-
-                    <div class="franshalssection" id="franshals2">
                         
-                        <div class="column" style="flex: 60%">
-                            <div class="wrapper">
-                                <div class="row-content" style="left: 0;">
-                                    text cu chestii 111
-                                </div>
+                        <!-- <div class="franshalssection" id="franshals1">
+                            <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
+                                <div class="sticky-col">
+                                    <div class="poza1" style="background-color:red; z-index:3;"></div>
+                                    <div class="poza2" style="background-color:pink; z-index:3;"></div>
+
+                                    <div class="poza1" style="background-color:blue; z-index:2"></div>
+                                    <div class="poza2" style="background-color:green; z-index:2;"></div>
+                                </div>  
                             </div>
-                                
-                            <div class="wrapper">
-                                <div class="row-content" style="left: 0;">
-                                    text cu chestii 222
+
+                            <div class="column col-text" style="flex: 60%; position: relative;">
+                                <div class="wrapper">
+                                    <div class="row-content" style="right: 0; ">
+                                        text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
+                                    </div>
+                                </div>
+                                    
+                                <div class="wrapper">
+                                    <div class="row-content" style="right: 0">
+                                        text cu chestii 222
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="column col-pic" id="col-pic2" style="flex:40%;">
-                            <div class="sticky-col" >
-                                <div class="poza1" style="background-color:red; z-index:3;"></div>
-                                <div class="poza2" style="background-color:pink; z-index:3;"></div>
+                        <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
 
-                                <div class="poza1" style="background-color:blue; z-index:2"></div>
-                                <div class="poza2" style="background-color:green; z-index:2;"></div>
+                        <div class="franshalssection" id="franshals2">
+                            
+                            <div class="column" style="flex: 60%">
+                                <div class="wrapper">
+                                    <div class="row-content" style="left: 0;">
+                                        text cu chestii 111
+                                    </div>
+                                </div>
+                                    
+                                <div class="wrapper">
+                                    <div class="row-content" style="left: 0;">
+                                        text cu chestii 222
+                                    </div>
+                                </div>
                             </div>
-                        </div> 
 
-                    </div> -->
+                            <div class="column col-pic" id="col-pic2" style="flex:40%;">
+                                <div class="sticky-col" >
+                                    <div class="poza1" style="background-color:red; z-index:3;"></div>
+                                    <div class="poza2" style="background-color:pink; z-index:3;"></div>
+
+                                    <div class="poza1" style="background-color:blue; z-index:2"></div>
+                                    <div class="poza2" style="background-color:green; z-index:2;"></div>
+                                </div>
+                            </div> 
+
+                        </div> -->
+                    </div>
                 </div>
             </div>
-
             
         </div>
 

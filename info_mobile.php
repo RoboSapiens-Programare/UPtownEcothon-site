@@ -16,8 +16,8 @@
                 background-color: black;
                 color:white;
                 /* font-size:4vw; */
-                height: 80%;
-                width: 40%;
+                height: 20%;
+                width: 90%;
             }
             .info-btn div{
                 color: white;
@@ -47,17 +47,29 @@
                 Info
             </div>
         </div>
-        <div style="position: relative; width:100%; height:15vh; border:0px solid blue">
-            <a href="#program" class="info-btn" style="left:5%;">
+        <div style="position: relative; width:100%; height:30vh; border:0px solid blue">
+        <a href="#general" class="info-btn" style="left:5%; top: 5%">
+                <div class="text-centrat">
+                    General
+                </div>
+            </a>
+            <a href="#program" class="info-btn" style="left:5%; top: 35%">
                 <div class="text-centrat">
                     Program
                 </div>
             </a>
-            <a href="#news" class="info-btn" style="right: 5%;">
+            <a href="#news" class="info-btn" style="left:5%; top: 65%">
                 <div class="text-centrat">
                     News
                 </div>
             </a>
+        </div>
+        <div id="general" style="position: relative; width:100%; background-color: #76667d; ">
+            <div style="position: relative; color:black">
+                <div style="padding:3% 5% 3% 5%; font-size:2vh; font-family: 'Montserrat', sans-serif">
+                    <?php echo $content['General'][1]?>
+                </div>
+            </div>
         </div>
         <div id="program" style="position: relative; width:100%; background-color:white; ">
             <div style="position: relative; color:black">
