@@ -78,7 +78,7 @@
                             <?php echo $content['Errors']['news-unav']; ?>
                         </div>
                         
-                        <div class="franshalssection" id="franshals1">
+                        <!-- <div class="franshalssection" id="franshals1">
                             <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
                                 <div class="sticky-col">
                                     <div class="poza1" style="background-color:red; z-index:3;"></div>
@@ -131,11 +131,10 @@
                                     <div class="poza2" style="background-color:green; z-index:2;"></div>
                                 </div>
                             </div> 
-
-                    </div>
+                        </div> -->
+                    </div> 
                 </div>
-            </div>
-            
+            </div> 
         </div>
 
         <?php 
