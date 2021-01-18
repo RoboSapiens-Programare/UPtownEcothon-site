@@ -64,7 +64,7 @@
                 </div>
             </a>
         </div>
-        <div id="general" style="position: relative; width:100%; background-color: #76667d; ">
+        <div id="general" style="position: relative; width:100%; background-color: white; ">
             <div style="position: relative; color:black">
                 <div style="padding:3% 5% 3% 5%; font-size:2vh; font-family: 'Montserrat', sans-serif">
                     <?php echo $content['General'][1]?>
