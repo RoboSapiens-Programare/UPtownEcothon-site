@@ -52,11 +52,11 @@
         <div style="background:transparent; overflow-x: auto; overflow-y: hidden; margin:0px; width: 100vw; height: 100vh; box-sizing: border-box; z-index:10; position:relative; scrollbar-width: none; scroll-behavior: smooth">
             <div style="background:transparent; width: 301%; height: 100%; position: relative">
                 <div id="general" style="position:relative; display:inline-block; width: 100vw; height: 100vh; z-index:0; color: white">
-                    <div id="general-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:1.4vw; background-color: #76667d; background-size:cover;  background-position: left center;color:white">
+                    <div id="general-container" class="rounded-rect" style="position:absolute; width:55%; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; font-size:1.4vw; background-color: white; background-size:cover;  background-position: left center;color: black;">
                         <div style="position: absolute; left:1%; top:50%; transform:translate(0%, -50%);">
                             <?php echo $content['General'][1]?>
                         </div>
-                    <img src="pictures/LogoUTE.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
+                        <img src="pictures/LogoUTE.png" alt="timetable" style="position:absolute; right:1%; top:50%; transform:translate(0%, -50%);  width: 40%;border:0px solid red">
 
                     </div>
                 </div>
