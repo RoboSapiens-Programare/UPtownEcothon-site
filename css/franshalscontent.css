@@ -4,7 +4,8 @@
     width: 100%;
     background-color: #c071df;
     color: black;
-    font-family: 'Khand', sans-serif; font-weight: bold;
+    font-family: 'Khand', sans-serif;
+    font-weight: bold;
     font-size: 18vh;
     text-align: center;
     vertical-align: middle;
@@ -89,27 +90,19 @@ body {
     background-color: #3d8b8f;
 }
 
-@media all and (max-width: 980px) {
+
+/* @media all and (max-width: 980px) {
     .franshalssection {
         position: relative;
         box-sizing: border-box;
         margin: 0;
         padding: 0;
         display: block;
-        /* display: block; */
-        /* width: 100vw; */
-        /* height: 100vh; */
         background-color: transparent;
-        /* border: 2px solid black; */
     }
     .column {
-        /* position: -webkit-sticky; */
         position: relative;
-        /* display: flex; */
         top: 0;
-        /* top: 0%; */
-        /* left: 0%; */
-        /* height: 200vh; */
         flex: 100%;
         background-color: transparent;
     }
@@ -128,16 +121,14 @@ body {
     }
     .wrapper {
         position: relative;
-        /* display: inline-block; */
         width: 100%;
         background-color: transparent;
     }
     .row-content {
         position: absolute;
         top: 0%;
-        /* right: 0%; */
         height: 100%;
         width: 100%;
         background-color: white;
     }
-}
+} */
