@@ -12,7 +12,7 @@
     }
 
     //CONTENT
-    include 'config/dbconfig.php';
+    require_once 'config/dbconfig.php';
 
     try{
         $db = new ContentDB();
