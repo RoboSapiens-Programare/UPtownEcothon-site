@@ -1,6 +1,6 @@
 <?php
     function createEmail($title, $content){
-        $mail_file = fopen("../elements/template_mail.html", "r");
+        $mail_file = fopen("elements/template_mail.html", "r");
         
         $mail_string = "";
 
