@@ -4,6 +4,7 @@ if (!isset ($_SESSION)) session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     require_once ("config/dbconfig.php");
+    require_once ("config/mailconfig.php");
 
     $email = (isset($_POST['email']) && !empty($_POST['email'])) ? $_POST['email'] : null;
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
@@ -38,9 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['hassbs'] = true;
     
                 $mail_to = $email;
-                $subject = "[UTE]Thank you for subscribing to our newsletter!";
-                $content = "Fenk";
+                $subject = "[UTE]Mulțumim că te-ai abonat la newsletter-ul nostru!";
+                $content = createEmail("Hey! Îți mulțumim pentru interes.", "Te vom ține la curent cu tot ce se întâmplă în cadrul evenimentului, ca să nu pierzi nimic! <br>Daca dorești să te dezabonezi, poți găsi mai jos butonul de unsubscribe.");
                 $headers = "From: Contact UPtown Ecothon <ute-contact@robosapiens.ro>";
+                $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
     
                 mail($mail_to, $subject, $content, $headers);
             } else {
