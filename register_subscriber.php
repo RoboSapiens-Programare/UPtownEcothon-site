@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail_to = $email;
                 $subject = "[UTE]Mulțumim că te-ai abonat la newsletter-ul nostru!";
                 $content = createEmail("Hey! Îți mulțumim pentru interes.", "Te vom ține la curent cu tot ce se întâmplă în cadrul evenimentului, ca să nu pierzi nimic! <br>Daca dorești să te dezabonezi, poți găsi mai jos butonul de unsubscribe.");
-                $headers = "From: Contact UPtown Ecothon <ute-contact@robosapiens.ro>";
+                $headers = "From: Contact UPtown Ecothon <ute-contact@robosapiens.ro>\r\n";
                 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
     
                 mail($mail_to, $subject, $content, $headers);
