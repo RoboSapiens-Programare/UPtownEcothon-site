@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<!-- redirect catre not yet care se comenta ciudat asa ca l am taiat -->
 <?php
-    header('Location: notyet.php');
+    // header('Location: notyet.php');
     //imi dadea o eroare but this seemed to fix it, nu cred ca ai nevoie de session aici dar nu pare ca vrea sa mearga fara????
     if (!isset ($_SESSION)) session_start();
 ?>
@@ -68,7 +67,6 @@
                 width:100%;
                 right: 0px;
                 background-color: #ffafc0;
-                height: 6vh;
                 font-size: 4vw;
                 text-align:center;
                 padding: 1%;
@@ -107,25 +105,14 @@
                     isOk = false;
                 }
 
-                //verify user has selected field
-                var position = document.getElementById('position');
-                if(position.value == "selectcard"){
-                    position.style.borderColor = "red";
-                    isOk = false;
-                }
-
-                //verify user has selected team
-                var hasteam = document.getElementById('hasteam');
-                if(hasteam.value == "selectcard"){
-                    hasteam.style.borderColor = "red";
-                    isOk = false;
-                }
-
-                //verify user has selected team
-                var team = document.getElementsByName('teamname')[0];
-                if(team.value == "selectcard"){
-                    team.style.borderColor = "red";
-                    isOk = false;
+                //verify select fields
+                var selects = document.querySelectorAll("select");
+                //verify all selects fields are filled in
+                for (i = 0; i < selects.length; ++i) {
+                    if(selects[i].value == "selectcard"){
+                        selects[i].style.borderColor = "red";
+                        isOk = false;
+                    }
                 }
 
                 //daca ceva nu e ok
@@ -339,7 +326,7 @@
                     <label for="phone">Phone</label>
                     <input type="number" id="phone" name="phone" value=<?php if($phone) echo $phone; ?>><br>
                     <label for="position">Position</label>
-                    <select id="position" name="position" style="height:5vh">
+                    <select id="position" name="position" style="height:5vh; font-size: 3vw;">
                         <option value="selectcard"> - </option>
                         <option value="elev">Elev</option>
                         <option value="student">Student</option>
@@ -354,7 +341,7 @@
             <div id="teamDetails" style="display: none;" class="formelement">
                 <h2>Team Details</h2>
                     <label for="hasteam">Do you have a team?</label>
-                    <select name="hasteam" id="hasteam" oninput="hasTeam();" style="height:5vh">
+                    <select name="hasteam" id="hasteam" oninput="hasTeam();" style="height:5vh; font-size: 3vw;">
                         <option value="selectcard"> - </option>
                         <option value="yes">Yes</option>
                         <option value="want">No, but I want to find a team</option>
@@ -363,7 +350,7 @@
                     
                     <div id="team" style="display: none;">
                         <label for="team">Team</label>
-                        <select id="team" name="teamname" oninput="configNewTeam();" style="height:5vh">
+                        <select id="team" name="teamname" oninput="configNewTeam();" style="height:5vh; font-size: 3vw;">
                             <option value="selectcard">select team</option>
                             <option value="create">new team...</option>
                         <?php

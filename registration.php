@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- redirect catre not yet care se comenta ciudat asa ca l am taiat -->
 <?php
     //header('Location: notyet.php');
     //imi dadea o eroare but this seemed to fix it, nu cred ca ai nevoie de session aici dar nu pare ca vrea sa mearga fara????
@@ -24,7 +23,7 @@
             }
             label{
                 position: relative;
-                font-size: 1vw;
+                font-size: 2vh;
                 /* text-decoration: underline dashed 0.2vh #00ff16; */
                 /* margin-left: 5vw; */
                 width: 20%;
@@ -41,7 +40,7 @@
                 background-color: transparent;
                 height: 2vh;
                 padding: 1%;
-                font-size: 1vw;
+                font-size: 2vh;
             }
             button{
                 position:relative;
@@ -53,7 +52,7 @@
                 background-color: #340634;
                 height: 5vh;
                 padding: 1%;
-                font-size: 1vw;
+                font-size: 2vh;
                 color: white;
             }
             button:hover{
@@ -69,7 +68,7 @@
                 right: 0px;
                 background-color: #ffafc0;
                 /* height: 6vh; */
-                font-size: 1.3vw;
+                font-size: 2vh;
                 text-align:center;
                 padding: 1%;
             }
@@ -98,68 +97,6 @@
             }
         </style>
 
-        <script>
-			function validateForm(){
-                var isOk = true;
-
-                var input = document.querySelectorAll("input");
-                //verify all input fields are filled in
-                for (i = 0; i < input.length; ++i) {
-                    if(input[i].value.length == 0 || input[i]==null){
-                        input[i].style.borderColor = "red";
-                        isOk = false;
-                    } 
-                }
-
-                //verify experience field is filled in
-                if(document.forms["registration"]["experience"].value.length == 0 || document.forms["registration"]["experience"]==null){
-                    document.forms["registration"]["experience"].style.borderColor="red";
-                    isOk = false;
-                }
-
-                // verify email address
-				var email = document.forms["registration"]["email"].value;
-				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-				var isemail = re.test(String(email).toLowerCase());
-				var message = document.getElementById('message');
-
-				if(isemail==false){
-					document.getElementById('email').style.borderColor = "red";
-                    isOk = false;
-                }
-
-                //verify user has selected field
-                var position = document.getElementById('position');
-                if(position.value == "selectcard"){
-                    position.style.borderColor = "red";
-                    isOk = false;
-                }
-
-                //verify user has selected team
-                var hasteam = document.getElementById('hasteam');
-                if(hasteam.value == "selectcard"){
-                    hasteam.style.borderColor = "red";
-                    isOk = false;
-                }
-
-                //verify user has selected team
-                var team = document.getElementsByName('teamname')[0];
-                if(team.value == "selectcard"){
-                    team.style.borderColor = "red";
-                    isOk = false;
-                }
-
-                //daca ceva nu e ok
-                if(isOk==false){
-                    window.scrollTo(0,0);
-					document.getElementById('msg').style.display = "block";
-					document.getElementById('msg').innerHTML = 'Please complete all fields accordingly!';
-                    return false;
-                } else {
-                    return true;
-                }
-			}
-		</script>
     </head>
     <body id="home" style="background-color: #340634; margin:0px; ">
         <?php include "elements/sageata.html"; ?>
@@ -397,13 +334,17 @@
             </div>
         </div>
 
-        <div style="position:relative; width:90%; max-width: 800px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
+        <div style="position:relative; width:90%; max-width: 700px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
 
-        <div class="msg" id="msg" style="display: none;"></div>
                 
             <div id="registerParticipant" class="formelement">
+            
+            <!-- onsubmit="return validateForm(true)" -->
                 
-                <form method="post" onsubmit='return validateForm()' name='registration' id='registration'>
+                <form method="post"  name='registration' id='registration'>
+            <div id="Registration" class="formelement">
+                    <div class="msg" id="msg-reg" style="display: none;"></div>
+
                     <label for="firstname">First Name</label>
                     <input type="text" id="firstname" name="firstname" value=<?php if($firstname) echo $firstname; ?>><br>
                     <label for="lastname">Last Name</label>
@@ -426,6 +367,8 @@
             </div>
             
             <div id="teamDetails" style="display: none;" class="formelement">
+                <div class="msg" id="msg-team" style="display: none;"></div>
+
                 <h2>Team Details</h2>
                     <label for="hasteam">Do you have a team?</label>
                     <select name="hasteam" id="hasteam" oninput="hasTeam();" style="height:5vh">
@@ -454,7 +397,17 @@
                     <button id="teambtn" type="button" onclick="teamOK();">Next</button>
             </div>
 
+            <div id="ideasSection" style="display: none;" class="fomelement">
+                <h2>Do you have any project ideas?</h2>
+
+                    <label for="ideas">Share them with us! (optional) </label>
+                    <textarea type="text" id="ideas" name="ideas" style="height: 10vh;"><?php if($idea) echo $idea; ?></textarea><br> 
+                    <button id="ideabtn" type="button" onclick="ideaOK();">Next</button>                   
+            </div>
+
             <div id="configureAccount" style="display: none;" class="formelement">
+                <div class="msg" id="msg-account" style="display: none;"></div>
+                            
                 <h2>Configure Account</h2>
                 
                     <label for="username">Username</label>
@@ -463,7 +416,7 @@
                     <input type="password" id="passwd" name="passwd"><br>
                     <label for="passwd">Confirm Password</label>
                     <input type="password" id="cpasswd" name="cpasswd"><br>
-                    <button type="submit">Submit</button>
+                    <button type="submit" onclick="return accountOK()">Submit</button>
                 </form>
             </div>
 
@@ -503,11 +456,85 @@
 
 
         <script>
-            function registrationOK(){
-                var x = document.getElementById('teamDetails');
-                x.style.display = "block";
 
-                document.getElementById('regbtn').style.display = "none";
+            function validateForm(section, hasEmail){
+                var isOk = true;
+
+                //verify all input fields are filled in
+                var input = section.querySelectorAll("input");
+                for (i = 0; i < input.length; ++i) {
+                    if(input[i].value.length == 0 || input[i]==null){
+                        input[i].style.borderColor = "red";
+                        isOk = false;
+                    }
+                }
+
+                if(hasEmail){
+                    //verify experience field is filled in
+                    if(document.forms["registration"]["experience"].value.length == 0 || document.forms["registration"]["experience"]==null){
+                        document.forms["registration"]["experience"].style.borderColor="red";
+                        isOk = false;
+                    }
+
+                    // verify email address
+                    var email = document.forms["registration"]["email"].value;
+                    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    var isemail = re.test(String(email).toLowerCase());
+                    var message = document.getElementById('message');
+
+                    if(isemail==false){
+                        document.getElementById('email').style.borderColor = "red";
+                        isOk = false;
+                    }
+                }
+                
+                // verify select fields
+                var selects = section.querySelectorAll("select");
+                for (i = 0; i < selects.length; ++i) {
+                    if(selects[i].value == "selectcard"){
+                        selects[i].style.borderColor = "red";
+                        isOk = false;
+                    } else if (selects[i].value=="want" || selects[i].value=="no"){
+                        i = selects.length + 10;
+                        isOk=true;
+                    } else if(selects[i].value=="yes"){
+                        i++;
+                        if(selects[i].value!="create" && selects[i].value != "selectcard"){
+                            i = selects.length + 10;
+                            isOk=true;
+                        } else {
+                            if(document.forms["registration"]["teamcreatename"].value.length == 0 || document.forms["registration"]["teamcreatename"]==null){
+                                document.forms["registration"]["teamcreatename"].style.borderColor="red";
+                                isOk = false;
+                            }
+                        }
+                    }
+                }
+
+                //daca ceva nu e ok
+                if(isOk==false){
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            
+            function registrationOK(){
+                var section =document.getElementById('Registration');
+                if(validateForm(section,true)==true){
+                    // alert("A mers");
+                    var x = document.getElementById('teamDetails');
+                    x.style.display = "block";
+
+                    document.getElementById('msg-reg').style.display = "none";
+                    document.getElementById('regbtn').style.display = "none";
+                    
+                } else{
+                    // alert("nu");
+                    document.getElementById('msg-reg').style.display = "block";
+					document.getElementById('msg-reg').innerHTML = 'Please complete all fields accordingly!';
+                }
+                
             }
 
             function hasTeam(){
@@ -531,10 +558,40 @@
             }
 
             function teamOK(){
+                var section = document.getElementById('teamDetails');
+                if(validateForm(section,    false)==true){
+                    var x = document.getElementById('ideasSection');
+                    x.style.display = "block";
+
+                    document.getElementById('msg-team').style.display = "none";
+                    document.getElementById('teambtn').style.display = "none";
+                } else{
+                    document.getElementById('msg-team').style.display = "block";
+					document.getElementById('msg-team').innerHTML = 'Please complete all fields accordingly!';
+                }
+                // var x = document.getElementById('ideasSection');
+                // x.style.display = "block";
+
+                // document.getElementById('teambtn').style.display = "none";
+            }
+
+            function ideaOK(){
                 var x = document.getElementById('configureAccount');
                 x.style.display = "block";
 
-                document.getElementById('teambtn').style.display = "none";
+                document.getElementById('ideabtn').style.display = "none";
+            }
+
+            function accountOK(){
+                var section =document.getElementById('configureAccount');
+                if(validateForm(section,false)){
+                    document.getElementById('msg-account').style.display = "none";
+                    return true;
+                } else{
+                    document.getElementById('msg-account').style.display = "block";
+                    document.getElementById('msg-account').innerHTML = 'Please complete all fields accordingly!';
+                    return false;
+                }
             }
 
 
