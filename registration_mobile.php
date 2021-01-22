@@ -75,7 +75,6 @@
                 var isOk = true;
 
                 var input = document.querySelectorAll("input");
-
                 //verify all input fields are filled in
                 for (i = 0; i < input.length; ++i) {
                     if(input[i].value.length == 0 || input[i]==null){
@@ -85,17 +84,12 @@
                         isOk = false;
                     }
                 }
-                // alert("pls1");
-
 
                 //verify experience field is filled in
                 if(document.forms["registration"]["experience"].value.length == 0 || document.forms["registration"]["experience"]==null){
                     document.forms["registration"]["experience"].style.borderColor="red";
                     isOk = false;
                 }
-
-                // alert("pls2");
-
 
                 // verify email address
 				var email = document.forms["registration"]["email"].value;
