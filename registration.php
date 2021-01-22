@@ -143,11 +143,11 @@
                 }
 
                 //verify user has selected team
-                // var team = document.getElementsByName('teamname')[0];
-                // if(team.value == "selectcard"){
-                //     team.style.borderColor = "red";
-                //     isOk = false;
-                // }
+                var team = document.getElementsByName('teamname')[0];
+                if(team.value == "selectcard"){
+                    team.style.borderColor = "red";
+                    isOk = false;
+                }
 
                 //daca ceva nu e ok
                 if(isOk==false){
