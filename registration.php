@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- redirect catre not yet care se comenta ciudat asa ca l am taiat -->
-<html>
+<html style="scroll-behavior: smooth">
     <head>
         <title></title>
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
@@ -63,7 +63,7 @@
                 width:100%;
                 right: 0px;
                 background-color: #ffafc0;
-                height: 6vh;
+                /* height: 6vh; */
                 font-size: 1.3vw;
                 text-align:center;
                 padding: 1%;
@@ -92,6 +92,77 @@
                 width:inherit;
             }
         </style>
+
+        <script>
+			function validateForm(){
+                var isOk = true;
+
+                var input = document.querySelectorAll("input");
+
+                //verify all input fields are filled in
+                for (i = 0; i < input.length; ++i) {
+                    if(input[i].value.length == 0 || input[i]==null){
+                        input[i].style.borderColor = "red";
+                        isOk = false;
+                    } else {
+                        isOk = false;
+                    }
+                }
+                // alert("pls1");
+
+
+                //verify experience field is filled in
+                if(document.forms["registration"]["experience"].value.length == 0 || document.forms["registration"]["experience"]==null){
+                    document.forms["registration"]["experience"].style.borderColor="red";
+                    isOk = false;
+                }
+
+                // alert("pls2");
+
+
+                // verify email address
+				var email = document.forms["registration"]["email"].value;
+				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				var isemail = re.test(String(email).toLowerCase());
+				var message = document.getElementById('message');
+
+				if(isemail==false){
+					document.getElementById('email').style.borderColor = "red";
+                    isOk = false;
+                }
+
+                //verify user has selected field
+                var position = document.getElementById('position');
+                if(position.value == "selectcard"){
+                    position.style.borderColor = "red";
+                    isOk = false;
+                }
+
+                //verify user has selected team
+                var hasteam = document.getElementById('hasteam');
+                if(hasteam.value == "selectcard"){
+                    hasteam.style.borderColor = "red";
+                    isOk = false;
+                }
+
+                //verify user has selected team
+                var team = document.getElementsByName('teamname')[0];
+                if(team.value == "selectcard"){
+                    team.style.borderColor = "red";
+                    isOk = false;
+                }
+
+                //daca ceva nu e ok
+                if(isOk==false){
+                    window.scrollTo(0,0);
+					document.getElementById('msg').style.display = "block";
+					document.getElementById('msg').innerHTML = 'Please complete all fields accordingly!';
+                    return false;
+                } else {
+                    return true;
+                }
+			}
+		</script>
     </head>
     <body id="home" style="background-color: #340634; margin:0px; ">
         <?php include "elements/sageata.html"; ?>
@@ -253,7 +324,12 @@
                 else{
                     // echo "<br>Complete the fields accordingly then try again!<br>";
                     // $msg = 'Complete the fields accordingly then try again!';
-                    $msg = "";
+                    // $msg = "";
+                    echo "
+                    <script> 
+                        document.getElementById('msg').style.display = 'block';
+                        document.getElementById('msg').innerHTML = 'Please complete all fields accordingly!';
+                    </script>";
                 }
 
                 $db = null;
@@ -309,16 +385,12 @@
         </div>
 
         <div style="position:relative; width:90%; max-width: 800px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
-                <?php
-                    if(isset($msg)&& $msg != ""){
-                        echo "
-                            <div class='msg'>"; echo $msg; echo "</div>
-                        ";
-                    }
-                ?>
+
+        <div class="msg" id="msg" style="display: none;"></div>
+                
             <div id="registerParticipant" class="formelement">
                 
-                <form method="post">
+                <form method="post" onsubmit='return validateForm()' name='registration' id='registration'>
                     <label for="firstname">First Name</label>
                     <input type="text" id="firstname" name="firstname" value=<?php if($firstname) echo $firstname; ?>><br>
                     <label for="lastname">Last Name</label>
@@ -329,6 +401,7 @@
                     <input type="number" id="phone" name="phone" value=<?php if($phone) echo $phone; ?>><br>
                     <label for="position">Position</label>
                     <select id="position" name="position" style="height:5vh">
+                        <option value="selectcard"> - </option>
                         <option value="elev">Elev</option>
                         <option value="student">Student</option>
                         <option value="angajat">Angajat</option>
@@ -343,7 +416,7 @@
                 <h2>Team Details</h2>
                     <label for="hasteam">Do you have a team?</label>
                     <select name="hasteam" id="hasteam" oninput="hasTeam();" style="height:5vh">
-                        <option> - </option>
+                        <option value="selectcard"> - </option>
                         <option value="yes">Yes</option>
                         <option value="want">No, but I want to find a team</option>
                         <option value="no">No, and I am a lone wolf</option>
@@ -352,7 +425,7 @@
                     <div id="team" style="display: none;">
                         <label for="team">Team</label>
                         <select id="team" name="teamname" oninput="configNewTeam();" style="height:5vh">
-                            <option>select team</option>
+                            <option value="selectcard">select team</option>
                             <option value="create">new team...</option>
                         <?php
                             foreach($teamOptions as $op){
@@ -449,6 +522,29 @@
                 x.style.display = "block";
 
                 document.getElementById('teambtn').style.display = "none";
+            }
+
+
+            //CEVA nu imi pare safe la atatea loop uri dar maeks stuff green if clicked on (for when u enter stuff wrong and it turn red)
+            var inputs = document.querySelectorAll("input")
+            for (i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('click', function() {
+                    this.style.borderColor = "#00ff16";
+                });
+            }
+
+            var selects = document.querySelectorAll("select")
+            for (i = 0; i < selects.length; i++) {
+                selects[i].addEventListener('click', function() {
+                    this.style.borderColor = "#00ff16";
+                });
+            }
+
+            var textareas = document.querySelectorAll("textarea")
+            for (i = 0; i < textareas.length; i++) {
+                textareas[i].addEventListener('click', function() {
+                    this.style.borderColor = "#00ff16";
+                });
             }
         </script>
     </body>  
