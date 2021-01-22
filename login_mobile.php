@@ -73,7 +73,7 @@
             label{
                 position: relative;
                 color: black;
-                font-size: 5vw;
+                font-size: 4vw;
                 /* text-decoration: underline dashed 0.2vh #00ff16; */
                 /* margin-left: 5vw; */
                 width: 20%;
@@ -103,7 +103,7 @@
                 height: 6vh;
                 padding: 1%;
                 color: white;
-                font-size: 5vw;
+                font-size: 4vw;
             }
             button:hover{
                 background-color: transparent;
@@ -122,6 +122,7 @@
                 text-align:center;
                 padding: 3%;
             }
+            
         </style>
     </head>
     <body id="home" style="background-color: #340634; margin:0px; ">
@@ -149,6 +150,10 @@
                     <input type="password" id="passwd" name="passwd"><br>
                     <button type="submit">Submit</button>
                 </form>
+
+                <div style="font-size: 4vw;">
+                    Forgot your <a href="#"> password <a> ?
+                </div>
             </div>
         </div>
 

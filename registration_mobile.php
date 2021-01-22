@@ -3,7 +3,7 @@
 <html>
     <head>
         <title></title>
-        <link rel="stylesheet" type="text/css" href="css/sageata.css">
+        <link rel="stylesheet" type="text/css" href="css/sageatatlf.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 
         <link rel="stylesheet" type="text/css" href="css/bottom.css">
@@ -19,7 +19,7 @@
             }
             label{
                 position: relative;
-                font-size: 1vw;
+                font-size: 4vw;
                 /* text-decoration: underline dashed 0.2vh #00ff16; */
                 /* margin-left: 5vw; */
                 width: 20%;
@@ -28,19 +28,19 @@
             }
             input, textarea, select{
                 position:relative;
-                margin: 0vh 0vw 3vh 0vw;
+                margin: 0vh 0vw 2vh 0vw;
                 border: 0.3vh solid #00ff16;
                 border-radius: 20px;
                 width:98%;
                 right: 0px;
                 background-color: transparent;
-                height: 2vh;
+                height: 3vh;
                 padding: 1%;
                 font-size: 1vw;
             }
             button{
                 position:relative;
-                margin: 0vh 0vw 3vh 0vw;
+                margin: 0vh 0vw 2vh 0vw;
                 border: 0.3vh solid #00ff16;
                 border-radius: 20px;
                 width:100%;
@@ -48,7 +48,7 @@
                 background-color: #340634;
                 height: 5vh;
                 padding: 1%;
-                font-size: 1vw;
+                font-size: 4vw;
                 color: white;
             }
             button:hover{
@@ -64,37 +64,13 @@
                 right: 0px;
                 background-color: #ffafc0;
                 height: 6vh;
-                font-size: 1.3vw;
+                font-size: 4vw;
                 text-align:center;
                 padding: 1%;
-            }
-            #footer-special ul{
-                list-style: none;
-                height: 100%;
-                overflow: hidden;
-                bottom: 0;
-                position: absolute;
-            }
-            #footer-special ul li{
-                /* border: 2px solid blue; */
-                width:auto;
-                height: 8%;
-                margin: 3vh 0vw 3vh -1vw;
-            }
-            #footer-special ul li a{
-                /* position: absolute; */
-                height: 100%;
-                /* width:100%; */
-            }
-            #footer-special ul li a img{
-                /* position: absolute; */
-                height: inherit;
-                width:inherit;
             }
         </style>
     </head>
     <body id="home" style="background-color: #340634; margin:0px; ">
-        <?php include "elements/sageata.html"; ?>
 
 
         <?php
@@ -265,57 +241,22 @@
             }  
         ?>
 
+        <?php include "elements/sageatatlf.html"; ?>
 
-        <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
-            <ul>
-                <li style="height:10%; filter:invert(100%)">
-                    <a href="https://www.instagram.com/uptown.ecothon/">
-                        <img src="./icons/instagram.svg">
-                    </a>
-                </li>
-                <li style="height: 10%; filter:invert(100%)">
-                    <a href="https://www.facebook.com/uptown.ecothon">
-                        <img src="./icons/facebook.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/FTC.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php" style="filter: invert(100%);">
-                        <img src="pictures/natie.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/gemini-solutions-logo.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/endava.png">
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-        <div class="page-title" style="position: relative; margin-top: 3vh; margin-bottom:4vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
-            <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
-                Register
-            </div>
-        </div>
+        <div class="page-title" style="position: relative; margin-top: 10vw; margin-bottom:8vw; width:100%; height: 8vh; background-color: transparent; font-size:10vw; z-index:70">
+                <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
+                    Register
+                </div>
+            </div>	
 
         <div style="position:relative; width:90%; max-width: 800px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
-                <?php
-                    if(isset($msg)&& $msg != ""){
-                        echo "
-                            <div class='msg'>"; echo $msg; echo "</div>
-                        ";
-                    }
-                ?>
+            <?php
+                if(isset($msg)&& $msg != ""){
+                    echo "
+                        <div class='msg'>"; echo $msg; echo "</div>
+                    ";
+                }
+            ?>
             <div id="registerParticipant" class="formelement">
                 
                 <form method="post">
@@ -328,7 +269,7 @@
                     <label for="phone">Phone</label>
                     <input type="number" id="phone" name="phone" value=<?php if($phone) echo $phone; ?>><br>
                     <label for="position">Position</label>
-                    <select id="position" name="position" style="height:5vh">
+                    <select id="position" name="position" style="height:5vh; font-size:4vw">
                         <option value="elev">Elev</option>
                         <option value="student">Student</option>
                         <option value="angajat">Angajat</option>
@@ -342,7 +283,7 @@
             <div id="teamDetails" style="display: none;" class="formelement">
                 <h2>Team Details</h2>
                     <label for="hasteam">Do you have a team?</label>
-                    <select name="hasteam" id="hasteam" oninput="hasTeam();" style="height:5vh">
+                    <select name="hasteam" id="hasteam" oninput="hasTeam();" style="height:5vh; font-size:4vw">
                         <option> - </option>
                         <option value="yes">Yes</option>
                         <option value="want">No, but I want to find a team</option>
@@ -351,7 +292,7 @@
                     
                     <div id="team" style="display: none;">
                         <label for="team">Team</label>
-                        <select id="team" name="teamname" oninput="configNewTeam();" style="height:5vh">
+                        <select id="team" name="teamname" oninput="configNewTeam();" style="height:5vh;font-size:4vw">
                             <option>select team</option>
                             <option value="create">new team...</option>
                         <?php
