@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- redirect catre not yet care se comenta ciudat asa ca l am taiat -->
 <?php
-    header('Location: notyet.php');
+    //header('Location: notyet.php');
     //imi dadea o eroare but this seemed to fix it, nu cred ca ai nevoie de session aici dar nu pare ca vrea sa mearga fara????
     if (!isset ($_SESSION)) session_start();
 ?>
@@ -108,9 +108,7 @@
                     if(input[i].value.length == 0 || input[i]==null){
                         input[i].style.borderColor = "red";
                         isOk = false;
-                    } else {
-                        isOk = false;
-                    }
+                    } 
                 }
 
                 //verify experience field is filled in
@@ -145,11 +143,11 @@
                 }
 
                 //verify user has selected team
-                var team = document.getElementsByName('teamname')[0];
-                if(team.value == "selectcard"){
-                    team.style.borderColor = "red";
-                    isOk = false;
-                }
+                // var team = document.getElementsByName('teamname')[0];
+                // if(team.value == "selectcard"){
+                //     team.style.borderColor = "red";
+                //     isOk = false;
+                // }
 
                 //daca ceva nu e ok
                 if(isOk==false){
@@ -170,14 +168,22 @@
         <?php
             require_once 'config/dbconfig.php';
             
-            $firstname = (isset($_POST['firstname']) && !empty($_POST['firstname'])) ? $_POST['firstname'] : null;
-            $lastname = (isset($_POST['lastname']) && !empty($_POST['lastname'])) ? $_POST['lastname'] : null;
-            $email = (isset($_POST['email']) && !empty($_POST['email'])) ? $_POST['email'] : null;
-            $phone = (isset($_POST['phone']) && !empty($_POST['phone'])) ? $_POST['phone'] : null;
-            $position = (isset($_POST['position']) && !empty($_POST['position'])) ? $_POST['position'] : null;
-            $experience = (isset($_POST['experience']) && !empty($_POST['experience'])) ? $_POST['experience'] : null;
-            $teamCreateName = (isset($_POST['teamcreatename']) && !empty($_POST)) ? $_POST['teamcreatename'] : null;
-            $teamName = (isset($_POST['teamname']) && !empty($_POST)) ? $_POST['teamname'] : null;
+            
+            function trim_value(&$value)
+            {
+                $value = trim($value);
+            }
+            array_filter($_POST, 'trim_value');
+
+            $firstname = (isset($_POST['firstname']) && !empty($_POST['firstname'])) ? filter_var(trim($_POST["firstname"]), FILTER_SANITIZE_EMAIL) : null;
+            $lastname = (isset($_POST['lastname']) && !empty($_POST['lastname'])) ? filter_var(trim($_POST["lastname"]), FILTER_SANITIZE_EMAIL) : null;
+            $email = (isset($_POST['email']) && !empty($_POST['email'])) ? filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL) : null;
+            $phone = (isset($_POST['phone']) && !empty($_POST['phone'])) ? filter_var(trim($_POST["phone"]), FILTER_SANITIZE_EMAIL) : null;
+            $position = (isset($_POST['position']) && !empty($_POST['position'])) ? filter_var(trim($_POST["position"]), FILTER_SANITIZE_EMAIL) : null;
+            $experience = (isset($_POST['experience']) && !empty($_POST['experience'])) ? filter_var(trim($_POST["experience"]), FILTER_SANITIZE_EMAIL) : null;
+            $teamCreateName = (isset($_POST['teamcreatename']) && !empty($_POST['teamcreatename'])) ? filter_var(trim($_POST["teamcreatename"]), FILTER_SANITIZE_EMAIL) : null;
+            $teamName = (isset($_POST['teamname']) && !empty($_POST['teamname'])) ? filter_var(trim($_POST["teamname"]), FILTER_SANITIZE_EMAIL) : null;
+            $ideaDescription = (isset($_POST['ideadesc']) && !empty($_POST['ideadesc'])) ? filter_var(trim($_POST["ideadesc"]), FILTER_SANITIZE_EMAIL) : null;
 
             if($teamCreateName){
                 try{
@@ -203,13 +209,12 @@
             }
 
             $team_id = 1;
-            $participant_id = null;
-            $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
+            $username = (isset($_POST['username']) && !empty($_POST['username'])) ? filter_var(trim($_POST["username"]), FILTER_SANITIZE_EMAIL) : null;
             $passwd = (isset($_POST['passwd']) && isset($_POST['cpasswd']) && ($_POST['passwd'] === $_POST['cpasswd'])) ? $_POST['passwd'] : null;
 
             $hasTeam = null;
             if(isset($_POST['hasteam'])){
-                if($hasTeam === "yes"){
+                if($_POST['hasteam'] === "yes"){
                     $hasTeam = true;
                 }
                 else if(!empty($_POST['hasname'])){
@@ -235,17 +240,13 @@
 
 
                 //Check to see if all fields are filled accordingly
-                if($firstname && $lastname && $email && $phone && $position && $experience && $username && $passwd && $hasTeam && ($hasTeam ? ($teamName && (is_numeric($teamName) ? true : $teamCreateName)) : true)){
+                if($firstname && $lastname && $email && $phone && $position && $experience && $username && $passwd && ($hasTeam ? ($teamName && (is_numeric($teamName) ? true : $teamCreateName)) : true)){
 
                     //For participant registration
-
-                    //Set a random ID for the participant
-                    $participant_id = rand(1000, 9999);
                     
-                    $sql = "INSERT INTO participants (id, firstname, lastname, email, phone, position, experience) VALUES (:participant_id, :firstname, :lastname, :email, :phone, :position, :experience)";
+                    $sql = "INSERT INTO participants (firstname, lastname, email, phone, position, experience) VALUES (:firstname, :lastname, :email, :phone, :position, :experience)";
                     $stmt = $db->prepare($sql);
 
-                    $stmt->bindParam(':participant_id', $participant_id);
                     $stmt->bindParam(':firstname', $firstname);
                     $stmt->bindParam(':lastname', $lastname);
                     $stmt->bindParam(':email', $email);
@@ -255,7 +256,6 @@
 
                     $stmt->execute();
                 
-
                     //For team details
 
                     //If the user has or wants to create a team
@@ -294,7 +294,7 @@
 
                         $stmt->execute();
 
-                        $sql = "SELECT * FROM teams WHERE name = :name";
+                        $sql = "SELECT * FROM teams WHERE name = :name LIMIT 1";
                         $stmt = $db->prepare($sql);
 
                         $stmt->bindParam(':name', $personalTeamName);
@@ -306,7 +306,24 @@
                         }
                     }
 
+                    if(!empty($ideaDescription)){
+                        $sql = "INSERT INTO ideas (desc, team_id) VALUES (:ideaDescription, :team_id);";
+                        $stmt = $db->prepare($sql);
+
+                        $stmt->bindParam(':ideaDescription', $ideaDescription);
+                        $stmt->bindParam(':team_id', $team_id);
+
+                        $stmt->execute();
+                    }
+
                     //For user configuration
+
+                    //Get created participant's id
+                    $sql = "SELECT id FROM participants WHERE email = :email LIMIT 1";
+                    $stmt = $db->prepare($sql);
+                    $stmt->bindParam(':email', $email);
+                    $stmt->execute();
+                    $participant_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
                     
                     $sql = "INSERT INTO users (username, passwd, team_id, participant_id) VALUES (:username, :passwd, :team_id, :participant_id)";
                     $stmt = $db->prepare($sql);
@@ -418,7 +435,7 @@
                         <option value="no">No, and I am a lone wolf</option>
                     </select><br>
                     
-                    <div id="team" style="display: none;">
+                    <div id="teamdiv" style="display: none;">
                         <label for="team">Team</label>
                         <select id="team" name="teamname" oninput="configNewTeam();" style="height:5vh">
                             <option value="selectcard">select team</option>
@@ -494,7 +511,7 @@
             }
 
             function hasTeam(){
-                var x = document.getElementById("team");
+                var x = document.getElementById("teamdiv");
                 var sel = document.getElementById("hasteam");
                 if (sel.value === "yes") {
                     x.style.display = "block";
