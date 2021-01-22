@@ -60,24 +60,94 @@
         <link rel="stylesheet" type="text/css" href="css/slideup.css">
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
+        <link rel="stylesheet" type="text/css" href="css/footer.css">
         
         <?php include 'elements/header.php'; ?>
-    </head>
-    <body>
 
-        <div>
-            <h2>Login</h2>
-            <form method="POST">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username"><br>
-                <label for="passwd">Password</label>
-                <input type="password" id="passwd" name="passwd"><br>
-                <button type="submit">Submit</button>
-            </form>
+        <style>
+            label{
+                position: relative;
+                color: black;
+                font-size: 2vw;
+                /* text-decoration: underline dashed 0.2vh #00ff16; */
+                font-family:'Khand', sans-serif;
+                /* margin-left: 5vw; */
+                width: 20%;
+                /* margin: 1vh 1vw 1vh 1vw; */
+
+            }
+            input{
+                position:relative;
+                margin: 0vh 0vw 3vh 0vw;
+                border: 0.3vh solid #00ff16;
+                border-radius: 20px;
+                width:100%;
+                right: 0px;
+                background-color: transparent;
+                height: 5vh;
+                padding: 1%;
+            }
+            button{
+                position:relative;
+                margin: 0vh 0vw 3vh 0vw;
+                border: 0.3vh solid #00ff16;
+                border-radius: 20px;
+                width:100%;
+                right: 0px;
+                background-color: #340634;
+                height: 6vh;
+                padding: 1%;
+                color: white;
+                font-family:'Khand', sans-serif;
+                font-size: 1vw;
+            }
+            button:hover{
+                background-color: transparent;
+                color: black;
+            }
+            .msg{
+                position:relative;
+                margin: 0vh 0vw 3vh 0vw;
+                /* border: 0.3vh solid #00ff16; */
+                border-radius: 20px;
+                width:100%;
+                right: 0px;
+                background-color: #ffafc0;
+                height: 6vh;
+                font-size: 1.3vw;
+                text-align:center;
+                padding: 1%;
+            }
+        </style>
+    </head>
+    <body id="home" style="background-color: #340634; margin:0px; ">
+        <?php include "elements/sageata.html";?>
+
+        <div style="min-height: 100vh; width:100%;">
+            <div class="page-title" style="position: relative; margin-top: 8vh; margin-bottom:3vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
+                <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
+                    Login
+                </div>
+            </div>	
+
+            <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
+                <?php
+                    if(isset($msg)&& $msg != ""){
+                        echo "
+                            <div class='msg'>"; echo $msg; echo "</div>
+                        ";
+                    }
+                ?>
+                <form method="POST" >
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username"><br>
+                    <label for="passwd">Password</label>
+                    <input type="password" id="passwd" name="passwd"><br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </div>
 
-        <?php
-            echo $msg;
-        ?>
+        <?php include "elements/footer.html";?>
     </body>
 </html>
