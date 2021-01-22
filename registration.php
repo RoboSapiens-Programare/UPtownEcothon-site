@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <!-- redirect catre not yet care se comenta ciudat asa ca l am taiat -->
+<?php
+    header('Location: notyet.php');
+    //imi dadea o eroare but this seemed to fix it, nu cred ca ai nevoie de session aici dar nu pare ca vrea sa mearga fara????
+    if (!isset ($_SESSION)) session_start();
+?>
 <html style="scroll-behavior: smooth">
     <head>
         <title></title>
