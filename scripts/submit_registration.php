@@ -239,7 +239,7 @@
         }
         else{
             http_response_code(403);
-            echo "Woah! Are you a robot? ... or ... did your captcha expire? In which case, try again";
+            echo "Woah! Your score is " . $res['score'] . ". Are you a robot? ... or ... did your captcha expire? In which case, try again";
         }
     }
 ?>
