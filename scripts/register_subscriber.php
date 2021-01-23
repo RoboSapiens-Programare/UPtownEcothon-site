@@ -3,7 +3,7 @@ if (!isset ($_SESSION)) session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    require_once ("config/dbconfig.php");
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/config/dbconfig.php";
 
     $email = (isset($_POST['email']) && !empty($_POST['email'])) ? $_POST['email'] : null;
     $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
@@ -17,9 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['hassbs'] = false;
 
         if($_SESSION['ismobile']){
-            header("location: home_mobile.php");
+            header("location: " . $_SERVER['DOCUMENT_ROOT'] . "/home_mobile.php");
         } else{
-            header("location: home.php");
+            header("location: " . $_SERVER['DOCUMENT_ROOT'] . "/home.php");
         }
         
     } else {
@@ -53,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // $_SESSION['hassbs'] = true;
     
             if($_SESSION['ismobile']){
-                header("location: home_mobile.php");
+                header("location: " . $_SERVER['DOCUMENT_ROOT'] . "/home_mobile.php");
             } else{
-                header("location: home.php");
+                header("location: " . $_SERVER['DOCUMENT_ROOT'] . "/home.php");
             }
     
         } catch (PDOException $e) {

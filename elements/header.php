@@ -12,7 +12,7 @@
     }
 
     //CONTENT
-    require_once 'config/dbconfig.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
 
     try{
         $db = new ContentDB();
@@ -31,7 +31,7 @@
         
 <title> <?php echo ucwords(str_replace($mobile_suffix, "", basename($including_filename, $extension))); ?> - UPtown Ecothon </title>
 
-<link rel="shortcut icon" type="image/png" href="./icons/FaviconUTE.png"/>
+<link rel="shortcut icon" type="image/png" href="./ute-icons/FaviconUTE.png"/>
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Khand&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 

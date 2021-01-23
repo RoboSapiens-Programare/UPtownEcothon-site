@@ -146,7 +146,7 @@
                             <div class="card">
                             <h2 class="card-header" style="color: black; font-size: 2rem">Contact Form</h2>
                             <div class="card-body">
-                                <form class="contact_form" method="post" action="mail.php">
+                                <form class="contact_form" method="post" action="scripts/mail.php">
 
                                     <!-- form fields -->
                                     <div class="row">
@@ -238,7 +238,7 @@
         </script>
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="javascript/form.js"></script>
+        <script src="javascript/bs-form.js"></script>
     </body>
 
 </html>

@@ -151,12 +151,12 @@
             <ul>
                 <li style="height:10%; filter:invert(100%)">
                     <a href="https://www.instagram.com/uptown.ecothon/">
-                        <img src="./icons/instagram.svg">
+                        <img src="./ute-icons/instagram.svg">
                     </a>
                 </li>
                 <li style="height: 10%; filter:invert(100%)">
                     <a href="https://www.facebook.com/uptown.ecothon">
-                        <img src="./icons/facebook.svg">
+                        <img src="./ute-icons/facebook.svg">
                     </a>
                 </li>
                 <li>

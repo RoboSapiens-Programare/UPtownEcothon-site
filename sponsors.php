@@ -29,11 +29,11 @@
         <div style="position:absolute; width:100%; height:100%; background:linear-gradient(black, black), url(pictures/blob.gif);background-position: -10% center; background-size:cover; background-blend-mode: hue; filter:blur(10px)"></div>
             <div class="rotating-content"  id="rotating-content" style="left:0%; height: 80vh; width:100%; background-color:transparent">
                 <div class="rotate-btn" id="btn-prev" onclick="rotateLoopLeftToRight()" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                    <img src="icons/arrow-left.svg">
+                    <img src="ute-icons/arrow-left.svg">
                 </div>
 
                 <div class="rotate-btn" id="btn-next" onclick="rotateLoopRightToLeft()" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                    <img src="icons/arrow-right.svg">
+                    <img src="ute-icons/arrow-right.svg">
                 </div>
 
                 <div class="rotate-section" id="rt-sect4">
@@ -72,16 +72,16 @@
             <div class="rotate-index">
                 <ul>
                     <li id="dot1" style="margin-left: -2.1vw">
-                        <img src="icons/dot.svg">
+                        <img src="ute-icons/dot.svg">
                     </li>
                     <li id="dot2">
-                        <img src="icons/dot.svg">
+                        <img src="ute-icons/dot.svg">
                     </li>
                     <li id="dot3">
-                        <img src="icons/dot.svg">
+                        <img src="ute-icons/dot.svg">
                     </li>
                     <li id="dot4">
-                        <img src="icons/dot.svg">
+                        <img src="ute-icons/dot.svg">
                     </li>
                 </ul>
             </div>

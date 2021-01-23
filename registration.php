@@ -3,6 +3,30 @@
     // header('Location: notyet.php');
     //imi dadea o eroare but this seemed to fix it, nu cred ca ai nevoie de session aici dar nu pare ca vrea sa mearga fara????
     if (!isset ($_SESSION)) session_start();
+
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/config/dbconfig.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/config/captchacredentials.php";
+
+    try{
+        $db = new SQLiDB();
+
+        //Get team options
+        $sql = "SELECT * FROM teams";
+        $stmt = $db->prepare($sql);
+        
+        $stmt->execute();
+
+        $teamOptions = array();
+
+        foreach($stmt as $row){
+            $teamOptions[] = "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+        }
+
+        unset($db);
+    }
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
 ?>
 <html style="scroll-behavior: smooth">
     <head>
@@ -13,7 +37,9 @@
         <link rel="stylesheet" type="text/css" href="css/bottom.css">
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
 
-        <?php include 'elements/header.php'; ?>
+        <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $site_key; ?>"></script>
+
+        <?php require_once 'elements/header.php'; ?>
         
         <style>
              * {
@@ -98,217 +124,20 @@
         </style>
 
     </head>
-    <body id="home" style="background-color: #340634; margin:0px; ">
+    <body id="home" style="background-color: #340634; margin:0px; " onload="enButton();">
         <?php include "elements/sageata.html"; ?>
-
-
-        <?php
-            require_once 'config/dbconfig.php';
-
-             function trim_value(&$value)
-             {
-                 $value = trim($value);
-             }
-             array_filter($_POST, 'trim_value');
- 
-             $firstname = (isset($_POST['firstname']) && !empty($_POST['firstname'])) ? filter_var(trim($_POST["firstname"]), FILTER_SANITIZE_EMAIL) : null;
-             $lastname = (isset($_POST['lastname']) && !empty($_POST['lastname'])) ? filter_var(trim($_POST["lastname"]), FILTER_SANITIZE_EMAIL) : null;
-             $email = (isset($_POST['email']) && !empty($_POST['email'])) ? filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL) : null;
-             $phone = (isset($_POST['phone']) && !empty($_POST['phone'])) ? filter_var(trim($_POST["phone"]), FILTER_SANITIZE_EMAIL) : null;
-             $position = (isset($_POST['position']) && !empty($_POST['position'])) ? filter_var(trim($_POST["position"]), FILTER_SANITIZE_EMAIL) : null;
-             $experience = (isset($_POST['experience']) && !empty($_POST['experience'])) ? filter_var(trim($_POST["experience"]), FILTER_SANITIZE_EMAIL) : null;
-             $teamCreateName = (isset($_POST['teamcreatename']) && !empty($_POST['teamcreatename'])) ? filter_var(trim($_POST["teamcreatename"]), FILTER_SANITIZE_EMAIL) : null;
-             $teamName = (isset($_POST['teamname']) && !empty($_POST['teamname'])) ? filter_var(trim($_POST["teamname"]), FILTER_SANITIZE_EMAIL) : null;
-             $ideaDescription = (isset($_POST['ideadesc']) && !empty($_POST['ideadesc'])) ? filter_var(trim($_POST["ideadesc"]), FILTER_SANITIZE_EMAIL) : null;
- 
- 
-             if($teamCreateName){
-                 try{
-                     $db = new SQLiDB();
- 
-                     $sql = "SELECT * FROM teams WHERE name = :name";
-                     $stmt = $db->prepare($sql);
- 
-                     $stmt->bindParam(':name', $teamCreateName);
-                     
-                     $stmt->execute();
- 
-                     if($stmt->rowCount() > 0){
-                         $teamCreateName = null;
-                     }
- 
-                     $db = null;
-                     unset($db);
-                 }
-                 catch(PDOException $e){
-                     $e->getMessage();
-                 }
-             }
- 
-             $team_id = 1;
-            //  $participant_id = null;
-             $username = (isset($_POST['username']) && !empty($_POST['username'])) ? filter_var(trim($_POST["username"]), FILTER_SANITIZE_EMAIL) : null;
-             $passwd = (isset($_POST['passwd']) && isset($_POST['cpasswd']) && ($_POST['passwd'] === $_POST['cpasswd'])) ? $_POST['passwd'] : null;
- 
-             $hasTeam = null;
-             if(isset($_POST['hasteam'])){
-                if($_POST['hasteam'] === "yes"){
-                     $hasTeam = true;
-                 }
-                 else if(!empty($_POST['hasname'])){
-                     $hasTeam = false;
-                 }
-             }
- 
-             ///Dis where the fun begins
-             try{
-                 $db = new SQLiDB();
- 
-                 //Get team options
-                 $sql = "SELECT * FROM teams";
-                 $stmt = $db->prepare($sql);
-                 
-                 $stmt->execute();
- 
-                 $teamOptions = array();
- 
-                 foreach($stmt as $row){
-                     $teamOptions[] = "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
-                 }
- 
- 
-                 //Check to see if all fields are filled accordingly
-                 if($firstname && $lastname && $email && $phone && $position && $experience && $username && $passwd && ($hasTeam ? ($teamName && (is_numeric($teamName) ? true : $teamCreateName)) : true)){
-
-                     //For participant registration
- 
-                     //Set a random ID for the participant
-                    //  $participant_id = rand(1000, 9999);
-                     
-                    $sql = "INSERT INTO participants (firstname, lastname, email, phone, position, experience) VALUES (:firstname, :lastname, :email, :phone, :position, :experience)";
-                    $stmt = $db->prepare($sql);
- 
-                    //  $stmt->bindParam(':participant_id', $participant_id);
-                     $stmt->bindParam(':firstname', $firstname);
-                     $stmt->bindParam(':lastname', $lastname);
-                     $stmt->bindParam(':email', $email);
-                     $stmt->bindParam(':phone', $phone);
-                     $stmt->bindParam(':position', $position);
-                     $stmt->bindParam(':experience', $experience);
- 
-                     $stmt->execute();
-                 
- 
-                     //For team details
- 
-                     //If the user has or wants to create a team
-                     if($hasTeam){
-                         //If the user wants to create a new team
-                         if($teamName === "create"){
-                             $sql = "INSERT INTO teams (name) VALUES (:name)";
-                             $stmt = $db->prepare($sql);
- 
-                             $stmt->bindParam(':name', $teamCreateName);
- 
-                             $stmt->execute();
- 
-                             $sql = "SELECT * FROM teams WHERE name = :name";
-                             $stmt = $db->prepare($sql);
- 
-                             $stmt->bindParam(':name', $teamCreateName);
- 
-                             $stmt->execute();
- 
-                             if($stmt){
-                                 $team_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
-                             }
-                         }
-                         //Else if the team already exists, use its id
-                         else if(is_numeric($teamName)){
-                             $team_id = $teamName;
-                         }
-                     }
-                     else{
-                         $sql = "INSERT INTO teams (name) VALUES (:name)";
-                         $stmt = $db->prepare($sql);
- 
-                         $personalTeamName = $firstname . $lastname . "'s Team";
-                         $stmt->bindParam(':name', $personalTeamName);
- 
-                         $stmt->execute();
- 
-                         $sql = "SELECT * FROM teams WHERE name = :name LIMIT 1";
-                         $stmt = $db->prepare($sql);
- 
-                         $stmt->bindParam(':name', $personalTeamName);
- 
-                         $stmt->execute();
- 
-                         if($stmt){
-                             $team_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
-                         }
-                     }
-
-                     //For user idea
-                     if(!empty($ideaDescription)){
-                        $sql = "INSERT INTO ideas (desc, team_id) VALUES (:ideaDescription, :team_id);";
-                        $stmt = $db->prepare($sql);
-
-                        $stmt->bindParam(':ideaDescription', $ideaDescription);
-                        $stmt->bindParam(':team_id', $team_id);
-
-                        $stmt->execute();
-                    }
- 
-                     //For user configuration
-
-                     //Get created participant's id
-                    $sql = "SELECT id FROM participants WHERE email = :email LIMIT 1";
-                    $stmt = $db->prepare($sql);
-                    $stmt->bindParam(':email', $email);
-                    $stmt->execute();
-                    $participant_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
-                     
-                     $sql = "INSERT INTO users (username, passwd, team_id, participant_id) VALUES (:username, :passwd, :team_id, :participant_id)";
-                     $stmt = $db->prepare($sql);
-                     
-                     $password = password_hash($passwd, PASSWORD_DEFAULT);
- 
-                     $stmt->bindParam(':username', $username);
-                     $stmt->bindParam(':passwd', $password);
-                     $stmt->bindParam(':team_id', $team_id);
-                     $stmt->bindParam(':participant_id', $participant_id);
- 
-                     $stmt->execute();
-                 }
-                 else{
-                     echo "
-                     <script> 
-                         document.getElementById('msg').style.display = 'block';
-                         document.getElementById('msg').innerHTML = 'Please complete all fields accordingly!';
-                     </script>";
-                 }
- 
-                 $db = null;
-                 unset($db);
- 
-             }
-             catch(PDOException $e){
-                 echo $e->getMessage();
-             }  
-        ?>
 
 
         <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
             <ul>
                 <li style="height:10%; filter:invert(100%)">
                     <a href="https://www.instagram.com/uptown.ecothon/">
-                        <img src="./icons/instagram.svg">
+                        <img src="./ute-icons/instagram.svg">
                     </a>
                 </li>
                 <li style="height: 10%; filter:invert(100%)">
                     <a href="https://www.facebook.com/uptown.ecothon">
-                        <img src="./icons/facebook.svg">
+                        <img src="./ute-icons/facebook.svg">
                     </a>
                 </li>
                 <li>
@@ -345,20 +174,19 @@
 
                 
             <div id="registerParticipant" class="formelement">
-            
                 
-            <form method="post"  name='registration' id='registration'>
-                <div id="Registration" class="formelement">
+                <form method="post"  name='registration' id='registration' action="scripts/submit_registration.php" class="ajax-form">
+                    <div id="Registration" class="formelement">
                         <div class="msg" id="msg-reg" style="display: none;"></div>
 
                         <label for="firstname">First Name</label>
-                        <input type="text" id="firstname" name="firstname" value=<?php if($firstname) echo $firstname; ?>><br>
+                        <input type="text" id="firstname" name="firstname"><br>
                         <label for="lastname">Last Name</label>
-                        <input type="text" id="lastname" name="lastname" value=<?php if($lastname) echo $lastname; ?>><br>
+                        <input type="text" id="lastname" name="lastname"><br>
                         <label for="email">E-Mail Adress</label>
-                        <input type="text" id="email" name="email" value=<?php if($email) echo $email; ?>><br>
+                        <input type="text" id="email" name="email"><br>
                         <label for="phone">Phone</label>
-                        <input type="number" id="phone" name="phone" value=<?php if($phone) echo $phone; ?>><br>
+                        <input type="number" id="phone" name="phone"><br>
                         <label for="position">Position</label>
                         <select id="position" name="position" style="height:5vh">
                             <option value="selectcard"> - </option>
@@ -368,14 +196,14 @@
                             <option value="l-intrep">Liber Intreprinzator</option>
                         </select><br>
                         <label for="experience">Experience</label>
-                        <textarea type="text" id="experience" name="experience" style="height: 10vh;"><?php if($experience) echo $experience; ?></textarea><br>  
+                        <textarea type="text" id="experience" name="experience" style="height: 10vh;"></textarea><br>  
                         <button id="regbtn" type="button"  onclick="registrationOK();">Next</button>  
-                </div>
-                
-                <div id="teamDetails" style="display: none;" class="formelement">
-                    <div class="msg" id="msg-team" style="display: none;"></div>
+                    </div>
+                    
+                    <div id="teamDetails" style="display: none;" class="formelement">
+                        <div class="msg" id="msg-team" style="display: none;"></div>
 
-                    <h2>Team Details</h2>
+                        <h2>Team Details</h2>
                         <label for="hasteam">Do you have a team?</label>
                         <select name="hasteam" id="hasteam" oninput="hasTeam();" style="height:5vh">
                             <option value="selectcard"> - </option>
@@ -398,33 +226,42 @@
                         </div>
                         <div id="configNewTeam" style="display: none;">
                             <label for="teamCreateName">Team Name</label>
-                            <input type="text" id="teamCreateName" name="teamcreatename" value="<?php if($teamCreateName) echo "$teamCreateName"; ?>"><br>
+                            <input type="text" id="teamCreateName" name="teamcreatename" ><br>
                         </div>
                         <button id="teambtn" type="button" onclick="teamOK();">Next</button>
-                </div>
+                    </div>
 
-                <div id="ideasSection" style="display: none;" class="fomelement">
-                    <h2>Do you have any project ideas?</h2>
+                    <div id="ideasSection" style="display: none;" class="fomelement">
+                        <h2>Do you have any project ideas?</h2>
 
                         <label for="ideas">Share them with us! (optional) </label>
-                        <textarea type="text" id="ideas" name="ideas" style="height: 10vh;"><?php if($ideaDescription) echo $ideaDescription; ?></textarea><br> 
+                        <textarea type="text" id="ideas" name="ideadesc" style="height: 10vh;"></textarea><br> 
                         <button id="ideabtn" type="button" onclick="ideaOK();">Next</button>                   
-                </div>
+                    </div>
 
-                <div id="configureAccount" style="display: none;" class="formelement">
-                    <div class="msg" id="msg-account" style="display: none;"></div>
-                                
-                    <h2>Configure Account</h2>
-                    
+                    <div id="configureAccount" style="display: none;" class="formelement">
+                        <div class="msg" id="msg-account" style="display: none;"></div>
+                                    
+                        <h2>Configure Account</h2>
+                        
                         <label for="username">Username</label>
-                        <input type="text" id="username" name="username" value=<?php if($username) echo $username; ?>><br>
+                        <input type="text" id="username" name="username"><br>
                         <label for="passwd">Password</label>
                         <input type="password" id="passwd" name="passwd"><br>
                         <label for="passwd">Confirm Password</label>
                         <input type="password" id="cpasswd" name="cpasswd"><br>
-                        <button type="submit" onclick="return accountOK()">Submit</button>
-                    </form>
-                </div>
+
+                        <div>
+                            <input type="checkbox" class="form-check-input" id="captchaRefresh" onclick="reqRefresh(this);">
+                            <label class="form-check-label" for="captchaRefresh">Check this thing cause the captcha expired!</label>
+                        </div>
+                        <input type="hidden" id="token" name="token">
+
+                        <button id="btn-submit" type="submit" onclick="return accountOK()">Submit</button>
+                    </div>
+                    <div class="msg ajax-return-message" style="display: none;">Thank you for registering!</div>
+                </form>
+            </div>
 
             <div id="debug">
                 <h2>Debug</h2>
@@ -622,6 +459,101 @@
                     this.style.borderColor = "#00ff16";
                 });
             }
+
+            //For reCaptcha
+            grecaptcha.ready(function() {
+                captchaRefresh();
+            });
+
+            function captchaRefresh(){
+                grecaptcha.execute('<?php echo $site_key; ?>', {action: 'homepage'}).then(function(token) {
+                document.getElementById("token").value = token;
+                });
+            }
+
+            function reqRefresh(){
+                captchaRefresh();
+                enButton(document.getElementById("token").value);
+            }
+
+            async function enButton(old_token) {
+                btn_submit = document.getElementById('btn-submit');
+                btn_check = document.getElementById('captchaRefresh');
+                btn_check.parentElement.style.display = "none";
+                btn_submit.disabled = true;
+
+                var strToken = old_token;
+                var varCant = 0;
+
+                while (strToken == old_token && varCant < 30) {
+                    strToken = document.getElementById("token").value;
+
+                    await sleep(100);
+                    varCant++;
+                }
+
+
+                btn_submit.style.opacity = 1;
+                btn_submit.disabled = false;
+
+                setTimeout(function(){
+                    disButton();
+                }, 120000);
+            }
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            function disButton(){
+                btn_submit = document.getElementById('btn-submit');
+                btn_check = document.getElementById('captchaRefresh');
+                btn_check.checked = false;
+                btn_check.parentElement.style.display = "block";
+                btn_submit.style.opacity = 0.6;
+                btn_submit.disabled = true;
+            }
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            //AJAX code
+            (function ($) {
+                'use strict';
+                
+                var form = $('.ajax-form'),
+                message = $('.ajax-return-message'),
+                form_data;
+                
+                function done_func(response) {
+                    message.fadeIn()
+                    message.html(response);
+                    setTimeout(function () {
+                        document.location.href = "login.php";
+                    }, 3000);
+                    form.find('input:not([type="submit"]), textarea').val('');
+                }
+                
+                function fail_func(data) {
+                    message.fadeIn()
+                    message.html(data.responseText);
+                    setTimeout(function () {
+                        message.fadeOut();
+                    }, 10000);
+                }
+                
+                form.submit(function (e) {
+                    e.preventDefault();
+                    form_data = $(this).serialize();
+                    $.ajax({
+                        type: 'POST',
+                        url: form.attr('action'),
+                        data: form_data
+                    })
+                    .done(done_func)
+                    .fail(fail_func);
+                }); 
+            })(jQuery);
         </script>
     </body>  
 
