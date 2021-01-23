@@ -339,6 +339,8 @@
                             <input type="text" id="teamCreateName" name="teamcreatename" value="<?php if($teamCreateName) echo "$teamCreateName"; ?>"><br>
                         </div>
                         <div id="ideasSection" style="display: none;">
+                            <h2>Do you have any project ideas?</h2>
+                            
                             <label for="ideas">Have any project ideas? </label>
                             <textarea type="text" id="ideas" name="ideas" style="height: 9vh;"><?php if($ideaDescription) echo $ideaDescription; ?></textarea><br> 
                         </div>

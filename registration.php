@@ -219,6 +219,8 @@
                         </div>
 
                         <div id="ideasSection" style="display: none;">
+                            <h2>Do you have any project ideas?</h2>
+                            
                             <label for="ideas">Have any project ideas? </label>
                             <textarea type="text" id="ideas" name="ideadesc" style="height: 10vh;"></textarea><br> 
                         </div>
