@@ -125,7 +125,12 @@
                     //Set a random ID for the participant
                     //  $participant_id = rand(1000, 9999);
                         
-                    $sql = "INSERT INTO participants (firstname, lastname, email, phone, position, experience) VALUES (:firstname, :lastname, :email, :phone, :position, :experience)";
+                    $sql = "INSERT INTO participants (firstname, lastname, email, phone, position, experience) VALUES (:firstname, :lastname, :email, :phone, :position, :experience);";
+
+                    // http_response_code(403);
+                    // echo $sql;
+                    // die();
+                    
                     $stmt = $db->prepare($sql);
 
                 //  $stmt->bindParam(':participant_id', $participant_id);
@@ -138,6 +143,15 @@
 
                     $stmt->execute();
                 
+                    //If user wants newsletter subscription
+                    if(isset($_POST['wantsubscribe']) && !empty($_POST['wantsubscribe'])){
+                        $sql = "INSERT INTO subscribers (email) VALUES (:unemail);";
+
+                        $stmt = $db->prepare($sql);
+                        $stmt->bindParam(':unemail', $email);
+
+                        $stmt->execute();
+                    }
 
                     //For team details
 
@@ -234,12 +248,13 @@
 
             }
             catch(PDOException $e){
+                http_response_code(500);
                 echo $e->getMessage();
             }  
         }
         else{
             http_response_code(403);
-            echo "Woah! Your score is " . $res['score'] . ". Are you a robot? ... or ... did your captcha expire? In which case, try again";
+            echo "Woah! Are you a robot? ... or ... did your captcha expire? In which case, try again";
         }
     }
 ?>

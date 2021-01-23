@@ -239,7 +239,7 @@
                         <input type="password" id="cpasswd" name="cpasswd"><br>
 
                         <label for="newsletter">Subscribe to our newsletter?</label>
-                        <input type="checkbox" id="newsletter" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16"><br>
+                        <input type="checkbox" id="newsletter" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16" name="wantsubscribe"><br>
 
                         <div>
                             <input type="checkbox" class="form-check-input" id="captchaRefresh" onclick="reqRefresh(this);" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16">
@@ -526,7 +526,7 @@
 
                 setTimeout(function(){
                     disButton();
-                }, 120000);
+                }, 60000);
             }
 
             function sleep(ms) {
@@ -568,6 +568,7 @@
                     setTimeout(function () {
                         message.fadeOut();
                     }, 10000);
+                    reqRefresh();
                 }
                 
                 form.submit(function (e) {
