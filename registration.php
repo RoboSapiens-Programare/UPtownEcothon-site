@@ -289,7 +289,7 @@
         ?>
 
 
-        <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
+        <div id="footer-special" style="position:fixed; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
             <ul>
                 <li style="height:10%; filter:invert(100%)">
                     <a href="https://www.instagram.com/uptown.ecothon/">
@@ -332,12 +332,8 @@
         </div>
 
         <div style="position:relative; width:90%; max-width: 700px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
-
                 
-            <!-- <div id="registerParticipant" class="formelement"> -->
-            
-                
-            <form method="post"  name='registration' id='registration'>
+            <form method="post"  name='registration' id='registration' onsubmit="return validateForm(this, true)">
                 <div id="Registration" class="formelement">
                         <div class="msg" id="msg-reg" style="display: none;"></div>
 
@@ -390,16 +386,24 @@
                             <label for="teamCreateName">Team Name</label>
                             <input type="text" id="teamCreateName" name="teamcreatename" value="<?php if($teamCreateName) echo "$teamCreateName"; ?>"><br>
                         </div>
+
+                        <div id="ideasSection" style="display: none;">
+                            <label for="ideas">Have any project ideas? </label>
+                            <textarea type="text" id="ideas" name="ideas" style="height: 10vh;"><?php if($ideaDescription) echo $ideaDescription; ?></textarea><br> 
+                        </div>
+                        
                         <button id="teambtn" type="button" onclick="teamOK();">Next</button>
                 </div>
 
-                <div id="ideasSection" style="display: none;" class="fomelement">
+                <!-- <div id="ideasSection" style="display: none;" class="fomelement">
+                    <div class="msg" id="msg-idea" style="display: none;"></div>
+
                     <h2>Do you have any project ideas?</h2>
 
-                        <label for="ideas">Share them with us! (optional) </label>
+                        <label for="ideas">Share them with us! (optional if you are looking for a team) </label>
                         <textarea type="text" id="ideas" name="ideas" style="height: 10vh;"><?php if($ideaDescription) echo $ideaDescription; ?></textarea><br> 
                         <button id="ideabtn" type="button" onclick="ideaOK();">Next</button>                   
-                </div>
+                </div> -->
 
                 <div id="configureAccount" style="display: none;" class="formelement">
                     <div class="msg" id="msg-account" style="display: none;"></div>
@@ -458,7 +462,7 @@
             function validateForm(section, hasEmail){
                 var isOk = true;
 
-                //verify all input fields are filled in
+                //verify all input fields are filled in + checks if the passwords match
                 var input = section.querySelectorAll("input");
                 for (i = 0; i < input.length; ++i) {
                     if(input[i].value.length == 0 || input[i]==null){
@@ -494,26 +498,45 @@
                     }
                 }
                 
-                // verify select fields
+                var mandatoryIdea = false;
+                // verify select fields + conditions to only check create or select team fields if user has selected so
                 var selects = section.querySelectorAll("select");
                 for (i = 0; i < selects.length; ++i) {
                     if(selects[i].value == "selectcard"){
                         selects[i].style.borderColor = "red";
                         isOk = false;
-                    } else if (selects[i].value=="want" || selects[i].value=="no"){
+                    } else if (selects[i].value=="want"){
                         i = selects.length + 10;
                         isOk=true;
+                        document.forms["registration"]["ideas"].style.borderColor="#00ff16";
+                    } else if(selects[i].value=="no"){
+                        i = selects.length + 10;
+                        mandatoryIdea = true;
+                        // alert(mandatoryIdea);
+                        isOk=true;
                     } else if(selects[i].value=="yes"){
+                        mandatoryIdea = true;
+                        // alert(mandatoryIdea);
                         i++;
-                        if(selects[i].value!="create" && selects[i].value != "selectcard"){
+                        if(selects[i].value!="create" && selects[i].value!="selectcard"){
                             i = selects.length + 10;
                             isOk=true;
                         } else {
-                            if(document.forms["registration"]["teamcreatename"].value.length == 0 || document.forms["registration"]["teamcreatename"]==null){
+                            if(document.forms["registration"]["teamcreatename"].value.length == 0 || document.forms["registration"]["teamcreatename"]==null || selects[i].value=="selectcard"){
                                 document.forms["registration"]["teamcreatename"].style.borderColor="red";
                                 isOk = false;
                             }
                         }
+                    }
+                }
+
+                //checks idea field only if person has team or wants to work alone
+                if(mandatoryIdea==true){
+                    // alert("a");
+                    if(document.forms["registration"]["ideas"].value.length == 0 || document.forms["registration"]["ideas"]==null){
+                        // alert("b");
+                        document.forms["registration"]["ideas"].style.borderColor="red";
+                        isOk = false;
                     }
                 }
 
@@ -546,11 +569,13 @@
             function hasTeam(){
                 var x = document.getElementById("teamdiv");
                 var sel = document.getElementById("hasteam");
+                var idea = document.getElementById('ideasSection');
                 if (sel.value === "yes") {
                     x.style.display = "block";
                 } else {
                     x.style.display = "none";
                 }
+                idea.style.display = "block";
             }
 
             function configNewTeam(){
@@ -565,8 +590,10 @@
 
             function teamOK(){
                 var section = document.getElementById('teamDetails');
-                if(validateForm(section,    false)==true){
-                    var x = document.getElementById('ideasSection');
+                if(validateForm(section,false)==true){
+                    // var x = document.getElementById('ideasSection');
+                    // x.style.display = "block";
+                    var x = document.getElementById('configureAccount');
                     x.style.display = "block";
 
                     document.getElementById('msg-team').style.display = "none";
@@ -581,12 +608,19 @@
                 // document.getElementById('teambtn').style.display = "none";
             }
 
-            function ideaOK(){
-                var x = document.getElementById('configureAccount');
-                x.style.display = "block";
+            // function ideaOK(){
+            //     var section = document.getElementById('ideasSection');
+            //     if(validateForm(section,false)==true){
+            //         var x = document.getElementById('configureAccount');
+            //         x.style.display = "block";
 
-                document.getElementById('ideabtn').style.display = "none";
-            }
+            //         document.getElementById('msg-idea').style.display = "none";
+            //         document.getElementById('ideabtn').style.display = "none";
+            //     } else{
+            //         document.getElementById('msg-idea').style.display = "block";
+			// 		document.getElementById('msg-idea').innerHTML = 'Please complete all fields accordingly!';
+            //     }
+            // }
 
             function accountOK(){
                 var section = document.getElementById('configureAccount');
