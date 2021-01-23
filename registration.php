@@ -24,11 +24,7 @@
             label{
                 position: relative;
                 font-size: 2vh;
-                /* text-decoration: underline dashed 0.2vh #00ff16; */
-                /* margin-left: 5vw; */
                 width: 20%;
-                /* margin: 1vh 1vw 1vh 1vw; */
-
             }
             input, textarea, select{
                 position:relative;
@@ -62,12 +58,10 @@
             .msg{
                 position:relative;
                 margin: 0vh 0vw 3vh 0vw;
-                /* border: 0.3vh solid #00ff16; */
                 border-radius: 20px;
                 width:100%;
                 right: 0px;
                 background-color: #ffafc0;
-                /* height: 6vh; */
                 font-size: 2vh;
                 text-align:center;
                 padding: 1%;
@@ -80,18 +74,14 @@
                 position: absolute;
             }
             #footer-special ul li{
-                /* border: 2px solid blue; */
                 width:auto;
                 height: 8%;
                 margin: 3vh 0vw 3vh -1vw;
             }
             #footer-special ul li a{
-                /* position: absolute; */
                 height: 100%;
-                /* width:100%; */
             }
             #footer-special ul li a img{
-                /* position: absolute; */
                 height: inherit;
                 width:inherit;
             }
@@ -263,11 +253,11 @@
                      //For user configuration
 
                      //Get created participant's id
-                    $sql = "SELECT id FROM participants WHERE email = :email LIMIT 1";
-                    $stmt = $db->prepare($sql);
-                    $stmt->bindParam(':email', $email);
-                    $stmt->execute();
-                    $participant_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+                     $sql = "SELECT id FROM participants WHERE email = :email LIMIT 1";
+                     $stmt = $db->prepare($sql);
+                     $stmt->bindParam(':email', $email);
+                     $stmt->execute();
+                     $participant_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
                      
                      $sql = "INSERT INTO users (username, passwd, team_id, participant_id) VALUES (:username, :passwd, :team_id, :participant_id)";
                      $stmt = $db->prepare($sql);
@@ -344,7 +334,7 @@
         <div style="position:relative; width:90%; max-width: 700px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
 
                 
-            <div id="registerParticipant" class="formelement">
+            <!-- <div id="registerParticipant" class="formelement"> -->
             
                 
             <form method="post"  name='registration' id='registration'>
@@ -418,10 +408,12 @@
                     
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username" value=<?php if($username) echo $username; ?>><br>
-                        <label for="passwd">Password</label>
-                        <input type="password" id="passwd" name="passwd"><br>
-                        <label for="passwd">Confirm Password</label>
-                        <input type="password" id="cpasswd" name="cpasswd"><br>
+                    <label for="passwd">Password</label>
+                    <input type="password" id="passwd" name="passwd"><br>
+                    <label for="passwd">Confirm Password</label>
+                    <input type="password" id="cpasswd" name="cpasswd"><br>
+                        <label for="newsletter">Subscribe to our newsletter?</label>
+                        <input type="checkbox" id="newsletter" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16"><br>
                         <button type="submit" onclick="return accountOK()">Submit</button>
                     </form>
                 </div>
@@ -472,6 +464,14 @@
                     if(input[i].value.length == 0 || input[i]==null){
                         input[i].style.borderColor = "red";
                         isOk = false;
+                    } else if (input[i].getAttribute('id')=="cpasswd"){
+                        var passwdValue = document.forms["registration"]["passwd"].value;
+                        var cpasswdValue = document.forms["registration"]["cpasswd"].value;
+                        if (passwdValue.normalize() != cpasswdValue.normalize()){
+                            document.getElementById("passwd").style.borderColor = "red";
+                            document.getElementById("cpasswd").style.borderColor = "red";
+                            isOk = false;
+                        }
                     }
                 }
 
@@ -589,7 +589,7 @@
             }
 
             function accountOK(){
-                var section =document.getElementById('configureAccount');
+                var section = document.getElementById('configureAccount');
                 if(validateForm(section,false)){
                     document.getElementById('msg-account').style.display = "none";
                     return true;
