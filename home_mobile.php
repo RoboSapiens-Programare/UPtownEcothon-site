@@ -129,12 +129,30 @@
 			.wrapper-registration #href:hover{
 				color: #00ff16;
 			}
-			.registration-button{
+			#wrapper-registration-buttons a{
+				position:absolute; 
+				/* top:0%;   */
+				border: 0.4vh solid #00ff16; 
+				border-radius:20px;
+				font-size: 2vh;
+				background-color:#340634;
+				color:white;
+				height:40%; 
+				width:80%; 
+				border-radius:20px; 
+				background-color:#340634;
+				left:50%;
+				transform:translateX(-50%);
+			}
+			#wrapper-registration-buttons a:hover{
+				color:white;
+				border: 0.5vh solid #00ff16; 
+				cursor:pointer;
+				background-color: transparent;
+			}
+			/* .registration-button{
 				position:absolute; 
 				top:0%;  
-				/* transform: translate(0%, -50%);  */
-				/* height: 20%; 
-				width: 8%;  */
 				border: 0.4vh solid #00ff16; 
 				border-radius:2vw;
 				font-size: 3vh;
@@ -158,7 +176,7 @@
 				bottom: 10%;
 				-webkit-columns: 2;
 				-moz-columns: 2;
-			}
+			} */
 		</style>
 
     </head>
@@ -277,7 +295,23 @@
 				</div> 
 			</div>
 
-			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
+			<div id="wrapper-registration-buttons" style="position: absolute; bottom:1vh; height: 20vh; width:100%;" >
+				<?php
+					if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+						echo " 
+						<a href='account.php' style='left:50%; transform:translateX(-50%); width:80%'> 
+							<div class='text-centrat' style='text-decoration: none; color:white;'>
+								Hi, " . $_SESSION['username'] . "! Click here to configure account or sign out.
+							</div>	
+						</a>
+						";
+					} else {
+						echo "
+						<a href='registration.php' style='top:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>Want to join our hackathon? Register here.</div></a>
+						<a href='login.php' style='bottom:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>Already have an account? Login here.</div></a>
+						'";
+					}
+				?>
 				
 				<!-- <form method="POST" class="form" style="display:visible; position:absolute; height:100%; width:100%; left:100%;" action="scripts/register_subscriber.php">
 					<input type="text" id="email" class="email" name="email" placeholder="your e-mail..." style="position: absolute; top:30%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:90%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw">
@@ -295,7 +329,7 @@
 							</div>
 						</div> -->
 
-				<?php 
+				<!-- <?php 
 					if($hassbs){
 						echo "
 							<div id='subscribe-btn' style='border: 0.4vh solid #00ff16;	border-radius:2vw; font-size: 3vh; background-color:#340634; color: white;position:absolute; top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:80%;'>
@@ -329,7 +363,7 @@
 
 						";
 					}
-				?>			
+				?>			 -->
 	
 			</div>
 		</div>

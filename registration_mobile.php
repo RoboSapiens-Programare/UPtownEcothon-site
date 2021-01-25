@@ -201,8 +201,14 @@
                     </div>
                     <div class="msg ajax-return-message" style="display: none;">Thank you for registering!</div>
                 </form>
+
+                <a href="login.php" style="font-size: 3vw; width:100%; margin-bottom:4vh; text-align:center">
+                    Already have an account?
+                </a>
+
             </div>
 
+           
             <div id="debug">
                 <h2>Debug</h2>
                 <form method="post">
