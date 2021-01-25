@@ -25,7 +25,7 @@
                 font-size: 3vw;
                 width: 20%;
             }
-            input, textarea, select{
+            input, textarea, select, .chestie{
                 position:relative;
                 margin: 0vh 0vw 1vh 0vw;
                 border: 0.3vh solid #00ff16;
@@ -95,7 +95,17 @@
         </div>	
 
         <div style="position:relative; width:90%; max-width: 850px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
-        <div id="current-data" class="section">
+
+            <div class="chestie" style="border:none">Email: [echo email]</div>
+
+            <form method="post" name="change-details" id="change-details">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" value="echo username"> <br>
+
+                
+            </form>
+            
+            <!-- <div id="current-data" class="section">
                 <span style="text-decoration: underline dashed #00ff16 0.2vh;"> Username: </span> [echo username]; <br>
                 <span style="text-decoration: underline dashed #00ff16 0.2vh;">E-mail:</span> [echo email]; <br>
                 <span style="text-decoration: underline dashed #00ff16 0.2vh;">Phone nuber:</span> [echo phone number]; <br>
@@ -149,7 +159,7 @@
 
                     <button type="submit"> Submit </button>
                     <div class="msg" style="background-color: transparent;"> You will receive an email verification in order to change your username.</div>
-               </form>
+               </form> -->
             </div>
 
             <button id="delete-btn" title="delete-sect" onclick="openSection(this, document.getElementById(this.getAttribute('title')))" style="background-color:#ffafc0; color:black">Delete your account</button>
