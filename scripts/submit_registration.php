@@ -205,7 +205,7 @@
 
                     //For user idea
                     if(!empty($ideaDescription)){
-                        $sql = "INSERT INTO ideas (desc, team_id) VALUES (:ideaDescription, :team_id);";
+                        $sql = "INSERT INTO ideas (description, team_id) VALUES (:ideaDescription, :team_id);";
                         $stmt = $db->prepare($sql);
 
                         $stmt->bindParam(':ideaDescription', $ideaDescription);
