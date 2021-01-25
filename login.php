@@ -88,6 +88,7 @@
                 background-color: transparent;
                 height: 5vh;
                 padding: 1%;
+                font-size: 2vh;
             }
             button{
                 position:relative;
@@ -144,7 +145,7 @@
             }
         </style>
     </head>
-    <body id="home" style="background-color: #340634; margin:0px; ">
+    <body id="home" style="background-color: #340634; margin:0px; overflow:hidden">
         <?php include "elements/sageata.html";?>
 
         <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
