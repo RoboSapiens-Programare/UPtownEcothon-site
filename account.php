@@ -307,7 +307,10 @@
                 
             </form>
 
-            <button type="button" id="delete-btn">Delete Account</button>
+            <form action="scripts/send_delete_verification.php" method="post" class="ajax-form">
+                <button type="submit" id="delete-btn">Delete Account</button>
+                <div class="msg ajax-return-message" style="background-color: transparent;"></div>
+            </form>
         </div>
 
         <a href="logout.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center">sign out</a>
@@ -361,5 +364,39 @@
             }
         </script>
 
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            //AJAX code
+            (function ($) {
+                'use strict';
+                
+                var form = $('.ajax-form'), message = $('.ajax-return-message'), form_data;
+
+                function done_func(response) {
+                    message.fadeIn()
+                    message.html(response);
+                }
+
+                function handle_msg(data) {
+                    message.fadeIn()
+                    message.html(data.responseText);
+                    setTimeout(function () {
+                        message.fadeOut();
+                    }, 10000);
+                }
+                
+                form.submit(function (e) {
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: form.attr('action'),
+                        data: {'username': '<?php echo $_SESSION['username'] ?>', 'id': '<?php echo $_SESSION['id'] ?>'}
+                        //data: form_data
+                    })
+                    .done(done_func)
+                    .fail(handle_msg);
+                }); 
+            })(jQuery);
+        </script>
     </body>
 </html>
