@@ -45,7 +45,6 @@
              * {
                 font-family:'Khand', sans-serif;
                 color: black;
-
             }
             label{
                 position: relative;

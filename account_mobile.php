@@ -1,72 +1,70 @@
 <!DOCTYPE html>
 <?php
+    // header('Location: notyet.php');
+    //imi dadea o eroare but this seemed to fix it, nu cred ca ai nevoie de session aici dar nu pare ca vrea sa mearga fara????
     if (!isset ($_SESSION)) session_start();
 ?>
-
 <html style="scroll-behavior: smooth">
     <head>
         <title></title>
-        <link rel="stylesheet" type="text/css" href="css/sageata.css">
+        <link rel="stylesheet" type="text/css" href="css/sageatatlf.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 
         <link rel="stylesheet" type="text/css" href="css/bottom.css">
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
 
-        <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $site_key; ?>"></script>
-
-        <?php require_once 'elements/header.php'; ?>
+        <?php include 'elements/header.php'; ?>
         
         <style>
              * {
                 font-family:'Khand', sans-serif;
                 color: black;
-
             }
             label{
                 position: relative;
-                font-size: 2vh;
+                font-size: 3vw;
                 width: 20%;
             }
             input, textarea, select{
                 position:relative;
-                margin: 0vh 0vw 3vh 0vw;
+                margin: 0vh 0vw 1vh 0vw;
                 border: 0.3vh solid #00ff16;
                 border-radius: 20px;
-                width:98%;
-                right: 0px;
+                width:95%;
+                left: 50%;
+                transform: translateX(-50%);
                 background-color: transparent;
-                height: 2vh;
+                height: 3vh;
                 padding: 1%;
-                font-size: 2vh;
+                font-size: 3vw;
             }
             button{
                 position:relative;
-                margin: 0vh 0vw 3vh 0vw;
+                margin: 1vh 0vw 1.5vh 0vw;
                 border: 0.3vh solid #00ff16;
                 border-radius: 20px;
                 width:100%;
-                right: 0px;
+                left: 50%;
+                transform: translateX(-50%);
                 background-color: #340634;
-                height: 5vh;
+                height: 8vh;
                 padding: 1%;
-                font-size: 2vh;
+                font-size: 3vw;
                 color: white;
-                transition: all 500ms ease;
             }
-            button:hover, button:active{
+            button:hover{
                 background-color: transparent;
                 color: black;
-                cursor:pointer;
-                transition: all 500ms ease; 
             }
             .msg{
                 position:relative;
-                margin: 0vh 0vw 3vh 0vw;
+                margin: 0vh 0vw 1vh 0vw;
                 border-radius: 20px;
                 width:100%;
-                right: 0px;
+                left: 50%;
+                transform: translateX(-50%);
                 background-color: #ffafc0;
-                font-size: 2vh;
+                font-size: 3vw;
                 text-align:center;
                 padding: 1%;
             }
@@ -77,78 +75,27 @@
                 border: 0px solid blue;
                 background-color: transparent;
                 height: auto;
-                font-size: 2.5vh;
-            }
-            #footer-special ul{
-                list-style: none;
-                height: 100%;
+                font-size: 4vw;
                 overflow: hidden;
-                bottom: 0;
-                position: absolute;
             }
-            #footer-special ul li{
-                width:auto;
-                height: 8%;
-                margin: 3vh 0vw 3vh -1vw;
-            }
-            #footer-special ul li a{
-                height: 100%;
-            }
-            #footer-special ul li a img{
-                height: inherit;
-                width:inherit;
+            h2{
+                margin:0;
+                padding:0;
             }
         </style>
-
     </head>
-    <body id="home" style="background-color: #340634; margin:0px; " onload="enButton();">
-        <?php include "elements/sageata.html"; ?>
 
+    <body id="home" style="background-color: #340634; margin:0px; ">
+        <?php include "elements/sageatatlf.html"; ?>
 
-        <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
-            <ul>
-                <li style="height:10%; filter:invert(100%)">
-                    <a href="https://www.instagram.com/uptown.ecothon/">
-                        <img src="./ute-icons/instagram.svg">
-                    </a>
-                </li>
-                <li style="height: 10%; filter:invert(100%)">
-                    <a href="https://www.facebook.com/uptown.ecothon">
-                        <img src="./ute-icons/facebook.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/FTC.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php" style="filter: invert(100%);">
-                        <img src="pictures/natie.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/gemini-solutions-logo.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/endava.png">
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
-        <div class="page-title" style="position: relative; margin-top: 3vh; margin-bottom:4vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
-            <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
+        <div class="page-title" style="position: relative; margin-top: 10vw; margin-bottom:8vw; width:100%; height: 8vh; background-color: transparent; font-size:10vw; z-index:70">
+            <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16">
                 Configure Account
             </div>
-        </div>
+        </div>	
 
         <div style="position:relative; width:90%; max-width: 850px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
-            <div id="current-data" class="section">
+        <div id="current-data" class="section">
                 <span style="text-decoration: underline dashed #00ff16 0.2vh;"> Username: </span> [echo username]; <br>
                 <span style="text-decoration: underline dashed #00ff16 0.2vh;">E-mail:</span> [echo email]; <br>
                 <span style="text-decoration: underline dashed #00ff16 0.2vh;">Phone nuber:</span> [echo phone number]; <br>
@@ -211,7 +158,6 @@
                 By doing so, you will be eliminated from UPtown Ecothon. Are you sure you want to continue?
                 <button>Yes.</button>
             </div>
-
         </div>
 
         <a href="logout.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center">sign out</a>
@@ -230,6 +176,7 @@
                 btn.setAttribute('onclick', "openSection(this, document.getElementById(this.getAttribute('title')))");
             }
         </script>
+
 
     </body>
 </html>
