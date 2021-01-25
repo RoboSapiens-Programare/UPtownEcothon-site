@@ -166,7 +166,7 @@
                 padding: 1%;
                 font-size: 2vh;
             }
-            button{
+            button, #delete-btn{
                 position:relative;
                 margin: 0vh 0vw 3vh 0vw;
                 border: 0.3vh solid #00ff16;
@@ -180,7 +180,11 @@
                 color: white;
                 transition: all 500ms ease;
             }
-            button:hover, button:active{
+            #delete-btn{
+                background-color: #ffafc0;
+                color: black;
+            }
+            button:hover, button:active, #delete-btn:hover{
                 background-color: transparent;
                 color: black;
                 cursor:pointer;
@@ -205,6 +209,9 @@
                 background-color: transparent;
                 height: auto;
                 font-size: 2.5vh;
+            }
+            a{
+                color: white;
             }
             #footer-special ul{
                 list-style: none;
@@ -279,7 +286,7 @@
             <div class="chestie" style="border:none"> <?php echo $fields["email"]; ?></div>
 
             <form method="post" name="change-details" id="change-details" onsubmit="return validateForm()">
-                <div class="msg"></div>
+                <div class="msg" style="display: none;"></div>
 
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" value="<?php echo $fields["username"]; ?>" disabled> <br>
@@ -291,7 +298,7 @@
                 <input type="text" id="lname" name="lastname" value="<?php echo $fields["lastname"]; ?>" disabled> <br>
 
                 <label for="phone">Phone number:</label>
-                <input type="text" id="phone" name="phone" value="<?php echo $fields["phone"]; ?>" disabled> <br>
+                <input type="number" id="phone" name="phone" value="<?php echo $fields["phone"]; ?>" disabled> <br>
 
                 <button type="button" id="edit-btn" onclick="enableEdit()">Edit Details</button>
                 <button type="submit" id="submit-btn" style="display: none;" name="submit">Submit</button>
@@ -299,94 +306,17 @@
                 <div class="msg" style="background-color: transparent;"><?php echo $update_msg ?></div>
                 
             </form>
-            
-            <!-- <div id="current-data" class="section">
-                <span style="text-decoration: underline dashed #00ff16 0.2vh;"> Username: </span> [echo username]; <br>
-                <span style="text-decoration: underline dashed #00ff16 0.2vh;">E-mail:</span> [echo email]; <br>
-                <span style="text-decoration: underline dashed #00ff16 0.2vh;">Phone nuber:</span> [echo phone number]; <br>
-            </div>
 
-            <button id="username-btn" title="username-sect" onclick="openSection(this, document.getElementById(this.getAttribute('title')))">Change Username</button>
-            <div id="username-sect" class="section" style="display:none; border-bottom: 0.3vh dashed #00ff16;">
-               <h2>Changing your username?</h2>
-               <form method="post" name='change-username' id='change-username'>
-                    <label for="new-username">Enter new username:</label>
-                    <input type="text" id="new-username" name="new-username"><br>
-                    <button type="submit"> Submit </button>
-                    <div class="msg" style="background-color: transparent;"> You will receive an email verification in order to change your username.</div>
-               </form>
-            </div>
-            
-            <button id="email-btn" title="email-sect" onclick="openSection(this, document.getElementById(this.getAttribute('title')))">Change E-mail</button>
-            <div id="email-sect" class="section" style="display:none; border-bottom: 0.3vh dashed #00ff16;">
-                <h2>Changing your email?</h2>
-                <form method="post" name='change-email' id='change-email'>
-                    <label for="new-email">Enter new email address:</label>
-                    <input type="text" id="new-email" name="new-email"><br>
-                    <button type="submit"> Submit </button>
-                    <div class="msg" style="background-color: transparent;"> You will receive a text verification ??????.</div>
-               </form>
-            </div>
-            
-            <button id="phone-btn" title="phone-sect" onclick="openSection(this, document.getElementById(this.getAttribute('title')))">Change Phone Number</button>
-            <div id="phone-sect" class="section" style="display:none; border-bottom: 0.3vh dashed #00ff16;">
-                <h2>Changing your phone number?</h2>
-                <form method="post" name='change-phone' id='change-phone'>
-                    <label for="new-phone">Enter new phone number:</label>
-                    <input type="text" id="new-phone" name="new-phone"><br>
-                    <button type="submit"> Submit </button>
-                    <div class="msg" style="background-color: transparent;"> You will receive an email verification in order to change your phone number.</div>
-               </form>
-            </div>
-            
-            <button id="passwd-btn" title="passwd-sect" onclick="openSection(this, document.getElementById(this.getAttribute('title')))">Change Password</button>
-            <div id="passwd-sect" class="section" style="display:none; border-bottom: 0.3vh dashed #00ff16;">
-                <h2>Changing your password?</h2>
-                <form method="post" name='change-passwd' id='change-passwd'>
-                    <label for="old-passwd">Enter your old password:</label>
-                    <input type="password" id="old-passwd" name="old-passwd" autocomplete="off"><br>
-
-                    <label for="new-passwd">Enter new password:</label>
-                    <input type="password" id="new-passwd" name="new-passwd"><br>
-                    
-                    <label for="cpasswd">Enter new password again:</label>
-                    <input type="password" id="cpasswd" name="cpasswd"><br>
-
-                    <button type="submit"> Submit </button>
-                    <div class="msg" style="background-color: transparent;"> You will receive an email verification in order to change your username.</div>
-               </form>
-            </div>
-
-            <button id="delete-btn" title="delete-sect" onclick="openSection(this, document.getElementById(this.getAttribute('title')))" style="background-color:#ffafc0; color:black">Delete your account</button>
-            <div id="delete-sect" class="section" style="display:none; border-bottom: 0.3vh dashed #00ff16;">
-                <h2>Deleting your account?</h2>
-                By doing so, you will be eliminated from UPtown Ecothon. Are you sure you want to continue?
-                <button>Yes.</button>
-            </div> -->
-
+            <button type="button" id="delete-btn">Delete Account</button>
         </div>
 
         <a href="logout.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center">sign out</a>
 
         <script>
-            // function openSection(btn, section){
-            //     section.style.display = "block";
-            //     btn.style.backgroundColor = "#76667d";
-            //     btn.style.color = "white";
-            //     btn.style.margin = "0";
-            //     btn.setAttribute('onclick', "closeSection(this, document.getElementById(this.getAttribute('title')))");
-            // }
-            // function closeSection(btn, section){
-            //     section.style.display = "none";
-            //     btn.removeAttribute('style');
-            //     btn.setAttribute('onclick', "openSection(this, document.getElementById(this.getAttribute('title')))");
-            // }
-
             var edit = document.getElementById("edit-btn");
             var submit = document.getElementById("submit-btn");
             var errorMsg = document.getElementsByClassName("msg")[0];
             var submitMsg = document.getElementsByClassName("msg")[1];
-            // alert(edit + " " + submit);
 
             function enableEdit() {
 
@@ -394,10 +324,8 @@
                 submit.style.display = "block";
 
                 var input = document.querySelectorAll("input");
-                // alert("a");
 
                 for (i = 0; i < input.length; ++i) {
-                // alert("b");
                     input[i].style.border = "0.3vh solid #00ff16";
                     input[i].disabled = false;
                 }
@@ -415,6 +343,7 @@
                 }
 
                 if(!isOK){
+                    errorMsg.style.display = "block";
                     errorMsg.innerHTML = "Please complete all of the fields before submitting.";
                     return false;
                 } else {

@@ -75,10 +75,12 @@
                 padding: 1%;
                 font-size: 2vh;
                 color: white;
+                transition: all 500ms ease;
             }
             button:hover{
                 background-color: transparent;
                 color: black;
+                transition: all 500ms ease;
             }
             .msg{
                 position:relative;
@@ -154,7 +156,7 @@
         </div>
 
         <div class="page-title" style="position: relative; margin-top: 3vh; margin-bottom:4vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
-            <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
+            <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16">
                 Register
             </div>
         </div>
@@ -163,7 +165,7 @@
                 
             <div id="registerParticipant" class="formelement">
                 
-                <form method="post"  name='registration' id='registration' action="scripts/submit_registration.php" class="ajax-form">
+                <form method="post" name='registration' id='registration' action="scripts/submit_registration.php" class="ajax-form">
                     <div id="Registration" class="formelement">
                         <div class="msg" id="msg-reg" style="display: none;"></div>
 
