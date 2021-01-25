@@ -120,12 +120,33 @@
 			.wrapper-registration #href:hover{
 				color: #00ff16;
 			}
-			.registration-button{
+			#wrapper-registration-buttons a{
 				position:absolute; 
 				top:0%;  
 				/* transform: translate(0%, -50%);  */
 				/* height: 20%; 
 				width: 8%;  */
+				border: 0.4vh solid #00ff16; 
+				border-radius:2vw;
+				font-size: 3vh;
+				background-color:#340634;
+				color:white;
+				height:80%; width:30%; border-radius:20px; font-size: 3vh;	background-color:#340634;
+                transition: all 500ms ease; 
+			}
+			#wrapper-registration-buttons a:hover{
+				color:white;
+				border: 0.5vh solid #00ff16; 
+				cursor:pointer;
+				background-color: transparent;
+                transition: all 500ms ease; 
+			}
+			.registration-button{
+				position:absolute; 
+				top:0%;  
+				   transform: translate(0%, -50%); 
+				   height: 20%; 
+				   width: 8%; 
 				border: 0.4vh solid #00ff16; 
 				border-radius:2vw;
 				font-size: 3vh;
@@ -262,8 +283,27 @@
 				</div> 
 			</div>
 
-			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
-				<?php 
+			<div id="wrapper-registration-buttons" style="position: absolute; bottom:0vh; height: 20vh; width:100%;" >
+				<?php
+					if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+						echo " 
+						<a href='account.php' style='left:50%; transform:translateX(-50%); width:80%'> 
+							<div class='text-centrat' style='text-decoration: none; color:white;'>
+								Hi, " . $_SESSION['username'] . "! Click here to configure account or sign out.
+							</div>	
+						</a>
+						";
+					} else {
+						echo "
+						<a href='registration.php' style='left:25%; transform:translateX(-25%)'> <div class='text-centrat' style='text-decoration: none; color:white;'>Want to join our hackathon? Register here.</div></a>
+						<a href='login.php' style='left: 75%; transform:translateX(-75%)'> <div class='text-centrat' style='text-decoration: none; color:white;'>Already have an account? Login here.</div></a>
+						'";
+					}
+				?>
+			</div>
+
+			<!-- <div id="wrapper-newsletter-buttons" style="position: absolute; bottom:-2vh; height: 20vh; width:100%;" >
+					<?php 
 					if($hassbs){
 						echo "
 							<div id='subscribe-btn' style='position:absolute; top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:30%; border: 0.4vh solid #00ff16;	border-radius:2vw; font-size: 3vh;	background-color:#340634; color:white;'>
@@ -309,7 +349,7 @@
 						";
 					}
 				?>				
-			</div>
+			</div>  -->
 		</div>
 
 		<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #00ff16; color:white">Helpful Timeline =D</div> </div>
@@ -404,7 +444,7 @@
 				transitions.fadeIn(main, tweenFunctions.easeInExpo, 400);
 			}
 
-			var wrprRegBtn = document.getElementById('wrapper-registration-buttons');			
+			var wrprRegBtn = document.getElementById('wrapper-newsletter-buttons');			
 			var subscribe = wrprRegBtn.getElementsByClassName('registration-button')[1]; 
 			var subscribe_text = subscribe.getElementsByClassName('text-centrat')[0];
 			var email = wrprRegBtn.getElementsByClassName('email')[0];

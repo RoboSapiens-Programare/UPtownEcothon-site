@@ -208,8 +208,13 @@
                     <button type="submit">Submit</button>
                 </form>
 
-                <div style="font-size: 1vw;">
-                    Forgot your <a href="#"> password <a> ?
+                <div style="font-size: 1.3vw; width:100%; margin-bottom:1vh">
+                    <a href="#" style="position:absolute; left:2%;">
+                        Forgot your password?
+                    </div>
+                    <a href="registration.php" style="position:absolute; right:2%;">
+                        Don't have an account yet?
+                    </a>
                 </div>
             </div>            
         </div>
