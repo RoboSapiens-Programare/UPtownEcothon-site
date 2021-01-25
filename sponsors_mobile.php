@@ -58,21 +58,21 @@
                             <div class="sect-title"> <div class="text-centrat"><img src="pictures/FTC.png" alt="FTC" style="width: 100%;"></div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="wrapper-sect-content"><?php echo $content['FTC']['desc']; ?></div>
+                        <div class="wrapper-sect-content" style="color: black;"><?php echo $content['FTC']['desc']; ?></div>
                 </div>
                 <div class="rotate-section" id="rt-sect3" style="background-color: #5a0b5a">
                         <div class="wrapper" style="background-color: #5a0b5a">
                             <div class="sect-title"> <div class="text-centrat"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%; height:15vh"></div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="wrapper-sect-content"><?php echo $content['Gemini']['desc']; ?></div>
+                        <div class="wrapper-sect-content" style="color: black;"><?php echo $content['Gemini']['desc']; ?></div>
                 </div>
                 <div class="rotate-section" id="rt-sect2" style="background-color: #9d49a1">
                         <div class="wrapper" style="background-color: #9d49a1">
                             <div class="sect-title"> <div class="text-centrat"><img src="pictures/endava.png" alt="Endava" style="width: 100%;"></div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="wrapper-sect-content">
+                        <div class="wrapper-sect-content" style="color: black;">
                             <?php echo $content['Endava']['desc']; ?>
                         </div>
                 </div>
@@ -81,8 +81,8 @@
                             <div class="sect-title"> <div class="text-centrat"><img src="pictures/sprijina.svg" alt="Fundraiser" style="width:100%; height:15vh"></div> </div>
                             <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                         </div>
-                        <div class="wrapper-sect-content" style="color: black;">
-                            <div class="sect-content" >
+                        <div class="wrapper-sect-content" >
+                            <div class="sect-content" style="color: black;">
                                 <?php echo $content['Fundraiser']['desc']; ?>
                             </div>
                         </div>
