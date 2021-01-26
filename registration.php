@@ -36,6 +36,9 @@
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Khand&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
+
         <link rel="stylesheet" type="text/css" href="css/bottom.css">
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
 
