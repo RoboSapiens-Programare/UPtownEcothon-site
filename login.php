@@ -187,7 +187,7 @@
 
         <div style="min-height: 100vh; width:100%;">
             <div class="page-title" style="position: relative; margin-top: 8vh; margin-bottom:3vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
-                <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
+                <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16">
                     Login
                 </div>
             </div>	
@@ -211,7 +211,7 @@
                 <div style="font-size: 1.3vw; width:100%; margin-bottom:1vh">
                     <a href="forgotpass.php" style="position:absolute; left:2%;">
                         Forgot your password?
-                    </div>
+                    </a>
                     <a href="registration.php" style="position:absolute; right:2%;">
                         Don't have an account yet?
                     </a>
