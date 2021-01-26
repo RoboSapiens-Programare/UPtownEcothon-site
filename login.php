@@ -8,7 +8,34 @@
         exit;
     }
 
-    require_once 'config/dbconfig.php';
+    //LANG
+    $mobile_suffix = "_mobile";
+    $extension = ".php";
+
+    $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
+
+    if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
+        $lang = 'EN';
+    }
+    else{
+        $lang = 'RO';
+    }
+
+    //CONTENT
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
+
+    try{
+        $db = new ContentDB();
+
+        $content = array();
+        $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
+
+        $db = null;
+        unset($db);
+    }
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
 
     $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
     $passwd = (isset($_POST['passwd']) && !empty($_POST['passwd'])) ? $_POST['passwd'] : null;
@@ -57,12 +84,17 @@
 
 <html> 
     <head>
-        <link rel="stylesheet" type="text/css" href="css/slideup.css">
-        <link rel="stylesheet" type="text/css" href="css/sageata.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
-        <link rel="stylesheet" type="text/css" href="css/footer.css">
+
+        <link rel="shortcut icon" type="image/png" href="./ute-icons/FaviconUTE.png"/>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Khand&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+        <title>Login - UPtown Ecothon</title>
         
-        <?php include 'elements/header.php'; ?>
 
         <style>
             * {
@@ -71,24 +103,19 @@
             label{
                 position: relative;
                 color: black;
-                font-size: 2vw;
-                /* text-decoration: underline dashed 0.2vh #00ff16; */
-                /* margin-left: 5vw; */
-                width: 20%;
-                /* margin: 1vh 1vw 1vh 1vw; */
-
+                font-size: 1.3vw;
+                /* width: 20%; */
             }
             input{
                 position:relative;
                 margin: 0vh 0vw 3vh 0vw;
                 border: 0.3vh solid #00ff16;
                 border-radius: 20px;
-                width:100%;
-                right: 0px;
+                width:96%;
                 background-color: transparent;
                 height: 5vh;
                 padding: 1%;
-                font-size: 2vh;
+                font-size: 1.3vw;
             }
             button{
                 position:relative;
@@ -96,12 +123,11 @@
                 border: 0.3vh solid #00ff16;
                 border-radius: 20px;
                 width:100%;
-                right: 0px;
                 background-color: #340634;
                 height: 6vh;
                 padding: 1%;
                 color: white;
-                font-size: 1vw;
+                font-size: 1.3vw;
             }
             button:hover{
                 background-color: transparent;
@@ -112,87 +138,92 @@
                 margin: 0vh 0vw 3vh 0vw;
                 /* border: 0.3vh solid #00ff16; */
                 border-radius: 20px;
-                width:100%;
+                width:96%;
                 right: 0px;
                 background-color: #ffafc0;
                 height: 6vh;
                 font-size: 1.3vw;
                 text-align:center;
                 padding: 1%;
+            }#language {
+                position: fixed;
+                top: 0px;
+                right: 0vw;
+                margin: 1vw;
+                height: 4vh;
+                background-color: transparent;
+                mix-blend-mode: difference;
+                z-index: 104;
             }
-            #footer-special ul{
-                list-style: none;
-                height: 100%;
-                overflow: hidden;
-                bottom: 0;
-                position: absolute;
+
+            #language li {
+                display: inline;
+                font-family: 'Khand', sans-serif; font-weight: bold;
+                font-size: 2vw;
+                color: white;
+                text-decoration: none;
             }
-            #footer-special ul li{
-                /* border: 2px solid blue; */
-                width:auto;
-                height: 8%;
-                margin: 3vh 0vw 3vh -1vw;
+
+            #language li a {
+                font-family: 'Khand', sans-serif; font-weight: bold;
+                font-size: 2vw;
+                color: white;
+                text-decoration: none;
             }
-            #footer-special ul li a{
-                /* position: absolute; */
-                height: 100%;
-                /* width:100%; */
+
+            #language li a:hover {
+                -webkit-filter: invert(50%);
+                filter: invert(50%);
             }
-            #footer-special ul li a img{
-                /* position: absolute; */
-                height: inherit;
-                width:inherit;
+            @media screen and (max-width:750px){
+                label{
+                font-size: 4vw;
+                }
+                input{
+                    font-size: 3vw;
+                    padding: 2%;
+                }
+                button{
+                    font-size: 4vw;
+                }
+                .msg{
+                    font-size: 4vw;
+                }#language {
+                    height: 8vh;
+                }
+                #language li {
+                    font-size: 5vw;
+                }
+                #language li a {
+                    font-size: 5vw;
+                }
             }
         </style>
     </head>
     <body id="home" style="background-color: #340634; margin:0px; overflow:hidden">
-        <?php include "elements/sageata.html";?>
-
-        <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
+        <div id="language">
             <ul>
-                <li style="height:10%; filter:invert(100%)">
-                    <a href="https://www.instagram.com/uptown.ecothon/">
-                        <img src="./ute-icons/instagram.svg">
+                <li style="border-right: 0.2vw solid white;">
+                    <a href="?lang=ro">
+                    ro
                     </a>
                 </li>
-                <li style="height: 10%; filter:invert(100%)">
-                    <a href="https://www.facebook.com/uptown.ecothon">
-                        <img src="./ute-icons/facebook.svg">
+                <li style="padding-left: 0.4vw;">
+                    <a href="?lang=en">
+                    en
                     </a>
                 </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/FTC.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php" style="filter: invert(100%);">
-                        <img src="pictures/natie.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/gemini-solutions-logo.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/endava.png">
-                    </a>
-                </li>
-
             </ul>
         </div>
-
 
         <div style="min-height: 100vh; width:100%;">
             <div class="page-title" style="position: relative; margin-top: 8vh; margin-bottom:3vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
                 <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16">
-                    Login
+                    <?php echo $content['Interface']['PageTitle']; ?>
                 </div>
             </div>	
 
-            <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
+            <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:90%; max-width:700px">
                 <?php
                     if(isset($msg)&& $msg != ""){
                         echo "
@@ -201,23 +232,27 @@
                     }
                 ?>
                 <form method="POST" >
-                    <label for="username">Username</label>
+                    <label for="username">Username:</label>
                     <input type="text" id="username" name="username"><br>
-                    <label for="passwd">Password</label>
+                    <label for="passwd"><?php echo $content['LoginForm']['Password']; ?></label>
                     <input type="password" id="passwd" name="passwd"><br>
                     <button type="submit">Submit</button>
                 </form>
 
                 <div style="font-size: 1.3vw; width:100%; margin-bottom:1vh">
                     <a href="forgotpass.php" style="position:absolute; left:2%;">
-                        Forgot your password?
+                        <?php echo $content['Interface']['ForgotPass']; ?>
                     </a>
                     <a href="registration.php" style="position:absolute; right:2%;">
-                        Don't have an account yet?
+                        <?php echo $content['Interface']['Register']; ?>
                     </a>
                 </div>
-            </div>            
+            </div> 
+            
+            <a href="home.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center; color:white"><?php echo $content['Interface']['BackHome']; ?></a>
+            
         </div>
+
 
     </body>
 </html>
