@@ -4,36 +4,7 @@
     //imi dadea o eroare but this seemed to fix it, nu cred ca ai nevoie de session aici dar nu pare ca vrea sa mearga fara????
     if (!isset ($_SESSION)) session_start();
 
-    //LANG
-    $mobile_suffix = "_mobile";
-    $extension = ".php";
-
-    $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
-
-    if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
-        $lang = 'EN';
-    }
-    else{
-        $lang = 'RO';
-    }
-
-    //CONTENT
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
-
-    try{
-        $db = new ContentDB();
-
-        $content = array();
-        $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
-
-        $db = null;
-        unset($db);
-    }
-    catch(PDOException $e){
-        echo $e->getMessage();
-    }
-
-    // require_once $_SERVER["DOCUMENT_ROOT"] . "/config/dbconfig.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/config/dbconfig.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/config/captchacredentials.php";
 
     try{
@@ -67,7 +38,36 @@
 
         <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $site_key; ?>"></script>
 
-        <?php require_once 'elements/header.php'; ?>
+        <?php
+                //LANG
+            $mobile_suffix = "_mobile";
+            $extension = ".php";
+
+            $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
+
+            if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
+                $lang = 'EN';
+            }
+            else{
+                $lang = 'RO';
+            }
+
+            //CONTENT
+            // require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
+
+            try{
+                $db = new ContentDB();
+
+                $content = array();
+                $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
+
+                $db = null;
+                unset($db);
+            }
+            catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        ?>
         
         <style>
              * {
@@ -201,7 +201,7 @@
             </ul>
         </div>
 
-        <div class="page-title" style="position: relative; margin-top: 3vh; margin-bottom:4vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
+        <div class="page-title" style="position: relative; margin-top: 3vh; margin-bottom:2vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
             <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16">
                 <?php echo $content['Interface']['PageTitle']; ?>
             </div>
