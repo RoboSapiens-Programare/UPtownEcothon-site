@@ -19,56 +19,35 @@
             $ret = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if(!empty($ret)){
-                //nu stiu daca am nevoie sa verific mai intai ca usernameul exista si dupa sa iau parola in functie de asta daca verific daca exista parola pt un anume user din prima
-
-                // $sql = "SELECT passwd FROM users WHERE participant_id = :id";
-                // $stmt =$db->prepare($sql);
-
-                // $stmt->bindParam(":id", $ret['participant_id']);
-
-                // $stmt->execute();
-                // $ret = $stmt->fetch(PDO::FETCH_ASSOC);
-                
-                // if(!$ret){
-                //     //password does not exist
-                //         http_response_code(500);
-                //         echo "Something did not go as planned. Try again!";
-                //         die();
-                // } else {
-                    $old_passwd = $ret['passwd'];
-                    if(strcmp($old_passwd, $passwd_verif) == 0){
-                        $npasswd = (isset($_POST['npasswd']) && isset($_POST['cnpasswd']) && ($_POST['npasswd'] === $_POST['cnpasswd'])) ? $_POST['npasswd'] : null;
+                $old_passwd = $ret['passwd'];
+                if(strcmp($old_passwd, $passwd_verif) == 0){
+                    $npasswd = (isset($_POST['npasswd']) && isset($_POST['cnpasswd']) && ($_POST['npasswd'] === $_POST['cnpasswd'])) ? $_POST['npasswd'] : null;
+                    
+                    if($npasswd != null) {
+                        $password = password_hash($npasswd, PASSWORD_DEFAULT);
                         
-                        if($npasswd != null) {
-                            $password = password_hash($npasswd, PASSWORD_DEFAULT);
-                            
-                            $sql = "UPDATE users SET passwd = :passwd WHERE username = :uname";
-                            $stmt = $db->prepare($sql);
+                        $sql = "UPDATE users SET passwd = :passwd WHERE username = :uname";
+                        $stmt = $db->prepare($sql);
 
-                            $stmt->bindParam(":uname", $uname);
-                            $stmt->bindParam(":passwd", $password);
+                        $stmt->bindParam(":uname", $uname);
+                        $stmt->bindParam(":passwd", $password);
 
-                            $stmt->execute();
+                        $stmt->execute();
 
-                            http_response_code(200);
-                            echo "Password has been changed successfully!";
-                            die();
-                        }
-                    } else {
-                        //passwd does not match
-                        http_response_code(500);
-                        echo "Something did not go as planned. Try again!";
+                        http_response_code(200);
+                        echo "Password has been changed successfully!";
                         die();
                     }
-                // }
-
+                } else {
+                    //passwd does not match
+                    http_response_code(500);
+                    echo "Something did not go as planned. Try again!";
+                    die();
+                }
             } else {
                 http_response_code(500);
                 echo "Something did not go as planned. Try again!";
                 die();
-                // http_response_code(403);
-                // echo "This user is not registered!";
-                // die();
             }
 
         } else {
@@ -159,10 +138,10 @@
         <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
             <form method="POST" id="passchange" onsubmit="return validateForm()">
                 <label for="npasswd">Enter new password:</label>
-                <input type="text" id="npasswd" name="npasswd"> <br>
+                <input type="password" id="npasswd" name="npasswd"> <br>
 
                 <label for="cnpasswd">Confirm new password:</label>
-                <input type="text" id="cnpasswd" name="cnpasswd"> <br>
+                <input type="password" id="cnpasswd" name="cnpasswd"> <br>
 
                 <button type="submit">Change to new password</button>
             </form>

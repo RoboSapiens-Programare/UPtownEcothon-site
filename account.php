@@ -303,8 +303,13 @@
                 <button type="button" id="edit-btn" onclick="enableEdit()">Edit Details</button>
                 <button type="submit" id="submit-btn" style="display: none;" name="submit">Submit</button>
 
-                <div class="msg" style="background-color: transparent;"><?php echo $update_msg ?></div>
+                <div class="msg" style=" background-color: transparent;"><?php echo $update_msg ?></div>
                 
+            </form>
+
+            <form action="" method="post" class="ajax-form">
+                <button type="submit">Change Password</button>
+                <div class="msg ajax-return-message" style="background-color: transparent;"></div>
             </form>
 
             <form action="scripts/send_delete_verification.php" method="post" class="ajax-form">
@@ -355,6 +360,7 @@
                     //     input[i].disabled = true;
                     // }
 
+                    // submitMsg.style.display = "block";
                     submitMsg.innerHTML = "Please confirm your changes via email";
 
                     edit.style.display = "block";
