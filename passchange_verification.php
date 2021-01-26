@@ -9,8 +9,8 @@
     try{
         $db = new SQLiDB();
 
-        if($uname && $passwd){
-            $sql = "SELECT passwd FROM users WHERE uname = :uname";
+        if($uname && $passwd_verif){
+            $sql = "SELECT passwd FROM users WHERE username = :uname";
             $stmt =$db->prepare($sql);
 
             $stmt->bindParam(":uname", $uname);
@@ -42,7 +42,7 @@
                         if($npasswd != null) {
                             $password = password_hash($npasswd, PASSWORD_DEFAULT);
                             
-                            $sql = "UPDATE users SET passwd = :passwd WHERE uname = :uname";
+                            $sql = "UPDATE users SET passwd = :passwd WHERE username = :uname";
                             $stmt = $db->prepare($sql);
 
                             $stmt->bindParam(":uname", $uname);
@@ -53,12 +53,7 @@
                             http_response_code(200);
                             echo "Password has been changed successfully!";
                             die();
-                        } else {
-                            http_response_code(500);
-                            echo "Something did not go as planned. Try again!";
-                            die();
                         }
-
                     } else {
                         //passwd does not match
                         http_response_code(500);
