@@ -30,6 +30,9 @@
 ?>
 <html style="scroll-behavior: smooth">
     <head>
+        <title>Registration - UPtown Ecothon</title>
+        <link rel="shortcut icon" type="image/png" href="./ute-icons/FaviconUTE.png"/>
+
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 
@@ -39,12 +42,7 @@
         <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $site_key; ?>"></script>
 
         <?php
-                //LANG
-            $mobile_suffix = "_mobile";
-            $extension = ".php";
-
-            $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
-
+            //LANG
             if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
                 $lang = 'EN';
             }
@@ -59,7 +57,7 @@
                 $db = new ContentDB();
 
                 $content = array();
-                $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
+                $content = $db->getContentsForPage('registration.php', $lang);
 
                 $db = null;
                 unset($db);
@@ -174,6 +172,7 @@
                     padding: 1%;
                 }#language {
                     height: 8vh;
+                    right: 2vw;
                 }
                 #language li {
                     font-size: 5vw;
