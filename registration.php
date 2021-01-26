@@ -30,6 +30,9 @@
 ?>
 <html style="scroll-behavior: smooth">
     <head>
+        <title>Registration - UPtown Ecothon</title>
+        <link rel="shortcut icon" type="image/png" href="./ute-icons/FaviconUTE.png"/>
+
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 
