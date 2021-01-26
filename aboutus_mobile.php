@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+    if (!isset ($_SESSION)) session_start();
+?>
 <html style="scroll-behavior: smooth">
     <head>
         <link rel="stylesheet" type="text/css" href="css/twistycontent.css">
