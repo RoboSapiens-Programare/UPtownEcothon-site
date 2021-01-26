@@ -64,6 +64,30 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/basics.css">
+        <?php
+            if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
+                $lang = 'EN';
+            }
+            else{
+                $lang = 'RO';
+            }
+
+            //CONTENT
+            require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
+
+            try{
+                $db = new ContentDB();
+
+                $content = array();
+                $content = $db->getContentsForPage('passchange_verification.php', $lang);
+
+                $db = null;
+                unset($db);
+            }
+            catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        ?>
 
         <link rel="shortcut icon" type="image/png" href="./ute-icons/FaviconUTE.png"/>
 
@@ -73,6 +97,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
         <title>Change Password - UPtown Ecothon</title>
+
 
         <style>
                 * {
@@ -125,25 +150,93 @@
                     font-size: 2vw;
                     text-align:center;
                     padding: 1%;
+                } #language {
+                    position: fixed;
+                    top: 0px;
+                    right: 0vw;
+                    margin: 1vw;
+                    height: 4vh;
+                    background-color: transparent;
+                    mix-blend-mode: difference;
+                    z-index: 104;
+                }
+
+                #language li {
+                    display: inline;
+                    font-family: 'Khand', sans-serif; font-weight: bold;
+                    font-size: 2vw;
+                    color: white;
+                    text-decoration: none;
+                }
+
+                #language li a {
+                    font-family: 'Khand', sans-serif; font-weight: bold;
+                    font-size: 2vw;
+                    color: white;
+                    text-decoration: none;
+                }
+
+                #language li a:hover {
+                    -webkit-filter: invert(50%);
+                    filter: invert(50%);
+                }
+                @media screen and (max-width:750px){
+                    label{
+                    font-size: 4vw;
+                    }
+                    input{
+                        font-size: 3vw;
+                        padding: 2%;
+                    }
+                    button{
+                        font-size: 4vw;
+                    }
+                    .msg{
+                        font-size: 4vw;
+                    }#language {
+                        height: 8vh;
+                        right: 2vw;
+                    }
+                    #language li {
+                        font-size: 5vw;
+                    }
+                    #language li a {
+                        font-size: 5vw;
+                    }
                 }
             </style>
     </head>
     <body style="background-color: #340634; margin:0px; overflow:hidden">
+        <div id="language">
+            <ul>
+                <li style="border-right: 0.2vw solid white;">
+                    <a href="?lang=ro">
+                    ro
+                    </a>
+                </li>
+                <li style="padding-left: 0.4vw;">
+                    <a href="?lang=en">
+                    en
+                    </a>
+                </li>
+            </ul>
+        </div>
+
         <div class="page-title" style="position: relative; margin-top: 8vh; margin-bottom:3vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
             <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
-                Change Password
+                <?php echo $content['Interface']['PageTitle']; ?>
             </div>
         </div>
 
         <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
             <form method="POST" id="passchange" onsubmit="return validateForm()">
-                <label for="npasswd">Enter new password:</label>
+                <label for="npasswd"><?php echo $content['ChangePassForm']['NewPass']; ?></label>
                 <input type="password" id="npasswd" name="npasswd"> <br>
 
-                <label for="cnpasswd">Confirm new password:</label>
+                <label for="cnpasswd"><?php echo $content['ChangePassForm']['ConfirmNewPass']; ?></label>
                 <input type="password" id="cnpasswd" name="cnpasswd"> <br>
 
-                <button type="submit">Change to new password</button>
+                <button type="submit"><?php echo $content['Interface']['ChangePassBtn']; ?></button>
             </form>
         </div>
         

@@ -30,6 +30,9 @@
 ?>
 <html style="scroll-behavior: smooth">
     <head>
+        <title>Registration - UPtown Ecothon</title>
+        <link rel="shortcut icon" type="image/png" href="./ute-icons/FaviconUTE.png"/>
+
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 
@@ -38,7 +41,31 @@
 
         <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $site_key; ?>"></script>
 
-        <?php require_once 'elements/header.php'; ?>
+        <?php
+            //LANG
+            if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
+                $lang = 'EN';
+            }
+            else{
+                $lang = 'RO';
+            }
+
+            //CONTENT
+            // require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
+
+            try{
+                $db = new ContentDB();
+
+                $content = array();
+                $content = $db->getContentsForPage('registration.php', $lang);
+
+                $db = null;
+                unset($db);
+            }
+            catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        ?>
         
         <style>
              * {
@@ -91,74 +118,95 @@
                 font-size: 2vh;
                 text-align:center;
                 padding: 1%;
+            }#language {
+                position: fixed;
+                top: 0px;
+                right: 0vw;
+                margin: 1vw;
+                height: 4vh;
+                background-color: transparent;
+                mix-blend-mode: difference;
+                z-index: 104;
             }
-            #footer-special ul{
-                list-style: none;
-                height: 100%;
-                overflow: hidden;
-                bottom: 0;
-                position: absolute;
+
+            #language li {
+                display: inline;
+                font-family: 'Khand', sans-serif; font-weight: bold;
+                font-size: 2vw;
+                color: white;
+                text-decoration: none;
             }
-            #footer-special ul li{
-                width:auto;
-                height: 8%;
-                margin: 3vh 0vw 3vh -1vw;
+
+            #language li a {
+                font-family: 'Khand', sans-serif; font-weight: bold;
+                font-size: 2vw;
+                color: white;
+                text-decoration: none;
             }
-            #footer-special ul li a{
-                height: 100%;
+
+            #language li a:hover {
+                -webkit-filter: invert(50%);
+                filter: invert(50%);
             }
-            #footer-special ul li a img{
-                height: inherit;
-                width:inherit;
-            }
+            @media screen and (max-width:750px){
+                label{
+                    font-size: 3vw;
+                }
+                input, textarea, select{
+                    margin: 0vh 0vw 1vh 0vw;
+                    width:98%;
+                    height: 3vh;
+                    padding: 1%;
+                    font-size: 3vw;
+                }
+                button{
+                    margin: 0vh 0vw 1vh 0vw;
+                    width:100%;
+                    padding: 1%;
+                    font-size: 3vw;
+                }
+                .msg{
+                    margin: 0vh 0vw 1vh 0vw;
+                    width:100%;
+                    font-size: 3vw;
+                    padding: 1%;
+                }#language {
+                    height: 8vh;
+                    right: 2vw;
+                }
+                #language li {
+                    font-size: 5vw;
+                }
+                #language li a {
+                    font-size: 5vw;
+                }
+            } 
         </style>
 
     </head>
     <body id="home" style="background-color: #340634; margin:0px; " onload="enButton();">
-        <?php include "elements/sageata.html"; ?>
-
-
-        <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
+        <div id="language">
             <ul>
-                <li style="height:10%; filter:invert(100%)">
-                    <a href="https://www.instagram.com/uptown.ecothon/">
-                        <img src="./ute-icons/instagram.svg">
+                <li style="border-right: 0.2vw solid white;">
+                    <a href="?lang=ro">
+                    ro
                     </a>
                 </li>
-                <li style="height: 10%; filter:invert(100%)">
-                    <a href="https://www.facebook.com/uptown.ecothon">
-                        <img src="./ute-icons/facebook.svg">
+                <li style="padding-left: 0.4vw;">
+                    <a href="?lang=en">
+                    en
                     </a>
                 </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/FTC.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php" style="filter: invert(100%);">
-                        <img src="pictures/natie.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/gemini-solutions-logo.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/endava.png">
-                    </a>
-                </li>
-
             </ul>
         </div>
 
-        <div class="page-title" style="position: relative; margin-top: 3vh; margin-bottom:4vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
+        <div class="page-title" style="position: relative; margin-top: 3vh; margin-bottom:2vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
             <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16">
-                Register
+                <?php echo $content['Interface']['PageTitle']; ?>
             </div>
         </div>
+
+        <a href="home.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center"><?php echo $content['Interface']['BackHomeBtn']; ?></a>
 
         <div style="position:relative; width:90%; max-width: 700px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
                 
@@ -168,44 +216,44 @@
                     <div id="Registration" class="formelement">
                         <div class="msg" id="msg-reg" style="display: none;"></div>
 
-                        <label for="firstname">Prenume</label>
+                        <label for="firstname"><?php echo $content['RegistrationSect']['Fname']; ?></label>
                         <input type="text" id="firstname" name="firstname"><br>
-                        <label for="lastname">Nume de familie</label>
+                        <label for="lastname"><?php echo $content['RegistrationSect']['Lname']; ?></label>
                         <input type="text" id="lastname" name="lastname"><br>
-                        <label for="email">Adresa de e-mail</label>
+                        <label for="email">E-mail:</label>
                         <input type="text" id="email" name="email"><br>
-                        <label for="phone">Numar de telefon</label>
+                        <label for="phone"><?php echo $content['RegistrationSect']['Phone']; ?></label>
                         <input type="number" id="phone" name="phone"><br>
-                        <label for="position">Statut</label>
+                        <label for="position"><?php echo $content['RegistrationSect']['Status']; ?></label>
                         <select id="position" name="position" style="height:5vh">
                             <option value="selectcard"> - </option>
-                            <option value="elev">Elev</option>
-                            <option value="student">Student</option>
-                            <option value="angajat">Angajat</option>
-                            <option value="l-intrep">Liber Intreprinzator</option>
+                            <option value="elev"><?php echo $content['RegistrationSect']['Elev']; ?></option>
+                            <option value="student"><?php echo $content['RegistrationSect']['Student']; ?></option>
+                            <option value="angajat"><?php echo $content['RegistrationSect']['Employee']; ?></option>
+                            <option value="l-intrep"><?php echo $content['RegistrationSect']['Freelancer']; ?></option>
                         </select><br>
-                        <label for="experience">Experiență</label>
-                        <textarea type="text" id="experience" name="experience" style="height: 10vh;"></textarea><br>  
+                        <label for="experience"><?php echo $content['RegistrationSect']['Experience']; ?></label>
+                        <textarea type="text" id="experience" name="experience" style="height: 9vh;"></textarea><br>  
                         <button id="regbtn" type="button"  onclick="registrationOK();">Next</button>  
                     </div>
                     
                     <div id="teamDetails" style="display: none;" class="formelement">
                         <div class="msg" id="msg-team" style="display: none;"></div>
 
-                        <h2>Detalii despre echipă</h2>
-                        <label for="hasteam">Ai o echipă?</label>
+                        <h2><?php echo $content['TeamSect']['SectTitle']; ?></h2>
+                        <label for="hasteam"><?php echo $content['TeamSect']['hasTeam']; ?></label>
                         <select name="hasteam" id="hasteam" oninput="hasTeam();" style="height:5vh">
                             <option value="selectcard"> - </option>
-                            <option value="yes">Yes</option>
-                            <option value="want">No, but I want to find a team</option>
-                            <option value="no">No, and I am a lone wolf</option>
+                            <option value="yes"><?php echo $content['TeamSect']['Yes']; ?></option>
+                            <option value="want"><?php echo $content['TeamSect']['Want']; ?></option>
+                            <option value="no"><?php echo $content['TeamSect']['No']; ?></option>
                         </select><br>
                         
                         <div id="teamdiv" style="display: none;">
-                            <label for="team">Team</label>
+                            <label for="team"><?php echo $content['TeamSect']['Team']; ?></label>
                             <select id="team" name="teamname" oninput="configNewTeam();" style="height:5vh">
-                                <option value="selectcard">select team</option>
-                                <option value="create">new team...</option>
+                                <option value="selectcard"><?php echo $content['TeamSect']['SelectTeam']; ?></option>
+                                <option value="create"><?php echo $content['TeamSect']['NewTeam']; ?></option>
                             <?php
                                 foreach($teamOptions as $op){
                                     echo $op;
@@ -214,14 +262,14 @@
                             </select><br>
                         </div>
                         <div id="configNewTeam" style="display: none;">
-                            <label for="teamCreateName">Team Name</label>
+                            <label for="teamCreateName"><?php echo $content['TeamSect']['TeamName']; ?></label>
                             <input type="text" id="teamCreateName" name="teamcreatename" ><br>
                         </div>
 
                         <div id="ideasSection" style="display: none;">
-                            <h2>Ai idei pentru proiect?</h2>
+                            <h2><?php echo $content['IdeasSect']['SectTitle']; ?></h2>
                             
-                            <label for="ideas">Have any project ideas? </label>
+                            <label for="ideas"><?php echo $content['IdeasSect']['Ideas']; ?> </label>
                             <textarea type="text" id="ideas" name="ideadesc" style="height: 10vh;"></textarea><br> 
                         </div>
                         
@@ -231,32 +279,32 @@
                     <div id="configureAccount" style="display: none;" class="formelement">
                         <div class="msg" id="msg-account" style="display: none;"></div>
                                     
-                        <h2>Configurează-ți contul</h2>
+                        <h2><?php echo $content['ConfigAccSect']['SectTitle']; ?></h2>
                         
-                        <label for="username">Username</label>
+                        <label for="username">Username:</label>
                         <input type="text" id="username" name="username"><br>
-                        <label for="passwd">Password</label>
+                        <label for="passwd"><?php echo $content['ConfigAccSect']['Password']; ?></label>
                         <input type="password" id="passwd" name="passwd"><br>
-                        <label for="passwd">Confirm Password</label>
+                        <label for="passwd"><?php echo $content['ConfigAccSect']['ConfirmPass']; ?></label>
                         <input type="password" id="cpasswd" name="cpasswd"><br>
 
-                        <label for="newsletter">Subscribe to our newsletter?</label>
+                        <label for="newsletter"><?php echo $content['ConfigAccSect']['Newsletter']; ?></label>
                         <input type="checkbox" id="newsletter" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16" name="wantsubscribe"><br>
 
                         <div>
                             <input type="checkbox" class="form-check-input" id="captchaRefresh" onclick="reqRefresh(this);" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16">
-                            <label class="form-check-label" for="captchaRefresh">Bifeaza acest checkbox deoarece captcha-ul a expirat!</label>
+                            <label class="form-check-label" for="captchaRefresh"><?php echo $content['ConfigAccSect']['Captcha']; ?></label>
                         </div>
                         <input type="hidden" id="token" name="token">
 
                         <button id="btn-submit" type="submit" onclick="return accountOK()">Submit</button>
                     </div>
-                    <div class="msg ajax-return-message" style="display: none;">Thank you for registering!</div>
+                    <div class="msg ajax-return-message" style="display: none;"><?php echo $content['ConfigAccSect']['ThankMsg']; ?></div>
                 </form>
             </div>  
 
             <a href="login.php" style="font-size: 2vh; width:100%; margin-bottom:4vh; text-align:center">
-                Already have an account?
+                <?php echo $content['Interface']['Login']; ?>
             </a>
         </div>
 
