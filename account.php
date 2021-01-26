@@ -5,7 +5,36 @@
     if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
         header('Location: login.php');
         die();
-	}	
+    }
+    
+    //LANG
+    $mobile_suffix = "_mobile";
+    $extension = ".php";
+
+    $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
+
+    if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
+        $lang = 'EN';
+    }
+    else{
+        $lang = 'RO';
+    }
+
+    //CONTENT
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
+
+    try{
+        $db = new ContentDB();
+
+        $content = array();
+        $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
+
+        $db = null;
+        unset($db);
+    }
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
 
@@ -139,7 +168,12 @@
 
         <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $site_key; ?>"></script>
 
-        <?php require_once 'elements/header.php'; ?>
+        <link rel="shortcut icon" type="image/png" href="./ute-icons/FaviconUTE.png"/>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Khand&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         
         <style>
              * {
@@ -212,74 +246,99 @@
             }
             a{
                 color: white;
+            } #language {
+                position: fixed;
+                top: 0px;
+                right: 0vw;
+                margin: 1vw;
+                height: 4vh;
+                background-color: transparent;
+                mix-blend-mode: difference;
+                z-index: 104;
             }
-            #footer-special ul{
-                list-style: none;
-                height: 100%;
-                overflow: hidden;
-                bottom: 0;
-                position: absolute;
+
+            #language li {
+                display: inline;
+                font-family: 'Khand', sans-serif; font-weight: bold;
+                font-size: 2vw;
+                color: white;
+                text-decoration: none;
             }
-            #footer-special ul li{
-                width:auto;
-                height: 8%;
-                margin: 3vh 0vw 3vh -1vw;
+
+            #language li a {
+                font-family: 'Khand', sans-serif; font-weight: bold;
+                font-size: 2vw;
+                color: white;
+                text-decoration: none;
             }
-            #footer-special ul li a{
-                height: 100%;
+
+            #language li a:hover {
+                -webkit-filter: invert(50%);
+                filter: invert(50%);
             }
-            #footer-special ul li a img{
-                height: inherit;
-                width:inherit;
+            @media screen and (max-width:750px){
+                label, .label{
+                    font-size: 4vw;
+                }
+                input, textarea, select, .chestie{
+                    margin: 0vh 0vw 2vh 0vw;
+                    width:95%;
+                    height: 3vh;
+                    font-size: 4vw;
+                }
+                button, #delete-btn{
+                    margin: 1vh 0vw 1.5vh 0vw;
+                    width:100%;
+                    height: 8vh;
+                    padding: 1%;
+                    font-size: 4vw;
+                }
+                .msg{
+                    margin: 0vh 0vw 1vh 0vw;
+                    width:100%;
+                    font-size: 4vw;
+                    text-align:center;
+                    padding: 1%;
+                }
+                .section{
+                    margin: 0vh 0vw 3vh 0vw;
+                    font-size: 4vw;
+                }#language {
+                    height: 8vh;
+                }
+                #language li {
+                    font-size: 5vw;
+                }
+                #language li a {
+                    font-size: 5vw;
+                }
             }
-        </style>
+            </style>
 
     </head>
     <body id="home" style="background-color: #340634; margin:0px; " onload="enButton();">
-        <?php include "elements/sageata.html"; ?>
-
-
-        <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
+        <div id="language">
             <ul>
-                <li style="height:10%; filter:invert(100%)">
-                    <a href="https://www.instagram.com/uptown.ecothon/">
-                        <img src="./ute-icons/instagram.svg">
+                <li style="border-right: 0.2vw solid white;">
+                    <a href="?lang=ro">
+                    ro
                     </a>
                 </li>
-                <li style="height: 10%; filter:invert(100%)">
-                    <a href="https://www.facebook.com/uptown.ecothon">
-                        <img src="./ute-icons/facebook.svg">
+                <li style="padding-left: 0.4vw;">
+                    <a href="?lang=en">
+                    en
                     </a>
                 </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/FTC.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php" style="filter: invert(100%);">
-                        <img src="pictures/natie.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/gemini-solutions-logo.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/endava.png">
-                    </a>
-                </li>
-
             </ul>
         </div>
 
         <div class="page-title" style="position: relative; margin-top: 3vh; margin-bottom:4vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
             <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
-                Configurează-ți contul
+                <?php echo $content['Interface']['PageTitle']; ?>
             </div>
         </div>
+
+        <a href="home.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center"><?php echo $content['Interface']['BackHomeBtn']; ?></a>
 
         <div style="position:relative; width:90%; max-width: 850px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
             <div class="label">Email:</div> 
@@ -291,16 +350,16 @@
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" value="<?php echo $fields["username"]; ?>" disabled> <br>
 
-                <label for="fname">Prenume</label>
+                <label for="fname"><?php echo $content['AccDetailForm']['Fname']; ?></label>
                 <input type="text" id="fname" name="firstname" value="<?php echo $fields["firstname"]; ?>" disabled> <br>
 
-                <label for="lname">Nume de familie:</label>
+                <label for="lname"><?php echo $content['AccDetailForm']['Lname']; ?></label>
                 <input type="text" id="lname" name="lastname" value="<?php echo $fields["lastname"]; ?>" disabled> <br>
 
-                <label for="phone">Numar de telefon number:</label>
+                <label for="phone"><?php echo $content['AccDetailForm']['Phone']; ?></label>
                 <input type="number" id="phone" name="phone" value="<?php echo $fields["phone"]; ?>" disabled> <br>
 
-                <button type="button" id="edit-btn" onclick="enableEdit()">Edit Details</button>
+                <button type="button" id="edit-btn" onclick="enableEdit()"><?php echo $content['Interface']['EditBtn']; ?></button>
                 <button type="submit" id="submit-btn" style="display: none;" name="submit">Submit</button>
 
                 <div class="msg" style="background-color: transparent;"><?php echo $update_msg ?></div>
@@ -308,16 +367,16 @@
             </form>
 
             
-            <button type="button" id="changepwd-btn" class="changepwd-btn">Change Password</button>
+            <button type="button" id="changepwd-btn" class="changepwd-btn"><?php echo $content['Interface']['ChangePass']; ?></button>
                 
 
             <form action="scripts/send_delete_verification.php" method="post" class="ajax-form">
-                <button type="submit" id="delete-btn">Delete Account</button>
+                <button type="submit" id="delete-btn"><?php echo $content['Interface']['DeleteBtn']; ?></button>
                 <div class="msg ajax-return-message" style="background-color: transparent;"></div>
             </form>
         </div>
 
-        <a href="logout.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center">sign out</a>
+        <a href="logout.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center"><?php echo $content['Interface']['SignOutBtn']; ?></a>
 
         <script>
             var edit = document.getElementById("edit-btn");
