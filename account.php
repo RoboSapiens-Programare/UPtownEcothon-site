@@ -367,7 +367,7 @@
             </form>
 
             
-            <button type="button" id="changepwd-btn" class="changepwd-btn">Change Password</button>
+            <button type="button" id="changepwd-btn" class="changepwd-btn"><?php echo $content['Interface']['ChangePass']; ?></button>
                 
 
             <form action="scripts/send_delete_verification.php" method="post" class="ajax-form">
