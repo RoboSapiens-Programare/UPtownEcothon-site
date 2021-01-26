@@ -28,29 +28,29 @@
                 <div class="rotate-index" style="z-index: 70;">
                     <ul>
                         <li id="dot1" style="margin-left: -5vw">
-                            <img src="icons/dot.svg">
+                            <img src="ute-icons/dot.svg">
                         </li>
                         <li id="dot2">
-                            <img src="icons/dot.svg">
+                            <img src="ute-icons/dot.svg">
                         </li>
                         <li id="dot3">
-                            <img src="icons/dot.svg">
+                            <img src="ute-icons/dot.svg">
                         </li>
                         <li id="dot4">
-                            <img src="icons/dot.svg">
+                            <img src="ute-icons/dot.svg">
                         </li>
                         <li id="dot5" style="opacity: 0;">
-                            <img src="icons/dot.svg">
+                            <img src="ute-icons/dot.svg">
                         </li>
                     </ul>
                 </div>
                 
                 <div class="rotate-btn" id="btn-prev" onclick="rotateLoopLeftToRight()" >
-                    <!-- <img src="icons/next.svg"> -->
+                    <!-- <img src="ute-icons/next.svg"> -->
                 </div>
 
                 <div class="rotate-btn" id="btn-next" onclick="rotateLoopRightToLeft()" >
-                    <!-- <img src="icons/next.svg"> -->
+                    <!-- <img src="ute-icons/next.svg"> -->
                 </div>
 
                 <div class="rotate-section" id="rt-sect4" style="background-color: #76667d;">

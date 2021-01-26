@@ -99,7 +99,7 @@
         position: absolute;
         height: 60%;
         width: 8%;
-        background-image: url(../icons/next.svg);
+        background-image: url(../ute-icons/next.svg);
         background-size: 100% 100%;
         z-index: 50;
     }

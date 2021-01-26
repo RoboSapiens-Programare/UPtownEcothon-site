@@ -1,4 +1,6 @@
-#home #background {
+#home #background,
+#sponsors-mobile #background,
+#login #background {
     background-color: #d222d2;
 }
 
@@ -10,11 +12,6 @@
 .info-mobile #background {
     /* background-color: #d222d2; */
     background-color: #340634;
-}
-
-#sponsors-mobile #background {
-    background-color: #d222d2;
-    /* background-color: #340634; */
 }
 
 #hrefuri {

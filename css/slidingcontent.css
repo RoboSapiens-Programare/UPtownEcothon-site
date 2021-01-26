@@ -127,7 +127,7 @@
 #side-scroller #button-left{
     position: absolute;
     left: 20px;
-    background-image: url('../icons/arrow-left.svg');
+    background-image: url('../ute-icons/arrow-left.svg');
     background-size: cover;
 	background-position: center center;
     height: 50px;
@@ -137,7 +137,7 @@
 #side-scroller #button-right{
     position: absolute;
     right: 20px;
-    background-image: url('../icons/arrow-right.svg');
+    background-image: url('../ute-icons/arrow-right.svg');
     background-size: cover;
 	background-position: center center;
     height: 50px;

@@ -1,6 +1,6 @@
 <?php
-require_once('config/captchacredentials.php');
-require_once('config/captchaconfig.php');
+require_once $_SERVER['DOCUMENT_ROOT'] . "/config/captchacredentials.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/config/captchaconfig.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
