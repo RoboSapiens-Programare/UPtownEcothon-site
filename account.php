@@ -6,35 +6,7 @@
         header('Location: login.php');
         die();
     }
-    
-    //LANG
-    $mobile_suffix = "_mobile";
-    $extension = ".php";
 
-    $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
-
-    if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
-        $lang = 'EN';
-    }
-    else{
-        $lang = 'RO';
-    }
-
-    //CONTENT
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
-
-    try{
-        $db = new ContentDB();
-
-        $content = array();
-        $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
-
-        $db = null;
-        unset($db);
-    }
-    catch(PDOException $e){
-        echo $e->getMessage();
-    }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
 
@@ -174,6 +146,37 @@
         <link href="https://fonts.googleapis.com/css2?family=Khand&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        
+        <?php
+                //LANG
+            $mobile_suffix = "_mobile";
+            $extension = ".php";
+
+            $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
+
+            if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
+                $lang = 'EN';
+            }
+            else{
+                $lang = 'RO';
+            }
+
+            //CONTENT
+            // require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
+
+            try{
+                $db = new ContentDB();
+
+                $content = array();
+                $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
+
+                $db = null;
+                unset($db);
+            }
+            catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        ?>
         
         <style>
              * {
