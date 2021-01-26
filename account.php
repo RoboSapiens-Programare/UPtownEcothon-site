@@ -303,9 +303,13 @@
                 <button type="button" id="edit-btn" onclick="enableEdit()">Edit Details</button>
                 <button type="submit" id="submit-btn" style="display: none;" name="submit">Submit</button>
 
-                <div class="msg" style="background-color: transparent;"><?php echo $update_msg ?></div>
+                <div class="msg" style=" background-color: transparent;"><?php echo $update_msg ?></div>
                 
             </form>
+
+            
+            <button type="button" id="changepwd-btn" class="changepwd-btn">Change Password</button>
+                
 
             <form action="scripts/send_delete_verification.php" method="post" class="ajax-form">
                 <button type="submit" id="delete-btn">Delete Account</button>
@@ -355,6 +359,7 @@
                     //     input[i].disabled = true;
                     // }
 
+                    // submitMsg.style.display = "block";
                     submitMsg.innerHTML = "Please confirm your changes via email";
 
                     edit.style.display = "block";
@@ -371,6 +376,7 @@
                 'use strict';
                 
                 var form = $('.ajax-form'), message = $('.ajax-return-message'), form_data;
+                var btn_cpwd = $('.changepwd-btn');
 
                 function done_func(response) {
                     message.fadeIn()
@@ -396,6 +402,18 @@
                     .done(done_func)
                     .fail(handle_msg);
                 }); 
+
+                btn_cpwd.click(function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: "scripts/send_passchange_verification.php",
+                        data: {'email': '<?php echo $fields['email'] ?>'}
+                        //data: form_data
+                    })
+                    .done(done_func)
+                    .fail(handle_msg);
+                });
             })(jQuery);
         </script>
     </body>
