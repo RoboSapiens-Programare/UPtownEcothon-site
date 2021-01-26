@@ -301,14 +301,14 @@
 						echo " 
 						<a href='account.php' style='left:50%; transform:translateX(-50%); width:80%'> 
 							<div class='text-centrat' style='text-decoration: none; color:white;'>
-								Hi, " . $_SESSION['username'] . "! Click here to configure account or sign out.
+								Hi, " . $_SESSION['username'] . "!" . $content['Registration']['Loggedin'] . "
 							</div>	
 						</a>
 						";
 					} else {
 						echo "
-						<a href='registration.php' style='top:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>Want to join our hackathon? Register here.</div></a>
-						<a href='login.php' style='bottom:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>Already have an account? Login here.</div></a>
+						<a href='registration.php' style='top:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>" . $content['Registration']['Register'] . ".</div></a>
+						<a href='login.php' style='bottom:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>" . $content['Registration']['Login'] . "</div></a>
 						'";
 					}
 				?>
