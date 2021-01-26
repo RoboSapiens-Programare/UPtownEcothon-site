@@ -300,6 +300,8 @@
                         </div>
                         <input type="hidden" id="token" name="token">
 
+                        <div class="msg" id="msg-disclaimer" style="display: block; background-color:transparent; font-weight:bold"><?php echo $content['ConfigAccSect']['Disclaimer']; ?></div>
+
                         <button id="btn-submit" type="submit" onclick="return accountOK()">Submit</button>
                     </div>
                     <div class="msg ajax-return-message" style="display: none;"><?php echo $content['ConfigAccSect']['ThankMsg']; ?></div>
