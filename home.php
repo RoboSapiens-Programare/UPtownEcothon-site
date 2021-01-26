@@ -120,12 +120,33 @@
 			.wrapper-registration #href:hover{
 				color: #00ff16;
 			}
-			.registration-button{
+			#wrapper-registration-buttons a{
 				position:absolute; 
 				top:0%;  
 				/* transform: translate(0%, -50%);  */
 				/* height: 20%; 
 				width: 8%;  */
+				border: 0.4vh solid #00ff16; 
+				border-radius:2vw;
+				font-size: 3vh;
+				background-color:#340634;
+				color:white;
+				height:80%; width:30%; border-radius:20px; font-size: 3vh;	background-color:#340634;
+                transition: all 500ms ease; 
+			}
+			#wrapper-registration-buttons a:hover{
+				color:white;
+				border: 0.5vh solid #00ff16; 
+				cursor:pointer;
+				background-color: transparent;
+                transition: all 500ms ease; 
+			}
+			.registration-button{
+				position:absolute; 
+				top:0%;  
+				   transform: translate(0%, -50%); 
+				   height: 20%; 
+				   width: 8%; 
 				border: 0.4vh solid #00ff16; 
 				border-radius:2vw;
 				font-size: 3vh;
@@ -172,7 +193,7 @@
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="info.php">
 							<div class="text-centrat" style="color: white; opacity: 0; z-index: 105;">Info</div>
-							<img class="icon" id="info" src="icons/calendar.svg" alt="Info">
+							<img class="icon" id="info" src="ute-icons/calendar.svg" alt="Info">
 						</a>
 					</div>
 					<div class="title">Info</div>
@@ -185,7 +206,7 @@
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="aboutus.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">About Us</div>
-							<img class="icon" id="contact" src="icons/users.svg" alt="About Us">
+							<img class="icon" id="contact" src="ute-icons/users.svg" alt="About Us">
 						</a>
 					</div>
 					<div class="title">About Us</div>
@@ -198,7 +219,7 @@
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="problem.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
-							<img class="icon" id="help" src="icons/help.svg" alt="Got A Problem?">
+							<img class="icon" id="help" src="ute-icons/help.svg" alt="Got A Problem?">
 						</a>
 					</div>
 					<div class="title">Got A Problem?</div>
@@ -211,7 +232,7 @@
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="event.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Event</div>
-							<img class="icon" id="event" src="icons/book.svg" alt="Event">
+							<img class="icon" id="event" src="ute-icons/book.svg" alt="Event">
 						</a>
 					</div>
 					<div class="title">Event</div>
@@ -224,7 +245,7 @@
 					<div class="buline-homepage" onmouseover="fadeicon(this)" onmouseleave="appearicon(this)">
 						<a href="sponsors.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
-							<img class="icon" id="sponsors" src="icons/investment.svg" alt="Our Sponsors">
+							<img class="icon" id="sponsors" src="ute-icons/investment.svg" alt="Our Sponsors">
 						</a>
 					</div>
 					<div class="title">Sponsors</div>
@@ -262,8 +283,27 @@
 				</div> 
 			</div>
 
-			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
-				<?php 
+			<div id="wrapper-registration-buttons" style="position: absolute; bottom:0vh; height: 20vh; width:100%;" >
+				<?php
+					if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+						echo " 
+						<a href='account.php' style='left:50%; transform:translateX(-50%); width:80%'> 
+							<div class='text-centrat' style='text-decoration: none; color:white;'>
+								Hi, " . $_SESSION['username'] . "! Click here to configure account or sign out.
+							</div>	
+						</a>
+						";
+					} else {
+						echo "
+						<a href='registration.php' style='left:25%; transform:translateX(-25%)'> <div class='text-centrat' style='text-decoration: none; color:white;'>Want to join our hackathon? Register here.</div></a>
+						<a href='login.php' style='left: 75%; transform:translateX(-75%)'> <div class='text-centrat' style='text-decoration: none; color:white;'>Already have an account? Login here.</div></a>
+						'";
+					}
+				?>
+			</div>
+
+			<!-- <div id="wrapper-newsletter-buttons" style="position: absolute; bottom:-2vh; height: 20vh; width:100%;" >
+					<?php 
 					if($hassbs){
 						echo "
 							<div id='subscribe-btn' style='position:absolute; top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:30%; border: 0.4vh solid #00ff16;	border-radius:2vw; font-size: 3vh;	background-color:#340634; color:white;'>
@@ -276,7 +316,7 @@
 						$showemail = false;
 					} else if ($hassbs === false && $showemail) {
 						echo "
-						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:0%;' onsubmit='return validateForm()' action='register_subscriber.php'>
+						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:0%;' onsubmit='return validateForm()' action='scripts/register_subscriber.php'>
 							<input type='text' id='email' class='email' name='email' placeholder='your e-mail...' style='position: absolute; top:0%; left: 50%; transform: translate(-50%, -20%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:60%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw'>
 							<button type='submit' id='submit' class='registration-button' style='right:10%; height: 20%; width: 8%;'><div class='text-centrat'>Submit</div></button>
 							<div type='text' id='message' name='message' style='position: absolute; top:40%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:60%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw; font-family:sans-serif'>";
@@ -294,7 +334,7 @@
 						unset ($_SESSION['hassbs']);
 					} else {
 						echo "
-						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:100%;' onsubmit='return validateForm()' action='register_subscriber.php'>
+						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:100%;' onsubmit='return validateForm()' action='scripts/register_subscriber.php'>
 							<input type='text' id='email' class='email' name='email' placeholder='your e-mail...' style='position: absolute; top:0%; left: 50%; transform: translate(-50%, -20%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:60%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw'>
 							<button type='submit' id='submit' class='registration-button' style='right:10%; height: 20%; width: 8%;'><div class='text-centrat'>Submit</div></button>
 							<div type='text' id='message' name='message' style='position: absolute; top:40%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:60%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw; font-family:sans-serif'>
@@ -309,7 +349,7 @@
 						";
 					}
 				?>				
-			</div>
+			</div>  -->
 		</div>
 
 		<div style="position:relative; height: 20vh; width: 100%; border:0px solid black; margin: 3vh 0vw -10vh 0vw;font-size:5vh;"> <div class="text-centrat" style="border-bottom: 0.5vh dashed #00ff16; color:white">Helpful Timeline =D</div> </div>
@@ -404,7 +444,7 @@
 				transitions.fadeIn(main, tweenFunctions.easeInExpo, 400);
 			}
 
-			var wrprRegBtn = document.getElementById('wrapper-registration-buttons');			
+			var wrprRegBtn = document.getElementById('wrapper-newsletter-buttons');			
 			var subscribe = wrprRegBtn.getElementsByClassName('registration-button')[1]; 
 			var subscribe_text = subscribe.getElementsByClassName('text-centrat')[0];
 			var email = wrprRegBtn.getElementsByClassName('email')[0];
@@ -506,7 +546,7 @@
 		</script>
 
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<script src="javascript/form.js"></script>
+		<script src="javascript/bs-form.js"></script>
 		
 	</body>
 

@@ -129,12 +129,30 @@
 			.wrapper-registration #href:hover{
 				color: #00ff16;
 			}
-			.registration-button{
+			#wrapper-registration-buttons a{
+				position:absolute; 
+				/* top:0%;   */
+				border: 0.4vh solid #00ff16; 
+				border-radius:20px;
+				font-size: 2vh;
+				background-color:#340634;
+				color:white;
+				height:40%; 
+				width:80%; 
+				border-radius:20px; 
+				background-color:#340634;
+				left:50%;
+				transform:translateX(-50%);
+			}
+			#wrapper-registration-buttons a:hover{
+				color:white;
+				border: 0.5vh solid #00ff16; 
+				cursor:pointer;
+				background-color: transparent;
+			}
+			/* .registration-button{
 				position:absolute; 
 				top:0%;  
-				/* transform: translate(0%, -50%);  */
-				/* height: 20%; 
-				width: 8%;  */
 				border: 0.4vh solid #00ff16; 
 				border-radius:2vw;
 				font-size: 3vh;
@@ -158,7 +176,7 @@
 				bottom: 10%;
 				-webkit-columns: 2;
 				-moz-columns: 2;
-			}
+			} */
 		</style>
 
     </head>
@@ -182,7 +200,7 @@
 					<div class="buline-homepage">
 						<a href="info.php">
 							<div class="text-centrat" style="color: white; opacity: 0; z-index: 105;">Info</div>
-							<img class="icon" id="info" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="icons/calendar.svg" alt="Info">
+							<img class="icon" id="info" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="ute-icons/calendar.svg" alt="Info">
 						</a>
 					</div>
 					<div class="titlu-buline">Info</div>
@@ -196,7 +214,7 @@
 					<div class="buline-homepage">
 						<a href="aboutus.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">About Us</div>
-							<img class="icon" id="contact" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="icons/users.svg" alt="About Us">
+							<img class="icon" id="contact" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="ute-icons/users.svg" alt="About Us">
 						</a>
 					</div>
 					<div class="titlu-buline">About us</div>
@@ -210,7 +228,7 @@
 					<div class="buline-homepage">
 						<a href="#">
 							<div class="text-centrat" style="color: white; opacity: 0;">Got A Problem?</div>
-							<img class="icon" id="help" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="icons/help.svg" alt="Got A Problem?">
+							<img class="icon" id="help" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="ute-icons/help.svg" alt="Got A Problem?">
 						</a>
 					</div>
 					<div class="titlu-buline">Got a problem?</div>
@@ -224,7 +242,7 @@
 					<div class="buline-homepage">
 						<a href="event.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Event</div>
-							<img class="icon" id="event" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="icons/book.svg" alt="Event">
+							<img class="icon" id="event" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="ute-icons/book.svg" alt="Event">
 						</a>
 					</div>
 					<div class="titlu-buline">Event</div>
@@ -238,7 +256,7 @@
 					<div class="buline-homepage">
 						<a href="sponsors.php">
 							<div class="text-centrat" style="color: white; opacity: 0;">Our Sponsors</div>
-							<img class="icon" id="sponsors" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="icons/investment.svg" alt="Our Sponsors">
+							<img class="icon" id="sponsors" style="height: 60%; width: 60%; left: 50%; top: 50%; transform: translate(-50%, -50%);" src="ute-icons/investment.svg" alt="Our Sponsors">
 						</a>
 					</div>
 					<div class="titlu-buline">Sponsors</div>
@@ -277,9 +295,25 @@
 				</div> 
 			</div>
 
-			<div id="wrapper-registration-buttons" style="position: absolute; bottom:-2vh; height: 23vh; width:100%;" >
+			<div id="wrapper-registration-buttons" style="position: absolute; bottom:1vh; height: 20vh; width:100%;" >
+				<?php
+					if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+						echo " 
+						<a href='account.php' style='left:50%; transform:translateX(-50%); width:80%'> 
+							<div class='text-centrat' style='text-decoration: none; color:white;'>
+								Hi, " . $_SESSION['username'] . "! Click here to configure account or sign out.
+							</div>	
+						</a>
+						";
+					} else {
+						echo "
+						<a href='registration.php' style='top:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>Want to join our hackathon? Register here.</div></a>
+						<a href='login.php' style='bottom:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>Already have an account? Login here.</div></a>
+						'";
+					}
+				?>
 				
-				<!-- <form method="POST" class="form" style="display:visible; position:absolute; height:100%; width:100%; left:100%;" action="register_subscriber.php">
+				<!-- <form method="POST" class="form" style="display:visible; position:absolute; height:100%; width:100%; left:100%;" action="scripts/register_subscriber.php">
 					<input type="text" id="email" class="email" name="email" placeholder="your e-mail..." style="position: absolute; top:30%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:90%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw">
 					<button type="submit" id="submit" class="registration-button" style="right:5%; height: 25%; width: 40%;"><div class="text-centrat">Submit</div></button>
 					<div type="text" id="message" name="message" style="position: absolute; top:65%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:90%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw;"><?php echo $subscribemessage;?></div>
@@ -295,7 +329,7 @@
 							</div>
 						</div> -->
 
-				<?php 
+				<!-- <?php 
 					if($hassbs){
 						echo "
 							<div id='subscribe-btn' style='border: 0.4vh solid #00ff16;	border-radius:2vw; font-size: 3vh; background-color:#340634; color: white;position:absolute; top:0%;left: 50%; transform:translate(-50%, 0%); height:80%; width:80%;'>
@@ -308,7 +342,7 @@
 						$showemail = false;
 					} else if ($hassbs === false && $showemail) {
 						echo "
-						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:0%;' onsubmit='return validateForm()' action='register_subscriber.php'>
+						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:0%;' onsubmit='return validateForm()' action='scripts/register_subscriber.php'>
 							<input type='text' id='email' class='email' name='email' placeholder='your e-mail...' style='position: absolute; top:30%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:90%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw'>
 							<button type='submit' id='submit' class='registration-button' style='right:5%; height: 25%; width: 90%;'><div class='text-centrat'>Submit</div></button>
 							<div type='text' id='message' name='message' style='position: absolute; top:65%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:90%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw;'>";
@@ -320,7 +354,7 @@
 						unset ($_SESSION['hassbs']);
 					} else {
 						echo "
-						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:0%;' onsubmit='return validateForm()' action='register_subscriber.php'>
+						<form name='newsletter' method='POST' class='form' style='display:visible; position:absolute; height:100%; width:100%; left:0%;' onsubmit='return validateForm()' action='scripts/register_subscriber.php'>
 							<input type='text' id='email' class='email' name='email' placeholder='your e-mail...' style='position: absolute; top:30%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; border:0.4vh solid black; border-radius: 2vw; color:white; height:30%; width:90%; font-size:3vh; padding: 0.3vh 1vw 0.3vh 1vw'>
 							<button type='submit' id='submit' class='registration-button' style='right:5%; height: 25%; width: 90%;'><div class='text-centrat'>Submit</div></button>
 							<div type='text' id='message' name='message' style='position: absolute; top:65%; left: 50%; transform: translate(-50%, 0%); background-color:transparent; color:black; height:30%; width:90%; font-size:2vh; padding: 0.3vh 1vw 0.3vh 1vw;'>
@@ -329,7 +363,7 @@
 
 						";
 					}
-				?>			
+				?>			 -->
 	
 			</div>
 		</div>
@@ -441,6 +475,6 @@
 		</script>
 
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<script src="javascript/form.js"></script>
+		<script src="javascript/bs-form.js"></script>
 
     </body>

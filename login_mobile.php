@@ -58,7 +58,7 @@
 <html> 
     <head>
         <link rel="stylesheet" type="text/css" href="css/slideup.css">
-        <link rel="stylesheet" type="text/css" href="css/sageata.css">
+        <link rel="stylesheet" type="text/css" href="css/sageatatlf.css">
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/footer.css">
         
@@ -67,11 +67,13 @@
         <style>
             * {
                 font-family:'Khand', sans-serif;
+
             }
+
             label{
                 position: relative;
                 color: black;
-                font-size: 2vw;
+                font-size: 4vw;
                 /* text-decoration: underline dashed 0.2vh #00ff16; */
                 /* margin-left: 5vw; */
                 width: 20%;
@@ -86,9 +88,9 @@
                 width:100%;
                 right: 0px;
                 background-color: transparent;
-                height: 5vh;
-                padding: 1%;
-                font-size: 2vh;
+                height: 7vh;
+                font-size: 3vw;
+                padding: 2%;
             }
             button{
                 position:relative;
@@ -101,7 +103,7 @@
                 height: 6vh;
                 padding: 1%;
                 color: white;
-                font-size: 1vw;
+                font-size: 4vw;
             }
             button:hover{
                 background-color: transparent;
@@ -116,83 +118,24 @@
                 right: 0px;
                 background-color: #ffafc0;
                 height: 6vh;
-                font-size: 1.3vw;
+                font-size: 4vw;
                 text-align:center;
-                padding: 1%;
+                padding: 3%;
             }
-            #footer-special ul{
-                list-style: none;
-                height: 100%;
-                overflow: hidden;
-                bottom: 0;
-                position: absolute;
-            }
-            #footer-special ul li{
-                /* border: 2px solid blue; */
-                width:auto;
-                height: 8%;
-                margin: 3vh 0vw 3vh -1vw;
-            }
-            #footer-special ul li a{
-                /* position: absolute; */
-                height: 100%;
-                /* width:100%; */
-            }
-            #footer-special ul li a img{
-                /* position: absolute; */
-                height: inherit;
-                width:inherit;
-            }
+            
         </style>
     </head>
-    <body id="home" style="background-color: #340634; margin:0px; overflow:hidden">
-        <?php include "elements/sageata.html";?>
-
-        <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
-            <ul>
-                <li style="height:10%; filter:invert(100%)">
-                    <a href="https://www.instagram.com/uptown.ecothon/">
-                        <img src="./ute-icons/instagram.svg">
-                    </a>
-                </li>
-                <li style="height: 10%; filter:invert(100%)">
-                    <a href="https://www.facebook.com/uptown.ecothon">
-                        <img src="./ute-icons/facebook.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/FTC.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php" style="filter: invert(100%);">
-                        <img src="pictures/natie.png">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/gemini-solutions-logo.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="sponsors.php">
-                        <img src="pictures/endava.png">
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-
+    <body id="home" style="background-color: #340634; margin:0px; ">
+        <?php include "elements/sageatatlf.html";?>
 
         <div style="min-height: 100vh; width:100%;">
-            <div class="page-title" style="position: relative; margin-top: 8vh; margin-bottom:3vh; width:100%; height: 8vh; background-color: transparent; font-size:4vw; z-index:70">
-                <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16">
+            <div class="page-title" style="position: relative; margin-top: 10vw; margin-bottom:10vw; width:100%; height: 8vh; background-color: transparent; font-size:10vw; z-index:70">
+                <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
                     Login
                 </div>
             </div>	
 
-            <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
+            <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:90%;">
                 <?php
                     if(isset($msg)&& $msg != ""){
                         echo "
@@ -208,7 +151,7 @@
                     <button type="submit">Submit</button>
                 </form>
 
-                <div style="font-size: 1.3vw; width:100%; margin-bottom:1vh">
+                <div style="font-size: 4vw; width:100%; margin-bottom:4vh">
                     <a href="forgotpass.php" style="position:absolute; left:2%;">
                         Forgot your password?
                     </a>
@@ -216,8 +159,9 @@
                         Don't have an account yet?
                     </a>
                 </div>
-            </div>            
+            </div>
         </div>
 
+        <?php include "elements/footer.html";?>
     </body>
 </html>
