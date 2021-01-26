@@ -8,6 +8,8 @@
         exit;
     }
 
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
+
     $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
     $passwd = (isset($_POST['passwd']) && !empty($_POST['passwd'])) ? $_POST['passwd'] : null;
     $msg = "";
@@ -68,11 +70,6 @@
 
         <?php
             //LANG
-            $mobile_suffix = "_mobile";
-            $extension = ".php";
-
-            $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
-
             if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
                 $lang = 'EN';
             }
@@ -81,13 +78,13 @@
             }
 
             //CONTENT
-            require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
+            // require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
 
             try{
                 $db = new ContentDB();
 
                 $content = array();
-                $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
+                $content = $db->getContentsForPage('login.php', $lang);
 
                 $db = null;
                 unset($db);
@@ -192,6 +189,7 @@
                     font-size: 4vw;
                 }#language {
                     height: 8vh;
+                    right: 2vw;
                 }
                 #language li {
                     font-size: 5vw;

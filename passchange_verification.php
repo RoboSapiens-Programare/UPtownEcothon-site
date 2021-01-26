@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <?php
-   
-
     require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . "/config/mailconfig.php";
 
@@ -66,6 +64,30 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/basics.css">
+        <?php
+            if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
+                $lang = 'EN';
+            }
+            else{
+                $lang = 'RO';
+            }
+
+            //CONTENT
+            require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
+
+            try{
+                $db = new ContentDB();
+
+                $content = array();
+                $content = $db->getContentsForPage('passchange_verification.php', $lang);
+
+                $db = null;
+                unset($db);
+            }
+            catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        ?>
 
         <link rel="shortcut icon" type="image/png" href="./ute-icons/FaviconUTE.png"/>
 
@@ -76,36 +98,6 @@
 
         <title>Change Password - UPtown Ecothon</title>
 
-        <?php
-                //LANG
-            $mobile_suffix = "_mobile";
-            $extension = ".php";
-
-            $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
-
-            if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
-                $lang = 'EN';
-            }
-            else{
-                $lang = 'RO';
-            }
-
-            //CONTENT
-            // require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
-
-            try{
-                $db = new ContentDB();
-
-                $content = array();
-                $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
-
-                $db = null;
-                unset($db);
-            }
-            catch(PDOException $e){
-                echo $e->getMessage();
-            }
-        ?>
 
         <style>
                 * {
@@ -159,58 +151,59 @@
                     text-align:center;
                     padding: 1%;
                 } #language {
-                position: fixed;
-                top: 0px;
-                right: 0vw;
-                margin: 1vw;
-                height: 4vh;
-                background-color: transparent;
-                mix-blend-mode: difference;
-                z-index: 104;
-            }
+                    position: fixed;
+                    top: 0px;
+                    right: 0vw;
+                    margin: 1vw;
+                    height: 4vh;
+                    background-color: transparent;
+                    mix-blend-mode: difference;
+                    z-index: 104;
+                }
 
-            #language li {
-                display: inline;
-                font-family: 'Khand', sans-serif; font-weight: bold;
-                font-size: 2vw;
-                color: white;
-                text-decoration: none;
-            }
-
-            #language li a {
-                font-family: 'Khand', sans-serif; font-weight: bold;
-                font-size: 2vw;
-                color: white;
-                text-decoration: none;
-            }
-
-            #language li a:hover {
-                -webkit-filter: invert(50%);
-                filter: invert(50%);
-            }
-            @media screen and (max-width:750px){
-                label{
-                font-size: 4vw;
-                }
-                input{
-                    font-size: 3vw;
-                    padding: 2%;
-                }
-                button{
-                    font-size: 4vw;
-                }
-                .msg{
-                    font-size: 4vw;
-                }#language {
-                    height: 8vh;
-                }
                 #language li {
-                    font-size: 5vw;
+                    display: inline;
+                    font-family: 'Khand', sans-serif; font-weight: bold;
+                    font-size: 2vw;
+                    color: white;
+                    text-decoration: none;
                 }
+
                 #language li a {
-                    font-size: 5vw;
+                    font-family: 'Khand', sans-serif; font-weight: bold;
+                    font-size: 2vw;
+                    color: white;
+                    text-decoration: none;
                 }
-            }
+
+                #language li a:hover {
+                    -webkit-filter: invert(50%);
+                    filter: invert(50%);
+                }
+                @media screen and (max-width:750px){
+                    label{
+                    font-size: 4vw;
+                    }
+                    input{
+                        font-size: 3vw;
+                        padding: 2%;
+                    }
+                    button{
+                        font-size: 4vw;
+                    }
+                    .msg{
+                        font-size: 4vw;
+                    }#language {
+                        height: 8vh;
+                        right: 2vw;
+                    }
+                    #language li {
+                        font-size: 5vw;
+                    }
+                    #language li a {
+                        font-size: 5vw;
+                    }
+                }
             </style>
     </head>
     <body style="background-color: #340634; margin:0px; overflow:hidden">

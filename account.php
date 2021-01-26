@@ -148,12 +148,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         
         <?php
-                //LANG
-            $mobile_suffix = "_mobile";
-            $extension = ".php";
-
-            $including_filename = pathinfo(debug_backtrace()[0]['file'])['basename'];
-
+            //LANG
             if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
                 $lang = 'EN';
             }
@@ -168,7 +163,7 @@
                 $db = new ContentDB();
 
                 $content = array();
-                $content = $db->getContentsForPage(str_replace($mobile_suffix, "", $including_filename), $lang);
+                $content = $db->getContentsForPage('account.php', $lang);
 
                 $db = null;
                 unset($db);
@@ -308,6 +303,7 @@
                     font-size: 4vw;
                 }#language {
                     height: 8vh;
+                    right: 2vw;
                 }
                 #language li {
                     font-size: 5vw;
