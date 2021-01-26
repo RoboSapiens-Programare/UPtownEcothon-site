@@ -303,7 +303,7 @@
                 <button type="button" id="edit-btn" onclick="enableEdit()">Edit Details</button>
                 <button type="submit" id="submit-btn" style="display: none;" name="submit">Submit</button>
 
-                <div class="msg" style=" background-color: transparent;"><?php echo $update_msg ?></div>
+                <div class="msg" style="background-color: transparent;"><?php echo $update_msg ?></div>
                 
             </form>
 
