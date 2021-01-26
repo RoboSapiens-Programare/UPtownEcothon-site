@@ -39,7 +39,7 @@
                     $headers = "From: Contact UPtown Ecothon <ute-contact@robosapiens.ro>\r\n";
                     $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-                    //mail($email, $subject, $content, $headers);
+                    mail($email, $subject, $content, $headers);
 
                     http_response_code(200);
                     echo "We have sent you a verification mail!";

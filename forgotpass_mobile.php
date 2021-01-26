@@ -1,60 +1,5 @@
 <!DOCTYPE html>
 
-<?php
-    if (!isset ($_SESSION)) session_start();
-
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-        header("location: home.php");
-        exit;
-    }
-
-    require_once 'config/dbconfig.php';
-
-    $username = (isset($_POST['username']) && !empty($_POST['username'])) ? $_POST['username'] : null;
-    $passwd = (isset($_POST['passwd']) && !empty($_POST['passwd'])) ? $_POST['passwd'] : null;
-    $msg = "";
-
-    try{
-        $db = new SQLiDB();
-        if($username && $passwd){
-            $sql = "SELECT id, username, passwd FROM users WHERE username = :uname LIMIT 1";
-            $stmt = $db->prepare($sql);
-
-            $stmt->bindParam(':uname', $username);
-
-            $stmt->execute();
-
-            if($stmt){
-                $ret = $stmt->fetch(PDO::FETCH_ASSOC);
-                $hash = $ret['passwd'];
-                if(password_verify($passwd, $hash)){
-                    $msg = "Ai intrat!";
-
-                    if (!isset ($_SESSION)) session_start();
-
-                    $_SESSION['loggedin'] = true;
-                    $_SESSION['id'] = $ret['id'];
-                    $_SESSION['username'] = $ret['username'];
-
-                    header("location: home.php");
-                }
-                else{
-                    $msg = "Username or password incorrect!";
-                }
-            }
-            else{
-                $msg = "Database problem!";
-            }
-        }
-
-        $db = null;
-        unset($db);
-    }
-    catch(PDOException $e){
-        echo $e->getMessage();
-    }
-?>
-
 <html> 
     <head>
         <link rel="stylesheet" type="text/css" href="css/slideup.css">
@@ -131,7 +76,7 @@
         <div style="min-height: 100vh; width:100%;">
             <div class="page-title" style="position: relative; margin-top: 10vw; margin-bottom:10vw; width:100%; height: 8vh; background-color: transparent; font-size:10vw; z-index:70">
                 <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16")>
-                    Login
+                    Forgot Password
                 </div>
             </div>	
 
@@ -143,24 +88,49 @@
                         ";
                     }
                 ?>
-                <form method="POST" >
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username"><br>
-                    <label for="passwd">Password</label>
-                    <input type="password" id="passwd" name="passwd"><br>
-                    <button type="submit">Submit</button>
+                <form method="POST" action="scripts/send_passchange_verification.php" class="ajax-form">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email"><br>
+                    <button type="submit">Send verification mail</button>
+                    <div class="msg ajax-return-message" style="background-color: transparent;"></div>
                 </form>
-
-                <div style="font-size: 4vw; width:100%; margin-bottom:4vh">
-                    <a href="forgotpass.php" style="position:absolute; left:2%;">
-                        Forgot your password?
-                    </a>
-                    <a href="registration.php" style="position:absolute; right:2%;">
-                        Don't have an account yet?
-                    </a>
-                </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            //AJAX code
+            (function ($) {
+                'use strict';
+                
+                var form = $('.ajax-form'), message = $('.ajax-return-message'), form_data;
+
+                function done_func(response) {
+                    message.fadeIn()
+                    message.html(response);
+                }
+
+                function handle_msg(data) {
+                    message.fadeIn()
+                    message.html(data.responseText);
+                    setTimeout(function () {
+                        message.fadeOut();
+                    }, 10000);
+                }
+                
+                form.submit(function (e) {
+                    e.preventDefault();
+                    form_data = $(this).serialize();
+                    $.ajax({
+                        type: 'POST',
+                        url: form.attr('action'),
+                        data: form_data
+                    })
+                    .done(done_func)
+                    .fail(handle_msg);
+                }); 
+            })(jQuery);
+        </script>
 
         <?php include "elements/footer.html";?>
     </body>

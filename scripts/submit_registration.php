@@ -105,10 +105,10 @@
 
             $hasTeam = null;
             if(isset($_POST['hasteam'])){
-            if($_POST['hasteam'] === "yes"){
+                if($_POST['hasteam'] === "yes"){
                     $hasTeam = true;
                 }
-                else if(!empty($_POST['hasname'])){
+                else if(!empty($_POST['hasteam'])){
                     $hasTeam = false;
                 }
             }
@@ -183,23 +183,13 @@
                         }
                     }
                     else{
-                        $sql = "INSERT INTO teams (name) VALUES (:name)";
-                        $stmt = $db->prepare($sql);
-
-                        $personalTeamName = $firstname . $lastname . "'s Team";
-                        $stmt->bindParam(':name', $personalTeamName);
-
-                        $stmt->execute();
-
-                        $sql = "SELECT * FROM teams WHERE name = :name LIMIT 1";
-                        $stmt = $db->prepare($sql);
-
-                        $stmt->bindParam(':name', $personalTeamName);
-
-                        $stmt->execute();
-
-                        if($stmt){
-                            $team_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+                        if($hasTeam == false && $_POST['hasteam'] == "want"){
+                            //Want Team ID
+                            $team_id = 0;
+                        }
+                        else{
+                            //Solo ID
+                            $team_id = 99;
                         }
                     }
 

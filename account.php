@@ -130,7 +130,7 @@
 ?>
 <html style="scroll-behavior: smooth">
     <head>
-        <title></title>
+        <title><?php echo $_SESSION['username']?> - UPtown Ecothon</title>
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 

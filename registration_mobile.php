@@ -29,7 +29,6 @@
 ?>
 <html style="scroll-behavior: smooth">
     <head>
-        <title></title>
         <link rel="stylesheet" type="text/css" href="css/sageatatlf.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 
@@ -206,40 +205,6 @@
                     Already have an account?
                 </a>
 
-            </div>
-
-           
-            <div id="debug">
-                <h2>Debug</h2>
-                <form method="post">
-                    <button type="submit" name="delete">Clear Table</button>
-                    <button type="submit" name="dump">Dump Table</button>
-                </form>
-                <?php
-                    if(isset($_POST['delete'])){
-                        $db = new SQLiDB();
-                        $sql = "DELETE FROM participants";
-                        $db->exec($sql);
-                        unset($db);
-
-                        echo "Table records deleted!";
-                    }
-
-                    if(isset($_POST['dump'])){
-
-                        $db = new SQLiDB();
-                        $sql = "SELECT * FROM participants";
-                        $result = $db->query($sql);
-                        
-                        foreach($result as $row){
-                            foreach($row as $a){
-                                echo $a . " : ";
-                            }
-                            echo "<br>";
-                        }
-                        unset($db);
-                    }
-                ?>
             </div>
         </div>
 

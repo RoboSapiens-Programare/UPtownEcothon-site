@@ -11,7 +11,7 @@
         $db = new SQLiDB();
 
         //Get team options
-        $sql = "SELECT * FROM teams";
+        $sql = "SELECT * FROM teams WHERE id <> 0 AND id <> 99";
         $stmt = $db->prepare($sql);
         
         $stmt->execute();
@@ -30,7 +30,6 @@
 ?>
 <html style="scroll-behavior: smooth">
     <head>
-        <title></title>
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 
@@ -259,41 +258,6 @@
             <a href="login.php" style="font-size: 2vh; width:100%; margin-bottom:4vh; text-align:center">
                 Already have an account?
             </a>
-            
-            <div id="debug">
-                <h2>Debug</h2>
-                <form method="post">
-                    <button type="submit" name="delete">Clear Table</button>
-                    <button type="submit" name="dump">Dump Table</button>
-                </form>
-                <?php
-                    if(isset($_POST['delete'])){
-                        $db = new SQLiDB();
-                        $sql = "DELETE FROM participants";
-                        $db->exec($sql);
-                        unset($db);
-
-                        echo "Table records deleted!";
-                    }
-
-                    if(isset($_POST['dump'])){
-
-                        $db = new SQLiDB();
-                        $sql = "SELECT * FROM participants";
-                        $result = $db->query($sql);
-                        
-                        foreach($result as $row){
-                            foreach($row as $a){
-                                echo $a . " : ";
-                            }
-                            echo "<br>";
-                        }
-                        unset($db);
-                    }
-                ?>
-            </div>
-
-            
         </div>
 
 
