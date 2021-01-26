@@ -134,7 +134,7 @@
 				/* top:0%;   */
 				border: 0.4vh solid #00ff16; 
 				border-radius:20px;
-				font-size: 2vh;
+				font-size: 1.5vh;
 				background-color:#340634;
 				color:white;
 				height:40%; 
