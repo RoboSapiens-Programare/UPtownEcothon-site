@@ -115,15 +115,15 @@
                     <div id="Registration" class="formelement">
                         <div class="msg" id="msg-reg" style="display: none;"></div>
 
-                        <label for="firstname">First Name</label>
+                        <label for="firstname">Prenume</label>
                         <input type="text" id="firstname" name="firstname"><br>
-                        <label for="lastname">Last Name</label>
+                        <label for="lastname">Nume de familie</label>
                         <input type="text" id="lastname" name="lastname"><br>
-                        <label for="email">E-Mail Adress</label>
+                        <label for="email">Adresa de e-mail</label>
                         <input type="text" id="email" name="email"><br>
-                        <label for="phone">Phone</label>
+                        <label for="phone">Numar de telefon</label>
                         <input type="number" id="phone" name="phone"><br>
-                        <label for="position">Position</label>
+                        <label for="position">Statut</label>
                         <select id="position" name="position" style="height:5vh; font-size:3vw">
                             <option value="selectcard"> - </option>
                             <option value="elev">Elev</option>
@@ -131,7 +131,7 @@
                             <option value="angajat">Angajat</option>
                             <option value="l-intrep">Liber Intreprinzator</option>
                         </select><br>
-                        <label for="experience">Experience</label>
+                        <label for="experience">Experiență</label>
                         <textarea type="text" id="experience" name="experience" style="height: 9vh;"></textarea><br>  
                         <button id="regbtn" type="button"  onclick="registrationOK();">Next</button>  
                     </div>
@@ -139,8 +139,8 @@
                     <div id="teamDetails" style="display: none;" class="formelement">
                         <div class="msg" id="msg-team" style="display: none;"></div>
 
-                        <h2>Team Details</h2>
-                        <label for="hasteam">Do you have a team?</label>
+                        <h2>Detalii despre echipă</h2>
+                        <label for="hasteam">Ai o echipă?</label>
                         <select name="hasteam" id="hasteam" oninput="hasTeam();" style="height:5vh; font-size:3vw">
                             <option value="selectcard"> - </option>
                             <option value="yes">Yes</option>
@@ -166,7 +166,7 @@
                         </div>
 
                         <div id="ideasSection" style="display: none;">
-                            <h2>Do you have any project ideas?</h2>
+                            <h2>Ai idei pentru proiect?</h2>
                             
                             <label for="ideas">Have any project ideas? </label>
                             <textarea type="text" id="ideas" name="ideadesc" style="height: 9vh;"></textarea><br> 
@@ -178,7 +178,7 @@
                     <div id="configureAccount" style="display: none;" class="formelement">
                         <div class="msg" id="msg-account" style="display: none;"></div>
                                     
-                        <h2>Configure Account</h2>
+                        <h2>Configurează-ți contul</h2>
                         
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username"><br>
@@ -192,7 +192,7 @@
 
                         <div>
                             <input type="checkbox" class="form-check-input" id="captchaRefresh" onclick="reqRefresh(this);" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16">
-                            <label class="form-check-label" for="captchaRefresh">Check this thing cause the captcha expired!</label>
+                            <label class="form-check-label" for="captchaRefresh">Bifeaza acest checkbox deoarece captcha-ul a expirat!</label>
                         </div>
                         <input type="hidden" id="token" name="token">
 

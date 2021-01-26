@@ -60,7 +60,7 @@
                                 <input name="email" type="email" class="form-control" placeholder="Email" required>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                <input name="phone" type="phone" class="form-control" placeholder="Phone number (optional)">
+                                <input name="phone" type="phone" class="form-control" placeholder="Numar de telefon number (optional)">
                                 </div>
                                 <div class="col-md-12 form-group">
                                 <input name="subject" type="text" class="form-control" placeholder="Problem on short" required>
@@ -116,7 +116,7 @@
                                 <input name="email" type="email" class="form-control" placeholder="Email" required>
                                 </div>
                                 <div class="col-md-6 form-group">
-                                <input name="phone" type="phone" class="form-control" placeholder="Phone number (optional)">
+                                <input name="phone" type="phone" class="form-control" placeholder="Numar de telefon number (optional)">
                                 </div>
                                 <div class="col-md-6 form-group">
                                 <input name="team" type="text" class="form-control" placeholder="Team name" required>

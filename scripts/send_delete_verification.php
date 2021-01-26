@@ -35,7 +35,7 @@
                     }
 
                     $subject = "[UTE]Verificare stergere cont";
-                    $content = createEmail("Am înțeles că dorești să iți ștergi contul", "Pentru a confirma această acțiune, te rugăm apasă <a href='https://ute.robosapiens.ro/delete_verification.php?uname=" . $username . "&verif=" . base64_encode($passwd) . "'>aici</a>.");
+                    $content = createEmail("Am înțeles că dorești să iți ștergi contul", "Pentru a confirma această acțiune, te rugăm apasă <a href='https://ute.robosapiens.ro/delete_verification.php?email=" . $email . "&uname=" . $username . "&verif=" . base64_encode($passwd) . "'>aici</a>.");
                     $headers = "From: Contact UPtown Ecothon <ute-contact@robosapiens.ro>\r\n";
                     $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
@@ -43,6 +43,8 @@
 
                     http_response_code(200);
                     echo "We have sent you a verification mail!";
+                    //DEBUG
+                    //echo "<a href='https://ute.robosapiens.ro/delete_verification.php?email=" . $email . "&uname=" . $username . "&verif=" . base64_encode($passwd) . "'>aici</a>.";
                     die();
                 }
                 else{

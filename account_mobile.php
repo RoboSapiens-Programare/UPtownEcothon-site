@@ -225,7 +225,7 @@
 
         <div class="page-title" style="position: relative; margin-top: 10vw; margin-bottom:8vw; width:100%; height: 8vh; background-color: transparent; font-size:10vw; z-index:70">
             <div class="text-centrat" style="color:white; text-decoration: underline dashed 0.5vh #00ff16">
-                Configure Account
+                Configurează-ți contul
             </div>
         </div>	
 
@@ -241,13 +241,13 @@
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" value="<?php echo $fields["username"]; ?>" disabled> <br>
 
-                <label for="fname">First name</label>
+                <label for="fname">Prenume</label>
                 <input type="text" id="fname" name="firstname" value="<?php echo $fields["firstname"]; ?>" disabled> <br>
 
-                <label for="lname">Last name:</label>
+                <label for="lname">Nume de familie:</label>
                 <input type="text" id="lname" name="lastname" value="<?php echo $fields["lastname"]; ?>" disabled> <br>
 
-                <label for="phone">Phone number:</label>
+                <label for="phone">Numar de telefon number:</label>
                 <input type="number" id="phone" name="phone" value="<?php echo $fields["phone"]; ?>" disabled> <br>
 
                 <button type="button" id="edit-btn" onclick="enableEdit()">Edit Details</button>
