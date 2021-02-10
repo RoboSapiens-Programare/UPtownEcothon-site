@@ -5,8 +5,7 @@
         $url = "https://www.google.com/recaptcha/api/siteverify";
         $data = [
             'secret' => $GLOBALS["secret_key"],
-            'response' => $_POST['token'],
-            'remoteip' => $_SERVER['REMOTE_ADDR']
+            'response' => $_POST['token']
         ];
 
         $options = array(
