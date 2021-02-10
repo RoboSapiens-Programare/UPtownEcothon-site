@@ -2,7 +2,7 @@
 <?php
     // header('Location: notyet.php');
     //imi dadea o eroare but this seemed to fix it, nu cred ca ai nevoie de session aici dar nu pare ca vrea sa mearga fara????
-    if (!isset ($_SESSION)) session_start();
+    if (session_status() == PHP_SESSION_NONE) session_start();
 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/config/dbconfig.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/config/captchacredentials.php";
@@ -35,6 +35,9 @@
 
         <link rel="stylesheet" type="text/css" href="css/sageata.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Khand&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
 
         <link rel="stylesheet" type="text/css" href="css/bottom.css">
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
@@ -231,7 +234,10 @@
                             <option value="student"><?php echo $content['RegistrationSect']['Student']; ?></option>
                             <option value="angajat"><?php echo $content['RegistrationSect']['Employee']; ?></option>
                             <option value="l-intrep"><?php echo $content['RegistrationSect']['Freelancer']; ?></option>
-                        </select><br>
+                        </select><br>            
+                        <label for="dob"><?php echo $content['RegistrationSect']['Age']; ?></label>
+                        <input type="date" id="dob" name="dob" min="1920-01-01" max="2020-01-01"><br>
+                        
                         <label for="experience"><?php echo $content['RegistrationSect']['Experience']; ?></label>
                         <textarea type="text" id="experience" name="experience" style="height: 9vh;"></textarea><br>  
                         <button id="regbtn" type="button"  onclick="registrationOK();">Next</button>  
@@ -288,11 +294,17 @@
                         <label for="passwd"><?php echo $content['ConfigAccSect']['ConfirmPass']; ?></label>
                         <input type="password" id="cpasswd" name="cpasswd"><br>
 
-                        <label for="newsletter"><?php echo $content['ConfigAccSect']['Newsletter']; ?></label>
-                        <input type="checkbox" id="newsletter" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16" name="wantsubscribe"><br>
+                        <div>
+                            <input type="checkbox" id="newsletter" class="form-check-input" style="margin-bottom: 0; margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16" name="wantsubscribe">
+                            <label class="form-check-label" for="newsletter"><?php echo $content['ConfigAccSect']['Newsletter']; ?></label>
+                        </div>
 
                         <div>
-                            <input type="checkbox" class="form-check-input" id="captchaRefresh" onclick="reqRefresh(this);" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16">
+                            <input type="checkbox" id="terms" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16" name="terms">
+                            <label class="form-check-label" for="terms"><?php echo $content['ConfigAccSect']['Terms']; ?></label>
+                        </div>
+                        <div>
+                            <input type="checkbox" class="form-check-input" id="captchaRefresh" onclick="reqRefresh(this);" style="margin-bottom: 0; margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16">
                             <label class="form-check-label" for="captchaRefresh"><?php echo $content['ConfigAccSect']['Captcha']; ?></label>
                         </div>
                         <input type="hidden" id="token" name="token">
@@ -319,7 +331,7 @@
                 //verify all input fields are filled in + checks if the passwords match
                 var input = section.querySelectorAll("input");
                 for (i = 0; i < input.length; ++i) {
-                    if(input[i].value.length == 0 || input[i]==null){
+                    if((input[i].value.length == 0 || input[i]==null)){
                         input[i].style.borderColor = "red";
                         isOk = false;
                     } else if (input[i].getAttribute('id')=="cpasswd"){
@@ -479,8 +491,16 @@
             function accountOK(){
                 var section = document.getElementById('configureAccount');
                 if(validateForm(section,false)){
-                    document.getElementById('msg-account').style.display = "none";
-                    return true;
+                    var terms = document.getElementById('terms');
+                    if(terms.checked){
+                        document.getElementById('msg-account').style.display = "none";
+                        return true;
+                    }
+                    else{
+                        document.getElementById('msg-account').style.display = "block";
+                        document.getElementById('msg-account').innerHTML = 'You must accept the terms and conditions to continue!';
+                        return false;
+                    }
                 } else{
                     document.getElementById('msg-account').style.display = "block";
                     document.getElementById('msg-account').innerHTML = 'Please complete all fields accordingly!';

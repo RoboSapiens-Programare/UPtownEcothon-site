@@ -14,6 +14,7 @@
             $email = (isset($_POST['email']) && !empty($_POST['email'])) ? filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL) : null;
             $phone = (isset($_POST['phone']) && !empty($_POST['phone'])) ? filter_var(trim($_POST["phone"]), FILTER_SANITIZE_NUMBER_INT) : null;
             $position = (isset($_POST['position']) && !empty($_POST['position'])) ? filter_var(trim($_POST["position"]), FILTER_SANITIZE_FULL_SPECIAL_CHARS) : null;
+            $dob = (isset($_POST['dob']) && !empty($_POST['dob'])) ? preg_replace("([^0-9/])", "", $_POST['dob']) : null;
             $experience = (isset($_POST['experience']) && !empty($_POST['experience'])) ? filter_var($_POST["experience"], FILTER_SANITIZE_STRING) : null;
             $teamCreateName = (isset($_POST['teamcreatename']) && !empty($_POST['teamcreatename'])) ? filter_var($_POST["teamcreatename"], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : null;
             $teamName = (isset($_POST['teamname']) && !empty($_POST['teamname'])) ? filter_var($_POST["teamname"], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : null;
@@ -118,14 +119,14 @@
                 $db = new SQLiDB();
 
                 //Check to see if all fields are filled accordingly
-                if($firstname && $lastname && $email && $phone && $position && $experience && $username && $passwd && ($hasTeam ? ($teamName && (is_numeric($teamName) ? true : $teamCreateName)) : true)){
+                if($firstname && $lastname && $email && $phone && $position && $dob && $experience && $username && $passwd && ($hasTeam ? ($teamName && (is_numeric($teamName) ? true : $teamCreateName)) : true)){
 
                     //For participant registration
 
                     //Set a random ID for the participant
                     //  $participant_id = rand(1000, 9999);
                         
-                    $sql = "INSERT INTO participants (firstname, lastname, email, phone, position, experience) VALUES (:firstname, :lastname, :email, :phone, :position, :experience);";
+                    $sql = "INSERT INTO participants (firstname, lastname, email, phone, position, experience, dob) VALUES (:firstname, :lastname, :email, :phone, :position, :experience, :dob);";
 
                     // http_response_code(403);
                     // echo $sql;
@@ -140,6 +141,7 @@
                     $stmt->bindParam(':phone', $phone);
                     $stmt->bindParam(':position', $position);
                     $stmt->bindParam(':experience', $experience);
+                    $stmt->bindParam(':dob', $dob);
 
                     $stmt->execute();
                 

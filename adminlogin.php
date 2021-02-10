@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <?php
-    if (!isset ($_SESSION)) session_start();
+    if (session_status() == PHP_SESSION_NONE) session_start();
 
-    if(isset($_SESSION['adminloggedin']) && $_SESSION['adminloggedin'] == true){
+    if(isset($_SESSION) && isset($_SESSION['adminloggedin']) && $_SESSION['adminloggedin'] == true){
         header("location: cms.php");
         die();
     }
@@ -13,9 +13,14 @@
     require_once('config/captchacredentials.php');
     require_once('config/captchaconfig.php');  
 
-    $res = verify_captcha();
+    // if(isset($_POST['token']) && !empty($_POST['token'])){
+    //     $res = verify_captcha();
+    // }
+    // else{
+    //     $res = null;
+    // }
     
-    if ($res['success'] == true && $res['score'] >= 0.5) {
+    // if ($res && $res['success'] == true && $res['score'] >= 0.5) {
         
         require_once 'config/dbconfig.php';
 
@@ -39,7 +44,7 @@
                     if(password_verify($passwd, $hash)){
                         $msg = "Ai intrat!";
 
-                        if (!isset ($_SESSION)) session_start();
+                        if (session_status() == PHP_SESSION_NONE) session_start();
 
                         $_SESSION['adminloggedin'] = true;
                         $_SESSION['adminid'] = $ret['id'];
@@ -63,21 +68,17 @@
             echo $e->getMessage();
         }
     
-    } else {
+    // } else {
     
-        echo '<div>
-        Error! The security token has expired or you are a bot.
-        </div>';
-    }  
+    //     echo '<div>
+    //     Error! The security token has expired or you are a bot.
+    //     </div>';
+    // }  
 ?>
 
 <html>
     <head>
         <meta name="robots" content="noindex">
-        
-        <?php  
-            require_once 'config/captchacredentials.php';
-        ?>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $site_key ?>"></script>

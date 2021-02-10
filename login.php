@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-    if (!isset ($_SESSION)) session_start();
+    if (session_status() == PHP_SESSION_NONE) session_start();
 
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
         header("location: home.php");
@@ -30,7 +30,7 @@
                 if(password_verify($passwd, $hash)){
                     $msg = "Ai intrat!";
 
-                    if (!isset ($_SESSION)) session_start();
+                    if (session_status() == PHP_SESSION_NONE) session_start();
 
                     $_SESSION['loggedin'] = true;
                     $_SESSION['id'] = $ret['id'];
