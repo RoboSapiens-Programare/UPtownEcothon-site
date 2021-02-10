@@ -2,7 +2,7 @@
 <?php
     // header('Location: notyet.php');
     //imi dadea o eroare but this seemed to fix it, nu cred ca ai nevoie de session aici dar nu pare ca vrea sa mearga fara????
-    if (!isset ($_SESSION)) session_start();
+    if (session_status() == PHP_SESSION_NONE) session_start();
 
     require_once $_SERVER["DOCUMENT_ROOT"] . "/config/dbconfig.php";
     require_once $_SERVER["DOCUMENT_ROOT"] . "/config/captchacredentials.php";
@@ -331,9 +331,8 @@
                 //verify all input fields are filled in + checks if the passwords match
                 var input = section.querySelectorAll("input");
                 for (i = 0; i < input.length; ++i) {
-                    if((input[i].value.length == 0 || input[i]==null) && input[i].type != "hidden"){
+                    if((input[i].value.length == 0 || input[i]==null)){
                         input[i].style.borderColor = "red";
-                        alert(input[i]);
                         isOk = false;
                     } else if (input[i].getAttribute('id')=="cpasswd"){
                         var passwdValue = document.forms["registration"]["passwd"].value;

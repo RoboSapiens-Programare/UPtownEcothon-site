@@ -1,5 +1,5 @@
 <?php
-    if (!isset ($_SESSION)) session_start();
+    if (session_status() == PHP_SESSION_NONE) session_start();
 
     require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . "/config/mailconfig.php";
