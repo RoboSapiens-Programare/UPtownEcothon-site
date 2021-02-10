@@ -4,10 +4,10 @@
     if (!isset ($_SESSION)) session_start();
 
 	$displaylogin = true;
-	// if(!isset($_SESSION['adminloggedin']) || $_SESSION['adminloggedin'] == false){
-    //     header('Location: adminlogin.php');
-    //     die();
-	// }
+	if(!isset($_SESSION['adminloggedin']) || $_SESSION['adminloggedin'] == false){
+        header('Location: adminlogin.php');
+        die();
+	}
 ?>
 
 <?php
