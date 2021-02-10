@@ -1,7 +1,8 @@
 .rectangle-content {
     position: absolute;
     background-color: aliceblue;
-    font-family: 'Montserrat', sans-serif; font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
     font-size: 1vw;
     color: black;
     border-radius: 0.8vw;
@@ -16,7 +17,7 @@
 .rectangle-content .circle-bottom-left,
 .rectangle-content .circle-top-right,
 .rectangle-content .circle-top-left {
-    font-family: 'Khand', sans-serif; 
+    font-family: 'Khand', sans-serif;
     font-weight: bold;
     position: absolute;
     border-radius: 100%;
@@ -57,6 +58,7 @@
 .sponsors .rectangle-content .circle-bottom-right {
     background-color: #340634;
     cursor: pointer;
+    transition: all 300ms ease;
 }
 
 .sponsors .rectangle-content .circle-top-left:hover,
@@ -66,6 +68,7 @@
     /* filter: grayscale(100%) saturate(150%); */
     background-color: #d222d2;
     cursor: pointer;
+    transition: all 300ms ease;
 }
 
 .circle-top-left {

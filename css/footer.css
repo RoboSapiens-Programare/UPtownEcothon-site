@@ -1,13 +1,14 @@
 #home #background,
 #sponsors-mobile #background,
-#login #background {
+#login #background,
+.sponsors #background {
     background-color: #d222d2;
 }
 
-.sponsors #background {
-    /* background-color: #d222d2; */
+
+/* .sponsors #background {
     background-color: #340634;
-}
+} */
 
 .info-mobile #background {
     /* background-color: #d222d2; */
