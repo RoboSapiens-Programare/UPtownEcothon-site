@@ -10,6 +10,23 @@
           
 		<?php include 'elements/header.php'; ?>
 
+        <style>
+            /* .tag{
+                position: absolute;
+                color: white;
+                font-size: 1vw;
+                top: 50%;
+                left: 0vh;
+                transform: translate(0%,-50%);
+                transition: all 200ms ease;
+            }
+            .rectangle-content .circle-top-left:hover .tag{
+                left: 18vh;
+                transform: translate(100%,-50%);
+                transition: all 200ms ease;
+            } */
+        </style>
+
     </head>
     
     <body class="sponsors" style="margin: 0; background-color:#340634; overflow-x:hidden; ">
@@ -52,6 +69,7 @@
                             <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Softelligence']['desc']; ?> </div>
+
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 75%; transform:translate(-50%,-50%)">
@@ -78,26 +96,40 @@
                     </div>
 
                     <div id="container-partners" style="position:relative; width:100%; height:85vh; background-color:transparent;">
-                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 25%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><div class="text-centrat" style="width:90%"><img src="pictures/logo-softelligence.png" alt="Softelligence" style="width:100%"></div></div>
-                            <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
+                        <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 20%; transform:translate(-50%,-50%)">
+                            <div class="circle-top-left" id="hoverpls" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 30vh; width:30vh;"><div class="text-centrat" style="width:90%"><img src="pictures/logo-softelligence.png" alt="Softelligence" style="width:100%"></div></div>
+                            <div class="circle-bottom-right" style="height: 30vh; width:30vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Softelligence']['desc']; ?> </div>
-                        </div>
-
-                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 75%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><div class="text-centrat" style="width:90%"><img src="pictures/geyc.png" alt="geyc" style="width: 100%;"></div></div>
-                            <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
                             
-                            <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Endava']['desc']; ?> </div>
+                            <div class="tagtag">Parteneri Strategici, Media</div>
                         </div>
 
-                        <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 50%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><div class="text-centrat" style="width:90%"><img src="pictures/FTC.png" alt="FTC" style="width:100%"></div></div>
-                            <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
+                        <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 60%; transform:translate(-50%,-50%)">
+                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 30vh; width:30vh;"><div class="text-centrat" style="width:90%"><img src="pictures/logo-highedu.png" alt="High Edu" style="width:100%"></div></div>
+                            <div class="circle-bottom-right" style="height: 30vh; width:30vh;"></div>
+                            
+                            <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['HighEdu']['desc']; ?> </div>
+                            <div class="tagtag">Parteneri Strategici, Media</div>
+                        </div>
+
+                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 40%; transform:translate(-50%,-50%)">
+                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 30vh; width:30vh;"><div class="text-centrat" style="width:90%"><img src="pictures/geyc.png" alt="geyc" style="width: 100%;"></div></div>
+                            <div class="circle-bottom-right" style="height: 30vh; width:30vh;"></div>
+                            
+                            <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Geyc']['desc']; ?> </div>
+                            <div class="tagtag">Parteneri Strategici, Media</div>
+                        </div>
+
+                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 80%; transform:translate(-50%,-50%)">
+                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 30vh; width:30vh;"><div class="text-centrat" style="width:90%"><img src="pictures/FTC.png" alt="FTC" style="width:100%"></div></div>
+                            <div class="circle-bottom-right" style="height: 30vh; width:30vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['FTC']['desc']; ?> </div>
+                            <div class="tagtag">Parteneri Strategici, Media</div>
                         </div>
+
+                        
                     </div>
                 </div>    
             </div> 
