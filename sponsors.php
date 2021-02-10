@@ -12,7 +12,7 @@
 
     </head>
     
-    <body class="sponsors" style="margin: 0; background-color:#340634; overflow-x:hidden; background:linear-gradient(#340634, #340634), url(pictures/blob.gif); background-size:100% 100%; background-blend-mode: multiply; background-position:left top;  background-repeat:repeat-x; ">
+    <body class="sponsors" style="margin: 0; background-color:#340634; overflow-x:hidden; ">
 
         <?php 
 			include "elements/sageata.html";
@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 50%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><div class="text-centrat" style="width:90%"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%"></div></div>
+                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><div class="text-centrat" style="width:90%"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%; filter:contrast(200%); -webkit-filer:contrast(200%);"></div></div>
                             <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Gemini']['desc']; ?> </div>
