@@ -13,9 +13,9 @@
     require_once('config/captchacredentials.php');
     require_once('config/captchaconfig.php');  
 
-    $res = verify_captcha();
+    // $res = verify_captcha();
     
-    if ($res['success'] == true && $res['score'] >= 0.5) {
+    // if ($res['success'] == true && $res['score'] >= 0.5) {
         
         require_once 'config/dbconfig.php';
 
@@ -63,12 +63,12 @@
             echo $e->getMessage();
         }
     
-    } else {
+    // } else {
     
-        echo '<div>
-        Error! The security token has expired or you are a bot.
-        </div>';
-    }  
+    //     echo '<div>
+    //     Error! The security token has expired or you are a bot.
+    //     </div>';
+    // }  
 ?>
 
 <html>
