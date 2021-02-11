@@ -50,7 +50,12 @@
                         $_SESSION['adminid'] = $ret['id'];
                         $_SESSION['adminusername'] = $ret['username'];
 
-                        header("location: cms.php");
+                        if($_SERVER['HTTP_REFERER']){
+                            header("location: " . $_SERVER['HTTP_REFERER']);
+                        }
+                        else{
+                            header("location: home.php");
+                        }
                     }
                     else{
                         $msg = "Username or password incorrect!";
