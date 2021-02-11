@@ -8,11 +8,11 @@
 	}
 
 
-    if($_SERVER["REQUEST_METHOD"] == "GET"){
-        $email = (isset($_GET['email']) && !empty($_GET['email'])) ? filter_var(trim($_GET["email"]), FILTER_SANITIZE_EMAIL) : null;
-        $subject = (isset($_GET['subject']) && !empty($_GET['subject'])) ? $_GET["subject"] : null;
-        $title = (isset($_GET['title']) && !empty($_GET['title'])) ? $_GET["title"] : null;
-        $content = (isset($_GET['content']) && !empty($_GET['content'])) ? $_GET["content"] : null;
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $email = (isset($_POST['email']) && !empty($_POST['email'])) ? filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL) : null;
+        $subject = (isset($_POST['subject']) && !empty($_POST['subject'])) ? $_POST["subject"] : null;
+        $title = (isset($_POST['title']) && !empty($_POST['title'])) ? $_POST["title"] : null;
+        $content = (isset($_POST['content']) && !empty($_POST['content'])) ? $_POST["content"] : null;
 
         if($email && $subject && $title && $content){
             $ncontent = createEmail($title, $content);
@@ -163,7 +163,7 @@
         </div>
 
         <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
-            <form method="GET" id="ting">
+            <form method="POST" id="ting">
                 <label for="email">To:</label>
                 <input type="text" id="email" name="email"> <br>
 
