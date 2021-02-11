@@ -228,7 +228,7 @@
                         <label for="phone"><?php echo $content['RegistrationSect']['Phone']; ?></label>
                         <input type="number" id="phone" name="phone"><br>
                         <label for="position"><?php echo $content['RegistrationSect']['Status']; ?></label>
-                        <select id="position" name="position" style="height:5vh">
+                        <select id="position" name="position" style="height:5vh" onclick="isInSchool();">
                             <option value="selectcard"> - </option>
                             <option value="elev"><?php echo $content['RegistrationSect']['Elev']; ?></option>
                             <option value="student"><?php echo $content['RegistrationSect']['Student']; ?></option>
@@ -238,6 +238,17 @@
                         <label for="dob"><?php echo $content['RegistrationSect']['Age']; ?></label>
                         <input type="date" id="dob" name="dob" min="1920-01-01" max="2020-01-01"><br>
                         
+                        <div id="schooldiv" style="display: none;">
+                            <label for="city"><?php echo $content['RegistrationSect']['City']; ?></label>
+                            <input type="text" id="city" name="city"><br>
+
+                            <label for="institution"><?php echo $content['RegistrationSect']['Institution']; ?></label>
+                            <input type="text" id="institution" name="institution"><br>
+
+                            <label for="studyyear"><?php echo $content['RegistrationSect']['Study year']; ?></label>
+                            <input type="text" id="studyyear" name="studyyear"><br>
+                        </div>
+
                         <label for="experience"><?php echo $content['RegistrationSect']['Experience']; ?></label>
                         <textarea type="text" id="experience" name="experience" style="height: 9vh;"></textarea><br>  
                         <button id="regbtn" type="button"  onclick="registrationOK();">Next</button>  
@@ -430,6 +441,16 @@
 					document.getElementById('msg-reg').innerHTML = 'Please complete all fields accordingly!';
                 }
                 
+            }
+
+            function isInSchool(){
+                var x = document.getElementById("schooldiv");
+                var sel = document.getElementById("position");
+                if (sel.value === "elev" || sel.value === "student") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
             }
 
             function hasTeam(){
