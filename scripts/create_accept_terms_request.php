@@ -6,7 +6,7 @@
 
 	$displaylogin = true;
 	if(!isset($_SESSION['adminloggedin']) || $_SESSION['adminloggedin'] == false){
-        header('Location: adminlogin.php');
+        header('Location: ' . $_SERVER["DOCUMENT_ROOT"] . '/adminlogin.php');
         die();
 	}
 
