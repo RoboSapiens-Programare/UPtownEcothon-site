@@ -10,9 +10,9 @@
 
     if($_SERVER["REQUEST_METHOD"] == "GET"){
         $email = (isset($_GET['email']) && !empty($_GET['email'])) ? filter_var(trim($_GET["email"]), FILTER_SANITIZE_EMAIL) : null;
-        $subject = (isset($_POST['subject']) && !empty($_POST['subject'])) ? $_POST["subject"] : null;
-        $title = (isset($_POST['title']) && !empty($_POST['title'])) ? $_POST["title"] : null;
-        $content = (isset($_POST['content']) && !empty($_POST['content'])) ? $_POST["content"] : null;
+        $subject = (isset($_GET['subject']) && !empty($_GET['subject'])) ? $_GET["subject"] : null;
+        $title = (isset($_GET['title']) && !empty($_GET['title'])) ? $_GET["title"] : null;
+        $content = (isset($_GET['content']) && !empty($_GET['content'])) ? $_GET["content"] : null;
 
         if($email && $subject && $title && $content){
             $ncontent = createEmail($title, $content);
@@ -170,10 +170,10 @@
                 <label for="subject">Subject:</label>
                 <input type="text" id="subject" name="subject"> <br>
 
-                <label for="title">Subject:</label>
+                <label for="title">Title:</label>
                 <input type="text" id="title" name="title"> <br>
 
-                <label for="content">Subject:</label>
+                <label for="content">Content:</label>
                 <textarea id="content" name="content"></textarea> <br>
 
                 <button type="submit">Pwess me dawddy >///<</button>
