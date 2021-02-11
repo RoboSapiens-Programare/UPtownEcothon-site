@@ -27,7 +27,6 @@
         }
         else{
             echo "Sad noises";
-            die();
         }
     }
 
