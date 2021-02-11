@@ -40,8 +40,15 @@
                         $passwd = $ret["passwd"];
                         $username = $ret["username"];
 
+                        $subject = "[UTE]Ne-am updatat termenii și condițiile";
+                        $content = createEmail("Salut! Avem noi termeni și condiții", "Dacă dorești în continuare să participi la eveniment, te rugăm să dai click pe link-ul de mai jos și să introduci datele necesare!\r\n\r\n " . "https://ute.robosapiens.ro/updated_terms.php?uname=" . $username . "&verif=" . base64_encode($passwd) . " Mersi de înțelegere și te așteptăm la eveniment pe 26 februarie!\r\n\r\n Cheers!\r\nEchipa UPtown Ecothon");
+                        $headers = "From: Contact UPtown Ecothon <ute-contact@robosapiens.ro>\r\n";
+                        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+                        mail($email, $subject, $content, $headers);
+
                         http_response_code(200);
-                        echo "https://ute.robosapiens.ro/updated_terms.php?uname=" . $username . "&verif=" . base64_encode($passwd) . "";
+                        echo "Trimis mail!";
                         die();
                     }
                     else{
