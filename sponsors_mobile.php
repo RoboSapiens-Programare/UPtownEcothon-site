@@ -4,7 +4,6 @@
 		<link rel="stylesheet" type="text/css" href="css/sageatatlf.css">
 		<link rel="stylesheet" type="text/css" href="css/basics.css">
 		<link rel="stylesheet" type="text/css" href="css/footer.css">
-        <link rel="stylesheet" type="text/css" href="css/circlecontent.css">
         <link rel="stylesheet" type="text/css" href="css/rotatingcontent.css">
         <link rel="stylesheet" type="text/css" href="css/slidingcontent.css">
           
@@ -49,33 +48,42 @@
                 </div>
                 
 
-                <div class="page-title" style="position: relative; padding-top: 5vh; width:100%; height: 10vh; background-color: #76667d; font-size:5vw; z-index:70">
+                <div class="page-title" style="position: relative; padding-top: 5vh; width:100%; height: 10vh; background-color:#340634; font-size:5vw; z-index:70">
                     <div class="text-centrat" style="color: white; text-decoration: underline dashed #00ff16;">
                         <?php echo $content['Thanks'][2]; ?>                    
                     </div>
                 </div>
+
                 <div id="sect4" class="section" >
+                    <div class="wrapper" style="background-color: #340634;">
+                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/logo-softelligence.png" alt="Softelligence" style="width: 100%;"></div></div>
+                        <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
+                    </div>
+                    <div class="wrapper-sect-content" style="color: black;"><?php echo $content['Softelligence']['desc']; ?></div>
+                    <div class="tagtag"><?php echo $content['Softelligence']['tag']; ?></div>
+                </div>
+                <div id="sect5" class="section" >
                     <div class="wrapper" style="background-color: #76667d;">
+                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/logo-highedu.png" alt="HighEdu" style="width: 100%;"></div></div>
+                        <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
+                    </div>
+                    <div class="wrapper-sect-content" style="color: black;"><?php echo $content['HighEdu']['desc']; ?></div>
+                    <div class="tagtag"><?php echo $content['HighEdu']['tag']; ?></div>
+                </div>
+                <div id="sect6" class="section" >
+                    <div class="wrapper" style="background-color: #9d49a1">
                         <div class="sect-title"> <div class="text-centrat"><img src="pictures/FTC.png" alt="FTC" style="width: 100%;"></div> </div>
                         <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                     </div>
                     <div class="wrapper-sect-content" style="color: black;"><?php echo $content['FTC']['desc']; ?></div>
+                    <div class="tagtag"><?php echo $content['FTC']['tag']; ?></div>
                 </div>
-                <div id="sect5" class="section" >
-                    <div class="wrapper" style="background-color: #340634;">
-                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/logo-softelligence.png" alt="Softelligence" style="width: 100%;"></div> </div>
-                        <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
-                    </div>
-                    <div class="wrapper-sect-content" style="color: black;"><?php echo $content['Softelligence']['desc']; ?></div>
-                </div>
-                <div id="sect6" class="section" >
-                    <div class="wrapper" style="background-color: #9d49a1">
+                
+                <div id="sect7" class="section" >
+                    <div class="wrapper" style="background-color: #5a0b5a;">
                         <div class="sect-title"> <div class="text-centrat"><img src="pictures/geyc.png" alt="Geyc" style="width: 100%;"></div> </div>
-                        <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                     </div>
-                    <div class="wrapper-sect-content" style="color: black;">
-                        <?php echo $content['Geyc']['desc']; ?>
-                    </div>
+                    <div class="tagtag"><?php echo $content['Geyc']['tag']; ?></div>
                 </div>
 
                 <!-- <div class="rotate-index" style="z-index: 70;">
@@ -413,7 +421,9 @@
                 var title = wrapper.getElementsByClassName("sect-title")[0];
                 var readTag =btn.getElementsByClassName('text-centrat')[0];
                 var content = section.getElementsByClassName("wrapper-sect-content")[0];
+                var tag = section.getElementsByClassName("tagtag")[0];
 
+                transitions.fadeOut(tag, tweenFunctions.easeInOutQuad, 200);
 
                 transitions.resize2D(new Dimension(wrapper, 100, "pw"),
                     new Dimension(wrapper, 20, "ph"),
@@ -423,8 +433,8 @@
                 transitions.slideY(new Dimension(title, 15, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
-                transitions.resize2D(new Dimension(title, 50, "percent"),
-                    new Dimension(title, 5, "vh"),
+                transitions.resize2D(new Dimension(title, 40, "percent"),
+                    new Dimension(title, 4, "vh"),
                     tweenFunctions.easeInOutQuad,
                     500);
                 
@@ -495,22 +505,22 @@
                 var wrapper = btn.parentElement;
                 var section = wrapper.parentElement;
                 var title = wrapper.getElementsByClassName("sect-title")[0];
-                var readTag =btn.getElementsByClassName('text-centrat')[0];
+                var readTag = btn.getElementsByClassName('text-centrat')[0];
                 var content = section.getElementsByClassName("wrapper-sect-content")[0];
+                var tag = section.getElementsByClassName("tagtag")[0];
 
+                transitions.fadeIn(tag, tweenFunctions.easeInOutQuad, 200);
 
                 transitions.resize2D(new Dimension(wrapper, 100, "pw"),
                     new Dimension(wrapper, 100, "ph"),
                     tweenFunctions.easeInOutQuad,
                     500);
 
-
-
                 // transitions.translate2D(new Dimension(title, 0, "pw"),
                 //     new Dimension(title, 30, "ph"),
                 //     tweenFunctions.easeInOutQuad,
                 //     500);
-                transitions.slideY(new Dimension(title, 40, "percent"),
+                transitions.slideY(new Dimension(title, 35, "percent"),
                     tweenFunctions.easeInOutQuad,
                     500);
 

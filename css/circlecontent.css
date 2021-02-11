@@ -69,6 +69,7 @@
     left: 0vh;
     transform: translate(0%, -50%);
     transition: all 200ms ease;
+    /* opacity: 0; */
 }
 
 .sponsors .rectangle-content .circle-top-left:hover,
@@ -81,10 +82,11 @@
     transition: all 300ms ease;
 }
 
-.sponsors .rectangle-content .circle-top-left:hover+.tagtag,
-.sponsors .rectangle-content .circle-top-right:hover+.tagtag {
+.sponsors .rectangle-content .circle-top-left:hover~.tagtag,
+.sponsors .rectangle-content .circle-top-right:hover~.tagtag {
     left: 18vh;
-    transform: translate(100%, -50%);
+    /* transform: translate(100%, -50%); */
+    /* opacity: 1; */
     transition: all 200ms ease;
 }
 

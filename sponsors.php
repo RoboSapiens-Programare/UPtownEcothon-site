@@ -64,22 +64,22 @@
                     </div>
 
                     <div id="container-spon" style="position:relative; width:100%; height:85vh; background-color:transparent;">
-                        <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 25%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><div class="text-centrat" style="width:90%"><img src="pictures/logo-softelligence.png" alt="Softelligence" style="width:100%"></div></div>
-                            <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
-                            
-                            <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Softelligence']['desc']; ?> </div>
-
-                        </div>
-
-                        <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 75%; transform:translate(-50%,-50%)">
+                        
+                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 25%; transform:translate(-50%,-50%)">
                             <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><div class="text-centrat" style="width:90%"><img src="pictures/endava.png" alt="Endava" style="width: 100%;"></div></div>
                             <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Endava']['desc']; ?> </div>
                         </div>
 
-                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 50%; transform:translate(-50%,-50%)">
+                        <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 50%; transform:translate(-50%,-50%)">
+                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><div class="text-centrat" style="width:90%"><img src="pictures/logo-softelligence.png" alt="Softelligence" style="width:100%"></div></div>
+                            <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
+                            
+                            <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Softelligence']['desc']; ?> </div>
+                        </div>
+
+                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 75%; transform:translate(-50%,-50%)">
                             <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><div class="text-centrat" style="width:90%"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%; filter:contrast(200%); -webkit-filer:contrast(200%);"></div></div>
                             <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
                             
@@ -100,9 +100,8 @@
                             <div class="circle-top-left" id="hoverpls" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 30vh; width:30vh;"><div class="text-centrat" style="width:90%"><img src="pictures/logo-softelligence.png" alt="Softelligence" style="width:100%"></div></div>
                             <div class="circle-bottom-right" style="height: 30vh; width:30vh;"></div>
                             
-                            <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Softelligence']['desc']; ?> </div>
-                            
-                            <div class="tagtag">Parteneri Strategici, Media</div>
+                            <div class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Softelligence']['desc']; ?> </div>
+                            <div class="tagtag"><?php echo $content['Softelligence']['tag']; ?></div>
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 60%; transform:translate(-50%,-50%)">
@@ -110,15 +109,13 @@
                             <div class="circle-bottom-right" style="height: 30vh; width:30vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['HighEdu']['desc']; ?> </div>
-                            <div class="tagtag">Parteneri Strategici, Media</div>
+                            <div class="tagtag"><?php echo $content['HighEdu']['tag']; ?></div>
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 40%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 30vh; width:30vh;"><div class="text-centrat" style="width:90%"><img src="pictures/geyc.png" alt="geyc" style="width: 100%;"></div></div>
-                            <div class="circle-bottom-right" style="height: 30vh; width:30vh;"></div>
+                            <div class="circle-top-left" style="height: 30vh; width:30vh; cursor:default"><div class="text-centrat" style="width:90%"><img src="pictures/geyc.png" alt="geyc" style="width: 100%;"></div></div>
                             
-                            <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Geyc']['desc']; ?> </div>
-                            <div class="tagtag">Parteneri Strategici, Media</div>
+                            <div class="tagtag"><?php echo $content['Geyc']['tag']; ?></div>
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 80%; transform:translate(-50%,-50%)">
@@ -126,7 +123,7 @@
                             <div class="circle-bottom-right" style="height: 30vh; width:30vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['FTC']['desc']; ?> </div>
-                            <div class="tagtag">Parteneri Strategici, Media</div>
+                            <div class="tagtag"><?php echo $content['FTC']['tag']; ?></div>
                         </div>
 
                         
