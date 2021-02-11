@@ -16,7 +16,7 @@
                 background-color: black;
                 color:white;
                 /* font-size:4vw; */
-                height: 20%;
+                height: 30%;
                 width: 90%;
             }
             .info-btn div{
@@ -47,22 +47,22 @@
                 Info
             </div>
         </div>
-        <div style="position: relative; width:100%; height:30vh; border:0px solid blue">
+        <div style="position: relative; width:100%; height:20vh; border:0px solid blue">
         <a href="#general" class="info-btn" style="left:5%; top: 5%">
                 <div class="text-centrat">
                     General
                 </div>
             </a>
-            <a href="#program" class="info-btn" style="left:5%; top: 35%">
+            <a href="#program" class="info-btn" style="left:5%; top: 48%">
                 <div class="text-centrat">
                     Program
                 </div>
             </a>
-            <a href="#news" class="info-btn" style="left:5%; top: 65%">
+            <!-- <a href="#news" class="info-btn" style="left:5%; top: 65%">
                 <div class="text-centrat">
                     News
                 </div>
-            </a>
+            </a> -->
         </div>
         <div id="general" style="position: relative; width:100%; background-color: white; ">
             <div style="position: relative; color:black">
@@ -86,13 +86,13 @@
                 <img src="pictures/timetablefinal.png" alt="timetable.png crashed most likely" style=" width:inherit;">
             </div>
         </div>
-        <div id="news" style="position: relative; width:100%; background-color:black; ">
+        <!-- <div id="news" style="position: relative; width:100%; background-color:black; ">
             <div style="position: relative; color:white">
                 <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family: 'Montserrat', sans-serif">
                     <h2> News </h2>
                     <p style="font-size: 1.5vh;"><?php echo $content['Errors']['news-unav']; ?></p>
                 </div>
-            </div>
+            </div> -->
             <!-- <div id="news-container" class="rounded-rect" style="position:relative; left: 50%; transform:translateX(-50%); height:75%; width: 90%; overflow-y: auto; overflow-x: hidden; padding:0"> -->
                     <!-- <div class="franshalssection" id="franshals1">
                         <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
@@ -149,7 +149,7 @@
 
                     </div>
                 </div> -->
-        </div>
+        <!-- </div> -->
 
         <?php include "elements/footer.html"; ?>	
 
