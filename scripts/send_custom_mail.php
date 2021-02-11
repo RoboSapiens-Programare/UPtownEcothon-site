@@ -1,4 +1,6 @@
 <?php
+
+
     if (session_status() == PHP_SESSION_NONE) session_start();
 
 	$displaylogin = true;
@@ -7,6 +9,8 @@
         die();
 	}
 
+
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/config/mailconfig.php";
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $email = (isset($_POST['email']) && !empty($_POST['email'])) ? filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL) : null;
