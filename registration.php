@@ -389,12 +389,12 @@
                                 isOk = false;
                             }
                         }
-                    } else if(selects[i].value!="elev"||selects[i].value!="student"){
+                    } else if(selects[i].value!="elev" && selects[i].value!="student"){
                         isElev = false;
                     }
                 }
 
-                //verify all input fields are filled in + checks if the passwords match (only checks city and stuff fields if is elev TEORETIC)
+                //verify all input fields are filled in + checks if the passwords match (only checks city and stuff fields if is elev)
                 var input = section.querySelectorAll("input");
                 for (i = 0; i < input.length; ++i) {
                     if((input[i].value.length == 0 || input[i]==null)){
@@ -408,7 +408,7 @@
                             document.getElementById("cpasswd").style.borderColor = "red";
                             isOk = false;
                         }
-                    } else if (inpu[i].getAttribute('id')=="city" && !isElev){
+                    } else if (input[i].getAttribute('id')=="city" && !isElev){
                         i+=2;
                     }
                 }
