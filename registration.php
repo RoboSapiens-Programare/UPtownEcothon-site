@@ -338,6 +338,8 @@
 
             function validateForm(section, hasEmail){
                 var isOk = true;
+
+                var isElev = true;
             
                 if(hasEmail){
                     //verify experience field is filled in
@@ -387,19 +389,8 @@
                                 isOk = false;
                             }
                         }
-                    } else if (selects[i].value=="elev" || selects[i].value=="student"){
-                        if(document.forms["registration"]["city"].value.length == 0 || document.forms["registration"]["city"]==null){
-                                document.forms["registration"]["city"].style.borderColor="red";
-                                isOk = false;
-                            }
-                        if(document.forms["registration"]["institution"].value.length == 0 || document.forms["registration"]["institution"]==null){
-                            document.forms["registration"]["institution"].style.borderColor="red";
-                            isOk = false;
-                        }
-                        if(document.forms["registration"]["studyyear"].value.length == 0 || document.forms["registration"]["studyyear"]==null){
-                            document.forms["registration"]["studyyear"].style.borderColor="red";
-                            isOk = false;
-                        }
+                    } else if(selects[i].value!="elev" && selects[i].value!="student"){
+                        isElev = false;
                     }
                 }
 
@@ -417,12 +408,10 @@
                             document.getElementById("cpasswd").style.borderColor = "red";
                             isOk = false;
                         }
-                    } else if (input[i].getAttribute('id')=="city" || input[i].getAttribute('id')=="institution" || input[i].getAttribute('id')=="studyyear"){
-                        i++;
+                    } else if (input[i].getAttribute('id')=="city" && !isElev){
+                        i+=2;
                     }
                 }
-
-               
 
                 //checks idea field only if person has team or wants to work alone
                 if(mandatoryIdea==true){
