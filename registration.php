@@ -339,23 +339,8 @@
             function validateForm(section, hasEmail){
                 var isOk = true;
 
-                //verify all input fields are filled in + checks if the passwords match
-                var input = section.querySelectorAll("input");
-                for (i = 0; i < input.length; ++i) {
-                    if((input[i].value.length == 0 || input[i]==null)){
-                        input[i].style.borderColor = "red";
-                        isOk = false;
-                    } else if (input[i].getAttribute('id')=="cpasswd"){
-                        var passwdValue = document.forms["registration"]["passwd"].value;
-                        var cpasswdValue = document.forms["registration"]["cpasswd"].value;
-                        if (passwdValue.normalize() != cpasswdValue.normalize()){
-                            document.getElementById("passwd").style.borderColor = "red";
-                            document.getElementById("cpasswd").style.borderColor = "red";
-                            isOk = false;
-                        }
-                    }
-                }
-
+                var isElev = true;
+            
                 if(hasEmail){
                     //verify experience field is filled in
                     if(document.forms["registration"]["experience"].value.length == 0 || document.forms["registration"]["experience"]==null){
@@ -404,6 +389,27 @@
                                 isOk = false;
                             }
                         }
+                    } else if(selects[i].value!="elev" && selects[i].value!="student"){
+                        isElev = false;
+                    }
+                }
+
+                //verify all input fields are filled in + checks if the passwords match (only checks city and stuff fields if is elev)
+                var input = section.querySelectorAll("input");
+                for (i = 0; i < input.length; ++i) {
+                    if((input[i].value.length == 0 || input[i]==null)){
+                        input[i].style.borderColor = "red";
+                        isOk = false;
+                    } else if (input[i].getAttribute('id')=="cpasswd"){
+                        var passwdValue = document.forms["registration"]["passwd"].value;
+                        var cpasswdValue = document.forms["registration"]["cpasswd"].value;
+                        if (passwdValue.normalize() != cpasswdValue.normalize()){
+                            document.getElementById("passwd").style.borderColor = "red";
+                            document.getElementById("cpasswd").style.borderColor = "red";
+                            isOk = false;
+                        }
+                    } else if (input[i].getAttribute('id')=="city" && !isElev){
+                        i+=2;
                     }
                 }
 
