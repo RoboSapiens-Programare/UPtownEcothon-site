@@ -219,12 +219,12 @@
         font-family: 'Khand', sans-serif;
         font-weight: bold;
         background-color: white;
-        /* padding: 5%; */
+        /* padding: 1vh 1vw 1vh 1vw; */
     }
     .sect-content {
         position: absolute;
         width: 90%;
-        top: 5%;
+        top: 1%;
         left: 50%;
         transform: translateX(-50%);
     }

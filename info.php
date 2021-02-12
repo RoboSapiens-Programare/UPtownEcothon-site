@@ -32,20 +32,20 @@
         <!-- document.location.href = '#program'; -->
         <div id="info-menu" style="position: fixed; width: 10vw; height: 70vh; top:50vh; right: 1vw; transform:translateY(-50%); z-index: 20">
             <a href="#general">
-                <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 35%; padding: 0; border:0.5vh solid #00ff16">
+                <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 10%; padding: 0; border:0.5vh solid #00ff16">
                     <div class="text-centrat" style="font-size: 1.5vw;">General</div>
                 </div>
             </a>
             <a href="#program">
-                <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 65%; padding: 0; border:0.5vh solid #00ff16">
+                <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 40%; padding: 0; border:0.5vh solid #00ff16">
                     <div class="text-centrat" style="font-size: 1.5vw;">Program</div>
                 </div>
             </a>
-            <!-- <a href="#news">
+            <a href="#terms">
                 <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 70%; padding: 0; border:0.5vh solid #00ff16">
-                    <div class="text-centrat" style="font-size: 1.5vw;">News</div>
+                    <div class="text-centrat" style="font-size: 1.5vw;">Terms & Conditions</div>
                 </div>
-            </a> -->
+            </a>
         </div>
 
         <!-- background-color: #855754; -->
@@ -72,18 +72,14 @@
                     </div>
                 </div>    
 
-                <!-- <div id="news" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
-                    <div id="news-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; padding:0">
-                        <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
-                            <?php echo $content['Errors']['news-unav']; ?>
-                        </div>
-
-                        <div >
-
-                        </div>
-                    
+                <div id="terms" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
+                    <div id="terms-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; padding:1vh 2vw 1vh 2vw; font-family: 'Montserrat', sans-serif; font-size: 1.4vw; text-align:justify">
+                        <!-- <div class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 1.4vw; text-align:justify"> -->
+                        <!-- <?php echo $content['Errors']['news-unav']; ?> -->
+                        <?php echo $content['Terms']['Terms']; ?>
+                        <!-- </div>                    -->
                     </div> 
-                </div> -->
+                </div>
             </div> 
         </div>
 
