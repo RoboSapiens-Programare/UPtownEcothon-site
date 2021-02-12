@@ -280,7 +280,7 @@
                         </div>
                         <div id="configNewTeam" style="display: none;">
                             <label for="teamCreateName"><?php echo $content['TeamSect']['TeamName']; ?></label>
-                            <input type="text" id="teamCreateName" name="teamcreatename" ><br>
+                            <input type="text" id="teamcreatename" name="teamcreatename" ><br>
                         </div>
 
                         <div id="ideasSection" style="display: none;">
