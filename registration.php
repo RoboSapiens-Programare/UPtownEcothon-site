@@ -407,10 +407,12 @@
                 //verify all input fields are filled in + checks if the passwords match (+THEORETICALLY only checks city and stuff fields if is elev)
                 var input = section.querySelectorAll("input");
                 for (i = 0; i < input.length; ++i) {
-                    if((input[i].value.length == 0 || input[i]==null)){
+                    if (input[i].getAttribute('id')==="city" && !isElev){
+                        i+=2;
+                    } else if((input[i].value.length == 0 || input[i]==null)){
                         input[i].style.borderColor = "red";
                         isOk = false;
-                    } else if (input[i].getAttribute('id')=="cpasswd"){
+                    } else if (input[i].getAttribute('id')==="cpasswd"){
                         var passwdValue = document.forms["registration"]["passwd"].value;
                         var cpasswdValue = document.forms["registration"]["cpasswd"].value;
                         if (passwdValue.normalize() != cpasswdValue.normalize()){
@@ -418,9 +420,7 @@
                             document.getElementById("cpasswd").style.borderColor = "red";
                             isOk = false;
                         }
-                    } else if (input[i].getAttribute('id')=="city" && !isElev){
-                        i+=2;
-                    }
+                    } 
                 }
 
                 return isOK;
