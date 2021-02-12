@@ -409,6 +409,8 @@
                 for (i = 0; i < input.length; ++i) {
                     if (input[i].getAttribute('id')==="city" && !isElev){
                         i+=2;
+                    } else if(input[i].getAttribute('id'==="teamcreatename")){
+                        i++;
                     } else if((input[i].value.length == 0 || input[i]==null)){
                         input[i].style.borderColor = "red";
                         isOk = false;
