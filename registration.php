@@ -423,7 +423,7 @@
                     } 
                 }
 
-                return isOK;
+                return isOk;
             }
             
             function registrationOK(){
