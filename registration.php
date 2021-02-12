@@ -358,6 +358,7 @@
                     }
                 }
                 
+                var isElev = false;
                 var mandatoryIdea = false;
                 // verify select fields + conditions to only check create or select team fields if user has selected so
                 var selects = section.querySelectorAll("select");
@@ -387,23 +388,23 @@
                                 isOk = false;
                             }
                         }
-                    } else if (selects[i].value=="elev" || selects[i].value=="student"){
-                        if(document.forms["registration"]["city"].value.length == 0 || document.forms["registration"]["city"]==null){
-                                document.forms["registration"]["city"].style.borderColor="red";
-                                isOk = false;
-                            }
-                        if(document.forms["registration"]["institution"].value.length == 0 || document.forms["registration"]["institution"]==null){
-                            document.forms["registration"]["institution"].style.borderColor="red";
-                            isOk = false;
-                        }
-                        if(document.forms["registration"]["studyyear"].value.length == 0 || document.forms["registration"]["studyyear"]==null){
-                            document.forms["registration"]["studyyear"].style.borderColor="red";
-                            isOk = false;
-                        }
+                    } else if(selects[i].value=="elev" || selects[i].value=="student"){
+                        isElev = true;
                     }
                 }
 
-                //verify all input fields are filled in + checks if the passwords match (only checks city and stuff fields if is elev)
+                //checks idea field only if person has team or wants to work alone
+                if(mandatoryIdea==true){
+                    // alert("a");
+                    if(document.forms["registration"]["ideas"].value.length == 0 || document.forms["registration"]["ideas"]==null){
+                        // alert("b");
+                        document.forms["registration"]["ideas"].style.borderColor="red";
+                        isOk = false;
+                    }
+                }
+
+                
+                //verify all input fields are filled in + checks if the passwords match (+THEORETICALLY only checks city and stuff fields if is elev)
                 var input = section.querySelectorAll("input");
                 for (i = 0; i < input.length; ++i) {
                     if((input[i].value.length == 0 || input[i]==null)){
@@ -417,29 +418,12 @@
                             document.getElementById("cpasswd").style.borderColor = "red";
                             isOk = false;
                         }
-                    } else if (input[i].getAttribute('id')=="city" || input[i].getAttribute('id')=="institution" || input[i].getAttribute('id')=="studyyear"){
-                        i++;
+                    } else if (input[i].getAttribute('id')=="city" && !isElev){
+                        i+=2;
                     }
                 }
 
-               
-
-                //checks idea field only if person has team or wants to work alone
-                if(mandatoryIdea==true){
-                    // alert("a");
-                    if(document.forms["registration"]["ideas"].value.length == 0 || document.forms["registration"]["ideas"]==null){
-                        // alert("b");
-                        document.forms["registration"]["ideas"].style.borderColor="red";
-                        isOk = false;
-                    }
-                }
-
-                //daca ceva nu e ok
-                if(isOk==false){
-                    return false;
-                } else {
-                    return true;
-                }
+                return isOK;
             }
             
             function registrationOK(){
