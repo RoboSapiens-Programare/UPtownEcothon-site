@@ -407,7 +407,7 @@
                     } else if(input[i].getAttribute('id')==="username"){
                         //checks username doesnt contain special characters
                         var username = input[i].value;
-                        const re1 = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+                        const re = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
                         var isspecial = re.test(String(username).toLowerCase());
 
                         if(isspecial){
