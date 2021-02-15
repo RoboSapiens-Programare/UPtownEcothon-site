@@ -404,12 +404,22 @@
                     if(input[i].value.length == 0 || input[i]==null){
                         input[i].style.borderColor = "red";
                         isOK = false;
-                    }
-                }
+                    } else if(input[i].getAttribute('id')==="username"){
+                        //checks username doesnt contain special characters
+                        var username = input[i].value;
+                        const re1 = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+                        var isspecial = re.test(String(username).toLowerCase());
+
+                        if(isspecial){
+                            input[i].style.borderColor = "red";
+                            isOK = false;
+                        }
+                    } 
+                } 
 
                 if(!isOK){
                     errorMsg.style.display = "block";
-                    errorMsg.innerHTML = "Please complete all of the fields before submitting.";
+                    errorMsg.innerHTML = "Please complete all of the fields accordingly before submitting.";
                     return false;
                 } else {
                     // for (i = 0; i < input.length; ++i) {

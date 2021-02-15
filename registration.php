@@ -404,17 +404,32 @@
                 }
 
                 
+                //(this is possibly the worst most hardcoded way you can do this but i am not redoing it now) 
                 //verify all input fields are filled in + checks if the passwords match (+THEORETICALLY only checks city and stuff fields if is elev)
                 var input = section.querySelectorAll("input");
                 for (i = 0; i < input.length; ++i) {
                     if (input[i].getAttribute('id')==="city" && !isElev){
+                        //skip over school related attributes if the person is not student
                         i+=2;
-                    } else if(input[i].getAttribute('id')==="teamcreatename"){
-                        i++;
                     } else if((input[i].value.length == 0 || input[i]==null)){
+                        //checks if all fields are not empty
                         input[i].style.borderColor = "red";
                         isOk = false;
+                    } else if(input[i].getAttribute('id')==="teamcreatename"){
+                        //skips over teamcreatename cause that one is checked separately
+                        i++;
+                    } else if(input[i].getAttribute('id')==="username"){
+                        //checks username doesnt contain special characters
+                        var username = input[i].value;
+                        const re1 = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+                        var isspecial = re.test(String(username).toLowerCase());
+
+                        if(isspecial){
+                            input[i].style.borderColor = "red";
+                            isOk = false;
+                        }
                     } else if (input[i].getAttribute('id')==="cpasswd"){
+                        //checks passwords match
                         var passwdValue = document.forms["registration"]["passwd"].value;
                         var cpasswdValue = document.forms["registration"]["cpasswd"].value;
                         if (passwdValue.normalize() != cpasswdValue.normalize()){
