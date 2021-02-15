@@ -3,7 +3,7 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . "/config/mailconfig.php";
 
-    $uname = (isset($_GET['uname']) && !empty($_GET['uname'])) ? filter_var(trim($_GET["uname"]), FILTER_SANITIZE_ENCODED) : null;
+    $uname = (isset($_GET['uname']) && !empty($_GET['uname'])) ? filter_var(trim($_GET["uname"]), FILTER_SANITIZE_SPECIAL_CHARS) : null;
     $passwd_verif = (isset($_GET['verif']) && !empty($_GET['verif'])) ? base64_decode($_GET['verif']) : null;
 
     try{
