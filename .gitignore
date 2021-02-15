@@ -3,3 +3,4 @@ registration.sq3
 config/dbcredentials.php
 config/passwordhashgenerator.php
 config/captchacredentials.php
+!contest/uploads/*
