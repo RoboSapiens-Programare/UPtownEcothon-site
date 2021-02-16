@@ -12,86 +12,85 @@
 ?>
 <!-- Getting info from db -->
 <?php
-    // !!!!!!!!!!!!!!!!!! o sa fac asta maine caci acm nu ma duce capul
-        try{
-            $db = new SQLiDB();
+    try{
+        $db = new SQLiDB();
 
-            $fields = array();
-            $participants = array();
-            $teamID;
+        $fields = array();
+        $participants = array();
+        $teamID;
 
-            $sql = "SELECT team_id FROM users WHERE id = :id LIMIT 1";
-            $stmt = $db->prepare($sql);
+        $sql = "SELECT team_id FROM users WHERE id = :id LIMIT 1";
+        $stmt = $db->prepare($sql);
 
-            $stmt->bindParam(":id", $_SESSION["id"]);
+        $stmt->bindParam(":id", $_SESSION["id"]);
 
-            $stmt->execute();
+        $stmt->execute();
 
-            if($stmt){
-                $ret = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($stmt){
+            $ret = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                $teamID = $ret["team_id"]; 
-                // echo "<script type='text/javascript'>alert(" . $ret["team_id"] . ");</script>";
+            $teamID = $ret["team_id"]; 
+            // echo "<script type='text/javascript'>alert(" . $ret["teamID"] . ");</script>";
 
-                if($teamID!=99){
-                    //get team name
-                    $sql = "SELECT * FROM teams WHERE id = :id LIMIT 1";
-                    $stmt = $db->prepare($sql);
+            if($teamID!=99 && $teamID!=0){
+                //get team name
+                $sql = "SELECT * FROM teams WHERE id = :id LIMIT 1";
+                $stmt = $db->prepare($sql);
 
-                    $stmt->bindParam(":id", $teamID);
+                $stmt->bindParam(":id", $teamID);
 
-                    $stmt->execute();
-                    if($stmt){
-                        $ret = $stmt->fetch(PDO::FETCH_ASSOC);
-                        if(isset($ret) && !empty($ret)){
-                            // echo "<script type='text/javascript'>alert(" . $ret . ");</script>";
-                            $fields["team_name"] = $ret["name"];
-                        } else{
-                            $fields["team_name"] = "No team!";
-                        }
-                    } 
+                $stmt->execute();
+                if($stmt){
+                    $ret = $stmt->fetch(PDO::FETCH_ASSOC);
+                    if(isset($ret) && !empty($ret)){
+                        // echo "<script type='text/javascript'>alert(" . $ret . ");</script>";
+                        $fields["team_name"] = $ret["name"];
+                    } else{
+                        $fields["team_name"] = "No team!";
+                    }
+                } 
 
-                    // get members
-                    $sql = "SELECT * FROM users WHERE team_id = :id";
-                    $stmt = $db->prepare($sql);
+                // get members
+                $sql = "SELECT * FROM users WHERE team_id = :id";
+                $stmt = $db->prepare($sql);
 
-                    $stmt->bindParam(":id", $teamID);
+                $stmt->bindParam(":id", $teamID);
 
-                    $stmt->execute();
-                    if($stmt){
-                        // $ret = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                        // $i=0;
-                        foreach($stmt as $row) {
-                            $participants[]= $row['username'];
-                            // $i++;
-                        }
-
-                        
-
-                        // echo "<script type='text/javascript'>alert(" . $participants . ");</script>";
-
-                        // if(isset($ret) ){
-                        //     echo "<script type='text/javascript'>alert(" . $ret . ");</script>";
-                        //     $participants = $ret;
-                        // } 
-                        // else {
-                            // echo "<script type='text/javascript'>alert('you alone');</script>";
-                            // $fields["participants"] = "Looks like you're on your own";
-                        // }
-                        
+                $stmt->execute();
+                if($stmt){
+                    // $ret = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    // $i=0;
+                    foreach($stmt as $row) {
+                        $participants[]= $row['username'];
+                        // $i++;
                     }
 
-                } else {
-                    $fields["team_name"] = "No team!";
-                    $fields["participants"] = "Looks like you're on your own";
-                }
-            } else {
-                echo "<script type='text/javascript'>alert('Team DOnt exist');</script>";
+                    // echo "<script type='text/javascript'>alert(" . $participants . ");</script>";
 
+                    // if(isset($ret) ){
+                    //     echo "<script type='text/javascript'>alert(" . $ret . ");</script>";
+                    //     $participants = $ret;
+                    // } 
+                    // else {
+                        // echo "<script type='text/javascript'>alert('you alone');</script>";
+                        // $fields["participants"] = "Looks like you're on your own";
+                    // }
+                    
+                }
+
+                //TODO:add function that displays files currently uploaded
+
+            } else {
+                $fields["team_name"] = "No team!";
+                $fields["participants"] = "Looks like you're on your own";
             }
-        } catch(PDOException $e){
-            echo $e->getMessage();
+        } else {
+            echo "<script type='text/javascript'>alert('Team DOnt exist');</script>";
+
         }
+    } catch(PDOException $e){
+        echo $e->getMessage();
+    }
 ?>
 <html>
     <head>
