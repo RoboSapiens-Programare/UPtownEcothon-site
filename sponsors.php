@@ -71,7 +71,7 @@
                         </div>
                     </div>
 
-                    <a href="https://www.sprijina.ro/cauze/uptown-ecothon-robosapiens" style="position:absolute; bottom:2%;z-index:10;text-align:center;width:100%;font-size:1.5vw; color:white; text-decoration:underline #00ff16"><?php echo $content['Fundraiser']['short'];?></a>
+                    <a href="https://www.sprijina.ro/cauze/uptown-ecothon-robosapiens" style="position:absolute; bottom:2%;z-index:10;text-align:center;width:100%;font-size:1.5vw; color:white; text-decoration:underline #00ff16; font-family:'Khand',sans serif;"><?php echo $content['Fundraiser']['short'];?></a>
 
                     <div id="container-spon" style="position:relative; width:100%; height:85vh; background-color:transparent;">
                         
@@ -107,7 +107,7 @@
                         </div>
                     </div>
 
-                    <a href="https://www.sprijina.ro/cauze/uptown-ecothon-robosapiens" style="position:absolute; bottom:2%;z-index:10;text-align:center;width:100%;font-size:1.5vw; color:white; text-decoration:underline #00ff16"><?php echo $content['Fundraiser']['short'];?></a>
+                    <a href="https://www.sprijina.ro/cauze/uptown-ecothon-robosapiens" style="position:absolute; bottom:2%;z-index:10;text-align:center;width:100%;font-size:1.5vw; color:white; text-decoration:underline #00ff16; font-family:'Khand',sans serif;"><?php echo $content['Fundraiser']['short'];?></a>
 
                     <div id="container-partners" style="position:relative; width:100%; height:85vh; background-color:transparent;">
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 20%; transform:translate(-50%,-50%)">
