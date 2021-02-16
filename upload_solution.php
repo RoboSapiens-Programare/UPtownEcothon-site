@@ -13,42 +13,54 @@
 <!-- Getting info from db -->
 <?php
     // !!!!!!!!!!!!!!!!!! o sa fac asta maine caci acm nu ma duce capul
-    // try{
-    //     $db = new SQLiDB();
+        try{
+            $db = new SQLiDB();
 
-    //     $fields = array();
+            $fields = array();
 
-    //     $sql = "SELECT team_id FROM users WHERE id = :id LIMIT 1";
-    //     $stmt = $db->prepare($sql);
+            $sql = "SELECT team_id FROM users WHERE id = :id LIMIT 1";
+            $stmt = $db->prepare($sql);
 
-    //     $stmt->bindParam(":id", $_SESSION["id"]);
+            $stmt->bindParam(":id", $_SESSION["id"]);
 
-    //     $stmt->execute();
+            $stmt->execute();
 
-    //     if($stmt){
-    //         $ret = $stmt->fetch(PDO::FETCH_ASSOC);
-    //         $fields["username"] = $ret["username"];
-    //         $participant_id = $ret["participant_id"];
-    //     }
+            if($stmt){
+                $ret = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    //     $sql = "SELECT email, firstname, lastname, phone FROM participants WHERE id = :id LIMIT 1";
-    //     $stmt = $db->prepare($sql);
+                $team_id = $ret["team_id"]; 
 
-    //     $stmt->bindParam(":id", $participant_id);
+                if($team_id!=99){
+                    //get team name
+                    $sql = "SELECT name FROM teams WHERE id = :id LIMIT 1";
+                    $stmt = $db->prepare($sql);
 
-    //     $stmt->execute();
+                    $stmt->bindParam(":id", $team_id);
 
-    //     if($stmt){
-    //         $ret = $stmt->fetch(PDO::FETCH_ASSOC);
-    //         $fields["email"] = $ret['email'];
-    //         $fields["firstname"] = $ret["firstname"];
-    //         $fields["lastname"] = $ret["lastname"];
-    //         $fields["phone"] = $ret["phone"];
-    //     }
-    // }
-    // catch(PDOException $e){
-    //     echo $e->getMessage();
-    // }
+                    $stmt->execute();
+                    if($stmt){
+                        $fields["team_name"] = $ret["name"];
+                    }
+
+                    //get members
+                    $sql = "SELECT username FROM users WHERE team_id = :id";
+                    $stmt = $db->prepare($sql);
+
+                    $stmt->bindParam(":id", $team_id);
+
+                    $stmt->execute();
+                    if($stmt){
+                        $fields["participants"] = $ret["username"];
+                    }
+
+                } else {
+                    $fields["team_name"] = "No team!";
+                    $fields["participants"] = "Looks like you're on your own";
+                }
+            } 
+        } catch(PDOException $e){
+            echo $e->getMessage();
+        }
 ?>
 <html>
     <head>
@@ -90,134 +102,168 @@
 
 
         <style>
-                * {
-                    font-family:'Khand', sans-serif;
-                    font-size: 2vw;
-                }
-                form p {
-                    font-size: 1vw;
-                    font-family: 'Montserrat', sans-serif; font-weight: bold;
-                    display: inline;
-                }
+            .fileList, .fileSize{
+                position: relative;
+                margin-top: -3vh;
+                font-size: 1.5vh;
+                /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
+            }
+            .fileSize{
+                margin-bottom: 3vh;
+            }
+            .fileList ul{
+                position: relative;
+                margin-top: -1vh;
+                margin-bottom: -3vh;
+            } 
+            .fileList li{
+                font-size: 1.5vh;
+                /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
+            }
+            p{
+                position: relative;
+                margin-top: -3vh;
+                margin-bottom: 3vh;
+                display: inline;
+                font-size: 1.5vh; 
+            }
+            * {
+                font-family:'Khand', sans-serif;
+                color: black;
+            }
+            label{
+                position: relative;
+                font-size: 2vh;
+                width: 20%;
+            }
+            input, textarea, select{
+                position:relative;
+                margin: 0vh 0vw 3vh 0vw;
+                border: 0.3vh solid #00ff16;
+                border-radius: 20px;
+                width:98%;
+                right: 0px;
+                background-color: transparent;
+                height: 2vh;
+                padding: 1%;
+                font-size: 2vh;
+            }
+            button{
+                position:relative;
+                margin: 0vh 0vw 3vh 0vw;
+                border: 0.3vh solid #00ff16;
+                border-radius: 20px;
+                width:100%;
+                right: 0px;
+                background-color: #340634;
+                height: 5vh;
+                padding: 1%;
+                font-size: 2vh;
+                color: white;
+                transition: all 500ms ease;
+            }
+            button:hover{
+                background-color: transparent;
+                color: black;
+                transition: all 500ms ease;
+            }
+            .msg{
+                position:relative;
+                margin: 0vh 0vw 3vh 0vw;
+                border-radius: 20px;
+                width:100%;
+                right: 0px;
+                background-color: #ffafc0;
+                font-size: 2vh;
+                text-align:center;
+                padding: 1%;
+            }#language {
+                position: fixed;
+                top: 0px;
+                right: 0vw;
+                margin: 1vw;
+                height: 4vh;
+                background-color: transparent;
+                mix-blend-mode: difference;
+                z-index: 104;
+            }
+
+            #language li {
+                display: inline;
+                font-family: 'Khand', sans-serif; font-weight: bold;
+                font-size: 2vw;
+                color: white;
+                text-decoration: none;
+            }
+
+            #language li a {
+                font-family: 'Khand', sans-serif; font-weight: bold;
+                font-size: 2vw;
+                color: white;
+                text-decoration: none;
+            }
+
+            #language li a:hover {
+                -webkit-filter: invert(50%);
+                filter: invert(50%);
+            }
+            @media screen and (max-width:750px){
                 label{
-                    position: relative;
-                    color: black;
-                    font-size: 2vw;
-                    width: 20%;
+                    font-size: 3vw;
                 }
-                input{
-                    position:relative;
-                    margin: 0vh 0vw 3vh 0vw;
-                    border: 0.3vh solid #00ff16;
-                    border-radius: 20px;
-                    width:100%;
-                    right: 0px;
-                    background-color: transparent;
-                    height: 5vh;
+                input, textarea, select{
+                    margin: 0vh 0vw 1vh 0vw;
+                    width:98%;
+                    height: 3vh;
                     padding: 1%;
-                    font-size: 2vw;
+                    font-size: 3vw;
                 }
                 button{
-                    position:relative;
-                    margin: 0vh 0vw 3vh 0vw;
-                    border: 0.3vh solid #00ff16;
-                    border-radius: 20px;
+                    margin: 0vh 0vw 1vh 0vw;
                     width:100%;
-                    right: 0px;
-                    background-color: #340634;
-                    height: 6vh;
                     padding: 1%;
-                    color: white;
-                    font-size: 2vw;
-                }
-                button:hover{
-                    background-color: transparent;
-                    color: black;
+                    font-size: 3vw;
                 }
                 .msg{
-                    position:relative;
-                    margin: 0vh 0vw 3vh 0vw;
-                    border-radius: 20px;
+                    margin: 0vh 0vw 1vh 0vw;
                     width:100%;
-                    right: 0px;
-                    background-color: #ffafc0;
-                    height: 6vh;
-                    font-size: 2vw;
-                    text-align:center;
+                    font-size: 3vw;
                     padding: 1%;
+                }#language {
+                    height: 8vh;
+                    right: 2vw;
                 }
-                .fileList, .fileSize{
-                    position: relative;
-                    margin-top: -3vh;
-                    font-size: 1vw;
-                    font-family: 'Montserrat', sans-serif; font-weight: bold;
+                #language li {
+                    font-size: 5vw;
+                }
+                #language li a {
+                    font-size: 5vw;
+                } .fileList, .fileSize{
+                    margin-top: -1vh;
+                    font-size: 2vw;
+                    /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
                 }
                 .fileSize{
-                    margin-bottom: 3vh;
+                    margin-bottom: 1vh;
                 }
                 .fileList ul{
                     position: relative;
-                    margin-top: -1vh;
+                    margin-top: 0vh;
                     margin-bottom: -3vh;
                 } 
                 .fileList li{
-                    font-size: 1vw;
-                    font-family: 'Montserrat', sans-serif; font-weight: bold;
+                    font-size: 2vw;
+                    /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
                 }
-                #language {
-                    position: fixed;
-                    top: 0px;
-                    right: 0vw;
-                    margin: 1vw;
-                    height: 4vh;
-                    background-color: transparent;
-                    mix-blend-mode: difference;
-                    z-index: 104;
-                }
-
-                #language li {
+                p{
+                    position: relative;
+                    margin-top: -1vh;
+                    margin-bottom: 1vh;
                     display: inline;
-                    font-family: 'Khand', sans-serif; font-weight: bold;
-                    font-size: 2vw;
-                    color: white;
-                    text-decoration: none;
+                    font-size: 2vw; 
                 }
-
-                #language li a {
-                    font-family: 'Khand', sans-serif; font-weight: bold;
-                    font-size: 2vw;
-                    color: white;
-                    text-decoration: none;
-                }
-
-                #language li a:hover {
-                    -webkit-filter: invert(50%);
-                    filter: invert(50%);
-                }
-                @media screen and (max-width:750px){
-                    label{
-                    font-size: 4vw;
-                    }
-                    input{
-                        font-size: 3vw;
-                        padding: 2%;
-                    }
-                    button{
-                        font-size: 4vw;
-                    }
-                    .msg{
-                        font-size: 4vw;
-                    }#language {
-                        height: 8vh;
-                        right: 2vw;
-                    }
-                    #language li {
-                        font-size: 5vw;
-                    }
-                    #language li a {
-                        font-size: 5vw;
-                    }
-                }
+            } 
+              
             </style>
     </head>
     <body style="background-color: #340634; margin:0px; overflow-x:hidden">
@@ -244,6 +290,7 @@
 
         <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
             <h2>Team:</h2>
+            <?php echo $fields["team_name"]; ?>
             
             <h2>Code files:</h2>
             <!--TODO: action="scripts/upload.php" -->
@@ -385,7 +432,5 @@
             }
             
         </script>
-        
-        
     </body>
 </html>
