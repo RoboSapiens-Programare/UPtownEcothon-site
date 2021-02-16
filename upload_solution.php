@@ -383,7 +383,7 @@
             // }
 
 
-            //functie luata de pe developer.mozilla slightly modified, now does what i want it to do
+            //functie luata de pe developer.mozilla slightly modified, now does what i want it to do aka list files and files total size
             var appfile_bytes;
             var prezfile_bytes;
             function updateSize(fileInput) {
@@ -405,7 +405,7 @@
                 }
                 // end of optional code
                
-                bytes = nBytes;
+                // bytes = nBytes;
                 
                 fileInput.parentElement.getElementsByClassName("fileSize")[0].innerHTML = sOutput;
                 fileInput.parentElement.getElementsByClassName("fileList")[0].innerHTML = '<ul>'+children+'</ul>';
@@ -413,12 +413,41 @@
                 return nBytes;
             }
 
+            function getExtension(filename) {
+                var parts = filename.split('.');
+                return parts[parts.length - 1];
+            }
+
+            function isNotExe(fileInput, section){
+                let oFiles = fileInput.files,
+                    nFiles = oFiles.length,
+                    ext = "";
+
+                for (let nFileId = 0; nFileId < nFiles; nFileId++) {
+                    ext = getExtension(oFiles[nFileId].name);
+
+                    if(ext === "exe"){
+                        section.getElementsByClassName('msg')[0].style.display = "block";
+                        section.getElementsByClassName('msg')[0].innerHTML = "Script files are not permitted.";
+                        section.getElementsByClassName('file')[0].style.borderColor = "red";
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }               
+            }
+
             document.getElementById("appfile").addEventListener("change", function(){
+                makeAllGreen(this.parentElement);
                 appfile_bytes = updateSize(this);
+                isNotExe(this, this.parentElement);
+
             }, false);
 
             document.getElementById("prezfile").addEventListener("change", function(){
+                makeAllGreen(this.parentElement);
                 prezfile_bytes= updateSize(this);
+                isNotExe(this, this.parentElement);
             }, false);
 
             //ye
@@ -459,11 +488,17 @@
                     }
                 }
 
+                //verify that input does not contain any .exe files
+                if(!isNotExe(file, section)){
+                    isOK = false;
+                }
+
                 // return isOK; TODO: DONT FORGET TO UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
                 return false;
             }
 
             function makeAllGreen(section){
+                section.getElementsByClassName('msg')[0].style.display = "none";
                 var inputs = section.querySelectorAll("input")
                 for (i = 0; i < inputs.length; i++) {
                     // inputs[i].addEventListener('click', function() {
