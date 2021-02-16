@@ -25,13 +25,13 @@
                 transform: translate(100%,-50%);
                 transition: all 200ms ease;
             } */
-            img{
+            .image{
                 font-size: 5vh;
                 position: absolute;
                 top:50%;
                 left:50%;
                 transform: translate(-50%,-50%);
-                width:90%;
+                width:80%;
             }
         </style>
 
@@ -74,21 +74,21 @@
                     <div id="container-spon" style="position:relative; width:100%; height:85vh; background-color:transparent;">
                         
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 25%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><img src="pictures/endava.png" alt="Endava"></div>
+                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><img class="image" src="pictures/endava.png" alt="Endava"></div>
                             <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Endava']['desc']; ?> </div>
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 50%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><img src="pictures/logo-softelligence.png" alt="Softelligence"></div>
+                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><img class="image" src="pictures/logo-softelligence.png" alt="Softelligence"></div>
                             <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Softelligence']['desc']; ?> </div>
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 75%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="filter:contrast(200%); -webkit-filer:contrast(200%);"></div>
+                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><img class="image" src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="filter:contrast(200%); -webkit-filer:contrast(200%);"></div>
                             <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Gemini']['desc']; ?> </div>
@@ -105,27 +105,25 @@
 
                     <div id="container-partners" style="position:relative; width:100%; height:85vh; background-color:transparent;">
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 20%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" style="height: 27vh; width:27vh; cursor:default"><img src="pictures/logo-highedu.png" alt="High Edu"></div>
+                            <div class="circle-top-left" style="height: 27vh; width:27vh; cursor:default"><img class="image" src="pictures/logo-highedu.png" alt="High Edu"></div>
                             
                             <div class="tagtag"><?php echo $content['HighEdu']['tag']; ?></div>
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 35%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" id="hoverpls" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 27vh; width:27vh;"><img src="pictures/logo-softelligence.png" alt="Softelligence"></div>
-                            <div class="circle-bottom-right" style="height: 27vh; width:27vh;"></div>
+                            <div class="circle-top-left" id="hoverpls" style="height: 27vh; width:27vh; cursor:default"><img class="image" src="pictures/logo-softelligence.png" alt="Softelligence"></div>
                             
-                            <div class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Softelligence']['desc']; ?> </div>
                             <div class="tagtag"><?php echo $content['Softelligence']['tag']; ?></div>
                         </div>
                    
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 50%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" style="height: 27vh; width:27vh; cursor:default"><img src="pictures/dezvoltam.png" alt="Dezvoltam.ro"></div>
+                            <div class="circle-top-left" style="height: 27vh; width:27vh; cursor:default"><img class="image" src="pictures/dezvoltam.png" alt="Dezvoltam.ro"></div>
                             
                             <div class="tagtag"><?php echo $content['Dezvoltam']['tag']; ?></div>
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 65%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 27vh; width:27vh;"><img src="pictures/FTC.png" alt="FTC"></div>
+                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 27vh; width:27vh;"><img class="image" src="pictures/FTC.png" alt="FTC"></div>
                             <div class="circle-bottom-right" style="height: 27vh; width:27vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['FTC']['desc']; ?> </div>
@@ -133,7 +131,7 @@
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 80%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" style="height: 27vh; width:27vh; cursor:default"><img src="pictures/geyc.png" alt="geyc"></div>
+                            <div class="circle-top-left" style="height: 27vh; width:27vh; cursor:default"><img class="image" src="pictures/geyc.png" alt="geyc"></div>
                             
                             <div class="tagtag"><?php echo $content['Geyc']['tag']; ?></div>
                         </div>
