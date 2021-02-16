@@ -71,6 +71,8 @@
                         </div>
                     </div>
 
+                    <a href="https://www.sprijina.ro/cauze/uptown-ecothon-robosapiens" style="position:absolute; bottom:2%;z-index:10;text-align:center;width:100%;font-size:1.5vw; color:white; text-decoration:underline #00ff16"><?php echo $content['Fundraiser']['short'];?></a>
+
                     <div id="container-spon" style="position:relative; width:100%; height:85vh; background-color:transparent;">
                         
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 25%; transform:translate(-50%,-50%)">
@@ -94,6 +96,8 @@
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Gemini']['desc']; ?> </div>
                         </div>
                     </div>
+
+                    
                 </div>
 
                 <div id="partners" style="position:relative; display:inline-block; width: 100vw; height: 100vh">
@@ -102,6 +106,8 @@
                             <?php echo $content['Thanks'][2]; ?>    
                         </div>
                     </div>
+
+                    <a href="https://www.sprijina.ro/cauze/uptown-ecothon-robosapiens" style="position:absolute; bottom:2%;z-index:10;text-align:center;width:100%;font-size:1.5vw; color:white; text-decoration:underline #00ff16"><?php echo $content['Fundraiser']['short'];?></a>
 
                     <div id="container-partners" style="position:relative; width:100%; height:85vh; background-color:transparent;">
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 20%; transform:translate(-50%,-50%)">
@@ -135,7 +141,6 @@
                             
                             <div class="tagtag"><?php echo $content['Geyc']['tag']; ?></div>
                         </div>
-                        
                     </div>
                 </div>    
             </div> 
