@@ -15,6 +15,9 @@
             $phone = (isset($_POST['phone']) && !empty($_POST['phone'])) ? filter_var(trim($_POST["phone"]), FILTER_SANITIZE_NUMBER_INT) : null;
             $position = (isset($_POST['position']) && !empty($_POST['position'])) ? filter_var(trim($_POST["position"]), FILTER_SANITIZE_FULL_SPECIAL_CHARS) : null;
             $dob = (isset($_POST['dob']) && !empty($_POST['dob'])) ? preg_replace("([^0-9/])", "", $_POST['dob']) : null;
+            $city = (isset($_POST['city']) && !empty($_POST['city'])) ? filter_var(trim($_POST["city"]), FILTER_SANITIZE_FULL_SPECIAL_CHARS) : '';
+            $institution = (isset($_POST['institution']) && !empty($_POST['institution'])) ? filter_var(trim($_POST["institution"]), FILTER_SANITIZE_FULL_SPECIAL_CHARS) : '';
+            $studyyear = (isset($_POST['studyyear']) && !empty($_POST['studyyear'])) ? filter_var(trim($_POST["studyyear"]), FILTER_SANITIZE_FULL_SPECIAL_CHARS) : '';
             $experience = (isset($_POST['experience']) && !empty($_POST['experience'])) ? filter_var($_POST["experience"], FILTER_SANITIZE_STRING) : null;
             $teamCreateName = (isset($_POST['teamcreatename']) && !empty($_POST['teamcreatename'])) ? filter_var($_POST["teamcreatename"], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : null;
             $teamName = (isset($_POST['teamname']) && !empty($_POST['teamname'])) ? filter_var($_POST["teamname"], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : null;
@@ -75,7 +78,7 @@
 
             $team_id = 1;
             //  $participant_id = null;
-            $username = (isset($_POST['username']) && !empty($_POST['username'])) ? filter_var(trim($_POST["username"]), FILTER_SANITIZE_ENCODED) : null;
+            $username = (isset($_POST['username']) && !empty($_POST['username'])) ? filter_var(trim($_POST["username"]), FILTER_SANITIZE_SPECIAL_CHARS) : null;
             $passwd = (isset($_POST['passwd']) && isset($_POST['cpasswd']) && ($_POST['passwd'] === $_POST['cpasswd'])) ? $_POST['passwd'] : null;
 
             if($username){
@@ -126,7 +129,7 @@
                     //Set a random ID for the participant
                     //  $participant_id = rand(1000, 9999);
                         
-                    $sql = "INSERT INTO participants (firstname, lastname, email, phone, position, experience, dob) VALUES (:firstname, :lastname, :email, :phone, :position, :experience, :dob);";
+                    $sql = "INSERT INTO participants (firstname, lastname, email, phone, position, experience, dob, city, institution, studyyear) VALUES (:firstname, :lastname, :email, :phone, :position, :experience, :dob, :city, :institution, :studyyear);";
 
                     // http_response_code(403);
                     // echo $sql;
@@ -142,6 +145,9 @@
                     $stmt->bindParam(':position', $position);
                     $stmt->bindParam(':experience', $experience);
                     $stmt->bindParam(':dob', $dob);
+                    $stmt->bindParam(':city', $city);
+                    $stmt->bindParam(':institution', $institution);
+                    $stmt->bindParam(':studyyear', $studyyear);
 
                     $stmt->execute();
                 

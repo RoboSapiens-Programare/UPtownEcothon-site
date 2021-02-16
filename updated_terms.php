@@ -10,7 +10,7 @@
         $db = new SQLiDB();
 
         if($uname && $passwd_verif){
-            $sql = "SELECT passwd FROM users WHERE username = :uname";
+            $sql = "SELECT passwd, participant_id FROM users WHERE username = :uname";
             $stmt =$db->prepare($sql);
 
             $stmt->bindParam(":uname", $uname);
@@ -21,22 +21,19 @@
             if(!empty($ret)){
                 $old_passwd = $ret['passwd'];
                 if(strcmp($old_passwd, $passwd_verif) == 0){
-                    $npasswd = (isset($_POST['npasswd']) && isset($_POST['cnpasswd']) && ($_POST['npasswd'] === $_POST['cnpasswd'])) ? $_POST['npasswd'] : null;
+                    $dob = (isset($_POST['dob']) && !empty($_POST['dob'])) ? preg_replace("([^0-9/])", "", $_POST['dob']) : null;
                     
-                    if($npasswd != null) {
-                        $password = password_hash($npasswd, PASSWORD_DEFAULT);
-                        
-                        $sql = "UPDATE users SET passwd = :passwd WHERE username = :uname";
+                    if($dob != null) {
+                        $sql = "UPDATE participants SET dob = :dob WHERE id = :participant_id";
                         $stmt = $db->prepare($sql);
 
-                        $stmt->bindParam(":uname", $uname);
-                        $stmt->bindParam(":passwd", $password);
+                        $stmt->bindParam(":participant_id", $ret['participant_id']);
+                        $stmt->bindParam(":dob", $dob);
 
                         $stmt->execute();
 
-                        http_response_code(200);
-                        echo "Password has been changed successfully!";
-                        die();
+                        echo "Mulțumim!";
+                        header("location: home.php");
                     }
                 } else {
                     //passwd does not match
@@ -79,7 +76,7 @@
                 $db = new ContentDB();
 
                 $content = array();
-                $content = $db->getContentsForPage('passchange_verification.php', $lang);
+                $content = $db->getContentsForPage('updated_terms.php', $lang);
 
                 $db = null;
                 unset($db);
@@ -97,7 +94,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <meta name="robots" content="noindex">
 
-        <title>Change Password - UPtown Ecothon</title>
+        <title>Updated Terms - UPtown Ecothon</title>
 
 
         <style>
@@ -231,11 +228,13 @@
 
         <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
             <form method="POST" id="passchange" onsubmit="return validateForm()">
-                <label for="npasswd"><?php echo $content['ChangePassForm']['NewPass']; ?></label>
-                <input type="password" id="npasswd" name="npasswd"> <br>
+                <label for="dob"><?php echo $content['RegistrationSect']['Age']; ?></label>
+                <input type="date" id="dob" name="dob" min="1920-01-01" max="2020-01-01"><br>
 
-                <label for="cnpasswd"><?php echo $content['ChangePassForm']['ConfirmNewPass']; ?></label>
-                <input type="password" id="cnpasswd" name="cnpasswd"> <br>
+                <div>
+                    <input type="checkbox" id="terms" style="margin-left:2vw; width: 2vw; height:2vw; vertical-align:center; border-color:#00ff16" name="terms">
+                    <label class="form-check-label" for="terms"><?php echo $content['ConfigAccSect']['Terms']; ?></label>
+                </div>
 
                 <button type="submit"><?php echo $content['Interface']['ChangePassBtn']; ?></button>
             </form>
@@ -246,20 +245,16 @@
                 var isOk = true;
 
                 //verify all input fields are filled in + checks if the passwords match
-                var input = document.querySelectorAll("input");
-                for (i = 0; i < input.length; ++i) {
-                    if(input[i].value.length == 0 || input[i]==null){
-                        input[i].style.borderColor = "red";
-                        isOk = false;
-                    } else if (input[i].getAttribute('id')=="cnpasswd"){
-                        var passwdValue = document.forms["passchange"]["npasswd"].value;
-                        var cpasswdValue = document.forms["passchange"]["cnpasswd"].value;
-                        if (passwdValue.normalize() != cpasswdValue.normalize()){
-                            document.getElementById("npasswd").style.borderColor = "red";
-                            document.getElementById("cnpasswd").style.borderColor = "red";
-                            isOk = false;
-                        }
-                    }
+                var input = document.getElementById('dob');
+                if(input.value.length == 0 || input == null){
+                    input.style.borderColor = "red";
+                    isOk = false;
+                } 
+
+                var terms = document.getElementById('terms');
+                if(!terms.checked){
+                    isOk = false;
+                    alert('Please read and agree to the terms and conditions!');
                 }
 
                 if(isOk){

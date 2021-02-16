@@ -5,7 +5,7 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . "/config/mailconfig.php";
 
     $email = (isset($_GET['email']) && !empty($_GET['email'])) ? filter_var(trim($_GET["email"]), FILTER_SANITIZE_EMAIL) : null;
-    $username = (isset($_GET['uname']) && !empty($_GET['uname'])) ? filter_var(trim($_GET["uname"]), FILTER_SANITIZE_ENCODED) : null;
+    $username = (isset($_GET['uname']) && !empty($_GET['uname'])) ? filter_var(trim($_GET["uname"]), FILTER_SANITIZE_SPECIAL_CHARS) : null;
     $passwd = (isset($_GET['verif']) && !empty($_GET['verif'])) ? base64_decode(trim($_GET['verif'])) : null;
 
     try{
@@ -75,6 +75,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Khand&family=Montserrat:wght@300;400&display=swap" rel="stylesheet"> 
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="robots" content="noindex">
 
         <title>Change Password - UPtown Ecothon</title>
 

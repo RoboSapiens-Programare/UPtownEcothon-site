@@ -228,7 +228,7 @@
                         <label for="phone"><?php echo $content['RegistrationSect']['Phone']; ?></label>
                         <input type="number" id="phone" name="phone"><br>
                         <label for="position"><?php echo $content['RegistrationSect']['Status']; ?></label>
-                        <select id="position" name="position" style="height:5vh">
+                        <select id="position" name="position" style="height:5vh" onclick="isInSchool();">
                             <option value="selectcard"> - </option>
                             <option value="elev"><?php echo $content['RegistrationSect']['Elev']; ?></option>
                             <option value="student"><?php echo $content['RegistrationSect']['Student']; ?></option>
@@ -238,6 +238,17 @@
                         <label for="dob"><?php echo $content['RegistrationSect']['Age']; ?></label>
                         <input type="date" id="dob" name="dob" min="1920-01-01" max="2020-01-01"><br>
                         
+                        <div id="schooldiv" style="display: none;">
+                            <label for="city"><?php echo $content['RegistrationSect']['City']; ?></label>
+                            <input type="text" id="city" name="city"><br>
+
+                            <label for="institution"><?php echo $content['RegistrationSect']['Institution']; ?></label>
+                            <input type="text" id="institution" name="institution"><br>
+
+                            <label for="studyyear"><?php echo $content['RegistrationSect']['Study year']; ?></label>
+                            <input type="text" id="studyyear" name="studyyear"><br>
+                        </div>
+
                         <label for="experience"><?php echo $content['RegistrationSect']['Experience']; ?></label>
                         <textarea type="text" id="experience" name="experience" style="height: 9vh;"></textarea><br>  
                         <button id="regbtn" type="button"  onclick="registrationOK();">Next</button>  
@@ -269,7 +280,7 @@
                         </div>
                         <div id="configNewTeam" style="display: none;">
                             <label for="teamCreateName"><?php echo $content['TeamSect']['TeamName']; ?></label>
-                            <input type="text" id="teamCreateName" name="teamcreatename" ><br>
+                            <input type="text" id="teamcreatename" name="teamcreatename" ><br>
                         </div>
 
                         <div id="ideasSection" style="display: none;">
@@ -328,23 +339,6 @@
             function validateForm(section, hasEmail){
                 var isOk = true;
 
-                //verify all input fields are filled in + checks if the passwords match
-                var input = section.querySelectorAll("input");
-                for (i = 0; i < input.length; ++i) {
-                    if((input[i].value.length == 0 || input[i]==null)){
-                        input[i].style.borderColor = "red";
-                        isOk = false;
-                    } else if (input[i].getAttribute('id')=="cpasswd"){
-                        var passwdValue = document.forms["registration"]["passwd"].value;
-                        var cpasswdValue = document.forms["registration"]["cpasswd"].value;
-                        if (passwdValue.normalize() != cpasswdValue.normalize()){
-                            document.getElementById("passwd").style.borderColor = "red";
-                            document.getElementById("cpasswd").style.borderColor = "red";
-                            isOk = false;
-                        }
-                    }
-                }
-
                 if(hasEmail){
                     //verify experience field is filled in
                     if(document.forms["registration"]["experience"].value.length == 0 || document.forms["registration"]["experience"]==null){
@@ -364,6 +358,7 @@
                     }
                 }
                 
+                var isElev = false;
                 var mandatoryIdea = false;
                 // verify select fields + conditions to only check create or select team fields if user has selected so
                 var selects = section.querySelectorAll("select");
@@ -393,6 +388,8 @@
                                 isOk = false;
                             }
                         }
+                    } else if(selects[i].value=="elev" || selects[i].value=="student"){
+                        isElev = true;
                     }
                 }
 
@@ -406,17 +403,58 @@
                     }
                 }
 
-                //daca ceva nu e ok
-                if(isOk==false){
-                    return false;
-                } else {
-                    return true;
+                
+                //(this is possibly the worst most hardcoded way you can do this but i am not redoing it now) 
+                //verify all input fields are filled in + checks if the passwords match (+THEORETICALLY only checks city and stuff fields if is elev)
+                var input = section.querySelectorAll("input");
+                for (i = 0; i < input.length; ++i) {
+                    if (input[i].getAttribute('id')==="city" && !isElev){
+                        //skip over school related attributes if the person is not student
+                        i+=2;
+                    } else if(input[i].getAttribute('id')==="teamcreatename"){
+                        //skips over teamcreatename cause that one is checked separately
+                        i++;
+                    } else if((input[i].value.length == 0 || input[i]==null)){
+                        //checks if all fields are not empty
+                        input[i].style.borderColor = "red";
+                        isOk = false;
+                    }  else if(input[i].getAttribute('id')==="username"){
+                        //checks username doesnt contain special characters
+                        var username = document.forms["registration"]["username"].value;
+                        const re1 = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+                        var isspecial = re1.test(String(username).toLowerCase());
+
+                        if(isspecial){
+                            input[i].style.borderColor = "red";
+                            isOk = false;
+                        }
+                    } else if (input[i].getAttribute('id')==="cpasswd"){
+                        //checks passwords match
+                        var passwdValue = document.forms["registration"]["passwd"].value;
+                        var cpasswdValue = document.forms["registration"]["cpasswd"].value;
+                        if (passwdValue.normalize() != cpasswdValue.normalize()){
+                            document.getElementById("passwd").style.borderColor = "red";
+                            document.getElementById("cpasswd").style.borderColor = "red";
+                            isOk = false;
+                        }
+                    } 
                 }
+
+                if(section.getAttribute('id')==="configureAccount"){
+                    var terms = document.getElementById('terms');
+                    if(!terms.checked){
+                        // alert("You must accept the terms and conditions to continue!");
+                        // document.getElementById('msg-account').innerHTML = 'You must accept the terms and conditions to continue!';
+                        isOk = false;
+                    }
+                }
+
+                return isOk;
             }
             
             function registrationOK(){
                 var section =document.getElementById('Registration');
-                if(validateForm(section,true)==true){
+                if(validateForm(section,true)){
                     // alert("A mers");
                     var x = document.getElementById('teamDetails');
                     x.style.display = "block";
@@ -430,6 +468,16 @@
 					document.getElementById('msg-reg').innerHTML = 'Please complete all fields accordingly!';
                 }
                 
+            }
+
+            function isInSchool(){
+                var x = document.getElementById("schooldiv");
+                var sel = document.getElementById("position");
+                if (sel.value === "elev" || sel.value === "student") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
             }
 
             function hasTeam(){
@@ -456,7 +504,7 @@
 
             function teamOK(){
                 var section = document.getElementById('teamDetails');
-                if(validateForm(section,false)==true){
+                if(validateForm(section,false)){
                     // var x = document.getElementById('ideasSection');
                     // x.style.display = "block";
                     var x = document.getElementById('configureAccount');
@@ -490,21 +538,23 @@
 
             function accountOK(){
                 var section = document.getElementById('configureAccount');
-                if(validateForm(section,false)){
+                if(!validateForm(section,false)){
                     var terms = document.getElementById('terms');
-                    if(terms.checked){
-                        document.getElementById('msg-account').style.display = "none";
-                        return true;
-                    }
-                    else{
+                    if(!terms.checked){
+                    //     document.getElementById('msg-account').style.display = "none";
+                    //     return true;
+                    // }
+                    // else{
                         document.getElementById('msg-account').style.display = "block";
                         document.getElementById('msg-account').innerHTML = 'You must accept the terms and conditions to continue!';
                         return false;
                     }
-                } else{
-                    document.getElementById('msg-account').style.display = "block";
-                    document.getElementById('msg-account').innerHTML = 'Please complete all fields accordingly!';
-                    return false;
+                // } 
+                    else{
+                        document.getElementById('msg-account').style.display = "block";
+                        document.getElementById('msg-account').innerHTML = 'Please complete all fields accordingly!';
+                        return false;
+                    } 
                 }
             }
 

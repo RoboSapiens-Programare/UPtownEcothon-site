@@ -4,7 +4,7 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        $username = (isset($_POST['username']) && !empty($_POST['username'])) ? filter_var(trim($_POST["username"]), FILTER_SANITIZE_ENCODED) : null;
+        $username = (isset($_POST['username']) && !empty($_POST['username'])) ? filter_var(trim($_POST["username"]), FILTER_SANITIZE_SPECIAL_CHARS) : null;
         $id = (isset($_POST['id']) && !empty($_POST['id'])) ? filter_var(trim($_POST["id"]), FILTER_SANITIZE_NUMBER_INT) : null;
 
         try{
