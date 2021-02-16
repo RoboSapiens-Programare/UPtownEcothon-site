@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-    // if (session_status() == PHP_SESSION_NONE) session_start();
+    if (session_status() == PHP_SESSION_NONE) session_start();
 
     // if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
     //     header('Location: login.php');
@@ -17,6 +17,8 @@
             $db = new SQLiDB();
 
             $fields = array();
+            $participants = array();
+            $teamID;
 
             $sql = "SELECT team_id FROM users WHERE id = :id LIMIT 1";
             $stmt = $db->prepare($sql);
@@ -28,36 +30,65 @@
             if($stmt){
                 $ret = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                $team_id = $ret["team_id"]; 
+                $teamID = $ret["team_id"]; 
+                // echo "<script type='text/javascript'>alert(" . $ret["team_id"] . ");</script>";
 
-                if($team_id!=99){
+                if($teamID!=99){
                     //get team name
-                    $sql = "SELECT name FROM teams WHERE id = :id LIMIT 1";
+                    $sql = "SELECT * FROM teams WHERE id = :id LIMIT 1";
                     $stmt = $db->prepare($sql);
 
-                    $stmt->bindParam(":id", $team_id);
+                    $stmt->bindParam(":id", $teamID);
 
                     $stmt->execute();
                     if($stmt){
-                        $fields["team_name"] = $ret["name"];
-                    }
+                        $ret = $stmt->fetch(PDO::FETCH_ASSOC);
+                        if(isset($ret) && !empty($ret)){
+                            // echo "<script type='text/javascript'>alert(" . $ret . ");</script>";
+                            $fields["team_name"] = $ret["name"];
+                        } else{
+                            $fields["team_name"] = "No team!";
+                        }
+                    } 
 
-                    //get members
-                    $sql = "SELECT username FROM users WHERE team_id = :id";
+                    // get members
+                    $sql = "SELECT * FROM users WHERE team_id = :id";
                     $stmt = $db->prepare($sql);
 
-                    $stmt->bindParam(":id", $team_id);
+                    $stmt->bindParam(":id", $teamID);
 
                     $stmt->execute();
                     if($stmt){
-                        $fields["participants"] = $ret["username"];
+                        // $ret = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        // $i=0;
+                        foreach($stmt as $row) {
+                            $participants[]= $row['username'];
+                            // $i++;
+                        }
+
+                        
+
+                        // echo "<script type='text/javascript'>alert(" . $participants . ");</script>";
+
+                        // if(isset($ret) ){
+                        //     echo "<script type='text/javascript'>alert(" . $ret . ");</script>";
+                        //     $participants = $ret;
+                        // } 
+                        // else {
+                            // echo "<script type='text/javascript'>alert('you alone');</script>";
+                            // $fields["participants"] = "Looks like you're on your own";
+                        // }
+                        
                     }
 
                 } else {
                     $fields["team_name"] = "No team!";
                     $fields["participants"] = "Looks like you're on your own";
                 }
-            } 
+            } else {
+                echo "<script type='text/javascript'>alert('Team DOnt exist');</script>";
+
+            }
         } catch(PDOException $e){
             echo $e->getMessage();
         }
@@ -291,6 +322,17 @@
         <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
             <h2>Team:</h2>
             <?php echo $fields["team_name"]; ?>
+
+            <h2>Members:</h2>
+            <?php 
+                if(empty($participants) || !isset($participants)){
+                    echo "Looks like you're on your own";
+                } else {
+                    for ($i = 0; $i < count($participants); $i++) {
+                        echo $participants[$i] . ", ";
+                    }
+                }
+            ?>
             
             <h2>Code files:</h2>
             <!--TODO: action="scripts/upload.php" -->
