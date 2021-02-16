@@ -338,7 +338,7 @@
 
             function validateForm(section, hasEmail){
                 var isOk = true;
-            
+
                 if(hasEmail){
                     //verify experience field is filled in
                     if(document.forms["registration"]["experience"].value.length == 0 || document.forms["registration"]["experience"]==null){

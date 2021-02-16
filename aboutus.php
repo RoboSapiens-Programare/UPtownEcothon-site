@@ -118,7 +118,7 @@
 			include "elements/sageata.html";
         ?>	
         
-        <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:45vh;">
+        <div id="footer-special" style="position:absolute; top:50%; left:0; transform:translate(0%,-50%); width:15%; height:60vh;">
             <ul>
                 <li style="height:10%; filter:invert(100%)">
                     <a href="https://www.instagram.com/uptown.ecothon/">
@@ -140,6 +140,11 @@
                         <img src="pictures/natie.png">
                     </a>
                 </li>
+                <li>
+                    <a href="sponsors.php">
+                        <img src="pictures/logo-softelligence.png">
+                    </a>
+                </li>   
                 <li>
                     <a href="sponsors.php">
                         <img src="pictures/gemini-solutions-logo.svg">

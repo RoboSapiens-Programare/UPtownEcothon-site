@@ -58,9 +58,9 @@
                     Program
                 </div>
             </a>
-            <a href="#news" class="info-btn" style="left:5%; top: 65%">
+            <a href="#terms" class="info-btn" style="left:5%; top: 65%">
                 <div class="text-centrat">
-                    News
+                    Terms & Conditions
                 </div>
             </a>
         </div>
@@ -86,11 +86,10 @@
                 <img src="pictures/timetablefinal.png" alt="timetable.png crashed most likely" style=" width:inherit;">
             </div>
         </div>
-        <div id="news" style="position: relative; width:100%; background-color:black; ">
+        <div id="terms" style="position: relative; width:100%; background-color:black; ">
             <div style="position: relative; color:white">
                 <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family: 'Montserrat', sans-serif">
-                    <h2> News </h2>
-                    <p style="font-size: 1.5vh;"><?php echo $content['Errors']['news-unav']; ?></p>
+                    <p style="font-size: 1.5vh;"><?php echo $content['Terms']['Terms']; ?></p>
                 </div>
             </div>
             <!-- <div id="news-container" class="rounded-rect" style="position:relative; left: 50%; transform:translateX(-50%); height:75%; width: 90%; overflow-y: auto; overflow-x: hidden; padding:0"> -->

@@ -41,9 +41,9 @@
                     <div class="text-centrat" style="font-size: 1.5vw;">Program</div>
                 </div>
             </a>
-            <a href="#news">
+            <a href="#terms">
                 <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 70%; padding: 0; border:0.5vh solid #00ff16">
-                    <div class="text-centrat" style="font-size: 1.5vw;">News</div>
+                    <div class="text-centrat" style="font-size: 1.5vw;">Terms & Conditions</div>
                 </div>
             </a>
         </div>
@@ -72,66 +72,12 @@
                     </div>
                 </div>    
 
-                <div id="news" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
-                    <div id="news-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; padding:0">
-                        <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
-                            <?php echo $content['Errors']['news-unav']; ?>
-                        </div>
-                        
-                        <!-- <div class="franshalssection" id="franshals1">
-                            <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
-                                <div class="sticky-col">
-                                    <div class="poza1" style="background-color:red; z-index:3;"></div>
-                                    <div class="poza2" style="background-color:pink; z-index:3;"></div>
-
-                                    <div class="poza1" style="background-color:blue; z-index:2"></div>
-                                    <div class="poza2" style="background-color:green; z-index:2;"></div>
-                                </div>  
-                            </div>
-
-                            <div class="column col-text" style="flex: 60%; position: relative;">
-                                <div class="wrapper">
-                                    <div class="row-content" style="right: 0; ">
-                                        text cu chestii 111 text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111text cu chestii 111
-                                    </div>
-                                </div>
-                                    
-                                <div class="wrapper">
-                                    <div class="row-content" style="right: 0">
-                                        text cu chestii 222
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="height: 10vh;"> nimic, am vrut doar un separator</div>
-
-                        <div class="franshalssection" id="franshals2">
-                            
-                            <div class="column" style="flex: 60%">
-                                <div class="wrapper">
-                                    <div class="row-content" style="left: 0;">
-                                        text cu chestii 111
-                                    </div>
-                                </div>
-                                    
-                                <div class="wrapper">
-                                    <div class="row-content" style="left: 0;">
-                                        text cu chestii 222
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="column col-pic" id="col-pic2" style="flex:40%;">
-                                <div class="sticky-col" >
-                                    <div class="poza1" style="background-color:red; z-index:3;"></div>
-                                    <div class="poza2" style="background-color:pink; z-index:3;"></div>
-
-                                    <div class="poza1" style="background-color:blue; z-index:2"></div>
-                                    <div class="poza2" style="background-color:green; z-index:2;"></div>
-                                </div>
-                            </div> 
-                        </div> -->
+                <div id="terms" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
+                    <div id="terms-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; padding:1vh 2vw 1vh 2vw; font-family: 'Montserrat', sans-serif; font-size: 1.4vw; text-align:justify">
+                        <!-- <div class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 1.4vw; text-align:justify"> -->
+                        <!-- <?php echo $content['Errors']['news-unav']; ?> -->
+                        <?php echo $content['Terms']['Terms']; ?>
+                        <!-- </div>                    -->
                     </div> 
                 </div>
             </div> 
