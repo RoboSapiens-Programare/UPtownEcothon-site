@@ -230,8 +230,8 @@
                         <label for="position"><?php echo $content['RegistrationSect']['Status']; ?></label>
                         <select id="position" name="position" style="height:5vh" onclick="isInSchool();">
                             <option value="selectcard"> - </option>
-                            <option value="elev"><?php echo $content['RegistrationSect']['Elev']; ?></option>
-                            <option value="student"><?php echo $content['RegistrationSect']['Student']; ?></option>
+                            <option value="elev" onclick="isInSchool();"><?php echo $content['RegistrationSect']['Elev']; ?></option>
+                            <option value="student" onclick="isInSchool();"><?php echo $content['RegistrationSect']['Student']; ?></option>
                             <option value="angajat"><?php echo $content['RegistrationSect']['Employee']; ?></option>
                             <option value="l-intrep"><?php echo $content['RegistrationSect']['Freelancer']; ?></option>
                         </select><br>            
