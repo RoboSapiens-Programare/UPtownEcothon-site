@@ -32,6 +32,8 @@
             $teamID = $ret["team_id"]; 
             // echo "<script type='text/javascript'>alert(" . $ret["teamID"] . ");</script>";
 
+            $_SESSION['team_id'] = $teamID;
+
             if($teamID!=99 && $teamID!=0){
                 //get team name
                 $sql = "SELECT * FROM teams WHERE id = :id LIMIT 1";
@@ -88,6 +90,9 @@
             echo "<script type='text/javascript'>alert('Team DOnt exist');</script>";
 
         }
+
+        unset($db);
+        
     } catch(PDOException $e){
         echo $e->getMessage();
     }
@@ -132,30 +137,26 @@
 
 
         <style>
+            .filelist-wrapper{
+                position:relative; 
+                margin:-3vh 0vw 3vh 0vw; 
+                font-size:2.5vh;
+            }
             .fileList, .fileSize{
                 position: relative;
-                margin-top: -3vh;
-                font-size: 1.5vh;
-                /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
-            }
-            .fileSize{
-                margin-bottom: 3vh;
+                font-size: 2vh;
             }
             .fileList ul{
                 position: relative;
-                margin-top: -1vh;
-                margin-bottom: -3vh;
+                margin-top: -0.5vh;
             } 
             .fileList li{
-                font-size: 1.5vh;
-                /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
+                font-size: 2vh;
             }
             p{
                 position: relative;
-                margin-top: -3vh;
-                margin-bottom: 3vh;
                 display: inline;
-                font-size: 1.5vh; 
+                font-size: 2vh; 
             }
             * {
                 font-family:'Khand', sans-serif;
@@ -237,7 +238,7 @@
                 -webkit-filter: invert(50%);
                 filter: invert(50%);
             }
-            @media screen and (max-width:750px){
+            @media screen and (orientation:portrait){
                 label{
                     font-size: 3vw;
                 }
@@ -268,30 +269,18 @@
                 }
                 #language li a {
                     font-size: 5vw;
-                } .fileList, .fileSize{
-                    margin-top: -1vh;
-                    font-size: 2vw;
-                    /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
                 }
-                .fileSize{
-                    margin-bottom: 1vh;
+                .filelist-wrapper{
+                    position:relative; 
+                    margin:-1vh 0vw 1vh 0vw; 
+                }
+                .fileList, .fileSize, .fileList li, p{
+                    font-size: 3vw;
                 }
                 .fileList ul{
                     position: relative;
                     margin-top: 0vh;
-                    margin-bottom: -3vh;
                 } 
-                .fileList li{
-                    font-size: 2vw;
-                    /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
-                }
-                p{
-                    position: relative;
-                    margin-top: -1vh;
-                    margin-bottom: 1vh;
-                    display: inline;
-                    font-size: 2vw; 
-                }
             } 
               
             </style>
@@ -318,48 +307,53 @@
             </div>
         </div>
 
-        <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
-            <h2>Team:</h2>
-            <?php echo $fields["team_name"]; ?>
+        <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:90%; max-width:1000px;">
+            <h2 style="font-size: 3vh; font-weight:normal">Team: <span style="font-weight:bold;text-decoration:underline dashed #00ff16 0.3vh;"><?php echo $fields["team_name"]; ?></span></h2>
 
-            <h2>Members:</h2>
-            <?php 
-                if(empty($participants) || !isset($participants)){
-                    echo "Looks like you're on your own";
-                } else {
-                    for ($i = 0; $i < count($participants); $i++) {
-                        echo $participants[$i] . ", ";
-                    }
-                }
-            ?>
+            <h2 style="font-size: 3vh; font-weight:normal">Members:
+                <span style="font-weight: bold;">
+                    <?php 
+                        if(empty($participants) || !isset($participants)){
+                            echo "Looks like you're on your own";
+                        } else {
+                            for ($i = 0; $i < count($participants); $i++) {
+                                echo $participants[$i];
+                                if($i != count($participants)-1){
+                                    echo ", ";
+                                }
+                            }
+                        }
+                    ?>
+                </span>
+             </h2>
             
             <h2>Code files:</h2>
             <!--TODO: action="scripts/upload.php" -->
-            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" id="app">
+            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" >
                 <div class="msg" style="display:none"></div>
 
                 <label for="appfile">Select project files to upload:</label>
                 <input type="file" name="appfile" id="appfile" class="file" multiple>
-                <!-- <div id="appfiles" class="list"></div> -->
-                <p>selected files:</p> <span class="fileList" >There are no files.</span> <br>
-                <p>total size:</p> <span class="fileSize" >0</span>  <br>
-
+                <div class="filelist-wrapper">
+                    <p>selected files:</p> <span class="fileList" >There are no files.</span> 
+                    <div style="height: 0.1vh;"></div>
+                    <p>total size:</p> <span class="fileSize" >0</span>
+                </div>
+                
                 <label for="appurl">Or enter a git url:</label>
                 <input type="text" name="appurl" id="appurl" class="url" onclick="makeAllGreen(this.parentElement)">
 
-                <button type="submit">Submit</button>
-            </form>
 
-            <h2>Prezentation files files:</h2>
-            <!-- TO DO: add action="scripts/upload.php" -->
-            <form  method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" id="prez">
+                <h2>Prezentation files files:</h2>
                 <div class="msg" style="display:none"></div>
 
                 <label for="prezfile">Select prezentation files to upload:</label>
                 <input type="file" name="prezfile" id="prezfile" class="file" multiple onclick="makeAllGreen(this.parentElement)" onchange="updateList(this, document.getElementById('prezfiles'));">
-                <!-- <div id="prezfiles" class="list"></div> -->
-                <p>selected files:</p> <span class="fileList" >There are no files.</span> <br>
-                <p>total size:</p> <span class="fileSize" >0</span>  <br>
+                <div class="filelist-wrapper">
+                    <p>selected files:</p> <span class="fileList" >There are no files.</span> 
+                    <div style="height: 0.1vh;"></div>
+                    <p>total size:</p> <span class="fileSize" >0</span>
+                </div>
                
                 <label for="prezurl">Or enter a url for your online presentation:</label>
                 <input type="text" name="prezurl" id="prezurl" class="url" onclick="makeAllGreen(this.parentElement)">
@@ -454,21 +448,30 @@
             function validateForm(section){
                 var isOK = true;
 
-                //verifies stuff not empty
-                var file = section.getElementsByClassName('file')[0];
-                var url = section.getElementsByClassName('url')[0];
+                let file, url, file_verif, url_verif;
 
-                var file_verif = (file.value.length == 0 || file==null) ? false : true;
-                var url_verif = (url.value.length == 0 || url==null) ? false : true;
-                
-                if(!file_verif && !url_verif){
-                    isOK = false;
-                    section.getElementsByClassName('msg')[0].style.display = "block";
-                    section.getElementsByClassName('msg')[0].innerHTML = "Please submit at least one method through which we can take a look at your code";
-                    file.style.borderColor = "red";
-                    url.style.borderColor = "red";
+                //this will be a problem if number of links is not equal to number of file fields =DDDDDDDDDDDDDDDDD
+                for(let i=0;i<section.getElementsByClassName('file').length; i++){
+                    //verifies stuff not empty
+                    file = section.getElementsByClassName('file')[i];
+                    url = section.getElementsByClassName('url')[i];
+
+                    file_verif = (file.value.length !== 0 && file!==null);
+                    url_verif = (url.value.length !== 0 && url!==null);
+
+                    if(!file_verif && !url_verif){
+                        isOK = false;
+                        section.getElementsByClassName('msg')[0].style.display = "block";
+                        section.getElementsByClassName('msg')[0].innerHTML = "Please submit at least one method through which we can take a look at your code";
+                        file.style.borderColor = "red";
+                        url.style.borderColor = "red";
+                    }
+
+                    //verify that input does not contain any .exe files
+                    if(!isNotExe(file, section)){
+                        isOK = false;
+                    }
                 }
-
 
                 //verify file size does not exceeed 50mb?????????????(pt ca aparent POST iti limiteaza automat la 50mb) in the messiest way possible 
                 if((section.getAttribute('id')==="app" && appfile_bytes>41943040) || (section.getAttribute('id')==="prez" && prezfile_bytes>41943040)){
@@ -479,18 +482,11 @@
                 } 
 
                 //verify has submitted financial plan, again horribly messy, like everything else
-                if(section.getAttribute('id')==="prez"){
-                    if(section.getElementsByClassName('moneysfile')[0]!==null && section.getElementsByClassName('moneysfile')[0].value.length==0){
-                        isOK = false;
-                        section.getElementsByClassName('moneysfile')[0].style.borderColor = "red";
-                        section.getElementsByClassName('msg')[0].style.display = "block";
-                        section.getElementsByClassName('msg')[0].innerHTML = "Please submit financial plan (and prezentation if you haven't done so)";
-                    }
-                }
-
-                //verify that input does not contain any .exe files
-                if(!isNotExe(file, section)){
+                if(section.getElementsByClassName('moneysfile')[0]!==null && section.getElementsByClassName('moneysfile')[0].value.length==0){
                     isOK = false;
+                    section.getElementsByClassName('moneysfile')[0].style.borderColor = "red";
+                    section.getElementsByClassName('msg')[0].style.display = "block";
+                    section.getElementsByClassName('msg')[0].innerHTML = "Please submit financial plan (and prezentation if you haven't done so)";
                 }
 
                 // return isOK; TODO: DONT FORGET TO UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
