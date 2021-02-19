@@ -137,30 +137,35 @@
 
 
         <style>
+            .filelist-wrapper{
+                position:relative; 
+                margin:-3vh 0vw 3vh 0vw; 
+                font-size:2.5vh;
+            }
             .fileList, .fileSize{
                 position: relative;
-                margin-top: -3vh;
-                font-size: 1.5vh;
+                /* margin-top: -3vh; */
+                font-size: 2vh;
                 /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
             }
             .fileSize{
-                margin-bottom: 3vh;
+                /* margin-bottom: 3vh; */
             }
             .fileList ul{
                 position: relative;
-                margin-top: -1vh;
-                margin-bottom: -3vh;
+                margin-top: -0.5vh;
+                /* margin-bottom: -3vh; */
             } 
             .fileList li{
-                font-size: 1.5vh;
+                font-size: 2vh;
                 /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
             }
             p{
                 position: relative;
-                margin-top: -3vh;
-                margin-bottom: 3vh;
+                /* margin-top: -3vh; */
+                /* margin-bottom: 3vh; */
                 display: inline;
-                font-size: 1.5vh; 
+                font-size: 2vh; 
             }
             * {
                 font-family:'Khand', sans-serif;
@@ -273,9 +278,14 @@
                 }
                 #language li a {
                     font-size: 5vw;
-                } .fileList, .fileSize{
+                }
+                .filelist-wrapper{
+                    position:relative; 
+                    margin:-1vh 0vw 1vh 0vw; 
+                }
+                .fileList, .fileSize{
                     margin-top: -1vh;
-                    font-size: 2vw;
+                    font-size: 3vw;
                     /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
                 }
                 .fileSize{
@@ -295,7 +305,7 @@
                     margin-top: -1vh;
                     margin-bottom: 1vh;
                     display: inline;
-                    font-size: 2vw; 
+                    font-size: 3vw; 
                 }
             } 
               
@@ -323,20 +333,25 @@
             </div>
         </div>
 
-        <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:60%;">
-            <h2>Team:</h2>
-            <?php echo $fields["team_name"]; ?>
+        <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:90%; max-width:1000px;">
+            <h2 style="font-size: 3vh; font-weight:normal">Team: <span style="font-weight:bold;text-decoration:underline dashed #00ff16 0.3vh;"><?php echo $fields["team_name"]; ?></span></h2>
 
-            <h2>Members:</h2>
-            <?php 
-                if(empty($participants) || !isset($participants)){
-                    echo "Looks like you're on your own";
-                } else {
-                    for ($i = 0; $i < count($participants); $i++) {
-                        echo $participants[$i] . ", ";
-                    }
-                }
-            ?>
+            <h2 style="font-size: 3vh; font-weight:normal">Members:
+                <span style="font-weight: bold;">
+                    <?php 
+                        if(empty($participants) || !isset($participants)){
+                            echo "Looks like you're on your own";
+                        } else {
+                            for ($i = 0; $i < count($participants); $i++) {
+                                echo $participants[$i];
+                                if($i != count($participants)-1){
+                                    echo ", ";
+                                }
+                            }
+                        }
+                    ?>
+                </span>
+             </h2>
             
             <h2>Code files:</h2>
             <!--TODO: action="scripts/upload.php" -->
@@ -345,10 +360,12 @@
 
                 <label for="appfile">Select project files to upload:</label>
                 <input type="file" name="appfile" id="appfile" class="file" multiple>
-                <!-- <div id="appfiles" class="list"></div> -->
-                <p>selected files:</p> <span class="fileList" >There are no files.</span> <br>
-                <p>total size:</p> <span class="fileSize" >0</span>  <br>
-
+                <div class="filelist-wrapper">
+                    <p>selected files:</p> <span class="fileList" >There are no files.</span> 
+                    <div style="height: 0.1vh;"></div>
+                    <p>total size:</p> <span class="fileSize" >0</span>
+                </div>
+                
                 <label for="appurl">Or enter a git url:</label>
                 <input type="text" name="appurl" id="appurl" class="url" onclick="makeAllGreen(this.parentElement)">
 
@@ -362,9 +379,11 @@
 
                 <label for="prezfile">Select prezentation files to upload:</label>
                 <input type="file" name="prezfile" id="prezfile" class="file" multiple onclick="makeAllGreen(this.parentElement)" onchange="updateList(this, document.getElementById('prezfiles'));">
-                <!-- <div id="prezfiles" class="list"></div> -->
-                <p>selected files:</p> <span class="fileList" >There are no files.</span> <br>
-                <p>total size:</p> <span class="fileSize" >0</span>  <br>
+                <div class="filelist-wrapper">
+                    <p>selected files:</p> <span class="fileList" >There are no files.</span> 
+                    <div style="height: 0.1vh;"></div>
+                    <p>total size:</p> <span class="fileSize" >0</span>
+                </div>
                
                 <label for="prezurl">Or enter a url for your online presentation:</label>
                 <input type="text" name="prezurl" id="prezurl" class="url" onclick="makeAllGreen(this.parentElement)">
