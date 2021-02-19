@@ -338,7 +338,7 @@
 
             function validateForm(section, hasEmail){
                 var isOk = true;
-            
+
                 if(hasEmail){
                     //verify experience field is filled in
                     if(document.forms["registration"]["experience"].value.length == 0 || document.forms["registration"]["experience"]==null){
@@ -404,17 +404,32 @@
                 }
 
                 
+                //(this is possibly the worst most hardcoded way you can do this but i am not redoing it now) 
                 //verify all input fields are filled in + checks if the passwords match (+THEORETICALLY only checks city and stuff fields if is elev)
                 var input = section.querySelectorAll("input");
                 for (i = 0; i < input.length; ++i) {
                     if (input[i].getAttribute('id')==="city" && !isElev){
+                        //skip over school related attributes if the person is not student
                         i+=2;
                     } else if(input[i].getAttribute('id')==="teamcreatename"){
+                        //skips over teamcreatename cause that one is checked separately
                         i++;
                     } else if((input[i].value.length == 0 || input[i]==null)){
+                        //checks if all fields are not empty
                         input[i].style.borderColor = "red";
                         isOk = false;
+                    }  else if(input[i].getAttribute('id')==="username"){
+                        //checks username doesnt contain special characters
+                        var username = document.forms["registration"]["username"].value;
+                        const re1 = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+                        var isspecial = re1.test(String(username).toLowerCase());
+
+                        if(isspecial){
+                            input[i].style.borderColor = "red";
+                            isOk = false;
+                        }
                     } else if (input[i].getAttribute('id')==="cpasswd"){
+                        //checks passwords match
                         var passwdValue = document.forms["registration"]["passwd"].value;
                         var cpasswdValue = document.forms["registration"]["cpasswd"].value;
                         if (passwdValue.normalize() != cpasswdValue.normalize()){
@@ -425,12 +440,21 @@
                     } 
                 }
 
+                if(section.getAttribute('id')==="configureAccount"){
+                    var terms = document.getElementById('terms');
+                    if(!terms.checked){
+                        // alert("You must accept the terms and conditions to continue!");
+                        // document.getElementById('msg-account').innerHTML = 'You must accept the terms and conditions to continue!';
+                        isOk = false;
+                    }
+                }
+
                 return isOk;
             }
             
             function registrationOK(){
                 var section =document.getElementById('Registration');
-                if(validateForm(section,true)==true){
+                if(validateForm(section,true)){
                     // alert("A mers");
                     var x = document.getElementById('teamDetails');
                     x.style.display = "block";
@@ -480,7 +504,7 @@
 
             function teamOK(){
                 var section = document.getElementById('teamDetails');
-                if(validateForm(section,false)==true){
+                if(validateForm(section,false)){
                     // var x = document.getElementById('ideasSection');
                     // x.style.display = "block";
                     var x = document.getElementById('configureAccount');
@@ -514,21 +538,23 @@
 
             function accountOK(){
                 var section = document.getElementById('configureAccount');
-                if(validateForm(section,false)){
+                if(!validateForm(section,false)){
                     var terms = document.getElementById('terms');
-                    if(terms.checked){
-                        document.getElementById('msg-account').style.display = "none";
-                        return true;
-                    }
-                    else{
+                    if(!terms.checked){
+                    //     document.getElementById('msg-account').style.display = "none";
+                    //     return true;
+                    // }
+                    // else{
                         document.getElementById('msg-account').style.display = "block";
                         document.getElementById('msg-account').innerHTML = 'You must accept the terms and conditions to continue!';
                         return false;
                     }
-                } else{
-                    document.getElementById('msg-account').style.display = "block";
-                    document.getElementById('msg-account').innerHTML = 'Please complete all fields accordingly!';
-                    return false;
+                // } 
+                    else{
+                        document.getElementById('msg-account').style.display = "block";
+                        document.getElementById('msg-account').innerHTML = 'Please complete all fields accordingly!';
+                        return false;
+                    } 
                 }
             }
 

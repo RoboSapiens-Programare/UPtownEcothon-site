@@ -15,8 +15,9 @@
 
 .rotate-btn {
     position: absolute;
-    height: 15%;
-    width: 10%;
+    height: 10%;
+    /* width: 7%; */
+    width: 100%;
     background-color: transparent;
     z-index: 50;
     filter: invert(70%) sepia(62%) saturate(6015%) hue-rotate(94deg) brightness(121%) contrast(122%);
@@ -45,8 +46,8 @@
 
 #btn-next {
     top: 50%;
-    left: 100%;
-    transform: translate(-100%, -50%);
+    right: 0%;
+    transform: translate(0%, -50%);
 }
 
 .rotate-index {
@@ -88,7 +89,8 @@
         overflow-x: hidden;
     }
     .rotate-section {
-        position: absolute;
+        /* position: absolute; */
+        position: relative;
         bottom: 0px;
         height: 100vh;
         width: 100%;
@@ -174,14 +176,15 @@
     }
     .sect-title {
         position: absolute;
-        top: 40%;
+        top: 35%;
         left: 50%;
         transform: translate(-50%, 0%);
         height: 10vh;
         width: 100%;
         background-color: transparent;
         font-size: 10vw;
-        font-family: 'Khand', sans-serif; font-weight: bold;
+        font-family: 'Khand', sans-serif;
+        font-weight: bold;
         text-decoration: underline;
         text-decoration-color: #00ff16;
         text-decoration-style: dashed;
@@ -196,7 +199,9 @@
         border: 0.5vh solid #00ff16;
         border-radius: 3vh;
         font-size: 4vw;
-        font-family: 'Khand', sans-serif; font-weight: bold;
+        font-family: 'Khand', sans-serif;
+        /* font-weight: bold; */
+        color: white;
     }
     .read-more-btn:hover {
         cursor: pointer;
@@ -211,15 +216,26 @@
         overflow-y: scroll;
         font-size: 5vw;
         text-align: justify;
-        font-family: 'Khand', sans-serif; font-weight: bold;
+        font-family: 'Khand', sans-serif;
+        font-weight: bold;
         background-color: white;
-        /* padding: 5%; */
+        /* padding: 1vh 1vw 1vh 1vw; */
     }
     .sect-content {
         position: absolute;
         width: 90%;
-        top: 5%;
+        top: 1%;
         left: 50%;
         transform: translateX(-50%);
+    }
+    .tagtag {
+        position: absolute;
+        color: white;
+        font-size: 3vw;
+        top: 46%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        transition: all 200ms ease;
+        /* opacity: 0; */
     }
 }
