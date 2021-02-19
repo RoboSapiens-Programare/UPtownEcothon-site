@@ -144,26 +144,17 @@
             }
             .fileList, .fileSize{
                 position: relative;
-                /* margin-top: -3vh; */
                 font-size: 2vh;
-                /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
-            }
-            .fileSize{
-                /* margin-bottom: 3vh; */
             }
             .fileList ul{
                 position: relative;
                 margin-top: -0.5vh;
-                /* margin-bottom: -3vh; */
             } 
             .fileList li{
                 font-size: 2vh;
-                /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
             }
             p{
                 position: relative;
-                /* margin-top: -3vh; */
-                /* margin-bottom: 3vh; */
                 display: inline;
                 font-size: 2vh; 
             }
@@ -283,30 +274,13 @@
                     position:relative; 
                     margin:-1vh 0vw 1vh 0vw; 
                 }
-                .fileList, .fileSize{
-                    margin-top: -1vh;
+                .fileList, .fileSize, .fileList li, p{
                     font-size: 3vw;
-                    /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
-                }
-                .fileSize{
-                    margin-bottom: 1vh;
                 }
                 .fileList ul{
                     position: relative;
                     margin-top: 0vh;
-                    margin-bottom: -3vh;
                 } 
-                .fileList li{
-                    font-size: 2vw;
-                    /* font-family: 'Montserrat', sans-serif; font-weight: bold; */
-                }
-                p{
-                    position: relative;
-                    margin-top: -1vh;
-                    margin-bottom: 1vh;
-                    display: inline;
-                    font-size: 3vw; 
-                }
             } 
               
             </style>
@@ -355,7 +329,7 @@
             
             <h2>Code files:</h2>
             <!--TODO: action="scripts/upload.php" -->
-            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" id="app">
+            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" >
                 <div class="msg" style="display:none"></div>
 
                 <label for="appfile">Select project files to upload:</label>
@@ -369,12 +343,8 @@
                 <label for="appurl">Or enter a git url:</label>
                 <input type="text" name="appurl" id="appurl" class="url" onclick="makeAllGreen(this.parentElement)">
 
-                <button type="submit">Submit</button>
-            </form>
 
-            <h2>Prezentation files files:</h2>
-            <!-- TO DO: add action="scripts/upload.php" -->
-            <form  method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" id="prez">
+                <h2>Prezentation files files:</h2>
                 <div class="msg" style="display:none"></div>
 
                 <label for="prezfile">Select prezentation files to upload:</label>
@@ -478,21 +448,30 @@
             function validateForm(section){
                 var isOK = true;
 
-                //verifies stuff not empty
-                var file = section.getElementsByClassName('file')[0];
-                var url = section.getElementsByClassName('url')[0];
+                let file, url, file_verif, url_verif;
 
-                var file_verif = (file.value.length == 0 || file==null) ? false : true;
-                var url_verif = (url.value.length == 0 || url==null) ? false : true;
-                
-                if(!file_verif && !url_verif){
-                    isOK = false;
-                    section.getElementsByClassName('msg')[0].style.display = "block";
-                    section.getElementsByClassName('msg')[0].innerHTML = "Please submit at least one method through which we can take a look at your code";
-                    file.style.borderColor = "red";
-                    url.style.borderColor = "red";
+                //this will be a problem if number of links is not equal to number of file fields =DDDDDDDDDDDDDDDDD
+                for(let i=0;i<section.getElementsByClassName('file').length; i++){
+                    //verifies stuff not empty
+                    file = section.getElementsByClassName('file')[i];
+                    url = section.getElementsByClassName('url')[i];
+
+                    file_verif = (file.value.length !== 0 && file!==null);
+                    url_verif = (url.value.length !== 0 && url!==null);
+
+                    if(!file_verif && !url_verif){
+                        isOK = false;
+                        section.getElementsByClassName('msg')[0].style.display = "block";
+                        section.getElementsByClassName('msg')[0].innerHTML = "Please submit at least one method through which we can take a look at your code";
+                        file.style.borderColor = "red";
+                        url.style.borderColor = "red";
+                    }
+
+                    //verify that input does not contain any .exe files
+                    if(!isNotExe(file, section)){
+                        isOK = false;
+                    }
                 }
-
 
                 //verify file size does not exceeed 50mb?????????????(pt ca aparent POST iti limiteaza automat la 50mb) in the messiest way possible 
                 if((section.getAttribute('id')==="app" && appfile_bytes>41943040) || (section.getAttribute('id')==="prez" && prezfile_bytes>41943040)){
@@ -503,18 +482,11 @@
                 } 
 
                 //verify has submitted financial plan, again horribly messy, like everything else
-                if(section.getAttribute('id')==="prez"){
-                    if(section.getElementsByClassName('moneysfile')[0]!==null && section.getElementsByClassName('moneysfile')[0].value.length==0){
-                        isOK = false;
-                        section.getElementsByClassName('moneysfile')[0].style.borderColor = "red";
-                        section.getElementsByClassName('msg')[0].style.display = "block";
-                        section.getElementsByClassName('msg')[0].innerHTML = "Please submit financial plan (and prezentation if you haven't done so)";
-                    }
-                }
-
-                //verify that input does not contain any .exe files
-                if(!isNotExe(file, section)){
+                if(section.getElementsByClassName('moneysfile')[0]!==null && section.getElementsByClassName('moneysfile')[0].value.length==0){
                     isOK = false;
+                    section.getElementsByClassName('moneysfile')[0].style.borderColor = "red";
+                    section.getElementsByClassName('msg')[0].style.display = "block";
+                    section.getElementsByClassName('msg')[0].innerHTML = "Please submit financial plan (and prezentation if you haven't done so)";
                 }
 
                 // return isOK; TODO: DONT FORGET TO UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
