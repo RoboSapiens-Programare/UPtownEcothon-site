@@ -151,6 +151,10 @@
                 -webkit-filter: invert(50%);
                 filter: invert(50%);
             }
+
+            span a{
+                font-family: Montserrat;
+            }
             @media screen and (max-width:750px){
                 label{
                     font-size: 3vw;
@@ -211,7 +215,7 @@
 
         <a href="home.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center"><?php echo $content['Interface']['BackHomeBtn']; ?></a>
 
-        <span id="shortdescription" style="display:block; position: relative; left: 50%; transform:translateX(-50%); width:40%; font-family: Montserrat; font-size: 2.5vh; text-align:center; color:white"><?php echo $content['Interface']['ShortDesc']; ?></span>
+        <span id="shortdescription" style="display:block; position: relative; left: 50%; transform:translateX(-50%); width:40%; font-family: Montserrat; font-size: 2.5vh; text-align:justify; color:white"><?php echo $content['Interface']['ShortDesc']; ?></span>
 
         <div style="position:relative; width:90%; max-width: 700px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
                 
