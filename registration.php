@@ -152,9 +152,31 @@
                 filter: invert(50%);
             }
 
+            #shortdescription{
+                display:block; 
+                position: relative; 
+                left: 50%; 
+                transform:translateX(-50%); 
+                width:40%; 
+                font-family: Montserrat; 
+                font-size: 2.5vh; 
+                text-align:justify; 
+                color:aliceblue;
+            }
+
+            #formappear{
+                width: 40%; 
+                left: 50%; 
+                transform:translateX(-50%); 
+                color:black; 
+                background-color:aliceblue; 
+                padding-top:10px;
+            }
+
             span a{
                 font-family: Montserrat;
             }
+
             @media screen and (max-width:750px){
                 label{
                     font-size: 3vw;
@@ -187,6 +209,11 @@
                 #language li a {
                     font-size: 5vw;
                 }
+
+                #shortdescription, #formappear{
+                    width:90%; 
+                }
+
             } 
         </style>
 
@@ -215,8 +242,8 @@
 
         <a href="home.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center"><?php echo $content['Interface']['BackHomeBtn']; ?></a>
 
-        <span id="shortdescription" style="display:block; position: relative; left: 50%; transform:translateX(-50%); width:40%; font-family: Montserrat; font-size: 2.5vh; text-align:justify; color:aliceblue"><?php echo $content['Interface']['ShortDesc']; ?></span>
-        <button id="formappear" type="button"  onclick="formusappearus();" style="width: 40%; left: 50%; transform:translateX(-50%); color:black; background-color:aliceblue; padding-top:10px"><?php echo $content['Interface']['OkayBtn']; ?></button>  
+        <span id="shortdescription"><?php echo $content['Interface']['ShortDesc']; ?></span>
+        <button id="formappear" type="button"  onclick="formusappearus();"><?php echo $content['Interface']['OkayBtn']; ?></button>  
 
 
         <div id="formdiv" style="position:relative; width:90%; max-width: 700px; left: 50%; transform:translateX(-50%); display: none" class="rounded-rect">
