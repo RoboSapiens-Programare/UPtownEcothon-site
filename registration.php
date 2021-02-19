@@ -211,6 +211,8 @@
 
         <a href="home.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center"><?php echo $content['Interface']['BackHomeBtn']; ?></a>
 
+        <span id="shortdescription" style="display:block; position: relative; left: 50%; transform:translateX(-50%); width:40%; font-family: Montserrat; font-size: 2.5vh; text-align:center; color:white"><?php echo $content['Interface']['ShortDesc']; ?></span>
+
         <div style="position:relative; width:90%; max-width: 700px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
                 
             <div id="registerParticipant" class="formelement">
@@ -228,10 +230,10 @@
                         <label for="phone"><?php echo $content['RegistrationSect']['Phone']; ?></label>
                         <input type="number" id="phone" name="phone"><br>
                         <label for="position"><?php echo $content['RegistrationSect']['Status']; ?></label>
-                        <select id="position" name="position" style="height:5vh" onclick="isInSchool();">
+                        <select id="position" name="position" style="height:5vh" onclick="isInSchool();" onchange="isInSchool();">
                             <option value="selectcard"> - </option>
-                            <option value="elev" onclick="isInSchool();"><?php echo $content['RegistrationSect']['Elev']; ?></option>
-                            <option value="student" onclick="isInSchool();"><?php echo $content['RegistrationSect']['Student']; ?></option>
+                            <option value="elev"><?php echo $content['RegistrationSect']['Elev']; ?></option>
+                            <option value="student"><?php echo $content['RegistrationSect']['Student']; ?></option>
                             <option value="angajat"><?php echo $content['RegistrationSect']['Employee']; ?></option>
                             <option value="l-intrep"><?php echo $content['RegistrationSect']['Freelancer']; ?></option>
                         </select><br>            
