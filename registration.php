@@ -177,7 +177,7 @@
                 font-family: Montserrat;
             }
 
-            @media screen and (max-width:750px){
+            @media screen and (orientation:portrait){
                 label{
                     font-size: 3vw;
                 }
@@ -211,7 +211,7 @@
                 }
 
                 #shortdescription, #formappear{
-                    width:90%; 
+                    width:80%; 
                 }
 
             } 

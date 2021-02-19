@@ -32,6 +32,8 @@
             $teamID = $ret["team_id"]; 
             // echo "<script type='text/javascript'>alert(" . $ret["teamID"] . ");</script>";
 
+            $_SESSION['team_id'] = $teamID;
+
             if($teamID!=99 && $teamID!=0){
                 //get team name
                 $sql = "SELECT * FROM teams WHERE id = :id LIMIT 1";
@@ -88,6 +90,9 @@
             echo "<script type='text/javascript'>alert('Team DOnt exist');</script>";
 
         }
+
+        unset($db);
+        
     } catch(PDOException $e){
         echo $e->getMessage();
     }
@@ -237,7 +242,7 @@
                 -webkit-filter: invert(50%);
                 filter: invert(50%);
             }
-            @media screen and (max-width:750px){
+            @media screen and (orientation:portrait){
                 label{
                     font-size: 3vw;
                 }

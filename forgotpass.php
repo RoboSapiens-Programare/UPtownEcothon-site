@@ -132,7 +132,7 @@
                 -webkit-filter: invert(50%);
                 filter: invert(50%);
             }
-            @media screen and (max-width:750px){
+            @media screen and (orientation:portrait){
                 label{
                 font-size: 4vw;
                 }
@@ -183,7 +183,7 @@
                 </div>
             </div>	
 
-            <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:90%; max-width:750px">
+            <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:90%; max-width:700px">
                 <form method="POST" action="scripts/send_passchange_verification.php" class="ajax-form">
                     <label for="email">Email:</label>
                     <input type="text" id="email" name="email"><br>
