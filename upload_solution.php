@@ -91,6 +91,20 @@
 
         }
 
+        //This for security token
+        $sql = "SELECT passwd FROM users WHERE id = :id LIMIT 1";
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindParam(":id", $_SESSION["id"]);
+
+        $stmt->execute();
+        $ret = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $token = "";
+        if(!empty($ret)){
+            $token = base64_encode($ret['passwd']);
+        }
+
         unset($db);
         
     } catch(PDOException $e){
@@ -327,9 +341,10 @@
                 </span>
              </h2>
             
-            <h2>Code files:</h2>
+            
             <!--TODO: action="scripts/upload.php" -->
-            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" >
+            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" action="scripts/submit_files.php">
+                <h2>Code files:</h2>
                 <div class="msg" style="display:none"></div>
 
                 <label for="appfile">Select project files to upload:</label>
@@ -360,6 +375,10 @@
 
                 <label for="finplan">Select financial plan files to upload:</label>
                 <input type="file" name="finplan" id="finplan" class="finplan">
+
+                <!-- Please just don't push this -->
+                <input type="hidden" name="uname" value="<?php echo $_SESSION['username'] ?>">
+                <input type="hidden" name="verif" value="<?php echo $token ?>">
 
                 <button type="submit">Submit</button>
             </form>
@@ -490,7 +509,7 @@
                 }
 
                 // return isOK; TODO: DONT FORGET TO UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-                return false;
+                return true;
             }
 
             function makeAllGreen(section){

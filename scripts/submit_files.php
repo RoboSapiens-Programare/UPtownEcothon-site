@@ -22,21 +22,22 @@
                 $ret = $stmt->fetch(PDO::FETCH_ASSOC);
     
                 if(!empty($ret)){
-                    if($passwd !== $ret['passwd']){
+                    if($passwd_verif !== $ret['passwd']){
                         echo "Invalid token!";
                         die();
                     }
+                    $team_id = $ret['team_id'];
             
                     $sql = "SELECT name FROM teams WHERE id = :id";
                     $stmt =$db->prepare($sql);
         
-                    $stmt->bindParam(":id", $ret['team_id']);
+                    $stmt->bindParam(":id", $team_id);
         
                     $stmt->execute();
                     $ret = $stmt->fetch(PDO::FETCH_ASSOC);
 
                     if (!empty($ret) && checkFiles()) {
-                        $filepaths = moveFiles($team_id == 99? ("SOLO_" . $uname) : $ret['team_id']);
+                        $filepaths = moveFiles($team_id == 99? ("SOLO_" . $uname) : $ret['name']);
 
                         //Upload to database
                         $sql = "SELECT * FROM uploads 
@@ -150,6 +151,14 @@
                     }
 
                 }
+                else{
+                    echo "Not valid user!";
+                    http_response_code(403);
+                }
+            }
+            else{
+                echo "No verification token!";
+                http_response_code(403);
             }
         }
         catch(PDOException $e){
@@ -158,6 +167,10 @@
         }
 
         
+    }
+    else{
+        echo "This is a POST only script!";
+        http_response_code(403);
     }
 
     function checkFiles(){
@@ -176,12 +189,12 @@
     function moveFiles($team_name){
         $filepaths = array();
 
-        $target_dir = $_SERVER['DOCUMENT_ROOT']. "../UTE-contest/uploads";
+        $target_dir = $_SERVER['DOCUMENT_ROOT']. "/../UTE-contest/uploads";
         $random_string = md5(rand());
 
-        if(file_exists($_FILES['appfile']['tmp_name'][0])) {
+        if(file_exists($_FILES['appfile']['tmp_name'])) {
             
-            $target_file = $target_dir . $team_name . "_appfile_" . $random_string . "." . pathinfo($_FILES['appfile']['name'])['extension'];
+            $target_file = $target_dir . "/" . trim($team_name) . "_appfile_" . $random_string . "." . pathinfo($_FILES['appfile']['name'])['extension'];
 
             if (move_uploaded_file($_FILES["appfile"]["tmp_name"], $target_file)) {
                 echo "The file ". htmlspecialchars( basename( $_FILES["appfile"]["name"])). " has been uploaded.";
@@ -192,9 +205,9 @@
             }
             $filepaths['appfile'] = $target_file;
         }
-        if(file_exists($_FILES['prezfile']['tmp_name'][0])) {
-            
-            $target_file = $target_dir . $team_name . "_prezfile_" . $random_string . "." . pathinfo($_FILES['prezfile']['name'])['extension'];
+
+        if(file_exists($_FILES['prezfile']['tmp_name'])) {
+            $target_file = $target_dir . "/" . trim($team_name) . "_prezfile_" . $random_string . "." . pathinfo($_FILES['prezfile']['name'])['extension'];  
 
             if (move_uploaded_file($_FILES["prezfile"]["tmp_name"], $target_file)) {
                 echo "The file ". htmlspecialchars( basename( $_FILES["prezfile"]["name"])). " has been uploaded.";
@@ -205,9 +218,9 @@
             }
             $filepaths['prezfile'] = $target_file;
         }
-        if(file_exists($_FILES['finplan']['tmp_name'][0])) {
+        if(file_exists($_FILES['finplan']['tmp_name'])) {
             
-            $target_file = $target_dir . $team_name . "_finplan_" . $random_string . "." . pathinfo($_FILES['finplan']['name'])['extension'];
+            $target_file = $target_dir . "/" . trim($team_name) . "_finplan_" . $random_string . "." . pathinfo($_FILES['finplan']['name'])['extension'];
 
             if (move_uploaded_file($_FILES["finplan"]["tmp_name"], $target_file)) {
                 echo "The file ". htmlspecialchars( basename( $_FILES["finplan"]["name"])). " has been uploaded.";
