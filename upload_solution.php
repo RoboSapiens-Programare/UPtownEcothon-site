@@ -358,8 +358,8 @@
                 <label for="prezurl">Or enter a url for your online presentation:</label>
                 <input type="text" name="prezurl" id="prezurl" class="url" onclick="makeAllGreen(this.parentElement)">
 
-                <label for="moneysfile">Select financial plan files to upload:</label>
-                <input type="file" name="moneysfile" id="moneysfile" class="moneysfile">
+                <label for="finplan">Select financial plan files to upload:</label>
+                <input type="file" name="finplan" id="finplan" class="finplan">
 
                 <button type="submit">Submit</button>
             </form>
@@ -482,9 +482,9 @@
                 } 
 
                 //verify has submitted financial plan, again horribly messy, like everything else
-                if(section.getElementsByClassName('moneysfile')[0]!==null && section.getElementsByClassName('moneysfile')[0].value.length==0){
+                if(section.getElementsByClassName('finplan')[0]!==null && section.getElementsByClassName('finplan')[0].value.length==0){
                     isOK = false;
-                    section.getElementsByClassName('moneysfile')[0].style.borderColor = "red";
+                    section.getElementsByClassName('finplan')[0].style.borderColor = "red";
                     section.getElementsByClassName('msg')[0].style.display = "block";
                     section.getElementsByClassName('msg')[0].innerHTML = "Please submit financial plan (and prezentation if you haven't done so)";
                 }
