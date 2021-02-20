@@ -17,9 +17,12 @@
 
         $fields = array();
         $participants = array();
+        $appfile;
+        $prezfile;
+        $moneysfile;
         $teamID;
 
-        $sql = "SELECT team_id FROM users WHERE id = :id LIMIT 1";
+        $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
         $stmt = $db->prepare($sql);
 
         $stmt->bindParam(":id", $_SESSION["id"]);
@@ -29,66 +32,87 @@
         if($stmt){
             $ret = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            $teamID = $ret["team_id"]; 
-            // echo "<script type='text/javascript'>alert(" . $ret["teamID"] . ");</script>";
+            if(!empty($ret) && isset($ret) && $ret!=null){
+                $uname = $ret['username'];
+                $teamID = $ret["team_id"]; 
+                // echo "<script type='text/javascript'>alert(" . $ret["teamID"] . ");</script>";
+    
+                $_SESSION['team_id'] = $teamID;
+    
+                if($teamID!=99 && $teamID!=0){
+                    //get team name
+                    $sql = "SELECT * FROM teams WHERE id = :id LIMIT 1";
+                    $stmt = $db->prepare($sql);
+    
+                    $stmt->bindParam(":id", $teamID);
+    
+                    $stmt->execute();
+                    if($stmt){
+                        $ret = $stmt->fetch(PDO::FETCH_ASSOC);
+                        if(isset($ret) && !empty($ret)){
+                            // echo "<script type='text/javascript'>alert(" . $ret . ");</script>";
+                            $fields["team_name"] = $ret["name"];
+                        } else{
+                            $fields["team_name"] = "No team!";
+                        }
+                    } 
+    
+                    // get members
+                    $sql = "SELECT * FROM users WHERE team_id = :id";
+                    $stmt = $db->prepare($sql);
+    
+                    $stmt->bindParam(":id", $teamID);
+    
+                    $stmt->execute();
+                    if($stmt){
+                        foreach($stmt as $row) {
+                            if(!empty($row)&& isset($row)){
+                                $participants[]= $row['username'];
+                            }
+                        }
 
-            $_SESSION['team_id'] = $teamID;
+                        if(count($participants)==0 || empty($participants) || !isset($participants)){
+                            $fields["participants"] = "Looks like you're on your own";
+                        }
+                    }
+                } else {
+                    $fields["team_name"] = "You work alone!";
+                    $fields["participants"] = "It's just you here";
+                }
 
-            if($teamID!=99 && $teamID!=0){
-                //get team name
-                $sql = "SELECT * FROM teams WHERE id = :id LIMIT 1";
+                //TODO:add function that displays files currently uploaded
+                if($teamID == 99){
+                    $sql = "SELECT * FROM uploads WHERE user_modified = :uname LIMIT 1";
+                } else {
+                    $sql = "SELECT * FROM uploads WHERE team_id = :team_id LIMIT 1";
+                }
                 $stmt = $db->prepare($sql);
 
-                $stmt->bindParam(":id", $teamID);
+                $stmt->bindParam(":team_id", $teamID);
+                $stmt->bindParam(":uname", $uname);
 
                 $stmt->execute();
                 if($stmt){
                     $ret = $stmt->fetch(PDO::FETCH_ASSOC);
-                    if(isset($ret) && !empty($ret)){
-                        // echo "<script type='text/javascript'>alert(" . $ret . ");</script>";
-                        $fields["team_name"] = $ret["name"];
-                    } else{
-                        $fields["team_name"] = "No team!";
+                    if(!empty($ret)){
+                        if(!empty($ret['app_filename'])){
+                            $appfile = $ret['app_filename'];
+                        }
+                        if(!empty($ret['prez_files_name'])){
+                            $prezfile = $ret['prez_files_name'];
+                        }
+                        if(!empty($ret['fin_plan_filename'])){
+                            $moneysfile = $ret['fin_plan_filename'];
+                        }
                     }
-                } 
-
-                // get members
-                $sql = "SELECT * FROM users WHERE team_id = :id";
-                $stmt = $db->prepare($sql);
-
-                $stmt->bindParam(":id", $teamID);
-
-                $stmt->execute();
-                if($stmt){
-                    // $ret = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    // $i=0;
-                    foreach($stmt as $row) {
-                        $participants[]= $row['username'];
-                        // $i++;
-                    }
-
-                    // echo "<script type='text/javascript'>alert(" . $participants . ");</script>";
-
-                    // if(isset($ret) ){
-                    //     echo "<script type='text/javascript'>alert(" . $ret . ");</script>";
-                    //     $participants = $ret;
-                    // } 
-                    // else {
-                        // echo "<script type='text/javascript'>alert('you alone');</script>";
-                        // $fields["participants"] = "Looks like you're on your own";
-                    // }
-                    
                 }
 
-                //TODO:add function that displays files currently uploaded
-
-            } else {
-                $fields["team_name"] = "No team!";
-                $fields["participants"] = "Looks like you're on your own";
+            } else{
+                $fields["team_name"] = "Team wasn't found!";
+                $fields["participants"] = "Looks like you're on your own for now";
             }
         } else {
             echo "<script type='text/javascript'>alert('Team DOnt exist');</script>";
-
         }
 
         //This for security token
@@ -328,7 +352,7 @@
                 <span style="font-weight: bold;">
                     <?php 
                         if(empty($participants) || !isset($participants)){
-                            echo "Looks like you're on your own";
+                            echo $fields['participants'];
                         } else {
                             for ($i = 0; $i < count($participants); $i++) {
                                 echo $participants[$i];
@@ -341,40 +365,69 @@
                 </span>
              </h2>
             
-            
             <!--TODO: action="scripts/upload.php" -->
             <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" action="scripts/submit_files.php">
                 <h2>Code files:</h2>
                 <div class="msg" style="display:none"></div>
 
+                <h2>Code files:</h2>
+
                 <label for="appfile">Select project files to upload:</label>
-                <input type="file" name="appfile" id="appfile" class="file" multiple>
-                <div class="filelist-wrapper">
-                    <p>selected files:</p> <span class="fileList" >There are no files.</span> 
+                <input type="file" name="appfile" id="appfile" class="file">
+                <div id="appfile" class="filelist-wrapper appfile">
+                    <p>selected file:</p> <span class="fileList" >There are no files.</span> 
                     <div style="height: 0.1vh;"></div>
-                    <p>total size:</p> <span class="fileSize" >0</span>
+                    <p>upload file size:</p> <span class="fileSize" >0</span>
+                    <div style="height: 0.1vh;"></div>
+                    <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
+                        if(isset($appfile) && !empty($appfile)){
+                            echo $appfile;
+                        } else {
+                            echo "no file currently uploaded";
+                        }
+                    ?></span>
                 </div>
                 
                 <label for="appurl">Or enter a git url:</label>
-                <input type="text" name="appurl" id="appurl" class="url" onclick="makeAllGreen(this.parentElement)">
+                <input type="text" name="appurl" id="appurl" class="url" onclick="makeGreen(this)">
 
 
                 <h2>Prezentation files files:</h2>
-                <div class="msg" style="display:none"></div>
 
                 <label for="prezfile">Select prezentation files to upload:</label>
-                <input type="file" name="prezfile" id="prezfile" class="file" multiple onclick="makeAllGreen(this.parentElement)" onchange="updateList(this, document.getElementById('prezfiles'));">
-                <div class="filelist-wrapper">
-                    <p>selected files:</p> <span class="fileList" >There are no files.</span> 
+                <input type="file" name="prezfile" id="prezfile" class="file" onclick="makeGreen(this)">
+                <div class="filelist-wrapper prezfile">
+                    <p>selected file:</p> <span class="fileList" >There are no files.</span> 
                     <div style="height: 0.1vh;"></div>
-                    <p>total size:</p> <span class="fileSize" >0</span>
+                    <p>upload file size:</p> <span class="fileSize" >0</span>
+                    <div style="height: 0.1vh;"></div>
+                    <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
+                        if(isset($prezfile) && !empty($prezfile)){
+                            echo $prezfile;
+                        } else {
+                            echo "no file currently uploaded";
+                        }
+                    ?></span>
                 </div>
                
                 <label for="prezurl">Or enter a url for your online presentation:</label>
-                <input type="text" name="prezurl" id="prezurl" class="url" onclick="makeAllGreen(this.parentElement)">
+                <input type="text" name="prezurl" id="prezurl" class="url" onclick="makeGreen(this)">
 
-                <label for="finplan">Select financial plan files to upload:</label>
-                <input type="file" name="finplan" id="finplan" class="finplan">
+                <label for="moneysfile">Select financial plan files to upload:</label>
+                <input type="file" name="moneysfile" id="moneysfile" class="file" onclick="makeGreen(this)">
+                <div class="filelist-wrapper moneysfile">
+                    <p>selected file:</p> <span class="fileList" >There are no files.</span> 
+                    <div style="height: 0.1vh;"></div>
+                    <p>upload file size:</p> <span class="fileSize" >0</span>
+                    <div style="height: 0.1vh;"></div>
+                    <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
+                        if(isset($moneysfile) && !empty($moneysfile)){
+                            echo $moneysfile;
+                        } else {
+                            echo "no file currently uploaded";
+                        }
+                    ?></span>
+                </div>
 
                 <!-- Please just don't push this -->
                 <input type="hidden" name="uname" value="<?php echo $_SESSION['username'] ?>">
@@ -385,29 +438,23 @@
         </div>
         
         <script>
-            // function updateList(input, output) {
-            //     //var input = document.getElementById('');
-            //     //var output = document.getElementById('fileList');
-            //     var children = "";
-            //     for (var i = 0; i < input.files.length; ++i) {
-            //         children += '<li>' + input.files.item(i).name + '</li>';
-            //     }
-            //     output.innerHTML = '<ul>'+children+'</ul>';
-            // }
-
-
-            //functie luata de pe developer.mozilla slightly modified, now does what i want it to do aka list files and files total size
             var appfile_bytes;
             var prezfile_bytes;
+            var moneysfile_bytes;
+
+            //list files and files total size
             function updateSize(fileInput) {
                 let nBytes = 0,
                     oFiles = fileInput.files,
                     nFiles = oFiles.length,
                     children = "";
 
+                let type = fileInput.getAttribute('id');
+
                 for (let nFileId = 0; nFileId < nFiles; nFileId++) {
                     nBytes += oFiles[nFileId].size;
-                    children += '<li>' + oFiles.item(nFileId).name + '</li>';
+                    // children += '<li>' + oFiles.item(nFileId).name + '</li>';
+                    children += oFiles.item(nFileId).name;
                 }               
 
                 let sOutput = nBytes + " bytes";
@@ -417,11 +464,9 @@
                     sOutput = nApprox.toFixed(3) + " " + aMultiples[nMultiple] + " (" + nBytes + " bytes)";
                 }
                 // end of optional code
-               
-                // bytes = nBytes;
                 
-                fileInput.parentElement.getElementsByClassName("fileSize")[0].innerHTML = sOutput;
-                fileInput.parentElement.getElementsByClassName("fileList")[0].innerHTML = '<ul>'+children+'</ul>';
+                fileInput.parentElement.getElementsByClassName(type)[0].getElementsByClassName("fileSize")[0].innerHTML = sOutput;
+                fileInput.parentElement.getElementsByClassName(type)[0].getElementsByClassName("fileList")[0].innerHTML = children;
 
                 return nBytes;
             }
@@ -442,24 +487,29 @@
                     if(ext === "exe"){
                         section.getElementsByClassName('msg')[0].style.display = "block";
                         section.getElementsByClassName('msg')[0].innerHTML = "Script files are not permitted.";
-                        section.getElementsByClassName('file')[0].style.borderColor = "red";
+                        fileInput.style.borderColor = "red";
                         return false;
                     } else {
                         return true;
                     }
-                }               
+                }  
             }
 
             document.getElementById("appfile").addEventListener("change", function(){
-                makeAllGreen(this.parentElement);
+                makeGreen(this);
                 appfile_bytes = updateSize(this);
                 isNotExe(this, this.parentElement);
-
             }, false);
 
             document.getElementById("prezfile").addEventListener("change", function(){
-                makeAllGreen(this.parentElement);
+                makeGreen(this);
                 prezfile_bytes= updateSize(this);
+                isNotExe(this, this.parentElement);
+            }, false);
+
+            document.getElementById("moneysfile").addEventListener("change", function(){
+                makeGreen(this);
+                moneysfile_bytes= updateSize(this);
                 isNotExe(this, this.parentElement);
             }, false);
 
@@ -467,49 +517,57 @@
             function validateForm(section){
                 var isOK = true;
 
-                let file, url, file_verif, url_verif;
-
-                //this will be a problem if number of links is not equal to number of file fields =DDDDDDDDDDDDDDDDD
-                for(let i=0;i<section.getElementsByClassName('file').length; i++){
-                    //verifies stuff not empty
-                    file = section.getElementsByClassName('file')[i];
-                    url = section.getElementsByClassName('url')[i];
-
-                    file_verif = (file.value.length !== 0 && file!==null);
-                    url_verif = (url.value.length !== 0 && url!==null);
-
-                    if(!file_verif && !url_verif){
-                        isOK = false;
-                        section.getElementsByClassName('msg')[0].style.display = "block";
-                        section.getElementsByClassName('msg')[0].innerHTML = "Please submit at least one method through which we can take a look at your code";
-                        file.style.borderColor = "red";
-                        url.style.borderColor = "red";
-                    }
-
-                    //verify that input does not contain any .exe files
-                    if(!isNotExe(file, section)){
+                var fileinput = section.querySelectorAll('.file');
+                for(let i = 0; i<fileinput.length; i++){
+                    //if (true) return true PT CA imi e lene sa mai pun conditie de undefined 
+                    if(fileinput[i].files!==null && isNotExe(fileinput[i], section)==false){
                         isOK = false;
                     }
                 }
 
-                //verify file size does not exceeed 50mb?????????????(pt ca aparent POST iti limiteaza automat la 50mb) in the messiest way possible 
-                if((section.getAttribute('id')==="app" && appfile_bytes>41943040) || (section.getAttribute('id')==="prez" && prezfile_bytes>41943040)){
+                // let file, url, file_verif, url_verif;
+
+                //this will be a problem if number of links is not equal to number of file fields =DDDDDDDDDDDDDDDDD
+                // for(let i=0;i<section.getElementsByClassName('file').length; i++){
+                //     //verifies stuff not empty
+                //     file = section.getElementsByClassName('file')[i];
+                //     url = section.getElementsByClassName('url')[i];
+
+                //     file_verif = (file.value.length !== 0 && file!==null);
+                //     url_verif = (url.value.length !== 0 && url!==null);
+
+                //     if(!file_verif && !url_verif){
+                //         isOK = false;
+                //         section.getElementsByClassName('msg')[0].style.display = "block";
+                //         section.getElementsByClassName('msg')[0].innerHTML = "Please submit at least one method through which we can take a look at your code";
+                //         file.style.borderColor = "red";
+                //         url.style.borderColor = "red";
+                //     }
+
+                //     //verify that input does not contain any .exe files
+                //     if(!isNotExe(file, section)){
+                //         isOK = false;
+                //     }
+                // }
+
+                // verify file size does not exceeed 50mb?????????????(pt ca aparent POST iti limiteaza automat la 50mb) in the messiest way possible 
+                if(appfile_bytes>41943040 || prezfile_bytes>41943040 || moneysfile_bytes>41943040){
                     section.getElementsByClassName('msg')[0].style.display = "block";
                     section.getElementsByClassName('msg')[0].innerHTML = "Your files must be under 200MB !";
-                    file.style.borderColor = "red";
                     isOK = false;
                 } 
 
-                //verify has submitted financial plan, again horribly messy, like everything else
-                if(section.getElementsByClassName('finplan')[0]!==null && section.getElementsByClassName('finplan')[0].value.length==0){
-                    isOK = false;
-                    section.getElementsByClassName('finplan')[0].style.borderColor = "red";
-                    section.getElementsByClassName('msg')[0].style.display = "block";
-                    section.getElementsByClassName('msg')[0].innerHTML = "Please submit financial plan (and prezentation if you haven't done so)";
-                }
+                // //verify has submitted financial plan, again horribly messy, like everything else
+                // if(section.getElementById('moneysfile')!==null && section.getElementById('moneysfile').value.length==0){
+                //     isOK = false;
+                //     section.getElementById('moneysfile').style.borderColor = "red";
+                //     section.getElementsByClassName('msg')[0].style.display = "block";
+                //     section.getElementsByClassName('msg')[0].innerHTML = "Please submit financial plan (and prezentation if you haven't done so)";
+                // }
 
-                // return isOK; TODO: DONT FORGET TO UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-                return true;
+                // TODO: DONT FORGET TO UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+                return isOK; 
+                // return false;
             }
 
             function makeAllGreen(section){
@@ -520,6 +578,11 @@
                         inputs[i].style.borderColor = "#00ff16";
                     // });
                 }
+            }
+
+            function makeGreen(elem){
+                elem.parentElement.getElementsByClassName('msg')[0].style.display = "none";
+                elem.style.borderColor = "#00ff16";
             }
             
         </script>
