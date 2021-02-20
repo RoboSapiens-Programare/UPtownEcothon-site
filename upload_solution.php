@@ -17,9 +17,7 @@
 
         $fields = array();
         $participants = array();
-        $appfile;
-        $prezfile;
-        $moneysfile;
+        $appfile; $prezfile; $moneysfile;
         $teamID;
 
         $sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
@@ -99,13 +97,16 @@
                     $ret = $stmt->fetch(PDO::FETCH_ASSOC);
                     if(!empty($ret)){
                         if(!empty($ret['app_filename'])){
-                            $appfile = $ret['app_filename'];
+                            $fields['appfile'] = $ret['app_filename'];
+                            $fields['apppath'] = $ret['app_path'];
                         }
                         if(!empty($ret['prez_files_name'])){
-                            $prezfile = $ret['prez_files_name'];
+                            $fields['prezfile'] = $ret['prez_files_name'];
+                            $fields['prezpath'] = $ret['prez_files_path'];
                         }
                         if(!empty($ret['fin_plan_filename'])){
-                            $moneysfile = $ret['fin_plan_filename'];
+                            $fields['moneysfile'] = $ret['fin_plan_filename'];
+                            $fields['moneyspath'] = $ret['fin_plan_path'];
                         }
                     }
                 }
@@ -175,7 +176,6 @@
         <meta name="robots" content="noindex">
 
         <title>Upload Solution - UPtown Ecothon</title>
-
 
         <style>
             .filelist-wrapper{
@@ -368,7 +368,6 @@
                 </span>
              </h2>
             
-            <!--TODO: action="scripts/upload.php" -->
             <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" action="scripts/submit_files.php">
                 <h2>Code files:</h2>
                 <div class="msg" style="display:none"></div>
@@ -378,17 +377,17 @@
                 <label for="appfile">Select project files to upload:</label>
                 <input type="file" name="appfile" id="appfile" class="file">
                 <div id="appfile" class="filelist-wrapper appfile">
-                    <p>selected file:</p> <span class="fileList" >There are no files.</span> 
-                    <div style="height: 0.1vh;"></div>
-                    <p>upload file size:</p> <span class="fileSize" >0</span>
-                    <div style="height: 0.1vh;"></div>
+                    <!-- <p>selected file:</p> <span class="fileList" >There are no files.</span> 
+                    <div style="height: 0.1vh;"></div> -->
                     <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
-                        if(isset($appfile) && !empty($appfile)){
-                            echo $appfile;
+                        if(isset($fields['appfile']) && !empty($fields['appfile'])){
+                            echo "<a href='".$fields['apppath']."'>".$fields['appfile']."</a>";
                         } else {
                             echo "no file currently uploaded";
                         }
                     ?></span>
+                    <div style="height: 0.1vh;"></div>
+                    <p>upload file size:</p> <span class="fileSize" >0</span>
                 </div>
                 
                 <label for="appurl">Or enter a git url:</label>
@@ -400,17 +399,17 @@
                 <label for="prezfile">Select prezentation files to upload:</label>
                 <input type="file" name="prezfile" id="prezfile" class="file" onclick="makeGreen(this)">
                 <div class="filelist-wrapper prezfile">
-                    <p>selected file:</p> <span class="fileList" >There are no files.</span> 
-                    <div style="height: 0.1vh;"></div>
-                    <p>upload file size:</p> <span class="fileSize" >0</span>
-                    <div style="height: 0.1vh;"></div>
+                    <!-- <p>selected file:</p> <span class="fileList" >There are no files.</span> 
+                    <div style="height: 0.1vh;"></div> -->
                     <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
-                        if(isset($prezfile) && !empty($prezfile)){
-                            echo $prezfile;
+                        if(isset($fields['prezfile']) && !empty($fields['prezfile'])){
+                            echo "<a href='".$fields['prezpath']."'>". $fields['prezfile']."</a>";
                         } else {
                             echo "no file currently uploaded";
                         }
                     ?></span>
+                    <div style="height: 0.1vh;"></div>
+                    <p>upload file size:</p> <span class="fileSize" >0</span>
                 </div>
                
                 <label for="prezurl">Or enter a url for your online presentation:</label>
@@ -419,17 +418,17 @@
                 <label for="finplan">Select financial plan files to upload:</label>
                 <input type="file" name="finplan" id="moneysfile" class="file" onclick="makeGreen(this)">
                 <div class="filelist-wrapper moneysfile">
-                    <p>selected file:</p> <span class="fileList" >There are no files.</span> 
-                    <div style="height: 0.1vh;"></div>
-                    <p>upload file size:</p> <span class="fileSize" >0</span>
-                    <div style="height: 0.1vh;"></div>
+                    <!-- <p>selected file:</p> <span class="fileList" >There are no files.</span> 
+                    <div style="height: 0.1vh;"></div> -->
                     <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
-                        if(isset($moneysfile) && !empty($moneysfile)){
-                            echo $moneysfile;
+                        if(isset($fields['moneysfile']) && !empty($fields['moneysfile'])){
+                            echo "<a href='".$fields['moneyspath']."'>".$fields['moneysfile']."</a>";
                         } else {
                             echo "no file currently uploaded";
                         }
                     ?></span>
+                    <div style="height: 0.1vh;"></div>
+                    <p>upload file size:</p> <span class="fileSize" >0</span>
                 </div>
 
                 <!-- Please just don't push this -->
@@ -470,6 +469,7 @@
                 
                 fileInput.parentElement.getElementsByClassName(type)[0].getElementsByClassName("fileSize")[0].innerHTML = sOutput;
                 fileInput.parentElement.getElementsByClassName(type)[0].getElementsByClassName("fileList")[0].innerHTML = children;
+                fileInput.parentElement.getElementsByClassName(type)[0].getElementsByClassName("fileList")[0].style.color = "black";
 
                 return nBytes;
             }
