@@ -416,8 +416,8 @@
                 <label for="prezurl">Or enter a url for your online presentation:</label>
                 <input type="text" name="prezurl" id="prezurl" class="url" onclick="makeGreen(this)">
 
-                <label for="moneysfile">Select financial plan files to upload:</label>
-                <input type="file" name="moneysfile" id="moneysfile" class="file" onclick="makeGreen(this)">
+                <label for="finplan">Select financial plan files to upload:</label>
+                <input type="file" name="finplan" id="moneysfile" class="file" onclick="makeGreen(this)">
                 <div class="filelist-wrapper moneysfile">
                     <p>selected file:</p> <span class="fileList" >There are no files.</span> 
                     <div style="height: 0.1vh;"></div>
