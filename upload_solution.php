@@ -83,13 +83,16 @@
                 //TODO:add function that displays files currently uploaded
                 if($teamID == 99){
                     $sql = "SELECT * FROM uploads WHERE user_modified = :uname LIMIT 1";
+                    $stmt = $db->prepare($sql);
+
+                    $stmt->bindParam(":uname", $uname);
                 } else {
                     $sql = "SELECT * FROM uploads WHERE team_id = :team_id LIMIT 1";
-                }
-                $stmt = $db->prepare($sql);
+                    $stmt = $db->prepare($sql);
 
-                $stmt->bindParam(":team_id", $teamID);
-                $stmt->bindParam(":uname", $uname);
+                    $stmt->bindParam(":team_id", $teamID);
+                }
+                
 
                 $stmt->execute();
                 if($stmt){
