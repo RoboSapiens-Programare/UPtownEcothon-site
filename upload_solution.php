@@ -115,6 +115,20 @@
             echo "<script type='text/javascript'>alert('Team DOnt exist');</script>";
         }
 
+        //This for security token
+        $sql = "SELECT passwd FROM users WHERE id = :id LIMIT 1";
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindParam(":id", $_SESSION["id"]);
+
+        $stmt->execute();
+        $ret = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $token = "";
+        if(!empty($ret)){
+            $token = base64_encode($ret['passwd']);
+        }
+
         unset($db);
         
     } catch(PDOException $e){
@@ -352,7 +366,8 @@
              </h2>
             
             <!--TODO: action="scripts/upload.php" -->
-            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" >
+            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" action="scripts/submit_files.php">
+                <h2>Code files:</h2>
                 <div class="msg" style="display:none"></div>
 
                 <h2>Code files:</h2>
@@ -413,6 +428,10 @@
                         }
                     ?></span>
                 </div>
+
+                <!-- Please just don't push this -->
+                <input type="hidden" name="uname" value="<?php echo $_SESSION['username'] ?>">
+                <input type="hidden" name="verif" value="<?php echo $token ?>">
 
                 <button type="submit">Submit</button>
             </form>
