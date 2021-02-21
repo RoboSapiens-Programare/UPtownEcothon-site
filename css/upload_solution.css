@@ -1,0 +1,156 @@
+.filelist-wrapper{
+    position:relative; 
+    margin:-3vh 0vw 3vh 0vw; 
+    font-size:2.5vh;
+}
+.fileList, .fileSize{
+    position: relative;
+    font-size: 2vh;
+}
+.fileList ul{
+    position: relative;
+    margin-top: -0.5vh;
+} 
+.fileList li{
+    font-size: 2vh;
+}
+p{
+    position: relative;
+    display: inline;
+    font-size: 2vh; 
+}
+* {
+    font-family:'Khand', sans-serif;
+    color: black;
+}
+label{
+    position: relative;
+    font-size: 2vh;
+    width: 20%;
+}
+input, textarea, select{
+    position:relative;
+    margin: 0vh 0vw 3vh 0vw;
+    border: 0.3vh solid #00ff16;
+    border-radius: 20px;
+    width:98%;
+    right: 0px;
+    background-color: transparent;
+    height: 2vh;
+    padding: 1%;
+    font-size: 2vh;
+}
+button{
+    position:relative;
+    margin: 0vh 0vw 3vh 0vw;
+    border: 0.3vh solid #00ff16;
+    border-radius: 20px;
+    width:100%;
+    right: 0px;
+    background-color: #340634;
+    height: 5vh;
+    padding: 1%;
+    font-size: 2vh;
+    color: white;
+    transition: all 500ms ease;
+}
+button:hover{
+    background-color: transparent;
+    color: black;
+    transition: all 500ms ease;
+}
+.msg{
+    position:relative;
+    margin: 0vh 0vw 3vh 0vw;
+    border-radius: 20px;
+    width:100%;
+    right: 0px;
+    background-color: #ffafc0;
+    font-size: 2vh;
+    text-align:center;
+    padding: 1%;
+}
+
+.deactivated-btn{
+    opacity: 0.6;
+}
+
+.deactivated-btn:hover{
+    background-color: #340634;
+    color: white;
+}
+
+#language {
+    position: fixed;
+    top: 0px;
+    right: 0vw;
+    margin: 1vw;
+    height: 4vh;
+    background-color: transparent;
+    mix-blend-mode: difference;
+    z-index: 104;
+}
+
+#language li {
+    display: inline;
+    font-family: 'Khand', sans-serif; font-weight: bold;
+    font-size: 2vw;
+    color: white;
+    text-decoration: none;
+}
+
+#language li a {
+    font-family: 'Khand', sans-serif; font-weight: bold;
+    font-size: 2vw;
+    color: white;
+    text-decoration: none;
+}
+
+#language li a:hover {
+    -webkit-filter: invert(50%);
+    filter: invert(50%);
+}
+@media screen and (orientation:portrait){
+    label{
+        font-size: 3vw;
+    }
+    input, textarea, select{
+        margin: 0vh 0vw 1vh 0vw;
+        width:98%;
+        height: 3vh;
+        padding: 1%;
+        font-size: 3vw;
+    }
+    button{
+        margin: 0vh 0vw 1vh 0vw;
+        width:100%;
+        padding: 1%;
+        font-size: 3vw;
+    }
+    .msg{
+        margin: 0vh 0vw 1vh 0vw;
+        width:100%;
+        font-size: 3vw;
+        padding: 1%;
+    }#language {
+        height: 8vh;
+        right: 2vw;
+    }
+    #language li {
+        font-size: 5vw;
+    }
+    #language li a {
+        font-size: 5vw;
+    }
+    .filelist-wrapper{
+        position:relative; 
+        margin:-1vh 0vw 1vh 0vw; 
+    }
+    .fileList, .fileSize, .fileList li, p{
+        font-size: 3vw;
+    }
+    .fileList ul{
+        position: relative;
+        margin-top: 0vh;
+    } 
+} 

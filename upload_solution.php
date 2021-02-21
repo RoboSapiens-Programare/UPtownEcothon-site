@@ -142,6 +142,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/basics.css">
+        <link rel="stylesheet" type="text/css" href="css/upload_solution.css">
         <?php
             if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
                 $lang = 'EN';
@@ -176,155 +177,6 @@
         <meta name="robots" content="noindex">
 
         <title>Upload Solution - UPtown Ecothon</title>
-
-        <style>
-            .filelist-wrapper{
-                position:relative; 
-                margin:-3vh 0vw 3vh 0vw; 
-                font-size:2.5vh;
-            }
-            .fileList, .fileSize{
-                position: relative;
-                font-size: 2vh;
-            }
-            .fileList ul{
-                position: relative;
-                margin-top: -0.5vh;
-            } 
-            .fileList li{
-                font-size: 2vh;
-            }
-            p{
-                position: relative;
-                display: inline;
-                font-size: 2vh; 
-            }
-            * {
-                font-family:'Khand', sans-serif;
-                color: black;
-            }
-            label{
-                position: relative;
-                font-size: 2vh;
-                width: 20%;
-            }
-            input, textarea, select{
-                position:relative;
-                margin: 0vh 0vw 3vh 0vw;
-                border: 0.3vh solid #00ff16;
-                border-radius: 20px;
-                width:98%;
-                right: 0px;
-                background-color: transparent;
-                height: 2vh;
-                padding: 1%;
-                font-size: 2vh;
-            }
-            button{
-                position:relative;
-                margin: 0vh 0vw 3vh 0vw;
-                border: 0.3vh solid #00ff16;
-                border-radius: 20px;
-                width:100%;
-                right: 0px;
-                background-color: #340634;
-                height: 5vh;
-                padding: 1%;
-                font-size: 2vh;
-                color: white;
-                transition: all 500ms ease;
-            }
-            button:hover{
-                background-color: transparent;
-                color: black;
-                transition: all 500ms ease;
-            }
-            .msg{
-                position:relative;
-                margin: 0vh 0vw 3vh 0vw;
-                border-radius: 20px;
-                width:100%;
-                right: 0px;
-                background-color: #ffafc0;
-                font-size: 2vh;
-                text-align:center;
-                padding: 1%;
-            }#language {
-                position: fixed;
-                top: 0px;
-                right: 0vw;
-                margin: 1vw;
-                height: 4vh;
-                background-color: transparent;
-                mix-blend-mode: difference;
-                z-index: 104;
-            }
-
-            #language li {
-                display: inline;
-                font-family: 'Khand', sans-serif; font-weight: bold;
-                font-size: 2vw;
-                color: white;
-                text-decoration: none;
-            }
-
-            #language li a {
-                font-family: 'Khand', sans-serif; font-weight: bold;
-                font-size: 2vw;
-                color: white;
-                text-decoration: none;
-            }
-
-            #language li a:hover {
-                -webkit-filter: invert(50%);
-                filter: invert(50%);
-            }
-            @media screen and (orientation:portrait){
-                label{
-                    font-size: 3vw;
-                }
-                input, textarea, select{
-                    margin: 0vh 0vw 1vh 0vw;
-                    width:98%;
-                    height: 3vh;
-                    padding: 1%;
-                    font-size: 3vw;
-                }
-                button{
-                    margin: 0vh 0vw 1vh 0vw;
-                    width:100%;
-                    padding: 1%;
-                    font-size: 3vw;
-                }
-                .msg{
-                    margin: 0vh 0vw 1vh 0vw;
-                    width:100%;
-                    font-size: 3vw;
-                    padding: 1%;
-                }#language {
-                    height: 8vh;
-                    right: 2vw;
-                }
-                #language li {
-                    font-size: 5vw;
-                }
-                #language li a {
-                    font-size: 5vw;
-                }
-                .filelist-wrapper{
-                    position:relative; 
-                    margin:-1vh 0vw 1vh 0vw; 
-                }
-                .fileList, .fileSize, .fileList li, p{
-                    font-size: 3vw;
-                }
-                .fileList ul{
-                    position: relative;
-                    margin-top: 0vh;
-                } 
-            } 
-              
-            </style>
     </head>
     <body style="background-color: #340634; margin:0px; overflow-x:hidden">
         <div id="language">
@@ -368,7 +220,7 @@
                 </span>
              </h2>
             
-            <form method="post" enctype="multipart/form-data" onsubmit="return validateForm(this)" action="scripts/submit_files.php">
+            <form method="post" class="ajax-form" enctype="multipart/form-data" onsubmit="return validateForm(this)" action="scripts/submit_files.php">
                 <h2>Code files:</h2>
                 <div class="msg" style="display:none"></div>
 
@@ -435,7 +287,8 @@
                 <input type="hidden" name="uname" value="<?php echo $_SESSION['username'] ?>">
                 <input type="hidden" name="verif" value="<?php echo $token ?>">
 
-                <button type="submit">Submit</button>
+                <button id="update-btn" type="submit">Update</button>
+                <div class="msg ajax-return-message" style="background-color: transparent;"></div>
             </form>
         </div>
         
@@ -587,6 +440,66 @@
                 elem.parentElement.getElementsByClassName('msg')[0].style.display = "none";
                 elem.style.borderColor = "#00ff16";
             }
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+            //AJAX
+            (function ($) {
+                'use strict';
+                
+                var form = $('.ajax-form'), message = $('.ajax-return-message'), form_data;
+
+                function init_send(){
+                    $('#update-btn').prop("disabled", true);
+                    $('#update-btn').text("Please wait. We are scanning your files...");
+                    $('#update-btn').addClass("deactivated-btn");
+                }
+
+                function done_func(response) {
+                    message.fadeIn()
+                    message.html(response);
+                    $('#update-btn').prop("disabled", false);
+                    $('#update-btn').text("Update");
+                    $('#update-btn').removeClass("deactivated-btn");
+                }
+
+                function handle_msg(data) {
+                    message.fadeIn()
+                    message.html(data.responseText);
+                    setTimeout(function () {
+                        message.fadeOut();
+                    }, 10000);
+                    $('#update-btn').prop("disabled", false);
+                    $('#update-btn').text("Update");
+                    $('#update-btn').removeClass("deactivated-btn");
+                }
+                
+                form.submit(function (e) {
+                    e.preventDefault();
+                    form_data = new FormData();
+                    init_send();
+                    
+                    // add assoc key values, this will be posts values
+                    form_data.append("appfile", $("#appfile")[0].files[0]);
+                    form_data.append("prezfile", $("#prezfile")[0].files[0]);
+                    form_data.append("finplan", $("#moneysfile")[0].files[0]);
+                    form_data.append("git_url", $("#appurl").val());
+                    form_data.append("presentation_url", $("#prezurl").val());
+                    form_data.append("uname", "<?php echo $_SESSION['username'] ?>");
+                    form_data.append("verif", "<?php echo $token ?>");
+                    //alert(form_data);
+                    $.ajax({
+                        type: 'POST',
+                        url: form.attr('action'),
+                        contentType: false,
+                        processData: false,
+                        data: form_data
+                    })
+                    .done(done_func)
+                    .fail(handle_msg);
+                }); 
+            })(jQuery);
             
         </script>
     </body>

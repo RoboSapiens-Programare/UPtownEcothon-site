@@ -2,6 +2,7 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . "/config/captchacredentials.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/config/captchaconfig.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/config/curl.php";
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $uname = (isset($_POST['uname']) && !empty($_POST['uname'])) ? filter_var(trim($_POST["uname"]), FILTER_SANITIZE_SPECIAL_CHARS) : null;
@@ -145,6 +146,8 @@
 
                             $stmt->execute();
                         }
+
+                        echo "Updated successfully!";
                     } else {
                         echo "Sorry, your file was not uploaded.";
                         http_response_code(403);
@@ -173,31 +176,46 @@
         http_response_code(403);
     }
 
+    //Do the check
     function checkFiles(){
         $uploadOk = true;
             
+        //See what size it has
         if ($_FILES["appfile"]["size"] > 200000000) {
             echo "Sorry, your app file is too large.";
             $uploadOk = false;
         }
 
-        //to add...
+        //Analyze each file, if exists, through OPSWAT API
+        if(isset($_FILES['appfile']) && file_exists($_FILES['appfile']['tmp_name'])) {
+            $uploadOk = analyze_file_opswat($_FILES['appfile']['tmp_name']);
+        }
+        if(isset($_FILES['prezfile']) && file_exists($_FILES['prezfile']['tmp_name'])) {
+            $uploadOk = analyze_file_opswat($_FILES['prezfile']['tmp_name']);
+        }
+        if(isset($_FILES['finplan']) && file_exists($_FILES['finplan']['tmp_name'])) {
+            $uploadOk = analyze_file_opswat($_FILES['finplan']['tmp_name']);
+        }
 
         return $uploadOk;
     }
 
+    //Move files to a folder and save the filepaths for return
     function moveFiles($team_name){
         $filepaths = array();
 
+        //target directory outside webroot
         $target_dir = $_SERVER['DOCUMENT_ROOT']. "/../UTE-contest/uploads";
+        //random string appended at end for security
         $random_string = md5(rand());
 
-        if(file_exists($_FILES['appfile']['tmp_name'])) {
+        //check if each file exists and then move them
+        if(isset($_FILES['appfile']) && file_exists($_FILES['appfile']['tmp_name'])) {
             
-            $target_file = $target_dir . "/" . trim($team_name) . "_appfile_" . $random_string . "." . pathinfo($_FILES['appfile']['name'])['extension'];
+            $target_file = $target_dir . "/" . str_replace(' ', '', $team_name) . "_appfile_" . $random_string . "." . pathinfo($_FILES['appfile']['name'])['extension'];
 
             if (move_uploaded_file($_FILES["appfile"]["tmp_name"], $target_file)) {
-                echo "The file ". htmlspecialchars( basename( $_FILES["appfile"]["name"])). " has been uploaded.";
+                echo "The file ". htmlspecialchars( basename( $_FILES["appfile"]["name"])). " has been uploaded.<br>";
             } else {
                 echo "Sorry, there was an error uploading your file.";
                 http_response_code(500);
@@ -206,11 +224,11 @@
             $filepaths['appfile'] = $target_file;
         }
 
-        if(file_exists($_FILES['prezfile']['tmp_name'])) {
-            $target_file = $target_dir . "/" . trim($team_name) . "_prezfile_" . $random_string . "." . pathinfo($_FILES['prezfile']['name'])['extension'];  
+        if(isset($_FILES['prezfile']) && file_exists($_FILES['prezfile']['tmp_name'])) {
+            $target_file = $target_dir . "/" . str_replace(' ', '', $team_name) . "_prezfile_" . $random_string . "." . pathinfo($_FILES['prezfile']['name'])['extension'];  
 
             if (move_uploaded_file($_FILES["prezfile"]["tmp_name"], $target_file)) {
-                echo "The file ". htmlspecialchars( basename( $_FILES["prezfile"]["name"])). " has been uploaded.";
+                echo "The file ". htmlspecialchars( basename( $_FILES["prezfile"]["name"])). " has been uploaded.<br>";
             } else {
                 echo "Sorry, there was an error uploading your file.";
                 http_response_code(500);
@@ -218,12 +236,12 @@
             }
             $filepaths['prezfile'] = $target_file;
         }
-        if(file_exists($_FILES['finplan']['tmp_name'])) {
+        if(isset($_FILES['finplan']) && file_exists($_FILES['finplan']['tmp_name'])) {
             
-            $target_file = $target_dir . "/" . trim($team_name) . "_finplan_" . $random_string . "." . pathinfo($_FILES['finplan']['name'])['extension'];
+            $target_file = $target_dir . "/" . str_replace(' ', '', $team_name) . "_finplan_" . $random_string . "." . pathinfo($_FILES['finplan']['name'])['extension'];
 
             if (move_uploaded_file($_FILES["finplan"]["tmp_name"], $target_file)) {
-                echo "The file ". htmlspecialchars( basename( $_FILES["finplan"]["name"])). " has been uploaded.";
+                echo "The file ". htmlspecialchars( basename( $_FILES["finplan"]["name"])). " has been uploaded.<br>";
             } else {
                 echo "Sorry, there was an error uploading your file.";
                 http_response_code(500);
@@ -233,5 +251,49 @@
         }
 
         return $filepaths;
+    }
+
+    //Send files for scan, wait for scan results and then see if its a threat - return a bool accordingly
+    function analyze_file_opswat($filepath){
+        //send file for scan and keep the return
+        $send_scan_return = json_decode(send_file_for_scan($filepath), true);
+
+        //check if we have errors - if yes, its probs the apikey (create config/curl_auth.php with one variable $apikey)
+        if(isset($send_scan_return['error']) && $send_scan_return['error']){
+            echo "File scan error (code: " . $send_scan_return['error']['code'] . "): " . $send_scan_return['error']['messages'][0] . ".<br> Please contact us if you see this!";
+            http_response_code(500);
+            die();
+        }
+
+        //get the tracking number of the scan after submitting the file
+        $data_id = $send_scan_return['data_id'];
+        $counter = 0;
+
+        //check scan progress until 100% or the timer ran out (after 10 seconds)
+        do{
+            $result = json_decode(get_scan_results($data_id), true);
+            $progress = $result['scan_results']['progress_percentage'];
+            $counter++;
+            sleep(1);
+        } while($progress < 100 && $counter < 10);
+
+        //timer ran out, print error message
+        if($counter >= 10){
+            echo "File scan for" . htmlspecialchars(basename($filepath)) . "timed out! Try again in a few moments!<br>";
+            return 0;
+        }
+
+        //get threats
+        $threats = $result['scan_results']['total_detected_avs'];
+
+        //if we has threats, we don't likey
+        if($threats > 0){
+            echo "File " . htmlspecialchars(basename($filepath)) . " is infected. Please don't send infected stuff (:<br>";
+            return 0;
+        }
+
+        //echo $data_id . ": " . $threats. "<br>";
+
+        return 1;
     }
 ?>
