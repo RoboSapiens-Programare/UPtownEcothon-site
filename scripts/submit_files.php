@@ -181,7 +181,7 @@
         $uploadOk = true;
             
         //See what size it has
-        if ($_FILES["appfile"]["size"] > 200000000) {
+        if (isset($_FILES['appfile']) && $_FILES["appfile"]["size"] > 200000000) {
             echo "Sorry, your app file is too large.";
             $uploadOk = false;
         }
