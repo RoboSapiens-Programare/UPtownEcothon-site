@@ -143,6 +143,9 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/basics.css">
         <link rel="stylesheet" type="text/css" href="css/upload_solution.css">
+
+        <meta name="robots" content="noindex">
+
         <?php
             if(isset($_GET['lang']) && $_GET['lang'] == 'en'){
                 $lang = 'EN';
