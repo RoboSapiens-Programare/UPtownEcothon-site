@@ -110,25 +110,25 @@
                     <a href="https://www.sprijina.ro/cauze/uptown-ecothon-robosapiens" style="position:absolute; bottom:2%;z-index:10;text-align:center;width:100%;font-size:1.5vw; color:white; text-decoration:underline #00ff16; font-family:'Khand',sans serif;"><?php echo $content['Fundraiser']['short'];?></a>
 
                     <div id="container-partners" style="position:relative; width:100%; height:85vh; background-color:transparent;">
-                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 20%; transform:translate(-50%,-50%)">
+                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 20%; transform:translate(-50%,-50%)" onclick="document.location.href = 'http://highedu.ro/'">
                             <div class="circle-top-left" style="height: 27vh; width:27vh; cursor:default"><img class="image" src="pictures/logo-highedu.png" alt="High Edu"></div>
                             
                             <div class="tagtag"><?php echo $content['HighEdu']['tag']; ?></div>
                         </div>
 
-                        <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 35%; transform:translate(-50%,-50%)">
+                        <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 35%; transform:translate(-50%,-50%)" onclick="document.location.href = 'https://www.softelligence.net/'">
                             <div class="circle-top-left" id="hoverpls" style="height: 27vh; width:27vh; cursor:default"><img class="image" src="pictures/logo-softelligence.png" alt="Softelligence"></div>
                             
                             <div class="tagtag"><?php echo $content['Softelligence']['tag']; ?></div>
                         </div>
                    
-                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 50%; transform:translate(-50%,-50%)">
+                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 50%; transform:translate(-50%,-50%)" onclick="document.location.href = 'https://dezvoltam.ro/'">
                             <div class="circle-top-left" style="height: 27vh; width:27vh; cursor:default"><img class="image" src="pictures/dezvoltam.png" alt="Dezvoltam.ro"></div>
                             
                             <div class="tagtag"><?php echo $content['Dezvoltam']['tag']; ?></div>
                         </div>
 
-                        <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 65%; transform:translate(-50%,-50%)">
+                        <div class="rectangle-content" id="rectangle-content" style="top: 30%; left: 65%; transform:translate(-50%,-50%)" >
                             <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 27vh; width:27vh;"><img class="image" src="pictures/FTC.png" alt="FTC"></div>
                             <div class="circle-bottom-right" style="height: 27vh; width:27vh;"></div>
                             
@@ -136,7 +136,7 @@
                             <div class="tagtag"><?php echo $content['FTC']['tag']; ?></div>
                         </div>
 
-                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 80%; transform:translate(-50%,-50%)">
+                        <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 80%; transform:translate(-50%,-50%)" onclick="document.location.href = 'https://www.geyc.ro/'">
                             <div class="circle-top-left" style="height: 27vh; width:27vh; cursor:default"><img class="image" src="pictures/geyc.png" alt="geyc"></div>
                             
                             <div class="tagtag"><?php echo $content['Geyc']['tag']; ?></div>
@@ -146,384 +146,10 @@
             </div> 
         </div>
 
-
-        <!-- <div class="wrapper-rotating-content" style="position:relative; left:0%; height:85vh; overflow-y:visible">
-        <div style="position:absolute; width:100%; height:100%; background:linear-gradient(black, black), url(pictures/blob.gif);background-position: -10% center; background-size:cover; background-blend-mode: hue; filter:blur(10px)"></div>
-            <div class="rotating-content"  id="rotating-content" style="left:0%; height: 80vh; width:100%; background-color:transparent">
-                <div class="rotate-btn" id="btn-prev" onclick="rotateLoopLeftToRight()" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                    <img src="ute-icons/arrow-left.svg">
-                </div>
-
-                <div class="rotate-btn" id="btn-next" onclick="rotateLoopRightToLeft()" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                    <img src="ute-icons/arrow-right.svg">
-                </div>
-
-                <div class="rotate-section" id="rt-sect4">
-                    <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 70vh; width:70vh;"><div class="text-centrat" style="width:95%"><img src="pictures/FTC.png" alt="FTC" style="width:100%"></div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
-                        
-                        <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['FTC']['desc']; ?> </div>
-                    </div>
-                </div>
-                <div class="rotate-section" id="rt-sect3">
-                    <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 70vh; width:70vh;" ><div class="text-centrat" style="width:95%"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%"></div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
-                        
-                        <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Gemini']['desc']; ?> </div>
-                    </div>
-                </div>
-                <div class="rotate-section" id="rt-sect2">
-                    <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 70vh; width:70vh;"><div class="text-centrat" style="width: 90%;"><img src="pictures/endava.png" alt="Endava" style="width: 100%;"></div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
-                        
-                        <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Endava']['desc']; ?> </div>
-                    </div>
-                </div>
-                <div class="rotate-section" id="rt-sect1">
-                    <div class="rectangle-content" style="top: 50%; left: 50%; transform: translate(-50%, -50%);" onmouseover="pauseLoop()" onmouseleave="resumeLoop()">
-                        <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 70vh; width:70vh; font-size:200%"><div class="text-centrat" style="color:white; font-size:100%"><img src="pictures/sprijina.svg" alt="Fundraiser" style="width:100%;"></div></div>
-                        <div class="circle-bottom-right" style="height: 70vh; width:70vh;"></div>
-                        
-                        <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Fundraiser']['desc']; ?> </div>
-                    </div>
-                </div>
-            </div>
-            <div class="rotate-index">
-                <ul>
-                    <li id="dot1" style="margin-left: -2.1vw">
-                        <img src="ute-icons/dot.svg">
-                    </li>
-                    <li id="dot2">
-                        <img src="ute-icons/dot.svg">
-                    </li>
-                    <li id="dot3">
-                        <img src="ute-icons/dot.svg">
-                    </li>
-                    <li id="dot4">
-                        <img src="ute-icons/dot.svg">
-                    </li>
-                </ul>
-            </div>
-        </div> -->
         
         <?php include "elements/footer.html"; ?>	
                 
         <script>
-
-            // alert(window.innerWidth); 
-
-            // var rotateStatus = 1;
-            // var rotateTimer = 3000;
-            // var isFirst = true;
-
-            // var rotatingContent = document.getElementById('rotating-content');
-            // // var rotatingIndex = document.getElementsByClassName('rotating-index')[0];
-            // // alert("a"); 
-
-            // var sect1 = rotatingContent.getElementsByClassName('rotate-section')[3];
-            // var sect2 = rotatingContent.getElementsByClassName('rotate-section')[2];
-            // var sect3 = rotatingContent.getElementsByClassName('rotate-section')[1];
-            // var sect4 = rotatingContent.getElementsByClassName('rotate-section')[0];
-
-            // var dot1 = document.getElementById('dot1');
-            // var dot2 = document.getElementById('dot2');
-            // var dot3 = document.getElementById('dot3');
-            // var dot4 = document.getElementById('dot4');
-
-            // // alert("a");
-
-            // window.onload = function(){
-            //     sect2.style.opacity ="0";
-            //     sect3.style.opacity ="0";
-            //     sect4.style.opacity ="0";
-            //     rotateLoopRightToLeft();
-            //     setTimeout(function(){
-            //         sect2.style.opacity ="1";
-            //         sect3.style.opacity ="1";
-            //         sect4.style.opacity ="1";
-            //     }, 1200);
-
-            // }
-
-            // var startLoop = setInterval(function(){
-            //     rotateLoopRightToLeft();
-            // }, rotateTimer);
-
-            // function pauseLoop(){
-            //     clearInterval(startLoop);
-            //     // console.log("a");
-            // }
-
-            // function resumeLoop(){
-            //     startLoop = setInterval(function(){
-            //     rotateLoopRightToLeft();
-            //     }, rotateTimer);
-            //     // console.log("b");
-            // }
-
-            // function rotateLoopRightToLeft(){
-            //     if(rotateStatus === 1){
-            //         sect3.style.opacity ="0";
-            //         // if(isFirst){
-            //         //     sect2.style.opacity ="0";
-            //         // }
-
-            //         setTimeout(function(){
-            //             dot1.style.filter ="invert(100%)";
-            //             dot2.style.filter ="invert(60%)";
-            //             dot3.style.filter ="invert(60%)";
-            //             dot4.style.filter ="invert(60%)";
-            //             // dot2.style.opacity ="0.5";
-            //             // dot3.style.opacity ="0.5";
-            //             // dot4.style.opacity ="0.5";
-
-            //             ToLeft(sect4);
-            //             sect4.style.zIndex = "10"; 
-            //             ToCenter(sect1);
-            //             sect1.style.zIndex = "20";
-            //             ToRight(sect3);
-            //             sect3.style.zIndex = "10";
-            //             ToRight(sect2);
-            //             sect2.style.zIndex = "30";
-                        
-            //         }, 500);
-
-            //         setTimeout(function(){
-            //             sect3.style.opacity = "1";
-            //             // if(isFirst){
-            //             //     sect2.style.opacity ="1";
-            //             //     isFirst = false;
-            //             // }
-            //         }, 1200);
-
-            //         rotateStatus = 2;
-            //     } else if(rotateStatus === 2){
-            //         sect4.style.opacity ="0";
-
-            //         setTimeout(function(){
-            //             dot1.style.filter ="invert(60%)";
-            //             dot2.style.filter ="invert(100%)";
-            //             dot3.style.filter ="invert(60%)";
-            //             dot4.style.filter ="invert(60%)";
-            //             // dot1.style.opacity ="0.5";
-            //             // dot2.style.opacity ="1";
-            //             // dot3.style.opacity ="0.5";
-            //             // dot4.style.opacity ="0.5";
-                    
-            //             ToLeft(sect1);
-            //             sect1.style.zIndex = "10";
-            //             ToCenter(sect2);
-            //             sect2.style.zIndex = "20";
-            //             ToRight(sect3);
-            //             sect3.style.zIndex = "30";
-            //             ToRight(sect4);
-            //             sect4.style.zIndex = "10";
-            //         }, 500);
-
-            //         setTimeout(function(){
-            //             sect4.style.opacity = "1";
-            //         }, 1200);
-
-            //         rotateStatus = 3;
-            //     } else if(rotateStatus === 3){
-            //         sect1.style.opacity ="0";
-
-            //         setTimeout(function(){
-            //             dot1.style.filter ="invert(60%)";
-            //             dot2.style.filter ="invert(60%)";
-            //             dot3.style.filter ="invert(100%)";
-            //             dot4.style.filter ="invert(60%)";
-            //             // dot1.style.opacity ="0.5";
-            //             // dot2.style.opacity ="0.5";
-            //             // dot3.style.opacity ="1";
-            //             // dot4.style.opacity ="0.5";
-        
-            //             ToLeft(sect2);
-            //             sect2.style.zIndex = "10";
-            //             ToCenter(sect3);
-            //             sect3.style.zIndex = "20";
-            //             ToRight(sect1);
-            //             sect1.style.zIndex = "10";
-            //             ToRight(sect4);
-            //             sect4.style.zIndex = "30";
-            //         }, 500);
-
-            //         setTimeout(function(){
-            //             sect1.style.opacity = "1";
-            //         }, 1200);
-
-            //         rotateStatus = 4;
-            //     } else if(rotateStatus === 4){
-            //         sect2.style.opacity ="0";
-
-            //         setTimeout(function(){
-            //             // dot1.style.opacity ="0.5";
-            //             // dot2.style.opacity ="0.5";
-            //             // dot3.style.opacity ="0.5";
-            //             // dot4.style.opacity ="1";
-            //             dot1.style.filter ="invert(60%)";
-            //             dot2.style.filter ="invert(60%)";
-            //             dot3.style.filter ="invert(60%)";
-            //             dot4.style.filter ="invert(100%)";
-        
-            //             ToLeft(sect3);
-            //             sect3.style.zIndex = "10";
-            //             ToCenter(sect4);
-            //             sect4.style.zIndex = "20";
-            //             ToRight(sect2);
-            //             sect2.style.zIndex = "10";
-            //             ToRight(sect1);
-            //             sect1.style.zIndex = "30";
-            //         }, 500);
-
-            //         setTimeout(function(){
-            //             sect2.style.opacity = "1";
-            //         }, 1200);
-
-            //         rotateStatus = 1;
-            //     }
-            // }
-
-            // function rotateLoopLeftToRight(){
-            //     if(rotateStatus === 3){
-            //         sect4.style.opacity ="0";
-
-            //         setTimeout(function(){
-            //             dot1.style.filter ="invert(100%)";
-            //             dot2.style.filter ="invert(60%)";
-            //             dot3.style.filter ="invert(60%)";
-            //             dot4.style.filter ="invert(60%)";
-            //             // dot1.style.opacity ="1";
-            //             // dot2.style.opacity ="0.5";
-            //             // dot3.style.opacity ="0.5";
-            //             // dot4.style.opacity ="0.5";
-                
-            //             ToLeft(sect4);
-            //             sect4.style.zIndex = "10"; 
-            //             ToCenter(sect1);
-            //             sect1.style.zIndex = "20";
-            //             ToRight(sect2);
-            //             sect2.style.zIndex = "30";
-            //             ToRight(sect3);
-            //             sect3.style.zIndex = "10";
-            //         }, 500);
-
-            //         setTimeout(function(){
-            //             sect4.style.opacity = "1";
-            //         }, 1200);
-
-            //         rotateStatus = 2;
-            //     } else if(rotateStatus === 1){
-            //         sect2.style.opacity ="0";
-        
-            //         setTimeout(function(){
-            //             dot1.style.filter ="invert(60%)";
-            //             dot2.style.filter ="invert(60%)";
-            //             dot3.style.filter ="invert(100%)";
-            //             dot4.style.filter ="invert(60%)";
-            //             // dot1.style.opacity ="0.5";
-            //             // dot2.style.opacity ="0.5";
-            //             // dot3.style.opacity ="1";
-            //             // dot4.style.opacity ="0.5";
-
-            //             ToLeft(sect2);
-            //             sect2.style.zIndex = "10";
-            //             ToCenter(sect3);
-            //             sect3.style.zIndex = "20";
-            //             ToRight(sect4);
-            //             sect4.style.zIndex = "30";
-            //             ToRight(sect1);
-            //             sect1.style.zIndex = "10";
-            //         }, 500);
-
-            //         setTimeout(function(){
-            //             sect2.style.opacity = "1";
-            //         }, 1200);
-
-            //         rotateStatus = 4;
-            //     } else if(rotateStatus === 2){
-            //         sect3.style.opacity ="0";
-        
-            //         setTimeout(function(){
-            //             dot1.style.filter ="invert(60%)";
-            //             dot2.style.filter ="invert(60%)";
-            //             dot3.style.filter ="invert(60%)";
-            //             dot4.style.filter ="invert(100%)";
-            //             // dot1.style.opacity ="0.5";
-            //             // dot2.style.opacity ="0.5";
-            //             // dot3.style.opacity ="0.5";
-            //             // dot4.style.opacity ="1";
-
-            //             ToLeft(sect3);
-            //             sect3.style.zIndex = "10";
-            //             ToCenter(sect4);
-            //             sect4.style.zIndex = "20";
-            //             ToRight(sect1);
-            //             sect1.style.zIndex = "30";
-            //             ToRight(sect2);
-            //             sect2.style.zIndex = "10";
-            //         }, 500);
-
-            //         setTimeout(function(){
-            //             sect3.style.opacity = "1";
-            //         }, 1200);
-
-            //         rotateStatus = 1;
-            //     } else if(rotateStatus === 4){
-            //         sect1.style.opacity ="0";
-        
-            //         setTimeout(function(){
-            //             dot1.style.filter ="invert(60%)";
-            //             dot2.style.filter ="invert(100%)";
-            //             dot3.style.filter ="invert(60%)";
-            //             dot4.style.filter ="invert(60%)";
-            //             // dot1.style.opacity ="0.5";
-            //             // dot2.style.opacity ="1";
-            //             // dot3.style.opacity ="0.5";
-            //             // dot4.style.opacity ="0.5";
-
-            //             ToLeft(sect1);
-            //             sect1.style.zIndex = "10";
-            //             ToCenter(sect2);
-            //             sect2.style.zIndex = "20";
-            //             ToRight(sect3);
-            //             sect3.style.zIndex = "30";
-            //             ToRight(sect4);
-            //             sect4.style.zIndex = "10";
-            //         }, 500);
-
-            //         setTimeout(function(){
-            //             sect1.style.opacity = "1";
-            //         }, 1200);
-
-            //         rotateStatus = 3;
-            //     }
-            // }
-
-            // function ToCenter(elem){
-            //     transitions.slide2D(new Dimension(elem, 0, "percent"),
-            //         new Dimension(elem, 0, "percent"),
-            //         tweenFunctions.easeInOutQuad,
-            //         700);
-            // }
-
-            // function ToLeft(elem){
-            //     transitions.slide2D(new Dimension(elem, -100, "percent"),
-            //         new Dimension(elem, 0, "percent"),
-            //         tweenFunctions.easeInOutQuad,
-            //         700);
-            // }
-
-            // function ToRight(elem){
-            //     transitions.slide2D(new Dimension(elem, 100, "percent"),
-            //         new Dimension(elem, 0, "percent"),
-            //         tweenFunctions.easeInOutQuad,
-            //         700);
-            // }
-
             function expand(elem, X, Y, toSize, sizeunit){
                 var rectangle = elem.parentElement;
                 var initialheight = parseFloat(elem.style.height);
@@ -555,14 +181,11 @@
                 new Dimension(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], toSize, sizeunit),
                 tweenFunctions.easeOutCubic,
                 1000);
-                // transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, scale, 1000);
-                // transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0] , tweenFunctions.easeOutQuint, scale, 1000);
 
                 elem.setAttribute("onclick", "retract(this, " + X + ", " + Y + ", " + initialheight + ", " + "'" + sizeunit + "'" + ", " + toSize + ", "+ origX + ", " + origY +");");
             }
 
             function retract(elem, X, Y, initialheight, sizeUnit, toSize, origX, origY){
-                // alert("a");
 
                 var rectangle = elem.parentElement;
                 var otherdivs = rectangle.parentElement.querySelectorAll('div#rectangle-content:not(#current)')
@@ -571,7 +194,6 @@
                 }
 
                 
-                // alert("a");
 
                 transitions.resize2D(new Dimension(rectangle, 0, "vw"),
                                     new Dimension(rectangle, 0, "vh"),
@@ -590,8 +212,6 @@
                                     new Dimension(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], initialheight, sizeUnit),
                                     tweenFunctions.easeOutCubic,
                                     1000);
-                // transitions.scaleUniform(elem, tweenFunctions.easeOutQuint, 1, 1000);
-                // transitions.scaleUniform(rectangle.getElementsByClassName('circle-bottom-right')[0] || rectangle.getElementsByClassName('circle-bottom-left')[0], tweenFunctions.easeOutQuint, 1, 1000);
                 rectangle.removeAttribute("id");
                 rectangle.setAttribute("id", "rectangle-content");
                 rectangle.style.zIndex = "0";
