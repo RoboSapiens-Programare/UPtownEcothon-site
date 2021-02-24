@@ -151,7 +151,33 @@
                 -webkit-filter: invert(50%);
                 filter: invert(50%);
             }
-            @media screen and (max-width:750px){
+
+            #shortdescription{
+                display:block; 
+                position: relative; 
+                left: 50%; 
+                transform:translateX(-50%); 
+                width:40%; 
+                font-family: Montserrat; 
+                font-size: 2.5vh; 
+                text-align:justify; 
+                color:aliceblue;
+            }
+
+            #formappear{
+                width: 40%; 
+                left: 50%; 
+                transform:translateX(-50%); 
+                color:black; 
+                background-color:aliceblue; 
+                padding-top:10px;
+            }
+
+            span a{
+                font-family: Montserrat;
+            }
+
+            @media screen and (orientation:portrait){
                 label{
                     font-size: 3vw;
                 }
@@ -183,6 +209,11 @@
                 #language li a {
                     font-size: 5vw;
                 }
+
+                #shortdescription, #formappear{
+                    width:80%; 
+                }
+
             } 
         </style>
 
@@ -211,7 +242,11 @@
 
         <a href="home.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center"><?php echo $content['Interface']['BackHomeBtn']; ?></a>
 
-        <div style="position:relative; width:90%; max-width: 700px; left: 50%; transform:translateX(-50%);" class="rounded-rect">
+        <span id="shortdescription"><?php echo $content['Interface']['ShortDesc']; ?></span>
+        <button id="formappear" type="button"  onclick="formusappearus();"><?php echo $content['Interface']['OkayBtn']; ?></button>  
+
+
+        <div id="formdiv" style="position:relative; width:90%; max-width: 700px; left: 50%; transform:translateX(-50%); display: none" class="rounded-rect">
                 
             <div id="registerParticipant" class="formelement">
                 
@@ -228,7 +263,7 @@
                         <label for="phone"><?php echo $content['RegistrationSect']['Phone']; ?></label>
                         <input type="number" id="phone" name="phone"><br>
                         <label for="position"><?php echo $content['RegistrationSect']['Status']; ?></label>
-                        <select id="position" name="position" style="height:5vh" onclick="isInSchool();">
+                        <select id="position" name="position" style="height:5vh" onclick="isInSchool();" onchange="isInSchool();">
                             <option value="selectcard"> - </option>
                             <option value="elev"><?php echo $content['RegistrationSect']['Elev']; ?></option>
                             <option value="student"><?php echo $content['RegistrationSect']['Student']; ?></option>
@@ -450,6 +485,12 @@
                 }
 
                 return isOk;
+            }
+
+            function formusappearus(){
+                document.getElementById('formdiv').style.display = "block";
+                document.getElementById('shortdescription').style.display = "none";
+                document.getElementById('formappear').style.display = "none";
             }
             
             function registrationOK(){
@@ -678,5 +719,14 @@
             })(jQuery);
         </script>
     </body>  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-190242876-1">
+    </script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'UA-190242876-1');
+    </script>
 </html>

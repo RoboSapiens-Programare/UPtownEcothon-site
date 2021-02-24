@@ -508,9 +508,9 @@
 				//Aici setez toate milestone-urile intr-un array (ca si format Date)
 				milestoneTimes[0] = new Date('January 15, 2021 00:00:00');
 				milestoneTimes[1] = new Date('January 26, 2021 00:00:00');
-				milestoneTimes[2] = new Date('February 21, 2021 00:00:00');
-				milestoneTimes[3] = new Date('February 22, 2021 00:00:00');
-				milestoneTimes[4] = new Date('February 23, 2021 18:00:00');
+				milestoneTimes[2] = new Date('February 23, 2021 18:00:00');
+				milestoneTimes[3] = new Date('February 25, 2021 00:00:00');
+				milestoneTimes[4] = new Date('February 26, 2021 00:00:00');
 				milestoneTimes[5] = new Date('February 26, 2021 18:00:00');
 				//Astea sunt niste offset uri la progress bar pt ca cineva ~ehem~ nu le-a pus din colturi
 				var offsetLeft = 5;
@@ -549,5 +549,16 @@
 		<script src="javascript/bs-form.js"></script>
 		
 	</body>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-190242876-1">
+	</script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-190242876-1');
+	</script>
 
 </html>

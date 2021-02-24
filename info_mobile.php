@@ -58,7 +58,7 @@
                     Program
                 </div>
             </a>
-            <a href="#terms" class="info-btn" style="left:5%; top: 65%">
+            <a href="documents/UTE - Termeni și Condiții.pdf" class="info-btn" style="left:5%; top: 65%">
                 <div class="text-centrat">
                     Terms & Conditions
                 </div>
@@ -86,12 +86,12 @@
                 <img src="pictures/timetablefinal.png" alt="timetable.png crashed most likely" style=" width:inherit;">
             </div>
         </div>
-        <div id="terms" style="position: relative; width:100%; background-color:black; ">
+        <!-- <div id="terms" style="position: relative; width:100%; background-color:black; ">
             <div style="position: relative; color:white">
                 <div style=" padding:3% 5% 3% 5%; font-size:2vh; font-family: 'Montserrat', sans-serif">
                     <p style="font-size: 1.5vh;"><?php echo $content['Terms']['Terms']; ?></p>
                 </div>
-            </div>
+            </div> -->
             <!-- <div id="news-container" class="rounded-rect" style="position:relative; left: 50%; transform:translateX(-50%); height:75%; width: 90%; overflow-y: auto; overflow-x: hidden; padding:0"> -->
                     <!-- <div class="franshalssection" id="franshals1">
                         <div class="column col-pic" id="col-pic1" style="flex:40%;" onclick="slideOutPoze(this)">
@@ -148,7 +148,7 @@
 
                     </div>
                 </div> -->
-        </div>
+        <!-- </div> -->
 
         <?php include "elements/footer.html"; ?>	
 
@@ -245,5 +245,14 @@
       
         </script>
     </body>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-190242876-1">
+    </script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'UA-190242876-1');
+    </script>
 </html>

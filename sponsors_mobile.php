@@ -57,36 +57,36 @@
                 <div id="sect4" class="section" >
                     <div class="wrapper" style="background-color: #340634;">
                         <div class="sect-title"> <div class="text-centrat"><img src="pictures/logo-softelligence.png" alt="Softelligence" style="width: 100%;"></div></div>
+                        <div class="tagtag"><?php echo $content['Softelligence']['tag']; ?></div>
                     </div>
-                    <div class="tagtag"><?php echo $content['Softelligence']['tag']; ?></div>
                 </div>
                 <div id="sect5" class="section" >
                     <div class="wrapper" style="background-color: #9d49a1">
                         <div class="sect-title"> <div class="text-centrat"><img src="pictures/dezvoltam.png" alt="Dezvoltam.ro" style="width: 100%;"></div></div>
+                        <div class="tagtag"><?php echo $content['Dezvoltam']['tag']; ?></div>
                     </div>
-                    <div class="tagtag"><?php echo $content['Dezvoltam']['tag']; ?></div>
                 </div>
                 <div id="sect5" class="section" >
                     <div class="wrapper" style="background-color: #76667d;">
                         <div class="sect-title"> <div class="text-centrat"><img src="pictures/logo-highedu.png" alt="HighEdu" style="width: 100%;"></div></div>
+                        <div class="tagtag"><?php echo $content['HighEdu']['tag']; ?></div>
                     </div>
-                    <div class="tagtag"><?php echo $content['HighEdu']['tag']; ?></div>
                 </div>
                 
                 <div id="sect7" class="section" >
                     <div class="wrapper" style="background-color: #5a0b5a;">
                         <div class="sect-title"> <div class="text-centrat"><img src="pictures/geyc.png" alt="Geyc" style="width: 100%;"></div> </div>
+                        <div class="tagtag"><?php echo $content['Geyc']['tag']; ?></div>
                     </div>
-                    <div class="tagtag"><?php echo $content['Geyc']['tag']; ?></div>
                 </div>
 
                 <div id="sect6" class="section" >
                     <div class="wrapper" style="background-color: #9d49a1">
                         <div class="sect-title"> <div class="text-centrat"><img src="pictures/FTC.png" alt="FTC" style="width: 100%;"></div> </div>
+                        <div class="tagtag"><?php echo $content['FTC']['tag']; ?></div>
                         <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                     </div>
                     <div class="wrapper-sect-content" style="color: black;"><div class="sect-content"><?php echo $content['FTC']['desc']; ?></div></div>
-                    <div class="tagtag"><?php echo $content['FTC']['tag']; ?></div>
                 </div>
 
                 <!-- <div class="rotate-index" style="z-index: 70;">

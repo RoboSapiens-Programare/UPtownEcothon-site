@@ -274,7 +274,7 @@
                 -webkit-filter: invert(50%);
                 filter: invert(50%);
             }
-            @media screen and (max-width:750px){
+            @media screen and (orientation:portrait){
                 label, .label{
                     font-size: 4vw;
                 }

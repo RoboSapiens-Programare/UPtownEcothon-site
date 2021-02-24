@@ -41,7 +41,7 @@
                     <div class="text-centrat" style="font-size: 1.5vw;">Program</div>
                 </div>
             </a>
-            <a href="#terms">
+            <a href="documents/UTE - Termeni și Condiții.pdf">
                 <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 70%; padding: 0; border:0.5vh solid #00ff16">
                     <div class="text-centrat" style="font-size: 1.5vw;">Terms & Conditions</div>
                 </div>
@@ -72,14 +72,11 @@
                     </div>
                 </div>    
 
-                <div id="terms" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
+                <!-- <div id="terms" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
                     <div id="terms-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; padding:1vh 2vw 1vh 2vw; font-family: 'Montserrat', sans-serif; font-size: 1.4vw; text-align:justify">
-                        <!-- <div class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 1.4vw; text-align:justify"> -->
-                        <!-- <?php echo $content['Errors']['news-unav']; ?> -->
                         <?php echo $content['Terms']['Terms']; ?>
-                        <!-- </div>                    -->
                     </div> 
-                </div>
+                </div> -->
             </div> 
         </div>
 
@@ -222,4 +219,14 @@
       
         </script>
     </body>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-190242876-1">
+    </script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-190242876-1');
+    </script>
 </html>
