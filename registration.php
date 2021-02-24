@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-    // header('Location: notyet.php');
+    header('Location: registration_stop.php');
     //imi dadea o eroare but this seemed to fix it, nu cred ca ai nevoie de session aici dar nu pare ca vrea sa mearga fara????
     if (session_status() == PHP_SESSION_NONE) session_start();
 
