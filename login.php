@@ -243,9 +243,9 @@
                     <a href="forgotpass.php" style="position:absolute; left:2%;">
                         <?php echo $content['Interface']['ForgotPass']; ?>
                     </a>
-                    <a href="registration.php" style="position:absolute; right:2%;">
+                    <!-- <a href="registration.php" style="position:absolute; right:2%;">
                         <?php echo $content['Interface']['Register']; ?>
-                    </a>
+                    </a> -->
                 </div>
             </div> 
             

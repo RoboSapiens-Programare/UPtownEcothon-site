@@ -306,10 +306,17 @@
 						</a>
 						";
 					} else {
-						echo "
-						<a href='registration.php' style='top:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>" . $content['Registration']['Register'] . ".</div></a>
-						<a href='login.php' style='bottom:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>" . $content['Registration']['Login'] . "</div></a>
-						'";
+						// echo "
+						// <a href='registration.php' style='top:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>" . $content['Registration']['Register'] . ".</div></a>
+						// <a href='login.php' style='bottom:0;'> <div class='text-centrat' style='text-decoration: none; color:white;'>" . $content['Registration']['Login'] . "</div></a>
+						// '";
+						echo " 
+						<a href='login.php' style='left:50%; transform:translateX(-50%); width:80%'> 
+							<div class='text-centrat' style='text-decoration: none; color:white;'>
+								" . $content['Registration']['Stop'] . "
+							</div>	
+						</a>
+						";
 					}
 				?>
 				
