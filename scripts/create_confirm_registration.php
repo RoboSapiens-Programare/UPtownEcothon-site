@@ -48,7 +48,7 @@
                                                 trebui să îți introduci username-ul de discord, ca să te putem repartiza channel-ului 
                                                 echipei tale. Dacă nu ai un user de Discord, poti intra pe acest <a href='https://discord.com/register'>link</a> 
                                                 sa iti creezi unul. E gratis!<br><br> 
-                                                Apasă <a href='" . $link . "'>aici</a> sau pe link-ul de mai jos<br>"
+                                                Apasă <a href='" . $link . "'>aici</a> sau pe link-ul de mai jos pentru a confirma participarea<br>"
                                                 . $link . "<br><br>
                                                 <span style='color: #d222d2'>Joi seara(25.02)</span>, cei ce nu au echipă, dar doresc
                                                 să găsească una vor fi anunțați de repartiția echipelor.<br>
