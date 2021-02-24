@@ -203,6 +203,8 @@
             </div>
         </div>
 
+        <a href="account.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center"><?php echo $content['Interface']['BackAccountBtn']; ?></a>
+
         <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:90%; max-width:1000px;">
             <h2 style="font-size: 3vh; font-weight:normal">Team: <span style="font-weight:bold;text-decoration:underline dashed #00ff16 0.3vh;"><?php echo $fields["team_name"]; ?></span></h2>
 
