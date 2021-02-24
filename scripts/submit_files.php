@@ -221,7 +221,7 @@
                 http_response_code(500);
                 die();
             }
-            $filepaths['appfile'] = $target_file;
+            $filepaths['appfile'] = basename($target_file);
         }
 
         if(isset($_FILES['prezfile']) && file_exists($_FILES['prezfile']['tmp_name'])) {
@@ -234,7 +234,7 @@
                 http_response_code(500);
                 die();
             }
-            $filepaths['prezfile'] = $target_file;
+            $filepaths['prezfile'] = basename($target_file);
         }
         if(isset($_FILES['finplan']) && file_exists($_FILES['finplan']['tmp_name'])) {
             
@@ -247,7 +247,7 @@
                 http_response_code(500);
                 die();
             }
-            $filepaths['finplan'] = $target_file;
+            $filepaths['finplan'] = basename($target_file);
         }
 
         return $filepaths;

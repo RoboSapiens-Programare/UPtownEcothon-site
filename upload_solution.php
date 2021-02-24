@@ -100,8 +100,8 @@
                             $fields['appfile'] = $ret['app_filename'];
                             $fields['apppath'] = $ret['app_path'];
                         }
-                        if(!empty($ret['prez_files_name'])){
-                            $fields['prezfile'] = $ret['prez_files_name'];
+                        if(!empty($ret['prez_files_filename'])){
+                            $fields['prezfile'] = $ret['prez_files_filename'];
                             $fields['prezpath'] = $ret['prez_files_path'];
                         }
                         if(!empty($ret['fin_plan_filename'])){
@@ -502,6 +502,11 @@
                     .done(done_func)
                     .fail(handle_msg);
                 }); 
+
+                $("a").click(function(e){
+                    e.preventDefault();
+                    window.location = "scripts/serve_file.php?filename=" + $(this).attr('href');
+                });
             })(jQuery);
             
         </script>
