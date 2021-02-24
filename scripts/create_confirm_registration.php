@@ -40,13 +40,16 @@
                         $passwd = $ret["passwd"];
                         $username = $ret["username"];
 
+                        $link = "https://ute.robosapiens.ro/confirm_registration.php?uname=" . $username . "&verif=" . base64_encode($passwd);
+
                         $subject = "[UTE]Confirmă participarea";
                         $content = createEmail("Hei! Care îți mai sunt planurile?", "Vrem să știm dacă vei participa la eveniment. 
                                                 Mai jos găsești un link pe care poti da click pentru a confirma participarea. Va 
                                                 trebui să îți introduci username-ul de discord, ca să te putem repartiza channel-ului 
                                                 echipei tale. Dacă nu ai un user de Discord, poti intra pe acest <a href='https://discord.com/register'>link</a> 
-                                                sa iti creezi unul. E gratis!<br><br> " 
-                                                . "https://ute.robosapiens.ro/confirm_registration.php?uname=" . $username . "&verif=" . base64_encode($passwd) . "<br><br>
+                                                sa iti creezi unul. E gratis!<br><br> 
+                                                Apasă <a href='" . $link . "'>aici</a> sau pe link-ul de mai jos<br>"
+                                                . $link . "<br><br>
                                                 <span style='color: #d222d2'>Joi seara(25.02)</span>, cei ce nu au echipă, dar doresc
                                                 să găsească una vor fi anunțați de repartiția echipelor.<br>
                                                 <span style='color: #d222d2'>Vineri dimineață(26.02) </span> îți vom trimite un mail conținând link-ul pentru a te înscrie
