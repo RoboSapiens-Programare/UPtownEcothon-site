@@ -40,8 +40,19 @@
                         $passwd = $ret["passwd"];
                         $username = $ret["username"];
 
-                        $subject = "[UTE]Ne-am updatat termenii și condițiile";
-                        $content = createEmail("Salut! Avem niște birocrație de facut", "Dacă dorești în continuare să participi la eveniment, te rugăm să dai click pe link-ul de mai jos și să introduci datele necesare! Poți citi despre noile conditii pe site!<br><br> " . "https://ute.robosapiens.ro/updated_terms.php?uname=" . $username . "&verif=" . base64_encode($passwd) . "<br><br> Mersi de înțelegere și te așteptăm la eveniment pe 26 februarie!<br><br> Cheers!<br>Echipa UPtown Ecothon");
+                        $subject = "[UTE]Confirmă participarea";
+                        $content = createEmail("Hei! Care îți mai sunt planurile?", "Vrem să știm dacă vei participa la eveniment. 
+                                                Mai jos găsești un link pe care poti da click pentru a confirma participarea. Va 
+                                                trebui să îți introduci username-ul de discord, ca să te putem repartiza channel-ului 
+                                                echipei tale. Dacă nu ai un user de Discord, poti intra pe acest <a href='https://discord.com/register'>link</a> 
+                                                sa iti creezi unul. E gratis!<br><br> " 
+                                                . "https://ute.robosapiens.ro/confirm_registration.php?uname=" . $username . "&verif=" . base64_encode($passwd) . "<br><br>
+                                                <span style='color: #d222d2'>Joi seara(25.02)</span>, cei ce nu au echipă, dar doresc
+                                                să găsească una vor fi anunțați de repartiția echipelor.<br>
+                                                <span style='color: #d222d2'>Vineri dimineață(26.02) </span> îți vom trimite un mail conținând link-ul pentru a te înscrie
+                                                pe server-ul de Discord. <br>
+                                                Te așteptăm la eveniment pe 26 februarie!<br><br> Cheers!<br>
+                                                <span style='color: #00ff16'>Echipa UPtown Ecothon</span>");
                         $headers = "From: Contact UPtown Ecothon <ute-contact@robosapiens.ro>\r\n";
                         $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
@@ -49,6 +60,7 @@
 
                         http_response_code(200);
                         echo "Trimis mail!";
+                        //echo $content;
                         die();
                     }
                     else{
