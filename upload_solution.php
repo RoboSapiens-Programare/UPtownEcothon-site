@@ -2,10 +2,10 @@
 <?php
     if (session_status() == PHP_SESSION_NONE) session_start();
 
-    // if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
-    //     header('Location: login.php');
-    //     die();
-    // }
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] != true){
+        header('Location: login.php');
+        die();
+    }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . '/config/dbconfig.php';
 
