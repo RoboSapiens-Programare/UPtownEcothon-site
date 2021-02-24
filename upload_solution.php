@@ -238,7 +238,7 @@
                     <div style="height: 0.1vh;"></div> -->
                     <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
                         if(isset($fields['appfile']) && !empty($fields['appfile'])){
-                            echo "<a href='".$fields['apppath']."'>".$fields['appfile']."</a>";
+                            echo "<a class='href' href='".$fields['apppath']."'>".$fields['appfile']."</a>";
                         } else {
                             echo "no file currently uploaded";
                         }
@@ -260,7 +260,7 @@
                     <div style="height: 0.1vh;"></div> -->
                     <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
                         if(isset($fields['prezfile']) && !empty($fields['prezfile'])){
-                            echo "<a href='".$fields['prezpath']."'>". $fields['prezfile']."</a>";
+                            echo "<a class='href' href='".$fields['prezpath']."'>". $fields['prezfile']."</a>";
                         } else {
                             echo "no file currently uploaded";
                         }
@@ -279,7 +279,7 @@
                     <div style="height: 0.1vh;"></div> -->
                     <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
                         if(isset($fields['moneysfile']) && !empty($fields['moneysfile'])){
-                            echo "<a href='".$fields['moneyspath']."'>".$fields['moneysfile']."</a>";
+                            echo "<a class='href' href='".$fields['moneyspath']."'>".$fields['moneysfile']."</a>";
                         } else {
                             echo "no file currently uploaded";
                         }
@@ -505,7 +505,7 @@
                     .fail(handle_msg);
                 }); 
 
-                $("a").click(function(e){
+                $(".href").click(function(e){
                     e.preventDefault();
                     window.location = "scripts/serve_file.php?filename=" + $(this).attr('href');
                 });
