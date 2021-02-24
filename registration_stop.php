@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
             <!-- You are here too early -->
+
+        <title>
             Registrations have stopped
         </title>
         <link rel="preconnect" href="https://fonts.gstatic.com">

@@ -365,9 +365,11 @@
                 
             </form>
 
+            <a href="upload_solution.php">
+                <button type="button" id="team-btn" class="team-btn"><?php echo $content['Interface']['Team']; ?></button>
+            </a>
             
             <button type="button" id="changepwd-btn" class="changepwd-btn"><?php echo $content['Interface']['ChangePass']; ?></button>
-                
 
             <form action="scripts/send_delete_verification.php" method="post" class="ajax-form">
                 <button type="submit" id="delete-btn"><?php echo $content['Interface']['DeleteBtn']; ?></button>
