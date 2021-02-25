@@ -203,6 +203,7 @@
     //Move files to a folder and save the filepaths for return
     function moveFiles($team_name){
         $filepaths = array();
+        $weird = array("'");
 
         //target directory outside webroot
         $target_dir = $_SERVER['DOCUMENT_ROOT']. "/../UTE-contest/uploads";
@@ -213,6 +214,8 @@
         if(isset($_FILES['appfile']) && file_exists($_FILES['appfile']['tmp_name'])) {
             
             $target_file = $target_dir . "/" . str_replace(' ', '', $team_name) . "_appfile_" . $random_string . "." . pathinfo($_FILES['appfile']['name'])['extension'];
+
+            $target_file = str_replace($weird, "", $target_file);
 
             if (move_uploaded_file($_FILES["appfile"]["tmp_name"], $target_file)) {
                 echo "The file ". htmlspecialchars( basename( $_FILES["appfile"]["name"])). " has been uploaded.<br>";
@@ -227,6 +230,8 @@
         if(isset($_FILES['prezfile']) && file_exists($_FILES['prezfile']['tmp_name'])) {
             $target_file = $target_dir . "/" . str_replace(' ', '', $team_name) . "_prezfile_" . $random_string . "." . pathinfo($_FILES['prezfile']['name'])['extension'];  
 
+            $target_file = str_replace($weird, "", $target_file);
+
             if (move_uploaded_file($_FILES["prezfile"]["tmp_name"], $target_file)) {
                 echo "The file ". htmlspecialchars( basename( $_FILES["prezfile"]["name"])). " has been uploaded.<br>";
             } else {
@@ -239,6 +244,8 @@
         if(isset($_FILES['finplan']) && file_exists($_FILES['finplan']['tmp_name'])) {
             
             $target_file = $target_dir . "/" . str_replace(' ', '', $team_name) . "_finplan_" . $random_string . "." . pathinfo($_FILES['finplan']['name'])['extension'];
+
+            $target_file = str_replace($weird, "", $target_file);
 
             if (move_uploaded_file($_FILES["finplan"]["tmp_name"], $target_file)) {
                 echo "The file ". htmlspecialchars( basename( $_FILES["finplan"]["name"])). " has been uploaded.<br>";

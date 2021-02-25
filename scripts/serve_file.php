@@ -24,6 +24,6 @@
     }
 
     function is_clean ($string) {
-        return ! preg_match("/[^a-zA-Z\d_-.' ]/i", $string);
+        return ! preg_match("/[^a-zA-Z\d_\-.' ]/i", $string);
     }
 ?>
