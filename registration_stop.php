@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>
-            <!-- You are here too early -->
             Registrations have stopped
         </title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
