@@ -80,7 +80,7 @@
                 <div id="links" style="position:relative; display:inline-block; width: 100vw; height: 100vh">
                     <div id="links-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:1.4vw;">
                     <div style="position: absolute; width:100%; height: 100%; left:1%; top:50%; transform:translate(0%, -50%);">
-                            <?php echo $content['General'][1]?>
+                            <?php echo $content['Links'][1]?>
                         </div>
                     </div>
                 </div>   
