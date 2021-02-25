@@ -226,7 +226,6 @@
              </h2>
             
             <form method="post" class="ajax-form" enctype="multipart/form-data" onsubmit="return validateForm(this)" action="scripts/submit_files.php">
-                <h2>Code files:</h2>
                 <div class="msg" style="display:none"></div>
 
                 <h2>Code files:</h2>
@@ -234,8 +233,7 @@
                 <label for="appfile">Select project files to upload:</label>
                 <input type="file" name="appfile" id="appfile" class="file">
                 <div id="appfile" class="filelist-wrapper appfile">
-                    <!-- <p>selected file:</p> <span class="fileList" >There are no files.</span> 
-                    <div style="height: 0.1vh;"></div> -->
+                    <div style="height: 0.1vh;"></div> 
                     <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
                         if(isset($fields['appfile']) && !empty($fields['appfile'])){
                             echo "<a class='href' href='".$fields['apppath']."'>".$fields['appfile']."</a>";
@@ -256,8 +254,7 @@
                 <label for="prezfile">Select prezentation files to upload:</label>
                 <input type="file" name="prezfile" id="prezfile" class="file" onclick="makeGreen(this)">
                 <div class="filelist-wrapper prezfile">
-                    <!-- <p>selected file:</p> <span class="fileList" >There are no files.</span> 
-                    <div style="height: 0.1vh;"></div> -->
+                    <div style="height: 0.1vh;"></div> 
                     <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
                         if(isset($fields['prezfile']) && !empty($fields['prezfile'])){
                             echo "<a class='href' href='".$fields['prezpath']."'>". $fields['prezfile']."</a>";
@@ -275,8 +272,7 @@
                 <label for="finplan">Select financial plan files to upload:</label>
                 <input type="file" name="finplan" id="moneysfile" class="file" onclick="makeGreen(this)">
                 <div class="filelist-wrapper moneysfile">
-                    <!-- <p>selected file:</p> <span class="fileList" >There are no files.</span> 
-                    <div style="height: 0.1vh;"></div> -->
+                    <div style="height: 0.1vh;"></div> 
                     <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
                         if(isset($fields['moneysfile']) && !empty($fields['moneysfile'])){
                             echo "<a class='href' href='".$fields['moneyspath']."'>".$fields['moneysfile']."</a>";
@@ -379,52 +375,20 @@
                 var isOK = true;
 
                 var fileinput = section.querySelectorAll('.file');
+                alert(fileinput.length);
                 for(let i = 0; i<fileinput.length; i++){
                     //if (true) return true PT CA imi e lene sa mai pun conditie de undefined 
                     if(fileinput[i].files!==null && isNotExe(fileinput[i], section)==false){
                         isOK = false;
                     }
                 }
-
-                // let file, url, file_verif, url_verif;
-
-                //this will be a problem if number of links is not equal to number of file fields =DDDDDDDDDDDDDDDDD
-                // for(let i=0;i<section.getElementsByClassName('file').length; i++){
-                //     //verifies stuff not empty
-                //     file = section.getElementsByClassName('file')[i];
-                //     url = section.getElementsByClassName('url')[i];
-
-                //     file_verif = (file.value.length !== 0 && file!==null);
-                //     url_verif = (url.value.length !== 0 && url!==null);
-
-                //     if(!file_verif && !url_verif){
-                //         isOK = false;
-                //         section.getElementsByClassName('msg')[0].style.display = "block";
-                //         section.getElementsByClassName('msg')[0].innerHTML = "Please submit at least one method through which we can take a look at your code";
-                //         file.style.borderColor = "red";
-                //         url.style.borderColor = "red";
-                //     }
-
-                //     //verify that input does not contain any .exe files
-                //     if(!isNotExe(file, section)){
-                //         isOK = false;
-                //     }
-                // }
-
+               
                 // verify file size does not exceeed 50mb?????????????(pt ca aparent POST iti limiteaza automat la 50mb) in the messiest way possible 
                 if(appfile_bytes>41943040 || prezfile_bytes>41943040 || moneysfile_bytes>41943040){
                     section.getElementsByClassName('msg')[0].style.display = "block";
                     section.getElementsByClassName('msg')[0].innerHTML = "Your files must be under 200MB !";
                     isOK = false;
                 } 
-
-                // //verify has submitted financial plan, again horribly messy, like everything else
-                // if(section.getElementById('moneysfile')!==null && section.getElementById('moneysfile').value.length==0){
-                //     isOK = false;
-                //     section.getElementById('moneysfile').style.borderColor = "red";
-                //     section.getElementsByClassName('msg')[0].style.display = "block";
-                //     section.getElementsByClassName('msg')[0].innerHTML = "Please submit financial plan (and prezentation if you haven't done so)";
-                // }
 
                 // TODO: DONT FORGET TO UNCOMMENT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
                 return isOK; 
