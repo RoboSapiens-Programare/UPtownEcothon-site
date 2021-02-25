@@ -375,7 +375,6 @@
                 var isOK = true;
 
                 var fileinput = section.querySelectorAll('.file');
-                alert(fileinput.length);
                 for(let i = 0; i<fileinput.length; i++){
                     //if (true) return true PT CA imi e lene sa mai pun conditie de undefined 
                     if(fileinput[i].files!==null && isNotExe(fileinput[i], section)==false){
