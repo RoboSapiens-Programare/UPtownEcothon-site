@@ -32,17 +32,22 @@
         <!-- document.location.href = '#program'; -->
         <div id="info-menu" style="position: fixed; width: 10vw; height: 70vh; top:50vh; right: 1vw; transform:translateY(-50%); z-index: 20">
             <a href="#general">
-                <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 10%; padding: 0; border:0.5vh solid #00ff16">
+                <div class="menu-item rounded-rect" style="position:absolute; height:15%; width: 100%; top: 20%; padding: 0; border:0.5vh solid #00ff16">
                     <div class="text-centrat" style="font-size: 1.5vw;">General</div>
                 </div>
             </a>
             <a href="#program">
-                <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 40%; padding: 0; border:0.5vh solid #00ff16">
+                <div class="menu-item rounded-rect" style="position:absolute; height:15%; width: 100%; top: 40%; padding: 0; border:0.5vh solid #00ff16">
                     <div class="text-centrat" style="font-size: 1.5vw;">Program</div>
                 </div>
             </a>
+            <a href="#links">
+                <div class="menu-item rounded-rect" style="position:absolute; height:15%; width: 100%; top: 60%; padding: 0; border:0.5vh solid #00ff16">
+                    <div class="text-centrat" style="font-size: 1.5vw;">Links</div>
+                </div>
+            </a>
             <a href="documents/UTE - Termeni și Condiții.pdf">
-                <div class="menu-item rounded-rect" style="position:absolute; height:20%; width: 100%; top: 70%; padding: 0; border:0.5vh solid #00ff16">
+                <div class="menu-item rounded-rect" style="position:absolute; height:15%; width: 100%; top: 80%; padding: 0; border:0.5vh solid #00ff16">
                     <div class="text-centrat" style="font-size: 1.5vw;">Terms & Conditions</div>
                 </div>
             </a>
@@ -71,6 +76,14 @@
                         <!-- </div> -->
                     </div>
                 </div>    
+
+                <div id="links" style="position:relative; display:inline-block; width: 100vw; height: 100vh">
+                    <div id="links-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: hidden; overflow-x: hidden; font-size:1.4vw;">
+                    <div style="position: absolute; width:100%; height: 100%; left:1%; top:50%; transform:translate(0%, -50%);">
+                            <?php echo $content['General'][1]?>
+                        </div>
+                    </div>
+                </div>   
 
                 <!-- <div id="terms" style="position:relative; display:inline-block; width: 100vw; height: 100vh;">
                     <div id="terms-container" class="rounded-rect" style="position:absolute; left: 1%; top: 55%; transform:translateY(-50%); height:70%; width: 80%; overflow-y: auto; overflow-x: hidden; padding:1vh 2vw 1vh 2vw; font-family: 'Montserrat', sans-serif; font-size: 1.4vw; text-align:justify">
