@@ -13,7 +13,7 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . "/config/mailconfig.php";
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $email = (isset($_POST['email']) && !empty($_POST['email'])) ? filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL) : null;
+        $email = (isset($_POST['email']) && !empty($_POST['email'])) ? $_POST["email"] : null;
         $subject = (isset($_POST['subject']) && !empty($_POST['subject'])) ? $_POST["subject"] : null;
         $title = (isset($_POST['title']) && !empty($_POST['title'])) ? $_POST["title"] : null;
         $content = (isset($_POST['content']) && !empty($_POST['content'])) ? $_POST["content"] : null;
@@ -22,8 +22,9 @@
             $ncontent = createEmail($title, $content);
             $headers = "From: Contact UPtown Ecothon <ute-contact@robosapiens.ro>\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+            $headers .= "Bcc: " . $email;
 
-            mail($email, $subject, $ncontent, $headers);
+            mail("", $subject, $ncontent, $headers);
 
             http_response_code(200);
             echo "Trimis mail!";
