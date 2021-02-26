@@ -36,11 +36,11 @@
         </div>
 
         <div class="rounded-rect" style="position:relative; width: 90%; height: 80vh; margin: 10% 0 10% 0; left:50%; transform:translateX(-50%); overflow-x: hidden; overflow-y: auto; display: block; border: 0.4vh solid #00ff16; background-color:white">
-            <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
+            <!-- <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
                 <?php echo $content['Errors']['Before-event']; ?>
-            </div>
+            </div> -->
         
-            <!-- <?php echo $content['Report Issue'][1] ?>
+            <?php echo $content['Report Issue'][1] ?>
             <section style="margin: 10% 3%;">
                 <div style="max-width: 768px; margin: auto;">
                     
@@ -94,15 +94,15 @@
                     </div>
 
                 </div>
-            </section> -->
+            </section>
         </div>
 
         <div class="rounded-rect" style="position:relative; width: 90%; height: 80vh; margin: 10% 0 10% 0; left:50%; transform:translateX(-50%); overflow-x: hidden; overflow-y: auto; display: block; border: 0.4vh solid #00ff16; background-color:white">
-            <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
+            <!-- <div id="temp-unav" class="text-centrat" style="font-family: 'Montserrat', sans-serif; font-size: 4vw">
                 <?php echo $content['Errors']['Before-event']; ?>
-            </div>
+            </div> -->
         
-            <!-- <?php echo $content['Contact Mentor'][1] ?>
+            <?php echo $content['Contact Mentor'][1] ?>
             <section style="margin:10% 3%;">
                 <div style="width: 100%; margin: auto;">
                     
@@ -156,7 +156,7 @@
                     </div>
 
                 </div>
-            </section> -->
+            </section>
         </div>
 
         <?php include "elements/footer.html"; ?>	
