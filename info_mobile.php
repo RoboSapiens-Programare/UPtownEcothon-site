@@ -16,7 +16,7 @@
                 background-color: black;
                 color:white;
                 /* font-size:4vw; */
-                height: 20%;
+                height: 15%;
                 width: 90%;
             }
             .info-btn div{
@@ -47,18 +47,23 @@
                 Info
             </div>
         </div>
-        <div style="position: relative; width:100%; height:30vh; border:0px solid blue">
+        <div style="position: relative; width:100%; height:50vh; border:0px solid blue">
         <a href="#general" class="info-btn" style="left:5%; top: 5%">
                 <div class="text-centrat">
                     General
                 </div>
             </a>
-            <a href="#program" class="info-btn" style="left:5%; top: 35%">
+            <a href="#program" class="info-btn" style="left:5%; top: 30%">
                 <div class="text-centrat">
                     Program
                 </div>
             </a>
-            <a href="documents/UTE - Termeni și Condiții.pdf" class="info-btn" style="left:5%; top: 65%">
+            <a href="#links" class="info-btn" style="left:5%; top: 55%">
+                <div class="text-centrat">
+                    Links
+                </div>
+            </a>
+            <a href="documents/UTE - Termeni și Condiții.pdf" class="info-btn" style="left:5%; top: 80%">
                 <div class="text-centrat">
                     Terms & Conditions
                 </div>
@@ -84,6 +89,13 @@
             </div>
             <div style="position: relative; width:95%; left:50%; transform:translate(-50%, 0%); padding:3%">
                 <img src="pictures/timetablefinal.png" alt="timetable.png crashed most likely" style=" width:inherit;">
+            </div>
+        </div>
+        <div id="links" style="position: relative; width:100%; background-color: black; ">
+            <div style="position: relative; color:black">
+                <div style="padding:3% 5% 3% 5%; font-size:2vh; font-family: 'Montserrat', sans-serif; color:white">
+                    <?php echo $content['Links'][1]?>
+                </div>
             </div>
         </div>
         <!-- <div id="terms" style="position: relative; width:100%; background-color:black; ">

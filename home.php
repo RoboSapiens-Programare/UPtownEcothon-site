@@ -28,7 +28,7 @@
 				  
 		<?php include 'elements/header.php'; ?>
 
-		<?php
+		<!-- <?php
 			if($hassbs || $showemail){
 				echo " <script>
 				function Scrolldown() {
@@ -40,7 +40,7 @@
 				";
 			}
 			
-		?>
+		?> -->
 
 		<script>
 			function validateForm(){
@@ -289,17 +289,25 @@
 						echo " 
 						<a href='account.php' style='left:50%; transform:translateX(-50%); width:80%'> 
 							<div class='text-centrat' style='text-decoration: none; color:white;'>
-								Hi, " . $_SESSION['username'] . "!" . $content['Registration']['Loggedin'] . "
+								Hei, " . $_SESSION['username'] . "!" . $content['Registration']['Loggedin'] . "
 							</div>	
 						</a>
 						";
 					} else {
-						echo "
-						<a href='registration.php' style='left:25%; transform:translateX(-25%)'> <div class='text-centrat' style='text-decoration: none; color:white;'>" . $content['Registration']['Register'] . "</div></a>
-						<a href='login.php' style='left: 75%; transform:translateX(-75%)'> <div class='text-centrat' style='text-decoration: none; color:white;'>" . $content['Registration']['Login'] . "</div></a>
-						'";
+						// echo "
+						// <a href='registration.php' style='left:25%; transform:translateX(-25%)'> <div class='text-centrat' style='text-decoration: none; color:white;'>" . $content['Registration']['Register'] . "</div></a>
+						// <a href='login.php' style='left: 75%; transform:translateX(-75%)'> <div class='text-centrat' style='text-decoration: none; color:white;'>" . $content['Registration']['Login'] . "</div></a>
+						// '";
+						echo " 
+						<a href='login.php' style='left:50%; transform:translateX(-50%); width:80%'> 
+							<div class='text-centrat' style='text-decoration: none; color:white;'>
+								" . $content['Registration']['Stop'] . "
+							</div>	
+						</a>
+						";
 					}
 				?>
+				
 			</div>
 
 			<!-- <div id="wrapper-newsletter-buttons" style="position: absolute; bottom:-2vh; height: 20vh; width:100%;" >
