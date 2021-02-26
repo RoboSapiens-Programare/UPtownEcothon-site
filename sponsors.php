@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 75%; transform:translate(-50%,-50%)">
-                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><img class="image" src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="filter:contrast(200%); -webkit-filer:contrast(200%);"></div>
+                            <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"><img class="image" src="pictures/gemini-by-tw.png" alt="Gemini Sols" style="filter:contrast(200%); -webkit-filer:contrast(200%);"></div>
                             <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
                             
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"> <?php echo $content['Gemini']['desc']; ?> </div>

@@ -41,7 +41,7 @@
                 </div>
                 <div id="sect3" class="section" >
                     <div class="wrapper" style="background-color: #5a0b5a">
-                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/gemini-solutions-logo.svg" alt="Gemini Sols" style="width:100%; height:15vh"></div> </div>
+                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/gemini-by-tw.png" alt="Gemini Sols" style="width:100%; height:15vh"></div> </div>
                         <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                     </div>
                     <div class="wrapper-sect-content" style="color: black;"><div class="sect-content"><?php echo $content['Gemini']['desc']; ?></div></div>
