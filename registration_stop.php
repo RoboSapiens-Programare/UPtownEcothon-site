@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+            <!-- You are here too early -->
+
         <title>
             Registrations have stopped
         </title>
