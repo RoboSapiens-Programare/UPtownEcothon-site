@@ -206,9 +206,9 @@
         <a href="account.php" style="display: block; position:relative; left:50%; transform:translateX(-50%); font-size:2.5vh; margin-top:3vh; text-align:center"><?php echo $content['Interface']['BackAccountBtn']; ?></a>
 
         <div class="rounded-rect" style="position:relative; left:50%; transform:translateX(-50%); background-color:white; width:90%; max-width:1000px;">
-            <h2 style="font-size: 3vh; font-weight:normal">Team: <span style="font-weight:bold;text-decoration:underline dashed #00ff16 0.3vh;"><?php echo $fields["team_name"]; ?></span></h2>
+            <h2 style="font-size: 3vh; font-weight:normal"><?php echo $content['Interface']['Team']; ?> <span style="font-weight:bold;text-decoration:underline dashed #00ff16 0.3vh;"><?php echo $fields["team_name"]; ?></span></h2>
 
-            <h2 style="font-size: 3vh; font-weight:normal">Members:
+            <h2 style="font-size: 3vh; font-weight:normal"><?php echo $content['Interface']['Members']; ?>
                 <span style="font-weight: bold;">
                     <?php 
                         if(empty($participants) || !isset($participants)){
@@ -228,60 +228,66 @@
             <form method="post" class="ajax-form" enctype="multipart/form-data" onsubmit="return validateForm(this)" action="scripts/submit_files.php">
                 <div class="msg" style="display:none"></div>
 
-                <h2>Code files:</h2>
+                <h2><?php echo $content['Form']['Code']; ?></h2>
 
-                <label for="appfile">Select project files to upload:</label>
+                <label for="appfile"><?php echo $content['Form']['SelectCodeFiles']; ?></label>
                 <input type="file" name="appfile" id="appfile" class="file">
                 <div id="appfile" class="filelist-wrapper appfile">
                     <div style="height: 0.1vh;"></div> 
-                    <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
+                    <p style="color: #76667d;"><?php echo $content['Form']['CurrentFiles']; ?></p> <span class="fileList" style="color: #76667d;"><?php 
                         if(isset($fields['appfile']) && !empty($fields['appfile'])){
                             echo "<a class='href' href='".$fields['apppath']."'>".$fields['appfile']."</a>";
                         } else {
-                            echo "no file currently uploaded";
+                            echo $content['Form']['NoFile'];
                         }
                     ?></span>
                     <div style="height: 0.1vh;"></div>
-                    <p>upload file size:</p> <span class="fileSize" >0</span>
+                    <div class="size" style="display: none;">
+                        <p><?php echo $content['Form']['FileSize']; ?></p> <span class="fileSize" >0</span>
+                    </div>
                 </div>
                 
-                <label for="appurl">Or enter a git url:</label>
+                <label for="appurl"><?php echo $content['Form']['GitUrl']; ?></label>
                 <input type="text" name="appurl" id="appurl" class="url" onclick="makeGreen(this)">
 
 
-                <h2>Prezentation files files:</h2>
+                <h2><?php echo $content['Form']['Prez']; ?></h2>
 
-                <label for="prezfile">Select prezentation files to upload:</label>
+                <label for="prezfile"><?php echo $content['Form']['SelectPrezFiles']; ?></label>
                 <input type="file" name="prezfile" id="prezfile" class="file" onclick="makeGreen(this)">
                 <div class="filelist-wrapper prezfile">
                     <div style="height: 0.1vh;"></div> 
-                    <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
+                    <p style="color: #76667d;"><?php echo $content['Form']['CurrentFiles']; ?></p> <span class="fileList" style="color: #76667d;"><?php 
                         if(isset($fields['prezfile']) && !empty($fields['prezfile'])){
                             echo "<a class='href' href='".$fields['prezpath']."'>". $fields['prezfile']."</a>";
                         } else {
-                            echo "no file currently uploaded";
+                            echo $content['Form']['NoFile'];
                         }
                     ?></span>
                     <div style="height: 0.1vh;"></div>
-                    <p>upload file size:</p> <span class="fileSize" >0</span>
+                    <div class="size" style="display: none;">
+                        <p><?php echo $content['Form']['FileSize']; ?></p> <span class="fileSize" >0</span>
+                    </div>
                 </div>
                
-                <label for="prezurl">Or enter a url for your online presentation:</label>
+                <label for="prezurl"><?php echo $content['Form']['PrezUrl']; ?></label>
                 <input type="text" name="prezurl" id="prezurl" class="url" onclick="makeGreen(this)">
 
-                <label for="finplan">Select financial plan files to upload:</label>
+                <label for="finplan"><?php echo $content['Form']['SelectFinPlanFiles']; ?></label>
                 <input type="file" name="finplan" id="moneysfile" class="file" onclick="makeGreen(this)">
                 <div class="filelist-wrapper moneysfile">
                     <div style="height: 0.1vh;"></div> 
-                    <p style="color: #76667d;">currently uploaded file:</p> <span class="fileList" style="color: #76667d;"><?php 
+                    <p style="color: #76667d;"><?php echo $content['Form']['CurrentFiles']; ?></p> <span class="fileList" style="color: #76667d;"><?php 
                         if(isset($fields['moneysfile']) && !empty($fields['moneysfile'])){
                             echo "<a class='href' href='".$fields['moneyspath']."'>".$fields['moneysfile']."</a>";
                         } else {
-                            echo "no file currently uploaded";
+                            echo $content['Form']['NoFile'];
                         }
                     ?></span>
                     <div style="height: 0.1vh;"></div>
-                    <p>upload file size:</p> <span class="fileSize" >0</span>
+                    <div class="size" style="display: none;">
+                        <p><?php echo $content['Form']['FileSize']; ?></p> <span class="fileSize" >0</span>
+                    </div>
                 </div>
 
                 <!-- Please just don't push this -->
@@ -324,6 +330,7 @@
                 fileInput.parentElement.getElementsByClassName(type)[0].getElementsByClassName("fileSize")[0].innerHTML = sOutput;
                 fileInput.parentElement.getElementsByClassName(type)[0].getElementsByClassName("fileList")[0].innerHTML = children;
                 fileInput.parentElement.getElementsByClassName(type)[0].getElementsByClassName("fileList")[0].style.color = "black";
+                fileInput.parentElement.getElementsByClassName(type)[0].getElementsByClassName("size")[0].style.display = "block";
 
                 return nBytes;
             }
