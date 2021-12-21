@@ -27,24 +27,24 @@
 
                 <div id="sect1" class="section" >
                     <div class="wrapper" style="background-color: #340634;">
-                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/logo-softelligence.png" alt="Softelligence" style="width: 100%;"></div> </div>
+                        <div class="sect-title"> <div class="text-centrat"></div> </div>
                         <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                     </div>
                     <div class="wrapper-sect-content" style="color: black;"><div class="sect-content"><?php echo $content['Softelligence']['desc']; ?></div></div>
                 </div>
                 <div id="sect2" class="section" >
                     <div class="wrapper" style="background-color: #9d49a1">
-                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/endava.png" alt="Endava" style="width: 100%;"></div> </div>
+                        <div class="sect-title"> <div class="text-centrat"></div> </div>
                         <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                     </div>
-                    <div class="wrapper-sect-content" style="color: black;"><div class="sect-content"><?php echo $content['Endava']['desc']; ?></div></div>
+                    <div class="wrapper-sect-content" style="color: black;"><div class="sect-content"></div></div>
                 </div>
                 <div id="sect3" class="section" >
                     <div class="wrapper" style="background-color: #5a0b5a">
-                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/gemini-by-tw.png" alt="Gemini Sols" style="width:100%; height:15vh"></div> </div>
+                        <div class="sect-title"> <div class="text-centrat"></div> </div>
                         <div class="read-more-btn" onclick="readMore(this)"><div class="text-centrat">Read More</div></div>
                     </div>
-                    <div class="wrapper-sect-content" style="color: black;"><div class="sect-content"><?php echo $content['Gemini']['desc']; ?></div></div>
+                    <div class="wrapper-sect-content" style="color: black;"><div class="sect-content"></div></div>
                 </div>
                 
 
@@ -56,8 +56,8 @@
 
                 <div id="sect4" class="section" >
                     <div class="wrapper" style="background-color: #340634;">
-                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/logo-softelligence.png" alt="Softelligence" style="width: 100%;"></div></div>
-                        <div class="tagtag"><?php echo $content['Softelligence']['tag']; ?></div>
+                        <div class="sect-title"> <div class="text-centrat"></div></div>
+                        <div class="tagtag"></div>
                     </div>
                 </div>
                 <div id="sect5" class="section" >
@@ -68,15 +68,14 @@
                 </div>
                 <div id="sect5" class="section" >
                     <div class="wrapper" style="background-color: #76667d;">
-                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/logo-highedu.png" alt="HighEdu" style="width: 100%;"></div></div>
-                        <div class="tagtag"><?php echo $content['HighEdu']['tag']; ?></div>
+                        <div class="sect-title"> <div class="text-centrat"></div></div>
+                        <div class="tagtag"></div>
                     </div>
                 </div>
                 
                 <div id="sect7" class="section" >
                     <div class="wrapper" style="background-color: #5a0b5a;">
-                        <div class="sect-title"> <div class="text-centrat"><img src="pictures/geyc.png" alt="Geyc" style="width: 100%;"></div> </div>
-                        <div class="tagtag"><?php echo $content['Geyc']['tag']; ?></div>
+                        <div class="sect-title"> <div class="text-centrat"></div> </div>
                     </div>
                 </div>
 

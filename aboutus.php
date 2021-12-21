@@ -13,7 +13,7 @@
 
         <?php 
             include 'elements/header.php'; 
-            require_once('config/captchacredentials.php');
+            require_once('config/captchacrendentials.php');
         ?>
 
         
@@ -140,21 +140,22 @@
                         <img src="pictures/natie.png">
                     </a>
                 </li>
-                <li>
+               <!-- <li>
                     <a href="sponsors.php">
-                        <img src="pictures/logo-softelligence.png">
+                        
                     </a>
                 </li>   
                 <li>
                     <a href="sponsors.php">
-                        <img src="pictures/gemini-solutions-logo.svg">
+                       
                     </a>
                 </li>
                 <li>
                     <a href="sponsors.php">
-                        <img src="pictures/endava.png">
+                      
                     </a>
                 </li>
+        -->
 
             </ul>
         </div>
