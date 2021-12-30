@@ -64,15 +64,14 @@
 
         <div style="background:transparent; overflow-x: auto; overflow-y: hidden; margin:0px; width: 100vw; height: 100vh; box-sizing: border-box; z-index:10; position:relative; scrollbar-width: none; scroll-behavior: smooth">
             <div style="background:transparent; width: 301%; height: 100%; position: relative">
-                <div id="spon" style="position:relative; display:inline-block; width: 100vw; height: 100vh">
+                <!-- <div id="spon" style="position:relative; display:inline-block; width: 100vw; height: 100vh">
                     <div style="position: relative; width:100%; height: 15vh; background-color: transparent; font-size:3vw">
                         <div class="text-centrat" style="color:white; border-bottom: 0.5vh dashed #00ff16">
                             <?php echo $content['Thanks'][1]; ?>    
                         </div>
                     </div>
 
-                    <div id="container-spon" style="position:relative; width:100%; height:85vh; background-color:transparent;">
-                     <!--   
+                    <div id="container-spon" style="position:relative; width:100%; height:85vh; background-color:transparent;">  
                         <div class="rectangle-content" id="rectangle-content" style="top: 60%; left: 25%; transform:translate(-50%,-50%)">
                             <div class="circle-top-left" onclick="expand(this, 60, 60, 17, 'vh');" style="height: 45vh; width:45vh;"></div>
                             <div class="circle-bottom-right" style="height: 45vh; width:45vh;"></div>
@@ -94,10 +93,8 @@
                             <div  class="text-centrat" style="font-size: 1.2vw; width: 90%; max-height:90%; overflow: hidden; font-family: 'Montserrat', sans-serif"></div>
                         </div>
                     </div>
-
-                    
-                </div>
-        -->
+                </div> -->
+        
 
                 <div id="partners" style="position:relative; display:inline-block; width: 100vw; height: 100vh">
                     <div style="position: relative; width:100%; height: 15vh; background-color: transparent; font-size:3vw">

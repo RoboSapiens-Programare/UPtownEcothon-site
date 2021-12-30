@@ -13,7 +13,7 @@
 
         <?php 
             include 'elements/header.php'; 
-            require_once('config/captchacrendentials.php');
+            require_once('config/captchacredentials.php');
         ?>
 
         
